@@ -15,6 +15,13 @@ class CreatePackagesTable extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('roi');
+            $table->string('price');
+            $table->string('duration');
+            $table->text('description');
+            $table->text('image');
+            $table->enum('investment', ['enabled, disabled']);
             $table->timestamps();
         });
     }

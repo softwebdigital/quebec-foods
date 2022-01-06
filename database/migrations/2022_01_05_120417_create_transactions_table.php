@@ -15,6 +15,13 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->foreignId('investment_id')->nullable();
+            $table->enum('type', ['deposit', 'withdrawal', 'others']);
+            $table->string('amount');
+            $table->string('description');
+            $table->enum('method', ['wallet', 'card', 'deposit'])->nullable();
+            $table->enum('status', ['approved', 'pending', 'declined']);
             $table->timestamps();
         });
     }
