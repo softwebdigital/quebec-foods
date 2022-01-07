@@ -14,8 +14,14 @@ class CreateOnlinePaymentsTable extends Migration
     public function up()
     {
         Schema::create('online_payments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('transaction_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
+            $table->string('reference');
+            $table->string('amount');
+            $table->enum('type', ['deposit', 'investment']);
+            $table->string('gateway')->default('flutterwave');
+            $table->text('meta')->nullable();
+            $table->enum('status', ['success', 'pending', 'failed'])->default('pending');
         });
     }
 

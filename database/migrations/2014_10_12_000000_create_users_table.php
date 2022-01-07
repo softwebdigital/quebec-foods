@@ -15,6 +15,7 @@ class CreateUsersTable extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('code')->unique();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
@@ -24,20 +25,18 @@ class CreateUsersTable extends Migration
             $table->string('country')->nullable();
             $table->string('city')->nullable();
             $table->text('address')->nullable();
-            $table->text('identification')->nullable();
             $table->text('avatar')->nullable();
-            $table->string('bank_name')->nullable();
-            $table->string('account_name')->nullable();
-            $table->string('account_number')->nullable();
             $table->string('nk_name')->nullable();
             $table->string('nk_phone')->nullable();
             $table->text('nk_address')->nullable();
             $table->string('password');
-            $table->string('facebook_id')->nullable();
-            $table->string('google_id')->nullable();
             $table->string('ref_code')->nullable();
             $table->boolean('gotMail')->default(false);
             $table->boolean('active')->default(true);
+            $table->text('otp')->nullable();
+            $table->timestamp('otp_expiry')->nullable();
+            $table->text('reset_otp')->nullable();
+            $table->timestamp('reset_otp_expiry')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
