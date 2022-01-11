@@ -41,4 +41,29 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    // Users relationship with Investments.
+    public function investments()
+    {
+        return $this->hasMany(Investment::class);
+    }
+    // Users relationships with wallets
+    public function wallets()
+    {
+        return $this->hasOne(Wallet::class);
+    }
+    // Users relationships with transactions
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class);
+    }
+    // Users relationships with Bank Accounts.
+    public function bankAccounts()
+    {
+        return $this->hasMany(BankAccounts::class);
+    }
+    // Users relationships with Documents.
+    public function documents()
+    {
+        return $this->hasMany(Document::class);
+    }
 }

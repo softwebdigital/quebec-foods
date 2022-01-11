@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class BankAccounts extends Model
 {
     use HasFactory;
+
+      // Bank accounts relationship with user.
+      public function user()
+      {
+          return $this->belongsTo(User::class);
+      }
 }

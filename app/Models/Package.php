@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Package extends Model
 {
     use HasFactory;
+
+    // Package relationship with investments.
+    public function investments()
+    {
+        return $this->hasMany(Investment::class);
+    }
 }
