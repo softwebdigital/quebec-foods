@@ -9,7 +9,7 @@ class Transaction extends Model
 {
     use HasFactory;
     // Transaction relationship with Online payments.
-    public function onlinePayments()
+    public function onlinePayment()
     {
         return $this->hasOne(OnlinePayment::class);
     }

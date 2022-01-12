@@ -15,12 +15,12 @@ class Investment extends Model
         return $this->belongsTo(Package::class);
     }
     // Investments relationships with transactions.
-    public function transaction()
+    public function transactions()
     {
         return $this->hasMany(Transaction::class);
     }
     // Investments relationships with online payments.
-    public function onlinePayments()
+    public function onlinePayment()
     {
         return $this->hasOne(OnlinePayment::class);
     }

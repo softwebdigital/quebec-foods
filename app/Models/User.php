@@ -47,7 +47,7 @@ class User extends Authenticatable
         return $this->hasMany(Investment::class);
     }
     // Users relationships with wallets
-    public function wallets()
+    public function wallet()
     {
         return $this->hasOne(Wallet::class);
     }
