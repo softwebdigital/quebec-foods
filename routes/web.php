@@ -18,6 +18,10 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['middleware' => ['auth', 'verified']], function() {
+    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+});
+
