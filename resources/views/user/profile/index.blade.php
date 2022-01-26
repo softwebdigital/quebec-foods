@@ -1,5 +1,9 @@
 @extends('layouts.user')
 
+@php
+    $user = auth()->user();
+@endphp
+
 @section('pageTitle', 'Profile')
 
 @section('style')
@@ -24,7 +28,7 @@
                     <div class="d-flex flex-center flex-column py-5">
                         <!--begin::Avatar-->
                         <div class="symbol symbol-100px symbol-circle mb-7">
-                            <img src="assets/media/avatars/300-6.jpg" alt="image" />
+                            <img src="{{ $user['avatar'] ?? asset('assets/media/svg/avatars/blank.svg') }}" alt="image" />
                         </div>
                         <!--end::Avatar-->
                         <!--begin::Name-->
@@ -33,87 +37,13 @@
                         <!--begin::Position-->
                         <div class="mb-9">
                             <!--begin::Badge-->
-                            <div class="badge badge-lg badge-light-primary d-inline">Administrator</div>
+                            <div class="badge badge-lg badge-light-primary d-inline">Verified</div>
                             <!--begin::Badge-->
                         </div>
                         <!--end::Position-->
-                        <!--begin::Info-->
-                        <!--begin::Info heading-->
-                        <div class="fw-bolder mb-3">Assigned Tickets
-                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="popover" data-bs-trigger="hover" data-bs-html="true" data-bs-content="Number of support tickets assigned, closed and pending this week."></i></div>
-                        <!--end::Info heading-->
-                        <div class="d-flex flex-wrap flex-center">
-                            <!--begin::Stats-->
-                            <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
-                                <div class="fs-4 fw-bolder text-gray-700">
-                                    <span class="w-75px">243</span>
-                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
-                                    <span class="svg-icon svg-icon-3 svg-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black" />
-                                            <path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black" />
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                </div>
-                                <div class="fw-bold text-muted">Total</div>
-                            </div>
-                            <!--end::Stats-->
-                            <!--begin::Stats-->
-                            <div class="border border-gray-300 border-dashed rounded py-3 px-3 mx-4 mb-3">
-                                <div class="fs-4 fw-bolder text-gray-700">
-                                    <span class="w-50px">56</span>
-                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
-                                    <span class="svg-icon svg-icon-3 svg-icon-danger">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="11" y="18" width="13" height="2" rx="1" transform="rotate(-90 11 18)" fill="black" />
-                                            <path d="M11.4343 15.4343L7.25 11.25C6.83579 10.8358 6.16421 10.8358 5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75L11.2929 18.2929C11.6834 18.6834 12.3166 18.6834 12.7071 18.2929L18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25C17.8358 10.8358 17.1642 10.8358 16.75 11.25L12.5657 15.4343C12.2533 15.7467 11.7467 15.7467 11.4343 15.4343Z" fill="black" />
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                </div>
-                                <div class="fw-bold text-muted">Solved</div>
-                            </div>
-                            <!--end::Stats-->
-                            <!--begin::Stats-->
-                            <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
-                                <div class="fs-4 fw-bolder text-gray-700">
-                                    <span class="w-50px">188</span>
-                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
-                                    <span class="svg-icon svg-icon-3 svg-icon-success">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <rect opacity="0.5" x="13" y="6" width="13" height="2" rx="1" transform="rotate(90 13 6)" fill="black" />
-                                            <path d="M12.5657 8.56569L16.75 12.75C17.1642 13.1642 17.8358 13.1642 18.25 12.75C18.6642 12.3358 18.6642 11.6642 18.25 11.25L12.7071 5.70711C12.3166 5.31658 11.6834 5.31658 11.2929 5.70711L5.75 11.25C5.33579 11.6642 5.33579 12.3358 5.75 12.75C6.16421 13.1642 6.83579 13.1642 7.25 12.75L11.4343 8.56569C11.7467 8.25327 12.2533 8.25327 12.5657 8.56569Z" fill="black" />
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                </div>
-                                <div class="fw-bold text-muted">Open</div>
-                            </div>
-                            <!--end::Stats-->
-                        </div>
-                        <!--end::Info-->
                     </div>
                     <!--end::User Info-->
                     <!--end::Summary-->
-                    <!--begin::Details toggle-->
-                    <div class="d-flex flex-stack fs-4 py-3">
-                        <div class="fw-bolder rotate collapsible" data-bs-toggle="collapse" href="#kt_user_view_details" role="button" aria-expanded="false" aria-controls="kt_user_view_details">Details
-                        <span class="ms-2 rotate-180">
-                            <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                            <span class="svg-icon svg-icon-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </span></div>
-                        <span data-bs-toggle="tooltip" data-bs-trigger="hover" title="Edit customer details">
-                            <a href="#" class="btn btn-sm btn-light-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_update_details">Edit</a>
-                        </span>
-                    </div>
-                    <!--end::Details toggle-->
-                    <div class="separator"></div>
                     <!--begin::Details content-->
                     <div id="kt_user_view_details" class="collapse show">
                         <div class="pb-5 fs-6">
@@ -169,101 +99,9 @@
                     <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_user_view_overview_events_and_logs_tab">Sessions</a>
                 </li>
                 <!--end:::Tab item-->
-                <!--begin:::Tab item-->
-                <li class="nav-item ms-auto">
-                    <!--begin::Action menu-->
-                    <a href="#" class="btn btn-primary ps-7" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">Actions
-                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                    <span class="svg-icon svg-icon-2 me-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon--></a>
-                    <!--begin::Menu-->
-                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold py-4 w-250px fs-6" data-kt-menu="true">
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <div class="menu-content text-muted pb-2 px-5 fs-7 text-uppercase">Payments</div>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <a href="#" class="menu-link px-5">Create invoice</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <a href="#" class="menu-link flex-stack px-5">Create payments
-                            <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i></a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="left-start">
-                            <a href="#" class="menu-link px-5">
-                                <span class="menu-title">Subscription</span>
-                                <span class="menu-arrow"></span>
-                            </a>
-                            <!--begin::Menu sub-->
-                            <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-5">Apps</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-5">Billing</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <a href="#" class="menu-link px-5">Statements</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu separator-->
-                                <div class="separator my-2"></div>
-                                <!--end::Menu separator-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <div class="menu-content px-3">
-                                        <label class="form-check form-switch form-check-custom form-check-solid">
-                                            <input class="form-check-input w-30px h-20px" type="checkbox" value="" name="notifications" checked="checked" id="kt_user_menu_notifications" />
-                                            <span class="form-check-label text-muted fs-6" for="kt_user_menu_notifications">Notifications</span>
-                                        </label>
-                                    </div>
-                                </div>
-                                <!--end::Menu item-->
-                            </div>
-                            <!--end::Menu sub-->
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu separator-->
-                        <div class="separator my-3"></div>
-                        <!--end::Menu separator-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <div class="menu-content text-muted pb-2 px-5 fs-7 text-uppercase">Account</div>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <a href="#" class="menu-link px-5">Reports</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5 my-1">
-                            <a href="#" class="menu-link px-5">Account Settings</a>
-                        </div>
-                        <!--end::Menu item-->
-                        <!--begin::Menu item-->
-                        <div class="menu-item px-5">
-                            <a href="#" class="menu-link text-danger px-5">Delete customer</a>
-                        </div>
-                        <!--end::Menu item-->
-                    </div>
-                    <!--end::Menu-->
-                    <!--end::Menu-->
+                  <!--begin:::Tab item-->
+                  <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_user_view_overview_events_and_logs_and_bank_information_tab">Bank</a>
                 </li>
                 <!--end:::Tab item-->
             </ul>
@@ -284,9 +122,50 @@
                         </div>
                         <!--end::Card header-->
                         <!--begin::Card body-->
-                        <div class="card-body p-9 pt-4">
+                        <div class="card-body p-9 pt-0">
                           <!--begin::Form-->
-                            <form action="m-0" class="form mb-15" method="post" id="kt_careers_form">
+                            <form action="{{ route('profile.update') }}" class="form mb-15" method="post" id="update_form" enctype="multipart/form-data">
+                                @csrf
+                                <!--begin::Input group-->
+                                <div class="mb-7">
+                                    <!--begin::Label-->
+                                    <label class="fs-6 fw-bold mb-2">
+                                        <span>Update Avatar</span>
+                                        <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Allowed file types: png, jpg, jpeg."></i>
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Image input wrapper-->
+                                    <div class="mt-1">
+                                        <!--begin::Image input-->
+                                        <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('assets/media/svg/avatars/blank.svg')">
+                                            <!--begin::Preview existing avatar-->
+                                            <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $user['avatar'] ?? 'assets/media/svg/avatars/blank.svg' }})"></div>
+                                            <!--end::Preview existing avatar-->
+                                            <!--begin::Edit-->
+                                            <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
+                                                <i class="bi bi-pencil-fill fs-7"></i>
+                                                <!--begin::Inputs-->
+                                                <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
+                                                <input type="hidden" name="avatar_remove" />
+                                                <!--end::Inputs-->
+                                            </label>
+                                            <!--end::Edit-->
+                                            <!--begin::Cancel-->
+                                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
+                                                <i class="bi bi-x fs-2"></i>
+                                            </span>
+                                            <!--end::Cancel-->
+                                            <!--begin::Remove-->
+                                            <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
+                                                <i class="bi bi-x fs-2"></i>
+                                            </span>
+                                            <!--end::Remove-->
+                                        </div>
+                                        <!--end::Image input-->
+                                    </div>
+                                    <!--end::Image input wrapper-->
+                                </div>
+                                <!--end::Input group-->
                                 <!--begin::Input group-->
                                 <div class="row mb-5">
                                     <!--begin::Col-->
@@ -295,8 +174,13 @@
                                         <label class="required fs-5 fw-bold mb-2">First Name</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="first_name" />
+                                        <input type="text" class="form-control" name="first_name" value="{{ old('first_name') ?? $user['first_name']  }}"/>
                                         <!--end::Input-->
+                                        @error('first_name')
+                                            <span class="text-danger small">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
@@ -305,8 +189,13 @@
                                         <label class="required fs-5 fw-bold mb-2">Last Name</label>
                                         <!--end::Label-->
                                         <!--end::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="last_name" />
+                                        <input type="text" class="form-control" placeholder="" name="last_name" value="{{ old('first_name') ?? $user['last_name'] }}"/>
                                         <!--end::Input-->
+                                        @error('last_name')
+                                            <span class="text-danger small">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -319,18 +208,23 @@
                                         <label class="required fs-5 fw-bold mb-2">Email</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input class="form-control form-control-solid" placeholder="" name="email" />
+                                        <input class="form-control form-control-solid" disabled value="{{ $user['email'] }}"/>
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-md-6 fv-row">
                                         <!--end::Label-->
-                                        <label class="fs-5 fw-bold mb-2">Mobile No</label>
+                                        <label class="required fs-5 fw-bold mb-2">Mobile No</label>
                                         <!--end::Label-->
                                         <!--end::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="mobileno" />
+                                        <input type="text" class="form-control" placeholder="E.g +2349039561875" name="phone" value="{{ old('phone') ?? $user['phone'] }}"/>
                                         <!--end::Input-->
+                                        @error('phone')
+                                            <span class="text-danger small">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -343,8 +237,13 @@
                                         <label class="required fs-5 fw-bold mb-2">State</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="age" />
+                                        <input type="text" class="form-control" name="state" value="{{ old('state') ?? $user['state'] }}" />
                                         <!--end::Input-->
+                                        @error('state')
+                                            <span class="text-danger small">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
@@ -353,10 +252,260 @@
                                         <label class="required fs-5 fw-bold mb-2">City</label>
                                         <!--end::Label-->
                                         <!--end::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="city" />
+                                        <input type="text" class="form-control" name="city" value="{{ old('city') ?? $user['city'] }}"/>
                                         <!--end::Input-->
+                                        @error('city')
+                                            <span class="text-danger small">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                 <div class="d-flex flex-column mb-7 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-bold mb-2">
+                                        <span>Country</span>
+                                        {{-- <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i> --}}
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <select name="country" aria-label="Select a Country" data-control="select2" value="{{ old('country') ?? $user['country']}}" data-placeholder="Select a Country..." class="form-select" >
+                                        <option value="">Select a Country...</option>
+                                        <option value="AF">Afghanistan</option>
+                                        <option value="AX">Aland Islands</option>
+                                        <option value="AL">Albania</option>
+                                        <option value="DZ">Algeria</option>
+                                        <option value="AS">American Samoa</option>
+                                        <option value="AD">Andorra</option>
+                                        <option value="AO">Angola</option>
+                                        <option value="AI">Anguilla</option>
+                                        <option value="AG">Antigua and Barbuda</option>
+                                        <option value="AR">Argentina</option>
+                                        <option value="AM">Armenia</option>
+                                        <option value="AW">Aruba</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="AT">Austria</option>
+                                        <option value="AZ">Azerbaijan</option>
+                                        <option value="BS">Bahamas</option>
+                                        <option value="BH">Bahrain</option>
+                                        <option value="BD">Bangladesh</option>
+                                        <option value="BB">Barbados</option>
+                                        <option value="BY">Belarus</option>
+                                        <option value="BE">Belgium</option>
+                                        <option value="BZ">Belize</option>
+                                        <option value="BJ">Benin</option>
+                                        <option value="BM">Bermuda</option>
+                                        <option value="BT">Bhutan</option>
+                                        <option value="BO">Bolivia, Plurinational State of</option>
+                                        <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                                        <option value="BA">Bosnia and Herzegovina</option>
+                                        <option value="BW">Botswana</option>
+                                        <option value="BR">Brazil</option>
+                                        <option value="IO">British Indian Ocean Territory</option>
+                                        <option value="BN">Brunei Darussalam</option>
+                                        <option value="BG">Bulgaria</option>
+                                        <option value="BF">Burkina Faso</option>
+                                        <option value="BI">Burundi</option>
+                                        <option value="KH">Cambodia</option>
+                                        <option value="CM">Cameroon</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="CV">Cape Verde</option>
+                                        <option value="KY">Cayman Islands</option>
+                                        <option value="CF">Central African Republic</option>
+                                        <option value="TD">Chad</option>
+                                        <option value="CL">Chile</option>
+                                        <option value="CN">China</option>
+                                        <option value="CX">Christmas Island</option>
+                                        <option value="CC">Cocos (Keeling) Islands</option>
+                                        <option value="CO">Colombia</option>
+                                        <option value="KM">Comoros</option>
+                                        <option value="CK">Cook Islands</option>
+                                        <option value="CR">Costa Rica</option>
+                                        <option value="CI">Côte d'Ivoire</option>
+                                        <option value="HR">Croatia</option>
+                                        <option value="CU">Cuba</option>
+                                        <option value="CW">Curaçao</option>
+                                        <option value="CZ">Czech Republic</option>
+                                        <option value="DK">Denmark</option>
+                                        <option value="DJ">Djibouti</option>
+                                        <option value="DM">Dominica</option>
+                                        <option value="DO">Dominican Republic</option>
+                                        <option value="EC">Ecuador</option>
+                                        <option value="EG">Egypt</option>
+                                        <option value="SV">El Salvador</option>
+                                        <option value="GQ">Equatorial Guinea</option>
+                                        <option value="ER">Eritrea</option>
+                                        <option value="EE">Estonia</option>
+                                        <option value="ET">Ethiopia</option>
+                                        <option value="FK">Falkland Islands (Malvinas)</option>
+                                        <option value="FJ">Fiji</option>
+                                        <option value="FI">Finland</option>
+                                        <option value="FR">France</option>
+                                        <option value="PF">French Polynesia</option>
+                                        <option value="GA">Gabon</option>
+                                        <option value="GM">Gambia</option>
+                                        <option value="GE">Georgia</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="GH">Ghana</option>
+                                        <option value="GI">Gibraltar</option>
+                                        <option value="GR">Greece</option>
+                                        <option value="GL">Greenland</option>
+                                        <option value="GD">Grenada</option>
+                                        <option value="GU">Guam</option>
+                                        <option value="GT">Guatemala</option>
+                                        <option value="GG">Guernsey</option>
+                                        <option value="GN">Guinea</option>
+                                        <option value="GW">Guinea-Bissau</option>
+                                        <option value="HT">Haiti</option>
+                                        <option value="VA">Holy See (Vatican City State)</option>
+                                        <option value="HN">Honduras</option>
+                                        <option value="HK">Hong Kong</option>
+                                        <option value="HU">Hungary</option>
+                                        <option value="IS">Iceland</option>
+                                        <option value="IN">India</option>
+                                        <option value="ID">Indonesia</option>
+                                        <option value="IR">Iran, Islamic Republic of</option>
+                                        <option value="IQ">Iraq</option>
+                                        <option value="IE">Ireland</option>
+                                        <option value="IM">Isle of Man</option>
+                                        <option value="IL">Israel</option>
+                                        <option value="IT">Italy</option>
+                                        <option value="JM">Jamaica</option>
+                                        <option value="JP">Japan</option>
+                                        <option value="JE">Jersey</option>
+                                        <option value="JO">Jordan</option>
+                                        <option value="KZ">Kazakhstan</option>
+                                        <option value="KE">Kenya</option>
+                                        <option value="KI">Kiribati</option>
+                                        <option value="KP">Korea, Democratic People's Republic of</option>
+                                        <option value="KW">Kuwait</option>
+                                        <option value="KG">Kyrgyzstan</option>
+                                        <option value="LA">Lao People's Democratic Republic</option>
+                                        <option value="LV">Latvia</option>
+                                        <option value="LB">Lebanon</option>
+                                        <option value="LS">Lesotho</option>
+                                        <option value="LR">Liberia</option>
+                                        <option value="LY">Libya</option>
+                                        <option value="LI">Liechtenstein</option>
+                                        <option value="LT">Lithuania</option>
+                                        <option value="LU">Luxembourg</option>
+                                        <option value="MO">Macao</option>
+                                        <option value="MG">Madagascar</option>
+                                        <option value="MW">Malawi</option>
+                                        <option value="MY">Malaysia</option>
+                                        <option value="MV">Maldives</option>
+                                        <option value="ML">Mali</option>
+                                        <option value="MT">Malta</option>
+                                        <option value="MH">Marshall Islands</option>
+                                        <option value="MQ">Martinique</option>
+                                        <option value="MR">Mauritania</option>
+                                        <option value="MU">Mauritius</option>
+                                        <option value="MX">Mexico</option>
+                                        <option value="FM">Micronesia, Federated States of</option>
+                                        <option value="MD">Moldova, Republic of</option>
+                                        <option value="MC">Monaco</option>
+                                        <option value="MN">Mongolia</option>
+                                        <option value="ME">Montenegro</option>
+                                        <option value="MS">Montserrat</option>
+                                        <option value="MA">Morocco</option>
+                                        <option value="MZ">Mozambique</option>
+                                        <option value="MM">Myanmar</option>
+                                        <option value="NA">Namibia</option>
+                                        <option value="NR">Nauru</option>
+                                        <option value="NP">Nepal</option>
+                                        <option value="NL">Netherlands</option>
+                                        <option value="NZ">New Zealand</option>
+                                        <option value="NI">Nicaragua</option>
+                                        <option value="NE">Niger</option>
+                                        <option value="NG">Nigeria</option>
+                                        <option value="NU">Niue</option>
+                                        <option value="NF">Norfolk Island</option>
+                                        <option value="MP">Northern Mariana Islands</option>
+                                        <option value="NO">Norway</option>
+                                        <option value="OM">Oman</option>
+                                        <option value="PK">Pakistan</option>
+                                        <option value="PW">Palau</option>
+                                        <option value="PS">Palestinian Territory, Occupied</option>
+                                        <option value="PA">Panama</option>
+                                        <option value="PG">Papua New Guinea</option>
+                                        <option value="PY">Paraguay</option>
+                                        <option value="PE">Peru</option>
+                                        <option value="PH">Philippines</option>
+                                        <option value="PL">Poland</option>
+                                        <option value="PT">Portugal</option>
+                                        <option value="PR">Puerto Rico</option>
+                                        <option value="QA">Qatar</option>
+                                        <option value="RO">Romania</option>
+                                        <option value="RU">Russian Federation</option>
+                                        <option value="RW">Rwanda</option>
+                                        <option value="BL">Saint Barthélemy</option>
+                                        <option value="KN">Saint Kitts and Nevis</option>
+                                        <option value="LC">Saint Lucia</option>
+                                        <option value="MF">Saint Martin (French part)</option>
+                                        <option value="VC">Saint Vincent and the Grenadines</option>
+                                        <option value="WS">Samoa</option>
+                                        <option value="SM">San Marino</option>
+                                        <option value="ST">Sao Tome and Principe</option>
+                                        <option value="SA">Saudi Arabia</option>
+                                        <option value="SN">Senegal</option>
+                                        <option value="RS">Serbia</option>
+                                        <option value="SC">Seychelles</option>
+                                        <option value="SL">Sierra Leone</option>
+                                        <option value="SG">Singapore</option>
+                                        <option value="SX">Sint Maarten (Dutch part)</option>
+                                        <option value="SK">Slovakia</option>
+                                        <option value="SI">Slovenia</option>
+                                        <option value="SB">Solomon Islands</option>
+                                        <option value="SO">Somalia</option>
+                                        <option value="ZA">South Africa</option>
+                                        <option value="KR">South Korea</option>
+                                        <option value="SS">South Sudan</option>
+                                        <option value="ES">Spain</option>
+                                        <option value="LK">Sri Lanka</option>
+                                        <option value="SD">Sudan</option>
+                                        <option value="SR">Suriname</option>
+                                        <option value="SZ">Swaziland</option>
+                                        <option value="SE">Sweden</option>
+                                        <option value="CH">Switzerland</option>
+                                        <option value="SY">Syrian Arab Republic</option>
+                                        <option value="TW">Taiwan, Province of China</option>
+                                        <option value="TJ">Tajikistan</option>
+                                        <option value="TZ">Tanzania, United Republic of</option>
+                                        <option value="TH">Thailand</option>
+                                        <option value="TG">Togo</option>
+                                        <option value="TK">Tokelau</option>
+                                        <option value="TO">Tonga</option>
+                                        <option value="TT">Trinidad and Tobago</option>
+                                        <option value="TN">Tunisia</option>
+                                        <option value="TR">Turkey</option>
+                                        <option value="TM">Turkmenistan</option>
+                                        <option value="TC">Turks and Caicos Islands</option>
+                                        <option value="TV">Tuvalu</option>
+                                        <option value="UG">Uganda</option>
+                                        <option value="UA">Ukraine</option>
+                                        <option value="AE">United Arab Emirates</option>
+                                        <option value="GB">United Kingdom</option>
+                                        <option value="US">United States</option>
+                                        <option value="UY">Uruguay</option>
+                                        <option value="UZ">Uzbekistan</option>
+                                        <option value="VU">Vanuatu</option>
+                                        <option value="VE">Venezuela, Bolivarian Republic of</option>
+                                        <option value="VN">Vietnam</option>
+                                        <option value="VI">Virgin Islands</option>
+                                        <option value="YE">Yemen</option>
+                                        <option value="ZM">Zambia</option>
+                                        <option value="ZW">Zimbabwe</option>
+                                    </select>
+                                    <!--end::Input-->
+                                    @error('country')
+                                        <span class="text-danger small">
+                                            <span>{{ $message }}</span>
+                                        </span>
+                                    @enderror
+
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
@@ -364,71 +513,38 @@
                                     <!--begin::Label-->
                                     <label class="d-flex align-items-center fs-5 fw-bold mb-2">
                                         <span class="required">Address</span>
-                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Your payment statements may very based on selected position"></i>
+                                        {{-- <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Your payment statements may very based on selected position"></i> --}}
                                     </label>
                                     <!--end::Label-->
-                                    <!--begin::Select-->
-                                    <select name="position" data-control="select2" data-placeholder="Select a position..." class="form-select form-select-solid">
-                                        <option value="Web Developer">Web Developer</option>
-                                        <option value="Web Designer">Web Designer</option>
-                                        <option value="Art Director">Art Director</option>
-                                        <option value="Finance Manager">Finance Manager</option>
-                                        <option value="Project Manager">Project Manager</option>
-                                        <option value="System Administrator">System Administrator</option>
-                                    </select>
-                                    <!--end::Select-->
+                                    <!--begin::Input-->
+                                     <input type="text" class="form-control" name="address" value="{{ old('address') ?? $user['address'] }}"/>
+                                    <!--end::Input-->
+                                    @error('address')
+                                        <span class="text-danger small">
+                                            <span>{{ $message }}</span>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <!--end::Input group-->
                                 <div class="card-title flex-column my-10">
-                                    <h4 class="mb-1">BANK INFORMATION</h4>
+                                    <h4 class="mb-1">NEXT OF KIN</h4>
                                 </div>
                                 <!--begin::Input group-->
                                 <div class="row mb-5">
                                     <!--begin::Col-->
                                     <div class="col-md-6 fv-row">
                                         <!--begin::Label-->
-                                        <label class="required fs-5 fw-bold mb-2">Bank Name</label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="salary" />
-                                        <!--end::Input-->
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col-md-6 fv-row">
-                                        <!--end::Label-->
-                                        <label class="required fs-5 fw-bold mb-2">Account Number</label>
-                                        <!--end::Label-->
-                                        <!--end::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="start_date" />
-                                        <!--end::Input-->
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="d-flex flex-column mb-5 fv-row">
-                                    <!--begin::Label-->
-                                    <label class="fs-5 fw-bold mb-2">Account Name</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <input class="form-control form-control-solid" placeholder="" name="website" />
-                                    <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <div class="card-title flex-column my-10">
-                                    <h4 class="mb-1">NEXT OF KIN</h4>
-                                </div>
-                                  <!--begin::Input group-->
-                                  <div class="row mb-5">
-                                    <!--begin::Col-->
-                                    <div class="col-md-6 fv-row">
-                                        <!--begin::Label-->
                                         <label class="required fs-5 fw-bold mb-2">Full Name</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="salary" />
+                                        <input type="text" class="form-control" name="nk_name" value="{{ old('nk_name') ?? $user['nk_name'] }}"/>
                                         <!--end::Input-->
+                                        @error('nk_name')
+                                            <span class="text-danger small">
+                                                <span>{{ $message }}</span>
+                                            </span>
+
+                                        @enderror
                                     </div>
                                     <!--end::Col-->
                                     <!--begin::Col-->
@@ -437,8 +553,13 @@
                                         <label class="required fs-5 fw-bold mb-2">Phone Number</label>
                                         <!--end::Label-->
                                         <!--end::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="" name="start_date" />
+                                        <input type="text" class="form-control" name="nk_phone" value="{{ old('nk_phone') ?? $user['nk_phone'] }}" />
                                         <!--end::Input-->
+                                        @error('nk_phone')
+                                            <span class="text-danger small">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                        @enderror
                                     </div>
                                     <!--end::Col-->
                                 </div>
@@ -446,17 +567,18 @@
                                 <!--begin::Input group-->
                                 <div class="d-flex flex-column mb-5 fv-row">
                                     <!--begin::Label-->
-                                    <label class="fs-5 fw-bold mb-2">Address</label>
+                                    <label class="required fs-5 fw-bold mb-2">Address</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input class="form-control form-control-solid" placeholder="" name="website" />
+                                    <input class="form-control" name="nk_address" value="{{ old('nk_address') ?? $user['nk_address'] }}" />
                                     <!--end::Input-->
+                                    @error('nk_address')
+                                        <span class="text_danger small">
+                                            <span>{{ $message }}</span>
+                                        </span>
+                                    @enderror
                                 </div>
                                 <!--end::Input group-->
-                                <!--end::Input group-->
-                                <!--begin::Separator-->
-                                <div class="separator mb-8"></div>
-                                <!--end::Separator-->
                                 <!--begin::Submit-->
                                 <button type="submit" class="btn btn-primary" id="kt_careers_submit_button">
                                     <!--begin::Indicator-->
@@ -692,6 +814,186 @@
                                             <th>IP Address</th>
                                             <th class="min-w-125px">Time</th>
                                             <th class="min-w-70px">Actions</th>
+                                        </tr>
+                                        <!--end::Table row-->
+                                    </thead>
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody class="fs-6 fw-bold text-gray-600">
+                                        <tr>
+                                            <!--begin::Invoice=-->
+                                            <td>Australia</td>
+                                            <!--end::Invoice=-->
+                                            <!--begin::Status=-->
+                                            <td>Chome - Windows</td>
+                                            <!--end::Status=-->
+                                            <!--begin::Amount=-->
+                                            <td>207.49.24.28</td>
+                                            <!--end::Amount=-->
+                                            <!--begin::Date=-->
+                                            <td>23 seconds ago</td>
+                                            <!--end::Date=-->
+                                            <!--begin::Action=-->
+                                            <td>Current session</td>
+                                            <!--end::Action=-->
+                                        </tr>
+                                        <tr>
+                                            <!--begin::Invoice=-->
+                                            <td>Australia</td>
+                                            <!--end::Invoice=-->
+                                            <!--begin::Status=-->
+                                            <td>Safari - iOS</td>
+                                            <!--end::Status=-->
+                                            <!--begin::Amount=-->
+                                            <td>207.13.16.93</td>
+                                            <!--end::Amount=-->
+                                            <!--begin::Date=-->
+                                            <td>3 days ago</td>
+                                            <!--end::Date=-->
+                                            <!--begin::Action=-->
+                                            <td>
+                                                <a href="#" data-kt-users-sign-out="single_user">Sign out</a>
+                                            </td>
+                                            <!--end::Action=-->
+                                        </tr>
+                                        <tr>
+                                            <!--begin::Invoice=-->
+                                            <td>Australia</td>
+                                            <!--end::Invoice=-->
+                                            <!--begin::Status=-->
+                                            <td>Chrome - Windows</td>
+                                            <!--end::Status=-->
+                                            <!--begin::Amount=-->
+                                            <td>207.12.40.28</td>
+                                            <!--end::Amount=-->
+                                            <!--begin::Date=-->
+                                            <td>last week</td>
+                                            <!--end::Date=-->
+                                            <!--begin::Action=-->
+                                            <td>Expired</td>
+                                            <!--end::Action=-->
+                                        </tr>
+                                    </tbody>
+                                    <!--end::Table body-->
+                                </table>
+                                <!--end::Table-->
+                            </div>
+                            <!--end::Table wrapper-->
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+                <!--end:::Tab pane-->
+                <!--begin:::Tab pane-->
+                <div class="tab-pane fade" id="kt_user_view_overview_events_and_logs_and_bank_information_tab" role="tabpanel">
+                    <!--begin::Card-->
+                    <div class="card pt-4 mb-6 mb-xl-9">
+                        <!--begin::Card header-->
+                        <div class="card-header border-0">
+                            <!--begin::Card title-->
+                            <div class="card-title">
+                                <h2>Add Bank Account</h2>
+                            </div>
+                            <!--end::Card title-->
+                            <!--begin::Card toolbar-->
+                        </div>
+                        <!--end::Card header-->
+                        <!--begin::Card body-->
+                        <div class="card-body pt-0 pb-5">
+                            <!--begin:::Form-->
+                            <form action="m-0" class="form mb-15" method="post" id="bank_form">
+                                <!--begin::Input group-->
+                                <div class="row mb-5">
+                                    <!--begin::Col-->
+                                    <div class="col-md-6 fv-row">
+                                        <!--begin::Label-->
+                                        <label class="required fs-5 fw-bold mb-2">Bank Name</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <input type="text" class="form-control" name="bank_name" />
+                                        <!--end::Input-->
+                                        @error('bank_name')
+                                            <span class="text-danger small">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-md-6 fv-row">
+                                        <!--end::Label-->
+                                        <label class="required fs-5 fw-bold mb-2">Account Number</label>
+                                        <!--end::Label-->
+                                        <!--end::Input-->
+                                        <input type="text" class="form-control" name="account_number" />
+                                        <!--end::Input-->
+                                        @error('account_number')
+                                            <span class="text-danger small">
+                                                <span>{{ $message }}</span>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="d-flex flex-column mb-5 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="fs-5 fw-bold mb-2">Account Name</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control" name="account_name" />
+                                    <!--end::Input-->
+                                    @error('account_name')
+                                        <span class="text-manger small">
+                                            <span>{{ $message }}</span>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Submit-->
+                                <button type="submit" class="btn btn-primary" id="bank_submit_button">
+                                    <!--begin::Indicator-->
+                                    <span class="indicator-label">Add Bank</span>
+                                    <span class="indicator-progress">Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                    <!--end::Indicator-->
+                                </button>
+                                <!--end::Submit-->
+                            </form>
+                            <!--end:::Form-->
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    <!--end::Card-->
+                    <!--begin::Card-->
+                    <div class="card pt-4 mb-6 mb-xl-9">
+                        <!--begin::Card header-->
+                        <div class="card-header border-0">
+                            <!--begin::Card title-->
+                            <div class="card-title">
+                                <h2>My Bank Accounts</h2>
+                            </div>
+                            <!--end::Card title-->
+                            <!--begin::Card toolbar-->
+                        </div>
+                        <!--end::Card header-->
+                        <!--begin::Card body-->
+                        <div class="card-body pt-0 pb-5">
+                            <!--begin::Table wrapper-->
+                            <div class="table-responsive">
+                                <!--begin::Table-->
+                                <table class="table align-middle table-row-dashed gy-5" id="kt_table_users_login_session">
+                                    <!--begin::Table head-->
+                                    <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
+                                        <!--begin::Table row-->
+                                        <tr class="text-start text-muted text-uppercase gs-0">
+                                            <th class="min-w-100px">S/N</th>
+                                            <th>Bank Name</th>
+                                            <th class="min-w-125px">Account Name</th>
+                                            <th>Account Number</th>
+                                            <th class="min-w-70px">Created</th>
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
@@ -1964,5 +2266,11 @@
 @endsection
 
 @section('script')
-
+    <script>
+        function setSelectedCountry(val) {
+            if (val) {
+                $('#mySelect2').val('1')
+            }
+        }
+    </script>
 @endsection

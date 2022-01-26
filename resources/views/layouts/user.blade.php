@@ -3923,28 +3923,6 @@
                             });
                         }
                     }))
-
-                    // swalWithBootstrapButtons.fire({
-                    //     title: 'Are you sure?',
-                    //     text: "You won't be able to revert this!",
-                    //     icon: 'warning',
-                    //     showCancelButton: true,
-                    //     confirmButtonText: 'Confirm',
-                    //     cancelButtonText: 'Cancel',
-                    //     reverseButtons: true
-                    // }).then((result) => {
-                    //     if (result.value) {
-                    //         $('#'+form).submit();
-                    //     } else if (
-                    //         result.dismiss === Swal.DismissReason.cancel
-                    //     ) {
-                    //         swalWithBootstrapButtons.fire(
-                    //             'Cancelled',
-                    //             'Your action was terminated',
-                    //             'error'
-                    //         )
-                    //     }
-                    // })
                 }
             });
         </script>

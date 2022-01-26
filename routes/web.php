@@ -23,5 +23,6 @@ Auth::routes(['verify' => true]);
 Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+    Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.update');
 });
 
