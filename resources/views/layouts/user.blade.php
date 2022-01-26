@@ -39,7 +39,7 @@
 					<!--begin::Brand-->
 					<div class="aside-logo flex-column-auto px-9 mb-9 mb-lg-17 mx-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
-						<a href="../../demo15/dist/index.html">
+						<a href="{{ route('dashboard') }}">
 							<img alt="Logo" src="assets/media/logos/logo-1.svg" class="h-30px logo" />
 						</a>
 						<!--end::Logo-->
@@ -51,16 +51,16 @@
 						<div class="d-flex align-items-center flex-column">
 							<!--begin::Symbol-->
 							<div class="symbol symbol-75px mb-4">
-								<img src="assets/media/avatars/300-1.jpg" alt="" />
+								<img src="{{ $user['avatar'] ?? asset('assets/media/svg/avatars/blank.svg') }}" alt />
 							</div>
 							<!--end::Symbol-->
 							<!--begin::Info-->
 							<div class="text-center">
 								<!--begin::Username-->
-								<a href="../../demo15/dist/pages/user-profile/overview.html" class="text-gray-900 text-hover-primary fs-4 fw-boldest">Paul Melone</a>
+								<a href="{{ route('profile') }}" class="text-gray-900 text-hover-primary fs-4 fw-boldest">{{ auth()->user()['first_name'] . ' ' . auth()->user()['last_name'] }}</a>
 								<!--end::Username-->
 								<!--begin::Description-->
-								<span class="text-gray-600 fw-bold d-block fs-7 mb-1">Python Dev</span>
+								<span class="text-gray-600 fw-bold d-block fs-7 mb-1">{{ auth()->user()['email'] }}</span>
 								<!--end::Description-->
 							</div>
 							<!--end::Info-->

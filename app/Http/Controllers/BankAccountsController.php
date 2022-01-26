@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\BankAccounts;
-use App\Http\Requests\StoreBankAccountsRequest;
-use App\Http\Requests\UpdateBankAccountsRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BankAccountsController extends Controller
 {
@@ -31,12 +31,31 @@ class BankAccountsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreBankAccountsRequest  $request
+     * @param  Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBankAccountsRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'bank_name' => ['required'],
+            'account_name' => ['required'],
+            'account_number' => ['required'],
+        ]);
+        if ($validator->fails()){
+            return back()->withInput()->withErrors($validator)->with('error', 'Invalid input data');
+        }
+        $data = $request->only(['bank_name', 'account_name', 'account_number']);
+        if (auth()->user()->bankAccounts()->count() >= 3) {
+            return back()->withInput()->with('error', 'You can have a maximum of 3 account numbers');
+        }
+        if (auth()->user()->bankAccounts()->where($data)->exists()) {
+            return back()->withInput()->with('error', 'Bank account already exists');
+        }
+        $data = $request->only(['bank_name', 'account_name', 'account_number']);
+        if (auth()->user()->bankAccounts()->create($data)) {
+            return back()->with('success', 'Bank account added successfully');
+        }
+        return back()->withInput()->with('error', 'Error adding bank');
     }
 
     /**
@@ -64,11 +83,11 @@ class BankAccountsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateBankAccountsRequest  $request
+     * @param  Request  $request
      * @param  \App\Models\BankAccounts  $bankAccounts
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateBankAccountsRequest $request, BankAccounts $bankAccounts)
+    public function update(Request $request, BankAccounts $bankAccounts)
     {
         //
     }
@@ -76,11 +95,12 @@ class BankAccountsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\BankAccounts  $bankAccounts
+     * @param  \App\Models\BankAccounts  $bank
      * @return \Illuminate\Http\Response
      */
-    public function destroy(BankAccounts $bankAccounts)
+    public function destroy(BankAccounts $bank)
     {
-        //
+        $bank->delete();
+        return back()->with('success', 'Bank account deleted successfully');
     }
 }

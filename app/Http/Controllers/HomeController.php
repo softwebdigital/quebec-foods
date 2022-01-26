@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\File;
 use Image;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class HomeController extends Controller
 {
@@ -31,7 +32,12 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('user.profile.index');
+        try {
+            $banks = json_decode(Http::get('https://api.paystack.co/bank')->getBody(), true)['data'];
+        }catch (\Exception $exception){
+            $banks = [];
+        }
+        return view('user.profile.index', compact('banks'));
     }
 
     public static function createDirectoryIfNotExists($path)
@@ -43,7 +49,6 @@ class HomeController extends Controller
 
     public function updateProfile(Request $request)
     {
-        // return $request->all();
         // Validate request
         $validator = Validator::make($request->all(), [
             'first_name' => ['required'],
