@@ -84,12 +84,27 @@ class BankAccountsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  Request  $request
-     * @param  \App\Models\BankAccounts  $bankAccounts
+     * @param  \App\Models\BankAccounts  $bank
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, BankAccounts $bankAccounts)
+    public function update(Request $request, BankAccounts $bank)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'bank_name' => ['required'],
+            'account_name' => ['required'],
+            'account_number' => ['required'],
+        ]);
+        if ($validator->fails()){
+            return back()->withInput()->withErrors($validator)->with('error', 'Invalid input data');
+        }
+        $data = $request->only(['bank_name', 'account_name', 'account_number']);
+        if (auth()->user()->bankAccounts()->where('id', '!=', $bank->id)->where($data)->exists()) {
+            return back()->withInput()->with('error', 'Bank account already exists');
+        }
+        if ($bank->update($data)) {
+            return back()->with('success', 'Bank account updated successfully');
+        }
+        return back()->withInput()->with('error', 'Error adding bank');
     }
 
     /**

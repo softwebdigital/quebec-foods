@@ -26,6 +26,7 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.update');
 
     Route::post('/banks', [App\Http\Controllers\BankAccountsController::class, 'store'])->name('bank.store');
+    Route::put('/banks/{bank}', [App\Http\Controllers\BankAccountsController::class, 'update'])->name('bank.update');
     Route::delete('/banks/{bank}', [App\Http\Controllers\BankAccountsController::class, 'destroy'])->name('bank.destroy');
 });
 
