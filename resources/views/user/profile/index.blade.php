@@ -96,11 +96,6 @@
                 <!--end:::Tab item-->
                 <!--begin:::Tab item-->
                 <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_user_view_overview_events_and_logs_tab">Sessions</a>
-                </li>
-                <!--end:::Tab item-->
-                  <!--begin:::Tab item-->
-                  <li class="nav-item">
                     <a class="nav-link text-active-primary pb-4" data-bs-toggle="tab" href="#kt_user_view_overview_events_and_logs_and_bank_information_tab">Bank</a>
                 </li>
                 <!--end:::Tab item-->
@@ -604,73 +599,73 @@
                         <div class="card-header border-0">
                             <!--begin::Card title-->
                             <div class="card-title">
-                                <h2>Profile</h2>
+                                <h2>Update Password</h2>
                             </div>
                             <!--end::Card title-->
+                            <!--begin::Card toolbar-->
                         </div>
                         <!--end::Card header-->
                         <!--begin::Card body-->
                         <div class="card-body pt-0 pb-5">
-                            <!--begin::Table wrapper-->
-                            <div class="table-responsive">
-                                <!--begin::Table-->
-                                <table class="table align-middle table-row-dashed gy-5" id="kt_table_users_login_session">
-                                    <!--begin::Table body-->
-                                    <tbody class="fs-6 fw-bold text-gray-600">
-                                        <tr>
-                                            <td>Email</td>
-                                            <td>e.smith@kpmg.com.au</td>
-                                            <td class="text-end">
-                                                <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto" data-bs-toggle="modal" data-bs-target="#kt_modal_update_email">
-                                                    <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                                    <span class="svg-icon svg-icon-3">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black" />
-                                                            <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="black" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Password</td>
-                                            <td>******</td>
-                                            <td class="text-end">
-                                                <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto" data-bs-toggle="modal" data-bs-target="#kt_modal_update_password">
-                                                    <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                                    <span class="svg-icon svg-icon-3">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black" />
-                                                            <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="black" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Role</td>
-                                            <td>Administrator</td>
-                                            <td class="text-end">
-                                                <button type="button" class="btn btn-icon btn-active-light-primary w-30px h-30px ms-auto" data-bs-toggle="modal" data-bs-target="#kt_modal_update_role">
-                                                    <!--begin::Svg Icon | path: icons/duotune/art/art005.svg-->
-                                                    <span class="svg-icon svg-icon-3">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                            <path opacity="0.3" d="M21.4 8.35303L19.241 10.511L13.485 4.755L15.643 2.59595C16.0248 2.21423 16.5426 1.99988 17.0825 1.99988C17.6224 1.99988 18.1402 2.21423 18.522 2.59595L21.4 5.474C21.7817 5.85581 21.9962 6.37355 21.9962 6.91345C21.9962 7.45335 21.7817 7.97122 21.4 8.35303ZM3.68699 21.932L9.88699 19.865L4.13099 14.109L2.06399 20.309C1.98815 20.5354 1.97703 20.7787 2.03189 21.0111C2.08674 21.2436 2.2054 21.4561 2.37449 21.6248C2.54359 21.7934 2.75641 21.9115 2.989 21.9658C3.22158 22.0201 3.4647 22.0084 3.69099 21.932H3.68699Z" fill="black" />
-                                                            <path d="M5.574 21.3L3.692 21.928C3.46591 22.0032 3.22334 22.0141 2.99144 21.9594C2.75954 21.9046 2.54744 21.7864 2.3789 21.6179C2.21036 21.4495 2.09202 21.2375 2.03711 21.0056C1.9822 20.7737 1.99289 20.5312 2.06799 20.3051L2.696 18.422L5.574 21.3ZM4.13499 14.105L9.891 19.861L19.245 10.507L13.489 4.75098L4.13499 14.105Z" fill="black" />
-                                                        </svg>
-                                                    </span>
-                                                    <!--end::Svg Icon-->
-                                                </button>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <!--end::Table body-->
-                                </table>
-                                <!--end::Table-->
-                            </div>
-                            <!--end::Table wrapper-->
+                            <!--begin:::Form-->
+                            <form action="{{ route('password.custom.update')}}" class="form mb-15" method="post" id="update_password_form">
+                                @csrf
+                                <!--begin::Input group-->
+                                <div class="d-flex flex-column mb-5 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="fs-5 fw-bold mb-2" for="old_password">Old Password</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control" name="old_password" type="password" id="old_password" autocomplete="off" placeholder="Old Password" />
+                                    <!--end::Input-->
+                                    @error('old_password')
+                                        <span class="text-manger small">
+                                            <span>{{ $message }}</span>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="d-flex flex-column mb-5 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="fs-5 fw-bold mb-2" for="new_password">New Password</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control" name="new_password" type="password" id="new_password" autocomplete="off" placeholder="New Password" />
+                                    <!--end::Input-->
+                                    @error('new_password')
+                                        <span class="text-manger small">
+                                            <span>{{ $message }}</span>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
+                                <div class="d-flex flex-column mb-5 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="fs-5 fw-bold mb-2" for="confirm_password">Confirm New Password</label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <input class="form-control" type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" />
+                                    <!--end::Input-->
+                                    @error('confirm_password')
+                                        <span class="text-manger small">
+                                            <span>{{ $message }}</span>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Submit-->
+                                <button type="submit" onclick="confirmFormSubmit(e, 'update_password_form')" class="btn btn-primary" id="bank_submit_button">
+                                    <!--begin::Indicator-->
+                                    <span class="indicator-label">Update Password</span>
+                                    <span class="indicator-progress">Please wait...
+                                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                                    <!--end::Indicator-->
+                                </button>
+                                <!--end::Submit-->
+                            </form>
+                            <!--end:::Form-->
                         </div>
                         <!--end::Card body-->
                     </div>
@@ -764,121 +759,6 @@
                             <div class="text-gray-600">If you lose your mobile device or security key, you can
                             <a href='#' class="me-1">generate a backup code</a>to sign in to your account.</div>
                             <!--end::Disclaimer-->
-                        </div>
-                        <!--end::Card body-->
-                    </div>
-                    <!--end::Card-->
-                </div>
-                <!--end:::Tab pane-->
-                <!--begin:::Tab pane-->
-                <div class="tab-pane fade" id="kt_user_view_overview_events_and_logs_tab" role="tabpanel">
-                    <!--begin::Card-->
-                    <div class="card pt-4 mb-6 mb-xl-9">
-                        <!--begin::Card header-->
-                        <div class="card-header border-0">
-                            <!--begin::Card title-->
-                            <div class="card-title">
-                                <h2>Login Sessions</h2>
-                            </div>
-                            <!--end::Card title-->
-                            <!--begin::Card toolbar-->
-                            <div class="card-toolbar">
-                                <!--begin::Filter-->
-                                <button type="button" class="btn btn-sm btn-flex btn-light-primary" id="kt_modal_sign_out_sesions">
-                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr077.svg-->
-                                <span class="svg-icon svg-icon-3">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                        <rect opacity="0.3" x="4" y="11" width="12" height="2" rx="1" fill="black" />
-                                        <path d="M5.86875 11.6927L7.62435 10.2297C8.09457 9.83785 8.12683 9.12683 7.69401 8.69401C7.3043 8.3043 6.67836 8.28591 6.26643 8.65206L3.34084 11.2526C2.89332 11.6504 2.89332 12.3496 3.34084 12.7474L6.26643 15.3479C6.67836 15.7141 7.3043 15.6957 7.69401 15.306C8.12683 14.8732 8.09458 14.1621 7.62435 13.7703L5.86875 12.3073C5.67684 12.1474 5.67684 11.8526 5.86875 11.6927Z" fill="black" />
-                                        <path d="M8 5V6C8 6.55228 8.44772 7 9 7C9.55228 7 10 6.55228 10 6C10 5.44772 10.4477 5 11 5H18C18.5523 5 19 5.44772 19 6V18C19 18.5523 18.5523 19 18 19H11C10.4477 19 10 18.5523 10 18C10 17.4477 9.55228 17 9 17C8.44772 17 8 17.4477 8 18V19C8 20.1046 8.89543 21 10 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3H10C8.89543 3 8 3.89543 8 5Z" fill="#C4C4C4" />
-                                    </svg>
-                                </span>
-                                <!--end::Svg Icon-->Sign out all sessions</button>
-                                <!--end::Filter-->
-                            </div>
-                            <!--end::Card toolbar-->
-                        </div>
-                        <!--end::Card header-->
-                        <!--begin::Card body-->
-                        <div class="card-body pt-0 pb-5">
-                            <!--begin::Table wrapper-->
-                            <div class="table-responsive">
-                                <!--begin::Table-->
-                                <table class="table align-middle table-row-dashed gy-5" id="kt_table_users_login_session">
-                                    <!--begin::Table head-->
-                                    <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
-                                        <!--begin::Table row-->
-                                        <tr class="text-start text-muted text-uppercase gs-0">
-                                            <th class="min-w-100px">Location</th>
-                                            <th>Device</th>
-                                            <th>IP Address</th>
-                                            <th class="min-w-125px">Time</th>
-                                            <th class="min-w-70px">Actions</th>
-                                        </tr>
-                                        <!--end::Table row-->
-                                    </thead>
-                                    <!--end::Table head-->
-                                    <!--begin::Table body-->
-                                    <tbody class="fs-6 fw-bold text-gray-600">
-                                        <tr>
-                                            <!--begin::Invoice=-->
-                                            <td>Australia</td>
-                                            <!--end::Invoice=-->
-                                            <!--begin::Status=-->
-                                            <td>Chome - Windows</td>
-                                            <!--end::Status=-->
-                                            <!--begin::Amount=-->
-                                            <td>207.49.24.28</td>
-                                            <!--end::Amount=-->
-                                            <!--begin::Date=-->
-                                            <td>23 seconds ago</td>
-                                            <!--end::Date=-->
-                                            <!--begin::Action=-->
-                                            <td>Current session</td>
-                                            <!--end::Action=-->
-                                        </tr>
-                                        <tr>
-                                            <!--begin::Invoice=-->
-                                            <td>Australia</td>
-                                            <!--end::Invoice=-->
-                                            <!--begin::Status=-->
-                                            <td>Safari - iOS</td>
-                                            <!--end::Status=-->
-                                            <!--begin::Amount=-->
-                                            <td>207.13.16.93</td>
-                                            <!--end::Amount=-->
-                                            <!--begin::Date=-->
-                                            <td>3 days ago</td>
-                                            <!--end::Date=-->
-                                            <!--begin::Action=-->
-                                            <td>
-                                                <a href="#" data-kt-users-sign-out="single_user">Sign out</a>
-                                            </td>
-                                            <!--end::Action=-->
-                                        </tr>
-                                        <tr>
-                                            <!--begin::Invoice=-->
-                                            <td>Australia</td>
-                                            <!--end::Invoice=-->
-                                            <!--begin::Status=-->
-                                            <td>Chrome - Windows</td>
-                                            <!--end::Status=-->
-                                            <!--begin::Amount=-->
-                                            <td>207.12.40.28</td>
-                                            <!--end::Amount=-->
-                                            <!--begin::Date=-->
-                                            <td>last week</td>
-                                            <!--end::Date=-->
-                                            <!--begin::Action=-->
-                                            <td>Expired</td>
-                                            <!--end::Action=-->
-                                        </tr>
-                                    </tbody>
-                                    <!--end::Table body-->
-                                </table>
-                                <!--end::Table-->
-                            </div>
-                            <!--end::Table wrapper-->
                         </div>
                         <!--end::Card body-->
                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 use Image;
 
 class HomeController extends Controller
@@ -34,6 +35,7 @@ class HomeController extends Controller
         return view('user.profile.index');
     }
 
+    // Create Directory to store files.
     public static function createDirectoryIfNotExists($path)
     {
         if (!file_exists($path)) {
@@ -41,6 +43,7 @@ class HomeController extends Controller
         }
     }
 
+    // Update User Profile
     public function updateProfile(Request $request)
     {
         // return $request->all();
@@ -94,5 +97,27 @@ class HomeController extends Controller
             return back()->with('success', 'Profile updated successfully');
         }
         return back()->withInput()->with('error', 'Error updating profile');
+    }
+
+    // Update Password
+    public function updatePassword(Request $request): \Illuminate\Http\RedirectResponse
+    {
+        // Validate request
+        $validator = Validator::make($request->all(), [
+            'old_password' => ['required'],
+            'new_password' => ['required', 'min:8', 'same:confirm_password'],
+        ]);
+        if ($validator->fails()){
+            return back()->withErrors($validator)->with('error', 'Invalid input data');
+        }
+        // Check if old password matches
+        if (!Hash::check($request['old_password'], auth()->user()['password'])){
+            return back()->with('error', 'Old password incorrect');
+        }
+        // Change password
+        if (auth()->user()->update(['password' => Hash::make($request['new_password'])])){
+            return back()->with('success', 'Password changed successfully');
+        }
+        return back()->with('error', 'Error changing password');
     }
 }
