@@ -51,7 +51,7 @@
 						<div class="d-flex align-items-center flex-column">
 							<!--begin::Symbol-->
 							<div class="symbol symbol-75px mb-4">
-								<img src="{{ $user['avatar'] ?? asset('assets/media/svg/avatars/blank.svg') }}" alt />
+								<img src="{{ asset(auth()->user()['avatar']) ?? asset('assets/media/svg/avatars/blank.svg') }}" alt />
 							</div>
 							<!--end::Symbol-->
 							<!--begin::Info-->

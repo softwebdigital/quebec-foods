@@ -11,7 +11,6 @@
 @endsection
 
 @section('content')
-<!--begin::Inbox App - Messages -->
 <div class="d-flex flex-column flex-lg-row">
     <!--begin::Content-->
     <div class="flex-lg-row-fluid me-lg-7 me-xl-10">
@@ -20,7 +19,7 @@
             <div class="card-body p-9">
                 <!--begin::Card title-->
                 <div class="card-title flex-column">
-                    <h4 class="mb-1">PERSONAL INFORMATION</h2>
+                    <h4 class="mb-10">PERSONNAL INFORMATION</h2>
                 </div>
                 <!--end::Card title-->
                 <!--begin::Form-->
@@ -88,6 +87,9 @@
         <div class="card card-flush mb-0" data-kt-sticky="false" data-kt-sticky-name="inbox-aside-sticky" data-kt-sticky-offset="{default: false, xl: '0px'}" data-kt-sticky-width="{lg: '275px'}" data-kt-sticky-left="auto" data-kt-sticky-top="150px" data-kt-sticky-animation="false" data-kt-sticky-zindex="95">
             <!--begin::Aside content-->
             <div class="card-body p-9">
+                <div class="card-title flex-column">
+                    <h4 class="mb-10">CHANGE PASSWORD</h2>
+                </div>
                 <!--begin:::Form-->
                 <form action="{{ route('admin.password.custom.update') }}" class="form mb-3" method="post" id="changePasswordForm">
                     @csrf
@@ -154,7 +156,6 @@
     </div>
     <!--end::Sidebar-->
 </div>
-<!--end::Inbox App - Messages -->
 @endsection
 
 @section('script')

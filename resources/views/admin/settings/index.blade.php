@@ -118,8 +118,8 @@
                         <!--begin::Input-->
                         <select name="base_currency" aria-label="Select the Base Currency" data-placeholder="Select the base currency" data-control="select2" class="form-select text-dark" id="currencyList">
                             <option value=""></option>
-                            <option value="NGN">NGN</option>
-                            <option value="USD">USD</option>
+                            <option @if($setting['base_currency'] == "NGN") selected @endif value="NGN">NGN</option>
+                            <option @if($setting['base_currency'] == "USD") selected @endif value="USD">USD</option>
                         </select>
                         @error('base_currency')
                             <span class="text-danger small" role="alert">
@@ -131,7 +131,7 @@
                     <!--begin::Input group-->
                     <label class="required fs-5 fw-bold mb-2" for="rate_plus">Rate</label>
                     <div class="input-group mb-5">
-                        <span class="input-group-text">0 ±</span>
+                        <span class="input-group-text">{{ $setting['usd_to_ngn'] }} ±</span>
                         <input type="number" id="rate_plus" step="any" name="rate_plus" value="{{ old('rate_plus') ?? $setting['rate_plus']}}" class="form-control" placeholder="0.00"/>
                     </div>
                     <!--end::Input group-->

@@ -18,7 +18,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Page Vendor Stylesheets(used by this page)-->
-		<link href="{{asset('assets/plugins/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+		<link rel="stylesheet" href="{{ asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.css') }}">
 		<!--end::Page Vendor Stylesheets-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="{{asset('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
@@ -51,16 +51,16 @@
 						<div class="d-flex align-items-center flex-column">
 							<!--begin::Symbol-->
 							<div class="symbol symbol-75px mb-4">
-								<img src="assets/media/avatars/300-1.jpg" alt="" />
+								<img src="{{ asset('assets/media/svg/avatars/admin.png') }}" alt />
 							</div>
 							<!--end::Symbol-->
 							<!--begin::Info-->
 							<div class="text-center">
 								<!--begin::Username-->
-								<a href="../../demo15/dist/pages/user-profile/overview.html" class="text-gray-900 text-hover-primary fs-4 fw-boldest">Paul Melone</a>
+								<a href="{{ route('admin.profile') }}" class="text-gray-900 text-hover-primary fs-4 fw-boldest">{{ auth()->user()['name'] }}</a>
 								<!--end::Username-->
 								<!--begin::Description-->
-								<span class="text-gray-600 fw-bold d-block fs-7 mb-1">Python Dev</span>
+								<span class="text-gray-600 fw-bold d-block fs-7 mb-1">{{ auth()->user()['email'] }}</span>
 								<!--end::Description-->
 							</div>
 							<!--end::Info-->
@@ -297,7 +297,7 @@
 									</a>
 								</div>
                                 <div class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('admin.admins') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -312,7 +312,7 @@
 									</a>
 								</div>
                                 <div class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('admin.roles') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -323,7 +323,7 @@
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Roles/Permissions</span>
+										<span class="menu-title">Roles &amp; Permissions</span>
 									</a>
 								</div>
                                 <div class="menu-item">
@@ -397,7 +397,7 @@
 						<!--begin::User panel-->
 						<div class="d-flex flex-stack ms-7">
 							<!--begin::Link-->
-							<a href="../../demo15/dist/authentication/flows/basic/sign-in.html" class="btn btn-sm btn-icon btn-active-color-primary btn-icon-gray-600 btn-text-gray-600">
+							<a href="#" onclick="confirmFormSubmit(event, 'logout-form')" class="btn btn-sm btn-icon btn-active-color-primary btn-icon-gray-600 btn-text-gray-600">
 								<!--begin::Svg Icon | path: icons/duotune/arrows/arr076.svg-->
 								<span class="svg-icon svg-icon-1 me-2">
 									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -409,6 +409,9 @@
 								<!--end::Svg Icon-->
 								<!--begin::Major-->
 								<span class="d-flex flex-shrink-0 fw-bolder">Log Out</span>
+								<form id="logout-form" action="{{ route('admin.logout') }}" method="POST" class="d-none">
+									@csrf
+								</form>
 								<!--end::Major-->
 							</a>
 							<!--end::Link-->
@@ -576,7 +579,7 @@
 									<!--end::Menu item-->
 									<!--begin::Menu item-->
 									<div class="menu-item px-5">
-										<a href="../../demo15/dist/authentication/flows/basic/sign-in.html" class="menu-link px-5">Sign Out</a>
+										<a href="#" onclick="confirmFormSubmit(event, 'logout-form')" class="menu-link px-5">Log Out</a>
 									</div>
 									<!--end::Menu item-->
 									<!--begin::Menu separator-->
@@ -749,7 +752,8 @@
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Vendors Javascript(used by this page)-->
-		<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+		<script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
+		<script src="{{ asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
 		<!--end::Page Vendors Javascript-->
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="{{asset('assets/js/widgets.bundle.js')}}"></script>

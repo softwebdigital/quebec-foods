@@ -34,6 +34,13 @@ class CreateSettingsTable extends Migration
             $table->enum('sidebar', ['light', 'dark'])->default('dark');
             $table->timestamps();
         });
+
+        \Illuminate\Support\Facades\DB::table('settings')->insert([
+            [
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
     }
 
     /**

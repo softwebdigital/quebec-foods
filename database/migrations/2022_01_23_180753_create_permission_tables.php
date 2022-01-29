@@ -117,6 +117,59 @@ class CreatePermissionTables extends Migration
         app('cache')
             ->store(config('permission.cache.store') != 'default' ? config('permission.cache.store') : null)
             ->forget(config('permission.cache.key'));
+
+        \Illuminate\Support\Facades\DB::table('roles')->insert(['name' => 'Super Admin', 'guard_name' => 'admin']);
+        \Illuminate\Support\Facades\DB::table('permissions')->insert([
+            ['name' => 'View Quick Overview', 'guard_name' => 'admin'],
+            ['name' => 'View Investment Dashboard', 'guard_name' => 'admin'],
+            ['name' => 'View Trading Dashboard', 'guard_name' => 'admin'],
+            ['name' => 'View Packages', 'guard_name' => 'admin'],
+            ['name' => 'Create Packages', 'guard_name' => 'admin'],
+            ['name' => 'Edit Packages', 'guard_name' => 'admin'],
+            ['name' => 'Delete Packages', 'guard_name' => 'admin'],
+            ['name' => 'View Users', 'guard_name' => 'admin'],
+            ['name' => 'Export Users CSV', 'guard_name' => 'admin'],
+            ['name' => 'Block Users', 'guard_name' => 'admin'],
+            ['name' => 'Unblock Users', 'guard_name' => 'admin'],
+            ['name' => 'Deposit For Users', 'guard_name' => 'admin'],
+            ['name' => 'Withdraw For Users', 'guard_name' => 'admin'],
+            ['name' => 'Buy Products For Users', 'guard_name' => 'admin'],
+            ['name' => 'Sell Products For Users', 'guard_name' => 'admin'],
+            ['name' => 'Make Investment For Users', 'guard_name' => 'admin'],
+            ['name' => 'Rollover Investment For Users', 'guard_name' => 'admin'],
+            ['name' => 'View Investments', 'guard_name' => 'admin'],
+            ['name' => 'View Investments Maturity', 'guard_name' => 'admin'],
+            ['name' => 'Export Investments CSV', 'guard_name' => 'admin'],
+            ['name' => 'View Transactions', 'guard_name' => 'admin'],
+            ['name' => 'Export Transactions CSV', 'guard_name' => 'admin'],
+            ['name' => 'View Trades', 'guard_name' => 'admin'],
+            ['name' => 'Export Trades CSV', 'guard_name' => 'admin'],
+            ['name' => 'Approve Transactions', 'guard_name' => 'admin'],
+            ['name' => 'Decline Transactions', 'guard_name' => 'admin'],
+            ['name' => 'View Market / Statistics', 'guard_name' => 'admin'],
+            ['name' => 'View Referrals Leaderboard', 'guard_name' => 'admin'],
+            ['name' => 'View Emails', 'guard_name' => 'admin'],
+            ['name' => 'Send Emails', 'guard_name' => 'admin'],
+            ['name' => 'View Admins', 'guard_name' => 'admin'],
+            ['name' => 'Create Admins', 'guard_name' => 'admin'],
+            ['name' => 'Change Admins Role', 'guard_name' => 'admin'],
+            ['name' => 'Block Admins', 'guard_name' => 'admin'],
+            ['name' => 'Unblock Admins', 'guard_name' => 'admin'],
+            ['name' => 'View Roles', 'guard_name' => 'admin'],
+            ['name' => 'Create Roles', 'guard_name' => 'admin'],
+            ['name' => 'Edit Roles', 'guard_name' => 'admin'],
+            ['name' => 'Delete Roles', 'guard_name' => 'admin'],
+            ['name' => 'View Settings', 'guard_name' => 'admin'],
+            ['name' => 'Update Company Bank Details', 'guard_name' => 'admin'],
+            ['name' => 'Update Other Settings', 'guard_name' => 'admin'],
+        ]);
+        $role = \Spatie\Permission\Models\Role::all()->first();
+        $permissions = \Spatie\Permission\Models\Permission::all();
+        $role->syncPermissions($permissions);
+        $admins = \App\Models\Admin::all();
+        foreach ($admins as $admin){
+            $admin->assignRole($role);
+        }
     }
 
     /**
