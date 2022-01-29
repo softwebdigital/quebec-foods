@@ -381,7 +381,7 @@
 									</a>
 								</div>
                                 <div class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('notifications')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">

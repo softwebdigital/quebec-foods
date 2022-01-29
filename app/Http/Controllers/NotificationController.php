@@ -4,9 +4,23 @@ namespace App\Http\Controllers;
 
 use App\Notifications\CustomNotificationByEmail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NotificationController extends Controller
 {
+    public function index()
+    {
+        return view('user.notifications.index', ['notifications' => auth()->user()->notifications()->paginate(50)]);
+    }
+
+    // Show Notifications.
+    public function show($notification)
+    {
+        DB::table('notifications')->where('id', $notification)->update(['read_at' => now()]);
+        $notification = DB::table('notifications')->where('id', $notification)->first();
+        return view('user.notifications.show', ['notification' => $notification]);
+    }
+
     // Welcome Email.
     public static function sendWelcomeEmailNotification($user)
     {

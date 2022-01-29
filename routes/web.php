@@ -27,7 +27,10 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::post('/password/custom/update', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('password.custom.update');
 
     Route::post('/banks', [App\Http\Controllers\BankAccountsController::class, 'store'])->name('bank.store');
-    Route::put('/banks/{bank}', [App\Http\Controllers\BankAccountsController::class, 'update'])->name('bank.update');
     Route::delete('/banks/{bank}', [App\Http\Controllers\BankAccountsController::class, 'destroy'])->name('bank.destroy');
-});
 
+    Route::group(['middleware' => ['profile_completed']], function () {
+        Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications');
+        Route::get('/notifications/{notification}/show', [App\Http\Controllers\NotificationController::class, 'show'])->name('notifications.show');
+    });
+});

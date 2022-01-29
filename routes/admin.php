@@ -24,4 +24,12 @@ Route::post('/password/reset/change', [\App\Http\Controllers\Auth\AdminResetPass
 Route::group(['middleware' => ['auth:admin']], function (){
     Route::post('/logout', [\App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/profile', [App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('profile');
+
+    Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings');
+    Route::post('/setting/save', [App\Http\Controllers\Admin\SettingController::class, 'saveSettings'])->name('settings.save');
+
+    Route::post('/profile/update', [App\Http\Controllers\Admin\HomeController::class, 'updateProfile'])->name('profile.update');
+    Route::post('/password/custom/update', [App\Http\Controllers\Admin\HomeController::class, 'changePassword'])->name('password.custom.update');
+    Route::post('/setting/bank/update', [App\Http\Controllers\Admin\SettingController::class, 'updateBankDetails'])->name('bank.update');
 });

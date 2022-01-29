@@ -357,7 +357,7 @@
 									</a>
 								</div>
                                 <div class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('admin.profile')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -372,7 +372,7 @@
 									</a>
 								</div>
                                 <div class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('admin.settings') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -756,6 +756,34 @@
 		<script src="{{asset('assets/js/custom/widgets.js')}}"></script>
 		<script src="{{asset('assets/js/custom/apps/chat/chat.js')}}"></script>
 		<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
+        <script>
+            $(function() {
+                confirmFormSubmit = function(e, form) {
+                    e.preventDefault();
+                    Swal.fire({
+                        text: "Are you sure you would like to proceed?",
+                        icon: "warning",
+                        showCancelButton: !0,
+                        buttonsStyling: !1,
+                        confirmButtonText: "Yes, proceed!",
+                        cancelButtonText: "No, return",
+                        customClass: {confirmButton: "btn btn-primary", cancelButton: "btn btn-active-light"}
+                    }).then(((result) => {
+                        if (result.value) {
+                            $('#'+form).submit();
+                        } else if (result.dismiss === "cancel") {
+                            Swal.fire({
+                                text: "The action was cancelled!.",
+                                icon: "error",
+                                buttonsStyling: !1,
+                                confirmButtonText: "Ok, got it!",
+                                customClass: {confirmButton: "btn btn-primary"}
+                            });
+                        }
+                    }))
+                }
+            });
+        </script>
         @yield('script')
 		<!--end::Page Custom Javascript-->
 		<!--end::Javascript-->

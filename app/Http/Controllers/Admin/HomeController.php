@@ -25,14 +25,14 @@ class HomeController extends Controller
 
     public function updateProfile(Request $request): \Illuminate\Http\RedirectResponse
     {
-//        Validate request
+    // Validate request
         $validator = Validator::make($request->all(), [
             'name' => ['required'],
         ]);
         if ($validator->fails()){
             return back()->withInput()->withErrors($validator)->with('error', 'Invalid input data');
         }
-//        Update profile
+    // Update profile
         if (auth()->user()->update(['name' => $request['name']])){
             return back()->with('success', 'Profile updated successfully');
         }
@@ -41,7 +41,7 @@ class HomeController extends Controller
 
     public function changePassword(Request $request): \Illuminate\Http\RedirectResponse
     {
-//        Validate request
+    // Validate request
         $validator = Validator::make($request->all(), [
             'old_password' => ['required'],
             'new_password' => ['required', 'min:8', 'same:confirm_password'],
@@ -49,16 +49,18 @@ class HomeController extends Controller
         if ($validator->fails()){
             return back()->withErrors($validator)->with('error', 'Invalid input data');
         }
-//      Check if old password matches
+    // Check if old password matches
         if (!Hash::check($request['old_password'], auth()->user()['password'])){
             return back()->with('error', 'Old password incorrect');
         }
-//      Change password
+    // Change password
         if (auth()->user()->update(['password' => Hash::make($request['new_password'])])){
             return back()->with('success', 'Password changed successfully');
         }
         return back()->with('error', 'Error changing password');
     }
+
+
 
     protected function formatHumanFriendlyNumber($num)
     {
