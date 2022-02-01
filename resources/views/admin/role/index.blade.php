@@ -62,8 +62,8 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <div class="menu-item px-3">
-                                        <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.roles.edit', $role['id']) }}"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">Edit</span></a>
-                                        <a class="dropdown-item d-flex align-items-center" onclick="confirmFormSubmit(event, 'roleDelete{{ $role['id'] }}')" href="{{ route('admin.roles.destroy', $role['id']) }}"><i data-feather="delete" class="icon-sm mr-2"></i> <span class="">Delete</span></a>
+                                        <a class="menu-link px-3" href="{{ route('admin.roles.edit', $role['id']) }}"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">Edit</span></a>
+                                        <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'roleDelete{{ $role['id'] }}')" href="{{ route('admin.roles.destroy', $role['id']) }}"><i data-feather="delete" class="icon-sm mr-2"></i> <span class="">Delete</span></a>
                                         <form id="roleDelete{{ $role['id'] }}" action="{{ route('admin.roles.destroy', $role['id']) }}" method="POST">
                                             @csrf
                                             @method('DELETE')

@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,4 +45,17 @@ Route::group(['middleware' => ['auth:admin']], function (){
     Route::post('/roles/store', [App\Http\Controllers\Admin\RoleController::class, 'store'])->name('roles.store');
     Route::put('/roles/{role}/update', [App\Http\Controllers\Admin\RoleController::class, 'update'])->name('roles.update');
     Route::delete('/roles/{role}/destroy', [App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.destroy');
+
+    Route::get('/users/{type?}', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users');
+    Route::get('/users/{user}/show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show');
+    Route::get('/users/{user}/invest', [App\Http\Controllers\Admin\InvestmentController::class, 'invest'])->name('users.invest');
+    Route::get('/users/{user}/investments/{investment}/show', [App\Http\Controllers\Admin\InvestmentController::class, 'showUserInvestment'])->name('users.investment.show');
+    Route::put('/users/{user}/block', [App\Http\Controllers\Admin\UserController::class, 'block'])->name('users.block');
+    Route::put('/users/{user}/unblock', [App\Http\Controllers\Admin\UserController::class, 'unblock'])->name('users.unblock');
+    Route::post('/users/invest/store', [App\Http\Controllers\Admin\InvestmentController::class, 'store'])->name('users.invest.store');
+    Route::post('/deposit', [App\Http\Controllers\Admin\TransactionController::class, 'deposit'])->name('deposit');
+    Route::post('/withdraw', [App\Http\Controllers\Admin\TransactionController::class, 'withdraw'])->name('withdraw');
+    Route::post('/download', [App\Http\Controllers\Admin\HomeController::class, 'download'])->name('download');
+    Route::post('/users/{type}/fetch/ajax', [App\Http\Controllers\Admin\UserController::class, 'fetchUsersWithAjax'])->name('users.ajax');
+    Route::get('/users/export/{type}/download', [\App\Http\Controllers\Admin\ExportController::class, 'exportUsers'])->name('users.export');
 });

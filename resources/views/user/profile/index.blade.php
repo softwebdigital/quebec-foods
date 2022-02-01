@@ -28,7 +28,7 @@
                     <div class="d-flex flex-center flex-column py-5">
                         <!--begin::Avatar-->
                         <div class="symbol symbol-100px symbol-circle mb-7">
-                            <img src="{{ $user['avatar'] ?? asset('assets/media/svg/avatars/blank.svg') }}" alt="image" />
+                            <img src="{{ $user['avatar'] ?? asset('assets/media/svg/avatars/admin.png') }}" alt="image" />
                         </div>
                         <!--end::Avatar-->
                         <!--begin::Name-->
@@ -133,9 +133,9 @@
                                     <!--begin::Image input wrapper-->
                                     <div class="mt-1">
                                         <!--begin::Image input-->
-                                        <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('assets/media/svg/avatars/blank.svg')">
+                                        <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url('assets/media/svg/avatars/admin.png')">
                                             <!--begin::Preview existing avatar-->
-                                            <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $user['avatar'] ?? 'assets/media/svg/avatars/blank.svg' }})"></div>
+                                            <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ $user['avatar'] ?? 'assets/media/svg/avatars/admin.png' }})"></div>
                                             <!--end::Preview existing avatar-->
                                             <!--begin::Edit-->
                                             <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">

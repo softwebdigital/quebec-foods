@@ -40,7 +40,7 @@
 					<div class="aside-logo flex-column-auto px-9 mb-9 mb-lg-17 mx-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
 						<a href="../../demo15/dist/index.html">
-							<img alt="Logo" src="assets/media/logos/logo-1.svg" class="h-30px logo" />
+							<img alt="Logo" src="/assets/media/logos/logo-1.svg" class="h-30px logo" />
 						</a>
 						<!--end::Logo-->
 					</div>
@@ -106,7 +106,7 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion">
 										<div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.users', 'all') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -114,7 +114,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.users', 'verified') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -122,7 +122,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.users', 'unverified') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -434,7 +434,7 @@
 										<div class="menu-content d-flex align-items-center px-3">
 											<!--begin::Avatar-->
 											<div class="symbol symbol-50px me-5">
-												<img alt="Logo" src="assets/media/avatars/300-1.jpg" />
+												<img alt="Logo" src="/assets/media/avatars/300-1.jpg" />
 											</div>
 											<!--end::Avatar-->
 											<!--begin::Username-->
@@ -762,6 +762,9 @@
 		<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
         <script>
             $(function() {
+				$('table').on('click', 'tbody tr td a', function () {
+					KTMenu.createInstances();
+				});
                 confirmFormSubmit = function(e, form) {
                     e.preventDefault();
                     Swal.fire({

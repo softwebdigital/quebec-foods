@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('pageTitle', 'Dashboard')
+@section('pageTitle', 'Administrators')
 
 @section('style')
 
@@ -36,7 +36,7 @@
         <!--begin::Table container-->
         <div class="table-responsive">
             <!--begin::Table-->
-            <table class="table align-middle gs-0 gy-4" id="data-table">
+            <table class="table align-middle dataTable gs-0 gy-4" id="data-table">
                 <!--begin::Table head-->
                 <thead>
                     <tr class="fw-bolder text-muted bg-light">
@@ -74,17 +74,18 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <div class="menu-item px-3">
-                                        <button data-toggle="modal" onclick="setParametersForChangingRole('{{ $admin->roles()->first()['id'] }}', {{ $admin['id'] }})" data-target="#changeRoleModal" class="dropdown-item d-flex align-items-center">
+                                        <a class="menu-link px-3" href="javascript:void();" onclick=""><span class="">Change Role</span></a>
+                                        {{-- <button data-toggle="modal" onclick="setParametersForChangingRole('{{ $admin->roles()->first()['id'] }}', {{ $admin['id'] }})" data-target="#changeRoleModal" class="menu-link px-3 p-0 border-0">
                                             <i data-feather="settings" class="icon-sm mr-2"></i> <span class="">Change Role</span>
-                                        </button>
+                                        </button> --}}
                                         @if($admin['active'] == 1)
-                                            <a class="dropdown-item d-flex align-items-center" onclick="confirmFormSubmit(event, 'adminBlock{{ $admin['id'] }}')" href="{{ route('admin.admins.block', $admin['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Block</span></a>
+                                            <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'adminBlock{{ $admin['id'] }}')" href="{{ route('admin.admins.block', $admin['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Block</span></a>
                                             <form id="adminBlock{{ $admin['id'] }}" action="{{ route('admin.admins.block', $admin['id']) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
                                             </form>
                                         @else
-                                            <a class="dropdown-item d-flex align-items-center" href="{{ route('admin.admins.unblock', $admin['id']) }}" onclick="confirmFormSubmit(event, 'adminUnblock{{ $admin['id'] }}')"><i data-feather="user-check" class="icon-sm mr-2"></i> <span class="">Unblock</span></a>
+                                            <a class="menu-link px-3" href="{{ route('admin.admins.unblock', $admin['id']) }}" onclick="confirmFormSubmit(event, 'adminUnblock{{ $admin['id'] }}')"><i data-feather="user-check" class="icon-sm mr-2"></i> <span class="">Unblock</span></a>
                                             <form id="adminUnblock{{ $admin['id'] }}" action="{{ route('admin.admins.unblock', $admin['id']) }}" method="POST">
                                                 @csrf
                                                 @method('PUT')
