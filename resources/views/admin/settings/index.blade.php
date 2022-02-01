@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Settings</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.settings') }}" class="text-dark">Settings</a></li>
 @endsection
 
 @section('content')

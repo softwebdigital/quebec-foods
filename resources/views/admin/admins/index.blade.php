@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Administrators</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.admins') }}" class="text-dark">Administrators</a></li>
 @endsection
 
 @section('content')

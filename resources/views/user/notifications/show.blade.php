@@ -3,8 +3,8 @@
 @section('pageTitle', 'Notification')
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Notification</a></li>
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Details</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('notifications') }}" class="text-dark">Notification</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('notifications.show') }}" class="text-dark">Details</a></li>
 @endsection
 
 @section('content')
