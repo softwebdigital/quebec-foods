@@ -11,7 +11,7 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Profile</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('profile') }}" class="text-dark">Profile</a></li>
 @endsection
 
 @section('content')

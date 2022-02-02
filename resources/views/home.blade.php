@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-dark">Dashboard</a></li>
 @endsection
 
 @section('content')
