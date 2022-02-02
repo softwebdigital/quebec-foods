@@ -18,6 +18,31 @@ class UserController extends Controller
         return view('admin.user.show', ['user' => $user]);
     }
 
+    public function showFarmInvestments (User $user)
+    {
+        return view('admin.user.investments.farms', ['user' => $user]);
+    }
+
+    public function showPlantInvestments (User $user)
+    {
+        return view('admin.user.investments.plants', ['user' => $user]);
+    }
+
+    public function showTransactions (User $user)
+    {
+        return view('admin.user.transactions', ['user' => $user]);
+    }
+
+    public function showWallet (User $user)
+    {
+        return view('admin.user.wallet', ['user' => $user]);
+    }
+
+    public function showReferrals (User $user)
+    {
+        return view('admin.user.referrals', ['user' => $user]);
+    }
+
     public function block(User $user): \Illuminate\Http\RedirectResponse
     {
 //        if user is blocked
@@ -143,9 +168,6 @@ class UserController extends Controller
                                     </div>
                                     <div class="menu-item px-3">
                                         <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/show#investments"><span class="">Investments</span></a>
-                                    </div>
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/show#trades"><span class="">Trades</span></a>
                                     </div>
                                     <div class="menu-item px-3">
                                         <div class="menu-link px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">

@@ -26,6 +26,18 @@
         <!--begin::Card header-->
         <!--begin::Card body-->
         <div class="card-body p-9">
+            <!--begin::Input group-->
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-bold text-muted">User Code</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8">
+                    <span class="fw-bold fs-6 text-gray-800">{{ $user['code'] ?? '-----' }}</span>
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Input group-->
             <!--begin::Row-->
             <div class="row mb-7">
                 <!--begin::Label-->
@@ -50,6 +62,35 @@
                 <!--end::Col-->
             </div>
             <!--end::Row-->
+            <!--begin::Input group-->
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-bold text-muted">Email</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8 d-flex align-items-center">
+                    <span class="fw-bold fs-6 text-gray-800 me-2">{{ $user['email'] }}</span>
+                    @if ($user['email_verified_at'])
+                        <span class="badge badge-success">Verified</span>
+                    @else
+                        <span class="badge badge-warning">Unverified</span>
+                    @endif
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Input group-->
+            <!--begin::Input group-->
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-bold text-muted">Phone</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8">
+                    <span class="fw-bold fs-6 text-gray-800">{{ $user['phone'] ?? '-----' }}</span>
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Input group-->
             <!--begin::Input group-->
             <div class="row mb-7">
                 <!--begin::Label-->
@@ -79,9 +120,7 @@
             <!--begin::Input group-->
             <div class="row mb-7">
                 <!--begin::Label-->
-                <label class="col-lg-4 fw-bold text-muted">State
-                    <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip"
-                        title="Country of origination"></i></label>
+                <label class="col-lg-4 fw-bold text-muted">State</label>
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8">
@@ -93,16 +132,52 @@
             <!--begin::Input group-->
             <div class="row mb-7">
                 <!--begin::Label-->
-                <label class="col-lg-4 fw-bold text-muted">Email</label>
+                <label class="col-lg-4 fw-bold text-muted">City</label>
                 <!--end::Label-->
                 <!--begin::Col-->
-                <div class="col-lg-8 d-flex align-items-center">
-                    <span class="fw-bold fs-6 text-gray-800 me-2">{{ $user['email'] }}</span>
-                    @if ($user['email_verified_at'])
-                        <span class="badge badge-success">Verified</span>
-                    @else
-                        <span class="badge badge-warning">Unverified</span>
-                    @endif
+                <div class="col-lg-8">
+                    <span class="fw-bold fs-6 text-gray-800">{{ $user['city'] ?? '-----' }}</span>
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Input group-->
+             <!--begin::Card title-->
+             <div class="card-title mt-10 mb-7">
+                <h3 class="fw-bolder m-0">Next of Kin</h3>
+            </div>
+            <!--end::Card title-->
+            <!--begin::Input group-->
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-bold text-muted">Full name</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8">
+                    <span class="fw-bold fs-6 text-gray-800">{{ $user['nk_name'] ?? '-----' }}</span>
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Input group-->
+            <!--begin::Input group-->
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-bold text-muted">Phone</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8">
+                    <span class="fw-bold fs-6 text-gray-800">{{ $user['nk_phone'] ?? '-----' }}</span>
+                </div>
+                <!--end::Col-->
+            </div>
+            <!--end::Input group-->
+            <!--begin::Input group-->
+            <div class="row mb-7">
+                <!--begin::Label-->
+                <label class="col-lg-4 fw-bold text-muted">Address</label>
+                <!--end::Label-->
+                <!--begin::Col-->
+                <div class="col-lg-8">
+                    <span class="fw-bold fs-6 text-gray-800">{{ $user['nk_address'] ?? '-----' }}</span>
                 </div>
                 <!--end::Col-->
             </div>

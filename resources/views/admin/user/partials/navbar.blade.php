@@ -144,45 +144,44 @@
         <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5 active" href="{{ route('admin.users.show', $user['id']) }}">Overview</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 active" id="overviewNav" href="{{ route('admin.users.show', $user['id']) }}">Overview</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo15/dist/account/settings.html">Settings</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="farmNav" href="{{ route('admin.users.investments.farm', $user['id']) }}">Farms Investments</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo15/dist/account/security.html">Security</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="plantNav" href="{{ route('admin.users.investments.plant', $user['id']) }}">Plant Investments</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo15/dist/account/billing.html">Billing</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="transactionNav" href="{{ route('admin.users.transactions', $user['id']) }}">Transactions</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo15/dist/account/statements.html">Statements</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="walletNav" href="{{ route('admin.users.wallet', $user['id']) }}">Wallet</a>
             </li>
             <!--end::Nav item-->
-            <!--begin::Nav item-->
-            <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo15/dist/account/referrals.html">Referrals</a>
-            </li>
-            <!--end::Nav item-->
-            <!--begin::Nav item-->
-            <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo15/dist/account/api-keys.html">API Keys</a>
-            </li>
-            <!--end::Nav item-->
-            <!--begin::Nav item-->
-            <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" href="../../demo15/dist/account/logs.html">Logs</a>
+             <!--begin::Nav item-->
+             <li class="nav-item mt-2">
+                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="referralNav" href="{{ route('admin.users.referrals', $user['id']) }}">Referrals</a>
             </li>
             <!--end::Nav item-->
         </ul>
-        <!--begin::Navs-->
+        <!--end::Navs-->
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        let overviewNav = $('#overviewNav');
+        let farmNav = $('#farmNav');
+        let plantNav = $('#plantNav');
+        let transactionNav = $('#transactio')
+    })
+</script>
