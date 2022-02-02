@@ -65,7 +65,6 @@
                         <!--begin::Label-->
                         <label class="d-flex align-items-center fs-5 fw-bold mb-2">
                             <span class="required">Role</span>
-                            {{-- <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Your payment statements may very based on selected position"></i> --}}
                         </label>
                         <!--end::Label-->
                         <!--begin::Input-->
