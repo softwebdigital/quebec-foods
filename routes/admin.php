@@ -57,5 +57,6 @@ Route::group(['middleware' => ['auth:admin']], function (){
     Route::post('/withdraw', [App\Http\Controllers\Admin\TransactionController::class, 'withdraw'])->name('withdraw');
     Route::post('/download', [App\Http\Controllers\Admin\HomeController::class, 'download'])->name('download');
     Route::post('/users/{type}/fetch/ajax', [App\Http\Controllers\Admin\UserController::class, 'fetchUsersWithAjax'])->name('users.ajax');
-    Route::get('/users/export/{type}/download', [\App\Http\Controllers\Admin\ExportController::class, 'exportUsers'])->name('users.export');
+
+    Route::get('/packages/{type}', [\App\Http\Controllers\Admin\PackageController::class, 'index'])->name('packages');
 });

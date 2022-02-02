@@ -65,6 +65,7 @@
                                 @endif
                             </td>
                             <td class="text-end">
+                                @if($admin->roles()->first()['name'] <> 'Super Admin')
                                 <a href="#" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
                                     <span class="svg-icon svg-icon-5 m-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -74,10 +75,7 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="javascript:void();" onclick=""><span class="">Change Role</span></a>
-                                        {{-- <button data-toggle="modal" onclick="setParametersForChangingRole('{{ $admin->roles()->first()['id'] }}', {{ $admin['id'] }})" data-target="#changeRoleModal" class="menu-link px-3 p-0 border-0">
-                                            <i data-feather="settings" class="icon-sm mr-2"></i> <span class="">Change Role</span>
-                                        </button> --}}
+                                        <a class="menu-link px-3" data-bs-toggle="modal" onclick="setParametersForChangingRole('{{ $admin->roles()->first()['id'] }}', {{ $admin['id'] }})" data-bs-target="#kt_modal_1" href="javascript:void();" onclick=""><span class="">Change Role</span></a>
                                         @if($admin['active'] == 1)
                                             <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'adminBlock{{ $admin['id'] }}')" href="{{ route('admin.admins.block', $admin['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Block</span></a>
                                             <form id="adminBlock{{ $admin['id'] }}" action="{{ route('admin.admins.block', $admin['id']) }}" method="POST">
@@ -93,6 +91,7 @@
                                         @endif
                                     </div>
                                 </div>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -104,10 +103,58 @@
         <!--end::Table container-->
     </div>
     <!--begin::Body-->
+    <div class="modal fade" tabindex="-1" id="kt_modal_1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Modal title</h5>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-2x"></span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <form method="POST" action="{{ route('admin.admins.role.change') }}" id="changeRoleForm">
+                        @csrf
+                        <div class="form-group">
+                            <label for="oldAdminRole" class="d-flex align-items-center fs-5 fw-bold mb-2">
+                                <span class="required">Role</span>
+                            </label>
+                            <select name="role" aria-label="Select the Admin Role" data-placeholder="Select the admin role" data-control="select2" class="form-select text-dark" id="role">
+                                <option value="">Select Role</option>
+                                @foreach(\Spatie\Permission\Models\Role::all()->where('name', '!=', 'Super Admin') as $role)
+                                    <option @if(old('role') == $role['id']) selected @endif value="{{ $role['id'] }}">{{ $role['name'] }}</option>
+                                @endforeach
+                            </select>
+                            <input type="hidden" id="adminToChangeRoleID" name="admin">
+                            @error('role')
+                            <strong class="text-danger">
+                                {{ $message }}
+                            </strong>
+                            @enderror
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" onclick="confirmFormSubmit(event, 'changeRoleForm')" class="btn btn-primary">Change Role</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 
 @section('script')
+<script>
+    function setParametersForChangingRole(role, user){
+        document.getElementById('adminToChangeRoleID').value = user;
+    }
+</script>
 <script>
     $(document).ready(function () {
         $('#data-table').DataTable({

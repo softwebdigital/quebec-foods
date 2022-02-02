@@ -22,6 +22,7 @@ class CreatePackagesTable extends Migration
             $table->string('duration');
             $table->text('description');
             $table->text('image');
+            $table->enum('type', ['farm', 'plant']);
             $table->enum('investment', ['enabled, disabled']);
             $table->timestamps();
         });
