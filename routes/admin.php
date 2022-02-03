@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Admin;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -63,5 +64,12 @@ Route::group(['middleware' => ['auth:admin']], function (){
     Route::post('/download', [App\Http\Controllers\Admin\HomeController::class, 'download'])->name('download');
     Route::post('/users/{type}/fetch/ajax', [App\Http\Controllers\Admin\UserController::class, 'fetchUsersWithAjax'])->name('users.ajax');
 
-    Route::get('/packages/{type}', [\App\Http\Controllers\Admin\PackageController::class, 'index'])->name('packages');
+    Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm']], function() {
+        Route::get('/', [\App\Http\Controllers\Admin\PackageController::class, 'index'])->name('packages');
+        Route::get('/create', [App\Http\Controllers\Admin\PackageController::class, 'create'])->name('packages.create');
+        Route::get('/{package}/edit', [App\Http\Controllers\Admin\PackageController::class, 'edit'])->name('packages.edit');
+        Route::put('/{package}/update', [App\Http\Controllers\Admin\PackageController::class, 'update'])->name('packages.update');
+        Route::delete('/{package}/destroy', [App\Http\Controllers\Admin\PackageController::class, 'destroy'])->name('packages.destroy');
+    });
+    Route::post('/packages/store', [App\Http\Controllers\Admin\PackageController::class, 'store'])->name('packages.store');
 });

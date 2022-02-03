@@ -148,7 +148,7 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion">
 										<div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.packages', 'plant') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -156,7 +156,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.packages', 'farm') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>

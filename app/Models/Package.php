@@ -9,6 +9,8 @@ class Package extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     // Package relationship with investments.
     public function investments()
     {

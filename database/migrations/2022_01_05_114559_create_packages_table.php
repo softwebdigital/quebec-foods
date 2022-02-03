@@ -15,15 +15,20 @@ class CreatePackagesTable extends Migration
     {
         Schema::create('packages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('name');
             $table->string('roi');
             $table->string('price');
-            $table->string('duration');
+            $table->date('start_date');
+            $table->string('slot');
+            $table->integer('duration');
+            $table->enum('duration_mode', ['day', 'month', 'year'])->default('day');
+            $table->string('milestone');
+            $table->enum('payout_mode', ['single', 'monthly', 'quarterly', 'biannually', 'annually' ]);
             $table->text('description');
             $table->text('image');
             $table->enum('type', ['farm', 'plant']);
-            $table->enum('investment', ['enabled, disabled']);
+            $table->boolean('rollover')->default(false);
+            $table->enum('status', ['open', 'close']);
             $table->timestamps();
         });
     }
