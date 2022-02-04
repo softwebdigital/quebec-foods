@@ -19,16 +19,16 @@ class CreatePackagesTable extends Migration
             $table->string('roi');
             $table->string('price');
             $table->date('start_date');
-            $table->string('slot');
+            $table->string('slots');
             $table->integer('duration');
             $table->enum('duration_mode', ['day', 'month', 'year'])->default('day');
-            $table->string('milestone');
+            $table->string('milestones');
             $table->enum('payout_mode', ['single', 'monthly', 'quarterly', 'biannually', 'annually' ]);
             $table->text('description');
             $table->text('image');
             $table->enum('type', ['farm', 'plant']);
             $table->boolean('rollover')->default(false);
-            $table->enum('status', ['open', 'close']);
+            $table->enum('status', ['open', 'closed']);
             $table->timestamps();
         });
     }

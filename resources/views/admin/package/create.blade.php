@@ -118,7 +118,7 @@
                         <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="mb-5">
-                            <label class="form-label" for="start_date">Start Date</label>
+                            <label class="required fs-5 fw-bold mb-2" for="start_date">Start Date</label>
                             <input class="form-control" placeholder="Start Date" id="kt_daterangepicker_3" value="{{ old('start_date') }}" name="start_date" id="startDate" />
                             @error('start_date')
                                 <span class="text-danger small" role="alert">
@@ -130,11 +130,11 @@
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--end::Label-->
-                            <label class="required fs-5 fw-bold mb-2" for="slot">Slot</label>
+                            <label class="required fs-5 fw-bold mb-2" for="slot">Total Available Slots</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" placeholder="Slot" value="{{ old("slot") }}" class="form-control" name="slot" id="slot">
-                            @error('slot')
+                            <input type="text" placeholder="Total Available Slots" value="{{ old("slots") }}" class="form-control" name="slots" id="slots">
+                            @error('slots')
                                 <span class="text-danger small" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -144,25 +144,11 @@
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--end::Label-->
-                            <label class="required fs-5 fw-bold mb-2" for="duration">Milestone</label>
+                            <label class="required fs-5 fw-bold mb-2" for="duration">Milestones</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" placeholder="Set Milestone" value="{{ old("milestone") }}" class="form-control" name="milestone" id="milestone">
-                            @error('milestone')
-                                <span class="text-danger small" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="d-flex flex-column mb-5 fv-row">
-                            <!--end::Label-->
-                            <label class="required fs-5 fw-bold mb-2" for="duration">Duration</label>
-                            <!--end::Label-->
-                            <!--end::Input-->
-                            <input type="text" placeholder="Duration in months" value="{{ old("duration") }}" class="form-control" name="duration" id="duration">
-                            @error('duration')
+                            <input type="number" placeholder="No of Milestones" value="{{ old("milestones") }}" class="form-control" name="milestones" id="milestones">
+                            @error('milestones')
                                 <span class="text-danger small" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -188,9 +174,23 @@
                             @enderror
                         </div>
                         <!--end::Input group-->
-                        <div class="form-check form-switch form-check-custom form-check-solid my-5">
-                            <input class="form-check-input h-20px w-30px" type="checkbox" name="rollover" value="yes" id="makePackageRollover"/>
-                            <label class="form-check-label" for="makePackageRollover">
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--end::Label-->
+                            <label class="required fs-5 fw-bold mb-2" for="duration">Duration</label>
+                            <!--end::Label-->
+                            <!--end::Input-->
+                            <input type="text" placeholder="Duration" value="{{ old("duration") }}" class="form-control" name="duration" id="duration">
+                            @error('duration')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <!--end::Input group-->
+                        <div class="form-check form-switch form-check-custom form-check-solid my-7">
+                            <input class="form-check-input mb-2 h-20px w-30px" type="checkbox" name="rollover" value="yes" id="makePackageRollover"/>
+                            <label class="form-check-label fs-5 fw-bold mb-2" for="makePackageRollover">
                                 Enable rollover
                             </label>
                         </div>
@@ -216,7 +216,6 @@
                             <!--begin::Input-->
                             <select name="payout_mode" aria-label="Select the payout mode" data-placeholder="Select the payout mode" data-control="select2" class="form-select text-dark" id="payoutMode">
                                 <option value=""></option>
-                                <option value="single">Single</option>
                                 <option value="monthly">Monthly</option>
                                 <option value="quarterly">Quarterly</option>
                                 <option value="annually">Annually</option>
@@ -248,9 +247,9 @@
                             <!--begin::Col-->
                             <div class="col-md-6 fv-row">
                                 <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                    <input class="form-check-input" type="radio" name="status" id="close" value="close"  />
+                                    <input class="form-check-input" type="radio" name="status" id="closed" value="closed"  />
                                     <label class="form-check-label" for="close">
-                                        Close
+                                        Closed
                                     </label>
                                 </div>
                             </div>
