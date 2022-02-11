@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Transaction;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
 {
@@ -13,9 +15,13 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type)
     {
-        //
+        $transactions = auth()->user()->transactions()->latest()->get();
+        if ($type !== 'all') {
+            $transactions->where('type', $type);
+        }
+        return view('user.transactions.index', compact('transactions', 'type'));
     }
 
     /**
@@ -82,5 +88,34 @@ class TransactionController extends Controller
     public function destroy(Transaction $transaction)
     {
         //
+    }
+
+
+    public function deposit(Request $request)
+    {
+//        Validate request
+        $validator = Validator::make($request->all(), [
+            'amount' => ['required', 'numeric', 'gt:0'],
+            'payment' => ['required']
+        ]);
+        if ($validator->fails()){
+            return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
+        }
+
+//        Check for deposit method and process
+        if ($request['payment'] == 'card') {
+            $data = ['type' => 'deposit'];
+            return OnlinePaymentController::initializeOnlineTransaction($request['amount'], $data);
+        }
+        $transaction = auth()->user()->transactions()->create([
+            'type' => 'deposit', 'amount' => $request['amount'],
+            'method' => $request['payment'],
+            'description' => 'Deposit', 'status' => 'pending'
+        ]);
+        if ($transaction) {
+            NotificationController::sendDepositQueuedNotification($transaction);
+            return redirect()->route('wallet')->with('success', 'Deposit queued successfully');
+        }
+        return redirect()->route('wallet')->with('error', 'Error processing deposit');
     }
 }

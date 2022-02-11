@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Investment;
 use App\Http\Requests\StoreInvestmentRequest;
 use App\Http\Requests\UpdateInvestmentRequest;
+use App\Models\Package;
+use App\Models\Setting;
 
 class InvestmentController extends Controller
 {
@@ -13,9 +15,16 @@ class InvestmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type, $filter)
     {
-        //
+        $investments = auth()->user()->investments()->latest()->whereHas('package', function($query) use ($type) {
+            $query->where('type', $type);
+        });
+        if ($filter !== 'all') {
+            $investments->where('status', $filter);
+        }
+        $investments = $investments->get();
+        return view('user.investments.index', compact('investments', 'type', 'filter'));
     }
 
     /**
@@ -45,9 +54,10 @@ class InvestmentController extends Controller
      * @param  \App\Models\Investment  $investment
      * @return \Illuminate\Http\Response
      */
-    public function show(Investment $investment)
+    public function show($type, Investment $investment)
     {
-        //
+        $packages = Package::all();
+        return view('user.investments.show', compact('investment', 'packages', 'investment'));
     }
 
     /**
@@ -82,5 +92,12 @@ class InvestmentController extends Controller
     public function destroy(Investment $investment)
     {
         //
+    }
+
+    public function invest($type)
+    {
+        $setting = Setting::all()->first();
+        $packages = Package::all()->where('investment', 'enabled')->where('type', $type);
+        return view('user.investments.create', compact('packages', 'setting', 'type'));
     }
 }

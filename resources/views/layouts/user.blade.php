@@ -106,7 +106,7 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion">
 										<div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('packages', 'plant') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -114,7 +114,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('packages', 'farm') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -140,7 +140,7 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion">
 										<div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('invest', 'plant') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -148,7 +148,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('invest', 'farm') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -183,7 +183,7 @@
 											</span>
 											<div class="menu-sub menu-sub-accordion">
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/list.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'all']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -191,7 +191,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/project.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'active']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -199,7 +199,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/targets.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'pending']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -207,7 +207,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/budget.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'cancelled']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -215,7 +215,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/users.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'settled']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -234,7 +234,7 @@
 											</span>
 											<div class="menu-sub menu-sub-accordion">
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/list.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'all']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -242,7 +242,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/project.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'active']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -250,7 +250,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/targets.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'pending']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -258,7 +258,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/budget.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'cancelled']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -266,7 +266,7 @@
 													</a>
 												</div>
 												<div class="menu-item">
-													<a class="menu-link" href="../../demo15/dist/apps/projects/users.html">
+													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'settled']) }}">
 														<span class="menu-bullet">
 															<span class="bullet bullet-dot"></span>
 														</span>
@@ -294,7 +294,7 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion">
 										<div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('transactions', 'all') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -302,15 +302,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Pending</span>
-											</a>
-										</div>
-                                        <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('transactions', 'withdrawal') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -318,7 +310,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('transactions', 'deposits') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -326,7 +318,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('transactions', 'others') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -336,7 +328,7 @@
 									</div>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('wallet') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -351,7 +343,7 @@
 									</a>
 								</div>
 								<div class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('referrals') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -3891,7 +3883,8 @@
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Vendors Javascript(used by this page)-->
-		<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+		<script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
+		<script src="{{ asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
 		<!--end::Page Vendors Javascript-->
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="{{asset('assets/js/widgets.bundle.js')}}"></script>

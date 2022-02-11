@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Wallet;
 use App\Http\Requests\StoreWalletRequest;
 use App\Http\Requests\UpdateWalletRequest;
+use App\Models\Setting;
 
 class WalletController extends Controller
 {
@@ -15,7 +16,9 @@ class WalletController extends Controller
      */
     public function index()
     {
-        //
+        $setting = Setting::all()->first();
+        $wallet = auth()->user()->wallet();
+        return view('user.wallets.index', compact('wallet', 'setting'));
     }
 
     /**

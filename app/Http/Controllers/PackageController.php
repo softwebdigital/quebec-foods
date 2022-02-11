@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Http\Requests\StorePackageRequest;
 use App\Http\Requests\UpdatePackageRequest;
+use Illuminate\Support\Facades\Validator;
 
 class PackageController extends Controller
 {
@@ -13,10 +14,12 @@ class PackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($type)
     {
-        //
+        $packages = Package::query()->where('type', $type)->get();
+        return view('user.packages.index', compact('packages', 'type'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -36,7 +39,14 @@ class PackageController extends Controller
      */
     public function store(StorePackageRequest $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'package' => ['required'],
+            'slots' => ['required', 'numeric', 'min:1', 'integer'],
+            'payment' => ['required']
+        ]);
+        if ($validator->fails()){
+            return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
+        }
     }
 
     /**

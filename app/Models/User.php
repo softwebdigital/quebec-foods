@@ -282,7 +282,7 @@ class User extends Authenticatable implements MustVerifyEmail
         ['id' => 245,'code' => 'ZM','name' => "Zambia",'phonecode' => 260],
         ['id' => 246,'code' => 'ZW','name' => "Zimbabwe",'phonecode' => 263],
     ];
-    
+
     // Users relationship with Investments.
     public function investments()
     {
@@ -308,7 +308,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Document::class);
     }
-
+    public function referrals(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(Referral::class, 'referee_id');
+    }
     public static function generateUserCode()
     {
         do {
