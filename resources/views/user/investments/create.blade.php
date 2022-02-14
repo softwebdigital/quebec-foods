@@ -34,12 +34,13 @@
                             <select name="package" aria-label="Select the package" data-placeholder="Select the package" data-control="select2" class="form-select text-dark" id="package">
                                 <option value="">Select Package</option>
                                 @foreach($packages as $package)
-                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}">{{ $package['name'] }}</option>
+                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
                                 @endforeach
                             </select>
                             <input type="hidden" id="price">
                             <input type="hidden" id="roi">
                             <input type="hidden" id="duration">
+                            <input type="hidden" id="durationMode">
                             @error('package')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -73,7 +74,7 @@
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--end::Label-->
-                            <label class="required fs-5 fw-bold mb-2" for="returns">Expected Returns</label>
+                            <label class="required fs-5 fw-bold mb-2" for="returns">Expected Returns <span id="returnInfo"></span></label>
                             <!--end::Label-->
                             <!--end::Input-->
                             <input type="text" value="₦ 0.00" disabled class="form-control form-control-solid" name="returns" id="returns">
@@ -87,7 +88,7 @@
                             <!--begin::Input-->
                             <select name="payment" aria-label="Select the paymeny mode" data-placeholder="Select the payment mode" data-control="select2" class="form-select text-dark" id="payment">
                                 <option value=""></option>
-                                <option value="wallet">Naira Wallet</option>
+                                <option value="wallet">Wallet</option>
                                 <option value="card">Card</option>
                                 <option value="deposit">Deposit / Bank Transfer</option>
                             </select>
@@ -101,21 +102,27 @@
                         <div id="securedByPaystack" style="display: none" class="mx-auto text-center">
                             <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
                         </div>
-                        <div id="bankDetails" style="display: none" class="alert alert-fill-light">
+                        <div id="bankDetails" style="display: none" class="alert bg-secondary">
                             <table>
                                 <tr>
                                     <td>Bank Name:</td>
-                                    <td><span class="ml-3">{{ $setting['bank_name'] }}</span></td>
+                                    <td><span class="ms-3">{{ $setting['bank_name'] }}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Account Name:</td>
-                                    <td><span class="ml-3">{{ $setting['account_name'] }}</span></td>
+                                    <td><span class="ms-3">{{ $setting['account_name'] }}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Account Number:</td>
-                                    <td><span class="ml-3">{{ $setting['account_number'] }}</span></td>
+                                    <td><span class="ms-3">{{ $setting['account_number'] }}</span></td>
                                 </tr>
                             </table>
+                        </div>
+                        <div class="form-check my-10 form-check-flat form-check-primary">
+                            <label class="form-check-label">
+                                I hereby agree to the <a href="https://raregems.ng/terms-and-conditions.html" target="_blank">terms and conditions</a>
+                                <input required type="checkbox" id="agreed" class="form-check-input">
+                            </label>
                         </div>
                         @if ($setting['invest'] == 1)
                         <!--begin::Submit-->
@@ -146,6 +153,85 @@
 @endsection
 
 @section('script')
-<script>
-</script>
+    <script>
+        $(document).ready(function (){
+            let packageName = $('#package');
+            let slots = $('#slots');
+            let slotInfo = $('#slotInfo');
+            let price = $('#price');
+            let roi = $('#roi');
+            let duration = $('#duration');
+            let durationMode = $('#durationMode');
+            let amount = $('#amount');
+            let returns = $('#returns');
+            let returnInfo = $('#returnInfo');
+            let payment = $('#payment');
+            let bankDetails = $('#bankDetails');
+            let securedByPaystack = $('#securedByPaystack');
+            let submitButton = $('#submitButton');
+            let agreed = $('#agreed');
+            let nairaWalletBalance = 0;
+            agreed.on('change', checkIfFormCanSubmit);
+            payment.on('change', function (){
+                if (payment.val() === 'deposit') {
+                    bankDetails.show(500);
+                    securedByPaystack.hide(500);
+                }else if(payment.val() === 'card'){
+                    bankDetails.hide(500);
+                    securedByPaystack.show(500);
+                }else {
+                    bankDetails.hide(500);
+                    securedByPaystack.hide(500);
+                }
+                checkIfFormCanSubmit();
+            });
+            setFieldsForInvestment();
+            packageName.on('change', setFieldsForInvestment);
+            function setFieldsForInvestment()
+            {
+                $("#package option").each(function(){
+                    if($(this).val() === packageName.val()){
+                        price.val($(this).attr('data-price'));
+                        roi.val($(this).attr('data-roi'));
+                        duration.val($(this).attr('data-duration'));
+                        durationMode.val($(this).attr('data-duration-mode'));
+                    }
+                });
+                computeAmount();
+            }
+            slots.on('input', computeAmount);
+            function computeAmount(){
+                if (packageName.val()){
+                    returnInfo.html('after <b>'+ duration.val() +' ' + durationMode.val() + '(s)</b>');
+                    slotInfo.text('₦ ' + price.val() + '/slot' );
+                }else{
+                    returnInfo.html('');
+                    slotInfo.text('');
+                }
+                if (packageName.val() && slots.val() && (slots.val() > 0)){
+                    amount.val('₦ ' + numberFormat((slots.val() * price.val()).toFixed(2)));
+                    returns.val('₦ ' + numberFormat((slots.val() * price.val() * ((parseInt(roi.val()) + 100) / 100)).toFixed(2)));
+                }
+                checkIfFormCanSubmit();
+            }
+            function checkIfFormCanSubmit(){
+                if (packageName.val() && slots.val() && (slots.val() > 0) && payment.val() && agreed.prop('checked')){
+                    if (payment.val() === 'wallet'){
+                        if ((slots.val() * price.val()) <= nairaWalletBalance ){
+                            submitButton.removeAttr('disabled');
+                            slots.css('borderColor', '#10B759');
+                        }else{
+                            submitButton.prop('disabled', true);
+                            slots.css('borderColor', 'red');
+                        }
+                    }else{
+                        submitButton.removeAttr('disabled');
+                        slots.css('borderColor', '#10B759');
+                    }
+                }else{
+                    submitButton.prop('disabled', true);
+                }
+            }
+        });
+    </script>
 @endsection

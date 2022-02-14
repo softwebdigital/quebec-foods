@@ -22,13 +22,13 @@ class CreatePackagesTable extends Migration
             $table->string('slots');
             $table->integer('duration');
             $table->enum('duration_mode', ['day', 'month', 'year'])->default('day');
-            $table->string('milestones');
-            $table->enum('payout_mode', ['single', 'monthly', 'quarterly', 'biannually', 'annually' ]);
+            $table->string('milestones')->default(1);
+            $table->enum('payout_mode', ['single', 'monthly', 'quarterly', 'biannually', 'annually' ])->default('single');
             $table->text('description');
-            $table->text('image');
+            $table->text('image')->nullable();
             $table->enum('type', ['farm', 'plant']);
             $table->boolean('rollover')->default(false);
-            $table->enum('status', ['open', 'closed']);
+            $table->enum('status', ['open', 'closed'])->default('open');
             $table->timestamps();
         });
     }

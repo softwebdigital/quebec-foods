@@ -27,6 +27,7 @@
                     <!--begin:::Form-->
                     <form class="form mb-3" method="post" action="{{ route('admin.packages.store') }}" id="createPackageForm" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" value="{{ strtolower($type) }}" name="type">
                         @if ($type == 'plant')
                             <!--begin::Image input-->
                             <div class="image-input image-input-empty mb-5" data-kt-image-input="true">
@@ -93,7 +94,7 @@
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
-                        <div class="d-flex flex-column mb-5 fv-row">
+                        <div class="d-flex flex-column mt-4 mb-5 fv-row">
                             <!--end::Label-->
                             <label class="required fs-5 fw-bold mb-2" for="description">Description</label>
                             <!--end::Label-->
@@ -183,9 +184,9 @@
                             <!--begin::Input-->
                             <select name="duration_mode" aria-label="Select the duration mode" data-placeholder="Select the duration mode" data-control="select2" class="form-select text-dark" id="durationMode">
                                 <option value=""></option>
-                                <option value="day">Day</option>
-                                <option value="month">Month</option>
-                                <option value="year">Year</option>
+                                <option @if(old('duration_mode') == 'day') selected @endif value="day">Days</option>
+                                <option @if(old('duration_mode') == 'month') selected @endif value="month">Months</option>
+                                <option @if(old('duration_mode') == 'year') selected @endif value="year">Years</option>
                             </select>
                             @error('duration_mode')
                                 <span class="text-danger small" role="alert">
@@ -217,10 +218,10 @@
                                 <!--begin::Input-->
                                 <select name="payout_mode" aria-label="Select the payout mode" data-placeholder="Select the payout mode" data-control="select2" class="form-select text-dark" id="payoutMode">
                                     <option value=""></option>
-                                    <option value="monthly">Monthly</option>
-                                    <option value="quarterly">Quarterly</option>
-                                    <option value="annually">Annually</option>
-                                    <option value="biannually">Biannually</option>
+                                    <option @if(old('payout_mode') == 'monthly') selected @endif value="monthly">Monthly</option>
+                                    <option @if(old('payout_mode') == 'quarterly') selected @endif value="quarterly">Quarterly</option>
+                                    <option @if(old('payout_mode') == 'annually') selected @endif value="annually">Annually</option>
+                                    <option @if(old('payout_mode') == 'biannually') selected @endif value="biannually">Biannually</option>
                                 </select>
                                 @error('payout_mode')
                                 <span class="text-danger small" role="alert">
@@ -237,7 +238,7 @@
                                 <!--begin::Col-->
                                 <div class="col-md-6 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input class="form-check-input" type="radio"  name="status" id="open" value="open"  />
+                                        <input class="form-check-input" type="radio" @if(old('status') == 'open') checked @endif name="status" id="open" value="open"  />
                                         <label class="form-check-label" for="open">
                                             Open
                                         </label>
@@ -247,7 +248,7 @@
                                 <!--begin::Col-->
                                 <div class="col-md-6 fv-row">
                                     <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input class="form-check-input" type="radio" name="status" id="closed" value="closed"  />
+                                        <input class="form-check-input" @if(old('status') == 'closed') checked @endif type="radio" name="status" id="closed" value="closed"  />
                                         <label class="form-check-label" for="close">
                                             Closed
                                         </label>
@@ -264,11 +265,16 @@
                         @endif
                         @if ($type == 'farm')
                             <div class="form-check form-switch form-check-custom form-check-solid my-7">
-                                <input class="form-check-input mb-2 h-20px w-30px" type="checkbox" name="rollover" value="yes" id="makePackageRollover"/>
+                                <input class="form-check-input mb-2 h-20px w-30px" type="checkbox" name="rollover" value="1" id="makePackageRollover"/>
                                 <label class="form-check-label fs-5 fw-bold mb-2" for="makePackageRollover">
                                         Enable rollover
                                 </label>
                             </div>
+                            @error('rollover')
+                                <div class="small text-danger">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         @endif
 
                         <!--begin::Submit-->

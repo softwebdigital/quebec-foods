@@ -28,10 +28,12 @@
                     <form class="form mb-3" method="post" action="{{ route('admin.packages.update', [$type, $package['id']]) }}" id="editPackageForm" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+                        <input type="hidden" value="{{ strtolower($type) }}" name="type">
+                        @if ($type == 'plant')
                         <!--begin::Image input-->
-                        <div class="image-input image-input-empty mb-5" data-kt-image-input="true" style="background: url(/assets/media/avatars/image_placeholder.png) center/cover no-repeat;">
+                        <div class="image-input image-input-empty mb-5" data-kt-image-input="true" style="background: url({{ asset($package['image']) }}) center/cover no-repeat;">
                             <!--begin::Image preview wrapper-->
-                            <div class="image-input-wrapper w-125px h-125px" style="background: url(/assets/media/avatars/image_placeholder.png) center/cover no-repeat;"></div>
+                            <div class="image-input-wrapper w-125px h-125px" style="background: url({{ asset($package['image']) }}) center/cover no-repeat;"></div>
                             <!--end::Image preview wrapper-->
 
                             <!--begin::Edit button-->
@@ -75,6 +77,7 @@
                                 </span>
                         @enderror
                         <!--end::Image input-->
+                        @endif
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                                 <!--begin::Label-->
@@ -87,6 +90,20 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--end::Label-->
+                            <label class="required fs-5 fw-bold mb-2" for="description">Description</label>
+                            <!--end::Label-->
+                            <!--end::Input-->
+                            <textarea placeholder="Description" class="form-control" name="description" style="resize: none" id="description" rows="5">{{ old("description") ?? $package['description'] }}</textarea>
+                            @error('description')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
@@ -142,6 +159,7 @@
                             @enderror
                         </div>
                         <!--end::Input group-->
+                        @if ($type == 'plant')
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--end::Label-->
@@ -156,6 +174,7 @@
                             @enderror
                         </div>
                         <!--end::Input group-->
+                        @endif
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
@@ -164,9 +183,9 @@
                             <!--begin::Input-->
                             <select name="duration_mode" aria-label="Select the duration mode" data-placeholder="Select the duration mode" data-control="select2" class="form-select text-dark" id="durationMode">
                                 <option value=""></option>
-                                <option @if($package['duration_mode'] == "day") selected @endif value="day">Day</option>
-                                <option @if($package['duration_mode'] == "month") selected @endif value="month">Month</option>
-                                <option @if($package['duration_mode'] == "year") selected @endif value="year">Year</option>
+                                <option @if(old('duration_mode') == 'day' || $package['duration_mode'] == "day") selected @endif value="day">Days</option>
+                                <option @if(old('duration_mode') == 'month' || $package['duration_mode'] == "month") selected @endif value="month">Months</option>
+                                <option @if(old('duration_mode') == 'year' || $package['duration_mode'] == "year") selected @endif value="year">Years</option>
                             </select>
                             @error('duration_mode')
                                 <span class="text-danger small" role="alert">
@@ -188,27 +207,16 @@
                                 </span>
                             @enderror
                         </div>
+                        @if ($type == 'farm')
                         <!--end::Input group-->
                         <div class="form-check form-switch form-check-custom form-check-solid my-7">
-                            <input class="form-check-input mb-2 h-20px w-30px" type="checkbox" name="rollover" value="yes" id="makePackageRollover"/>
+                            <input class="form-check-input mb-2 h-20px w-30px" type="checkbox" @if(old('rollover') == 1 || $package['rollover'] == 1) checked @endif name="rollover" value="1" id="makePackageRollover"/>
                             <label class="form-check-label fs-5 fw-bold mb-2" for="makePackageRollover">
                                 Enable rollover
                             </label>
                         </div>
-                        <!--begin::Input group-->
-                        <div class="d-flex flex-column mb-5 fv-row">
-                            <!--end::Label-->
-                            <label class="required fs-5 fw-bold mb-2" for="description">Description</label>
-                            <!--end::Label-->
-                            <!--end::Input-->
-                            <textarea placeholder="Description" class="form-control" name="description" style="resize: none" id="description" rows="5">{{ old("description") ?? $package['description'] }}</textarea>
-                            @error('description')
-                                <span class="text-danger small" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <!--end::Input group-->
+                        @endif
+                        @if ($type == 'plant')
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
@@ -217,10 +225,10 @@
                             <!--begin::Input-->
                             <select name="payout_mode" aria-label="Select the payout mode" data-placeholder="Select the payout mode" data-control="select2" class="form-select text-dark" id="payoutMode">
                                 <option value=""></option>
-                                <option @if($package['payout_mode'] == "monthly") selected @endif value="monthly">Monthly</option>
-                                <option @if($package['payout_mode'] == "quarterly") selected @endif value="quarterly">Quarterly</option>
-                                <option @if($package['payout_mode'] == "annually") selected @endif value="annually">Annually</option>
-                                <option @if($package['payout_mode'] == "biannually") selected @endif value="biannually">Biannually</option>
+                                <option @if(old('payout_mode') == 'monthly' || $package['payout_mode'] == "monthly") selected @endif value="monthly">Monthly</option>
+                                <option @if(old('payout_mode') == 'quarterly' || $package['payout_mode'] == "quarterly") selected @endif value="quarterly">Quarterly</option>
+                                <option @if(old('payout_mode') == 'annually' || $package['payout_mode'] == "annually") selected @endif value="annually">Annually</option>
+                                <option @if(old('payout_mode') == 'biannually' || $package['payout_mode'] == "biannually") selected @endif value="biannually">Biannually</option>
                             </select>
                             @error('payout_mode')
                                 <span class="text-danger small" role="alert">
@@ -261,6 +269,7 @@
                                 </div>
                             @enderror
                         </div>
+                        @endif
                         <!--end::Input group-->
                         <!--begin::Submit-->
                         <button type="button" onclick="confirmFormSubmit(event, 'editPackageForm')" class="btn btn-primary w-100">

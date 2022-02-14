@@ -33,16 +33,14 @@
                         <th class="text-dark">ROI in %</th>
                         <th class="text-dark">Price per slot</th>
                         <th class="text-dark">Start date</th>
+                        <th class="text-dark">Duration</th>
                         @if ($type == 'plant')
                             <th class="text-dark">Milestones</th>
-                            <th class="text-dark">Investment Duration</th>
                             <th class="text-dark">Status</th>
                             <th class="text-dark">Payout mode</th>
                         @endif
                         @if ($type == 'farm')
                             <th class="text-dark">Slots</th>
-                            <th class="text-dark">Duration</th>
-                            <th class="text-dark">Duration mode</th>
                             <th class="text-dark">Rollover</th>
                         @endif
                         <th class="text-dark"></th>
@@ -58,9 +56,9 @@
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['roi'] }}%</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['price'] }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['start_date'] }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['duration'] }} {{ $package['duration_mode'] }}{{ $package['duration'] > 1 ? 's' : '' }}</span></td>
                             @if ($type == 'plant')
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['milestones'] }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6 ">{{ $package['duration'] }}</span></td>
                             <td>
                                 @if ($package['status'] == 'open')
                                     <span class="badge badge-pill badge-success">Open</span>
@@ -73,8 +71,6 @@
 
                             @if ($type == 'farm')
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['slots'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['duration'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6 ">{{ $package['duration_mode'] }}</span></td>
                                 <td>
                                     @if ($package['rollover'] == 1)
                                         <span class="badge badge-pill badge-success">Enabled</span>
