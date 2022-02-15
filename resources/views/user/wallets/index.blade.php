@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('pageTitle', 'User Wallet Details')
+@section('pageTitle', 'Wallet')
 
 @section('style')
 
@@ -8,7 +8,7 @@
 
 @section('breadCrumbs')
     <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-muted">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('wallet') }}" class="text-dark">Wallet Details</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('wallet') }}" class="text-dark">Wallet</a></li>
 @endsection
 
 @section('content')

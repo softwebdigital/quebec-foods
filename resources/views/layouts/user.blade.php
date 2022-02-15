@@ -75,7 +75,7 @@
 							<!--begin::Menu-->
 							<div class="menu menu-column menu-rounded fw-bold" id="#kt_aside_menu" data-kt-menu="true">
 								<div class="menu-item here show">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('dashboard') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">

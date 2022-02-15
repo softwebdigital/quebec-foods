@@ -34,10 +34,10 @@
                         <!--begin::Col-->
                         <div class="d-flex justify-content-around align-items-center mt-10">
                             <div>
-                                <button class="btn btn-success min-w-125px">Top Up Wallet</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-success min-w-125px">Top Up Wallet</button>
                             </div>
                             <div>
-                                <button class="btn btn-danger min-w-125px">Debit Wallet</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Debit Wallet</button>
                             </div>
                         </div>
                         <!--end::Col-->

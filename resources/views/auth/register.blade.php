@@ -100,8 +100,8 @@
         <!--end::Input group-->
         <!--begin::Actions-->
         <div class="text-center">
-            <button type="submit" id="kt_sign_up_submit" class="btn btn-lg btn-primary">
-                <span class="indicator-label">Submit</span>
+            <button type="submit" id="kt_sign_up_submit" class="btn btn-lg w-100 btn-primary">
+                <span class="indicator-label">Create Account</span>
             </button>
         </div>
         <!--end::Actions-->
