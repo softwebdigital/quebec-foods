@@ -32,7 +32,7 @@
                         <label class="required fs-5 fw-bold mb-2" for="bank_name">Bank Name</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <select name="bank_name" aria-label="Select a Bank" data-control="select2" class="form-select text-dark" id="bankList">
+                        <select name="bank_name" aria-label="Select a Bank" data-control="select2" class="form-select form-select-solid text-dark" id="bankList">
                             @if(count($banks) > 0)
                                 <option value="">Select Bank</option>
                                 @foreach($banks as $bank)
@@ -56,7 +56,7 @@
                      <label class="required fs-5 fw-bold mb-2" for="account_number">Account Number</label>
                      <!--end::Label-->
                      <!--end::Input-->
-                     <input type="text" value="{{ old("account_number") ?? $setting['account_number'] }}" class="form-control" name="account_number" id="account_number">
+                     <input type="text" value="{{ old("account_number") ?? $setting['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number">
                      @error('account_number')
                          <span class="text-danger small" role="alert">
                              <strong>{{ $message }}</strong>
@@ -73,7 +73,7 @@
                     </label>
                     <!--end::Label-->
                     <!--begin::Input-->
-                    <input type="text" value="{{ old("account_name") ?? $setting['account_name'] }}" readonly class="form-control form-control-solid" name="account_name" id="account_name">
+                    <input type="text" value="{{ old("account_name") ?? $setting['account_name'] }}" readonly class="form-control form-control-solid bg-secondary" name="account_name" id="account_name">
                     <!--end::Input-->
                     @error('account_name')
                         <span class="text-manger small">
@@ -116,7 +116,7 @@
                         <label class="required fs-5 fw-bold mb-2" for="base_currency">Base Currency</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <select name="base_currency" aria-label="Select the Base Currency" data-placeholder="Select the base currency" data-control="select2" class="form-select text-dark" id="currencyList">
+                        <select name="base_currency" aria-label="Select the Base Currency" data-placeholder="Select the base currency" data-control="select2" class="form-select form-select-solid text-dark" id="currencyList">
                             <option value=""></option>
                             <option @if($setting['base_currency'] == "NGN") selected @endif value="NGN">NGN</option>
                             <option @if($setting['base_currency'] == "USD") selected @endif value="USD">USD</option>
@@ -132,7 +132,7 @@
                     <label class="required fs-5 fw-bold mb-2" for="rate_plus">Rate</label>
                     <div class="input-group mb-5">
                         <span class="input-group-text">{{ $setting['usd_to_ngn'] }} ±</span>
-                        <input type="number" id="rate_plus" step="any" name="rate_plus" value="{{ old('rate_plus') ?? $setting['rate_plus']}}" class="form-control" placeholder="0.00"/>
+                        <input type="number" id="rate_plus" step="any" name="rate_plus" value="{{ old('rate_plus') ?? $setting['rate_plus']}}" class="form-control form-control-solid" placeholder="0.00"/>
                     </div>
                     <!--end::Input group-->
 
@@ -176,7 +176,7 @@
                         <label class="required fs-5 fw-bold mb-2" for="autoDeleteDuration">Delete After</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <select name="delete_duration" aria-label="Delete After" data-control="select2" class="form-select text-dark" id="autoDelete">
+                        <select name="delete_duration" aria-label="Delete After" data-control="select2" class="form-select form-select-solid text-dark" id="autoDelete">
                             <option @if($setting['auto_delete_unverified_users_after'] == '3 days') selected @endif value="3 days">3 days</option>
                             <option @if($setting['auto_delete_unverified_users_after'] == '1 week') selected @endif value="1 week">1 week</option>
                             <option @if($setting['auto_delete_unverified_users_after'] == '2 week') selected @endif value="2 week">2 weeks</option>
@@ -207,7 +207,7 @@
                         <label class="required fs-5 fw-bold mb-2" for="pendingTransactionDurationBox">Check for pending transactions every</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <select name="pending_transaction_mail_interval" data-control="select2" class="form-select text-dark" id="pendingTransactionDurationBox">
+                        <select name="pending_transaction_mail_interval" data-control="select2" class="form-select form-select-solid text-dark" id="pendingTransactionDurationBox">
                             <option @if($setting['pending_transaction_mail_interval'] == '1 minute') selected @endif value="1 minute">1 minute</option>
                                 <option @if($setting['pending_transaction_mail_interval'] == '2 minutes') selected @endif value="2 minutes">2 minutes</option>
                                 <option @if($setting['pending_transaction_mail_interval'] == '5 minutes') selected @endif value="5 minutes">5 minutes</option>
@@ -241,7 +241,7 @@
                         <label class="required fs-5 fw-bold mb-2" for="updateErrorInfoDuration">On rate update error, resend email after</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <select name="error_mail_interval" data-control="select2" class="form-select text-dark" id="updateErrorInfoDuration">
+                        <select name="error_mail_interval" data-control="select2" class="form-select form-select-solid text-dark" id="updateErrorInfoDuration">
                             <option @if($setting['error_mail_interval'] == '30 minutes') selected @endif value="30 minutes">30 minutes</option>
                             <option @if($setting['error_mail_interval'] == '1 hour') selected @endif value="1 hour">1 hour</option>
                             <option @if($setting['error_mail_interval'] == '2 hours') selected @endif value="2 hours">2 hours</option>

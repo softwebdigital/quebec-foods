@@ -34,7 +34,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="name">Name</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}"/>
+                            <input type="text" class="form-control form-control-solid" id="name" name="name" value="{{ old('name') }}"/>
                             <!--end::Input-->
                             @error('name')
                                 <span class="text-danger small">
@@ -49,7 +49,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="email">Email</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}"/>
+                            <input type="email" class="form-control form-control-solid" id="email" name="email" value="{{ old('email') }}"/>
                             <!--end::Input-->
                             @error('email')
                                 <span class="text-danger small">

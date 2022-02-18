@@ -37,11 +37,11 @@
                             </div>
                             @if($setting['withdrawal'] == 1)
                                 <div>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Debit Wallet</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
                                 </div>
                             @else
                                 <div>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" disabled>Debit Wallet</button>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" disabled>Withdraw</button>
                                 </div>
                             @endif
                         </div>
@@ -76,7 +76,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="amountWithdraw">Amount</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control" name="amount" id="amountWithdraw">
+                            <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control form-control-solid" name="amount" id="amountWithdraw">
                             @error('amount')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -90,7 +90,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="account">Select Account</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <select name="account" aria-label="Select account" data-placeholder="Select account" value="{{ old("account") }}" data-control="select2" class="form-select text-dark" id="account">
+                            <select name="account" aria-label="Select account" data-placeholder="Select account" value="{{ old("account") }}" data-control="select2" class="form-select form-select-solid text-dark" id="account">
                                 @foreach (auth()->user()->bankAccounts()->get() as $bank)
                                     <option value="{{ $bank['bank_name'] }}">{{ $bank['bank_name']. " - ". $bank['account_number'] }}</option>
                                 @endforeach
@@ -140,7 +140,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="amountWithdraw">Amount</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control" name="amount" id="amountWithdraw">
+                            <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control form-control-solid" name="amount" id="amountWithdraw">
                             @error('amount')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -154,7 +154,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="paymentDeposit">Payment Method</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <select name="payment" aria-label="Payment method" data-placeholder="Select account" value="{{ old("payment") }}" data-control="select2" class="form-select text-dark" id="paymentDeposit">
+                            <select name="payment" aria-label="Payment method" data-placeholder="Select account" value="{{ old("payment") }}" data-control="select2" class="form-select form-select-solid text-dark" id="paymentDeposit">
                                 <option value="card">Card</option>
                                 <option value="deposit">Bank Transfer / Deposit</option>
                             </select>

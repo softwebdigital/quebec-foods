@@ -35,7 +35,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="name">Name</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') ?? $role['name'] }}"/>
+                            <input type="text" class="form-control form-control-solid" id="name" name="name" value="{{ old('name') ?? $role['name'] }}"/>
                             <!--end::Input-->
                             @error('name')
                                 <span class="text-danger small">

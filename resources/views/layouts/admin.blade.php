@@ -75,7 +75,7 @@
 							<!--begin::Menu-->
 							<div class="menu menu-column menu-rounded fw-bold" id="#kt_aside_menu" data-kt-menu="true">
                                 <div class="menu-item here show ">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('admin.dashboard') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -326,7 +326,7 @@
 										<span class="menu-title">Roles &amp; Permissions</span>
 									</a>
 								</div>
-                                <div class="menu-item">
+                                {{-- <div class="menu-item">
 									<a class="menu-link" href="#">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -340,9 +340,9 @@
 										</span>
 										<span class="menu-title">Blog Management</span>
 									</a>
-								</div>
+								</div> --}}
                                 <div class="menu-item">
-									<a class="menu-link" href="#">
+									<a class="menu-link" href="{{ route('admin.faq') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">

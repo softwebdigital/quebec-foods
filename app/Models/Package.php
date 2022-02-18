@@ -18,6 +18,11 @@ class Package extends Model
         return $this->hasMany(Investment::class);
     }
 
+    public function isSoldOut()
+    {
+        return !($this->type == 'plant' || $this->slots > 0);
+    }
+
     public function hasStarted()
     {
         return Carbon::parse($this->start_date)->gt(Carbon::now());

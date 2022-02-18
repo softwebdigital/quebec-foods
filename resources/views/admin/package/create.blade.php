@@ -7,8 +7,9 @@
 @endsection
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="#" class="text-muted">{{ ucfirst($type) }} Package</a></li>
-<li class="breadcrumb-item"><a href="#" class="text-muted">Create {{ ucfirst($type) }} Package</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-muted">Dashboard</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.packages', $type) }}" class="text-muted">{{ ucfirst($type) }} Package</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.packages.create', $type) }}" class="text-muted">Create {{ ucfirst($type) }} Package</a></li>
 @endsection
 
 @section('content')
@@ -85,7 +86,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="name">Name</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" placeholder="Package name" value="{{ old("name")}}" class="form-control" name="name" id="name">
+                            <input type="text" placeholder="Package name" value="{{ old("name")}}" class="form-control form-control-solid" name="name" id="name">
                             @error('name')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -99,7 +100,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="description">Description</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <textarea placeholder="Description" style="resize: none" class="form-control" name="description" id="description" rows="5">{{ old("description") }}</textarea>
+                            <textarea placeholder="Description" style="resize: none" class="form-control form-control-solid" name="description" id="description" rows="5">{{ old("description") }}</textarea>
                             @error('description')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -113,7 +114,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="roi">ROI in %</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="number" placeholder="ROI" value="{{ old("roi") }}" class="form-control" name="roi" id="roi">
+                            <input type="number" placeholder="ROI" value="{{ old("roi") }}" class="form-control form-control-solid" name="roi" id="roi">
                             @error('roi')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -127,7 +128,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="price">Price per Slot</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="number" placeholder="Price per Slot" value="{{ old("price") }}" class="form-control" name="price" id="price">
+                            <input type="number" placeholder="Price per Slot" value="{{ old("price") }}" class="form-control form-control-solid" name="price" id="price">
                             @error('price')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -138,7 +139,7 @@
                         <!--begin::Input group-->
                         <div class="mb-5">
                             <label class="required fs-5 fw-bold mb-2" for="start_date">Start Date</label>
-                            <input class="form-control" placeholder="Start Date" id="kt_daterangepicker_3" value="{{ old('start_date') }}" name="start_date" id="startDate" />
+                            <input class="form-control form-control-solid" placeholder="Start Date" id="kt_daterangepicker_3" value="{{ old('start_date') }}" name="start_date" id="startDate" />
                             @error('start_date')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -146,13 +147,14 @@
                             @enderror
                         </div>
                         <!--end::Input group-->
+                        @if ($type == 'farm')
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--end::Label-->
                             <label class="required fs-5 fw-bold mb-2" for="slot">Total Available Slots</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" placeholder="Total Available Slots" value="{{ old("slots") }}" class="form-control" name="slots" id="slots">
+                            <input type="text" placeholder="Total Available Slots" value="{{ old("slots") }}" class="form-control form-control-solid" name="slots" id="slots">
                             @error('slots')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -160,6 +162,7 @@
                             @enderror
                         </div>
                         <!--end::Input group-->
+                        @endif
                         @if ($type == 'plant')
                             <!--begin::Input group-->
                             <div class="d-flex flex-column mb-5 fv-row">
@@ -167,7 +170,7 @@
                                 <label class="required fs-5 fw-bold mb-2" for="duration">Milestones</label>
                                 <!--end::Label-->
                                 <!--end::Input-->
-                                <input type="number" placeholder="No of Milestones" value="{{ old("milestones") }}" class="form-control" name="milestones" id="milestones">
+                                <input type="number" placeholder="No of Milestones" value="{{ old("milestones") }}" class="form-control form-control-solid" name="milestones" id="milestones">
                                 @error('milestones')
                                     <span class="text-danger small" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -182,7 +185,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="duration_mode">Duration Mode</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <select name="duration_mode" aria-label="Select the duration mode" data-placeholder="Select the duration mode" data-control="select2" class="form-select text-dark" id="durationMode">
+                            <select name="duration_mode" aria-label="Select the duration mode" data-placeholder="Select the duration mode" data-control="select2" class="form-select form-select-solid text-dark" id="durationMode">
                                 <option value=""></option>
                                 <option @if(old('duration_mode') == 'day') selected @endif value="day">Days</option>
                                 <option @if(old('duration_mode') == 'month') selected @endif value="month">Months</option>
@@ -201,7 +204,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="duration">Duration</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" placeholder="Duration" value="{{ old("duration") }}" class="form-control" name="duration" id="duration">
+                            <input type="text" placeholder="Duration" value="{{ old("duration") }}" class="form-control form-control-solid" name="duration" id="duration">
                             @error('duration')
                                 <span class="text-danger small" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -216,7 +219,7 @@
                                 <label class="required fs-5 fw-bold mb-2" for="payout_mode">Payout Mode</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <select name="payout_mode" aria-label="Select the payout mode" data-placeholder="Select the payout mode" data-control="select2" class="form-select text-dark" id="payoutMode">
+                                <select name="payout_mode" aria-label="Select the payout mode" data-placeholder="Select the payout mode" data-control="select2" class="form-select form-select-solid text-dark" id="payoutMode">
                                     <option value=""></option>
                                     <option @if(old('payout_mode') == 'monthly') selected @endif value="monthly">Monthly</option>
                                     <option @if(old('payout_mode') == 'quarterly') selected @endif value="quarterly">Quarterly</option>

@@ -39,7 +39,7 @@ class PackageController extends Controller
             'name' => ['required', 'unique:packages,name'],
             'roi' => ['required', 'numeric'],
             'start_date' => ['required'],
-            'slots' => ['required'],
+            'slots' => ['required_if:type,farm'],
             'duration_mode' => ['required'],
             'price' => ['required', 'numeric', 'gt:0'],
             'milestones' => ['required_if:type,plant'],
@@ -58,6 +58,7 @@ class PackageController extends Controller
         // Save file to folder
         if ($request['type'] == 'plant') {
             $data['image'] = $this->uploadPackageImageAndReturnPathToSave($request['image']);
+            $data['slots'] = -1;
         }
         // Store package
         if (Package::create($data)){
@@ -74,7 +75,7 @@ class PackageController extends Controller
             'name' => ['required', 'unique:packages,name,'.$package['id']],
             'roi' => ['required', 'numeric'],
             'start_date' => ['required'],
-            'slots' => ['required'],
+            'slots' => ['required_if:type,farm'],
             'duration_mode' => ['required'],
             'price' => ['required', 'numeric', 'gt:0'],
             'milestones' => ['required_if:type,plant'],

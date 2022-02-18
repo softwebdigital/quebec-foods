@@ -65,13 +65,17 @@ class InvestmentController extends Controller
         if (!($package && $package->canRunInvestment())){
             return back()->with('error', 'Can\'t process investment, package not found, disabled or closed');
         }
+        // Check if package is sold out.
+        if ($package->isSoldOut()){
+            return back()->with('error', 'Can\'t process investment, package is sold out');
+        }
 //        Process investment based on payment method
         switch ($request['payment']){
             case 'wallet':
                 if (!auth()->user()->hasSufficientBalanceForTransaction($request['slots'] * $package['price'])){
                     return back()->withInput()->with('error', 'Insufficient wallet balance');
                 }
-                auth()->user()->nairaWallet()->decrement('balance', $request['slots'] * $package['price']);
+                auth()->user()->wallet()->decrement('balance', $request['slots'] * $package['price']);
                 $status = 'active';
                 $msg = 'Investment created successfully';
                 break;
@@ -86,11 +90,19 @@ class InvestmentController extends Controller
                 return back()->withInput()->with('error', 'Invalid payment method');
         }
 //        Create Investment
+        if ($package['duration_mode'] == 'day') {
+            $returnDate = now()->addDays($package['duration'])->format('Y-m-d H:i:s');
+        } elseif ($package['duration_mode'] == 'month') {
+            $returnDate = now()->addMonths($package['duration'])->format('Y-m-d H:i:s');
+        } else {
+            $returnDate = now()->addYears($package['duration'])->format('Y-m-d H:i:s');
+        }
+
         $investment = auth()->user()->investments()->create([
             'package_id'=>$package['id'], 'slots' => $request['slots'], 'amount' => $request['slots'] * $package['price'],
             'total_return' => $request['slots'] * $package['price'] * (( 100 + $package['roi'] ) / 100 ),
             'investment_date' => now()->format('Y-m-d H:i:s'),
-            'return_date' => now()->addMonths($package['duration'])->format('Y-m-d H:i:s'), 'status' => $status
+            'return_date' => $returnDate, 'status' => $status
         ]);
         if ($investment) {
             TransactionController::storeInvestmentTransaction($investment, $request['payment']);
@@ -99,7 +111,7 @@ class InvestmentController extends Controller
             }else{
                 NotificationController::sendInvestmentQueuedNotification($investment);
             }
-            return redirect()->route('investments')->with('success', $msg);
+            return redirect()->route('investments', ['filter' => 'all', 'type' => $package['type']])->with('success', $msg);
         }
         return back()->withInput()->with('error', 'Error processing investment');
     }

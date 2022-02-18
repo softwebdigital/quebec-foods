@@ -72,4 +72,11 @@ Route::group(['middleware' => ['auth:admin']], function (){
         Route::delete('/{package}/destroy', [App\Http\Controllers\Admin\PackageController::class, 'destroy'])->name('packages.destroy');
     });
     Route::post('/packages/store', [App\Http\Controllers\Admin\PackageController::class, 'store'])->name('packages.store');
+
+    Route::get('/faqs', [App\Http\Controllers\Admin\FaqController::class, 'index'])->name('faq');
+    Route::get('/faqs/create', [App\Http\Controllers\Admin\FaqController::class, 'create'])->name('faq.create');
+    Route::get('/faqs/{faq?}/edit', [App\Http\Controllers\Admin\FaqController::class, 'edit'])->name('faq.edit');
+    Route::delete('/faqs/{faq?}/destroy', [App\Http\Controllers\Admin\FaqController::class, 'destroy'])->name('faq.destroy');
+    Route::post('/faqs/store', [App\Http\Controllers\Admin\FaqController::class, 'store'])->name('faq.store');
+    Route::put('/faqs/{faq?}/update', [App\Http\Controllers\Admin\FaqController::class, 'update'])->name('faq.update');
 });

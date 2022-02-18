@@ -118,4 +118,16 @@ class TransactionController extends Controller
         }
         return redirect()->route('wallet')->with('error', 'Error processing deposit');
     }
+
+    public static function storeInvestmentTransaction($investment, $method, $byCompany = false, $channel = 'web')
+    {
+        $desc = !$byCompany ? 'Investment' : 'Investment by '.env('APP_NAME');
+        Transaction::create([
+            'investment_id' => $investment['id'],
+            'user_id' => $investment->user['id'], 'type' => 'others',
+            'amount' => $investment['amount'], 'description' => $desc,
+            'method' => $method, 'channel' => $channel,
+            'status' => $investment['status'] == 'active' ? 'approved' : 'pending'
+        ]);
+    }
 }

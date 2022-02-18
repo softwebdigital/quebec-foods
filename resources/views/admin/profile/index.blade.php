@@ -33,7 +33,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="name">Name</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" class="form-control" id="name" name="name" value="{{ old('name') ?? auth()->user()['name'] }}"/>
+                            <input type="text" class="form-control form-control-solid   " id="name" name="name" value="{{ old('name') ?? auth()->user()['name'] }}"/>
                             <!--end::Input-->
                             @error('name')
                                 <span class="text-danger small">
@@ -48,7 +48,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="email">Email</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="email" class="form-control form-control-solid" disabled id="email" name="email" value="{{ auth()->user()['email'] }}"/>
+                            <input type="email" class="form-control form-control-solid bg-secondary" disabled id="email" name="email" value="{{ auth()->user()['email'] }}"/>
                             <!--end::Input-->
                         </div>
                         <!--end::Col-->
@@ -99,7 +99,7 @@
                         <label class="fs-5 fw-bold mb-2" for="old_password">Old Password</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <input class="form-control" name="old_password" type="password" id="old_password" autocomplete="off" placeholder="Old Password" />
+                        <input class="form-control form-control-solid" name="old_password" type="password" id="old_password" autocomplete="off" placeholder="Old Password" />
                         <!--end::Input-->
                         @error('old_password')
                             <span class="text-danger small">
@@ -114,7 +114,7 @@
                         <label class="fs-5 fw-bold mb-2" for="new_password">New Password</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <input class="form-control" name="new_password" type="password" id="new_password" autocomplete="off" placeholder="New Password" />
+                        <input class="form-control form-control-solid" name="new_password" type="password" id="new_password" autocomplete="off" placeholder="New Password" />
                         <!--end::Input-->
                         @error('new_password')
                             <span class="text-danger small">
@@ -129,7 +129,7 @@
                         <label class="fs-5 fw-bold mb-2" for="confirm_password">Confirm New Password</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <input class="form-control" type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" />
+                        <input class="form-control form-control-solid" type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" />
                         <!--end::Input-->
                         @error('confirm_password')
                             <span class="text-danger small">

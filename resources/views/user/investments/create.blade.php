@@ -31,7 +31,7 @@
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Input-->
                             <label class="required fs-5 fw-bold mb-2" for="package">Select package</label>
-                            <select name="package" aria-label="Select the package" data-placeholder="Select the package" data-control="select2" class="form-select text-dark" id="package">
+                            <select name="package" aria-label="Select the package" data-placeholder="Select the package" data-control="select2" class="form-select form-select-solid text-dark" id="package">
                                 <option value="">Select Package</option>
                                 @foreach($packages as $package)
                                     <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
@@ -54,7 +54,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="slots">No of Slots</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" placeholder="No of slots" value="{{ old("slots")}}" class="form-control" name="slots" id="slots">
+                            <input type="text" placeholder="No of slots" value="{{ old("slots")}}" class="form-control form-control-solid" name="slots" id="slots">
                             @error('slots')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -68,7 +68,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="amount">Amount to Invest</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" value="₦ 0.00" class="form-control form-control-solid" name="amount" id="amount" disabled>
+                            <input type="text" value="₦ 0.00" class="form-control form-control-solid bg-secondary" name="amount" id="amount" disabled>
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
@@ -86,7 +86,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="payment">Pay Via</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <select name="payment" aria-label="Select the paymeny mode" data-placeholder="Select the payment mode" data-control="select2" class="form-select text-dark" id="payment">
+                            <select name="payment" aria-label="Select the paymeny mode" data-placeholder="Select the payment mode" data-control="select2" class="form-select form-select-solid text-dark" id="payment">
                                 <option value=""></option>
                                 <option value="wallet">Wallet</option>
                                 <option value="card">Card</option>

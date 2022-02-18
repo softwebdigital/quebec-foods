@@ -170,7 +170,7 @@
                                         <label class="required fs-5 fw-bold mb-2">First Name</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" class="form-control" name="first_name" value="{{ old('first_name') ?? $user['first_name']  }}"/>
+                                        <input type="text" class="form-control form-control-solid" name="first_name" value="{{ old('first_name') ?? $user['first_name']  }}"/>
                                         <!--end::Input-->
                                         @error('first_name')
                                             <span class="text-danger small">
@@ -185,7 +185,7 @@
                                         <label class="required fs-5 fw-bold mb-2">Last Name</label>
                                         <!--end::Label-->
                                         <!--end::Input-->
-                                        <input type="text" class="form-control" placeholder="" name="last_name" value="{{ old('first_name') ?? $user['last_name'] }}"/>
+                                        <input type="text" class="form-control form-control-solid" placeholder="" name="last_name" value="{{ old('first_name') ?? $user['last_name'] }}"/>
                                         <!--end::Input-->
                                         @error('last_name')
                                             <span class="text-danger small">
@@ -204,7 +204,7 @@
                                         <label class="required fs-5 fw-bold mb-2">Email</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input class="form-control form-control-solid" disabled value="{{ $user['email'] }}"/>
+                                        <input class="form-control form-control-solid bg-secondary" disabled value="{{ $user['email'] }}"/>
                                         <!--end::Input-->
                                     </div>
                                     <!--end::Col-->
@@ -214,7 +214,7 @@
                                         <label class="required fs-5 fw-bold mb-2">Mobile No</label>
                                         <!--end::Label-->
                                         <!--end::Input-->
-                                        <input type="text" class="form-control" placeholder="E.g +2349039561875" name="phone" value="{{ old('phone') ?? $user['phone'] }}"/>
+                                        <input type="text" class="form-control form-control-solid" placeholder="E.g +2349039561875" name="phone" value="{{ old('phone') ?? $user['phone'] }}"/>
                                         <!--end::Input-->
                                         @error('phone')
                                             <span class="text-danger small">
@@ -233,7 +233,7 @@
                                         <label class="required fs-5 fw-bold mb-2">State</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" class="form-control" name="state" value="{{ old('state') ?? $user['state'] }}" />
+                                        <input type="text" class="form-control form-control-solid" name="state" value="{{ old('state') ?? $user['state'] }}" />
                                         <!--end::Input-->
                                         @error('state')
                                             <span class="text-danger small">
@@ -248,7 +248,7 @@
                                         <label class="required fs-5 fw-bold mb-2">City</label>
                                         <!--end::Label-->
                                         <!--end::Input-->
-                                        <input type="text" class="form-control" name="city" value="{{ old('city') ?? $user['city'] }}"/>
+                                        <input type="text" class="form-control form-control-solid" name="city" value="{{ old('city') ?? $user['city'] }}"/>
                                         <!--end::Input-->
                                         @error('city')
                                             <span class="text-danger small">
@@ -268,7 +268,7 @@
                                     </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select name="country" aria-label="Select a Country" data-control="select2" value="{{ old('country') ?? $user['country']}}" data-placeholder="Select a Country..." class="form-select" >
+                                    <select name="country" aria-label="Select a Country" data-control="select2" value="{{ old('country') ?? $user['country']}}" data-placeholder="Select a Country..." class="form-select form-select-solid" >
                                         <option value="">Select a Country...</option>
                                         @foreach(\App\Models\User::$countries as $key => $country)
                                             <option @if(old("country") == $country['name'] || $user['country'] == $country['name']) selected @elseif($key == 159) selected @endif value="{{$country['name']}}">{{$country['name']}}</option>
@@ -292,7 +292,7 @@
                                     </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                     <input type="text" class="form-control" name="address" value="{{ old('address') ?? $user['address'] }}"/>
+                                     <input type="text" class="form-control form-control-solid" name="address" value="{{ old('address') ?? $user['address'] }}"/>
                                     <!--end::Input-->
                                     @error('address')
                                         <span class="text-danger small">
@@ -312,7 +312,7 @@
                                         <label class="required fs-5 fw-bold mb-2">Full Name</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" class="form-control" name="nk_name" value="{{ old('nk_name') ?? $user['nk_name'] }}"/>
+                                        <input type="text" class="form-control form-control-solid" name="nk_name" value="{{ old('nk_name') ?? $user['nk_name'] }}"/>
                                         <!--end::Input-->
                                         @error('nk_name')
                                             <span class="text-danger small">
@@ -328,7 +328,7 @@
                                         <label class="required fs-5 fw-bold mb-2">Phone Number</label>
                                         <!--end::Label-->
                                         <!--end::Input-->
-                                        <input type="text" class="form-control" name="nk_phone" value="{{ old('nk_phone') ?? $user['nk_phone'] }}" />
+                                        <input type="text" class="form-control form-control-solid" name="nk_phone" value="{{ old('nk_phone') ?? $user['nk_phone'] }}" />
                                         <!--end::Input-->
                                         @error('nk_phone')
                                             <span class="text-danger small">
@@ -345,7 +345,7 @@
                                     <label class="required fs-5 fw-bold mb-2">Address</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input class="form-control" name="nk_address" value="{{ old('nk_address') ?? $user['nk_address'] }}" />
+                                    <input class="form-control form-control-solid" name="nk_address" value="{{ old('nk_address') ?? $user['nk_address'] }}" />
                                     <!--end::Input-->
                                     @error('nk_address')
                                         <span class="text-danger small">
@@ -394,7 +394,7 @@
                                     <label class="fs-5 fw-bold mb-2" for="old_password">Old Password</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input class="form-control" name="old_password" type="password" id="old_password" autocomplete="off" placeholder="Old Password" />
+                                    <input class="form-control form-control-solid" name="old_password" type="password" id="old_password" autocomplete="off" placeholder="Old Password" />
                                     <!--end::Input-->
                                     @error('old_password')
                                         <span class="text-manger small">
@@ -409,7 +409,7 @@
                                     <label class="fs-5 fw-bold mb-2" for="new_password">New Password</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input class="form-control" name="new_password" type="password" id="new_password" autocomplete="off" placeholder="New Password" />
+                                    <input class="form-control form-control-solid" name="new_password" type="password" id="new_password" autocomplete="off" placeholder="New Password" />
                                     <!--end::Input-->
                                     @error('new_password')
                                         <span class="text-manger small">
@@ -424,7 +424,7 @@
                                     <label class="fs-5 fw-bold mb-2" for="confirm_password">Confirm New Password</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input class="form-control" type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" />
+                                    <input class="form-control form-control-solid" type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" />
                                     <!--end::Input-->
                                     @error('confirm_password')
                                         <span class="text-manger small">
@@ -570,7 +570,7 @@
                                         <label class="required fs-5 fw-bold mb-2">Bank Name</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <select name="bank_name" aria-label="Select a Bank" data-control="select2" class="form-select text-dark" id="bankList">
+                                        <select name="bank_name" aria-label="Select a Bank" data-control="select2" class="form-select form-select-solid text-dark" id="bankList">
                                             @if(count($banks) > 0)
                                                 <option value="">Select Bank</option>
                                                 @foreach($banks as $bank)
@@ -594,7 +594,7 @@
                                         <label class="required fs-5 fw-bold mb-2">Account Number</label>
                                         <!--end::Label-->
                                         <!--end::Input-->
-                                        <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" class="form-control" name="account_number" id="account_number">
+                                        <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number">
                                         @error('account_number')
                                             <span class="text-danger small" role="alert">
                                                 <strong>{{ $message }}</strong>
@@ -613,7 +613,7 @@
                                     </label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <input type="text" value="{{ old("account_name") ?? $user['account_name'] }}" readonly class="form-control form-control-solid" name="account_name" id="account_name">
+                                    <input type="text" value="{{ old("account_name") ?? $user['account_name'] }}" readonly class="form-control form-control-solid bg-secondary" name="account_name" id="account_name">
                                     <!--end::Input-->
                                     @error('account_name')
                                         <span class="text-manger small">

@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
 
     Route::group(['middleware' => ['profile_completed']], function () {
         Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications');
-        Route::get('/notifications/{notification}/show', [App\Http\Controllers\NotificationController::class, 'show'])->name('notifications.show');
+        Route::get('/notifications/{notification?}/show', [App\Http\Controllers\NotificationController::class, 'show'])->name('notifications.show');
         Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm']], function() {
             Route::get('/', [\App\Http\Controllers\PackageController::class, 'index'])->name('packages');
         });
@@ -51,4 +51,6 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
         Route::post('/withdraw', [App\Http\Controllers\TransactionController::class, 'withdraw'])->name('withdraw');
         Route::get('/referrals', [App\Http\Controllers\ReferralController::class, 'index'])->name('referrals');
     });
+
+    Route::get('/faqs', [App\Http\Controllers\FaqController::class, 'index'])->name('faq');
 });

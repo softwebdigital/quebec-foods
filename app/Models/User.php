@@ -314,9 +314,15 @@ class User extends Authenticatable implements MustVerifyEmail
     }
     public static function generateUserCode()
     {
+        $str = "";
         do {
             $str = Str::random(10);
         } while (parent::where('code', $str)->count() > 0);
         return $str;
+    }
+
+    public function hasSufficientBalanceForTransaction($amount)
+    {
+        return $this->wallet->balance >= $amount;
     }
 }
