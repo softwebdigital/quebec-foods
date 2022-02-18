@@ -312,6 +312,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Referral::class, 'referee_id');
     }
+
+    public function payments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    {
+        return $this->hasMany(OnlinePayment::class);
+    }
+
     public static function generateUserCode()
     {
         $str = "";

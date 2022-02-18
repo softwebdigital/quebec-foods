@@ -27,7 +27,7 @@
                             <div class="card card-dashed flex-center my-3 p-6">
                                 <span class="fs-4 fw-bold text-success pb-1 px-2">Balance</span>
                                 <span class="fs-lg-2tx fw-bolder d-flex justify-content-center">₦
-                                <span data-kt-countup="true" data-kt-countup-value="8,530.00">0</span></span>
+                                <span data-kt-countup="true" data-kt-countup-value="{{ number_format(auth()->user()->wallet['balance'], 2) }}">{{number_format(auth()->user()->wallet['balance'], 2) }}</span></span>
                             </div>
                         </div>
                         <!--end::Col-->

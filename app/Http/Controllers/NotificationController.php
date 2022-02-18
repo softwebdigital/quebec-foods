@@ -69,4 +69,28 @@ class NotificationController extends Controller
                 Your investment will be automatically created once you payment has been approved.';
         $investment->user->notify(new CustomNotification('pending', 'Investment Queued', $msg, $description));
     }
+
+    public static function sendWithdrawalQueuedNotification($transaction)
+    {
+        $description = 'Your withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> has been queued.';
+        $msg = 'Your withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> has been queued.<br>
+                Your bank account will be credited after administrator approval.';
+        $transaction->user->notify(new CustomNotification('pending', 'Withdrawal Queued', $msg, $description));
+    }
+
+    public static function sendDepositQueuedNotification($transaction)
+    {
+        $description = 'Your deposit of <b>₦ '.number_format($transaction['amount']).'</b> has been queued.';
+        $msg = 'Your deposit of <b>₦ '.number_format($transaction['amount']).'</b> has been queued.<br>
+                Your wallet will be automatically credited once you payment has been approved.';
+        $transaction->user->notify(new CustomNotification('pending', 'Deposit Queued', $msg, $description));
+    }
+
+    public static function sendDepositCancelledNotification($transaction)
+    {
+        $description = 'Your queued deposit of <b>₦ '.number_format($transaction['amount']).'</b> has been declined.';
+        $msg = 'Your queued deposit of <b>₦ '.number_format($transaction['amount']).'</b> has been declined.<br>
+                Contact administrator <a href="mailto:'.env('SUPPORT_EMAIL').'">'.env('SUPPORT_EMAIL').'</a> for further complaints.';
+        $transaction->user->notify(new CustomNotification('cancelled', 'Deposit Declined', $msg, $description));
+    }
 }

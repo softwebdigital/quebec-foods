@@ -22,8 +22,9 @@ class CreateOnlinePaymentsTable extends Migration
             $table->string('gateway')->default('flutterwave');
             $table->text('meta')->nullable();
             $table->enum('status', ['success', 'pending', 'failed'])->default('pending');
+            $table->timestamps();
         });
-    }
+    }   
 
     /**
      * Reverse the migrations.

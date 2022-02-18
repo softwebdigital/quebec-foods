@@ -9,6 +9,8 @@ class Wallet extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     // Wallets relationships with transactions.
     public function transactions()
     {

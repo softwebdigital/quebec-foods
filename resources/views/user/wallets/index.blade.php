@@ -26,7 +26,7 @@
                             <div class="card card-dashed flex-center my-3 p-6">
                                 <span class="fs-4 fw-bold text-success pb-1 px-2">Balance</span>
                                 <span class="fs-lg-2tx fw-bolder d-flex justify-content-center">₦
-                                <span data-kt-countup="true" data-kt-countup-value="{{ number_format(auth()->user()['balance'], 2) }}">{{ number_format(auth()->user()['balance'], 2) }}</span></span>
+                                <span data-kt-countup="true" data-kt-countup-value="{{ number_format(auth()->user()->wallet['balance'], 2) }}">{{ number_format(auth()->user()->wallet['balance'], 2) }}</span></span>
                             </div>
                         </div>
                         <!--end::Col-->
@@ -70,6 +70,7 @@
 
                 <div class="modal-body">
                     <form class="form mb-3" action="{{ route('withdraw') }}" method="post" id="withdrawalForm" enctype="multipart/form-data">
+                        @csrf
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
@@ -133,7 +134,8 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form mb-3" action={{ route('deposit') }}"" method="post" id="depositForm" enctype="multipart/form-data">
+                    <form class="form mb-3" action="{{ route('deposit') }}" method="post" id="depositForm" enctype="multipart/form-data">
+                        @csrf
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->

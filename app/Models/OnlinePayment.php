@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class OnlinePayment extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
     // Online Payments relationship with transactions.
     public function transaction()
     {

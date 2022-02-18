@@ -1440,15 +1440,6 @@
 									<!--end::Drawer wrapper-->
 								</div>
 								<!--end::Chat-->
-								<!--begin::Theme mode-->
-								<div class="d-flex align-items-center ms-3 ms-lg-4">
-									<!--begin::Theme mode docs-->
-									<a class="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline btn-outline-secondary w-40px h-40px" href="../../demo15/dist/documentation/getting-started/dark-mode.html">
-										<i class="fonticon-sun fs-2"></i>
-									</a>
-									<!--end::Theme mode docs-->
-								</div>
-								<!--end::Theme mode-->
 								<!--begin::Sidebar Toggler-->
 								<!--end::Sidebar Toggler-->
 							</div>
