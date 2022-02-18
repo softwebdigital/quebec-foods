@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index($type = null)
+    public function index($type = 'all')
     {
         return view('admin.user.index', compact('type'));
     }

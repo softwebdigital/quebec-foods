@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Transaction extends Model
 {
-    protected $guarded = [];
     use HasFactory;
+
+    protected $guarded = [];
+    
     // Transaction relationship with Online payments.
     public function onlinePayment()
     {
@@ -19,6 +21,7 @@ class Transaction extends Model
     {
         return $this->belongsTo(Investment::class);
     }
+
     // Transaction relationship with user.
     public function user()
     {

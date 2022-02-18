@@ -42,10 +42,10 @@ Route::group(['middleware' => ['auth:admin']], function (){
 
     Route::get('/roles', [App\Http\Controllers\Admin\RoleController::class, 'index'])->name('roles');
     Route::get('/roles/create', [App\Http\Controllers\Admin\RoleController::class, 'create'])->name('roles.create');
-    Route::get('/roles/{role}/edit', [App\Http\Controllers\Admin\RoleController::class, 'edit'])->name('roles.edit');
+    Route::get('/roles/{role?}/edit', [App\Http\Controllers\Admin\RoleController::class, 'edit'])->name('roles.edit');
     Route::post('/roles/store', [App\Http\Controllers\Admin\RoleController::class, 'store'])->name('roles.store');
-    Route::put('/roles/{role}/update', [App\Http\Controllers\Admin\RoleController::class, 'update'])->name('roles.update');
-    Route::delete('/roles/{role}/destroy', [App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.destroy');
+    Route::put('/roles/{role?}/update', [App\Http\Controllers\Admin\RoleController::class, 'update'])->name('roles.update');
+    Route::delete('/roles/{role?}/destroy', [App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.destroy');
 
     Route::get('/users/{type?}', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users');
     Route::get('/users/{user}/show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show');
@@ -63,6 +63,14 @@ Route::group(['middleware' => ['auth:admin']], function (){
     Route::post('/withdraw', [App\Http\Controllers\Admin\TransactionController::class, 'withdraw'])->name('withdraw');
     Route::post('/download', [App\Http\Controllers\Admin\HomeController::class, 'download'])->name('download');
     Route::post('/users/{type}/fetch/ajax', [App\Http\Controllers\Admin\UserController::class, 'fetchUsersWithAjax'])->name('users.ajax');
+
+    Route::get('/transactions', [App\Http\Controllers\Admin\TransactionController::class, 'index'])->name('transactions');
+    Route::put('/transactions/{transaction}/approve', [App\Http\Controllers\Admin\TransactionController::class, 'approve'])->name('transactions.approve');
+    Route::put('/transactions/{transaction}/decline', [App\Http\Controllers\Admin\TransactionController::class, 'decline'])->name('transactions.decline');
+    Route::post('/deposit', [App\Http\Controllers\Admin\TransactionController::class, 'deposit'])->name('deposit');
+    Route::post('/withdraw', [App\Http\Controllers\Admin\TransactionController::class, 'withdraw'])->name('withdraw');
+    Route::get('/transactions/export/{type}/download', [\App\Http\Controllers\Admin\ExportController::class, 'exportTransactions'])->name('transactions.export');
+    Route::post('/transactions/{type}/fetch/ajax', [App\Http\Controllers\Admin\TransactionController::class, 'fetchTransactionsWithAjax'])->name('transactions.ajax');
 
     Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm']], function() {
         Route::get('/', [\App\Http\Controllers\Admin\PackageController::class, 'index'])->name('packages');

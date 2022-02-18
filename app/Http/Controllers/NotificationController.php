@@ -56,7 +56,7 @@ class NotificationController extends Controller
                 Investment method: <b>'.$investment->transaction["method"].'</b><br><br>
                 <b><u>Wallet details:</u></b><br>
                 Amount debited: <b>₦ '.number_format($investment->amount, 2).'</b><br>
-                Wallet balance: <b>₦ '.number_format($investment->user->nairaWallet['balance'], 2).'</b><br>
+                Wallet balance: <b>₦ '.number_format($investment->user->wallet['balance'], 2).'</b><br>
                 ';
         // $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description, $pdf->output()));
         $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description));
@@ -92,5 +92,48 @@ class NotificationController extends Controller
         $msg = 'Your queued deposit of <b>₦ '.number_format($transaction['amount']).'</b> has been declined.<br>
                 Contact administrator <a href="mailto:'.env('SUPPORT_EMAIL').'">'.env('SUPPORT_EMAIL').'</a> for further complaints.';
         $transaction->user->notify(new CustomNotification('cancelled', 'Deposit Declined', $msg, $description));
+    }
+
+    public static function sendWithdrawalSuccessfulNotification($transaction)
+    {
+        $description = 'Your withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> was successful.';
+        $msg = 'Your withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> was successful.<br><br>
+                <b><u>Withdrawal details:</u></b><br>
+                Amount: <b>₦ '.number_format($transaction['amount']).'</b><br>
+                Withdrawal method: <b>'.$transaction["method"].'</b><br><br>
+                <b><u>Wallet details:</u></b><br>
+                Amount debited: <b>₦ '.number_format($transaction->amount).'</b><br>
+                Wallet balance: <b>₦ '.number_format($transaction->user->wallet['balance']).'</b><br>';
+        $transaction->user->notify(new CustomNotification('withdrawal', 'Withdrawal Successful', $msg, $description));
+    }
+
+    public static function sendDepositSuccessfulNotification($transaction)
+    {
+        $method = $transaction["method"] == 'deposit' ? 'deposit / bank transfer' : $transaction["method"];
+        $description = 'Your deposit of <b>₦ '.number_format($transaction['amount']).'</b> was successful.';
+        $msg = 'Your deposit of <b>₦ '.number_format($transaction['amount']).'</b> was successful.<br><br>
+                <b><u>Deposit details:</u></b><br>
+                Amount: <b>₦ '.number_format($transaction['amount']).'</b><br>
+                Deposit method: <b>'.$method.'</b><br><br>
+                <b><u>Wallet details:</u></b><br>
+                Amount credited: <b>₦ '.number_format($transaction->amount, 2).'</b><br>
+                Wallet balance: <b>₦ '.number_format($transaction->user->wallet['balance'], 2).'</b><br>';
+        $transaction->user->notify(new CustomNotification('deposit', 'Deposit Successful', $msg, $description));
+    }
+
+    public static function sendWithdrawalCancelledNotification($transaction)
+    {
+        $description = 'Your queued withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> has been declined.';
+        $msg = 'Your queued withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> has been declined.<br>
+                Your wallet has been refunded, contact administrator <a href="mailto:'.env('SUPPORT_EMAIL').'">'.env('SUPPORT_EMAIL').'</a> for further complaints.';
+        $transaction->user->notify(new CustomNotification('cancelled', 'Withdrawal Declined', $msg, $description));
+    }
+
+    public static function sendInvestmentCancelledNotification($investment)
+    {
+        $description = 'Your queued investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has been cancelled.';
+        $msg = 'Your queued investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has been cancelled.<br>
+                Contact administrator <a href="mailto:'.env('SUPPORT_EMAIL').'">'.env('SUPPORT_EMAIL').'</a> for further complaints.';
+        $investment->user->notify(new CustomNotification('cancelled', 'Investment Cancelled', $msg, $description));
     }
 }

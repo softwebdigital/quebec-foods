@@ -37,32 +37,12 @@
                         <th class="text-dark">Date</th>
                         <th class="text-dark">Details</th>
                         <th class="text-dark">Method</th>
-                        <th class="text-dark">Status</th>
+                        <th class="text-dark">Method</th>
+                        <th class="text-dark">Channel</th>
                         <th class="text-dark">Action</th>
                     </tr>
                 </thead>
                 <!--end::Table head-->
-                <!--begin::Table body-->
-                <tbody>
-                    @foreach ($transactions as $key=>$transaction )
-                        <tr>
-                            <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['amount'] }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['description'] }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['created_at']->format('M d, Y') }}</span></td>
-                            <td>
-                                @if($transaction['status'] == 'approved')
-                                    <span class="badge badge-pill badge-success">Approved</span>
-                                @elseif($transaction['status'] == 'pending')
-                                    <span class="badge badge-pill badge-warning">Pending</span>
-                                @elseif($transaction['status'] == 'declined')
-                                    <span class="badge badge-pill badge-danger">Declined</span>
-                                @endif
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-                <!--end::Table body-->
             </table>
             <!--end::Table-->
         </div>
@@ -74,10 +54,35 @@
 
 @section('script')
 <script>
+    function populateTransactionDetails(accountName, accountNumber, bankName) {
+        $('#accountName').text(accountName);
+        $('#accountNumber').text(accountNumber);
+        $('#bankName').text(bankName);
+    }
     $(document).ready(function () {
         $('#data-table').DataTable({
+            "processing": true,
+            "serverSide": true,
             "searching": true,
-            "lengthMenu": [[100, 200, 300, 400], [100, 200, 300, 400]]
+            "ajax":{
+                "url": "{{ route('admin.transactions.ajax', $type) }}",
+                "dataType": "json",
+                "type": "POST",
+                "data":{ _token: "{{csrf_token()}}"}
+            },
+            "columns": [
+                { "data": "sn" },
+                { "data": "name" },
+                { "data": "amount" },
+                { "data": "description" },
+                { "data": "date" },
+                { "data": "details" },
+                { "data": "method" },
+                { "data": "channel" },
+                { "data": "status" },
+                { "data": "action" }
+            ],
+            "lengthMenu": [50, 100, 200, 500]
         });
     });
 </script>

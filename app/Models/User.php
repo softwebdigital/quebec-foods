@@ -318,6 +318,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(OnlinePayment::class);
     }
 
+    public function getNameAttribute()
+    {
+        return $this->first_name . ' ' .$this->last_name;
+    }
+
     public static function generateUserCode()
     {
         $str = "";
