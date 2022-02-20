@@ -8,7 +8,7 @@
 
 @section('breadCrumbs')
     <li class="breadcrumb-item"><a href="#" class="text-muted">Users</a></li>
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Farm Investments</a></li>
+    <li class="breadcrumb-item"><a href="#" class="text-dark">Transactions</a></li>
 @endsection
 
 @section('content')
@@ -17,7 +17,7 @@
         <!--begin::Header-->
         <div class="card-header border-0 pt-5">
             <h3 class="card-title align-items-start flex-column">
-                <span class="card-label fw-bolder fs-3 mb-1">Plant Investments</span>
+                <span class="card-label fw-bolder fs-3 mb-1">Transactions</span>
             </h3>
         </div>
         <!--end::Header-->
@@ -35,7 +35,6 @@
                             <th class="text-dark">Amount</th>
                             <th class="text-dark">Description</th>
                             <th class="text-dark">Date</th>
-                            <th class="text-dark">Details</th>
                             <th class="text-dark">Method</th>
                             <th class="text-dark">Channel</th>
                             <th class="text-dark">Status</th>
@@ -45,34 +44,43 @@
                     <!--end::Table head-->
                     <!--begin::Table body-->
                     <tbody>
-                        <tr>
-                            <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">1</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">Abdulmalik Adebayo</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">NGN1,000</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">Deposit</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ date("Y-m-d h:i:sa", strtotime("+1 hour"))}}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">-----</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">Deposit</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">Web</span></td>
-                            <td><span class="badge badge-pill badge-success">Pending</span></td>
-                            <td class="text-end">
-                                <a href="#" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
-                                    <span class="svg-icon svg-icon-5 m-0">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-                                        </svg>
-                                    </span>
-                                </a>
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="javascript:void();" onclick=""><span class="">Approve</span></a>
+                        @foreach ($transactions as $key=>$transaction )
+                            <tr>
+                                <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['user']['name'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['amount'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['description'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['created_at']->format('M d, Y') }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['method'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['channel'] }}</span></td>
+                                <td>
+                                    @if($transaction['status'] == 'approved')
+                                        <span class="badge badge-pill badge-success">Approved</span>
+                                    @elseif($transaction['status'] == 'pending')
+                                        <span class="badge badge-pill badge-warning">Pending</span>
+                                    @elseif($transaction['status'] == 'declined')
+                                        <span class="badge badge-pill badge-danger">Declined</span>
+                                    @endif
+                                </td>
+                                <td class="text-end">
+                                    <a href="#" class="btn btn-sm btn-light-primary btn-active-primary @if($transaction['status'] != 'pending') disabled @endif" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
+                                        <span class="svg-icon svg-icon-5 m-0">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link px-3" href="javascript:void();" onclick=""><span class="">Approve</span></a>
+                                        </div>
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link px-3" href="javascript:void();" onclick=""><span class="">Decline</span></a>
+                                        </div>
                                     </div>
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="javascript:void();" onclick=""><span class="">Decline</span></a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                     <!--end::Table body-->
                 </table>

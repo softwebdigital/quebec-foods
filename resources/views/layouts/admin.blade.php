@@ -182,7 +182,7 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion">
 										<div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.transactions') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -190,7 +190,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.transactions', 'pending') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -198,7 +198,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.transactions', 'withdrawal') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -206,7 +206,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.transactions', 'deposit') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -214,7 +214,7 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.transactions', 'others') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -341,8 +341,8 @@
 										<span class="menu-title">Blog Management</span>
 									</a>
 								</div> --}}
-                                <div class="menu-item">
-									<a class="menu-link" href="{{ route('admin.faq') }}">
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -353,8 +353,27 @@
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">FAQs Management</span>
-									</a>
+										<span class="menu-title">Faq Managements</span>
+										<span class="menu-arrow"></span>
+									</span>
+									<div class="menu-sub menu-sub-accordion">
+										<div class="menu-item">
+											<a class="menu-link" href="{{ route('admin.faq') }}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">Category</span>
+											</a>
+										</div>
+                                        <div class="menu-item">
+											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">FAQs</span>
+											</a>
+										</div>
+									</div>
 								</div>
                                 <div class="menu-item">
 									<a class="menu-link" href="{{ route('admin.profile')}}">

@@ -29,6 +29,7 @@ class FaqController extends Controller
     {
         // Validate request
         $validator = Validator::make($request->all(), [
+            'category' => ['required', ],
             'question' => ['required'],
             'answer' => ['required'],
         ]);

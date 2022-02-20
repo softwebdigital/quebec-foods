@@ -18,19 +18,18 @@ class UserController extends Controller
         return view('admin.user.show', ['user' => $user]);
     }
 
-    public function showFarmInvestments (User $user)
+    public function showUserInvestments (User $user, $type)
     {
-        return view('admin.user.investments.farms', ['user' => $user]);
-    }
-
-    public function showPlantInvestments (User $user)
-    {
-        return view('admin.user.investments.plants', ['user' => $user]);
+        $investments = $user->investments()->whereHas('package', function ($query) use ($type) {
+            $query->where('type', $type);
+        })->get();
+        return view('admin.user.investments', compact('user', 'investments', 'type'));
     }
 
     public function showTransactions (User $user)
     {
-        return view('admin.user.transactions', ['user' => $user]);
+        $transactions = $user->transactions()->get();
+        return view('admin.user.transactions', compact('user', 'transactions'));
     }
 
     public function showWallet (User $user)

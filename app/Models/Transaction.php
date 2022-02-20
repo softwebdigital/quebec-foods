@@ -10,14 +10,14 @@ class Transaction extends Model
     use HasFactory;
 
     protected $guarded = [];
-    
+
     // Transaction relationship with Online payments.
     public function onlinePayment()
     {
         return $this->hasOne(OnlinePayment::class);
     }
     // Transaction relationship with Investments.
-    public function investments()
+    public function investment()
     {
         return $this->belongsTo(Investment::class);
     }

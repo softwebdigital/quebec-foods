@@ -11,15 +11,17 @@ class Investment extends Model
 
     protected $guarded = [];
 
+    protected $dates = ['investment_date', 'return_date'];
+
     // Investments relationships with package.
     public function package()
     {
         return $this->belongsTo(Package::class);
     }
     // Investments relationships with transactions.
-    public function transactions()
+    public function transaction()
     {
-        return $this->hasMany(Transaction::class);
+        return $this->hasOne(Transaction::class);
     }
     // Investments relationships with online payments.
     public function onlinePayment()

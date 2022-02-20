@@ -60,6 +60,12 @@
                 </div>
                 <!--end::Title-->
                 <!--begin::Stats-->
+                @php
+                    $balance = $user['wallet']['balance'];
+                    $activeInvestments = $user->investments()->where('status', 'active')->sum('amount');
+                    $totalInvestments = $user->investments()->where('status', 'active')->orWhere('status', 'settled')->sum('amount');
+                    $pendingTransactions = $user->transactions()->where('status', 'pending')->sum('amount');
+                @endphp
                 <div class="d-flex flex-wrap flex-stack">
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-column flex-grow-1 pe-8">
@@ -72,7 +78,7 @@
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                     <i class="fa fa-wallet me-2"></i>
                                     <!--end::Svg Icon-->
-                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="4500" data-kt-countup-prefix="₦">0</div>
+                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="{{ $balance }}" data-kt-countup-prefix="₦">{{ $balance }}</div>
                                 </div>
                                 <!--end::Number-->
                                 <!--begin::Label-->
@@ -92,7 +98,7 @@
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
-                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="4500" data-kt-countup-prefix="₦">0</div>
+                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="{{ $activeInvestments }}" data-kt-countup-prefix="₦">{{ $activeInvestments }}</div>
                                 </div>
                                 <!--end::Number-->
                                 <!--begin::Label-->
@@ -107,7 +113,7 @@
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                     <i class="fa fa-layer-group text-success me-2"></i>
                                     <!--end::Svg Icon-->
-                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="4500" data-kt-countup-prefix="₦">0</div>
+                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="{{ $totalInvestments }}" data-kt-countup-prefix="₦">{{ $totalInvestments }}</div>
                                 </div>
                                 <!--end::Number-->
                                 <!--begin::Label-->
@@ -122,7 +128,7 @@
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                     <i class="fa fa-layer-group text-warning me-2"></i>
                                     <!--end::Svg Icon-->
-                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="4500" data-kt-countup-prefix="₦">0</div>
+                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="{{ $pendingTransactions }}" data-kt-countup-prefix="₦">{{ $pendingTransactions }}</div>
                                 </div>
                                 <!--end::Number-->
                                 <!--begin::Label-->
@@ -149,12 +155,12 @@
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="farmNav" href="{{ route('admin.users.investments.farm', $user['id']) }}">Farms Investments</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="farmNav" href="{{ route('admin.users.investments', ['user' => $user['id'], 'type' => 'farm']) }}">Farms Investments</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="plantNav" href="{{ route('admin.users.investments.plant', $user['id']) }}">Plant Investments</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="plantNav" href="{{ route('admin.users.investments', ['user' => $user['id'], 'type' => 'plant']) }}">Plant Investments</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->

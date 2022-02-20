@@ -78,7 +78,7 @@ class TransactionController extends Controller
     public function approve(Transaction $transaction): \Illuminate\Http\RedirectResponse
     {
 //        Check if transaction is pending
-        if (!$transaction['status'] == 'pending'){
+        if ($transaction['status'] != 'pending'){
             return back()->with('error', 'Transaction already processed');
         }
 //        Process transaction based on type
@@ -228,11 +228,6 @@ class TransactionController extends Controller
                                 <input type="hidden" name="_method" value="PUT">
                             </form>
                         </div>';
-                    // $action .= '<a class="dropdown-item d-flex align-items-center" onclick="event.preventDefault(); confirmFormSubmit(\'transactionApprove' . $transaction['id'] . '\')" href="' . route('admin.transactions.approve', $transaction['id']) . '"><i style="font-size: 13px" class="icon-sm text-secondary fa fa-check mr-2"></i> <span class="">Approve</span></a>
-                    //        <form id="transactionApprove' . $transaction['id'] . '" action="' . route('admin.transactions.approve', $transaction['id']) . '" method="POST">
-                    //            <input type="hidden" name="_token" value="' . csrf_token() . '">
-                    //            <input type="hidden" name="_method" value="PUT">
-                    //        </form>';
                 // }
                 // if (auth()->user()->can('Decline Transactions')) {
                     $action .= '<div class="menu-item px-3">
@@ -242,11 +237,6 @@ class TransactionController extends Controller
                                 <input type="hidden" name="_method" value="PUT">
                             </form>
                         </div>';
-                    // $action .= '<a class="dropdown-item d-flex align-items-center" onclick="event.preventDefault(); confirmFormSubmit(\'transactionDecline' . $transaction['id'] . '\')" href="' . route('admin.transactions.decline', $transaction['id']) . '"><i style="font-size: 13px" class="icon-sm text-secondary fa fa-times mr-2"></i> <span class="">Decline</span></a>
-                    //         <form id="transactionDecline' . $transaction['id'] . '" action="' . route('admin.transactions.decline', $transaction['id']) . '" method="POST">
-                    //            <input type="hidden" name="_token" value="' . csrf_token() . '">
-                    //            <input type="hidden" name="_method" value="PUT">
-                    //        </form>';
                 // }
                 // if (!auth()->user()->can('Approve Transactions') && !auth()->user()->can('Decline Transactions')){
                     // $disabled = 'disabled';
@@ -268,14 +258,6 @@ class TransactionController extends Controller
             $datum['method'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['method'].'</span>';
             $datum['channel'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['channel'].'</span>';
             $datum['status'] = $status;
-            // $datum['action'] = '<div class="dropdown">
-            //                             <button class="btn btn-sm btn-primary" '.$disabled.' type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            //                                 Action <i class="icon-lg fa fa-angle-down"></i>
-            //                             </button>
-            //                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-            //                                 '.$action.'
-            //                             </div>
-            //                         </div>';
             $datum['action'] = '<a href="javascript:void();" class="btn btn-sm btn-light-primary btn-active-primary '.$disabled.'" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end" style="white-space: nowrap;">Action
                                     <span class="svg-icon svg-icon-5 m-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

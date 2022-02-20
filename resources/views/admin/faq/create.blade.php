@@ -31,6 +31,25 @@
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2" for="category">Select Category</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <select name="category" aria-label="Select the Faq Category" data-placeholder="Select the Faq Category" data-control="select2" class="form-select form-select-solid text-dark" id="category">
+                                <option value=""></option>
+                                <option value="wallet">Wallet</option>
+                                <option value="card">Card</option>
+                                <option value="deposit">Deposit / Bank Transfer</option>
+                            </select>
+                            @error('category')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--begin::Label-->
                             <label class="required fs-5 fw-bold mb-2" for="question">Question</label>
                             <!--end::Label-->
                             <!--begin::Input-->

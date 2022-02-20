@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('pageTitle','Transactions')
+@section('pageTitle','Investments')
 
 @section('style')
 
@@ -8,7 +8,7 @@
 
 @section('breadCrumbs')
 <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-muted">Dashboard</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.transactions') }}" class="text-dark">Transactions</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.transactions') }}" class="text-dark">Investments</a></li>
 <li class="breadcrumb-item"><a href="{{ route('admin.transactions', $type) }}" class="text-dark">{{ ucfirst($type) }}</a></li>
 @endsection
 
@@ -17,7 +17,7 @@
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
         <h3 class="card-title align-items-start flex-column">
-            <span class="card-label fw-bolder fs-3 mb-1">{{ ucfirst($type) }} Transactions</span>
+            <span class="card-label fw-bolder fs-3 mb-1">{{ ucfirst($type) }} Investments</span>
         </h3>
     </div>
     <!--end::Header-->
@@ -32,14 +32,13 @@
                     <tr class="fw-bolder text-muted bg-light">
                         <th class="ps-4 text-dark rounded-start">SN</th>
                         <th class="text-dark">Name</th>
-                        <th class="text-dark">Amount</th>
-                        <th class="text-dark">Description</th>
-                        <th class="text-dark">Date</th>
-                        <th class="text-dark">Details</th>
-                        <th class="text-dark">Method</th>
-                        <th class="text-dark">Channel</th>
+                        <th class="text-dark">Package</th>
+                        <th class="text-dark">Slots</th>
+                        <th class="text-dark">Total Invested</th>
+                        <th class="text-dark">Expected Returns</th>
+                        <th class="text-dark">Return Date</th>
                         <th class="text-dark">Status</th>
-                        <th class="text-dark">Action</th>
+                        <th class="ps-4 text-dark rounded-end">Action</th>
                     </tr>
                 </thead>
                 <!--end::Table head-->
@@ -65,7 +64,7 @@
             "serverSide": true,
             "searching": true,
             "ajax":{
-                "url": "{{ route('admin.transactions.ajax', $type) }}",
+                "url": "{{ route('admin.investments.ajax', $type) }}",
                 "dataType": "json",
                 "type": "POST",
                 "data":{ _token: "{{csrf_token()}}"}
@@ -73,12 +72,11 @@
             "columns": [
                 { "data": "sn" },
                 { "data": "name" },
-                { "data": "amount" },
-                { "data": "description" },
-                { "data": "date" },
-                { "data": "details" },
-                { "data": "method" },
-                { "data": "channel" },
+                { "data": "package" },
+                { "data": "slots" },
+                { "data": "total_invested" },
+                { "data": "expected_returns" },
+                { "data": "return_date" },
                 { "data": "status" },
                 { "data": "action" }
             ],
