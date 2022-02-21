@@ -9,7 +9,6 @@
 
 @section('content')
 <!--begin::Content-->
-<div class="flex-lg-row-fluid ms-lg-7 ms-xl-10">
     <!--begin::Card-->
     <div class="card">
         <div class="card-body">
@@ -38,6 +37,5 @@
         </div>
     </div>
     <!--end::Card-->
-</div>
 <!--end::Content-->
 @endsection

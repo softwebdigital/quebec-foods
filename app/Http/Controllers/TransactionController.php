@@ -18,10 +18,11 @@ class TransactionController extends Controller
      */
     public function index($type)
     {
-        $transactions = auth()->user()->transactions()->latest()->get();
+        $transactions = auth()->user()->transactions()->latest();
         if ($type !== 'all') {
             $transactions->where('type', $type);
         }
+        $transactions = $transactions->get();
         return view('user.transactions.index', compact('transactions', 'type'));
     }
 

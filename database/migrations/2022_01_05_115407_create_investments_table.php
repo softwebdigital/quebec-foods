@@ -23,6 +23,7 @@ class CreateInvestmentsTable extends Migration
             $table->dateTime('investment_date');
             $table->dateTime('return_date');
             $table->enum('status', ['active', 'pending', 'cancelled', 'settled']);
+            $table->boolean('rollover')->default(false);
             $table->timestamps();
         });
     }
