@@ -35,6 +35,9 @@
                             <th class="text-dark">Total Invested</th>
                             <th class="text-dark">Expected Returns</th>
                             <th class="text-dark">Days Left</th>
+                            @if ($type == 'farm')
+                                <th class="text-dark">Rollover</th>
+                            @endif
                             <th class="text-dark">Status</th>
                             <th class="text-dark"></th>
                         </tr>
@@ -50,6 +53,9 @@
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['amount'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['total_return'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['return_date'] }}</span></td>
+                                @if ($type == 'farm')
+                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['rollover'] == 1 ? 'Yes' : 'No' }}</span></td>
+                                @endif
                                 <td>
                                     @if($investment['status'] == 'active')
                                         <span class="badge badge-pill badge-success">Active</span>

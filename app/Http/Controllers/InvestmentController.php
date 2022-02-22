@@ -102,6 +102,7 @@ class InvestmentController extends Controller
             'package_id'=>$package['id'], 'slots' => $request['slots'], 'amount' => $request['slots'] * $package['price'],
             'total_return' => $request['slots'] * $package['price'] * (( 100 + $package['roi'] ) / 100 ),
             'investment_date' => now()->format('Y-m-d H:i:s'),
+            'rollover' => isset($request['rollover']) && $request['rollover'] == 'yes',
             'return_date' => $returnDate, 'status' => $status
         ]);
         if ($investment) {

@@ -35,10 +35,10 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
         Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm']], function() {
             Route::get('/', [\App\Http\Controllers\PackageController::class, 'index'])->name('packages');
         });
-        Route::group(['where' => ['type' => 'all|withdrawal|deposits|others']], function() {
+        Route::group(['where' => ['type' => 'all|withdrawal|deposit|others']], function() {
             Route::get('/transactions/{type?}', [App\Http\Controllers\TransactionController::class, 'index'])->name('transactions');
         });
-        Route::group(['prefix' => '/invest/{type}', 'where' => ['type' => 'plant|farm']], function() {
+        Route::group(['prefix' => '/investments/{type}', 'where' => ['type' => 'plant|farm']], function() {
             Route::group(['prefix' => '/{filter}', 'where' => ['filter' => 'all|pending|active|cancelled|settled']], function() {
                 Route::get('/', [App\Http\Controllers\InvestmentController::class, 'index'])->name('investments');
             });;

@@ -74,7 +74,7 @@
 						<div class="w-100 hover-scroll-overlay-y pe-2 me-2" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_user, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside, #kt_aside_menu, #kt_aside_menu_wrapper" data-kt-scroll-offset="0">
 							<!--begin::Menu-->
 							<div class="menu menu-column menu-rounded fw-bold" id="#kt_aside_menu" data-kt-menu="true">
-								<div class="menu-item here show">
+								<div class="menu-item @if(request()->routeIs(['dashboard'])) here show @endif">
 									<a class="menu-link" href="{{ route('dashboard') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -310,11 +310,11 @@
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="{{ route('transactions', 'deposits') }}">
+											<a class="menu-link" href="{{ route('transactions', 'deposit') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
-												<span class="menu-title">Deposits</span>
+												<span class="menu-title">Deposit</span>
 											</a>
 										</div>
                                         <div class="menu-item">

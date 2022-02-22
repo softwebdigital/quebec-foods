@@ -34,7 +34,7 @@
                             <select name="package" aria-label="Select the package" data-placeholder="Select the package" data-control="select2" class="form-select form-select-solid text-dark" id="package">
                                 <option value="">Select Package</option>
                                 @foreach($packages as $package)
-                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
+                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
                                 @endforeach
                             </select>
                             <input type="hidden" id="price">
@@ -118,7 +118,15 @@
                                 </tr>
                             </table>
                         </div>
-                        <div class="form-check my-10 form-check-flat form-check-primary">
+                        @if ($type == 'farm')
+                            <div id="rolloverInvestment" class="form-check mt-10 form-check-flat form-check-primary">
+                                <label class="form-check-label">
+                                    Rollover Investment
+                                    <input required type="checkbox" id="rollover" name="rollover" value="yes" class="form-check-input">
+                                </label>
+                            </div>
+                        @endif
+                        <div class="form-check mt-7 mb-10 form-check-flat form-check-primary">
                             <label class="form-check-label">
                                 I hereby agree to the <a href="" target="_blank">terms and conditions</a>
                                 <input required type="checkbox" id="agreed" class="form-check-input">
@@ -171,6 +179,7 @@
             let submitButton = $('#submitButton');
             let agreed = $('#agreed');
             let nairaWalletBalance = 0;
+            let rolloverInvestment = $('#rolloverInvestment');
             agreed.on('change', checkIfFormCanSubmit);
             payment.on('change', function (){
                 if (payment.val() === 'deposit') {
@@ -189,12 +198,16 @@
             packageName.on('change', setFieldsForInvestment);
             function setFieldsForInvestment()
             {
+                rolloverInvestment.hide();
                 $("#package option").each(function(){
                     if($(this).val() === packageName.val()){
                         price.val($(this).attr('data-price'));
                         roi.val($(this).attr('data-roi'));
                         duration.val($(this).attr('data-duration'));
                         durationMode.val($(this).attr('data-duration-mode'));
+                        if (packageName.val() && ($(this).attr('data-rollover') == 1)) {
+                            rolloverInvestment.show();
+                        }
                     }
                 });
                 computeAmount();
