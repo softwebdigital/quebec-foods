@@ -85,6 +85,10 @@ Route::group(['middleware' => ['auth:admin']], function (){
     Route::post('/packages/store', [App\Http\Controllers\Admin\PackageController::class, 'store'])->name('packages.store');
 
     Route::get('/faqs', [App\Http\Controllers\Admin\FaqController::class, 'index'])->name('faq');
+    Route::get('/faqs/category', [\App\Http\Controllers\Admin\FaqCategoryController::class, 'index'])->name('faq.category');
+    Route::post('/faqs/category/store', [\App\Http\Controllers\Admin\FaqCategoryController::class, 'store'])->name('faq.category.store');
+    Route::delete('/faqs/category/{faqCategory}/destroy', [\App\Http\Controllers\Admin\FaqCategoryController::class, 'destroy'])->name('faq.category.destroy');
+    Route::put('/faqs/category/{faqCategory?}/update', [App\Http\Controllers\Admin\FaqCategoryController::class, 'update'])->name('faq.category.update');
     Route::get('/faqs/create', [App\Http\Controllers\Admin\FaqController::class, 'create'])->name('faq.create');
     Route::get('/faqs/{faq?}/edit', [App\Http\Controllers\Admin\FaqController::class, 'edit'])->name('faq.edit');
     Route::delete('/faqs/{faq?}/destroy', [App\Http\Controllers\Admin\FaqController::class, 'destroy'])->name('faq.destroy');

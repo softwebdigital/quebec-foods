@@ -358,15 +358,15 @@
 									</span>
 									<div class="menu-sub menu-sub-accordion">
 										<div class="menu-item">
-											<a class="menu-link" href="{{ route('admin.faq') }}">
+											<a class="menu-link" href="{{ route('admin.faq.category') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
-												<span class="menu-title">Category</span>
+												<span class="menu-title">Categories</span>
 											</a>
 										</div>
                                         <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+											<a class="menu-link" href="{{ route('admin.faq') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>

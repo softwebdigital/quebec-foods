@@ -35,10 +35,10 @@
                             <!--end::Label-->
                             <!--begin::Input-->
                             <select name="category" aria-label="Select the Faq Category" data-placeholder="Select the Faq Category" data-control="select2" class="form-select form-select-solid text-dark" id="category">
-                                <option value=""></option>
-                                <option value="wallet">Wallet</option>
-                                <option value="card">Card</option>
-                                <option value="deposit">Deposit / Bank Transfer</option>
+                                <option value="">Select the category</option>
+                                @foreach ($faqCategories as $faqCategory )
+                                <option @if((old('category') == $faqCategory['name']) || (request('category') == $faqCategory['name'])) selected @endif value="{{ $faqCategory['name'] }}" >{{ $faqCategory['name'] }}</option>
+                                @endforeach
                             </select>
                             @error('category')
                                 <span class="text-danger small" role="alert">

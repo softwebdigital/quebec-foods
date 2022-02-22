@@ -120,7 +120,7 @@
                         </div>
                         <div class="form-check my-10 form-check-flat form-check-primary">
                             <label class="form-check-label">
-                                I hereby agree to the <a href="https://raregems.ng/terms-and-conditions.html" target="_blank">terms and conditions</a>
+                                I hereby agree to the <a href="" target="_blank">terms and conditions</a>
                                 <input required type="checkbox" id="agreed" class="form-check-input">
                             </label>
                         </div>
