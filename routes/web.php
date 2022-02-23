@@ -21,12 +21,13 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/verify/resend', [App\Http\Controllers\Auth\TwoFactorController::class, 'resend'])->name('verify.resend');
-Route::get('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'index'])->name('verify');
+Route::get('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'index'])->name('verify.index');
 Route::post('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'store'])->name('verify.store');
 
-Route::group(['middleware' => ['auth', 'verified']], function() {
+Route::group(['middleware' => ['auth', 'verified', 'two_factor']], function() {
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.update');
+    Route::put('/2fa/update', [App\Http\Controllers\HomeController::class, 'update2fa'])->name('2fa.update');
     Route::post('/password/custom/update', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('password.custom.update');
 
     Route::post('/banks', [App\Http\Controllers\BankAccountsController::class, 'store'])->name('bank.store');

@@ -49,6 +49,14 @@ class HomeController extends Controller
         }
     }
 
+    public function update2fa(Request $request)
+    {
+        auth()->user()->update([
+            'two_factor_enabled' => (isset($request['2fa']) && $request['2fa'] === 'yes')
+        ]);
+        return back()->with('success', '2FA updated successfully');
+    }
+
     // Update User Profile
     public function updateProfile(Request $request)
     {

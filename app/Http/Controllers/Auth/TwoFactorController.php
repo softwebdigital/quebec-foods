@@ -30,7 +30,7 @@ class TwoFactorController extends Controller
         {
             $user->resetTwoFactorCode();
 
-            return redirect()->route('admin.home');
+            return redirect()->route('dashboard');
         }
 
         return redirect()->back()->with('error', 'The two factor code you have entered does not match');
