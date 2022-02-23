@@ -32,7 +32,7 @@ class TransactionController extends Controller
             return back()->with('error', 'Can\'t process investment, user not found');
         }
 //        Check for deposit method and process
-        $user->nairaWallet()->increment('balance', $request['amount']);
+        $user->wallet()->increment('balance', $request['amount']);
         $transaction = $user->transactions()->create([
             'type' => 'deposit', 'amount' => $request['amount'],
             'description' => 'Deposit by '.env('APP_NAME'),
@@ -63,7 +63,7 @@ class TransactionController extends Controller
 //        Check if user has sufficient balance
         if (!$user->hasSufficientBalanceForTransaction($request['amount'])) return back()->withInput()->with('error', 'Insufficient wallet balance');
 //        Process withdrawal
-        $user->nairaWallet()->decrement('balance', $request['amount']);
+        $user->wallet()->decrement('balance', $request['amount']);
         $transaction = $user->transactions()->create([
             'type' => 'withdrawal', 'amount' => $request['amount'], 'method' => 'wallet',
             'description' => 'Withdrawal by '.env('APP_NAME'), 'status' => 'approved'
@@ -91,7 +91,7 @@ class TransactionController extends Controller
             case 'withdrawal':
                 NotificationController::sendWithdrawalSuccessfulNotification($transaction);
                 break;
-            case 'others':
+            case 'investment':
                 if ($transaction['investment']){
                     $package = $transaction['investment']['package'];
                     if ($package['duration_mode'] == 'day') {
@@ -133,7 +133,7 @@ class TransactionController extends Controller
             case 'deposit':
                 NotificationController::sendDepositCancelledNotification($transaction);
                 break;
-            case 'others':
+            case 'investment':
                 if ($transaction['investment']){
                     $transaction->investment()->update([
                         'status' => 'cancelled'
@@ -156,22 +156,8 @@ class TransactionController extends Controller
             'id', 'name', 'amount', 'description', 'date', 'id', 'method', 'channel', 'status', 'action'
         ];
 //        Find data based on page
-        switch ($type){
-            case 'pending':
-                $transactions = Transaction::query()->latest()->where('status', 'pending');
-                break;
-            case 'withdrawal':
-                $transactions = Transaction::query()->latest()->where('type', 'withdrawal');
-                break;
-            case 'deposit':
-                $transactions = Transaction::query()->latest()->where('type', 'deposit');
-                break;
-            case 'others':
-                $transactions = Transaction::query()->latest()->where('type', 'others');
-                break;
-            default:
-                $transactions = Transaction::query()->latest();
-        }
+        $transactions = Transaction::query()->latest()->where('type', $type);
+
 //        Set helper variables from request and DB
         $totalData = $totalFiltered = $transactions->count();
         $limit = $request['length'];

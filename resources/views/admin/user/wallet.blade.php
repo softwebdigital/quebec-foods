@@ -7,8 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-muted">Users</a></li>
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Wallet Details</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.users') }}" class="text-muted">Users</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Wallet Details</a></li>
 @endsection
 
 @section('content')
@@ -49,6 +49,93 @@
         </div>
     </div>
     <!--end::Referral program-->
+     <!--begin::Withdrawal Modal-->
+     <div class="modal fade" tabindex="-1" id="withdrawalModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Withdrawal</h5>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-2x"></span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <form class="form mb-3" action="{{ route('admin.withdraw') }}" method="post" id="adminwithdrawalForm" enctype="multipart/form-data">
+                        @csrf
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2" for="amountWithdraw">Amount</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control form-control-solid" name="amount" id="amountWithdraw">
+                            <input type="hidden" name="user_id" value="{{ $user['id'] }}">
+                            @error('amount')
+                            <span class="text-danger small" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <!--end::Input group-->
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" onclick="confirmFormSubmit(event, 'adminwithdrawalForm')" class="btn btn-primary">Process Withdrawal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Withdrawal Modal-->
+
+    <!--begin::Deposit Modal-->
+    <div class="modal fade" tabindex="-1" id="depositModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Deposit</h5>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-2x"></span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <form class="form mb-3" action="{{ route('admin.deposit') }}" method="post" id="admindepositForm" enctype="multipart/form-data">
+                        @csrf
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2" for="amountDeposit">Amount</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control form-control-solid" name="amount" id="amountDeposit">
+                            <input type="hidden" name="user_id" value="{{ $user['id'] }}">
+                            @error('amount')
+                            <span class="text-danger small" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                        <!--end::Input group-->
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                    <button type="button" onclick="confirmFormSubmit(event, 'admindepositForm')" class="btn btn-primary">Deposit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Withdrawal Modal-->
 @endsection
 
 @section('script')

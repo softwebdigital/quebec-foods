@@ -85,7 +85,7 @@ class InvestmentController extends Controller
                 break;
             case 'card':
                 $data = ['type' => 'investment', 'package' => $package, 'slots' => $request['slots']];
-                return PaymentController::initializeOnlineTransaction($request['slots'] * $package['price'], $data);
+                return OnlinePaymentController::initializeOnlineTransaction($request['slots'] * $package['price'], $data);
             default:
                 return back()->withInput()->with('error', 'Invalid payment method');
         }
@@ -123,10 +123,10 @@ class InvestmentController extends Controller
      * @param  \App\Models\Investment  $investment
      * @return \Illuminate\Http\Response
      */
-    public function show($type, Investment $investment)
+    public function show($type, Investment $investment, $filter = 'all')
     {
-        $packages = Package::all();
-        return view('user.investments.show', compact('investment', 'packages', 'investment'));
+        $packages = Package::where('status', 'open')->get();
+        return view('user.investments.show', compact('type', 'filter', 'investment', 'packages'));
     }
 
     /**

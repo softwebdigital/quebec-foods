@@ -3,8 +3,8 @@
 @section('pageTitle', 'FAQ Category')
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="{{ route('admin.roles') }}" class="text-dark">FAQs Management</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.roles') }}" class="text-dark">FAQ Category</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.faq') }}" class="@if (request()->routeIs(['admin.faq'])) text-dark @else text-muted @endif">FAQs Management</a></li>
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">FAQ Category</a></li>
 @endsection
 
 @section('content')
@@ -58,7 +58,7 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#editCategoryModal"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">Edit</span></a>
+                                        <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{ $faqCategory['id'] }}"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">Edit</span></a>
                                         <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'categoryDelete{{ $faqCategory['id'] }}')" href="{{ route('admin.faq.category.destroy', $faqCategory['id']) }}"><i data-feather="delete" class="icon-sm mr-2"></i> <span class="">Delete</span></a>
                                         <form id="categoryDelete{{ $faqCategory['id'] }}" action="{{ route('admin.faq.category.destroy', $faqCategory['id']) }}" method="POST">
                                             @csrf
@@ -68,6 +68,49 @@
                                 </div>
                             </td>
                         </tr>
+
+                        <!--begin::Deposit Modal-->
+                        <div class="modal fade" tabindex="-1" id="editCategoryModal{{ $faqCategory['id'] }}">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Update</h5>
+
+                                        <!--begin::Close-->
+                                        <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                                            <span class="svg-icon svg-icon-2x"></span>
+                                        </div>
+                                        <!--end::Close-->
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form class="form mb-3" action="{{ route('admin.faq.category.update', $faqCategory['id'])}}" method="post" id="editCategoryForm{{ $faqCategory['id'] }}" enctype="multipart/form-data">
+                                            @csrf
+                                            @method('PUT')
+                                            <!--begin::Input group-->
+                                            <div class="d-flex flex-column mb-5 fv-row">
+                                                <!--begin::Label-->
+                                                <label class="required fs-5 fw-bold mb-2" for="categoryName">Category Name</label>
+                                                <!--end::Label-->
+                                                <!--begin::Input-->
+                                                <input type="text" placeholder="Edit Category" value="{{ old("category") ?? $faqCategory['name'] }}" class="form-control form-control-solid" name="category" id="categoryName">
+                                                @error('category')
+                                                <span class="text-danger small" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                                @enderror
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                        <button type="button" onclick="confirmFormSubmit(event, 'editCategoryForm{{ $faqCategory['id'] }}')" class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Withdrawal Modal-->
                     @endforeach
                 </tbody>
                 <!--end::Table body-->
@@ -116,49 +159,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                 <button type="button" onclick="confirmFormSubmit(event, 'createCategoryForm')" class="btn btn-primary">Create Category</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!--end::Withdrawal Modal-->
-
-<!--begin::Deposit Modal-->
-<div class="modal fade" tabindex="-1" id="editCategoryModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Update</h5>
-
-                <!--begin::Close-->
-                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
-                    <span class="svg-icon svg-icon-2x"></span>
-                </div>
-                <!--end::Close-->
-            </div>
-
-            <div class="modal-body">
-                <form class="form mb-3" action="{{ route('admin.faq.category.update', $faqCategory['id'])}}" method="post" id="editCategoryForm" enctype="multipart/form-data">
-                    @csrf
-                    @method('PUT')
-                    <!--begin::Input group-->
-                    <div class="d-flex flex-column mb-5 fv-row">
-                        <!--begin::Label-->
-                        <label class="required fs-5 fw-bold mb-2" for="categoryName">Category Name</label>
-                        <!--end::Label-->
-                        <!--begin::Input-->
-                        <input type="text" placeholder="Edit Category" value="{{ old("category") ?? $faqCategory['name'] }}" class="form-control form-control-solid" name="category" id="categoryName">
-                        @error('category')
-                        <span class="text-danger small" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                        @enderror
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                <button type="button" onclick="confirmFormSubmit(event, 'editCategoryForm')" class="btn btn-primary">Update</button>
             </div>
         </div>
     </div>

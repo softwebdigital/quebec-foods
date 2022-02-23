@@ -46,7 +46,6 @@ class SettingController extends Controller
             'pending_transaction_mail' => $request['pending_transaction_mail'] == 'yes',
             'error_mail_interval' => $request['error_mail_interval'],
             'pending_transaction_mail_interval' => $request['pending_transaction_mail_interval'],
-            'sidebar' => $request['sidebar'],
         ]))
             return back()->with('success', 'Settings updated successfully');
         return back()->with('error', 'Error updating settings');

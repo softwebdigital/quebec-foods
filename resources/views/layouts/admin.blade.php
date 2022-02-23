@@ -74,7 +74,7 @@
 						<div class="w-100 hover-scroll-overlay-y pe-2 me-2" id="kt_aside_menu_wrapper" data-kt-scroll="true" data-kt-scroll-activate="{default: false, lg: true}" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_user, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside, #kt_aside_menu, #kt_aside_menu_wrapper" data-kt-scroll-offset="0">
 							<!--begin::Menu-->
 							<div class="menu menu-column menu-rounded fw-bold" id="#kt_aside_menu" data-kt-menu="true">
-                                <div class="menu-item here show ">
+                                <div class="menu-item @if(request()->routeIs(['admin.dashboard'])) here show @endif">
 									<a class="menu-link" href="{{ route('admin.dashboard') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -89,7 +89,7 @@
 										<span class="menu-title">Dashboard</span>
 									</a>
 								</div>
-								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+								<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.users'])) here show @endif">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -104,8 +104,8 @@
 										<span class="menu-title">Users</span>
 										<span class="menu-arrow"></span>
 									</span>
-									<div class="menu-sub menu-sub-accordion">
-										<div class="menu-item">
+									<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.users'])) show @endif">
+										<div class="menu-item @if(request()->routeIs(['admin.users']) && request()->type == 'all') here @endif">
 											<a class="menu-link" href="{{ route('admin.users', 'all') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -113,7 +113,7 @@
 												<span class="menu-title">All</span>
 											</a>
 										</div>
-                                        <div class="menu-item">
+                                        <div class="menu-item @if(request()->routeIs(['admin.users']) && request()->type == 'verified') here @endif">
 											<a class="menu-link" href="{{ route('admin.users', 'verified') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -121,7 +121,7 @@
 												<span class="menu-title">Verified</span>
 											</a>
 										</div>
-                                        <div class="menu-item">
+                                        <div class="menu-item @if(request()->routeIs(['admin.users']) && request()->type == 'unverified') here @endif">
 											<a class="menu-link" href="{{ route('admin.users', 'unverified') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -131,7 +131,7 @@
 										</div>
 									</div>
 								</div>
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.packages'])) here show @endif">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -146,8 +146,8 @@
 										<span class="menu-title">Packages</span>
 										<span class="menu-arrow"></span>
 									</span>
-									<div class="menu-sub menu-sub-accordion">
-										<div class="menu-item">
+									<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.packages'])) show @endif">
+										<div class="menu-item @if(request()->routeIs(['admin.packages']) && request()->type == 'plant') here @endif">
 											<a class="menu-link" href="{{ route('admin.packages', 'plant') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -155,7 +155,7 @@
 												<span class="menu-title">Processing Plants</span>
 											</a>
 										</div>
-                                        <div class="menu-item">
+                                        <div class="menu-item @if(request()->routeIs(['admin.packages']) && request()->type == 'farm') here @endif">
 											<a class="menu-link" href="{{ route('admin.packages', 'farm') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -165,7 +165,7 @@
 										</div>
 									</div>
 								</div>
-								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+								<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.transactions'])) here show @endif">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -180,16 +180,16 @@
 										<span class="menu-title">Transactions</span>
 										<span class="menu-arrow"></span>
 									</span>
-									<div class="menu-sub menu-sub-accordion">
-										<div class="menu-item">
-											<a class="menu-link" href="{{ route('admin.transactions') }}">
+									<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.transactions'])) show @endif">
+										<div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'all') here @endif">
+											<a class="menu-link" href="{{ route('admin.transactions', 'all') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
 												<span class="menu-title">All</span>
 											</a>
 										</div>
-                                        <div class="menu-item">
+                                        <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'pending') here @endif">
 											<a class="menu-link" href="{{ route('admin.transactions', 'pending') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -197,7 +197,7 @@
 												<span class="menu-title">Pending</span>
 											</a>
 										</div>
-                                        <div class="menu-item">
+                                        <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'withdrawal') here @endif">
 											<a class="menu-link" href="{{ route('admin.transactions', 'withdrawal') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -205,7 +205,7 @@
 												<span class="menu-title">Withdrawal</span>
 											</a>
 										</div>
-                                        <div class="menu-item">
+                                        <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'deposit') here @endif">
 											<a class="menu-link" href="{{ route('admin.transactions', 'deposit') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -213,17 +213,25 @@
 												<span class="menu-title">Deposits</span>
 											</a>
 										</div>
-                                        <div class="menu-item">
-											<a class="menu-link" href="{{ route('admin.transactions', 'others') }}">
+                                        <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'investment') here @endif">
+											<a class="menu-link" href="{{ route('admin.transactions', 'investment') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
-												<span class="menu-title">Others</span>
+												<span class="menu-title">Investment</span>
+											</a>
+										</div>
+                                        <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'payout') here @endif">
+											<a class="menu-link" href="{{ route('admin.transactions', 'payout') }}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">Payout</span>
 											</a>
 										</div>
 									</div>
 								</div>
-								<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+								<div data-kt-menu-trigger="click" class="menu-item menu-accordion  @if(request()->routeIs(['admin.investments', 'admin.investments.show'])) here show @endif">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -238,50 +246,112 @@
 										<span class="menu-title">Investments</span>
 										<span class="menu-arrow"></span>
 									</span>
-									<div class="menu-sub menu-sub-accordion">
-										<div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+									<div class="menu-sub menu-sub-accordion  @if(request()->routeIs(['admin.investments', 'admin.investments.show']  && request()->type == 'plant')) show @endif">
+										<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.investments', 'admin.investments.show']) && request()->type == 'plant') here show @endif">
+											<span class="menu-link">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
-												<span class="menu-title">All</span>
-											</a>
+												<span class="menu-title">Processing Plants</span>
+												<span class="menu-arrow"></span>
+											</span>
+											<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.investments']) && request()->type == 'plant') show @endif">
+												<div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'plant' && request()->filter == 'all') here @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'plant', 'filter' => 'all']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">All</span>
+													</a>
+												</div>
+												<div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'plant' && request()->filter == 'active') here @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'plant', 'filter' => 'active']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">Active</span>
+													</a>
+												</div>
+												<div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'plant' && request()->filter == 'pending') here @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'plant', 'filter' => 'pending']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">Pending</span>
+													</a>
+												</div>
+												<div class="menu-item @if(request()->routeIs([' admin.investments']) && request()->type == 'plant' && request()->filter == 'cancelled') here @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'plant', 'filter' => 'cancelled']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">Cancelled</span>
+													</a>
+												</div>
+												<div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'plant' && request()->filter == 'settled') here show @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'plant', 'filter' => 'settled']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">Settled</span>
+													</a>
+												</div>
+											</div>
 										</div>
-                                        <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
+										<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.investments', 'admin.investments.show']) && request()->type == 'farm') here show @endif">
+											<span class="menu-link">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
-												<span class="menu-title">Active</span>
-											</a>
-										</div>
-                                        <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Pending</span>
-											</a>
-										</div>
-                                        <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Cancelled</span>
-											</a>
-										</div>
-                                        <div class="menu-item">
-											<a class="menu-link" href="../../demo15/dist/apps/calendar.html">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Settled</span>
-											</a>
+												<span class="menu-title">Farm</span>
+												<span class="menu-arrow"></span>
+											</span>
+											<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.investments']) && request()->type == 'farm') show @endif">
+												<div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'farm' && request()->filter == 'all') here @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'farm', 'filter' => 'all']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">All</span>
+													</a>
+												</div>
+												<div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'farm' && request()->filter == 'active') here @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'farm', 'filter' => 'active']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">Active</span>
+													</a>
+												</div>
+												<div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'farm' && request()->filter == 'pending') here @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'farm', 'filter' => 'pending']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">Pending</span>
+													</a>
+												</div>
+												<div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'farm' && request()->filter == 'cancelled') here @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'farm', 'filter' => 'cancelled']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">Cancelled</span>
+													</a>
+												</div>
+												<div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'farm' && request()->filter == 'settled') here @endif">
+													<a class="menu-link" href="{{ route('admin.investments', ['type' => 'farm', 'filter' => 'settled']) }}">
+														<span class="menu-bullet">
+															<span class="bullet bullet-dot"></span>
+														</span>
+														<span class="menu-title">Settled</span>
+													</a>
+												</div>
+											</div>
 										</div>
 									</div>
 								</div>
-                                <div class="menu-item">
+                                <div class="menu-item @if(request()->routeIs(['admin.onlinepayment'])) here show @endif">
 									<a class="menu-link" href="#">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -296,7 +366,7 @@
 										<span class="menu-title">Online Payment</span>
 									</a>
 								</div>
-                                <div class="menu-item">
+                                <div class="menu-item @if(request()->routeIs(['admin.admins'])) here show @endif">
 									<a class="menu-link" href="{{ route('admin.admins') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -311,7 +381,7 @@
 										<span class="menu-title">Admins</span>
 									</a>
 								</div>
-                                <div class="menu-item">
+                                <div class="menu-item @if(request()->routeIs(['admin.roles'])) here show @endif">
 									<a class="menu-link" href="{{ route('admin.roles') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -341,7 +411,7 @@
 										<span class="menu-title">Blog Management</span>
 									</a>
 								</div> --}}
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.faq', 'admin.faq.category'])) here show @endif">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -356,8 +426,8 @@
 										<span class="menu-title">Faq Managements</span>
 										<span class="menu-arrow"></span>
 									</span>
-									<div class="menu-sub menu-sub-accordion">
-										<div class="menu-item">
+									<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.faq', 'admin.faq.category'])) show @endif">
+										<div class="menu-item @if(request()->routeIs(['admin.faq.category'])) here @endif">
 											<a class="menu-link" href="{{ route('admin.faq.category') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -365,7 +435,7 @@
 												<span class="menu-title">Categories</span>
 											</a>
 										</div>
-                                        <div class="menu-item">
+                                        <div class="menu-item @if(request()->routeIs(['admin.faq'])) here @endif">
 											<a class="menu-link" href="{{ route('admin.faq') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -375,7 +445,7 @@
 										</div>
 									</div>
 								</div>
-                                <div class="menu-item">
+                                <div class="menu-item @if(request()->routeIs(['admin.profile'])) here show @endif">
 									<a class="menu-link" href="{{ route('admin.profile')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -390,7 +460,7 @@
 										<span class="menu-title">Profile</span>
 									</a>
 								</div>
-                                <div class="menu-item">
+                                <div class="menu-item @if(request()->routeIs(['admin.settings'])) here show @endif">
 									<a class="menu-link" href="{{ route('admin.settings') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -639,7 +709,7 @@
 								<!--begin::Breadcrumb-->
                                 <ul class="breadcrumb breadcrumb-dot fw-bold fs-base my-1">
                                     <li class="breadcrumb-item text-muted">
-                                        <a href="../../demo15/dist/index.html" class="text-muted">Home</a>
+                                        <a href="{{ route('admin.dashboard') }}" class="text-muted">Home</a>
                                     </li>
                                     @yield('breadCrumbs')
                                 </ul>
@@ -669,15 +739,6 @@
 							<!--end::Wrapper-->
 							<!--begin::Topbar-->
 							<div class="d-flex align-items-center flex-shrink-0">
-								<!--begin::Theme mode-->
-								<div class="d-flex align-items-center ms-3 ms-lg-4">
-									<!--begin::Theme mode docs-->
-									<a class="btn btn-icon btn-color-gray-700 btn-active-color-primary btn-outline btn-outline-secondary w-40px h-40px" href="../../demo15/dist/documentation/getting-started/dark-mode.html">
-										<i class="fonticon-sun fs-2"></i>
-									</a>
-									<!--end::Theme mode docs-->
-								</div>
-								<!--end::Theme mode-->
 								<!--begin::Sidebar Toggler-->
 								<!--end::Sidebar Toggler-->
 							</div>

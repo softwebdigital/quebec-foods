@@ -7,9 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-muted">Dashboard</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.transactions') }}" class="text-dark">Investments</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.transactions', $type) }}" class="text-dark">{{ ucfirst($type) }}</a></li>
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-muted">{{ ucfirst($type) }} Investments</a></li>
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">{{ ucfirst($filter) }}</a></li>
 @endsection
 
 @section('content')
@@ -17,7 +16,7 @@
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
         <h3 class="card-title align-items-start flex-column">
-            <span class="card-label fw-bolder fs-3 mb-1">{{ ucfirst($type) }} Investments</span>
+            <span class="card-label fw-bolder fs-3 mb-1">{{ ucfirst($filter) }} {{ ucfirst($type) }} Investments</span>
         </h3>
     </div>
     <!--end::Header-->
@@ -64,7 +63,7 @@
             "serverSide": true,
             "searching": true,
             "ajax":{
-                "url": "{{ route('admin.investments.ajax', $type) }}",
+                "url": "{{ route('admin.investments.ajax', ['type' => $type, 'filter' => $filter]) }}",
                 "dataType": "json",
                 "type": "POST",
                 "data":{ _token: "{{csrf_token()}}"}

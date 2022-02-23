@@ -7,8 +7,7 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-muted">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('wallet') }}" class="text-dark">Wallet</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Wallet</a></li>
 @endsection
 
 @section('content')

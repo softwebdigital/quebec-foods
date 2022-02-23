@@ -126,7 +126,7 @@ class TransactionController extends Controller
         $desc = !$byCompany ? 'Investment' : 'Investment by '.env('APP_NAME');
         Transaction::create([
             'investment_id' => $investment['id'],
-            'user_id' => $investment->user['id'], 'type' => 'others',
+            'user_id' => $investment->user['id'], 'type' => 'investment',
             'amount' => $investment['amount'], 'description' => $desc,
             'method' => $method, 'channel' => $channel,
             'status' => $investment['status'] == 'active' ? 'approved' : 'pending'

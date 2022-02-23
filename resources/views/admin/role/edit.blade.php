@@ -7,8 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('admin.roles') }}" class="text-muted">Roles</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('admin.roles.edit') }}" class="text-dark">Edit Role</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.roles') }}" class="@if (request()->routeIs(['admin.roles'])) text-dark @else text-muted @endif">Roles</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Edit Role</a></li>
 @endsection
 
 @section('content')

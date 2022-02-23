@@ -7,9 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-muted">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('transactions') }}" class="text-dark">Transactions</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('transactions', $type) }}" class="text-dark">{{ ucfirst($type) }}</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-muted">Transactions</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">{{ ucfirst($type) }}</a></li>
 @endsection
 
 @section('content')
@@ -34,7 +33,7 @@
                             <th class="text-dark">Amount</th>
                             <th class="text-dark">Description</th>
                             <th class="text-dark">Date</th>
-                            <th class="text-dark">Status</th>
+                            <th class="text-dark rounded-end">Status</th>
                         </tr>
                     </thead>
                     <!--end::Table head-->
@@ -43,7 +42,7 @@
                         @foreach ($transactions as $key=>$transaction )
                             <tr>
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['amount'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($transaction['amount']) }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['description'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['created_at']->format('M d, Y') }}</span></td>
                                 <td>

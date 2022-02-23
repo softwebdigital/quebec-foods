@@ -150,32 +150,32 @@
         <ul class="nav nav-stretch nav-line-tabs nav-line-tabs-2x border-transparent fs-5 fw-bolder">
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5 active" id="overviewNav" href="{{ route('admin.users.show', $user['id']) }}">Overview</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.shows'])) active @endif" id="overviewNav" href="{{ route('admin.users.show', $user['id']) }}">Overview</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="farmNav" href="{{ route('admin.users.investments', ['user' => $user['id'], 'type' => 'farm']) }}">Farms Investments</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.investments']) && request()->type == 'farm') active @endif" id="farmNav" href="{{ route('admin.users.investments', ['user' => $user['id'], 'type' => 'farm']) }}">Farms Investments</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="plantNav" href="{{ route('admin.users.investments', ['user' => $user['id'], 'type' => 'plant']) }}">Plant Investments</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.investments']) && request()->type == 'plant') active @endif"  id="plantNav" href="{{ route('admin.users.investments', ['user' => $user['id'], 'type' => 'plant']) }}">Plant Investments</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="transactionNav" href="{{ route('admin.users.transactions', $user['id']) }}">Transactions</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.transactions'])) active @endif"  id="transactionNav" href="{{ route('admin.users.transactions', $user['id']) }}">Transactions</a>
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="walletNav" href="{{ route('admin.users.wallet', $user['id']) }}">Wallet</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.wallet'])) active @endif" id="walletNav" href="{{ route('admin.users.wallet', $user['id']) }}">Wallet</a>
             </li>
             <!--end::Nav item-->
              <!--begin::Nav item-->
              <li class="nav-item mt-2">
-                <a class="nav-link text-active-primary ms-0 me-10 py-5" id="referralNav" href="{{ route('admin.users.referrals', $user['id']) }}">Referrals</a>
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.referrals'])) active @endif" id="referralNav" href="{{ route('admin.users.referrals', $user['id']) }}">Referrals</a>
             </li>
             <!--end::Nav item-->
         </ul>

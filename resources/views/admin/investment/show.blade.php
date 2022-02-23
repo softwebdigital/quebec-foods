@@ -7,9 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-muted">Dashboard</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.transactions') }}" class="text-dark">Investments</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.transactions') }}" class="text-dark">Details</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.investments', [$type, $filter]) }}" class="@if (request()->routeIs(['admin.investments'])) text-dark @else text-muted @endif">Investments</a></li>
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Details</a></li>
 @endsection
 
 @section('content')
@@ -102,7 +101,7 @@
             </div>
             <div class="col-md-6 mb-4">
                 <label class="form-label">Type</label>
-                <input class="form-control form-control-solid" value="{{ $investment['package']['type'] }}" disabled/>
+                <input class="form-control form-control-solid" value="{{ ucfirst($investment['package']['type']) }}" disabled/>
             </div>
             <div class="col-md-6 mb-4">
                 <label class="form-label">Duration</label>

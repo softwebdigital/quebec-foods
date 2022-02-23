@@ -7,8 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-muted">Users</a></li>
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Transactions</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.users') }}" class="text-muted">Users</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Transactions</a></li>
 @endsection
 
 @section('content')
@@ -48,7 +48,7 @@
                             <tr>
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['user']['name'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['amount'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($transaction['amount']) }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['description'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['created_at']->format('M d, Y') }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $transaction['method'] }}</span></td>
@@ -71,12 +71,22 @@
                                         </span>
                                     </a>
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                        <div class="menu-item px-3">
-                                            <a class="menu-link px-3" href="javascript:void();" onclick=""><span class="">Approve</span></a>
-                                        </div>
-                                        <div class="menu-item px-3">
-                                            <a class="menu-link px-3" href="javascript:void();" onclick=""><span class="">Decline</span></a>
-                                        </div>
+                                        @if ($transaction['status'] == 'pending')
+                                            <div class="menu-item px-3">
+                                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionApprove{{$transaction['id']}}')" href="{{ route('admin.transactions.approve', $transaction['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
+                                                <form id="transactionApprove{{$transaction['id']}}" action="{{ route('admin.transactions.approve', $transaction['id']) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                </form>
+                                            </div>
+                                            <div class="menu-item px-3">
+                                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionDecline{{$transaction['id']}}')" href="{{ route('admin.transactions.decline', $transaction['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
+                                                <form id="transactionDecline{{$transaction['id']}}" action="{{ route('admin.transactions.decline', $transaction['id']) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                </form>
+                                            </div>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
