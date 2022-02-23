@@ -37,6 +37,9 @@ class CreateUsersTable extends Migration
             $table->timestamp('otp_expiry')->nullable();
             $table->text('reset_otp')->nullable();
             $table->timestamp('reset_otp_expiry')->nullable();
+            $table->string('two_factor_code')->nullable();
+            $table->dateTime('two_factor_expires_at')->nullable();
+            $table->boolean('two_factor_enabled')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });

@@ -25,6 +25,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    protected $dates = [
+        'two_factor_expires_at'
+    ];
+
     /**
      * The attributes that should be cast.
      *
@@ -344,5 +348,27 @@ class User extends Authenticatable implements MustVerifyEmail
             $code = mt_rand(000000000, 999999999);
         } while (User::where('ref_code', $code)->count() > 0);
         return abs($code);
+    }
+    
+    /**
+     * Generate 6 digits MFA code for the User
+     */
+    public function generateTwoFactorCode()
+    {
+        $this->timestamps = false;
+        $this->two_factor_code = rand(100000, 999999);
+        $this->two_factor_expires_at = now()->addMinutes(10);
+        $this->save();
+    }
+
+    /**
+     * Reset the MFA code generated earlier
+     */
+    public function resetTwoFactorCode()
+    {
+        $this->timestamps = false;
+        $this->two_factor_code = null;
+        $this->two_factor_expires_at = null;
+        $this->save();
     }
 }
