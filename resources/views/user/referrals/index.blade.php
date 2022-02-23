@@ -31,9 +31,7 @@
                             <th class="ps-4 text-dark rounded-start">SN</th>
                             <th class="text-dark">Name</th>
                             <th class="text-dark">Email</th>
-                            <th class="text-dark">Earning</th>
                             <th class="text-dark">Date</th>
-                            <th class="text-dark">Status</th>
                         </tr>
                     </thead>
                     <!--end::Table head-->
@@ -44,15 +42,7 @@
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $referral['referred']['name'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $referral['referred']['email'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ @if($referral['amount']) {{ number_format($referral['amount']) }} @else ---- @endif</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $referral['created_at']->format('M d, Y') }}</span></td>
-                                <td>
-                                    @if($referral['paid'] <> 1)
-                                        <span class="badge badge-pill badge-warning">Pending</span>
-                                    @else
-                                        <span class="badge badge-pill badge-success">Paid</span>
-                                    @endif
-                                </td>
                             </tr>
                         @endforeach
                     </tbody>

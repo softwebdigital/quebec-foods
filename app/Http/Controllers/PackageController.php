@@ -16,37 +16,8 @@ class PackageController extends Controller
      */
     public function index($type)
     {
-        $packages = Package::query()->where('type', $type)->get();
+        $packages = Package::latest()->where('type', $type)->get();
         return view('user.packages.index', compact('packages', 'type'));
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StorePackageRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StorePackageRequest $request)
-    {
-        $validator = Validator::make($request->all(), [
-            'package' => ['required'],
-            'slots' => ['required', 'numeric', 'min:1', 'integer'],
-            'payment' => ['required']
-        ]);
-        if ($validator->fails()){
-            return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
-        }
     }
 
     /**

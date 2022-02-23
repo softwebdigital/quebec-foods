@@ -336,4 +336,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->wallet->balance >= $amount;
     }
+
+    public static function getRefCode(): int
+    {
+        $code = '';
+        do {
+            $code = mt_rand(000000000, 999999999);
+        } while (User::where('ref_code', $code)->count() > 0);
+        return abs($code);
+    }
 }

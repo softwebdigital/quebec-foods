@@ -74,8 +74,17 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'ref_code' => User::getRefCode()
         ]);
         $user->wallet()->create(['balance' => 0]);
+        if ($data['ref']){
+           $referee = User::where('ref_code', $data['ref'])->first();
+           if ($referee){
+               $referee->referrals()->create([
+                   'referred_id' => $user['id']
+               ]);
+           }
+        }
         return $user;
     }
 }

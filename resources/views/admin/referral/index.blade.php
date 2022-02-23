@@ -1,18 +1,16 @@
 @extends('layouts.admin')
 
-@section('pageTitle', 'User Details')
+@section('pageTitle', 'Referrals')
 
 @section('style')
 
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('admin.users') }}" class="text-muted">Users</a></li>
-    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Referral</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Referrals</a></li>
 @endsection
 
 @section('content')
-    @include('admin.user.partials.navbar', ['user' => $user]);
     <div class="card mb-5 mb-xl-8">
         <!--begin::Header-->
         <div class="card-header border-0 pt-5">
@@ -33,18 +31,18 @@
                             <th class="ps-4 text-dark rounded-start">SN</th>
                             <th class="text-dark">Name</th>
                             <th class="text-dark">Email</th>
-                            <th class="text-dark rounded-end">Date</th>
+                            <th class="text-dark">Referrals</th>
                         </tr>
                     </thead>
                     <!--end::Table head-->
                     <!--begin::Table body-->
                     <tbody>
-                        @foreach ($user->referrals as $key => $referral )
+                        @foreach ($users as $key=>$user )
                             <tr>
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $referral['referred']['name'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $referral['referred']['email']  }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $referral['created_at']->format('M d, Y') }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $user['name'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $user['email'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ count($user['referrals']) }}</span></td>
                             </tr>
                         @endforeach
                     </tbody>
@@ -68,3 +66,4 @@
     });
 </script>
 @endsection
+

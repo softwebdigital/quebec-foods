@@ -72,6 +72,11 @@
                             <div class="fw-bolder mt-5">Country</div>
                             <div class="text-gray-600">{{ $user['country'] }}</div>
                             <!--begin::Details item-->
+                            <div class="fw-bolder mt-5">Referral Code</div>
+                            <div class="text-gray-600">{{ $user['ref_code'] }}</div>
+                            <!--begin::Details item-->
+                            <div class="fw-bolder mt-5">Referral Link</div>
+                            <div class="text-gray-600">{{ url('/register?ref=').$user['ref_code'] }}</div>
                         </div>
                     </div>
                     <!--end::Details content-->

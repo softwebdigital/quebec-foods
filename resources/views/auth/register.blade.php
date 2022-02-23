@@ -84,6 +84,10 @@
             <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="password_confirmation" autocomplete="off" />
         </div>
         <!--end::Input group-->
+        <div class="fv-row mb-5">
+            <label class="form-label fw-bolder text-dark fs-6">Referral Code</label>
+            <input class="form-control form-control-lg form-control-solid" type="text" placeholder="" name="ref" value="{{ request('ref') }}"/>
+        </div>
         <!--begin::Input group-->
         <div class="fv-row mb-10">
             <label class="form-check form-check-custom form-check-solid form-check-inline">
