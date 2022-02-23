@@ -7,9 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-muted">Dashboard</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.transactions') }}" class="text-dark">Transactions</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.transactions', $type) }}" class="text-dark">{{ ucfirst($type) }}</a></li>
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Transactions</a></li>
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">{{ ucfirst($type) }}</a></li>
 @endsection
 
 @section('content')
@@ -39,7 +38,7 @@
                         <th class="text-dark">Method</th>
                         <th class="text-dark">Channel</th>
                         <th class="text-dark">Status</th>
-                        <th class="text-dark">Action</th>
+                        <th class="text-dark rounded-end">Action</th>
                     </tr>
                 </thead>
                 <!--end::Table head-->

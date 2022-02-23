@@ -7,7 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Users</a></li>
+    <li class="breadcrumb-item text-muted"><a href="javascript:void()" class="text-muted">Users</a></li>
+    <li class="breadcrumb-item text-muted"><a href="javscript:void()" class="text-dark">{{ Str::ucfirst($type) }}</a></li>
 @endsection
 
 @section('content')

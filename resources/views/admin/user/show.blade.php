@@ -7,8 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-muted">Users</a></li>
-    <li class="breadcrumb-item"><a href="#" class="text-dark">Details</a></li>
+    <li class="breadcrumb-item text-muted"><a href="{{ route('admin.users') }}" class="text-muted">Users</a></li>
+    <li class="breadcrumb-item text-muted"><a href="javascript:void()" class="text-dark">Details</a></li>
 @endsection
 
 @section('content')

@@ -7,57 +7,98 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-dark">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('faq') }}" class="text-dark">FAQs</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="@if (request()->routeIs(['faq'])) text-dark @else text-muted @endif">FAQs</a></li>
 @endsection
 
 @section('content')
-
-<div class="card mb-5 mb-xl-8">
-    <!--begin::Header-->
-    <div class="card-header border-0 pt-5">
-        <h3 class="card-title align-items-start flex-column">
-            <span class="card-label fw-bolder fs-3 mb-1">FAQs</span>
-            <span class="text-muted mt-1 fw-bold fs-7">{{ count($faqs) }} Total FAQs</span>
-        </h3>
-    </div>
-    <!--end::Header-->
+    <!--begin::FAQ card-->
+<div class="card">
     <!--begin::Body-->
-    <div class="card-body py-3">
-        <!--begin::Accordion-->
-    <div class="accordion accordion-icon-toggle" id="kt_accordion_2">
-        @foreach ($faqs as $key => $faq )
-        <!--begin::Item-->
-        <div class="mb-5">
-            <!--begin::Header-->
-            <div class="accordion-header py-3 d-flex @if($key != 0) collapsed @endif" data-bs-toggle="collapse" data-bs-target="#kt_accordion_2_item_1{{ $faq['id'] }}">
-                <span class="accordion-icon">
-                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
-                    <span class="svg-icon svg-icon-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black"></rect>
-                            <path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black"></path>
-                        </svg>
-                    </span>
-                    <!--end::Svg Icon-->
-                </span>
-                <h3 class="fs-4 fw-bold mb-0 ms-4">{{ $faq['question'] }}</h3>
+    <div class="card-body p-10 p-lg-15">
+        <!--begin::Classic content-->
+        <div class="mb-13">
+            <!--begin::Intro-->
+            <div>
+                <!--begin::Title-->
+                <div class="d-block mb-10 d-sm-flex justify-content-between align-items-center">
+                    <h4 class="fs-3 text-gray-800 w-bolder m-0">Frequently Asked Questions</h4>
+                </div>
+                <!--end::Title-->
             </div>
-            <!--end::Header-->
-
-            <!--begin::Body-->
-            <div id="kt_accordion_2_item_1{{ $faq['id'] }}" class="fs-6 collapse @if($key == 0) show @endif ps-10" data-bs-parent="#kt_accordion_2">
-                {{ $faq['answer'] }}
-            </div>
-            <!--end::Body-->
+            <!--end::Intro-->
+            <!--begin::Row-->
+                <div class="row mb-12">
+                    @if (App\Models\Faq::count() > 0)
+                        @foreach ($faqCategories as $faqCategory)
+                            @if ( count($faqCategory->faqs) > 0 )
+                            <!--begin::Col-->
+                            <div class="col-md-6 pe-md-10 mb-10 mb-md-0">
+                                <!--begin::Title-->
+                                <h5 class="text-gray-800 fw-bolder mb-4">{{ $faqCategory['name'] }}</h5>
+                                <!--end::Title-->
+                                <!--begin::Accordion-->
+                                <!--begin::Section-->
+                                @foreach ($faqCategory->faqs as $key => $faq )
+                                    <div class="m-0">
+                                        <!--begin::Heading-->
+                                        <div class="d-flex align-items-center collapsible py-3 toggle mb-0 collapsed" data-bs-toggle="collapse" data-bs-target="#kt_job_4_1{{ $faq['id'] }}" aria-expanded="false">
+                                            <!--begin::Icon-->
+                                            <div class="btn btn-sm btn-icon mw-20px btn-active-color-primary me-5">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen036.svg-->
+                                                <span class="svg-icon toggle-on svg-icon-primary svg-icon-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="black"></rect>
+                                                        <rect x="6.0104" y="10.9247" width="12" height="2" rx="1" fill="black"></rect>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen035.svg-->
+                                                <span class="svg-icon toggle-off svg-icon-1">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5" fill="black"></rect>
+                                                        <rect x="10.8891" y="17.8033" width="12" height="2" rx="1" transform="rotate(-90 10.8891 17.8033)" fill="black"></rect>
+                                                        <rect x="6.01041" y="10.9247" width="12" height="2" rx="1" fill="black"></rect>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </div>
+                                            <!--end::Icon-->
+                                            <!--begin::Title-->
+                                            <h6 class="text-gray-700 fw-bolder cursor-pointer mb-0">{{ $faq['question'] }}</h6>
+                                            <!--end::Title-->
+                                        </div>
+                                        <!--end::Heading-->
+                                        <!--begin::Body-->
+                                        <div id="kt_job_4_1{{ $faq['id'] }}" class="collapse fs-6 ms-1">
+                                            <!--begin::Text-->
+                                            <div class="mb-4 text-gray-600 fw-bold fs-6 ps-10">
+                                                {{ $faq['answer'] }}
+                                            </div>
+                                            <!--end::Text-->
+                                        </div>
+                                        <!--end::Content-->
+                                        <!--begin::Separator-->
+                                        <div class="separator separator-dashed"></div>
+                                        <!--end::Separator-->
+                                    </div>
+                                @endforeach
+                                <!--end::Section-->
+                                <!--end::Accordion-->
+                            </div>
+                            <!--end::Col-->
+                            @endif
+                        @endforeach
+                    @else
+                        <div class="text-center m-0">No data available</div>
+                    @endif
+                </div>
+            <!--end::Row-->
         </div>
-        <!--end::Item-->
-        @endforeach
+        <!--end::Classic content-->
     </div>
-    <!--end::Accordion-->
-    </div>
-    <!--begin::Body-->
+    <!--end::Body-->
 </div>
+<!--end::FAQ card-->
 
 
 @endsection

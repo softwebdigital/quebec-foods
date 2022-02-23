@@ -7,8 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('admin.packages', $type) }}" class="text-muted">{{ ucfirst($type) }} Package</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('admin.packages.edit', [$type, $package['id']]) }}" class="text-muted">Edit {{ ucfirst($type) }} Package</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.packages', $type) }}" class="@if (request()->routeIs(['admin.packages'])) text-dark @else text-muted @endif">{{ ucfirst($type) }} Package</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Edit {{ ucfirst($type) }} Package</a></li>
 @endsection
 
 @section('content')

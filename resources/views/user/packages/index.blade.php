@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-muted">{{ ucfirst($type) }} Package</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">{{ ucfirst($type) }} Package</a></li>
 @endsection
 
 @section('content')
@@ -43,7 +43,7 @@
                             <th class="text-dark">Slots</th>
                             <th class="text-dark">Rollover</th>
                         @endif
-                        <th class="text-dark"></th>
+                        <th class="text-dark rounded-end"></th>
                     </tr>
                 </thead>
                 <!--end::Table head-->
@@ -54,11 +54,11 @@
                             <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['name'] }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['roi'] }}%</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['price'] }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['start_date'] }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($package['price']) }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['start_date']->format('M d, Y') }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['duration'] }} {{ $package['duration_mode'] }}{{ $package['duration'] > 1 ? 's' : '' }}</span></td>
                             @if ($type == 'plant')
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['milestones'] }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($package['milestones']) }}</span></td>
                             <td>
                                 @if ($package['status'] == 'open')
                                     <span class="badge badge-pill badge-success">Open</span>
@@ -70,7 +70,7 @@
                             @endif
 
                             @if ($type == 'farm')
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['slots'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($package['slots']) }}</span></td>
                                 <td>
                                     @if ($package['rollover'] == 1)
                                         <span class="badge badge-pill badge-success">Enabled</span>

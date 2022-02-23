@@ -9,6 +9,8 @@ class FaqCategory extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     public function faqs()
     {
         return $this->hasMany(Faq::class);

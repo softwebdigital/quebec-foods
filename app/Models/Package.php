@@ -12,6 +12,8 @@ class Package extends Model
 
     protected $guarded = [];
 
+    protected $dates = ['start_date'];
+
     // Package relationship with investments.
     public function investments()
     {

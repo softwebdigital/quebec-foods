@@ -7,8 +7,7 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="text-muted">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('wallet') }}" class="text-dark">Wallet</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Wallet</a></li>
 @endsection
 
 @section('content')
@@ -139,10 +138,10 @@
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2" for="amountWithdraw">Amount</label>
+                            <label class="required fs-5 fw-bold mb-2" for="amountDeposit">Amount</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control form-control-solid" name="amount" id="amountWithdraw">
+                            <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control form-control-solid" name="amount" id="amountDeposit">
                             @error('amount')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -170,19 +169,19 @@
                         <div id="securedByPaystackLogo" class="mx-auto text-center">
                             <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
                         </div>
-                        <div id="bankDetailsForDepositForm" style="display: none" class="alert mx-3 alert-fill-light">
+                        <div id="bankDetailsForDepositForm" style="display: none" class="alert mx-3 bg-secondary">
                             <table>
                                 <tr>
                                     <td>Bank Name:</td>
-                                    <td><span class="ml-3">{{ $setting['bank_name'] }}</span></td>
+                                    <td><span class="ms-2">{{ $setting['bank_name'] }}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Account Name:</td>
-                                    <td><span class="ml-3">{{ $setting['account_name'] }}</span></td>
+                                    <td><span class="ms-2">{{ $setting['account_name'] }}</span></td>
                                 </tr>
                                 <tr>
-                                    <td>Account Number:</td>
-                                    <td><span class="ml-3">{{ $setting['account_number'] }}</span></td>
+                                    <td>Account Number: </td>
+                                    <td><span class="ms-2">{{ $setting['account_number'] }}</span></td>
                                 </tr>
                             </table>
                         </div>
@@ -200,5 +199,20 @@
 @endsection
 
 @section('script')
-
+<script>
+    $(document).ready(function (){
+        let payment = $('#paymentDeposit');
+        let bankDetails = $('#bankDetailsForDepositForm');
+        let securedLogo = $('#securedByPaystackLogo');
+        payment.on('change', function (){
+            if (payment.val() === 'deposit'){
+                bankDetails.show(500);
+                securedLogo.hide(500);
+            }else {
+                bankDetails.hide(500);
+                securedLogo.show(500);
+            }
+        });
+    });
+</script>1
 @endsection

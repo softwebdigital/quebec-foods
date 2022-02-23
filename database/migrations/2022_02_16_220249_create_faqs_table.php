@@ -15,7 +15,7 @@ class CreateFaqsTable extends Migration
     {
         Schema::create('faqs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('faq_categories_id')->constrained();
+            $table->foreignId('faq_category_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('question');
             $table->string('answer');
             $table->timestamps();

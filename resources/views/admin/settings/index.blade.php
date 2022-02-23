@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('admin.settings') }}" class="text-dark">Settings</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Settings</a></li>
 @endsection
 
 @section('content')
@@ -255,30 +255,6 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <div class="row my-10">
-                        <!--begin::Col-->
-                        <div class="col-md-6 fv-row">
-                            <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                <input class="form-check-input toggleSideBar" type="radio" @if($setting['sidebar'] == 'dark') checked @endif name="sidebar" id="dark" value="dark"  />
-                                <label class="form-check-label" for="dark">
-                                    Dark Sidebar
-                                </label>
-                            </div>
-                        </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="col-md-6 fv-row">
-                            <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                <input class="form-check-input toggleSideBar" type="radio" @if($setting['sidebar'] == 'light') checked @endif name="sidebar" id="light" value="light"  />
-                                <label class="form-check-label" for="light">
-                                    Light Sidebar
-                                </label>
-                            </div>
-                        </div>
-                        <!--end::Col-->
                     </div>
                     <!--end::Input group-->
                     <!--begin::Submit-->

@@ -7,8 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="#" class="text-muted">{{ ucfirst($type) }}</a></li>
-<li class="breadcrumb-item"><a href="" class="text-muted">Invest</a></li>
+<li class="breadcrumb-item"><a href="{{ route('packages', $type) }}" class="@if (request()->routeIs(['packages'])) text-dark @else text-muted @endif">{{ ucfirst($type) }} Package</a></li>
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Invest</a></li>
 @endsection
 
 @section('content')
@@ -128,7 +128,7 @@
                         @endif
                         <div class="form-check mt-7 mb-10 form-check-flat form-check-primary">
                             <label class="form-check-label">
-                                I hereby agree to the <a href="https://raregems.ng/terms-and-conditions.html" target="_blank">terms and conditions</a>
+                                I hereby agree to the <a href="" target="_blank">terms and conditions</a>
                                 <input required type="checkbox" id="agreed" class="form-check-input">
                             </label>
                         </div>
@@ -178,7 +178,7 @@
             let securedByPaystack = $('#securedByPaystack');
             let submitButton = $('#submitButton');
             let agreed = $('#agreed');
-            let nairaWalletBalance = 0;
+            let nairaWalletBalance = parseFloat({{ auth()->user()['wallet']['balance'] }});
             let rolloverInvestment = $('#rolloverInvestment');
             agreed.on('change', checkIfFormCanSubmit);
             payment.on('change', function (){

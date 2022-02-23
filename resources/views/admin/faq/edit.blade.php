@@ -7,9 +7,8 @@
 @endsection
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}" class="text-muted">Dashboard</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.faq') }}" class="text-muted">FAQ</a></li>
-<li class="breadcrumb-item"><a href="{{ route('admin.faq.edit') }}" class="text-muted">Edit FAQ</a></li>
+<li class="breadcrumb-item"><a href="{{ route('admin.faq') }}" class="@if (request()->routeIs(['admin.faq'])) text-dark @else text-muted @endif">FAQ</a></li>
+<li class="breadcrumb-item"><a href="javacript:void()" class="text-muted">Edit FAQ</a></li>
 @endsection
 
 @section('content')
@@ -26,9 +25,28 @@
                     </div>
                     <!--end::Card title-->
                     <!--begin:::Form-->
-                    <form class="form mb-3" method="post" action="{{ route('admin.faq.update', $faq["id"]) }}" id="createFaqForm" enctype="multipart/form-data">
+                    <form class="form mb-3" method="post" action="{{ route('admin.faq.update', $faq["id"]) }}" id="editFaqForm" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2" for="category">Select Category</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <select name="category" aria-label="Select the Faq Category" data-placeholder="Select the Faq Category" data-control="select2" class="form-select form-select-solid text-dark" id="category">
+                                <option value="">Select the category</option>
+                                @foreach ($faqCategories as $faqCategory )
+                                <option @if((old('category') == $faqCategory['name']) || $faqCategory['id'] == $faq['faq_category_id'])) selected @endif value="{{ $faqCategory['name'] }}" >{{ $faqCategory['name'] }}</option>
+                                @endforeach
+                            </select>
+                            @error('category')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
@@ -58,7 +76,7 @@
                         </div>
                         <!--end::Input group-->
                         <!--begin::Submit-->
-                        <button type="button" onclick="confirmFormSubmit(event, 'createFaqForm')" class="btn btn-primary w-100">
+                        <button type="button" onclick="confirmFormSubmit(event, 'editFaqForm')" class="btn btn-primary w-100">
                             <!--begin::Indicator-->
                             <span class="indicator-label">Update</span>
                             <!--end::Indicator-->

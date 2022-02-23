@@ -3,7 +3,7 @@
 @section('pageTitle', 'Roles')
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('admin.roles') }}" class="text-dark">Roles</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Roles</a></li>
 @endsection
 
 @section('content')

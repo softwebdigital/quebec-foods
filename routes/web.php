@@ -25,7 +25,6 @@ Route::get('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'in
 Route::post('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'store'])->name('verify.store');
 
 Route::group(['middleware' => ['auth', 'verified']], function() {
-    Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.update');
     Route::post('/password/custom/update', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('password.custom.update');
@@ -34,12 +33,13 @@ Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::delete('/banks/{bank}', [App\Http\Controllers\BankAccountsController::class, 'destroy'])->name('bank.destroy');
 
     Route::group(['middleware' => ['profile_completed']], function () {
+        Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
         Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications');
         Route::get('/notifications/{notification?}/show', [App\Http\Controllers\NotificationController::class, 'show'])->name('notifications.show');
         Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm']], function() {
             Route::get('/', [\App\Http\Controllers\PackageController::class, 'index'])->name('packages');
         });
-        Route::group(['where' => ['type' => 'all|withdrawal|deposit|others']], function() {
+        Route::group(['where' => ['type' => 'all|withdrawal|deposit|payout|investment']], function() {
             Route::get('/transactions/{type?}', [App\Http\Controllers\TransactionController::class, 'index'])->name('transactions');
         });
         Route::group(['prefix' => '/investments/{type}', 'where' => ['type' => 'plant|farm']], function() {

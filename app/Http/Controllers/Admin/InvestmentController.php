@@ -12,14 +12,15 @@ use App\Http\Controllers\NotificationController;
 
 class InvestmentController extends Controller
 {
-    public function index()
+    public function index($type, $filter)
     {
-        return view('admin.investment.index', ['type' => \request('type') ?? 'all']);
+        return view('admin.investment.index', compact('type', 'filter'));
     }
 
-    public function show(Investment $investment)
+    public function show($type, Investment $investment, $filter = 'all')
     {
-        return view('admin.investment.show', ['investment' => $investment, 'packages' => Package::where('status', 'open')->get()]);
+        $packages = Package::where('status', 'open')->get();
+        return view('admin.investment.show', compact('type', 'filter', 'investment', 'packages'));
     }
 
     public function invest(User $user)
@@ -76,32 +77,18 @@ class InvestmentController extends Controller
         return view('admin.user.investment.show', ['user' => $user, 'investment' => $investment, 'packages' => Package::all()]);
     }
 
-    public function fetchInvestmentsWithAjax(Request $request, $type)
+    public function fetchInvestmentsWithAjax(Request $request, $type, $filter)
     {
         //        Define all column names
         $columns = [
             'id', 'name', 'package', 'slots', 'total_invested', 'expected_returns', 'return_date', 'status', 'action'
         ];
 //        Find data based on page
-        switch ($type){
-            case 'active':
-                $investments = Investment::query()->latest()->where('status', 'active');
-                break;
-            case 'pending':
-                $investments = Investment::query()->latest()->where('status', 'pending');
-                break;
-            case 'cancelled':
-                $investments = Investment::query()->latest()->where('status', 'cancelled');
-                break;
-            case 'settled':
-                $investments = Investment::query()->latest()->where('status', 'settled');
-                break;
-            case 'packages':
-                $investments = Investment::query()->latest()->whereHas('package',function ($q) use ($request) { $q->where('id', $request['package']); });
-                break;
-            default:
-                $investments = Investment::query()->latest();
-
+        $investments = Investment::query()->whereHas('package', function($query) use ($type) {
+            $query->where('type', $type);
+        });
+        if ($filter !== 'all') {
+            $investments->where('status', $filter);
         }
 //        Set helper variables from request and DB
         $totalData = $totalFiltered = $investments->count();
@@ -187,7 +174,7 @@ class InvestmentController extends Controller
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="'.route('admin.investments.show', $investment['id']).'"><span class="">View</span></a>
+                                        <a class="menu-link px-3" href="'.route('admin.investments.show', ['investment' => $investment['id'], 'type' => $type]).'"><span class="">View</span></a>
                                     </div>'
                                     .$action.'
                                 </div>';

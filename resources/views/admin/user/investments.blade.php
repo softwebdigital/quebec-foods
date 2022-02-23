@@ -1,14 +1,14 @@
 @extends('layouts.admin')
 
-@section('pageTitle', 'Investment')
+@section('pageTitle', 'User Details')
 
 @section('style')
 
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="#" class="text-muted">Users</a></li>
-    <li class="breadcrumb-item"><a href="#" class="text-dark">{{ ucfirst($type) }} Investments</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('admin.users') }}" class="text-muted">Users</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">{{ ucfirst($type) }} Investments</a></li>
 @endsection
 
 @section('content')
@@ -50,9 +50,9 @@
                                     <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                     <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['package']['name'] }}</span></td>
                                     <td><span class="text-gray-600 fw-bolder d-block fs-6">{{  $investment['slots']}}</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['amount'] }}</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['total_return'] }}</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['return_date'] }}</span></td>
+                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($investment['amount']) }}</span></td>
+                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($investment['total_return']) }}</span></td>
+                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['return_date']->format('M d, Y') }}</span></td>
                                     <td>
                                         @if($investment['status'] == 'active')
                                             <span class="badge badge-pill badge-success">Active</span>
@@ -74,7 +74,7 @@
                                         </a>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                             <div class="menu-item px-3">
-                                                <a class="menu-link px-3" href="{{ route('admin.investments.show', $investment['id']) }}"><span class="">View</span></a>
+                                                <a class="menu-link px-3" href="{{ route('admin.investments.show', ['investment' => $investment['id'], 'type' => $type]) }}"><span class="">View</span></a>
                                             </div>
                                             @if ($investment['status'] == 'pending')
                                                 <div class="menu-item px-3">

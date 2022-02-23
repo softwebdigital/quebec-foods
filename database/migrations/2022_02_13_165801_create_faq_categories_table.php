@@ -15,7 +15,7 @@ class CreateFaqCategoriesTable extends Migration
     {
         Schema::create('faq_categories', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name');
+            $table->string('name');
             $table->timestamps();
         });
     }
