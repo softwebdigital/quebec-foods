@@ -20,6 +20,10 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 
+Route::get('/verify/resend', [App\Http\Controllers\Auth\TwoFactorController::class, 'resend'])->name('verify.resend');
+Route::get('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'index'])->name('verify');
+Route::post('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'store'])->name('verify.store');
+
 Route::group(['middleware' => ['auth', 'verified']], function() {
     Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
