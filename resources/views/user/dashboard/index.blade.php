@@ -193,7 +193,7 @@
                         <!--end::Title-->
                         <!--begin::Illustration-->
                         <div class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center card-rounded-bottom h-200px mh-200px my-5 mb-lg-12"
-                            style="background-image:url('assets/media/svg/illustrations/easy/5.svg')"></div>
+                            style="background-image:url('{{asset($package['image'])}}'); border-radius: 10px;"></div>
                         <!--end::Illustration-->
                     </div>
                     <!--end::Heading-->
@@ -235,17 +235,17 @@
                             <li class="nav-item">
                                 <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light fw-bolder px-4 me-1"
                                     data-bs-toggle="tab" id="kt_chart_widget_11_tab_1"
-                                    href="#kt_chart_widget_11_tab_content_1">2020</a>
+                                    href="#kt_chart_widget_11_tab_content_1"></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light fw-bolder px-4 me-1"
                                     data-bs-toggle="tab" id="kt_chart_widget_11_tab_2"
-                                    href="#kt_chart_widget_11_tab_content_2">2021</a>
+                                    href="#kt_chart_widget_11_tab_content_2"></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link btn btn-sm btn-color-muted btn-active btn-active-light fw-bolder px-4 me-1 active"
                                     data-bs-toggle="tab" id="kt_chart_widget_11_tab_3"
-                                    href="#kt_chart_widget_11_tab_content_3">Month</a>
+                                    href="#kt_chart_widget_11_tab_content_3">2022</a>
                             </li>
                         </ul>
                     </div>
@@ -421,34 +421,6 @@
                         <span class="text-gray-400 mt-1 fw-bold fs-6">Transactions History</span>
                     </h3>
                     <!--end::Title-->
-                    <!--begin::Toolbar-->
-                    <div class="card-toolbar">
-                        <!--begin::Daterangepicker(defined in src/js/layout/app.js)-->
-                        <div data-kt-daterangepicker="true" data-kt-daterangepicker-opens="left"
-                            class="btn btn-sm btn-light d-flex align-items-center px-4">
-                            <!--begin::Display range-->
-                            <div class="text-gray-600 fw-bolder">Loading date range...</div>
-                            <!--end::Display range-->
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen014.svg-->
-                            <span class="svg-icon svg-icon-1 ms-2 me-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                    fill="none">
-                                    <path opacity="0.3"
-                                        d="M21 22H3C2.4 22 2 21.6 2 21V5C2 4.4 2.4 4 3 4H21C21.6 4 22 4.4 22 5V21C22 21.6 21.6 22 21 22Z"
-                                        fill="black" />
-                                    <path
-                                        d="M6 6C5.4 6 5 5.6 5 5V3C5 2.4 5.4 2 6 2C6.6 2 7 2.4 7 3V5C7 5.6 6.6 6 6 6ZM11 5V3C11 2.4 10.6 2 10 2C9.4 2 9 2.4 9 3V5C9 5.6 9.4 6 10 6C10.6 6 11 5.6 11 5ZM15 5V3C15 2.4 14.6 2 14 2C13.4 2 13 2.4 13 3V5C13 5.6 13.4 6 14 6C14.6 6 15 5.6 15 5ZM19 5V3C19 2.4 18.6 2 18 2C17.4 2 17 2.4 17 3V5C17 5.6 17.4 6 18 6C18.6 6 19 5.6 19 5Z"
-                                        fill="black" />
-                                    <path
-                                        d="M8.8 13.1C9.2 13.1 9.5 13 9.7 12.8C9.9 12.6 10.1 12.3 10.1 11.9C10.1 11.6 10 11.3 9.8 11.1C9.6 10.9 9.3 10.8 9 10.8C8.8 10.8 8.59999 10.8 8.39999 10.9C8.19999 11 8.1 11.1 8 11.2C7.9 11.3 7.8 11.4 7.7 11.6C7.6 11.8 7.5 11.9 7.5 12.1C7.5 12.2 7.4 12.2 7.3 12.3C7.2 12.4 7.09999 12.4 6.89999 12.4C6.69999 12.4 6.6 12.3 6.5 12.2C6.4 12.1 6.3 11.9 6.3 11.7C6.3 11.5 6.4 11.3 6.5 11.1C6.6 10.9 6.8 10.7 7 10.5C7.2 10.3 7.49999 10.1 7.89999 10C8.29999 9.90003 8.60001 9.80003 9.10001 9.80003C9.50001 9.80003 9.80001 9.90003 10.1 10C10.4 10.1 10.7 10.3 10.9 10.4C11.1 10.5 11.3 10.8 11.4 11.1C11.5 11.4 11.6 11.6 11.6 11.9C11.6 12.3 11.5 12.6 11.3 12.9C11.1 13.2 10.9 13.5 10.6 13.7C10.9 13.9 11.2 14.1 11.4 14.3C11.6 14.5 11.8 14.7 11.9 15C12 15.3 12.1 15.5 12.1 15.8C12.1 16.2 12 16.5 11.9 16.8C11.8 17.1 11.5 17.4 11.3 17.7C11.1 18 10.7 18.2 10.3 18.3C9.9 18.4 9.5 18.5 9 18.5C8.5 18.5 8.1 18.4 7.7 18.2C7.3 18 7 17.8 6.8 17.6C6.6 17.4 6.4 17.1 6.3 16.8C6.2 16.5 6.10001 16.3 6.10001 16.1C6.10001 15.9 6.2 15.7 6.3 15.6C6.4 15.5 6.6 15.4 6.8 15.4C6.9 15.4 7.00001 15.4 7.10001 15.5C7.20001 15.6 7.3 15.6 7.3 15.7C7.5 16.2 7.7 16.6 8 16.9C8.3 17.2 8.6 17.3 9 17.3C9.2 17.3 9.5 17.2 9.7 17.1C9.9 17 10.1 16.8 10.3 16.6C10.5 16.4 10.5 16.1 10.5 15.8C10.5 15.3 10.4 15 10.1 14.7C9.80001 14.4 9.50001 14.3 9.10001 14.3C9.00001 14.3 8.9 14.3 8.7 14.3C8.5 14.3 8.39999 14.3 8.39999 14.3C8.19999 14.3 7.99999 14.2 7.89999 14.1C7.79999 14 7.7 13.8 7.7 13.7C7.7 13.5 7.79999 13.4 7.89999 13.2C7.99999 13 8.2 13 8.5 13H8.8V13.1ZM15.3 17.5V12.2C14.3 13 13.6 13.3 13.3 13.3C13.1 13.3 13 13.2 12.9 13.1C12.8 13 12.7 12.8 12.7 12.6C12.7 12.4 12.8 12.3 12.9 12.2C13 12.1 13.2 12 13.6 11.8C14.1 11.6 14.5 11.3 14.7 11.1C14.9 10.9 15.2 10.6 15.5 10.3C15.8 10 15.9 9.80003 15.9 9.70003C15.9 9.60003 16.1 9.60004 16.3 9.60004C16.5 9.60004 16.7 9.70003 16.8 9.80003C16.9 9.90003 17 10.2 17 10.5V17.2C17 18 16.7 18.4 16.2 18.4C16 18.4 15.8 18.3 15.6 18.2C15.4 18.1 15.3 17.8 15.3 17.5Z"
-                                        fill="black" />
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </div>
-                        <!--end::Daterangepicker-->
-                    </div>
-                    <!--end::Toolbar-->
                 </div>
                 <!--end::Header-->
                 <!--begin::Body-->
@@ -456,21 +428,21 @@
                     <!--begin::Tab Content-->
                     <div class="tab-content">
                         <!--begin::Tap pane-->
-                        <div class="tab-pane fade active show" id="kt_charts_widget_10_tab_content_1">
+                        <div class="tab-pane fade active show" id="kt_charts_widget_12_tab_content_1">
                             <!--begin::Chart-->
                             <div id="kt_charts_widget_12_chart_1" class="min-h-auto" style="height: 375px"></div>
                             <!--end::Chart-->
                         </div>
                         <!--end::Tap pane-->
                         <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_charts_widget_10_tab_content_2">
+                        <div class="tab-pane fade" id="kt_charts_widget_12_tab_content_2">
                             <!--begin::Chart-->
                             <div id="kt_charts_widget_12_chart_2" class="min-h-auto" style="height: 375px"></div>
                             <!--end::Chart-->
                         </div>
                         <!--end::Tap pane-->
                         <!--begin::Tap pane-->
-                        <div class="tab-pane fade" id="kt_charts_widget_10_tab_content_3">
+                        <div class="tab-pane fade" id="kt_charts_widget_12_tab_content_3">
                             <!--begin::Chart-->
                             <div id="kt_charts_widget_12_chart_3" class="min-h-auto" style="height: 375px"></div>
                             <!--end::Chart-->
@@ -500,22 +472,6 @@
                         <!--begin::Title-->
                         <h4 class="fw-bolder text-gray-800 m-0">Plant Investments</h4>
                         <!--end::Title-->
-                        <!--begin::Menu-->
-                        <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                    </g>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </button>
-                        <!--end::Menu-->
                     </div>
                     <!--end::Heading-->
                     <!--begin::Chart-->
@@ -675,23 +631,6 @@
                         <!--begin::Title-->
                         <h4 class="fw-bolder text-gray-800 m-0">Farm Investment</h4>
                         <!--end::Title-->
-                        <!--begin::Menu-->
-                        <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                    </g>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </button>
-
-                        <!--end::Menu-->
                     </div>
                     <!--end::Heading-->
                     <!--begin::Chart-->
@@ -720,5 +659,475 @@
 @endsection
 
 @section('script')
+<script>
+function () {
+    var e,
+        t = document.querySelectorAll(".mixed-widget-13-chart");
+    [].slice.call(t).map(function (t) {
+        if (((e = parseInt(KTUtil.css(t, "height"))), t)) {
+            var a = KTUtil.getCssVariableValue("--bs-gray-800"),
+                o = KTUtil.getCssVariableValue("--bs-gray-300");
+            new ApexCharts(t, {
+                series: [
+                    {
+                        name: "Net Profit",
+                        data: [15, 25, 15, 40, 20, 50],
+                    },
+                ],
+                grid: {
+                    show: !1,
+                    padding: {
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                    },
+                },
+                chart: {
+                    fontFamily: "inherit",
+                    type: "area",
+                    height: e,
+                    toolbar: { show: !1 },
+                    zoom: { enabled: !1 },
+                    sparkline: { enabled: !0 },
+                },
+                plotOptions: {},
+                legend: { show: !1 },
+                dataLabels: { enabled: !1 },
+                fill: {
+                    type: "gradient",
+                    gradient: {
+                        opacityFrom: 0.4,
+                        opacityTo: 0,
+                        stops: [20, 120, 120, 120],
+                    },
+                },
+                stroke: {
+                    curve: "smooth",
+                    show: !0,
+                    width: 3,
+                    colors: ["#FFFFFF"],
+                },
+                xaxis: {
+                    categories: [
+                        "Feb",
+                        "Mar",
+                        "Apr",
+                        "May",
+                        "Jun",
+                        "Jul",
+                    ],
+                    axisBorder: { show: !1 },
+                    axisTicks: { show: !1 },
+                    labels: {
+                        show: !1,
+                        style: { colors: a, fontSize: "12px" },
+                    },
+                    crosshairs: {
+                        show: !1,
+                        position: "front",
+                        stroke: {
+                            color: o,
+                            width: 1,
+                            dashArray: 3,
+                        },
+                    },
+                    tooltip: {
+                        enabled: !0,
+                        formatter: void 0,
+                        offsetY: 0,
+                        style: { fontSize: "12px" },
+                    },
+                },
+                yaxis: {
+                    min: 0,
+                    max: 60,
+                    labels: {
+                        show: !1,
+                        style: { colors: a, fontSize: "12px" },
+                    },
+                },
+                states: {
+                    normal: { filter: { type: "none", value: 0 } },
+                    hover: { filter: { type: "none", value: 0 } },
+                    active: {
+                        allowMultipleDataPointsSelection: !1,
+                        filter: { type: "none", value: 0 },
+                    },
+                },
+                tooltip: {
+                    style: { fontSize: "12px" },
+                    y: {
+                        formatter: function (e) {
+                            return "$" + e + " thousands";
+                        },
+                    },
+                },
+                colors: ["#ffffff"],
+                markers: {
+                    colors: [a],
+                    strokeColor: [o],
+                    strokeWidth: 3,
+                },
+            }).render();
+        }
+    });
+}()
 
+
+var KTChartsWidget11 = (function () {
+    var e = function (e, t, a, r) {
+        var o = document.querySelector(t),
+            i = parseInt(KTUtil.css(o, "height"));
+        if (o) {
+            var s = KTUtil.getCssVariableValue("--bs-gray-500"),
+                l = KTUtil.getCssVariableValue("--bs-border-dashed-color"),
+                n = KTUtil.getCssVariableValue("--bs-success"),
+                d = KTUtil.getCssVariableValue("--bs-success"),
+                c = new ApexCharts(o, {
+                    series: [{ name: "Sales", data: a }],
+                    chart: {
+                        fontFamily: "inherit",
+                        type: "area",
+                        height: i,
+                        toolbar: { show: !1 },
+                    },
+                    plotOptions: {},
+                    legend: { show: !1 },
+                    dataLabels: { enabled: !1 },
+                    fill: {
+                        type: "gradient",
+                        gradient: {
+                            shadeIntensity: 1,
+                            opacityFrom: 0.3,
+                            opacityTo: 0.7,
+                            stops: [0, 90, 100],
+                        },
+                    },
+                    stroke: {
+                        curve: "smooth",
+                        show: !0,
+                        width: 3,
+                        colors: [n],
+                    },
+                    xaxis: {
+                        categories: [
+                            "",
+                            "Apr 02",
+                            "Apr 06",
+                            "Apr 06",
+                            "Apr 05",
+                            "Apr 06",
+                            "Apr 10",
+                            "Apr 08",
+                            "Apr 09",
+                            "Apr 14",
+                            "Apr 10",
+                            "Apr 12",
+                            "Apr 18",
+                            "Apr 14",
+                            "Apr 15",
+                            "Apr 14",
+                            "Apr 17",
+                            "Apr 18",
+                            "Apr 02",
+                            "Apr 06",
+                            "Apr 18",
+                            "Apr 05",
+                            "Apr 06",
+                            "Apr 10",
+                            "Apr 08",
+                            "Apr 22",
+                            "Apr 14",
+                            "Apr 11",
+                            "Apr 12",
+                            "",
+                        ],
+                        axisBorder: { show: !1 },
+                        axisTicks: { show: !1 },
+                        tickAmount: 5,
+                        labels: {
+                            rotate: 0,
+                            rotateAlways: !0,
+                            style: { colors: s, fontSize: "13px" },
+                        },
+                        crosshairs: {
+                            position: "front",
+                            stroke: { color: n, width: 1, dashArray: 3 },
+                        },
+                        tooltip: {
+                            enabled: !0,
+                            formatter: void 0,
+                            offsetY: 0,
+                            style: { fontSize: "13px" },
+                        },
+                    },
+                    yaxis: {
+                        tickAmount: 4,
+                        max: 24,
+                        min: 10,
+                        labels: { style: { colors: s, fontSize: "13px" } },
+                    },
+                    states: {
+                        normal: { filter: { type: "none", value: 0 } },
+                        hover: { filter: { type: "none", value: 0 } },
+                        active: {
+                            allowMultipleDataPointsSelection: !1,
+                            filter: { type: "none", value: 0 },
+                        },
+                    },
+                    tooltip: {
+                        style: { fontSize: "12px" },
+                        y: {
+                            formatter: function (e) {
+                                return "$" + e + "K";
+                            },
+                        },
+                    },
+                    colors: [d],
+                    grid: {
+                        borderColor: l,
+                        strokeDashArray: 4,
+                        yaxis: { lines: { show: !0 } },
+                    },
+                    markers: { strokeColor: n, strokeWidth: 3 },
+                }),
+                u = !1,
+                p = document.querySelector(e);
+            !0 === r && (c.render(), (u = !0)),
+                p.addEventListener("shown.bs.tab", function (e) {
+                    0 == u && (c.render(), (u = !0));
+                });
+        }
+    };
+    return {
+        init: function () {
+            e(
+                "#kt_chart_widget_11_tab_1",
+                "#kt_chart_widget_11_chart_1",
+                [
+                    16, 19, 19, 16, 16, 14, 15, 15, 17, 17, 19, 19, 18, 18, 20,
+                    20, 18, 18, 22, 22, 20, 20, 18, 18, 20, 20, 18, 20, 20, 22,
+                ],
+                !1
+            ),
+                e(
+                    "#kt_chart_widget_11_tab_2",
+                    "#kt_chart_widget_11_chart_2",
+                    [
+                        18, 18, 20, 20, 18, 18, 22, 22, 20, 20, 18, 18, 20, 20,
+                        18, 18, 20, 20, 22, 15, 18, 18, 17, 17, 15, 15, 17, 17,
+                        19, 17,
+                    ],
+                    !1
+                ),
+                e(
+                    "#kt_chart_widget_11_tab_3",
+                    "#kt_chart_widget_11_chart_3",
+                    [
+                        17, 20, 20, 19, 19, 17, 17, 19, 19, 21, 21, 19, 19, 21,
+                        21, 18, 18, 16, 17, 17, 19, 19, 21, 21, 19, 19, 17, 17,
+                        18, 18,
+                    ],
+                    !0
+                );
+        },
+    };
+})();
+
+
+var KTChartsWidget12 = (function () {
+    var e = function (e, t, a, r) {
+        var o = document.querySelector(t);
+        if (o) {
+            var i = parseInt(KTUtil.css(o, "height")),
+                s =
+                    (KTUtil.getCssVariableValue("--bs-gray-900"),
+                    KTUtil.getCssVariableValue("--bs-border-dashed-color")),
+                l = {
+                    series: [{ name: "Net Profit", data: a }],
+                    chart: {
+                        fontFamily: "inherit",
+                        type: "bar",
+                        height: i,
+                        toolbar: { show: !1 },
+                    },
+                    plotOptions: {
+                        bar: {
+                            horizontal: !1,
+                            columnWidth: ["22%"],
+                            borderRadius: 5,
+                            dataLabels: { position: "top" },
+                            startingShape: "flat",
+                        },
+                    },
+                    legend: { show: !1 },
+                    dataLabels: {
+                        enabled: !0,
+                        offsetY: -28,
+                        style: { fontSize: "13px", colors: ["labelColor"] },
+                    },
+                    stroke: { show: !0, width: 2, colors: ["transparent"] },
+                    xaxis: {
+                        categories: [
+                            "Grossey",
+                            "Pet Food",
+                            "Flowers",
+                            "Restaurant",
+                            "Kids Toys",
+                            "Clothing",
+                            "Still Water",
+                        ],
+                        axisBorder: { show: !1 },
+                        axisTicks: { show: !1 },
+                        labels: {
+                            style: {
+                                colors: KTUtil.getCssVariableValue(
+                                    "--bs-gray-500"
+                                ),
+                                fontSize: "13px",
+                            },
+                        },
+                        crosshairs: {
+                            fill: {
+                                gradient: { opacityFrom: 0, opacityTo: 0 },
+                            },
+                        },
+                    },
+                    yaxis: {
+                        labels: {
+                            style: {
+                                colors: KTUtil.getCssVariableValue(
+                                    "--bs-gray-500"
+                                ),
+                                fontSize: "13px",
+                            },
+                            formatter: function (e) {
+                                return parseInt(e) + "K";
+                            },
+                        },
+                    },
+                    fill: { opacity: 1 },
+                    states: {
+                        normal: { filter: { type: "none", value: 0 } },
+                        hover: { filter: { type: "none", value: 0 } },
+                        active: {
+                            allowMultipleDataPointsSelection: !1,
+                            filter: { type: "none", value: 0 },
+                        },
+                    },
+                    tooltip: {
+                        style: { fontSize: "12px" },
+                        y: {
+                            formatter: function (e) {
+                                return "$" + e + " thousands";
+                            },
+                        },
+                    },
+                    colors: [
+                        KTUtil.getCssVariableValue("--bs-primary"),
+                        KTUtil.getCssVariableValue("--bs-light-primary"),
+                    ],
+                    grid: {
+                        borderColor: s,
+                        strokeDashArray: 4,
+                        yaxis: { lines: { show: !0 } },
+                    },
+                },
+                n = new ApexCharts(o, l),
+                d = !1,
+                c = document.querySelector(e);
+            !0 === r && (n.render(), (d = !0)),
+                c.addEventListener("shown.bs.tab", function (e) {
+                    0 == d && (n.render(), (d = !0));
+                });
+        }
+    };
+    return {
+        init: function () {
+            e(
+                "#kt_charts_widget_12_tab_1",
+                "#kt_charts_widget_12_chart_1",
+                [54, 42, 75, 110, 23, 87, 50],
+                !0
+            ),
+                e(
+                    "#kt_charts_widget_12_tab_2",
+                    "#kt_charts_widget_12_chart_2",
+                    [25, 55, 35, 50, 45, 20, 31],
+                    !1
+                ),
+                e(
+                    "#kt_charts_widget_12_tab_3",
+                    "#kt_charts_widget_12_chart_3",
+                    [45, 15, 35, 70, 45, 50, 21],
+                    !1
+                );
+        },
+    };
+});
+
+(function () {
+                var e = document.querySelectorAll(".mixed-widget-17-chart");
+                [].slice.call(e).map(function (e) {
+                    var t = parseInt(KTUtil.css(e, "height"));
+                    if (e) {
+                        var a = e.getAttribute("data-kt-chart-color"),
+                            o = {
+                                labels: ["Total Orders"],
+                                series: [75],
+                                chart: {
+                                    fontFamily: "inherit",
+                                    height: t,
+                                    type: "radialBar",
+                                    offsetY: 0,
+                                },
+                                plotOptions: {
+                                    radialBar: {
+                                        startAngle: -90,
+                                        endAngle: 90,
+                                        hollow: { margin: 0, size: "55%" },
+                                        dataLabels: {
+                                            showOn: "always",
+                                            name: {
+                                                show: !0,
+                                                fontSize: "12px",
+                                                fontWeight: "700",
+                                                offsetY: -5,
+                                                color: KTUtil.getCssVariableValue(
+                                                    "--bs-gray-500"
+                                                ),
+                                            },
+                                            value: {
+                                                color: KTUtil.getCssVariableValue(
+                                                    "--bs-gray-900"
+                                                ),
+                                                fontSize: "24px",
+                                                fontWeight: "600",
+                                                offsetY: -40,
+                                                show: !0,
+                                                formatter: function (e) {
+                                                    return "8,346";
+                                                },
+                                            },
+                                        },
+                                        track: {
+                                            background:
+                                                KTUtil.getCssVariableValue(
+                                                    "--bs-gray-300"
+                                                ),
+                                            strokeWidth: "100%",
+                                        },
+                                    },
+                                },
+                                colors: [
+                                    KTUtil.getCssVariableValue("--bs-" + a),
+                                ],
+                                stroke: { lineCap: "round" },
+                            };
+                        new ApexCharts(e, o).render();
+                    }
+                });
+            })(),
+</script>
 @endsection

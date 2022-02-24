@@ -41,6 +41,9 @@
                 <thead>
                     <tr class="fw-bolder text-muted bg-light">
                         <th class="ps-4 text-dark rounded-start">SN</th>
+                        @if ($type == 'plant')
+                        <th class="text-dark">Cover</th>
+                        @endif
                         <th class="text-dark">Name</th>
                         <th class="text-dark">ROI in %</th>
                         <th class="text-dark">Price per slot</th>
@@ -64,6 +67,13 @@
                     @foreach ($packages as $key=>$package )
                         <tr>
                             <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
+                            @if ($type == 'plant')
+                            <td>
+                                <div class="symbol symbol-45px me-5">
+                                    <img src="{{ asset($package['image']) }}" alt="Package Cover" />
+                                </div>
+                            </td>
+                            @endif
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['name'] }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['roi'] }}%</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($package['price']) }}</span></td>

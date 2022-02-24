@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
@@ -28,7 +29,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard.index');
+        $package = Package::query()->latest()->where('type', 'plant')->first();
+        return view('user.dashboard.index', compact('package'));
     }
 
     public function profile()
