@@ -926,65 +926,41 @@
                     <div class="tab-content">
                         <!--begin::Tap pane-->
                         <div class="tab-pane show active">
-                            <!--begin::Item-->
-                            <div class="d-flex flex-stack">
-                                <i class="bi bi-arrow-down text-success fs-2x"></i>
-                                <!--begin::Section-->
-                                <div class="d-flex align-items-center me-5">
-                                    <!--begin::Content-->
-                                    <div class="me-5">
-                                        <!--begin::Title-->
-                                        <a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Abstergo
-                                            Ltd.</a>
-                                        <!--end::Title-->
-                                        <!--begin::Desc-->
-                                        <span class="text-gray-400 fw-bold fs-7 d-block text-start ps-0">Video
-                                            Channel</span>
-                                        <!--end::Desc-->
+                            @foreach ($data['wallet']['history'] as $WalletHistory)
+                                <!--begin::Item-->
+                                <div class="d-flex flex-stack">
+                                    @if ($WalletHistory['type'] == 'deposit' || $WalletHistory['type'] == 'payout')
+                                        <i class="bi bi-arrow-down text-success fs-2x"></i>
+                                    @else
+                                        <i class="bi bi-arrow-up text-danger fs-2x"></i>
+                                    @endif
+                                    <!--begin::Section-->
+                                    <div class="d-flex align-items-center me-5">
+                                        <!--begin::Content-->
+                                        <div class="me-5 text-start">
+                                            <!--begin::Title-->
+                                            <p class="text-gray-800 fw-bolder m-0 fs-6">{{ ucfirst($WalletHistory['type']) }}</p>
+                                            <!--end::Title-->
+                                            <!--begin::Desc-->
+                                            <span class="text-gray-400 fw-bold fs-7">{{ $WalletHistory['description'] }}</span>
+                                            <!--end::Desc-->
+                                        </div>
+                                        <!--end::Content-->
                                     </div>
-                                    <!--end::Content-->
-                                </div>
-                                <!--end::Section-->
-                                <!--begin::Wrapper-->
-                                <div class="d-flex align-items-center">
-                                    <!--begin::Number-->
-                                    <span class="text-gray-800 fw-bolder fs-4 me-3">1,578</span>
-                                    <!--end::Number-->
-                                </div>
-                                <!--end::Wrapper-->
-                            </div>
-                            <!--end::Item-->
-                            <!--begin::Separator-->
-                            <div class="separator separator-dashed my-4"></div>
-                            <!--end::Separator-->
-                            <!--begin::Item-->
-                            <div class="d-flex flex-stack">
-                                <i class="bi bi-arrow-up text-danger fs-2x"></i>
-                                <!--begin::Section-->
-                                <div class="d-flex align-items-center me-5">
-                                    <!--begin::Content-->
-                                    <div class="me-5">
-                                        <!--begin::Title-->
-                                        <a href="#" class="text-gray-800 fw-bolder text-hover-primary fs-6">Binford
-                                            Ltd.</a>
-                                        <!--end::Title-->
-                                        <!--begin::Desc-->
-                                        <span class="text-gray-400 fw-bold fs-7 d-block text-start ps-0">Social
-                                            Media</span>
-                                        <!--end::Desc-->
+                                    <!--end::Section-->
+                                    <!--begin::Wrapper-->
+                                    <div class="d-flex align-items-center">
+                                        <!--begin::Number-->
+                                        <span class="text-gray-800 fw-bolder fs-4 me-3">₦ {{ $WalletHistory['amount'] }}</span>
+                                        <!--end::Number-->
                                     </div>
-                                    <!--end::Content-->
+                                    <!--end::Wrapper-->
                                 </div>
-                                <!--end::Section-->
-                                <!--begin::Wrapper-->
-                                <div class="d-flex align-items-center">
-                                    <!--begin::Number-->
-                                    <span class="text-gray-800 fw-bolder fs-4 me-3">2,588</span>
-                                    <!--end::Number-->
-                                </div>
-                                <!--end::Wrapper-->
-                            </div>
-                            <!--end::Item-->
+                                <!--end::Item-->
+                                <!--begin::Separator-->
+                                <div class="separator separator-dashed my-4"></div>
+                                <!--end::Separator-->
+                            @endforeach
                         </div>
                         <!--end::Tap pane-->
                     </div>
@@ -1148,31 +1124,35 @@
                                 <tr class="fw-bolder text-muted">
                                     <th class="ps-4 text-dark rounded-start">S/N</th>
                                     <th class="text-dark">Package</th>
-                                    <th class="text-dark">Invested</th>
-                                    <th class="text-dark">Returns</th>
-                                    <th class="text-dark">Days left</th>
+                                    <th class="text-dark">Total Invested</th>
+                                    <th class="text-dark">Expected Returns</th>
+                                    <th class="text-dark">Return Date</th>
                                     <th class="text-dark">Status</th>
                                 </tr>
                             </thead>
                             <!--end::Table head-->
                             <!--begin::Table body-->
                             <tbody>
-                                <tr>
-                                    <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">1</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">Gold Package</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ 10,000</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ 15,000</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">23 days</span></td>
-                                    <td><span class="badge badge-pill badge-success">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">2</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">Silver Package</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ 5,000</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ 7,000</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">15 days</span></td>
-                                    <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                                </tr>
+                                @foreach ($data['investments']['plant'] as $key => $plantInvestment )
+                                    <tr>
+                                        <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['package']['name'] }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($plantInvestment['amount']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($plantInvestment['total_return']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['return_date']->format('M d, Y') }}</span></td>
+                                        <td>
+                                            @if($plantInvestment['status'] == 'active')
+                                                <span class="badge badge-pill badge-success">Active</span>
+                                            @elseif($plantInvestment['status'] == 'pending')
+                                                <span class="badge badge-pill badge-warning">Pending</span>
+                                            @elseif($plantInvestment['status'] == 'settled')
+                                                <span class="badge badge-pill badge-warning">Settled</span>
+                                            @elseif($plantInvestment['status'] == 'cancelled')
+                                                <span class="badge badge-pill badge-danger">Declined</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                             <!--end::Table body-->
                         </table>
@@ -1213,31 +1193,35 @@
                                 <tr class="fw-bolder text-muted">
                                     <th class="ps-4 text-dark rounded-start">S/N</th>
                                     <th class="text-dark">Package</th>
-                                    <th class="text-dark">Invested</th>
-                                    <th class="text-dark">Returns</th>
-                                    <th class="text-dark">Days left</th>
+                                    <th class="text-dark">Total Invested</th>
+                                    <th class="text-dark">Expected Returns</th>
+                                    <th class="text-dark">Return Date</th>
                                     <th class="text-dark">Status</th>
                                 </tr>
                             </thead>
                             <!--end::Table head-->
                             <!--begin::Table body-->
                             <tbody>
-                                <tr>
-                                    <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">1</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">Gold Package</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ 10,000</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ 15,000</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">23 days</span></td>
-                                    <td><span class="badge badge-pill badge-success">Active</span></td>
-                                </tr>
-                                <tr>
-                                    <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">2</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">Silver Package</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ 5,000</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ 7,000</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">15 days</span></td>
-                                    <td><span class="badge badge-pill badge-warning">Pending</span></td>
-                                </tr>
+                                @foreach ($data['investments']['farm'] as $key => $farmInvestment )
+                                    <tr>
+                                        <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['package']['name'] }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($farmInvestment['amount']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($farmInvestment['total_return']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['return_date']->format('M d, Y') }}</span></td>
+                                        <td>
+                                            @if($farmInvestment['status'] == 'active')
+                                                <span class="badge badge-pill badge-success">Active</span>
+                                            @elseif($farmInvestment['status'] == 'pending')
+                                                <span class="badge badge-pill badge-warning">Pending</span>
+                                            @elseif($farmInvestment['status'] == 'settled')
+                                                <span class="badge badge-pill badge-warning">Settled</span>
+                                            @elseif($farmInvestment['status'] == 'cancelled')
+                                                <span class="badge badge-pill badge-danger">Declined</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                             <!--end::Table body-->
                         </table>
