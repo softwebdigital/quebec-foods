@@ -46,7 +46,7 @@
                                     <!--end::Symbol-->
                                     <!--begin::Title-->
                                     <div>
-                                        <div class="fs-5 text-dark fw-bolder lh-1">₦50K</div>
+                                        <div class="fs-5 text-dark fw-bolder lh-1">₦ {{ $data['wallet']['balance'] }}</div>
                                         <div class="fs-7 text-gray-600 fw-bold">Wallet</div>
                                     </div>
                                     <!--end::Title-->
@@ -72,7 +72,7 @@
                                     <!--end::Symbol-->
                                     <!--begin::Title-->
                                     <div>
-                                        <div class="fs-5 text-dark fw-bolder lh-1">₦4,5K</div>
+                                        <div class="fs-5 text-dark fw-bolder lh-1">₦ {{ $data['investments']['total'] }}</div>
                                         <div class="fs-7 text-gray-600 fw-bold">Invested</div>
                                     </div>
                                     <!--end::Title-->
@@ -98,7 +98,7 @@
                                     <!--end::Symbol-->
                                     <!--begin::Title-->
                                     <div>
-                                        <div class="fs-5 text-dark fw-bolder lh-1">40</div>
+                                        <div class="fs-5 text-dark fw-bolder lh-1">{{ $data['investments']['slots'] }}</div>
                                         <div class="fs-7 text-gray-600 fw-bold">Slots</div>
                                     </div>
                                     <!--end::Title-->
@@ -124,7 +124,7 @@
                                     <!--end::Symbol-->
                                     <!--begin::Title-->
                                     <div>
-                                        <div class="fs-5 text-dark fw-bolder lh-1">₦5.8M</div>
+                                        <div class="fs-5 text-dark fw-bolder lh-1">₦ {{ $data['investments']['returns'] }}</div>
                                         <div class="fs-7 text-gray-600 fw-bold">Returns</div>
                                     </div>
                                     <!--end::Title-->
@@ -288,7 +288,7 @@
                         <!--begin::Balance-->
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Active Investment</span>
-                            <span class="fw-bolder fs-2x pt-1">₦ 37,562.00</span>
+                            <span class="fw-bolder fs-2x pt-1">₦ {{ $data['plantInvestments']['active'] }}</span>
                         </div>
                         <!--end::Balance-->
                     </div>
@@ -320,7 +320,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">100</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ $data['plantInvestments']['slots'] }}</div>
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                     <span class="svg-icon svg-icon-5 svg-icon-success ms-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -362,7 +362,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦1,7b</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦ {{ $data['plantInvestments']['total'] }}</div>
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
                                     <span class="svg-icon svg-icon-5 svg-icon-danger ms-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -402,7 +402,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦8,8m</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦ {{ $data['plantInvestments']['returns'] }}</div>
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                     <span class="svg-icon svg-icon-5 svg-icon-success ms-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -578,7 +578,7 @@
                         <!--begin::Balance-->
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Active Investments</span>
-                            <span class="fw-bolder fs-2x pt-1">₦ 37,562.00</span>
+                            <span class="fw-bolder fs-2x pt-1">₦ {{ $data['farmInvestments']['active'] }}</span>
                         </div>
                         <!--end::Balance-->
                     </div>
@@ -610,7 +610,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">120</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ $data['farmInvestments']['slots'] }}</div>
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                     <span class="svg-icon svg-icon-5 svg-icon-success ms-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -652,7 +652,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦1,7b</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦ {{ $data['farmInvestments']['total'] }}</div>
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr065.svg-->
                                     <span class="svg-icon svg-icon-5 svg-icon-danger ms-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -692,7 +692,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦8,8m</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦ {{ $data['farmInvestments']['returns'] }}</div>
                                     <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
                                     <span class="svg-icon svg-icon-5 svg-icon-success ms-1">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

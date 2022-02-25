@@ -27,10 +27,31 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
-        $package = Package::query()->latest()->where('type', 'plant')->first();
-        return view('user.dashboard.index', compact('package'));
+        $walletHistory = auth()->user()->transactions()->latest()->where('method', 'wallet')->limit(6)->get();
+        collect($walletHistory)->map(function($item) {
+            $item['amount'] = self::formatHumanFriendlyNumber($item['amount']);
+        });
+
+        $investments = auth()->user()->investments()->where('status', 'active')->orWhere('status', 'settled');
+        $data = [
+            'package'     => Package::query()->latest()->where('type', 'plant')->first(),
+            'investments' => [
+                'plant'   => $this->getPackageInvestments('plant'),
+                'farm'    => $this->getPackageInvestments('farm'),
+                'total'   => self::formatHumanFriendlyNumber($investments->sum('amount')),
+                'returns' => self::formatHumanFriendlyNumber($investments->sum('total_return')),
+                'slots'   => self::formatHumanFriendlyNumber($investments->sum('slots')),
+            ],
+            'wallet'      => [
+                'balance' => self::formatHumanFriendlyNumber(auth()->user()->wallet['balance']),
+                'history' => $walletHistory,
+            ],
+        ];
+        
+        return view('user.dashboard.index', compact('data'));
     }
 
     public function profile()
@@ -134,5 +155,29 @@ class HomeController extends Controller
             return back()->with('success', 'Password changed successfully');
         }
         return back()->with('error', 'Error changing password');
+    }
+
+    private function getPackageInvestments($type, $limit = 3)
+    {
+        return auth()->user()->investments()->latest()->whereHas('package', function($query) use ($type) {
+            $query->where('type', $type);
+        })->limit($limit)->get();
+    }
+
+    public static function formatHumanFriendlyNumber($num)
+    {
+        $num = (int) $num;
+        if($num>1000) {
+            $x = round($num);
+            $x_number_format = number_format($x);
+            $x_array = explode(',', $x_number_format);
+            $x_parts = array('K', 'M', 'B', 'T');
+            $x_count_parts = count($x_array) - 1;
+            $x_display = $x;
+            $x_display = $x_array[0] . ((int) $x_array[1][0] !== 0 ? '.' . $x_array[1][0] : '');
+            $x_display .= $x_parts[$x_count_parts - 1];
+            return $x_display;
+        }
+        return $num;
     }
 }
