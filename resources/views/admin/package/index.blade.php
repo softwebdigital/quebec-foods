@@ -45,14 +45,14 @@
                         <th class="text-dark">Cover</th>
                         @endif
                         <th class="text-dark">Name</th>
-                        <th class="text-dark">ROI in %</th>
-                        <th class="text-dark">Price per slot</th>
+                        <th class="text-dark" style="white-space: nowrap;">ROI in %</th>
+                        <th class="text-dark" style="white-space: nowrap;">Price per slot</th>
                         <th class="text-dark">Start date</th>
                         <th class="text-dark">Duration</th>
                         @if ($type == 'plant')
                             <th class="text-dark">Milestones</th>
                             <th class="text-dark">Status</th>
-                            <th class="text-dark">Payout mode</th>
+                            <th class="text-dark" style="white-space: nowrap;">Payout mode</th>
                         @endif
                         @if ($type == 'farm')
                             <th class="text-dark">Slots</th>
@@ -76,9 +76,9 @@
                             @endif
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['name'] }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['roi'] }}%</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($package['price']) }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['start_date']->format('M d, Y') }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['duration'] }} {{ $package['duration_mode'] }}{{ $package['duration'] > 1 ? 's' : '' }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ {{ number_format($package['price']) }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ $package['start_date']->format('M d, Y') }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ $package['duration'] }} {{ $package['duration_mode'] }}{{ $package['duration'] > 1 ? 's' : '' }}</span></td>
                             @if ($type == 'plant')
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($package['milestones']) }}</span></td>
                             <td>

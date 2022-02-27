@@ -161,9 +161,9 @@ class InvestmentController extends Controller
             }
             $datum['package'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$investment->package['name'].'</span>';
             $datum['slots'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$investment['slots'].'</span>';
-            $datum['total_invested'] = '<span class="text-gray-600 fw-bolder d-block fs-6">₦ '.number_format($investment['amount']).'</span>';
-            $datum['expected_returns'] = '<span class="text-gray-600 fw-bolder d-block fs-6">₦ '.number_format($investment['total_return']).'</span>';
-            $datum['return_date'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$investment->return_date->format('M d, Y').'</span>';
+            $datum['total_invested'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($investment['amount']).'</span>';
+            $datum['expected_returns'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($investment['total_return']).'</span>';
+            $datum['return_date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$investment->return_date->format('M d, Y').'</span>';
             $datum['status'] = $status;
             $datum['action'] = '<a href="javascript:void();" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end" style="white-space: nowrap;">Action
                                     <span class="svg-icon svg-icon-5 m-0">

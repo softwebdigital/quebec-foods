@@ -189,100 +189,6 @@
                         <!--begin::Heading-->
                         <div class="d-flex flex-stack">
                             <h3 class="m-0 text-white fw-bolder fs-3">Plant Investments</h3>
-                            <div class="ms-1">
-                                <!--begin::Menu-->
-                                <button type="button" class="btn btn-sm btn-icon btn-color-white btn-active-white btn-active-color-primary border-0 me-n3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-                                                <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                                <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                                <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                            </g>
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                </button>
-                                <!--begin::Menu 3-->
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
-                                    <!--begin::Heading-->
-                                    <div class="menu-item px-3">
-                                        <div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Payments</div>
-                                    </div>
-                                    <!--end::Heading-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">Create Invoice</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link flex-stack px-3">Create Payment
-                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i></a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">Generate Bill</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-end">
-                                        <a href="#" class="menu-link px-3">
-                                            <span class="menu-title">Subscription</span>
-                                            <span class="menu-arrow"></span>
-                                        </a>
-                                        <!--begin::Menu sub-->
-                                        <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Plans</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Billing</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Statements</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu separator-->
-                                            <div class="separator my-2"></div>
-                                            <!--end::Menu separator-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <div class="menu-content px-3">
-                                                    <!--begin::Switch-->
-                                                    <label class="form-check form-switch form-check-custom form-check-solid">
-                                                        <!--begin::Input-->
-                                                        <input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-                                                        <!--end::Input-->
-                                                        <!--end::Label-->
-                                                        <span class="form-check-label text-muted fs-6">Recuring</span>
-                                                        <!--end::Label-->
-                                                    </label>
-                                                    <!--end::Switch-->
-                                                </div>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu sub-->
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3 my-1">
-                                        <a href="#" class="menu-link px-3">Settings</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                </div>
-                                <!--end::Menu 3-->
-                                <!--end::Menu-->
-                            </div>
                         </div>
                         <!--end::Heading-->
                         <!--begin::Balance-->
@@ -479,100 +385,6 @@
                         <!--begin::Heading-->
                         <div class="d-flex flex-stack">
                             <h3 class="m-0 text-white fw-bolder fs-3">Farm Investments</h3>
-                            <div class="ms-1">
-                                <!--begin::Menu-->
-                                <button type="button" class="btn btn-sm btn-icon btn-color-white btn-active-white btn-active-color-danger border-0 me-n3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                                    <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                                    <span class="svg-icon svg-icon-2">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-                                                <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                                <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                                <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                            </g>
-                                        </svg>
-                                    </span>
-                                    <!--end::Svg Icon-->
-                                </button>
-                                <!--begin::Menu 3-->
-                                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px py-3" data-kt-menu="true">
-                                    <!--begin::Heading-->
-                                    <div class="menu-item px-3">
-                                        <div class="menu-content text-muted pb-2 px-3 fs-7 text-uppercase">Payments</div>
-                                    </div>
-                                    <!--end::Heading-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">Create Invoice</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link flex-stack px-3">Create Payment
-                                        <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a target name for future usage and reference"></i></a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3">
-                                        <a href="#" class="menu-link px-3">Generate Bill</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-end">
-                                        <a href="#" class="menu-link px-3">
-                                            <span class="menu-title">Subscription</span>
-                                            <span class="menu-arrow"></span>
-                                        </a>
-                                        <!--begin::Menu sub-->
-                                        <div class="menu-sub menu-sub-dropdown w-175px py-4">
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Plans</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Billing</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">Statements</a>
-                                            </div>
-                                            <!--end::Menu item-->
-                                            <!--begin::Menu separator-->
-                                            <div class="separator my-2"></div>
-                                            <!--end::Menu separator-->
-                                            <!--begin::Menu item-->
-                                            <div class="menu-item px-3">
-                                                <div class="menu-content px-3">
-                                                    <!--begin::Switch-->
-                                                    <label class="form-check form-switch form-check-custom form-check-solid">
-                                                        <!--begin::Input-->
-                                                        <input class="form-check-input w-30px h-20px" type="checkbox" value="1" checked="checked" name="notifications" />
-                                                        <!--end::Input-->
-                                                        <!--end::Label-->
-                                                        <span class="form-check-label text-muted fs-6">Recuring</span>
-                                                        <!--end::Label-->
-                                                    </label>
-                                                    <!--end::Switch-->
-                                                </div>
-                                            </div>
-                                            <!--end::Menu item-->
-                                        </div>
-                                        <!--end::Menu sub-->
-                                    </div>
-                                    <!--end::Menu item-->
-                                    <!--begin::Menu item-->
-                                    <div class="menu-item px-3 my-1">
-                                        <a href="#" class="menu-link px-3">Settings</a>
-                                    </div>
-                                    <!--end::Menu item-->
-                                </div>
-                                <!--end::Menu 3-->
-                                <!--end::Menu-->
-                            </div>
                         </div>
                         <!--end::Heading-->
                         <!--begin::Balance-->
@@ -764,47 +576,48 @@
     <!--begin::Row-->
     <div class="row gy-5 g-xl-10">
         <!--begin::Col-->
-        <div class="col-xl-4 mb-xl-10">
-            <!--begin::Engage widget 3-->
-            <div class="card bg-primary h-md-100">
-                <!--begin::Body-->
-                <div class="card-body d-flex flex-column pt-13 pb-14">
-                    <!--begin::Heading-->
-                    <div class="m-0">
-                        <!--begin::Title-->
-                        <h1 class="fw-bold text-white text-center lh-lg mb-9">Delivery is easy
-                            <br />
-                            <span class="fw-boldest">Start Your Delivery</span>
-                        </h1>
-                        <!--end::Title-->
-                        <!--begin::Illustration-->
-                        <div class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center card-rounded-bottom h-200px mh-200px my-5 mb-lg-12"
-                            style="background-image:url('assets/media/svg/illustrations/easy/5.svg')"></div>
-                        <!--end::Illustration-->
+        @if ($data['package'])
+            <div class="col-xl-4 mb-xl-10">
+                <!--begin::Engage widget 3-->
+                <div class="card bg-primary h-md-100">
+                    <!--begin::Body-->
+                    <div class="card-body d-flex flex-column pt-13 pb-14">
+                        <!--begin::Heading-->
+                        <div class="m-0">
+                            <!--begin::Title-->
+                            <h1 class="fw-bold text-white text-center lh-lg mb-9">New Package
+                                <br />
+                                <span class="fw-boldest">{{ $data['package']['name'] }}</span>
+                            </h1>
+                            <!--end::Title-->
+                            <!--begin::Illustration-->
+                            <div class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center card-rounded-bottom h-200px mh-200px my-5 mb-lg-12"
+                                style="background-image:url('{{ asset($data['package']['image']) }}'); border-radius: 10px;">
+                            </div>
+                            <!--end::Illustration-->
+                        </div>
+                        <!--end::Heading-->
+                        <!--begin::Links-->
+                        <div class="text-center">
+                            <!--begin::Link-->
+                            <a class="btn btn-sm btn-white btn-color-gray-800 me-2"
+                                href="{{ route('packages', 'plant') }}">View Package</a>
+                            <!--end::Link-->
+                            <!--begin::Link-->
+                            <a class="btn btn-sm bg-white btn-color-white bg-opacity-20"
+                                href="{{ route('invest', 'plant') }}">Invest</a>
+                            <!--end::Link-->
+                        </div>
+                        <!--end::Links-->
                     </div>
-                    <!--end::Heading-->
-                    <!--begin::Links-->
-                    <div class="text-center">
-                        <!--begin::Link-->
-                        <a class="btn btn-sm btn-white btn-color-gray-800 me-2" data-bs-toggle="tooltip"
-                            data-bs-dismiss="click" data-bs-custom-class="tooltip-dark"
-                            title="Delivery App is coming soon">New Delivery</a>
-                        <!--end::Link-->
-                        <!--begin::Link-->
-                        <a class="btn btn-sm bg-white btn-color-white bg-opacity-20" data-bs-toggle="tooltip"
-                            data-bs-dismiss="click" data-bs-custom-class="tooltip-dark"
-                            title="Delivery App is coming soon">Quick Guide</a>
-                        <!--end::Link-->
-                    </div>
-                    <!--end::Links-->
+                    <!--end::Body-->
                 </div>
-                <!--end::Body-->
+                <!--end::Engage widget 3-->
             </div>
-            <!--end::Engage widget 3-->
-        </div>
+        @endif
         <!--end::Col-->
         <!--begin::Col-->
-        <div class="col-xl-8 mb-5 mb-xl-10">
+        <div class="@if ($data['package']) col-xl-8 @else col-xl-12 @endif mb-5 mb-xl-10">
             <!--begin::Chart widget 11-->
             <div class="card card-flush h-xl-100">
                 <!--begin::Header-->
@@ -905,74 +718,9 @@
     <!--end::Row-->
 
     <!--begin::Row-->
-    <div class="row gy-5 g-xl-10">
+    <div class="row gy-5 mb-20 g-xl-10">
         <!--begin::Col-->
-        <div class="col-xl-4 mb-xl-10">
-            <!--begin::List widget 18-->
-            <div class="card card-flush h-xl-100">
-                <!--begin::Header-->
-                <div class="card-header pt-7">
-                    <!--begin::Title-->
-                    <h3 class="card-title align-items-start flex-column">
-                        <span class="card-label fw-bolder text-gray-800">Recent Wallet Transactions</span>
-                        <span class="text-gray-400 mt-1 fw-bold fs-6">Transaction History</span>
-                    </h3>
-                    <!--end::Title-->
-                </div>
-                <!--end::Header-->
-                <!--begin::Body-->
-                <div class="card-body pt-4">
-                    <!--begin::Tab Content-->
-                    <div class="tab-content">
-                        <!--begin::Tap pane-->
-                        <div class="tab-pane show active">
-                            @foreach ($data['wallet']['history'] as $WalletHistory)
-                                <!--begin::Item-->
-                                <div class="d-flex flex-stack">
-                                    @if ($WalletHistory['type'] == 'deposit' || $WalletHistory['type'] == 'payout')
-                                        <i class="bi bi-arrow-down text-success fs-2x"></i>
-                                    @else
-                                        <i class="bi bi-arrow-up text-danger fs-2x"></i>
-                                    @endif
-                                    <!--begin::Section-->
-                                    <div class="d-flex align-items-center me-5">
-                                        <!--begin::Content-->
-                                        <div class="me-5 text-start">
-                                            <!--begin::Title-->
-                                            <p class="text-gray-800 fw-bolder m-0 fs-6">{{ ucfirst($WalletHistory['type']) }}</p>
-                                            <!--end::Title-->
-                                            <!--begin::Desc-->
-                                            <span class="text-gray-400 fw-bold fs-7">{{ $WalletHistory['description'] }}</span>
-                                            <!--end::Desc-->
-                                        </div>
-                                        <!--end::Content-->
-                                    </div>
-                                    <!--end::Section-->
-                                    <!--begin::Wrapper-->
-                                    <div class="d-flex align-items-center">
-                                        <!--begin::Number-->
-                                        <span class="text-gray-800 fw-bolder fs-4 me-3">₦ {{ $WalletHistory['amount'] }}</span>
-                                        <!--end::Number-->
-                                    </div>
-                                    <!--end::Wrapper-->
-                                </div>
-                                <!--end::Item-->
-                                <!--begin::Separator-->
-                                <div class="separator separator-dashed my-4"></div>
-                                <!--end::Separator-->
-                            @endforeach
-                        </div>
-                        <!--end::Tap pane-->
-                    </div>
-                    <!--end::Tab Content-->
-                </div>
-                <!--end: Card Body-->
-            </div>
-            <!--end::List widget 18-->
-        </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-xl-8 mb-5 mb-xl-10">
+        <div class="col-xl-12 mb-5 mb-xl-10">
             <!--begin::Chart widget 12-->
             <div class="card card-flush h-xl-100">
                 <!--begin::Header-->
@@ -1051,58 +799,9 @@
 
     <!--begin::Row-->
     <div class="row g-5 g-lg-10">
+        @if (count($data['investments']['plant']) > 0)
         <!--begin::Col-->
-        <div class="col-xxl-4 col-md-4 mb-xxl-10">
-            <!--begin::Mixed Widget 17-->
-            <div class="card h-md-100">
-                <!--begin::Body-->
-                <div class="card-body pt-5">
-                    <!--begin::Heading-->
-                    <div class="d-flex flex-stack">
-                        <!--begin::Title-->
-                        <h4 class="fw-bolder text-gray-800 m-0">Plant Investments</h4>
-                        <!--end::Title-->
-                        <!--begin::Menu-->
-                        <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                    </g>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </button>
-                        <!--end::Menu-->
-                    </div>
-                    <!--end::Heading-->
-                    <!--begin::Chart-->
-                    <div class="d-flex flex-center w-100">
-                        <div class="mixed-widget-17-chart" data-kt-chart-color="primary" style="height: 300px"></div>
-                    </div>
-                    <!--end::Chart-->
-                    <!--begin::Content-->
-                    <div class="text-center w-100 position-relative z-index-1" style="margin-top: -130px">
-                        <!--begin::Action-->
-                        <div class="mb-9 mb-xxl-1">
-                            <a href='{{ route('invest', 'plant') }}' class="btn btn-danger fw-bold">Invest</a>
-                        </div>
-                        <!--ed::Action-->
-                    </div>
-                    <!--end::Content-->
-                </div>
-                <!--end::Body-->
-                <!--ed::Info-->
-            </div>
-            <!--end::Mixed Widget 17-->
-        </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-xxl-8 col-md-8 mb-xxl-10">
+        <div class="col-xxl-12 col-md-8 mb-xxl-10">
             <!--begin::Tables Widget 9-->
             <div class="card h-md-100">
                 <!--begin::Header-->
@@ -1165,13 +864,15 @@
             <!--end::Tables Widget 9-->
         </div>
         <!--end::Col-->
+        @endif
     </div>
     <!--end::Row-->
 
     <!--begin::Row-->
     <div class="row g-5 g-lg-10">
+        @if (count($data['investments']['farm']) > 0)
         <!--begin::Col-->
-        <div class="col-xxl-8 col-md-8 mb-xxl-10">
+        <div class="col-xxl-12 col-md-8 mb-xxl-10">
             <!--begin::Tables Widget 9-->
             <div class="card h-md-100">
                 <!--begin::Header-->
@@ -1234,57 +935,7 @@
             <!--end::Tables Widget 9-->
         </div>
         <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-xxl-4 col-md-4 mb-xxl-10">
-            <!--begin::Mixed Widget 17-->
-            <div class="card h-md-100">
-                <!--begin::Body-->
-                <div class="card-body pt-5">
-                    <!--begin::Heading-->
-                    <div class="d-flex flex-stack">
-                        <!--begin::Title-->
-                        <h4 class="fw-bolder text-gray-800 m-0">Farm Investment</h4>
-                        <!--end::Title-->
-                        <!--begin::Menu-->
-                        <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                    </g>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </button>
-
-                        <!--end::Menu-->
-                    </div>
-                    <!--end::Heading-->
-                    <!--begin::Chart-->
-                    <div class="d-flex flex-center w-100">
-                        <div class="mixed-widget-17-chart" data-kt-chart-color="primary" style="height: 300px"></div>
-                    </div>
-                    <!--end::Chart-->
-                    <!--begin::Content-->
-                    <div class="text-center w-100 position-relative z-index-1" style="margin-top: -130px">
-                        <!--begin::Action-->
-                        <div class="mb-9 mb-xxl-1">
-                            <a href='{{ route('invest', 'farm') }}' class="btn btn-danger fw-bold">Invest</a>
-                        </div>
-                        <!--end::Action-->
-                    </div>
-                    <!--end::Content-->
-                </div>
-                <!--end::Body-->
-            </div>
-            <!--end::Mixed Widget 17-->
-        </div>
-        <!--end::Col-->
-
+        @endif
     </div>
     <!--end::Row-->
 
@@ -1300,100 +951,6 @@
                         <span class="card-label fw-bolder fs-3 mb-1">Plant</span>
                         <span class="text-muted fw-bold fs-7">Paid Investments Chart</span>
                     </h3>
-                    <div class="card-toolbar">
-                        <!--begin::Menu-->
-                        <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                    </g>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </button>
-                        <!--begin::Menu 1-->
-                        <div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true" id="kt_menu_61cf105a52ce2">
-                            <!--begin::Header-->
-                            <div class="px-7 py-5">
-                                <div class="fs-5 text-dark fw-bolder">Filter Options</div>
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Menu separator-->
-                            <div class="separator border-gray-200"></div>
-                            <!--end::Menu separator-->
-                            <!--begin::Form-->
-                            <div class="px-7 py-5">
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-bold">Status:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <div>
-                                        <select class="form-select form-select-solid" data-kt-select2="true" data-placeholder="Select option" data-dropdown-parent="#kt_menu_61cf105a52ce2" data-allow-clear="true">
-                                            <option></option>
-                                            <option value="1">Approved</option>
-                                            <option value="2">Pending</option>
-                                            <option value="2">In Process</option>
-                                            <option value="2">Rejected</option>
-                                        </select>
-                                    </div>
-                                    <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-bold">Member Type:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Options-->
-                                    <div class="d-flex">
-                                        <!--begin::Options-->
-                                        <label class="form-check form-check-sm form-check-custom form-check-solid me-5">
-                                            <input class="form-check-input" type="checkbox" value="1" />
-                                            <span class="form-check-label">Author</span>
-                                        </label>
-                                        <!--end::Options-->
-                                        <!--begin::Options-->
-                                        <label class="form-check form-check-sm form-check-custom form-check-solid">
-                                            <input class="form-check-input" type="checkbox" value="2" checked="checked" />
-                                            <span class="form-check-label">Customer</span>
-                                        </label>
-                                        <!--end::Options-->
-                                    </div>
-                                    <!--end::Options-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-bold">Notifications:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Switch-->
-                                    <div class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="" name="notifications" checked="checked" />
-                                        <label class="form-check-label">Enabled</label>
-                                    </div>
-                                    <!--end::Switch-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Actions-->
-                                <div class="d-flex justify-content-end">
-                                    <button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
-                                    <button type="submit" class="btn btn-sm btn-primary" data-kt-menu-dismiss="true">Apply</button>
-                                </div>
-                                <!--end::Actions-->
-                            </div>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Menu 1-->
-                        <!--end::Menu-->
-                    </div>
                 </div>
                 <!--end::Header-->
                 <!--begin::Body-->
@@ -1423,100 +980,6 @@
                         <span class="card-label fw-bolder fs-3 mb-1">Farm</span>
                         <span class="text-muted fw-bold fs-7">Paid Investments Chart</span>
                     </h3>
-                    <div class="card-toolbar">
-                        <!--begin::Menu-->
-                        <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                            <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
-                            <span class="svg-icon svg-icon-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                                    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                        <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
-                                        <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                        <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
-                                    </g>
-                                </svg>
-                            </span>
-                            <!--end::Svg Icon-->
-                        </button>
-                        <!--begin::Menu 1-->
-                        <div class="menu menu-sub menu-sub-dropdown w-250px w-md-300px" data-kt-menu="true" id="kt_menu_61cf105a53727">
-                            <!--begin::Header-->
-                            <div class="px-7 py-5">
-                                <div class="fs-5 text-dark fw-bolder">Filter Options</div>
-                            </div>
-                            <!--end::Header-->
-                            <!--begin::Menu separator-->
-                            <div class="separator border-gray-200"></div>
-                            <!--end::Menu separator-->
-                            <!--begin::Form-->
-                            <div class="px-7 py-5">
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-bold">Status:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <div>
-                                        <select class="form-select form-select-solid" data-kt-select2="true" data-placeholder="Select option" data-dropdown-parent="#kt_menu_61cf105a53727" data-allow-clear="true">
-                                            <option></option>
-                                            <option value="1">Approved</option>
-                                            <option value="2">Pending</option>
-                                            <option value="2">In Process</option>
-                                            <option value="2">Rejected</option>
-                                        </select>
-                                    </div>
-                                    <!--end::Input-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-bold">Member Type:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Options-->
-                                    <div class="d-flex">
-                                        <!--begin::Options-->
-                                        <label class="form-check form-check-sm form-check-custom form-check-solid me-5">
-                                            <input class="form-check-input" type="checkbox" value="1" />
-                                            <span class="form-check-label">Author</span>
-                                        </label>
-                                        <!--end::Options-->
-                                        <!--begin::Options-->
-                                        <label class="form-check form-check-sm form-check-custom form-check-solid">
-                                            <input class="form-check-input" type="checkbox" value="2" checked="checked" />
-                                            <span class="form-check-label">Customer</span>
-                                        </label>
-                                        <!--end::Options-->
-                                    </div>
-                                    <!--end::Options-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="mb-10">
-                                    <!--begin::Label-->
-                                    <label class="form-label fw-bold">Notifications:</label>
-                                    <!--end::Label-->
-                                    <!--begin::Switch-->
-                                    <div class="form-check form-switch form-switch-sm form-check-custom form-check-solid">
-                                        <input class="form-check-input" type="checkbox" value="" name="notifications" checked="checked" />
-                                        <label class="form-check-label">Enabled</label>
-                                    </div>
-                                    <!--end::Switch-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Actions-->
-                                <div class="d-flex justify-content-end">
-                                    <button type="reset" class="btn btn-sm btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
-                                    <button type="submit" class="btn btn-sm btn-primary" data-kt-menu-dismiss="true">Apply</button>
-                                </div>
-                                <!--end::Actions-->
-                            </div>
-                            <!--end::Form-->
-                        </div>
-                        <!--end::Menu 1-->
-                        <!--end::Menu-->
-                    </div>
                 </div>
                 <!--end::Header-->
                 <!--begin::Body-->

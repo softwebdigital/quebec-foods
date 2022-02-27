@@ -35,9 +35,9 @@
                                 <th class="ps-4 text-dark rounded-start">SN</th>
                                 <th class="text-dark">Package</th>
                                 <th class="text-dark">Slots</th>
-                                <th class="text-dark">Total Invested</th>
-                                <th class="text-dark">Expected Returns</th>
-                                <th class="text-dark">Days Left</th>
+                                <th class="text-dark" style="white-space: nowrap;">Total Invested</th>
+                                <th class="text-dark" style="white-space: nowrap;">Expected Returns</th>
+                                <th class="text-dark" style="white-space: nowrap;">Days Left</th>
                                 <th class="text-dark">Status</th>
                                 <th class="text-dark"></th>
                             </tr>
@@ -50,9 +50,9 @@
                                     <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                     <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['package']['name'] }}</span></td>
                                     <td><span class="text-gray-600 fw-bolder d-block fs-6">{{  $investment['slots']}}</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($investment['amount']) }}</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($investment['total_return']) }}</span></td>
-                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['return_date']->format('M d, Y') }}</span></td>
+                                    <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ {{ number_format($investment['amount']) }}</span></td>
+                                    <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ {{ number_format($investment['total_return']) }}</span></td>
+                                    <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ $investment['return_date']->format('M d, Y') }}</span></td>
                                     <td>
                                         @if($investment['status'] == 'active')
                                             <span class="badge badge-pill badge-success">Active</span>

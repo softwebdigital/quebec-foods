@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Image;
+use Carbon\Carbon;
 use App\Models\Package;
+use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
-use Image;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Validator;
 
@@ -30,10 +32,34 @@ class HomeController extends Controller
 
     public function index()
     {
-        $walletHistory = auth()->user()->transactions()->latest()->where('method', 'wallet')->limit(6)->get();
+        $walletHistory = auth()->user()->transactions()->latest()->where('status', 'approved')->limit(6)->get();
         collect($walletHistory)->map(function($item) {
             $item['amount'] = self::formatHumanFriendlyNumber($item['amount']);
         });
+
+        Carbon::setLocale('en_US');
+        $weekTransactions = [];
+        for ($i=0; $i < 7; $i++) {
+            $weekTransactions[] = round(auth()->user()->transactions()->where('status', 'approved')->whereDate('created_at', Carbon::now()->startOfWeek()->addDays($i))->sum('amount'));
+        }
+
+        $monthTransactions = [];
+        $monthTransactionsKeys = [];
+        for ($day = 1; $day <= date('t'); $day++){
+            $monthTransactionsKeys[] = date('M')." {$day}";
+            $monthTransactions[] = round(auth()->user()->transactions()
+                ->where('status', 'approved')
+                ->whereDate('created_at', date('Y-m') . '-' . $day)
+                ->sum('amount'));
+        }
+
+        $yearTransactions = [];
+        for ($month = 1; $month <= 12; $month++){
+            $yearTransactions[] = round(auth()->user()->transactions()
+                ->where('status', 'approved')
+                ->whereMonth('created_at', $month)
+                ->sum('amount'));
+        }
 
         $investments = auth()->user()->investments()->where('status', 'active')->orWhere('status', 'settled');
         $data = [
@@ -49,8 +75,18 @@ class HomeController extends Controller
                 'balance' => self::formatHumanFriendlyNumber(auth()->user()->wallet['balance']),
                 'history' => $walletHistory,
             ],
+            'chartData'   => [
+                'transactions' => [
+                    'week' => $weekTransactions,
+                    'month' => [
+                        'keys' => $monthTransactionsKeys,
+                        'data' => $monthTransactions,
+                    ],
+                    'year' => $yearTransactions
+                ]
+            ]
         ];
-        
+
         return view('user.dashboard.index', compact('data'));
     }
 
@@ -157,7 +193,7 @@ class HomeController extends Controller
         return back()->with('error', 'Error changing password');
     }
 
-    private function getPackageInvestments($type, $limit = 3)
+    private function getPackageInvestments($type, $limit = 10)
     {
         return auth()->user()->investments()->latest()->whereHas('package', function($query) use ($type) {
             $query->where('type', $type);

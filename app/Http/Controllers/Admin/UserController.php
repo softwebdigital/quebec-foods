@@ -148,10 +148,10 @@ class UserController extends Controller
                             </form>';
             }
             $datum['sn'] = '<span class="text-dark fw-bolder ps-4 d-block mb-1 fs-6">' . $i . '</span>';
-            $datum['name'] = '<a href="'.route('admin.users.show', $user['id']).'" class="text-primary-700 text-hover-primary fw-bolder d-block fs-6">'.ucwords($user['first_name']).' '.ucwords($user['last_name']).'</a>';
+            $datum['name'] = '<a href="'.route('admin.users.show', $user['id']).'" class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" style="white-space: nowrap;">'.ucwords($user['first_name']).' '.ucwords($user['last_name']).'</a>';
             $datum['email'] = '<span class="text-gray-600 fw-bolder d-block fs-6">' . $user['email'] . '</span>';
             $datum['phone'] = '<span class="text-gray-600 fw-bolder d-block fs-6">' . $user['phone'] . '</span>';
-            $datum['joined'] = '<span class="text-gray-600 fw-bolder d-block fs-6">' . $user['created_at']->format('F d, Y') . '</span>';
+            $datum['joined'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . $user['created_at']->format('F d, Y') . '</span>';
             $datum['verification'] = $user['email_verified_at'] ? '<span class="badge badge-pill badge-success">Verified</span>' : '<span class="badge badge-pill badge-warning">Unverified</span>';
             $datum['status'] = $user['active'] == 1 ? '<span class="badge badge-pill badge-success">Active</span>' : '<span class="badge badge-pill badge-danger">Blocked</span>';
             $datum['action'] = '<a href="javascript:void();" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end" style="white-space: nowrap;">Action

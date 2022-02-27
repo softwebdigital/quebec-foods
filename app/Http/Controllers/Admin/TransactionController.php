@@ -156,7 +156,13 @@ class TransactionController extends Controller
             'id', 'name', 'amount', 'description', 'date', 'id', 'method', 'channel', 'status', 'action'
         ];
 //        Find data based on page
-        $transactions = Transaction::query()->latest()->where('type', $type);
+        $transactions = Transaction::query()->latest();
+        if (!in_array($type, ['all', 'pending'])) {
+            $transactions = Transaction::query()->latest()->where('type', $type);
+        }
+        if ($type == 'pending') {
+            $transactions = Transaction::query()->latest()->where('status', $type);
+        }
 
 //        Set helper variables from request and DB
         $totalData = $totalFiltered = $transactions->count();
@@ -237,9 +243,9 @@ class TransactionController extends Controller
             // }else{
             //     $datum['name'] = ucwords($transaction->user['name']);
             // }
-            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6">₦ '.number_format($transaction['amount']).'</span>';
+            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($transaction['amount']).'</span>';
             $datum['description'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['description'].'</span>';
-            $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['created_at']->format('M d, Y \a\t h:i A').'</span>';
+            $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['created_at']->format('M d, Y \a\t h:i A').'</span>';
             $datum['details'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$details.'</span>';
             $datum['method'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['method'].'</span>';
             $datum['channel'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['channel'].'</span>';

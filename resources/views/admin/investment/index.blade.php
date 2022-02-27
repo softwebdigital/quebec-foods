@@ -33,9 +33,9 @@
                         <th class="text-dark">Name</th>
                         <th class="text-dark">Package</th>
                         <th class="text-dark">Slots</th>
-                        <th class="text-dark">Total Invested</th>
-                        <th class="text-dark">Expected Returns</th>
-                        <th class="text-dark">Return Date</th>
+                        <th class="text-dark" style="white-space: nowrap;">Total Invested</th>
+                        <th class="text-dark" style="white-space: nowrap;">Expected Returns</th>
+                        <th class="text-dark" style="white-space: nowrap;">Return Date</th>
                         <th class="text-dark">Status</th>
                         <th class="ps-4 text-dark rounded-end">Action</th>
                     </tr>

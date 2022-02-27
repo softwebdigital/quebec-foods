@@ -18,7 +18,7 @@ class HomeController extends Controller
 {
     public function dashboard()
     {
-        $walletHistory = Transaction::latest()->where('method', 'wallet')->limit(6)->get();
+        $walletHistory = Transaction::latest()->where('status', 'approved')->limit(6)->get();
         collect($walletHistory)->map(function($item) {
             $item['amount'] = self::formatHumanFriendlyNumber($item['amount']);
         });

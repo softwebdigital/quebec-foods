@@ -595,7 +595,7 @@
 					</div>
 					<!--end::Content-->
 					<!--begin::Footer-->
-					<div class="footer py-4 d-flex flex-lg-column" id="kt_footer">
+					<div class="footer mt-10 py-4 d-flex flex-lg-column" id="kt_footer">
 						<!--begin::Container-->
 						<div class="container-fluid d-flex flex-column flex-md-row flex-stack">
 							<!--begin::Copyright-->
@@ -2012,7 +2012,7 @@
 		<!--end::Page Vendors Javascript-->
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="{{asset('assets/js/widgets.bundle.js')}}"></script>
-		<script src="{{asset('assets/js/custom/widgets.js')}}"></script>
+		{{-- <script src="{{asset('assets/js/custom/widgets.js')}}"></script> --}}
 		<script src="{{asset('assets/js/custom/apps/chat/chat.js')}}"></script>
 		<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
         <script>
