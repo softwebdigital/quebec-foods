@@ -110,7 +110,7 @@
                 <!--begin:::Form-->
                 <form action="{{ route('admin.settings.save') }}" class="form mb-3" method="post" id="otherSettingForm">
                     @csrf
-                    <!--begin::Input group-->
+                    {{-- <!--begin::Input group-->
                     <div class="d-flex flex-column mb-5 fv-row">
                         <!--begin::Label-->
                         <label class="required fs-5 fw-bold mb-2" for="base_currency">Base Currency</label>
@@ -134,7 +134,7 @@
                         <span class="input-group-text">{{ $setting['usd_to_ngn'] }} ±</span>
                         <input type="number" id="rate_plus" step="any" name="rate_plus" value="{{ old('rate_plus') ?? $setting['rate_plus']}}" class="form-control form-control-solid" placeholder="0.00"/>
                     </div>
-                    <!--end::Input group-->
+                    <!--end::Input group--> --}}
 
                     <div class="form-check form-switch form-check-custom form-check-solid my-10">
                         <input class="form-check-input h-20px w-30px" name="show_cash" type="checkbox" @if($setting['show_cash'] == 1) checked @endif value="yes" id="showCash"/>

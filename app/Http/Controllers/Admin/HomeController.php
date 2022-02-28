@@ -9,6 +9,7 @@ use App\Models\Trade;
 use App\Models\Transaction;
 use App\Models\User;
 use App\Models\Wallet;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
@@ -25,6 +26,34 @@ class HomeController extends Controller
 
         $activePlantInvestment = $this->getPackageActiveInvestments('plant');
         $activeFarmInvestment = $this->getPackageActiveInvestments('farm');
+
+        $settledPlantInvestment = $this->getPackageSettledInvestments('plant');
+        $settledFarmInvestment = $this->getPackageSettledInvestments('farm');
+
+        Carbon::setLocale('en_US');
+        $weekTransactions = [];
+        for ($i=0; $i < 7; $i++) {
+            $weekTransactions[] = round(Transaction::query()->where('status', 'approved')->whereDate('created_at', Carbon::now()->startOfWeek()->addDays($i))->sum('amount'));
+        }
+
+        $monthTransactions = [];
+        $monthTransactionsKeys = [];
+        for ($day = 1; $day <= date('t'); $day++){
+            $monthTransactionsKeys[] = date('M')." {$day}";
+            $monthTransactions[] = round(Transaction::query()
+                ->where('status', 'approved')
+                ->whereDate('created_at', date('Y-m') . '-' . $day)
+                ->sum('amount'));
+        }
+
+
+        $yearTransactions = [];
+        for ($month = 1; $month <= 12; $month++){
+            $yearTransactions[] = round(Transaction::query()
+                ->where('status', 'approved')
+                ->whereMonth('created_at', $month)
+                ->sum('amount'));
+        }
 
         $investments = Investment::where('status', 'active')->orWhere('status', 'settled');
         $data = [
@@ -51,6 +80,20 @@ class HomeController extends Controller
                 'slots'   => self::formatHumanFriendlyNumber($activeFarmInvestment->sum('slots')),
                 'total'   => self::formatHumanFriendlyNumber($activeFarmInvestment->sum('amount')),
                 'returns' => self::formatHumanFriendlyNumber($activeFarmInvestment->sum('total_return')),
+            ],
+            'settledInvestments' => [
+                'totalPlant' => $settledPlantInvestment,
+                'totalFarm'  => $settledFarmInvestment,
+            ],
+            'chartData'   => [
+                'transactions' => [
+                    'week' => $weekTransactions,
+                    'month' => [
+                        'keys' => $monthTransactionsKeys,
+                        'data' => $monthTransactions,
+                    ],
+                    'year' => $yearTransactions
+                ]
             ]
         ];
         return view('admin.dashboard.index', compact('data'));
@@ -108,6 +151,13 @@ class HomeController extends Controller
     private function getPackageActiveInvestments($type)
     {
         return Investment::latest()->where('status', 'active')->whereHas('package', function($query) use ($type) {
+            $query->where('type', $type);
+        })->get();
+    }
+
+    private function getPackageSettledInvestments($type)
+    {
+        return Investment::latest()->where('status', 'active')->orWhere('status', 'settled')->whereHas('package', function($query) use ($type) {
             $query->where('type', $type);
         })->get();
     }
