@@ -365,8 +365,8 @@
 										<span class="menu-title">Refferals</span>
 									</a>
 								</div>
-                                <div class="menu-item @if(request()->routeIs(['profile'])) here show @endif">
-									<a class="menu-link" href="{{route('profile')}}">
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['profile'])) here show @endif">
+									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -377,8 +377,27 @@
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Profile</span>
-									</a>
+										<span class="menu-title">Account</span>
+										<span class="menu-arrow"></span>
+									</span>
+									<div class="menu-sub menu-sub-accordion  @if(request()->routeIs(['profile'])) show @endif">
+										<div class="menu-item @if(request()->routeIs(['profile'])) here show @endif">
+											<a class="menu-link" href="{{ route('profile') }}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">Profile</span>
+											</a>
+										</div>
+                                        <div class="menu-item @if(request()->routeIs(['account.overview'])) here show @endif">
+											<a class="menu-link" href="{{ route('account.overview') }}">
+												<span class="menu-bullet">
+													<span class="bullet bullet-dot"></span>
+												</span>
+												<span class="menu-title">Account Overview</span>
+											</a>
+										</div>
+									</div>
 								</div>
                                 <div class="menu-item @if(request()->routeIs(['notifications', 'notifications.show'])) here show @endif">
 									<a class="menu-link" href="{{ route('notifications')}}">
@@ -455,8 +474,25 @@
 								<div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
 
 									<!--begin::Menu item-->
-									<div class="menu-item px-5">
-										<a href="{{ route('profile') }}" class="menu-link px-5">My Profile</a>
+									<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+										<a href="#" class="menu-link px-5">
+											<span class="menu-title">My Account</span>
+											<span class="menu-arrow"></span>
+										</a>
+										<!--begin::Menu sub-->
+										<div class="menu-sub menu-sub-dropdown w-175px py-4">
+											<!--begin::Menu item-->
+											<div class="menu-item px-3">
+												<a href="{{ route('profile') }}" class="menu-link px-5">Profile</a>
+											</div>
+											<!--end::Menu item-->
+											<!--begin::Menu item-->
+											<div class="menu-item px-3">
+												<a href="{{ route('account.overview') }}" class="menu-link px-5" style="white-space: nowrap">Account Overview</a>
+											</div>
+											<!--end::Menu item-->
+										</div>
+										<!--end::Menu sub-->
 									</div>
 									<!--end::Menu item-->
 									<!--begin::Menu item-->

@@ -11,6 +11,7 @@
 @endsection
 
 @section('breadCrumbs')
+    <li class="breadcrumb-item"><a href="javascript:void()" class="text-muted">Account</a></li>
     <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Profile</a></li>
 @endsection
 

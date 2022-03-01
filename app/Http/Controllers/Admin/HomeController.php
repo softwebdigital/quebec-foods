@@ -30,6 +30,9 @@ class HomeController extends Controller
         $settledPlantInvestment = $this->getPackageSettledInvestments('plant');
         $settledFarmInvestment = $this->getPackageSettledInvestments('farm');
 
+        $totalPlantInvestment = $this->getPackageTotalInvestments('plant');
+        $totalFarmInvestment = $this->getPackageTotalInvestments('farm');
+
         Carbon::setLocale('en_US');
         $weekTransactions = [];
         for ($i=0; $i < 7; $i++) {
@@ -81,9 +84,9 @@ class HomeController extends Controller
                 'total'   => self::formatHumanFriendlyNumber($activeFarmInvestment->sum('amount')),
                 'returns' => self::formatHumanFriendlyNumber($activeFarmInvestment->sum('total_return')),
             ],
-            'settledInvestments' => [
-                'totalPlant' => $settledPlantInvestment,
-                'totalFarm'  => $settledFarmInvestment,
+            'unSettledInvestments' => [
+                'plant' => ceil($settledPlantInvestment->sum('amount') / $totalPlantInvestment->sum('amount')) * 100,
+                'farm'  => ceil($settledFarmInvestment->sum('amount') / $totalFarmInvestment->sum('amount')) * 100
             ],
             'chartData'   => [
                 'transactions' => [
@@ -157,7 +160,14 @@ class HomeController extends Controller
 
     private function getPackageSettledInvestments($type)
     {
-        return Investment::latest()->where('status', 'active')->orWhere('status', 'settled')->whereHas('package', function($query) use ($type) {
+        return Investment::latest()->where('status', 'settled')->whereHas('package', function($query) use ($type) {
+            $query->where('type', $type);
+        })->get();
+    }
+
+    private function getPackageTotalInvestments($type)
+    {
+        return Investment::latest()->where('status', 'settled')->orWhere('status', 'active')->whereHas('package', function($query) use ($type) {
             $query->where('type', $type);
         })->get();
     }

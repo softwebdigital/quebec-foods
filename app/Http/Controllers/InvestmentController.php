@@ -169,4 +169,11 @@ class InvestmentController extends Controller
         $packages = Package::all()->where('status', 'open')->where('type', $type);
         return view('user.investments.create', compact('packages', 'setting', 'type'));
     }
+
+    public function showUserInvestment($type, Investment $investment, $filter = 'all')
+    {
+        $user = auth()->user();
+        $packages = Package::all();
+        return view('user.profile.showInvestment', compact('user', 'type', 'packages', 'investment', 'filter'));
+    }
 }

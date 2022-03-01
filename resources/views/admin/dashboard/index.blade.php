@@ -769,10 +769,10 @@
                 <!--begin::Body-->
                 <div class="card-body d-flex flex-column">
                     <div class="flex-grow-1">
-                        <div class="mixed-widget-4-chart" data-kt-chart-color="primary" style="height: 200px"></div>
+                        <div class="paid-investments-chart" data-kt-chart-color="primary" data-kt-type="plant" style="height: 200px"></div>
                     </div>
                     <div class="pt-5">
-                        <a href="#" class="btn btn-primary w-100 py-3">Take Action</a>
+                        <a href="{{ route('admin.investments', ['plant', 'all']) }}" class="btn btn-primary w-100 py-3">View Investments</a>
                     </div>
                 </div>
                 <!--end::Body-->
@@ -795,10 +795,10 @@
                 <!--begin::Body-->
                 <div class="card-body d-flex flex-column">
                     <div class="flex-grow-1">
-                        <div class="mixed-widget-4-chart" data-kt-chart-color="danger" style="height: 200px"></div>
+                        <div class="paid-investments-chart" data-kt-chart-color="danger" data-kt-type="farm" style="height: 200px"></div>
                     </div>
                     <div class="pt-5">
-                        <a href="#" class="btn btn-danger w-100 py-3">Take Action</a>
+                        <a href="{{ route('admin.investments', ['farm', 'all']) }}" class="btn btn-danger w-100 py-3">View Investments</a>
                     </div>
                 </div>
                 <!--end::Body-->
@@ -912,278 +912,326 @@
     weekTransactionChart.render();
 
     let monthTransactionEl = document.querySelector("#transaction-stat-monthly");
-        var monthTransactionOptions = {
-            series: [{
-                name: "Transactions",
-                data: {!! json_encode($data['chartData']['transactions']['month']['data']) !!}
-            }],
-            grid: {
-                show: !1,
-                padding: {
-                    top: 0,
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                },
+    var monthTransactionOptions = {
+        series: [{
+            name: "Transactions",
+            data: {!! json_encode($data['chartData']['transactions']['month']['data']) !!}
+        }],
+        grid: {
+            show: !1,
+            padding: {
+                top: 0,
+                bottom: 0,
+                left: 0,
+                right: 0,
             },
-            chart: {
-                fontFamily: "inherit",
-                type: "area",
-                height: parseInt(KTUtil.css(monthTransactionEl, "height")),
-                toolbar: {
-                    show: !1
-                },
-            },
-            plotOptions: {},
-            legend: {
+        },
+        chart: {
+            fontFamily: "inherit",
+            type: "area",
+            height: parseInt(KTUtil.css(monthTransactionEl, "height")),
+            toolbar: {
                 show: !1
             },
-            dataLabels: {
-                enabled: !1
+        },
+        plotOptions: {},
+        legend: {
+            show: !1
+        },
+        dataLabels: {
+            enabled: !1
+        },
+        fill: {
+            type: "gradient",
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.3,
+                opacityTo: 0.7,
+                stops: [0, 90, 100],
             },
-            fill: {
-                type: "gradient",
-                gradient: {
-                    shadeIntensity: 1,
-                    opacityFrom: 0.3,
-                    opacityTo: 0.7,
-                    stops: [0, 90, 100],
-                },
+        },
+        stroke: {
+            curve: "smooth",
+            show: !0,
+            width: 3,
+            colors: [KTUtil.getCssVariableValue("--bs-success")],
+        },
+        xaxis: {
+            categories: {!! json_encode($data['chartData']['transactions']['month']['keys']) !!},
+            axisBorder: {
+                show: !1
             },
-            stroke: {
-                curve: "smooth",
-                show: !0,
-                width: 3,
-                colors: [KTUtil.getCssVariableValue("--bs-success")],
+            axisTicks: {
+                show: !1
             },
-            xaxis: {
-                categories: {!! json_encode($data['chartData']['transactions']['month']['keys']) !!},
-                axisBorder: {
-                    show: !1
-                },
-                axisTicks: {
-                    show: !1
-                },
-                tickAmount: 5,
-                labels: {
-                    rotate: 0,
-                    rotateAlways: !0,
-                    style: {
-                        colors: KTUtil.getCssVariableValue("--bs-gray-500"),
-                        fontSize: "13px"
-                    },
-                },
-                crosshairs: {
-                    position: "front",
-                    stroke: {
-                        color: KTUtil.getCssVariableValue("--bs-success"),
-                        width: 1,
-                        dashArray: 3
-                    },
-                },
-                tooltip: {
-                    enabled: !0,
-                    formatter: void 0,
-                    offsetY: 0,
-                    style: {
-                        fontSize: "13px"
-                    },
+            tickAmount: 5,
+            labels: {
+                rotate: 0,
+                rotateAlways: !0,
+                style: {
+                    colors: KTUtil.getCssVariableValue("--bs-gray-500"),
+                    fontSize: "13px"
                 },
             },
-            yaxis: {
-                tickAmount: 4,
-                labels: {
-                    style: {
-                        colors: KTUtil.getCssVariableValue("--bs-success"),
-                        fontSize: "13px"
-                    },
-                    formatter: function(e) {
-                        return numberFormat(e);
-                    },
-                },
-            },
-            states: {
-                normal: {
-                    filter: {
-                        type: "none",
-                        value: 0
-                    }
-                },
-                hover: {
-                    filter: {
-                        type: "none",
-                        value: 0
-                    }
-                },
-                active: {
-                    allowMultipleDataPointsSelection: !1,
-                    filter: {
-                        type: "none",
-                        value: 0
-                    },
+            crosshairs: {
+                position: "front",
+                stroke: {
+                    color: KTUtil.getCssVariableValue("--bs-success"),
+                    width: 1,
+                    dashArray: 3
                 },
             },
             tooltip: {
-                style: {
-                    fontSize: "12px"
-                },
-                y: {
-                    formatter: function(e) {
-                        return "₦" + numberFormat(e);
-                    },
-                },
-            },
-            colors: [KTUtil.getCssVariableValue("--bs-success")],
-            grid: {
-                borderColor: KTUtil.getCssVariableValue("--bs-border-dashed-color"),
-                strokeDashArray: 4,
-                yaxis: {
-                    lines: {
-                        show: !0
-                    }
-                },
-            },
-            markers: {
-                strokeColor: KTUtil.getCssVariableValue("--bs-success"),
-                strokeWidth: 3
-            },
-        };
-        var monthTransactionChart = new ApexCharts(monthTransactionEl, monthTransactionOptions);
-        monthTransactionChart.render();
-
-        let yearTransactionEl = document.querySelector("#transaction-stat-yearly");
-        var yearTransactionOptions = {
-            series: [{
-                name: "Transactions",
-                data: {!! json_encode($data['chartData']['transactions']['year']) !!}
-            }],
-            chart: {
-                fontFamily: "inherit",
-                type: "bar",
-                height: parseInt(KTUtil.css(yearTransactionEl, "height")),
-                toolbar: {
-                    show: !1
-                },
-            },
-            plotOptions: {
-                bar: {
-                    horizontal: !1,
-                    columnWidth: ["22%"],
-                    borderRadius: 5,
-                    dataLabels: {
-                        position: "top"
-                    },
-                    startingShape: "flat",
-                },
-            },
-            legend: {
-                show: !1
-            },
-            dataLabels: {
                 enabled: !0,
-                offsetY: -30,
+                formatter: void 0,
+                offsetY: 0,
                 style: {
-                    fontSize: "13px",
-                    colors: ["labelColor"]
+                    fontSize: "13px"
                 },
+            },
+        },
+        yaxis: {
+            tickAmount: 4,
+            labels: {
+                style: {
+                    colors: KTUtil.getCssVariableValue("--bs-success"),
+                    fontSize: "13px"
+                },
+                formatter: function(e) {
+                    return numberFormat(e);
+                },
+            },
+        },
+        states: {
+            normal: {
+                filter: {
+                    type: "none",
+                    value: 0
+                }
+            },
+            hover: {
+                filter: {
+                    type: "none",
+                    value: 0
+                }
+            },
+            active: {
+                allowMultipleDataPointsSelection: !1,
+                filter: {
+                    type: "none",
+                    value: 0
+                },
+            },
+        },
+        tooltip: {
+            style: {
+                fontSize: "12px"
+            },
+            y: {
                 formatter: function(e) {
                     return "₦" + numberFormat(e);
                 },
             },
-            stroke: {
-                show: !0,
-                width: 2,
-                colors: ["transparent"]
+        },
+        colors: [KTUtil.getCssVariableValue("--bs-success")],
+        grid: {
+            borderColor: KTUtil.getCssVariableValue("--bs-border-dashed-color"),
+            strokeDashArray: 4,
+            yaxis: {
+                lines: {
+                    show: !0
+                }
             },
-            fill: {
-                opacity: 1
+        },
+        markers: {
+            strokeColor: KTUtil.getCssVariableValue("--bs-success"),
+            strokeWidth: 3
+        },
+    };
+    var monthTransactionChart = new ApexCharts(monthTransactionEl, monthTransactionOptions);
+    monthTransactionChart.render();
+
+    let yearTransactionEl = document.querySelector("#transaction-stat-yearly");
+    var yearTransactionOptions = {
+        series: [{
+            name: "Transactions",
+            data: {!! json_encode($data['chartData']['transactions']['year']) !!}
+        }],
+        chart: {
+            fontFamily: "inherit",
+            type: "bar",
+            height: parseInt(KTUtil.css(yearTransactionEl, "height")),
+            toolbar: {
+                show: !1
             },
-            xaxis: {
-                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                axisBorder: {
-                    show: !1
+        },
+        plotOptions: {
+            bar: {
+                horizontal: !1,
+                columnWidth: ["22%"],
+                borderRadius: 5,
+                dataLabels: {
+                    position: "top"
                 },
-                axisTicks: {
-                    show: !1
+                startingShape: "flat",
+            },
+        },
+        legend: {
+            show: !1
+        },
+        dataLabels: {
+            enabled: !0,
+            offsetY: -30,
+            style: {
+                fontSize: "13px",
+                colors: ["labelColor"]
+            },
+            formatter: function(e) {
+                return "₦" + numberFormat(e);
+            },
+        },
+        stroke: {
+            show: !0,
+            width: 2,
+            colors: ["transparent"]
+        },
+        fill: {
+            opacity: 1
+        },
+        xaxis: {
+            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+            axisBorder: {
+                show: !1
+            },
+            axisTicks: {
+                show: !1
+            },
+            labels: {
+                style: {
+                    colors: KTUtil.getCssVariableValue(
+                        "--bs-gray-500"
+                    ),
+                    fontSize: "13px",
                 },
-                labels: {
-                    style: {
-                        colors: KTUtil.getCssVariableValue(
-                            "--bs-gray-500"
-                        ),
-                        fontSize: "13px",
+            },
+            crosshairs: {
+                fill: {
+                    gradient: {
+                        opacityFrom: 0,
+                        opacityTo: 0
                     },
                 },
-                crosshairs: {
-                    fill: {
-                        gradient: {
-                            opacityFrom: 0,
-                            opacityTo: 0
+            },
+        },
+        yaxis: {
+            labels: {
+                style: {
+                    colors: KTUtil.getCssVariableValue(
+                        "--bs-gray-500"
+                    ),
+                    fontSize: "13px",
+                },
+                formatter: function(e) {
+                    return numberFormat(e);
+                },
+            },
+        },
+        states: {
+            normal: {
+                filter: {
+                    type: "none",
+                    value: 0
+                }
+            },
+            hover: {
+                filter: {
+                    type: "none",
+                    value: 0
+                }
+            },
+            active: {
+                allowMultipleDataPointsSelection: !1,
+                filter: {
+                    type: "none",
+                    value: 0
+                },
+            },
+        },
+        tooltip: {
+            style: {
+                fontSize: "12px"
+            },
+            y: {
+                formatter: function(e) {
+                    return "₦" + numberFormat(e);
+                },
+            },
+        },
+        colors: [
+            KTUtil.getCssVariableValue("--bs-primary"),
+            KTUtil.getCssVariableValue("--bs-light-primary"),
+        ],
+        grid: {
+            borderColor: (KTUtil.getCssVariableValue("--bs-gray-900"),
+                KTUtil.getCssVariableValue("--bs-border-dashed-color")),
+            strokeDashArray: 4,
+            yaxis: {
+                lines: {
+                    show: !0
+                }
+            },
+        },
+    };
+    var yearTransactionChart = new ApexCharts(yearTransactionEl, yearTransactionOptions);
+    yearTransactionChart.render();
+
+    const unSettledData = {!! json_encode($data['unSettledInvestments']) !!};
+    var e = document.querySelectorAll(".paid-investments-chart");
+    [].slice.call(e).map(function (e) {
+        var t = parseInt(KTUtil.css(e, "height"));
+        if (e) {
+            var a = e.getAttribute("data-kt-chart-color"),
+                o = KTUtil.getCssVariableValue("--bs-" + a),
+                s = KTUtil.getCssVariableValue("--bs-light-" + a),
+                r = KTUtil.getCssVariableValue("--bs-gray-700");
+                type = e.getAttribute("data-kt-type");
+                console.log(type);
+            new ApexCharts(e, {
+                series: [ unSettledData[type] ],
+                chart: {
+                    fontFamily: "inherit",
+                    height: t,
+                    type: "radialBar",
+                },
+                plotOptions: {
+                    radialBar: {
+                        hollow: { margin: 0, size: "65%" },
+                        dataLabels: {
+                            showOn: "always",
+                            name: { show: !1, fontWeight: "700" },
+                            value: {
+                                color: r,
+                                fontSize: "30px",
+                                fontWeight: "700",
+                                offsetY: 12,
+                                show: !0,
+                                formatter: function (e) {
+                                    return e + "%";
+                                },
+                            },
+                        },
+                        track: {
+                            background: s,
+                            strokeWidth: "100%",
                         },
                     },
                 },
-            },
-            yaxis: {
-                labels: {
-                    style: {
-                        colors: KTUtil.getCssVariableValue(
-                            "--bs-gray-500"
-                        ),
-                        fontSize: "13px",
-                    },
-                    formatter: function(e) {
-                        return numberFormat(e);
-                    },
-                },
-            },
-            states: {
-                normal: {
-                    filter: {
-                        type: "none",
-                        value: 0
-                    }
-                },
-                hover: {
-                    filter: {
-                        type: "none",
-                        value: 0
-                    }
-                },
-                active: {
-                    allowMultipleDataPointsSelection: !1,
-                    filter: {
-                        type: "none",
-                        value: 0
-                    },
-                },
-            },
-            tooltip: {
-                style: {
-                    fontSize: "12px"
-                },
-                y: {
-                    formatter: function(e) {
-                        return "₦" + numberFormat(e);
-                    },
-                },
-            },
-            colors: [
-                KTUtil.getCssVariableValue("--bs-primary"),
-                KTUtil.getCssVariableValue("--bs-light-primary"),
-            ],
-            grid: {
-                borderColor: (KTUtil.getCssVariableValue("--bs-gray-900"),
-                    KTUtil.getCssVariableValue("--bs-border-dashed-color")),
-                strokeDashArray: 4,
-                yaxis: {
-                    lines: {
-                        show: !0
-                    }
-                },
-            },
-        };
-        var yearTransactionChart = new ApexCharts(yearTransactionEl, yearTransactionOptions);
-        yearTransactionChart.render();
+                colors: [o],
+                stroke: { lineCap: "round" },
+                labels: ["Progress"],
+            }).render();
+        }
+    });
 </script>
 
 @endsection

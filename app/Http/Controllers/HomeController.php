@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Image;
 use Carbon\Carbon;
 use App\Models\Package;
+use App\Models\Setting;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -98,6 +99,42 @@ class HomeController extends Controller
             $banks = [];
         }
         return view('user.profile.index', compact('banks'));
+    }
+
+    public function accountOverview() {
+        $user = auth()->user();
+
+        return view('user.profile.overview', compact('user'));
+    }
+
+    public function showUserInvestments ($type)
+    {
+        $user = auth()->user();
+        $investments = $user->investments()->whereHas('package', function ($query) use ($type) {
+            $query->where('type', $type);
+        })->get();
+        return view('user.profile.investments', compact('user', 'investments', 'type'));
+    }
+
+    public function showTransactions ()
+    {
+        $user = auth()->user();
+        $transactions = $user->transactions()->get();
+        return view('user.profile.transactions', compact('user', 'transactions'));
+    }
+
+    public function showWallet ()
+    {
+        $user = auth()->user();
+        $setting = Setting::all()->first();
+        return view('user.profile.wallet', compact('user', 'setting'));
+    }
+
+    public function showReferrals ()
+    {
+        $user = auth()->user();
+        $referrals = auth()->user()->referrals()->get();
+        return view('user.profile.referrals', compact('user', 'referrals'));
     }
 
     // Create Directory to store files.
