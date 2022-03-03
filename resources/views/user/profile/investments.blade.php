@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    @include('admin.user.partials.navbar');
+    @include('user.profile.partials.navbar');
     <div class="card mb-5 mb-xl-8">
         <!--begin::Header-->
         <div class="card-header border-0 pt-5">

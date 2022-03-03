@@ -365,7 +365,7 @@
 										<span class="menu-title">Refferals</span>
 									</a>
 								</div>
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['profile'])) here show @endif">
+                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['profile', 'account.overview'])) here show @endif">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -381,7 +381,7 @@
 										<span class="menu-arrow"></span>
 									</span>
 									<div class="menu-sub menu-sub-accordion  @if(request()->routeIs(['profile'])) show @endif">
-										<div class="menu-item @if(request()->routeIs(['profile'])) here show @endif">
+										<div class="menu-item @if(request()->routeIs(['profile'])) here @endif">
 											<a class="menu-link" href="{{ route('profile') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -389,7 +389,7 @@
 												<span class="menu-title">Profile</span>
 											</a>
 										</div>
-                                        <div class="menu-item @if(request()->routeIs(['account.overview'])) here show @endif">
+                                        <div class="menu-item @if(request()->routeIs(['account.overview'])) here @endif">
 											<a class="menu-link" href="{{ route('account.overview') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -497,7 +497,7 @@
 									<!--end::Menu item-->
 									<!--begin::Menu item-->
 									<div class="menu-item px-5">
-										<a href="{{ route("transactions") }}" class="menu-link px-5">
+										<a href="{{ route('transactions', 'all') }}" class="menu-link px-5">
 											<span class="menu-text">My Transactions</span>
 										</a>
 									</div>

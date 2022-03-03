@@ -20,6 +20,7 @@ class CreateTransactionsTable extends Migration
             $table->enum('type', ['deposit', 'withdrawal', 'investment', 'payout']);
             $table->string('amount');
             $table->string('description');
+            $table->text('preferred_bank')->nullable();
             $table->enum('method', ['wallet', 'card', 'deposit']);
             $table->enum('channel', ['web', 'mobile'])->default('web');
             $table->enum('status', ['approved', 'pending', 'declined']);

@@ -112,14 +112,14 @@ class HomeController extends Controller
         $user = auth()->user();
         $investments = $user->investments()->whereHas('package', function ($query) use ($type) {
             $query->where('type', $type);
-        })->get();
+        })->latest()->get();
         return view('user.profile.investments', compact('user', 'investments', 'type'));
     }
 
     public function showTransactions ()
     {
         $user = auth()->user();
-        $transactions = $user->transactions()->get();
+        $transactions = $user->transactions()->latest()->get();
         return view('user.profile.transactions', compact('user', 'transactions'));
     }
 

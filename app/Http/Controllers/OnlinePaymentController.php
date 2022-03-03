@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\OnlinePayment;
 use App\Http\Requests\StoreOnlinePaymentRequest;
 use App\Http\Requests\UpdateOnlinePaymentRequest;
+use App\Models\Package;
+use Illuminate\Http\Request;
 use Unicodeveloper\Paystack\Facades\Paystack;
 
 class OnlinePaymentController extends Controller
@@ -40,23 +42,23 @@ class OnlinePaymentController extends Controller
     {
         $paymentDetails = Paystack::getPaymentData();
         $res = $paymentDetails['data'];
-        $payment = Payment::query()->where('reference', $res['reference'])->first();
+        $payment = OnlinePayment::query()->where('reference', $res['reference'])->first();
         if (isset($paymentDetails['status'])) {
             if (isset($res)) {
                 $type = json_decode($payment['meta'], true)['type'];
                 if ($res["status"] == 'success') {
-                    return view('user.payment.success', compact('type', 'payment'));
+                    return view('user.payments.success', compact('type', 'payment'));
                 } else {
                     if ($payment['status'] == 'pending')
                         $payment->update(['status' => 'failed']);
-                    return view('user.payment.error', compact('type', 'payment'));
+                    return view('user.payments.error', compact('type', 'payment'));
                 }
             }
         }
         return redirect()->route('dashboard')->with('error', 'Something went wrong');
     }
 
-    public function handlePaymentWebhook(Request $request, $gateway)
+    public function handlePaymentWebhook(Request $request)
     {
         logger('Pinged');
         $res = $request['data'];
@@ -75,7 +77,7 @@ class OnlinePaymentController extends Controller
         logger('Paystack signature verified');
         // if it is a charge event, verify and confirm it is a successful transaction
         if ($request['event'] == 'charge.success' && $res['status'] == 'success') {
-            $payment = Payment::query()->where('reference', $res['reference'])->first();
+            $payment = OnlinePayment::query()->where('reference', $res['reference'])->first();
             if ($payment && $payment['status'] == 'pending') {
                 $meta = $res['metadata'];
                 self::processTransaction($payment, $meta);
@@ -90,7 +92,7 @@ class OnlinePaymentController extends Controller
         $type = $meta['type'] ?? $meta['event_type'];
         switch ($type){
             case 'deposit':
-                $payment->user->nairaWallet()->increment('balance', $payment['amount']);
+                $payment->user->wallet()->increment('balance', $payment['amount']);
                 $transaction = $payment->user->transactions()->create([
                     'type' => 'deposit', 'amount' => $payment['amount'],
                     'description' => 'Deposit', 'channel' => $meta['channel'] ?? 'mobile',
@@ -114,22 +116,6 @@ class OnlinePaymentController extends Controller
                     try {
                         TransactionController::storeInvestmentTransaction($investment, 'card', false, $meta['channel'] ?? 'mobile');
                         NotificationController::sendInvestmentCreatedNotification($investment);
-                    } catch (\Exception $e) { $emailError = true; }
-                }
-                break;
-            case 'trade':
-                if($meta['product'] == 'gold'){
-                    $payment->user->goldWallet()->increment('balance', $meta['grams']);
-                }elseif($meta['product'] == 'silver'){
-                    $payment->user->silverWallet()->increment('balance', $meta['grams']);
-                }
-                $trade = $payment->user->trades()->create([
-                    'grams' => $meta['grams'], 'amount' => $payment['amount'], 'product' => $meta['product'], 'type' => 'buy', 'status' => 'success'
-                ]);
-                if ($trade) {
-                    try {
-                        TransactionController::storeTradeTransaction($trade, 'card', false, $meta['channel'] ?? 'mobile');
-                        NotificationController::sendTradeSuccessfulNotification($trade);
                     } catch (\Exception $e) { $emailError = true; }
                 }
                 break;

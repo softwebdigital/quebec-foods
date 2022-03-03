@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\NotificationController;
+use App\Models\BankAccounts;
 
 class TransactionController extends Controller
 {
@@ -197,11 +198,14 @@ class TransactionController extends Controller
         foreach ($transactions as $transaction)
         {
             $status = $action = $disabled = $details = null;
-            if($transaction['type'] == 'withdrawal'){
-                $bank_name = $transaction['user']['bank_name'];
-                $account_name = $transaction['user']['account_name'];
-                $account_number = $transaction['user']['account_number'];
-                $details = '<button data-toggle="modal" onclick="populateTransactionDetails(\''.$account_name.'\', \''.$account_number.'\', \''.$bank_name.'\');" data-target="#transactionDetailModal" class="btn btn-sm btn-primary" type="button">
+            $bank = json_decode($transaction['preferred_bank'], true);
+            if($transaction['type'] == 'withdrawal' && $bank){
+                $bank_id = $bank['id'];
+                $bank_detail = BankAccounts::find($bank_id);
+                $bank_name = $bank_detail['bank_name'];
+                $account_name = $bank_detail['account_name'];
+                $account_number = $bank_detail['account_number'];
+                $details = '<button data-bs-toggle="modal" onclick="populateTransactionDetails(\''.$account_name.'\', \''.$account_number.'\', \''.$bank_name.'\');" data-bs-target="#transactionDetailModal" class="btn btn-sm btn-primary" type="button">
                                 View
                             </button>';
             }else{
@@ -246,7 +250,7 @@ class TransactionController extends Controller
             $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($transaction['amount']).'</span>';
             $datum['description'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['description'].'</span>';
             $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['created_at']->format('M d, Y \a\t h:i A').'</span>';
-            $datum['details'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$details.'</span>';
+            $datum['details'] = '<span class="text-gray-600 fw-bolder d-block fs-6 text-center">'.$details.'</span>';
             $datum['method'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['method'].'</span>';
             $datum['channel'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['channel'].'</span>';
             $datum['status'] = $status;

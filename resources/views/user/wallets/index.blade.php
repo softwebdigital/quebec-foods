@@ -92,7 +92,7 @@
                             <!--begin::Input-->
                             <select name="account" aria-label="Select account" data-placeholder="Select account" value="{{ old("account") }}" data-control="select2" class="form-select form-select-solid text-dark" id="account">
                                 @foreach (auth()->user()->bankAccounts()->get() as $bank)
-                                    <option value="{{ $bank['bank_name'] }}">{{ $bank['bank_name']. " - ". $bank['account_number'] }}</option>
+                                    <option value="{{ $bank['id'] }}">{{ $bank['bank_name']. " - ". $bank['account_number'] }}</option>
                                 @endforeach
                             </select>
                             @error('account')

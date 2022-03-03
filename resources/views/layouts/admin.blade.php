@@ -541,45 +541,10 @@
 									</div>
 									<!--end::Menu item-->
 									<!--begin::Menu item-->
-									<div class="menu-item px-5" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
-										<a href="#" class="menu-link px-5">
-											<span class="menu-title">Transactions</span>
-											<span class="menu-arrow"></span>
+									<div class="menu-item px-5">
+										<a href="{{ route('admin.transactions', 'all') }}" class="menu-link px-5">
+											<span class="menu-text">Transaction</span>
 										</a>
-										<!--begin::Menu sub-->
-										<div class="menu-sub menu-sub-dropdown w-175px py-4">
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="{{ route('admin.transactions', 'all') }}" class="menu-link px-5">All</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="{{ route('admin.transactions', 'pending') }}" class="menu-link px-5">Pending</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="{{ route('admin.transactions', 'withdrawal') }}" class="menu-link px-5">Withdrawal</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="{{ route('admin.transactions', 'deposit') }}" class="menu-link px-5">Deposits</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="{{ route('admin.transactions', 'investment') }}" class="menu-link px-5">Investments</a>
-											</div>
-											<!--end::Menu item-->
-											<!--begin::Menu item-->
-											<div class="menu-item px-3">
-												<a href="{{ route('admin.transactions', 'payout') }}" class="menu-link px-5">Payout</a>
-											</div>
-											<!--end::Menu item-->
-										</div>
-										<!--end::Menu sub-->
 									</div>
 									<!--end::Menu item-->
 									<!--begin::Menu separator-->

@@ -74,7 +74,7 @@
                                         </a>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                             <div class="menu-item px-3">
-                                                <a class="menu-link px-3" href="{{ route('admin.investments.show', ['investment' => $investment['id'], 'type' => $type]) }}"><span class="">View</span></a>
+                                                <a class="menu-link px-3" href="{{ route('admin.users.investment.show', ['user' => $user, 'type' => $type, 'investment' => $investment['id']]) }}"><span class="">View</span></a>
                                             </div>
                                             @if ($investment['status'] == 'pending')
                                                 <div class="menu-item px-3">

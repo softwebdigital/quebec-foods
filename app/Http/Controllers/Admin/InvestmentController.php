@@ -72,9 +72,10 @@ class InvestmentController extends Controller
         return back()->withInput()->with('error', 'Error processing investment');
     }
 
-    public function showUserInvestment(User $user, Investment $investment)
+    public function showUserInvestment(User $user, $type, Investment $investment,  $filter = "all")
     {
-        return view('admin.user.investment.show', ['user' => $user, 'investment' => $investment, 'packages' => Package::all()]);
+        $packages = Package::all();
+        return view('admin.user.showInvestments', compact('user', 'investment', 'packages', 'type', 'filter'));
     }
 
     public function fetchInvestmentsWithAjax(Request $request, $type, $filter)

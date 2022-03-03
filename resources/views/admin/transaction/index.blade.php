@@ -48,6 +48,42 @@
         <!--end::Table container-->
     </div>
     <!--begin::Body-->
+
+    <div class="modal fade" tabindex="-1" id="transactionDetailModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Withdrawal</h5>
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-2x"></span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <table class="table table-borderless">
+                        <tr>
+                            <th class="fw-bolder">Account Name: </th>
+                            <td id="accountName"></td>
+                        </tr>
+                        <tr>
+                            <th class="fw-bolder">Account Number: </th>
+                            <td id="accountNumber"></td>
+                        </tr>
+                        <tr>
+                            <th class="fw-bolder">Bank Name: </th>
+                            <td id="bankName"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 

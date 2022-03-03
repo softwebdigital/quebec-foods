@@ -22,13 +22,13 @@ class UserController extends Controller
     {
         $investments = $user->investments()->whereHas('package', function ($query) use ($type) {
             $query->where('type', $type);
-        })->get();
+        })->latest()->get();
         return view('admin.user.investments', compact('user', 'investments', 'type'));
     }
 
     public function showTransactions (User $user)
     {
-        $transactions = $user->transactions()->get();
+        $transactions = $user->transactions()->latest()->get();
         return view('admin.user.transactions', compact('user', 'transactions'));
     }
 
