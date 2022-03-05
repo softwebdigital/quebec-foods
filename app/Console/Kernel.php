@@ -16,6 +16,29 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+
+        $schedule->command('backup:clean')->twiceDaily(0, 12);
+        $schedule->command('backup:run --only-db')->twiceDaily(0, 12);
+        $schedule->command('settings:generate')
+                    ->everyMinute();
+        $schedule->command('investment:settle')
+                    ->withoutOverlapping()
+                    ->everyMinute();
+        $schedule->command('transaction:notify')
+                    ->withoutOverlapping()
+                    ->everyMinute();
+        $schedule->command('transaction:notify')
+                    ->withoutOverlapping()
+                    ->everyMinute();
+        $schedule->command('maturity:notify')
+                    ->withoutOverlapping()
+                    ->dailyAt('00:00');
+        $schedule->command('payments:settle')
+                    ->withoutOverlapping()
+                    ->everyMinute();
+        $schedule->command('users:delete')
+                    ->withoutOverlapping()
+                    ->everyMinute();
     }
 
     /**

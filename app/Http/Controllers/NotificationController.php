@@ -136,4 +136,55 @@ class NotificationController extends Controller
                 Contact administrator <a href="mailto:'.env('SUPPORT_EMAIL').'">'.env('SUPPORT_EMAIL').'</a> for further complaints.';
         $investment->user->notify(new CustomNotification('cancelled', 'Investment Cancelled', $msg, $description));
     }
+
+    public static function sendInvestmentAlmostMaturedNotification($user)
+    {
+        $description = 'This is to notify you that your investment will mature within the next thirty (30) days.<br>';
+        $msg = 'This is to notify you that your investment will mature within the next thirty (30) days.<br><br>
+                Remember, you have the option to request for a full withdrawal of invested sum plus returns or simply rollover your investment. You can login to your account at any time after the maturity date of your investment to process this.<br><br>
+                <table border="0" cellpadding="0" cellspacing="0" role="presentation" style="box-sizing: border-box; margin: auto; text-align: center; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; position: relative;">
+                <tr>
+                <td style="box-sizing: border-box; margin: auto; text-align: center; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; position: relative;">
+                <a href="'.route('login').'" class="button button-primary" target="_blank" rel="noopener" style="box-sizing: border-box; margin: auto; text-align: center; font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, Helvetica, Arial, sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\'; position: relative; -webkit-text-size-adjust: none; border-radius: 4px; color: #fff; display: inline-block; overflow: hidden; text-decoration: none; background-color: #2d3748; border-bottom: 8px solid #2d3748; border-left: 18px solid #2d3748; border-right: 18px solid #2d3748; border-top: 8px solid #2d3748;">Click here to login</a>
+                </td>
+                </tr>
+                </table><br>
+                We are available for any further enquiries or assistance. You can email us at support@raregems.ng<br><br>
+                Thank you for choosing us as your preferred partner in growing your wealth.<br><br>
+                ';
+        $user->notify(new CustomNotification('investment', 'Investment Maturity - 30days Notice', $msg, $description));
+    }
+
+    public static function sendRolloverInvestmentCreatedNotification($investment)
+    {
+        $description = 'Your rollover investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package was successful.';
+        $msg = 'Your rollover investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package was successful.<br><br>
+                <b><u>Investment details:</u></b><br>
+                Investment package: <b>'.$investment->package["name"].'</b><br>
+                Total amount invested: <b>₦ '.number_format($investment->amount).'</b><br>
+                ROI amount: <b>₦ '.number_format($investment->total_return - $investment->amount).'</b><br>
+                Expected returns: <b>₦ '.number_format($investment->total_return).'</b><br>
+                Investment duration: <b>'.$investment['return_date']->diff($investment['investment_date'])->m.' month(s)</b><br>
+                Investment date: <b>'.$investment->investment_date->format('M d, Y \a\t h:i A').'</b><br>
+                Return date: <b>'.$investment->return_date->format('M d, Y \a\t h:i A').'</b><br>
+                Investment method: <b>'.$investment->transaction["method"].'</b><br><br>
+                <b><u>Wallet details:</u></b><br>
+                Amount debited: <b>₦ '.number_format($investment->amount, 2).'</b><br>
+                Wallet balance: <b>₦ '.number_format($investment->user->nairaWallet['balance'], 2).'</b><br>
+                ';
+        $investment->user->notify(new CustomNotification('investment', 'Rollover Investment Created', $msg, $description));
+    }
+
+    public static function sendInvestmentSettledNotification($investment)
+    {
+        $description = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has been settled.';
+        $msg = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has been settled.<br><br>
+                <b><u>Wallet details:</u></b><br>
+                Amount credited: <b>₦ '.number_format($investment->total_return, 2).'</b><br>
+                Wallet balance: <b>₦ '.number_format($investment->user->nairaWallet['balance'], 2).'</b><br>
+                ';
+        $investment->user->notify(new CustomNotification('investment', 'Investment Settled', $msg, $description));
+    }
+
+
 }

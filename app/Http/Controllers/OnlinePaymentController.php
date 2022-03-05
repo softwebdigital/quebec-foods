@@ -13,7 +13,7 @@ class OnlinePaymentController extends Controller
 {
     public static function initializeOnlineTransaction($amount, $data): \Illuminate\Http\RedirectResponse
     {
-        if ($amount > 500000)
+        if ($amount > 10000000)
             return redirect()->route('dashboard')->with('error', 'We can\'t process card payment above ₦500,000');
         $data['channel'] = 'web';
         $paymentData = [
@@ -105,12 +105,19 @@ class OnlinePaymentController extends Controller
                 break;
             case 'investment':
                 $package = Package::find($meta['package']['id']);
+                if ($package['duration_mode'] == 'day') {
+                    $returnDate = now()->addDays($package['duration'])->format('Y-m-d H:i:s');
+                } elseif ($package['duration_mode'] == 'month') {
+                    $returnDate = now()->addMonths($package['duration'])->format('Y-m-d H:i:s');
+                } else {
+                    $returnDate = now()->addYears($package['duration'])->format('Y-m-d H:i:s');
+                }
                 $investment = $payment->user->investments()->create([
                     'package_id'=>$package['id'], 'slots' => $meta['slots'],
                     'amount' => $meta['slots'] * $package['price'],
                     'total_return' => $meta['slots'] * $package['price'] * (( 100 + $package['roi']) / 100 ),
                     'investment_date' => now()->format('Y-m-d H:i:s'),
-                    'return_date' => now()->addMonths($package['duration'])->format('Y-m-d H:i:s'), 'status' => 'active'
+                    'return_date' => $returnDate, 'status' => 'active'
                 ]);
                 if ($investment) {
                     try {

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -32,5 +33,10 @@ class Investment extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function canSettle(): bool
+    {
+        return Carbon::make($this['return_date'])->lte(now());
     }
 }

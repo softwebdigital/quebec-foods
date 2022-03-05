@@ -31,6 +31,7 @@ class CreateSettingsTable extends Migration
             $table->boolean('exchange_rate_error_mail')->default(true);
             $table->string('error_mail_interval')->default('30 minutes');
             $table->string('pending_transaction_mail_interval')->default('5 minutes');
+            $table->dateTime('last_pending_transaction_notification')->default(now());
             $table->timestamps();
         });
 

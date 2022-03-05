@@ -55,7 +55,7 @@ class InvestmentController extends Controller
             if (!$user->hasSufficientBalanceForTransaction($request['slots'] * $package['price'])){
                 return back()->withInput()->with('error', 'Insufficient wallet balance');
             }
-            $user->nairaWallet()->decrement('balance', $request['slots'] * $package['price']);
+            $user->wallet()->decrement('balance', $request['slots'] * $package['price']);
         }
 //        Create Investment
         $investment = $user->investments()->create([

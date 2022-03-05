@@ -69,4 +69,5 @@ Route::group(['middleware' => ['auth', 'verified', 'two_factor']], function() {
 
     Route::get('/payment/callback', [\App\Http\Controllers\OnlinePaymentController::class, 'handlePaymentCallback'])->name('payment.callback');
     Route::get('/payment/initiate', [\App\Http\Controllers\OnlinePaymentController::class, 'initiatePayment'])->name('payment.initiate');
+    
 });

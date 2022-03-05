@@ -14,6 +14,7 @@ class CreateOnlinePaymentsTable extends Migration
     public function up()
     {
         Schema::create('online_payments', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('transaction_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('reference');
@@ -24,7 +25,7 @@ class CreateOnlinePaymentsTable extends Migration
             $table->enum('status', ['success', 'pending', 'failed'])->default('pending');
             $table->timestamps();
         });
-    }   
+    }
 
     /**
      * Reverse the migrations.
