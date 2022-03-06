@@ -81,13 +81,7 @@
 
                             @if ($type == 'farm')
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($package['slots']) }}</span></td>
-                                <td>
-                                    @if ($package['rollover'] == 1)
-                                        <span class="badge badge-pill badge-success">Enabled</span>
-                                    @else
-                                        <span class="badge badge-pill badge-danger">Disabled</span>
-                                    @endif
-                                </td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['rollover'] == 1 ? 'Yes' : 'No' }}</span></td>
                             @endif
                             <td class="text-end">
                                 <a href="#" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action

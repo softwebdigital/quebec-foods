@@ -62,7 +62,7 @@
                                     @elseif($investment['status'] == 'pending')
                                         <span class="badge badge-pill badge-warning">Pending</span>
                                     @elseif($investment['status'] == 'settled')
-                                        <span class="badge badge-pill badge-warning">Settled</span>
+                                        <span class="badge badge-pill badge-settled">Settled</span>
                                     @elseif($investment['status'] == 'cancelled')
                                         <span class="badge badge-pill badge-danger">Declined</span>
                                     @endif

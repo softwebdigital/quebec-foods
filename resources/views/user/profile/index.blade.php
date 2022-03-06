@@ -346,7 +346,7 @@
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
-                                <div class="d-flex flex-column mb-5 fv-row">
+                                <div class="d-flex flex-column mb-10 fv-row">
                                     <!--begin::Label-->
                                     <label class="required fs-5 fw-bold mb-2">Address</label>
                                     <!--end::Label-->
