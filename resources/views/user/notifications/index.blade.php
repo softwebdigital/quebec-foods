@@ -10,11 +10,12 @@
 <!--begin::Tables Widget 3-->
 <div class="card card-xl-stretch mb-xl-8">
     <!--begin::Header-->
-    <div class="card-header border-0 pt-5">
+    <div class="card-header align-items-center border-0 pt-5">
         <h3 class="card-title align-items-start flex-column">
             <span class="card-label fw-bolder fs-3 mb-1">Notifications</span>
             <span class="text-muted mt-1 fw-bold fs-7">{{ auth()->user()->unreadNotifications()->count() }} new notification(s)</span>
         </h3>
+        <a href="{{ route('notifications.read') }}" class="btn btn-light btn-sm">Mark all as read</a>
     </div>
     <!--end::Header-->
     <!--begin::Body-->
@@ -22,7 +23,7 @@
         <!--begin::Table container-->
         <div class="table-responsive">
             <!--begin::Table-->
-            <table class="table align-middle gs-0 gy-3">
+            <table class="table align-middle table-row-dashed gs-0 gy-3">
                 <!--begin::Table head-->
                 <thead>
                     <tr>
