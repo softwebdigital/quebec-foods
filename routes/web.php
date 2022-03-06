@@ -47,6 +47,8 @@ Route::group(['middleware' => ['auth', 'verified', 'two_factor']], function() {
 
         Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications');
         Route::get('/notifications/{notification?}/show', [App\Http\Controllers\NotificationController::class, 'show'])->name('notifications.show');
+        Route::get('/notifications/read', [App\Http\Controllers\NotificationController::class, 'read'])->name('notifications.read');
+
         Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm']], function() {
             Route::get('/', [\App\Http\Controllers\PackageController::class, 'index'])->name('packages');
             Route::get('/{package}/show', [\App\Http\Controllers\PackageController::class, 'show'])->name('packages.show');

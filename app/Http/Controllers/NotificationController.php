@@ -15,6 +15,14 @@ class NotificationController extends Controller
         return view('user.notifications.index', ['notifications' => auth()->user()->notifications()->paginate(50)]);
     }
 
+    public function read(): \Illuminate\Http\RedirectResponse
+    {
+        foreach (auth()->user()->unreadNotifications()->get() as $notification) {
+            $notification->markAsRead();
+        }
+        return redirect()->route('notifications')->with('success', 'Notifications marked as read');
+    }
+
     // Show Notifications.
     public function show($notification)
     {
