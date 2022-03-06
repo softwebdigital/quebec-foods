@@ -119,6 +119,12 @@ class PackageController extends Controller
         return back()->with('error', 'Error deleting package');
     }
 
+    public function investments($type, Package $package)
+    {
+        $investments = $package->investments;
+        return view('admin.package.investments', compact('type', 'investments', 'package'));
+    }
+
 
     protected function uploadPackageImageAndReturnPathToSave($image): string
     {

@@ -111,7 +111,7 @@
                                         <a class="menu-link px-3" href="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')"><span class="">Delete</span></a>
                                     </div>
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="javascript:void();" onclick=""><span style="white-space: nowrap;">Investments</span></a>
+                                        <a class="menu-link px-3" href="{{ route('admin.packages.investments', [$type, $package['id']]) }}"><span style="white-space: nowrap;">Investments</span></a>
                                     </div>
                                 </div>
                                 <form action="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" id="deletePackage{{ $package['id'] }}" method="POST">
