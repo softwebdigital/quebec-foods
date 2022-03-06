@@ -24,7 +24,7 @@
         <!--begin::Table container-->
         <div class="table-responsive">
             <!--begin::Table-->
-            <table class="table align-middle gs-0 gy-4" id="data-table">
+            <table class="table align-middle table-row-dashed gs-0 gy-4" id="data-table">
                 <!--begin::Table head-->
                 <thead>
                     <tr class="fw-bolder text-muted bg-light">
@@ -39,13 +39,13 @@
                         <th class="text-dark">Duration</th>
                         @if ($type == 'plant')
                             <th class="text-dark">Milestones</th>
-                            <th class="text-dark">Status</th>
                             <th class="text-dark">Payout mode</th>
                         @endif
                         @if ($type == 'farm')
                             <th class="text-dark">Slots</th>
                             <th class="text-dark">Rollover</th>
                         @endif
+                        <th class="text-dark">Status</th>
                         <th class="text-dark rounded-end"></th>
                     </tr>
                 </thead>
@@ -69,6 +69,12 @@
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['duration'] }} {{ $package['duration_mode'] }}{{ $package['duration'] > 1 ? 's' : '' }}</span></td>
                             @if ($type == 'plant')
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($package['milestones']) }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['payout_mode'] }}</span></td>
+                            @endif
+                            @if ($type == 'farm')
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($package['slots']) }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['rollover'] == 1 ? 'Yes' : 'No' }}</span></td>
+                            @endif
                             <td>
                                 @if ($package['status'] == 'open')
                                     <span class="badge badge-pill badge-success">Open</span>
@@ -76,13 +82,6 @@
                                     <span class="badge badge-pill badge-danger">Closed</span>
                                 @endif
                             </td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['payout_mode'] }}</span></td>
-                            @endif
-
-                            @if ($type == 'farm')
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($package['slots']) }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['rollover'] == 1 ? 'Yes' : 'No' }}</span></td>
-                            @endif
                             <td class="text-end">
                                 <a href="#" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
                                     <span class="svg-icon svg-icon-5 m-0">

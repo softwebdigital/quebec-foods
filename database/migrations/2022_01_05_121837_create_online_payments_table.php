@@ -20,7 +20,7 @@ class CreateOnlinePaymentsTable extends Migration
             $table->string('reference');
             $table->string('amount');
             $table->enum('type', ['deposit', 'investment']);
-            $table->string('gateway')->default('flutterwave');
+            $table->string('gateway')->default('paystack');
             $table->text('meta')->nullable();
             $table->enum('status', ['success', 'pending', 'failed'])->default('pending');
             $table->timestamps();

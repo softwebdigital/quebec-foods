@@ -89,7 +89,7 @@
 										<span class="menu-title">Dashboard</span>
 									</a>
 								</div>
-								<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.users'])) here show @endif">
+								<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.users', 'admin.users.transactions', 'admin.users.investments', 'admin.users.referrals', 'admin.users.investment.show', 'admin.users.show', 'admin.users.wallet'])) here show @endif">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -104,7 +104,7 @@
 										<span class="menu-title">Users</span>
 										<span class="menu-arrow"></span>
 									</span>
-									<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.users'])) show @endif">
+									<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.users', 'admin.users.transactions', 'admin.users.investments', 'admin.users.referrals', 'admin.users.investment.show', 'admin.users.show', 'admin.users.wallet'])) show @endif">
 										<div class="menu-item @if(request()->routeIs(['admin.users']) && request()->type == 'all') here @endif">
 											<a class="menu-link" href="{{ route('admin.users', 'all') }}">
 												<span class="menu-bullet">
@@ -177,7 +177,12 @@
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Transactions</span>
+                                        @php
+                                            $pending = \App\Models\Transaction::where('status', 'pending')->count();
+                                        @endphp
+										<span class="menu-title">Transactions @if ($pending > 0)
+                                            <span class="ms-3 badge badge-warning">{{ $pending }}</span>
+                                        @endif</span>
 										<span class="menu-arrow"></span>
 									</span>
 									<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.transactions'])) show @endif">
@@ -351,8 +356,8 @@
 										</div>
 									</div>
 								</div>
-                                <div class="menu-item @if(request()->routeIs(['admin.onlinepayment'])) here show @endif">
-									<a class="menu-link" href="#">
+                                <div class="menu-item @if(request()->routeIs(['admin.onlinepayments'])) here show @endif">
+									<a class="menu-link" href="{{ route('admin.onlinepayments') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">

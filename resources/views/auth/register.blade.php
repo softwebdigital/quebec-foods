@@ -20,7 +20,7 @@
         <div class="row fv-row mb-7">
             <!--begin::Col-->
             <div class="col-xl-6">
-                <label class="form-label fw-bolder text-dark fs-6">First Name</label>
+                <label class="required form-label fw-bolder text-dark fs-6">First Name</label>
                 <input class="form-control form-control-lg form-control-solid" type="text" placeholder="" name="first_name" value="{{ old('first_name') }}" required autocomplete="first_name"/>
                 @error('first_name')
                     <span class="text-danger small">
@@ -31,7 +31,7 @@
             <!--end::Col-->
             <!--begin::Col-->
             <div class="col-xl-6">
-                <label class="form-label fw-bolder text-dark fs-6">Last Name</label>
+                <label class="required form-label fw-bolder text-dark fs-6">Last Name</label>
                 <input class="form-control form-control-lg form-control-solid" type="text" placeholder="" name="last_name" value="{{ old('last_name') }}" required autocomplete="last_name"/>
                 @error('last_name')
                     <span class="text-danger small">
@@ -44,7 +44,7 @@
         <!--end::Input group-->
         <!--begin::Input group-->
         <div class="fv-row mb-7">
-            <label class="form-label fw-bolder text-dark fs-6">Email</label>
+            <label class="required form-label fw-bolder text-dark fs-6">Email</label>
             <input class="form-control form-control-lg form-control-solid" type="email" placeholder="" name="email" name="email" value="{{ old('email') }}" required autocomplete="email"/>
             @error('email')
                 <span class="text-danger small">
@@ -58,7 +58,7 @@
             <!--begin::Wrapper-->
             <div class="mb-1">
                 <!--begin::Label-->
-                <label class="form-label fw-bolder text-dark fs-6">Password</label>
+                <label class="required form-label fw-bolder text-dark fs-6">Password</label>
                 <!--end::Label-->
                 <!--begin::Input wrapper-->
                 <div class="position-relative mb-3">
@@ -80,12 +80,12 @@
         <!--end::Input group=-->
         <!--begin::Input group-->
         <div class="fv-row mb-5">
-            <label class="form-label fw-bolder text-dark fs-6">Confirm Password</label>
+            <label class="required form-label fw-bolder text-dark fs-6">Confirm Password</label>
             <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="password_confirmation" autocomplete="off" />
         </div>
         <!--end::Input group-->
         <div class="fv-row mb-5">
-            <label class="form-label fw-bolder text-dark fs-6">Referral Code</label>
+            <label class="form-label fw-bolder text-dark fs-6">Referral Code<span class="text-muted fw-bold">(Optional)</span></label>
             <input class="form-control form-control-lg form-control-solid" type="text" placeholder="" name="ref" value="{{ request('ref') }}"/>
         </div>
         <!--begin::Input group-->
