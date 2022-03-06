@@ -141,6 +141,12 @@
                     <label class="form-label">Return Date</label>
                     <input class="form-control form-control-solid" value="{{ $investment['return_date']->format('M d, Y \a\t h:i A') }}" disabled/>
                 </div>
+                @if ($investment['package']['type'] == 'farm')
+                    <div class="col-md-12 mb-4">
+                        <label class="form-label">Rollover</label>
+                        <input class="form-control form-control-solid" value="{{ $investment['rollover'] ? "Yes" : "No" }}" disabled/>
+                    </div>
+                @endif
             </div>
         </div>
         <!--end::Body-->
@@ -150,7 +156,7 @@
 
 @section('script')
 <script>
-    @if($investment['status'] == 'active')
+    @if($investment['status'] == 'active' && $percentage < 100)
     let countDownDate = new Date("{{ $investment['return_date']->format('F d, Y H:i:s') }}").getTime();
     let x = setInterval(function() {
         let now = new Date().getTime();

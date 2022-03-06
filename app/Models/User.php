@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Support\Str;
+use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -349,7 +350,7 @@ class User extends Authenticatable implements MustVerifyEmail
         } while (User::where('ref_code', $code)->count() > 0);
         return abs($code);
     }
-    
+
     /**
      * Generate 6 digits MFA code for the User
      */
@@ -370,5 +371,11 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->two_factor_code = null;
         $this->two_factor_expires_at = null;
         $this->save();
+    }
+
+    public function canBeDeleted($duration): bool
+    {
+        $newDate = date('Y-m-d H:i:s', strtotime(Carbon::parse($this['created_at']).' + '.$duration));
+        return is_null($this['email_verified_at']) && Carbon::make($newDate)->lt(now());
     }
 }

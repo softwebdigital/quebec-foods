@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use App\Notifications\CustomNotification;
 use App\Notifications\CustomNotificationByEmail;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class NotificationController extends Controller
 {
@@ -50,6 +51,7 @@ class NotificationController extends Controller
 
     public static function sendInvestmentCreatedNotification($investment)
     {
+        $transaction = $investment->transactions()->where('type', 'investment')->first();
         // $pdf = PDF::loadView('pdf.certificate', ['investment' => $investment]);
         $description = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package was successful.';
         $msg = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package was successful.<br><br>
@@ -58,16 +60,35 @@ class NotificationController extends Controller
                 Total amount invested: <b>₦ '.number_format($investment->amount).'</b><br>
                 ROI amount: <b>₦ '.number_format($investment->total_return - $investment->amount).'</b><br>
                 Expected returns: <b>₦ '.number_format($investment->total_return).'</b><br>
-                Investment duration: <b>'.$investment['return_date']->diff($investment['investment_date'])->m.' month(s)</b><br>
+                Investment duration: <b>'.Carbon::make($investment['return_date'])->diffInMonths($investment['investment_date']).' month(s)</b><br>
                 Investment date: <b>'.$investment->investment_date->format('M d, Y \a\t h:i A').'</b><br>
-                Return date: <b>'.$investment->return_date->format('M d, Y \a\t h:i A').'</b><br>
-                Investment method: <b>'.$investment->transaction["method"].'</b><br><br>
+                Return date: <b>'.Carbon::make($investment->return_date)->format('M d, Y \a\t h:i A').'</b><br>
+                Investment method: <b>'.$transaction->method.'</b><br><br>
                 <b><u>Wallet details:</u></b><br>
                 Amount debited: <b>₦ '.number_format($investment->amount, 2).'</b><br>
                 Wallet balance: <b>₦ '.number_format($investment->user->wallet['balance'], 2).'</b><br>
                 ';
         // $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description, $pdf->output()));
         $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description));
+    }
+
+    public static function sendInvestmentStartedNotification($investment)
+    {
+        $transaction = $investment->transactions()->where('type', 'investment')->first();
+        // $pdf = PDF::loadView('pdf.certificate', ['investment' => $investment]);
+        $description = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has started.';
+        $msg = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has started.<br><br>
+                <b><u>Investment details:</u></b><br>
+                Investment package: <b>'.$investment->package["name"].'</b><br>
+                Total amount invested: <b>₦ '.number_format($investment->amount).'</b><br>
+                ROI amount: <b>₦ '.number_format($investment->total_return - $investment->amount).'</b><br>
+                Expected returns: <b>₦ '.number_format($investment->total_return).'</b><br>
+                Investment duration: <b>'.Carbon::make($investment['return_date'])->diffInMonths($investment['investment_date']).' month(s)</b><br>
+                Investment date: <b>'.$investment->investment_date->format('M d, Y \a\t h:i A').'</b><br>
+                Return date: <b>'.Carbon::make($investment->return_date)->format('M d, Y \a\t h:i A').'</b><br>
+                Investment method: <b>'.$transaction->method.'</b><br>';
+        // $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description, $pdf->output()));
+        $investment->user->notify(new CustomNotification('investment', 'Investment Started', $msg, $description));
     }
 
     public static function sendInvestmentQueuedNotification($investment)
@@ -165,6 +186,7 @@ class NotificationController extends Controller
 
     public static function sendRolloverInvestmentCreatedNotification($investment)
     {
+        $transaction = $investment->transactions()->where('type', 'investment')->first();
         $description = 'Your rollover investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package was successful.';
         $msg = 'Your rollover investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package was successful.<br><br>
                 <b><u>Investment details:</u></b><br>
@@ -175,10 +197,10 @@ class NotificationController extends Controller
                 Investment duration: <b>'.$investment['return_date']->diff($investment['investment_date'])->m.' month(s)</b><br>
                 Investment date: <b>'.$investment->investment_date->format('M d, Y \a\t h:i A').'</b><br>
                 Return date: <b>'.$investment->return_date->format('M d, Y \a\t h:i A').'</b><br>
-                Investment method: <b>'.$investment->transaction["method"].'</b><br><br>
+                Investment method: <b>'.$transaction["method"].'</b><br><br>
                 <b><u>Wallet details:</u></b><br>
                 Amount debited: <b>₦ '.number_format($investment->amount, 2).'</b><br>
-                Wallet balance: <b>₦ '.number_format($investment->user->nairaWallet['balance'], 2).'</b><br>
+                Wallet balance: <b>₦ '.number_format($investment->user->wallet['balance'], 2).'</b><br>
                 ';
         $investment->user->notify(new CustomNotification('investment', 'Rollover Investment Created', $msg, $description));
     }
@@ -189,9 +211,20 @@ class NotificationController extends Controller
         $msg = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has been settled.<br><br>
                 <b><u>Wallet details:</u></b><br>
                 Amount credited: <b>₦ '.number_format($investment->total_return, 2).'</b><br>
-                Wallet balance: <b>₦ '.number_format($investment->user->nairaWallet['balance'], 2).'</b><br>
+                Wallet balance: <b>₦ '.number_format($investment->user->wallet['balance'], 2).'</b><br>
                 ';
         $investment->user->notify(new CustomNotification('investment', 'Investment Settled', $msg, $description));
+    }
+
+    public static function sendInvestmentMilestoneSettledNotification($investment, $amount)
+    {
+        $description = 'A milestone from your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has been paid to your wallet.';
+        $msg = 'A milestone from your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has been paid to your wallet.<br><br>
+                <b><u>Wallet details:</u></b><br>
+                Amount credited: <b>₦ '.number_format($amount, 2).'</b><br>
+                Wallet balance: <b>₦ '.number_format($investment->user->wallet['balance'], 2).'</b><br>
+                ';
+        $investment->user->notify(new CustomNotification('investment', 'Investment Milestone Payment', $msg, $description));
     }
 
 

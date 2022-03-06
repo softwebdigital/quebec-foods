@@ -166,7 +166,7 @@ class UserController extends Controller
                                         <a class="menu-link px-3" href="'.route('admin.users.show', $user['id']).'"><span class="">View User</span></a>
                                     </div>
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/show#investments"><span class="">Investments</span></a>
+                                        <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/transactions"><span class="">Transactions</span></a>
                                     </div>
                                     <div class="menu-item px-3">
                                         <div class="menu-link px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
@@ -180,19 +180,22 @@ class UserController extends Controller
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
                                             data-kt-menu="true">
                                             <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">
+                                                <a href="/admin/users/'.$user['id'].'/plant/investments" class="menu-link px-3">
                                                     Processing Plants
                                                 </a>
                                             </div>
                                             <div class="menu-item px-3">
-                                                <a href="#" class="menu-link px-3">
+                                                <a href="/admin/users/'.$user['id'].'/farm/investments" class="menu-link px-3">
                                                     Farms
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/show#wallets"><span class="">Wallet</span></a>
+                                        <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/wallet"><span class="">Wallet</span></a>
+                                    </div>
+                                    <div class="menu-item px-3">
+                                        <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/referrals"><span class="">Referrals</span></a>
                                     </div>'.
                                     $action.'
                                 </div>';

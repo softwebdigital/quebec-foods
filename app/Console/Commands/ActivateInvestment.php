@@ -2,24 +2,24 @@
 
 namespace App\Console\Commands;
 
-use App\Http\Controllers\CommandController;
 use Illuminate\Console\Command;
+use App\Http\Controllers\CommandController;
 
-class GenerateSettings extends Command
+class ActivateInvestment extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'settings:generate';
+    protected $signature = 'investment:activate';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create new setting for app when not found';
+    protected $description = 'Command description';
 
     /**
      * Create a new command instance.
@@ -38,6 +38,6 @@ class GenerateSettings extends Command
      */
     public function handle()
     {
-        CommandController::generateSettings();
+        CommandController::activateInvestment();
     }
 }

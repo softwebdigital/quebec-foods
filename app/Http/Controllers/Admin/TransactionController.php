@@ -105,6 +105,7 @@ class TransactionController extends Controller
                     $transaction->investment()->update([
                         'investment_date' => now()->format('Y-m-d H:i:s'),
                         'return_date'     => $returnDate,
+                        'status'          => 'approved',
                         'status'          => 'active'
                     ]);
                     NotificationController::sendInvestmentCreatedNotification($transaction['investment']);
@@ -137,7 +138,8 @@ class TransactionController extends Controller
             case 'investment':
                 if ($transaction['investment']){
                     $transaction->investment()->update([
-                        'status' => 'cancelled'
+                        'payment' => 'declined',
+                        'status'  => 'cancelled'
                     ]);
                     NotificationController::sendInvestmentCancelledNotification($transaction['investment']);
                 }

@@ -25,9 +25,9 @@ class CommandController extends Controller
     {
         if (Setting::all()->count() == 0){
             Setting::create([
-                'bank_name' => 'Access Bank',
+                'bank_name' => 'Quebec Bank',
                 'account_number' => '0123456789',
-                'account_name' => 'Rare Gems'
+                'account_name' => 'Quebec'
             ]);
         }
     }
@@ -51,12 +51,8 @@ class CommandController extends Controller
         if ($transactions > 0){
             $settings = Setting::all()->first();
             if ($settings['pending_transaction_mail'] == 1){
-                logger("Pinged");
                 $dateTime = date('Y-m-d H:i:s', strtotime($settings['last_pending_transaction_notification'].' + '.$settings['pending_transaction_mail_interval']));
-                logger($dateTime);
-                logger(now());
                 if (now()->gte($dateTime)){
-                    logger("Fired");
                     NotificationController::sendPendingTransactionNotificationOnScheduleToAdmin($transactions);
                     $settings->update(['last_pending_transaction_notification' => now()]);
                 }
@@ -110,57 +106,94 @@ class CommandController extends Controller
 
     public static function settleInvestments()
     {
-        $investments = Investment::query()->where('status', 'active')->get();
-        foreach ($investments as $investment){
-//            Check if investment can be settled
-            if ($investment->canSettle()){
-//                Check if investment has rollover
-                $user = $investment->user;
-                if ($investment->rollover){
-                    $rollover = $investment->rollover;
-//                    Check if returns can purchase slot
-                    if (!($investment['total_return'] < ($rollover['slots'] * $rollover->package['price']))){
-                        $slots = $rollover['slots'];
-                    }else{
-                        $slots = floor($investment['total_return'] / $rollover->package['price']);
+        $investments = Investment::query()->with('package', 'transactions')->where('status', 'active')->get();
+        foreach ($investments as $investment) {
+            $package = $investment->package;
+            $user = $investment->user;
+            if ($package->type == 'plant') {
+                $totalPayments = $investment->transactions()->where('type', 'payout')->count();
+                $milestones = $investment->current_package['milestones'];
+                $roi = $investment['amount'] * ($investment->current_package['roi'] / 100);
+                $next = $totalPayments + 1;
+                if (Carbon::make($investment['start_date'])->addMonths($investment->getPlantDurationIncreaseByMonth($next))->lt(now())) {
+                    if ($next == $milestones) {
+                        $user->wallet()->increment('balance', $investment->amount + $roi);
+                        $investment->update(['status' => 'settled']);
+                        TransactionController::storeInvestmentPayoutTransaction($investment, $investment->amount + $roi);
+                        \App\Http\Controllers\NotificationController::sendInvestmentMilestoneSettledNotification($investment, $investment->amount + $roi);
+                        \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
+                    } else if ($totalPayments < $milestones) {
+                        $user->wallet()->increment('balance', $roi);
+                        TransactionController::storeInvestmentPayoutTransaction($investment, $roi);
+                        \App\Http\Controllers\NotificationController::sendInvestmentMilestoneSettledNotification($investment, $roi);
                     }
-                    $amount = $slots * $rollover->package['price'];
-                    $balance = $investment['total_return'] - $amount;
-//                    Check if slots can create investment
-                    if ($slots > 0){
-//                        Create investment from rollover
-                        $package = Package::find($investment->package->id);
-                        if ($package['duration_mode'] == 'day') {
-                            $returnDate = now()->addDays($package['duration'])->format('Y-m-d H:i:s');
-                        } elseif ($package['duration_mode'] == 'month') {
-                            $returnDate = now()->addMonths($package['duration'])->format('Y-m-d H:i:s');
-                        } else {
-                            $returnDate = now()->addYears($package['duration'])->format('Y-m-d H:i:s');
-                        }
-                        $newInvestment = Investment::create([
-                            'user_id' => $investment->user['id'], 'package_id'=> $rollover->package['id'], 'slots' => $slots,
-                            'amount' => $amount, 'total_return' => $amount * (( 100 + $rollover->package['roi'] ) / 100 ),
-                            'investment_date' => now()->format('Y-m-d H:i:s'),
-                            'return_date' => $returnDate, 'status' => 'active'
-                        ]);
-                        if ($newInvestment){
-                            TransactionController::storeInvestmentTransaction($newInvestment, 'wallet');
-                            \App\Http\Controllers\NotificationController::sendRolloverInvestmentCreatedNotification($newInvestment);
-                        }
-//                        Check if user has balance and refund
-                        if ($balance > 0){
-                            $user->wallet()->increment('balance', $balance);
+                }
+            } else {
+                if ($investment->canSettle()){
+                    $availablePackage = Package::where('type', 'farm')->where('status', 'open')->latest()->first();
+                    if ($availablePackage && $investment->rollover){
+                        $slots = floor($investment['total_return'] / $availablePackage['price']);
+                        $amount = $slots * $availablePackage['price'];
+                        $balance = $investment['total_return'] - $amount;
+
+                        if ($slots > 0){
+                            if ($availablePackage['duration_mode'] == 'day') {
+                                $returnDate = now()->addDays($availablePackage['duration'])->format('Y-m-d H:i:s');
+                            } elseif ($availablePackage['duration_mode'] == 'month') {
+                                $returnDate = now()->addMonths($availablePackage['duration'])->format('Y-m-d H:i:s');
+                            } else {
+                                $returnDate = now()->addYears($availablePackage['duration'])->format('Y-m-d H:i:s');
+                            }
+                            $newInvestment = Investment::create([
+                                'user_id' => $investment->user['id'], 'package_id'=> $availablePackage['id'], 'slots' => $slots,
+                                'amount' => $amount, 'total_return' => $amount * (( 100 + $availablePackage['roi'] ) / 100 ),
+                                'investment_date' => now()->format('Y-m-d H:i:s'),
+                                'return_date' => $returnDate, 'status' => 'active'
+                            ]);
+                            if ($newInvestment){
+                                TransactionController::storeInvestmentTransaction($newInvestment, 'wallet');
+                                \App\Http\Controllers\NotificationController::sendRolloverInvestmentCreatedNotification($newInvestment);
+                            }
+    //                        Check if user has balance and refund
+                            if ($balance > 0){
+                                $user->wallet()->increment('balance', $balance);
+                            }
+                        }else{
+                            $user->wallet()->increment('balance', $investment['total_return']);
                         }
                     }else{
                         $user->wallet()->increment('balance', $investment['total_return']);
                     }
-                }else{
-                    $user->wallet()->increment('balance', $investment['total_return']);
+                    $investment->update(['status' => 'settled']);
+                    TransactionController::storeInvestmentPayoutTransaction($investment, $investment['amount']);
+                    \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
                 }
-                $investment->update(['status' => 'settled']);
-                \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
             }
         }
     }
 
+    public static function activateInvestment() {
+        $investments = Investment::where('payment', 'approved')->where('status', 'pending')->get();
+        foreach ($investments as $investment) {
+            if (Carbon::make($investment->start_date)->lte(now())) {
+                $investment->update([
+                    'start_date' => now(),
+                    'status'     => 'active'
+                ]);
+                \App\Http\Controllers\NotificationController::sendInvestmentStartedNotification($investment);
+            }
+        }
+    }
+
+    public static function closePackages()
+    {
+        $packages = Package::where('type', 'farm')->where('status', 'open')->get();
+        foreach ($packages as $package) {
+            if (Carbon::make($package->start_date)->lte(now())) {
+                $package->update([
+                    'status' => 'closed'
+                ]);
+            }
+        }
+    }
 }

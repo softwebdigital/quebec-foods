@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreInvestmentRequest;
 use App\Http\Requests\UpdateInvestmentRequest;
+use Illuminate\Support\Carbon;
 
 class InvestmentController extends Controller
 {
@@ -76,11 +77,11 @@ class InvestmentController extends Controller
                     return back()->withInput()->with('error', 'Insufficient wallet balance');
                 }
                 auth()->user()->wallet()->decrement('balance', $request['slots'] * $package['price']);
-                $status = 'active';
+                $payment = 'approved';
                 $msg = 'Investment created successfully';
                 break;
             case 'deposit':
-                $status = 'pending';
+                $payment = 'pending';
                 $msg = 'Investment queued successfully';
                 break;
             case 'card':
@@ -90,24 +91,28 @@ class InvestmentController extends Controller
                 return back()->withInput()->with('error', 'Invalid payment method');
         }
 //        Create Investment
-        if ($package['duration_mode'] == 'day') {
-            $returnDate = now()->addDays($package['duration'])->format('Y-m-d H:i:s');
-        } elseif ($package['duration_mode'] == 'month') {
-            $returnDate = now()->addMonths($package['duration'])->format('Y-m-d H:i:s');
+        if ($package->type == 'farm') {
+            $returns = $request['slots'] * $package['price'] * (( 100 + $package['roi'] ) / 100 );
         } else {
-            $returnDate = now()->addYears($package['duration'])->format('Y-m-d H:i:s');
+            $returns = $package->getPlantTotalROI($request['slots'] * $package['price']);
         }
-
+        if (Carbon::make($package['start_date'])->lt(now())) {
+            $startDate = now();
+        } else {
+            $startDate = $package['start_date'];
+        }
         $investment = auth()->user()->investments()->create([
-            'package_id'=>$package['id'], 'slots' => $request['slots'], 'amount' => $request['slots'] * $package['price'],
-            'total_return' => $request['slots'] * $package['price'] * (( 100 + $package['roi'] ) / 100 ),
+            'package_id'=>$package['id'], 'slots' => $request['slots'],
+            'amount' => $request['slots'] * $package['price'],
+            'total_return' => $returns,
             'investment_date' => now()->format('Y-m-d H:i:s'),
             'rollover' => isset($request['rollover']) && $request['rollover'] == 'yes',
-            'return_date' => $returnDate, 'status' => $status
+            'start_date' => $startDate, 'payment' => $payment,
+            'package_data' => json_encode($package)
         ]);
         if ($investment) {
             TransactionController::storeInvestmentTransaction($investment, $request['payment']);
-            if ($investment['status'] == 'active'){
+            if ($investment['payment'] == 'approved'){
                 NotificationController::sendInvestmentCreatedNotification($investment);
             }else{
                 NotificationController::sendInvestmentQueuedNotification($investment);
