@@ -283,11 +283,13 @@
                         @endif
 
                         <!--begin::Submit-->
-                        <button type="button" onclick="confirmFormSubmit(event, 'createPackageForm')" class="btn btn-primary w-100">
-                            <!--begin::Indicator-->
-                            <span class="indicator-label">Create Package</span>
-                            <!--end::Indicator-->
-                        </button>
+                        @can('Create Packages')
+                            <button type="button" onclick="confirmFormSubmit(event, 'createPackageForm')" class="btn btn-primary w-100">
+                                <!--begin::Indicator-->
+                                <span class="indicator-label">Create Package</span>
+                                <!--end::Indicator-->
+                            </button>
+                        @endcan
                         <!--end::Submit-->
                     </form>
                     <!--end:::Form-->

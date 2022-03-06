@@ -18,17 +18,19 @@
             <span class="card-label fw-bolder fs-3 mb-1">{{ ucfirst($type) }} Packages</span>
         </h3>
 
-        <div class="card-toolbar">
-            <a href="{{ route('admin.packages.create', $type) }}" class="btn btn-sm btn-light-primary">
-            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-            <span class="svg-icon svg-icon-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-                    <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-                </svg>
-            </span>
-            <!--end::Svg Icon-->New {{ ucfirst($type) }} Package</a>
-        </div>
+        @can('Create Packages')
+            <div class="card-toolbar">
+                <a href="{{ route('admin.packages.create', $type) }}" class="btn btn-sm btn-light-primary">
+                <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+                <span class="svg-icon svg-icon-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
+                        <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->New {{ ucfirst($type) }} Package</a>
+            </div>
+        @endcan
     </div>
     <!--end::Header-->
     <!--begin::Body-->
@@ -104,12 +106,16 @@
                                     </span>
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="{{ route('admin.packages.edit', [$type, $package['id']]) }}"><span class="">Edit</span></a>
-                                    </div>
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')"><span class="">Delete</span></a>
-                                    </div>
+                                    @can('Edit Packages')
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link px-3" href="{{ route('admin.packages.edit', [$type, $package['id']]) }}"><span class="">Edit</span></a>
+                                        </div>
+                                    @endcan
+                                    @can('Delete Packages')
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link px-3" href="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')"><span class="">Delete</span></a>
+                                        </div>                                
+                                    @endcan
                                     <div class="menu-item px-3">
                                         <a class="menu-link px-3" href="{{ route('admin.packages.investments', [$type, $package['id']]) }}"><span style="white-space: nowrap;">Investments</span></a>
                                     </div>

@@ -132,6 +132,7 @@ class CreatePermissionTables extends Migration
             ['name' => 'Block Users', 'guard_name' => 'admin'],
             ['name' => 'Unblock Users', 'guard_name' => 'admin'],
             ['name' => 'Deposit For Users', 'guard_name' => 'admin'],
+            ['name' => 'View Users Wallet', 'guard_name' => 'admin'],
             ['name' => 'Withdraw For Users', 'guard_name' => 'admin'],
             ['name' => 'Make Investment For Users', 'guard_name' => 'admin'],
             ['name' => 'Rollover Investment For Users', 'guard_name' => 'admin'],
@@ -159,6 +160,17 @@ class CreatePermissionTables extends Migration
             ['name' => 'View Settings', 'guard_name' => 'admin'],
             ['name' => 'Update Company Bank Details', 'guard_name' => 'admin'],
             ['name' => 'Update Other Settings', 'guard_name' => 'admin'],
+            ['name' => 'View FAQs', 'guard_name' => 'admin'],
+            ['name' => 'View FAQs Category', 'guard_name' => 'admin'],
+            ['name' => 'Create FAQs Category', 'guard_name' => 'admin'],
+            ['name' => 'Delete FAQs Category', 'guard_name' => 'admin'],
+            ['name' => 'Edit FAQs Category', 'guard_name' => 'admin'],
+            ['name' => 'Create FAQs', 'guard_name' => 'admin'],
+            ['name' => 'Delete FAQs', 'guard_name' => 'admin'],
+            ['name' => 'Edit FAQs', 'guard_name' => 'admin'],
+            ['name' => 'View Referrals', 'guard_name' => 'admin'],
+            ['name' => 'View Payments', 'guard_name' => 'admin'],
+            ['name' => 'Resolve Payments', 'guard_name' => 'admin'],
         ]);
         $role = \Spatie\Permission\Models\Role::all()->first();
         $permissions = \Spatie\Permission\Models\Permission::all();
