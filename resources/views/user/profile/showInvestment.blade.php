@@ -61,7 +61,7 @@
             <!--end::Stats-->
             <!--begin::Progress-->
             @php
-                $total = Illuminate\Support\Carbon::parse($investment['investment_date'])->diffInDays($investment['return_date']);
+                $total = Illuminate\Support\Carbon::parse($investment['start_date'])->diffInDays($investment['return_date']);
                 $passed = $total - now()->diffInDays($investment['return_date']);
                 if ($investment['status'] == 'active') {
                     $percentage = round(($passed / $total) * 100);
@@ -106,13 +106,15 @@
                     <label class="form-label">Type</label>
                     <input class="form-control form-control-solid" value="{{ ucfirst($investment['package']['type']) }}" disabled/>
                 </div>
+                @if ($investment->package['type'] == 'farm')
                 <div class="col-md-6 mb-4">
                     <label class="form-label">Duration</label>
                     <input class="form-control form-control-solid" value="{{ $investment['package']['duration'] }} {{ $investment['package']['duration_mode'].($investment['package']['duration'] > 1 ? 's' : '') }}" disabled/>
                 </div>
-                <div class="col-md-6 mb-4">
+                @endif
+                <div class="@if ($investment->package['type'] == 'farm') col-md-6 @else col-md-12 @endif mb-4">
                     <label class="form-label">ROI</label>
-                    <input class="form-control form-control-solid" value="{{ $investment['package']['roi'] }}%" disabled/>
+                    <input class="form-control form-control-solid" value="{{ $investment['currentPackage']['roi'] }}%" disabled/>
                 </div>
                 <div class="col-12 mt-5">
                     <h5 class="mb-4">Investment Information</h5>
@@ -133,9 +135,13 @@
                     <label class="form-label">Total Returns</label>
                     <input class="form-control form-control-solid" value="{{ '₦ '. number_format($investment['total_return']) }}" disabled/>
                 </div>
-                <div class="col-md-6 mb-4">
+                <div class="col-md-12 mb-4">
                     <label class="form-label">Investment Date</label>
                     <input class="form-control form-control-solid" value="{{ $investment['investment_date']->format('M d, Y \a\t h:i A') }}" disabled/>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <label class="form-label">Start Date</label>
+                    <input class="form-control form-control-solid" value="{{ $investment['start_date']->format('M d, Y \a\t h:i A') }}" disabled/>
                 </div>
                 <div class="col-md-6 mb-4">
                     <label class="form-label">Return Date</label>
@@ -146,6 +152,54 @@
                         <label class="form-label">Rollover</label>
                         <input class="form-control form-control-solid" value="{{ $investment['rollover'] ? "Yes" : "No" }}" disabled/>
                     </div>
+                @endif
+
+                @if ($investment['package']['type'] == 'plant')
+                <div class="col-12 mt-5">
+                    <h5 class="mb-4">Payout Information</h5>
+                </div>
+                <!--begin::Table wrapper-->
+                <div class="table-responsive">
+                    <!--begin::Table-->
+                    <table class="table align-middle table-row-dashed gs-0 gy-4">
+                        <!--begin::Table head-->
+                        <thead>
+                            <tr class="fw-bolder text-muted bg-light">
+                                <th class="ps-4 text-dark rounded-start">Milestone</th>
+                                <th class="text-dark">Amount Due</th>
+                                <th class="text-dark">Due Date</th>
+                                <th class="text-dark rounded-end">Status</th>
+                            </tr>
+                        </thead>
+                        <!--end::Table head-->
+                        @php
+                            $milestones = $investment->current_package['milestones'];
+                            $roi = $investment['amount'] * ($investment->package['roi'] / 100);
+                            $paid = $investment->transactions()->where('type', 'payout')->count();
+                        @endphp
+                        <!--begin::Table body-->
+                        <tbody>
+                            @for ($i = 1; $i <= $milestones; $i++)
+                                <tr>
+                                    <!--begin::Invoice=-->
+                                    <td class="ps-4"><span class="text-gray-600 fw-bolder d-block fs-6"></span>Milestone {{ $i }}</td>
+                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($i == $milestones ? $investment['amount'] + $roi  : $roi) }}</span></td>
+                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ \Carbon\Carbon::make($investment['start_date'])->addMonths($investment->getPlantDurationIncreaseByMonth($i)) }}</span></td>
+                                    <td>
+                                        @if ($paid >= $i)
+                                            <span class="badge badge-success">Paid</span>
+                                        @else
+                                            <span class="badge badge-warning">Pending</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endfor
+                        </tbody>
+                        <!--end::Table body-->
+                    </table>
+                    <!--end::Table-->
+                </div>
+                <!--end::Table wrapper-->
                 @endif
             </div>
         </div>

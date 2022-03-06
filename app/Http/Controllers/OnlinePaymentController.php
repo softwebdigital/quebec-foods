@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\OnlinePayment;
-use App\Http\Requests\StoreOnlinePaymentRequest;
-use App\Http\Requests\UpdateOnlinePaymentRequest;
 use App\Models\Package;
 use Illuminate\Http\Request;
+use App\Models\OnlinePayment;
+use Illuminate\Support\Carbon;
 use Unicodeveloper\Paystack\Facades\Paystack;
+use App\Http\Requests\StoreOnlinePaymentRequest;
+use App\Http\Requests\UpdateOnlinePaymentRequest;
 
 class OnlinePaymentController extends Controller
 {
@@ -45,9 +46,11 @@ class OnlinePaymentController extends Controller
         $payment = OnlinePayment::query()->where('reference', $res['reference'])->first();
         if (isset($paymentDetails['status'])) {
             if (isset($res)) {
-                $type = json_decode($payment['meta'], true)['type'];
+                $data = json_decode($payment['meta'], true);
+                $type = $data['type'];
+                $package = $type == 'investment' ? Package::find($data['package']['id']) : null;
                 if ($res["status"] == 'success') {
-                    return view('user.payments.success', compact('type', 'payment'));
+                    return view('user.payments.success', compact('type', 'payment', 'package'));
                 } else {
                     if ($payment['status'] == 'pending')
                         $payment->update(['status' => 'failed']);
@@ -105,20 +108,26 @@ class OnlinePaymentController extends Controller
                 break;
             case 'investment':
                 $package = Package::find($meta['package']['id']);
-                if ($package['duration_mode'] == 'day') {
-                    $returnDate = now()->addDays($package['duration'])->format('Y-m-d H:i:s');
-                } elseif ($package['duration_mode'] == 'month') {
-                    $returnDate = now()->addMonths($package['duration'])->format('Y-m-d H:i:s');
+                if ($package->type == 'farm') {
+                    $returns = $meta['slots'] * $package['price'] * (( 100 + $package['roi'] ) / 100 );
                 } else {
-                    $returnDate = now()->addYears($package['duration'])->format('Y-m-d H:i:s');
+                    $returns = $package->getPlantTotalROI($meta['slots'] * $package['price']);
+                }
+                if (Carbon::make($package['start_date'])->lt(now())) {
+                    $startDate = now();
+                } else {
+                    $startDate = $package['start_date'];
                 }
                 $investment = $payment->user->investments()->create([
                     'package_id'=>$package['id'], 'slots' => $meta['slots'],
                     'amount' => $meta['slots'] * $package['price'],
-                    'total_return' => $meta['slots'] * $package['price'] * (( 100 + $package['roi']) / 100 ),
+                    'total_return' => $returns,
                     'investment_date' => now()->format('Y-m-d H:i:s'),
-                    'return_date' => $returnDate, 'status' => 'active'
+                    'rollover' => isset($request['rollover']) && $request['rollover'] == 'yes',
+                    'start_date' => $startDate, 'payment' => 'approved',
+                    'package_data' => json_encode($package)
                 ]);
+
                 if ($investment) {
                     try {
                         TransactionController::storeInvestmentTransaction($investment, 'card', false, $meta['channel'] ?? 'mobile');

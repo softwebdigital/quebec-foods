@@ -158,17 +158,15 @@
             <!--begin::Table wrapper-->
             <div class="table-responsive">
                 <!--begin::Table-->
-                <table class="table align-middle table-row-dashed gy-5" id="kt_table_users_login_session">
+                <table class="table align-middle table-row-dashed gs-0 gy-4">
                     <!--begin::Table head-->
-                    <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
-                        <!--begin::Table row-->
-                        <tr class="text-start gs-0">
-                            <th>Milestone</th>
-                            <th>Amount Due</th>
-                            <th>Due Date</th>
-                            <th>Status</th>
+                    <thead>
+                        <tr class="fw-bolder text-muted bg-light">
+                            <th class="ps-4 text-dark rounded-start">Milestone</th>
+                            <th class="text-dark">Amount Due</th>
+                            <th class="text-dark">Due Date</th>
+                            <th class="text-dark rounded-end">Status</th>
                         </tr>
-                        <!--end::Table row-->
                     </thead>
                     <!--end::Table head-->
                     @php
@@ -177,13 +175,13 @@
                         $paid = $investment->transactions()->where('type', 'payout')->count();
                     @endphp
                     <!--begin::Table body-->
-                    <tbody class="fs-6 fw-bold">
+                    <tbody>
                         @for ($i = 1; $i <= $milestones; $i++)
                             <tr>
                                 <!--begin::Invoice=-->
-                                <td>Milestone {{ $i }}</td>
-                                <td>₦ {{ number_format($i == $milestones ? $investment['amount'] + $roi  : $roi) }}</td>
-                                <td>{{ \Carbon\Carbon::make($investment['start_date'])->addMonths($investment->getPlantDurationIncreaseByMonth($i)) }}</td>
+                                <td class="ps-4"><span class="text-gray-600 fw-bolder d-block fs-6"></span>Milestone {{ $i }}</td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($i == $milestones ? $investment['amount'] + $roi  : $roi) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ \Carbon\Carbon::make($investment['start_date'])->addMonths($investment->getPlantDurationIncreaseByMonth($i)) }}</span></td>
                                 <td>
                                     @if ($paid >= $i)
                                         <span class="badge badge-success">Paid</span>

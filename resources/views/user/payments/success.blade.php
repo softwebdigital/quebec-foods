@@ -44,9 +44,9 @@
                     <h4 class="mb-5 fw-bolder text-black-800">{{ ucfirst($type) }} Payment Was Successful</h4>
                     <h6 class="text-muted mb-10 text-center">Your payment of ₦ {{ number_format($payment['amount']) }} was successful</h6>
                     @if ($type == "deposit")
-                        <a href="{{ route('wallet') }}" class="btn btn-primary">My Wallets</a>
+                        <a href="{{ route('wallet') }}" class="btn btn-primary">My Wallet</a>
                     @elseif($type == "investment")
-                        <a href="{{ route('investments') }}" class="btn btn-primary">My Investments</a>
+                        <a href="{{ route('investments', ['type' => $package->type, 'filter' => 'all']) }}" class="btn btn-primary">My Investments</a>
                     @endif
                 </div>
                 <!--end::Wrapper-->

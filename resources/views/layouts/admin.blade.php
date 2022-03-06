@@ -181,7 +181,7 @@
                                             $pending = \App\Models\Transaction::where('status', 'pending')->count();
                                         @endphp
 										<span class="menu-title">Transactions @if ($pending > 0)
-                                            <span class="ms-3 badge badge-warning">{{ $pending }}</span>
+                                            <span class="ms-3 badge badge-primary">{{ $pending }}</span>
                                         @endif</span>
 										<span class="menu-arrow"></span>
 									</span>

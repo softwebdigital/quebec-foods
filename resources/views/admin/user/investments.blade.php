@@ -86,7 +86,7 @@
                                             <div class="menu-item px-3">
                                                 <a class="menu-link px-3" href="{{ route('admin.users.investment.show', ['user' => $user, 'type' => $type, 'investment' => $investment['id']]) }}"><span class="">View</span></a>
                                             </div>
-                                            @if ($investment['status'] == 'pending')
+                                            @if ($investment['payment'] == 'pending')
                                                 <div class="menu-item px-3">
                                                     <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionApprove{{$investment['id']}}')" href="{{ route('admin.transactions.approve', $investment['initial_transaction']['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
                                                     <form id="transactionApprove{{$investment['id']}}" action="{{ route('admin.transactions.approve', $investment['initial_transaction']['id']) }}" method="POST">

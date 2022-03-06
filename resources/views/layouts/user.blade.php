@@ -89,7 +89,7 @@
 										<span class="menu-title">Dashboard</span>
 									</a>
 								</div>
-								<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['packages'])) here show @endif">
+								<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['packages', 'packages.show'])) here show @endif">
 									<span class="menu-link">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -105,7 +105,7 @@
 										<span class="menu-arrow"></span>
 									</span>
 									<div class="menu-sub menu-sub-accordion  @if(request()->routeIs(['packages'])) show @endif">
-										<div class="menu-item @if(request()->routeIs(['packages']) && request()->type == 'plant') here show @endif">
+										<div class="menu-item @if(request()->routeIs(['packages', 'packages.show']) && request()->type == 'plant') here show @endif">
 											<a class="menu-link" href="{{ route('packages', 'plant') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
@@ -113,7 +113,7 @@
 												<span class="menu-title">Processing Plants</span>
 											</a>
 										</div>
-                                        <div class="menu-item @if(request()->routeIs(['packages']) && request()->type == 'farm') here show @endif">
+                                        <div class="menu-item @if(request()->routeIs(['packages', 'packages.show']) && request()->type == 'farm') here show @endif">
 											<a class="menu-link" href="{{ route('packages', 'farm') }}">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>

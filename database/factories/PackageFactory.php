@@ -14,7 +14,10 @@ class PackageFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' => ucwords($this->faker->words()),
+            'roi' => $this->faker->numberBetween(10, 100),
+            'start_date' => $this->faker->date('Y-m-d H:i:s'),
+            'slots' => $this->faker->numberBetween(1000, 5000),
         ];
     }
 }

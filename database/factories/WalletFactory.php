@@ -14,7 +14,7 @@ class WalletFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'balance' => $this->faker->randomNumber(5)
         ];
     }
 }

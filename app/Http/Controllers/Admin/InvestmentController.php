@@ -129,6 +129,16 @@ class InvestmentController extends Controller
                 $status = '<span class="badge badge-pill badge-success">Active</span>';
             }elseif ($investment['status'] == 'pending'){
                 $status = '<span class="badge badge-pill badge-warning">Pending</span>';
+            }elseif ($investment['status'] == 'cancelled'){
+                $status = '<span class="badge badge-pill badge-danger">Cancelled</span>';
+            }elseif ($investment['status'] == 'settled'){
+                $status = '<span class="badge badge-pill badge-secondary">Settled</span>';
+            }
+
+            if($investment['payment'] == 'approved'){
+                $payment = '<span class="badge badge-pill badge-success">Approved</span>';
+            }elseif ($investment['payment'] == 'pending'){
+                $payment = '<span class="badge badge-pill badge-warning">Pending</span>';
                 $action .= '<div class="menu-item px-3">
                         <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'transactionApprove' . $investment['id'] . '\')" href="' . route('admin.transactions.approve', $investment['initial_transaction']['id']) . '"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
                             <form id="transactionApprove' . $investment['id'] . '" action="' . route('admin.transactions.approve', $investment['initial_transaction']['id']) . '" method="POST">
@@ -144,20 +154,9 @@ class InvestmentController extends Controller
                                 <input type="hidden" name="_method" value="PUT">
                             </form>
                         </div>';
-
                 if (!auth()->user()->can('Approve Transactions') && !auth()->user()->can('Decline Transactions')){
                     $action = null;
                 }
-            }elseif ($investment['status'] == 'cancelled'){
-                $status = '<span class="badge badge-pill badge-danger">Cancelled</span>';
-            }elseif ($investment['status'] == 'settled'){
-                $status = '<span class="badge badge-pill badge-secondary">Settled</span>';
-            }
-
-            if($investment['payment'] == 'approved'){
-                $payment = '<span class="badge badge-pill badge-success">Approved</span>';
-            }elseif ($investment['payment'] == 'pending'){
-                $payment = '<span class="badge badge-pill badge-warning">Pending</span>';
             }elseif ($investment['payment'] == 'declined'){
                 $payment = '<span class="badge badge-pill badge-danger">Declined</span>';
             }
