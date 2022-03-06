@@ -38,6 +38,7 @@
                                 <th class="text-dark" style="white-space: nowrap;">Total Invested</th>
                                 <th class="text-dark" style="white-space: nowrap;">Expected Returns</th>
                                 <th class="text-dark" style="white-space: nowrap;">Days Left</th>
+                                <th class="text-dark">Payment</th>
                                 <th class="text-dark">Status</th>
                                 <th class="text-dark"></th>
                             </tr>
@@ -53,6 +54,15 @@
                                     <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ {{ number_format($investment['amount']) }}</span></td>
                                     <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ {{ number_format($investment['total_return']) }}</span></td>
                                     <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ $investment['return_date']->format('M d, Y') }}</span></td>
+                                    <td>
+                                        @if($investment['payment'] == 'approved')
+                                            <span class="badge badge-pill badge-success">Approved</span>
+                                        @elseif($investment['payment'] == 'declined')
+                                            <span class="badge badge-pill badge-danger">Declined</span>
+                                        @elseif($investment['payment'] == 'pending')
+                                            <span class="badge badge-pill badge-warning">Pending</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         @if($investment['status'] == 'active')
                                             <span class="badge badge-pill badge-success">Active</span>
@@ -78,15 +88,15 @@
                                             </div>
                                             @if ($investment['status'] == 'pending')
                                                 <div class="menu-item px-3">
-                                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionApprove{{$investment['id']}}')" href="{{ route('admin.transactions.approve', $investment['transaction']['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
-                                                    <form id="transactionApprove{{$investment['id']}}" action="{{ route('admin.transactions.approve', $investment['transaction']['id']) }}" method="POST">
+                                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionApprove{{$investment['id']}}')" href="{{ route('admin.transactions.approve', $investment['initial_transaction']['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
+                                                    <form id="transactionApprove{{$investment['id']}}" action="{{ route('admin.transactions.approve', $investment['initial_transaction']['id']) }}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                     </form>
                                                 </div>
                                                 <div class="menu-item px-3">
-                                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionDecline{{$investment['id']}}')" href="{{ route('admin.transactions.decline', $investment['transaction']['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
-                                                    <form id="transactionDecline{{$investment['id']}}" action="{{ route('admin.transactions.decline', $investment['transaction']['id']) }}" method="POST">
+                                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionDecline{{$investment['id']}}')" href="{{ route('admin.transactions.decline', $investment['initial_transaction']['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
+                                                    <form id="transactionDecline{{$investment['id']}}" action="{{ route('admin.transactions.decline', $investment['initial_transaction']['id']) }}" method="POST">
                                                         @csrf
                                                         @method('PUT')
                                                     </form>

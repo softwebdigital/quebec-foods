@@ -50,9 +50,9 @@ Route::group(['middleware' => ['auth:admin']], function (){
     Route::get('/users/{type?}', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users');
     Route::get('/users/{user}/show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show');
     Route::get('/users/{user}/{type}/investments', [App\Http\Controllers\Admin\UserController::class, 'showUserInvestments'])->where('type', 'farm|plant')->name('users.investments');
-    Route::get('/users/{user}/investments/transactions', [App\Http\Controllers\Admin\UserController::class, 'showTransactions'])->name('users.transactions');
-    Route::get('/users/{user}/investments/wallet', [App\Http\Controllers\Admin\UserController::class, 'showWallet'])->name('users.wallet');
-    Route::get('/users/{user}/investments/referrals', [App\Http\Controllers\Admin\UserController::class, 'showReferrals'])->name('users.referrals');
+    Route::get('/users/{user}/transactions', [App\Http\Controllers\Admin\UserController::class, 'showTransactions'])->name('users.transactions');
+    Route::get('/users/{user}/wallet', [App\Http\Controllers\Admin\UserController::class, 'showWallet'])->name('users.wallet');
+    Route::get('/users/{user}/referrals', [App\Http\Controllers\Admin\UserController::class, 'showReferrals'])->name('users.referrals');
     Route::get('/users/{user}/invest', [App\Http\Controllers\Admin\InvestmentController::class, 'invest'])->name('users.invest');
     Route::get('/users/{user}/{type}/investments/{investment}/show', [App\Http\Controllers\Admin\InvestmentController::class, 'showUserInvestment'])->where('type', 'farm|plant')->name('users.investment.show');
     Route::put('/users/{user}/block', [App\Http\Controllers\Admin\UserController::class, 'block'])->name('users.block');

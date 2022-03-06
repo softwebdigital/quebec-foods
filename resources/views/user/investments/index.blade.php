@@ -38,6 +38,7 @@
                             @if ($type == 'farm')
                                 <th class="text-dark">Rollover</th>
                             @endif
+                            <th class="text-dark">Payment</th>
                             <th class="text-dark">Status</th>
                             <th class="text-dark rounded-end"></th>
                         </tr>
@@ -57,12 +58,21 @@
                                     <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['rollover'] == 1 ? 'Yes' : 'No' }}</span></td>
                                 @endif
                                 <td>
+                                    @if($investment['payment'] == 'approved')
+                                        <span class="badge badge-pill badge-success">Approved</span>
+                                    @elseif($investment['payment'] == 'declined')
+                                        <span class="badge badge-pill badge-danger">Declined</span>
+                                    @elseif($investment['payment'] == 'pending')
+                                        <span class="badge badge-pill badge-warning">Pending</span>
+                                    @endif
+                                </td>
+                                <td>
                                     @if($investment['status'] == 'active')
                                         <span class="badge badge-pill badge-success">Active</span>
                                     @elseif($investment['status'] == 'pending')
                                         <span class="badge badge-pill badge-warning">Pending</span>
                                     @elseif($investment['status'] == 'settled')
-                                        <span class="badge badge-pill badge-settled">Settled</span>
+                                        <span class="badge badge-pill badge-secondary">Settled</span>
                                     @elseif($investment['status'] == 'cancelled')
                                         <span class="badge badge-pill badge-danger">Declined</span>
                                     @endif

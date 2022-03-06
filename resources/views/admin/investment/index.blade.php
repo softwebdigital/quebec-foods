@@ -36,6 +36,7 @@
                         <th class="text-dark" style="white-space: nowrap;">Total Invested</th>
                         <th class="text-dark" style="white-space: nowrap;">Expected Returns</th>
                         <th class="text-dark" style="white-space: nowrap;">Return Date</th>
+                        <th class="text-dark">Payment</th>
                         <th class="text-dark">Status</th>
                         <th class="ps-4 text-dark rounded-end">Action</th>
                     </tr>
@@ -76,6 +77,7 @@
                 { "data": "total_invested" },
                 { "data": "expected_returns" },
                 { "data": "return_date" },
+                { "data": "payment" },
                 { "data": "status" },
                 { "data": "action" }
             ],

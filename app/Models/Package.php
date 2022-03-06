@@ -34,4 +34,14 @@ class Package extends Model
     {
         return $this->status == 'open' || ($this->type == 'farms' && !$this->hasStarted());
     }
+
+    public function getPlantTotalROI($amount)
+    {
+        $sum = 0;
+        $roi = $amount * ($this->roi / 100);
+        for ($i=1; $i <= $this->milestones; $i++) {
+            $sum += $i == $this->milestones ? ($amount + $roi)  : $roi;
+        }
+        return $sum;
+    }
 }

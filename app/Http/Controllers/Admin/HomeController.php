@@ -85,8 +85,8 @@ class HomeController extends Controller
                 'returns' => self::formatHumanFriendlyNumber($activeFarmInvestment->sum('total_return')),
             ],
             'unSettledInvestments' => [
-                'plant' => ceil($settledPlantInvestment->sum('amount') / $totalPlantInvestment->sum('amount')) * 100,
-                'farm'  => ceil($settledFarmInvestment->sum('amount') / $totalFarmInvestment->sum('amount')) * 100
+                'plant' => ceil($settledPlantInvestment->sum('amount') / ($totalPlantInvestment->sum('amount') > 0 ? $totalPlantInvestment->sum('amount') : 1)) * 100,
+                'farm'  => ceil($settledFarmInvestment->sum('amount') / ($totalFarmInvestment->sum('amount') > 0 ? $totalFarmInvestment->sum('amount') : 1)) * 100
             ],
             'chartData'   => [
                 'transactions' => [

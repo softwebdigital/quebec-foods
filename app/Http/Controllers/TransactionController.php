@@ -129,7 +129,18 @@ class TransactionController extends Controller
             'user_id' => $investment->user['id'], 'type' => 'investment',
             'amount' => $investment['amount'], 'description' => $desc,
             'method' => $method, 'channel' => $channel,
-            'status' => $investment['status'] == 'active' ? 'approved' : 'pending'
+            'status' => $investment['payment'] == 'approved' ? 'approved' : 'pending'
+        ]);
+    }
+
+    public static function storeInvestmentPayoutTransaction($investment, $amount)
+    {
+        Transaction::create([
+            'investment_id' => $investment['id'],
+            'user_id' => $investment->user['id'], 'type' => 'payout',
+            'amount' => $amount, 'description' => "Payout",
+            'method' => 'wallet', 'channel' => 'web',
+            'status' => 'approved'
         ]);
     }
 

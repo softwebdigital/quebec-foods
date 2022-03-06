@@ -178,6 +178,7 @@
                             </div>
                             <!--end::Input group-->
                         @endif
+                        @if ($type == 'farm')
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
@@ -210,6 +211,7 @@
                                 </span>
                             @enderror
                         </div>
+                        @endif
                         <!--end::Input group-->
                         @if ($type == 'plant')
                             <!--begin::Input group-->
@@ -222,6 +224,7 @@
                                     <option value=""></option>
                                     <option @if(old('payout_mode') == 'monthly') selected @endif value="monthly">Monthly</option>
                                     <option @if(old('payout_mode') == 'quarterly') selected @endif value="quarterly">Quarterly</option>
+                                    <option @if(old('payout_mode') == 'semi-annually') selected @endif value="semi-annually">Semi Annually (Half a year)</option>
                                     <option @if(old('payout_mode') == 'annually') selected @endif value="annually">Annually</option>
                                     <option @if(old('payout_mode') == 'biannually') selected @endif value="biannually">Biannually</option>
                                 </select>

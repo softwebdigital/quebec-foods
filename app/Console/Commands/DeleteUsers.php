@@ -12,14 +12,14 @@ class DeleteUsers extends Command
      *
      * @var string
      */
-    protected $signature = 'settings:generate';
+    protected $signature = 'users:delete';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create new setting for app when not found';
+    protected $description = 'Delete users based on administrator settings';
 
     /**
      * Create a new command instance.
@@ -38,6 +38,6 @@ class DeleteUsers extends Command
      */
     public function handle()
     {
-        CommandController::generateSettings();
+        CommandController::deleteUsers();
     }
 }

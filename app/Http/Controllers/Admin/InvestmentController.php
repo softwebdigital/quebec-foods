@@ -82,7 +82,7 @@ class InvestmentController extends Controller
     {
         //        Define all column names
         $columns = [
-            'id', 'name', 'package', 'slots', 'total_invested', 'expected_returns', 'return_date', 'status', 'action'
+            'id', 'name', 'package', 'slots', 'total_invested', 'expected_returns', 'return_date', 'payment', 'status', 'action'
         ];
 //        Find data based on page
         $investments = Investment::query()->whereHas('package', function($query) use ($type) {
@@ -124,22 +124,22 @@ class InvestmentController extends Controller
         $i = $start + 1;
         foreach ($investments as $investment)
         {
-            $status = $action = null;
+            $status = $action = $payment = null;
             if($investment['status'] == 'active'){
                 $status = '<span class="badge badge-pill badge-success">Active</span>';
             }elseif ($investment['status'] == 'pending'){
                 $status = '<span class="badge badge-pill badge-warning">Pending</span>';
                 $action .= '<div class="menu-item px-3">
-                        <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'transactionApprove' . $investment['id'] . '\')" href="' . route('admin.transactions.approve', $investment['transaction']['id']) . '"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
-                            <form id="transactionApprove' . $investment['id'] . '" action="' . route('admin.transactions.approve', $investment['transaction']['id']) . '" method="POST">
+                        <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'transactionApprove' . $investment['id'] . '\')" href="' . route('admin.transactions.approve', $investment['initial_transaction']['id']) . '"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
+                            <form id="transactionApprove' . $investment['id'] . '" action="' . route('admin.transactions.approve', $investment['initial_transaction']['id']) . '" method="POST">
                                 <input type="hidden" name="_token" value="' . csrf_token() . '">
                                 <input type="hidden" name="_method" value="PUT">
                             </form>
                         </div>';
 
                 $action .= '<div class="menu-item px-3">
-                        <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'transactionDecline' . $investment['id'] . '\')" href="' . route('admin.transactions.approve', $investment['transaction']['id']) . '"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
-                            <form id="transactionDecline' . $investment['id'] . '" action="' . route('admin.transactions.decline', $investment['transaction']['id']) . '" method="POST">
+                        <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'transactionDecline' . $investment['id'] . '\')" href="' . route('admin.transactions.approve', $investment['initial_transaction']['id']) . '"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
+                            <form id="transactionDecline' . $investment['id'] . '" action="' . route('admin.transactions.decline', $investment['initial_transaction']['id']) . '" method="POST">
                                 <input type="hidden" name="_token" value="' . csrf_token() . '">
                                 <input type="hidden" name="_method" value="PUT">
                             </form>
@@ -154,6 +154,14 @@ class InvestmentController extends Controller
                 $status = '<span class="badge badge-pill badge-secondary">Settled</span>';
             }
 
+            if($investment['payment'] == 'approved'){
+                $payment = '<span class="badge badge-pill badge-success">Approved</span>';
+            }elseif ($investment['payment'] == 'pending'){
+                $payment = '<span class="badge badge-pill badge-warning">Pending</span>';
+            }elseif ($investment['payment'] == 'declined'){
+                $payment = '<span class="badge badge-pill badge-danger">Declined</span>';
+            }
+
             $datum['sn'] = $i;
             if (auth()->user()->can('View Users')){
                 $datum['name'] = '<a class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" href="'.route('admin.users.show', $investment->user['id']).'">'.ucwords($investment->user['name']).'</a>';
@@ -166,6 +174,7 @@ class InvestmentController extends Controller
             $datum['expected_returns'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($investment['total_return']).'</span>';
             $datum['return_date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$investment->return_date->format('M d, Y').'</span>';
             $datum['status'] = $status;
+            $datum['payment'] = $payment;
             $datum['action'] = '<a href="javascript:void();" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end" style="white-space: nowrap;">Action
                                     <span class="svg-icon svg-icon-5 m-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
