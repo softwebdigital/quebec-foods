@@ -14,17 +14,19 @@
         <h3 class="card-title align-items-start flex-column">
             <span class="card-label fw-bolder fs-3 mb-1">FAQ Category</span>
         </h3>
-        <div class="card-toolbar">
-            <button type="button" data-bs-toggle="modal" data-bs-target="#createCategoryModal" class="btn btn-sm btn-light-primary">
-            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
-            <span class="svg-icon svg-icon-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
-                    <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
-                </svg>
-            </span>
-            <!--end::Svg Icon-->New Category</button>
-        </div>
+        @can('Create FAQs Category')
+            <div class="card-toolbar">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#createCategoryModal" class="btn btn-sm btn-light-primary">
+                <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+                <span class="svg-icon svg-icon-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
+                        <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+                    </svg>
+                </span>
+                <!--end::Svg Icon-->New Category</button>
+            </div> 
+        @endcan
     </div>
     <!--end::Header-->
     <!--begin::Body-->
@@ -58,8 +60,12 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{ $faqCategory['id'] }}"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">Edit</span></a>
-                                        <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'categoryDelete{{ $faqCategory['id'] }}')" href="{{ route('admin.faq.category.destroy', $faqCategory['id']) }}"><i data-feather="delete" class="icon-sm mr-2"></i> <span class="">Delete</span></a>
+                                        @can('Edit FAQs Category')
+                                            <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#editCategoryModal{{ $faqCategory['id'] }}"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">Edit</span></a>
+                                        @endcan
+                                        @can('Delete FAQs Category')
+                                            <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'categoryDelete{{ $faqCategory['id'] }}')" href="{{ route('admin.faq.category.destroy', $faqCategory['id']) }}"><i data-feather="delete" class="icon-sm mr-2"></i> <span class="">Delete</span></a>
+                                        @endcan
                                         <form id="categoryDelete{{ $faqCategory['id'] }}" action="{{ route('admin.faq.category.destroy', $faqCategory['id']) }}" method="POST">
                                             @csrf
                                             @method('DELETE')

@@ -86,7 +86,9 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" onclick="confirmFormSubmit(event, 'adminwithdrawalForm')" class="btn btn-primary">Process Withdrawal</button>
+                    @can('Withdraw For Users')
+                        <button type="button" onclick="confirmFormSubmit(event, 'adminwithdrawalForm')" class="btn btn-primary">Process Withdrawal</button>   
+                    @endcan
                 </div>
             </div>
         </div>
@@ -130,7 +132,9 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" onclick="confirmFormSubmit(event, 'admindepositForm')" class="btn btn-primary">Deposit</button>
+                    @can('Deposit For Users')
+                        <button type="button" onclick="confirmFormSubmit(event, 'admindepositForm')" class="btn btn-primary">Deposit</button> 
+                    @endcan
                 </div>
             </div>
         </div>

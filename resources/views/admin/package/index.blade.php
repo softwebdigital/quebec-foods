@@ -116,9 +116,11 @@
                                             <a class="menu-link px-3" href="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')"><span class="">Delete</span></a>
                                         </div>                                
                                     @endcan
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="{{ route('admin.packages.investments', [$type, $package['id']]) }}"><span style="white-space: nowrap;">Investments</span></a>
-                                    </div>
+                                    @can('View Package Investments')
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link px-3" href="{{ route('admin.packages.investments', [$type, $package['id']]) }}"><span style="white-space: nowrap;">Investments</span></a>
+                                        </div>  
+                                    @endcan
                                 </div>
                                 <form action="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" id="deletePackage{{ $package['id'] }}" method="POST">
                                     @csrf

@@ -83,11 +83,13 @@
                 </div>
                 <!--end::Input group-->
                 <!--begin::Submit-->
-                <button type="button" onclick="confirmFormSubmit(event, 'update-bank-form')" class="btn btn-primary">
-                    <!--begin::Indicator-->
-                    <span class="indicator-label">Update Account Details</span>
-                    <!--end::Indicator-->
-                </button>
+                @can('Update Company Bank Details')
+                    <button type="button" onclick="confirmFormSubmit(event, 'update-bank-form')" class="btn btn-primary">
+                        <!--begin::Indicator-->
+                        <span class="indicator-label">Update Account Details</span>
+                        <!--end::Indicator-->
+                    </button>   
+                @endcan
                 <!--end::Submit-->
             </form>
             <!--end:::Form-->
@@ -258,13 +260,15 @@
                     </div>
                     <!--end::Input group-->
                     <!--begin::Submit-->
-                    <button type="submit" onclick="confirmFormSubmit(event, 'otherSettingForm')" class="btn btn-primary" id="bank_submit_button">
-                        <!--begin::Indicator-->
-                        <span class="indicator-label">Update Settings</span>
-                        <span class="indicator-progress">Please wait...
-                        <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-                        <!--end::Indicator-->
-                    </button>
+                    @can('Update Other Settings')
+                        <button type="submit" onclick="confirmFormSubmit(event, 'otherSettingForm')" class="btn btn-primary" id="bank_submit_button">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Update Settings</span>
+                            <span class="indicator-progress">Please wait...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            <!--end::Indicator-->
+                        </button>                    
+                    @endcan
                     <!--end::Submit-->
                 </form>
                 <!--end:::Form-->

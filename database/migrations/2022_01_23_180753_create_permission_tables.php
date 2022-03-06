@@ -124,6 +124,7 @@ class CreatePermissionTables extends Migration
             ['name' => 'View Investment Dashboard', 'guard_name' => 'admin'],
             ['name' => 'View Trading Dashboard', 'guard_name' => 'admin'],
             ['name' => 'View Packages', 'guard_name' => 'admin'],
+            ['name' => 'View Package Investments', 'guard_name' => 'admin'],
             ['name' => 'Create Packages', 'guard_name' => 'admin'],
             ['name' => 'Edit Packages', 'guard_name' => 'admin'],
             ['name' => 'Delete Packages', 'guard_name' => 'admin'],

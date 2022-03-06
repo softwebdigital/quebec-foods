@@ -72,20 +72,24 @@
                                     </a>
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                         @if ($transaction['status'] == 'pending')
-                                            <div class="menu-item px-3">
-                                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionApprove{{$transaction['id']}}')" href="{{ route('admin.transactions.approve', $transaction['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
-                                                <form id="transactionApprove{{$transaction['id']}}" action="{{ route('admin.transactions.approve', $transaction['id']) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                </form>
-                                            </div>
-                                            <div class="menu-item px-3">
-                                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionDecline{{$transaction['id']}}')" href="{{ route('admin.transactions.decline', $transaction['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
-                                                <form id="transactionDecline{{$transaction['id']}}" action="{{ route('admin.transactions.decline', $transaction['id']) }}" method="POST">
-                                                    @csrf
-                                                    @method('PUT')
-                                                </form>
-                                            </div>
+                                            @can('Approve Transactions')
+                                                <div class="menu-item px-3">
+                                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionApprove{{$transaction['id']}}')" href="{{ route('admin.transactions.approve', $transaction['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
+                                                    <form id="transactionApprove{{$transaction['id']}}" action="{{ route('admin.transactions.approve', $transaction['id']) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                    </form>
+                                                </div>
+                                            @endcan
+                                            @can('Decline Transactions')
+                                                <div class="menu-item px-3">
+                                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'transactionDecline{{$transaction['id']}}')" href="{{ route('admin.transactions.decline', $transaction['id']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
+                                                    <form id="transactionDecline{{$transaction['id']}}" action="{{ route('admin.transactions.decline', $transaction['id']) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                    </form>
+                                                </div>
+                                            @endcan
                                         @endif
                                     </div>
                                 </td>
