@@ -1,14 +1,13 @@
 @extends('layouts.admin')
 
-@section('pageTitle','Investments')
+@section('pageTitle','Online Payments')
 
 @section('style')
 
 @endsection
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="javascript:void()" class="text-muted">{{ ucfirst($type) }} Investments</a></li>
-<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">{{ ucfirst($filter) }}</a></li>
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Online Payments</a></li>
 @endsection
 
 @section('content')
@@ -16,7 +15,7 @@
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
         <h3 class="card-title align-items-start flex-column">
-            <span class="card-label fw-bolder fs-3 mb-1">{{ ucfirst($filter) }} {{ ucfirst($type) }} Investments</span>
+            <span class="card-label fw-bolder fs-3 mb-1">Online Payments</span>
         </h3>
     </div>
     <!--end::Header-->
@@ -31,13 +30,12 @@
                     <tr class="fw-bolder text-muted bg-light">
                         <th class="ps-4 text-dark rounded-start">SN</th>
                         <th class="text-dark">Name</th>
-                        <th class="text-dark">Package</th>
-                        <th class="text-dark">Slots</th>
-                        <th class="text-dark" style="white-space: nowrap;">Total Invested</th>
-                        <th class="text-dark" style="white-space: nowrap;">Expected Returns</th>
-                        <th class="text-dark" style="white-space: nowrap;">Return Date</th>
+                        <th class="text-dark">Amount</th>
+                        <th class="text-dark">Reference</th>
+                        <th class="text-dark" style="white-space: nowrap;">Payment Type</th>
+                        <th class="text-dark text-center">Date</th>
                         <th class="text-dark">Status</th>
-                        <th class="ps-4 text-dark rounded-end">Action</th>
+                        <th class="text-dark rounded-end">Action</th>
                     </tr>
                 </thead>
                 <!--end::Table head-->
@@ -52,34 +50,29 @@
 
 @section('script')
 <script>
-    function populateTransactionDetails(accountName, accountNumber, bankName) {
-        $('#accountName').text(accountName);
-        $('#accountNumber').text(accountNumber);
-        $('#bankName').text(bankName);
-    }
     $(document).ready(function () {
         $('#data-table').DataTable({
             "processing": true,
             "serverSide": true,
             "searching": true,
             "ajax":{
-                "url": "{{ route('admin.investments.ajax', ['type' => $type, 'filter' => $filter]) }}",
+                "url": "{{ route('admin.onlinepayments.ajax') }}",
                 "dataType": "json",
                 "type": "POST",
                 "data":{ _token: "{{csrf_token()}}"}
             },
             "columns": [
                 { "data": "sn" },
-                { "data": "name" },
-                { "data": "package" },
-                { "data": "slots" },
-                { "data": "total_invested" },
-                { "data": "expected_returns" },
-                { "data": "return_date" },
+                { "data": "name", "orderable": false },
+                { "data": "amount" },
+                { "data": "reference" },
+                { "data": "payment type" },
+                { "data": "date" },
                 { "data": "status" },
-                { "data": "action" }
+                { "data": "action", "orderable": false }
             ],
-            "lengthMenu": [50, 100, 200, 500]
+            "lengthMenu": [50, 100, 200, 500],
+            "order": [[ 5, "desc" ]]
         });
     });
 </script>

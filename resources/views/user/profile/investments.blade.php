@@ -28,7 +28,7 @@
                 <!--begin::Table container-->
                 <div class="table-responsive">
                     <!--begin::Table-->
-                    <table class="table align-middle gs-0 gy-4" id="data-table">
+                    <table class="table align-middle table-row-dashed gs-0 gy-4" id="data-table">
                         <!--begin::Table head-->
                         <thead>
                             <tr class="fw-bolder text-muted bg-light">

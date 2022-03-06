@@ -98,4 +98,8 @@ Route::group(['middleware' => ['auth:admin']], function (){
     Route::post('/faqs/store', [App\Http\Controllers\Admin\FaqController::class, 'store'])->name('faq.store');
     Route::put('/faqs/{faq?}/update', [App\Http\Controllers\Admin\FaqController::class, 'update'])->name('faq.update');
     Route::get('/referrals', [App\Http\Controllers\Admin\ReferralController::class, 'index'])->name('referrals');
+
+    Route::get('/onlinepayments', [App\Http\Controllers\Admin\OnlinePaymentController::class, 'index'])->name('onlinepayments');
+    Route::post('/onlinepayments/{payment}/resolve', [App\Http\Controllers\Admin\OnlinePaymentController::class, 'resolve'])->name('onlinepayments.resolve');
+    Route::post('/onlinepayments/fetch/ajax', [App\Http\Controllers\Admin\OnlinePaymentController::class, 'fetchPaymentsWithAjax'])->name('onlinepayments.ajax');
 });
