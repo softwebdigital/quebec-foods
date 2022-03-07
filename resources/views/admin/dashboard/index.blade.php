@@ -327,7 +327,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">50</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ $data['plantInvestments']['investors']}}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -491,7 +491,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">60</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ $data['farmInvestments']['investors'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>

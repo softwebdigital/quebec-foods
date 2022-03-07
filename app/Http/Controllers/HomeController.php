@@ -62,7 +62,7 @@ class HomeController extends Controller
                 ->sum('amount'));
         }
 
-        $investments = auth()->user()->investments()->where('status', 'active')->orWhere('status', 'settled');
+        $investments = auth()->user()->investments()->where('payment', 'approved');
         $data = [
             'package'     => Package::query()->latest()->where('type', 'plant')->first(),
             'investments' => [

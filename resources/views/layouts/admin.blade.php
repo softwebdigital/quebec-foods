@@ -378,7 +378,12 @@
                                                 </span>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                            <span class="menu-title">Online Payment</span>
+                                            @php
+                                                $pendingPayments = App\Models\Onlinepayment::where('status', 'pending')->count();
+                                            @endphp
+                                            <span class="menu-title">Online Payment @if ($pendingPayments > 0)
+                                                <span class="ms-3 badge badge-warning">{{ $pendingPayments }}</span>
+                                            @endif</span>
                                         </a>
                                     </div>
                                 @endcan

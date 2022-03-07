@@ -84,7 +84,7 @@ class OnlinePaymentController extends Controller
 
             $datum['sn'] = '<span class="text-dark fw-bolder ps-4 d-block mb-1 fs-6">' . $i . '</span>';
             // if ($payment->user && auth()->user()->can('View Users')){
-                $datum['name'] = '<a class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" style="white-space: nowrap; href="'.route('admin.users.show', $payment->user['id']).'">'.ucwords($payment->user['name']).'</a>';
+                $datum['name'] = '<a class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" style="white-space: nowrap;" href="'.route('admin.users.show', $payment->user['id']).'">'.ucwords($payment->user['name']).'</a>';
             // }else{
                 // $datum['name'] = $payment->user['name'] ?? '---';
             // }

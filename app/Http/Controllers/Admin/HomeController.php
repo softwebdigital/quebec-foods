@@ -27,6 +27,9 @@ class HomeController extends Controller
         $activePlantInvestment = $this->getPackageActiveInvestments('plant');
         $activeFarmInvestment = $this->getPackageActiveInvestments('farm');
 
+        $getPlantInvestor = $this->getInvestors('plant');
+        $getFarmInvestor = $this->getInvestors('farm');
+
         $settledPlantInvestment = $this->getPackageSettledInvestments('plant');
         $settledFarmInvestment = $this->getPackageSettledInvestments('farm');
 
@@ -58,7 +61,7 @@ class HomeController extends Controller
                 ->sum('amount'));
         }
 
-        $investments = Investment::where('status', 'active')->orWhere('status', 'settled');
+        $investments = Investment::where('payment', 'approved');
         $data = [
             'package'     => Package::query()->latest()->where('type', 'plant')->first(),
             'investments' => [
@@ -73,16 +76,18 @@ class HomeController extends Controller
                 'history' => $walletHistory,
             ],
             'plantInvestments' => [
-                'active'  => (int)$activePlantInvestment->sum('amount'),
-                'slots'   => self::formatHumanFriendlyNumber($activePlantInvestment->sum('slots')),
-                'total'   => self::formatHumanFriendlyNumber($activePlantInvestment->sum('amount')),
-                'returns' => self::formatHumanFriendlyNumber($activePlantInvestment->sum('total_return')),
+                'active'    => (int)$activePlantInvestment->sum('amount'),
+                'slots'     => self::formatHumanFriendlyNumber($totalPlantInvestment->sum('slots')),
+                'total'     => self::formatHumanFriendlyNumber($totalPlantInvestment->sum('amount')),
+                'returns'   => self::formatHumanFriendlyNumber($totalPlantInvestment->sum('total_return')),
+                'investors' => self::formatHumanFriendlyNumber($getPlantInvestor->count('id')),
             ],
             'farmInvestments' => [
                 'active'  => (int)$activeFarmInvestment->sum('amount'),
-                'slots'   => self::formatHumanFriendlyNumber($activeFarmInvestment->sum('slots')),
-                'total'   => self::formatHumanFriendlyNumber($activeFarmInvestment->sum('amount')),
-                'returns' => self::formatHumanFriendlyNumber($activeFarmInvestment->sum('total_return')),
+                'slots'   => self::formatHumanFriendlyNumber($totalFarmInvestment->sum('slots')),
+                'total'   => self::formatHumanFriendlyNumber($totalFarmInvestment->sum('amount')),
+                'returns' => self::formatHumanFriendlyNumber($totalFarmInvestment->sum('total_return')),
+                'investors' => self::formatHumanFriendlyNumber($getFarmInvestor->count('id')),
             ],
             'unSettledInvestments' => [
                 'plant' => ceil($settledPlantInvestment->sum('amount') / ($totalPlantInvestment->sum('amount') > 0 ? $totalPlantInvestment->sum('amount') : 1)) * 100,
@@ -167,9 +172,18 @@ class HomeController extends Controller
 
     private function getPackageTotalInvestments($type)
     {
-        return Investment::latest()->where('status', 'settled')->orWhere('status', 'active')->whereHas('package', function($query) use ($type) {
+        return Investment::latest()->where('payment', 'approved')->whereHas('package', function($query) use ($type) {
             $query->where('type', $type);
         })->get();
+    }
+
+    private function getInvestors($type)
+    {
+        return User::whereHas('investments', function($query) use ($type) {
+            $query->whereHas('package', function($query) use ($type) {
+                $query->where('type', $type);
+            });
+        })->distinct()->get();
     }
 
     protected function formatHumanFriendlyNumber($num)
