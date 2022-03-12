@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\NotificationController;
 use App\Models\BankAccounts;
+use Illuminate\Support\Carbon;
 
 class TransactionController extends Controller
 {
@@ -95,18 +96,16 @@ class TransactionController extends Controller
             case 'investment':
                 if ($transaction['investment']){
                     $package = $transaction['investment']['package'];
-                    if ($package['duration_mode'] == 'day') {
-                        $returnDate = now()->addDays($package['duration'])->format('Y-m-d H:i:s');
-                    } elseif ($package['duration_mode'] == 'month') {
-                        $returnDate = now()->addMonths($package['duration'])->format('Y-m-d H:i:s');
+                    if (Carbon::make($package['start_date'])->lt(now())) {
+                        $startDate = now();
                     } else {
-                        $returnDate = now()->addYears($package['duration'])->format('Y-m-d H:i:s');
+                        $startDate = $package['start_date'];
                     }
                     $transaction->investment()->update([
                         'investment_date' => now()->format('Y-m-d H:i:s'),
-                        'return_date'     => $returnDate,
-                        'status'          => 'approved',
-                        'status'          => 'active'
+                        'payment'          => 'approved',
+                        'status'          => 'active',
+                        'start_date'      => $startDate
                     ]);
                     NotificationController::sendInvestmentCreatedNotification($transaction['investment']);
                 }
@@ -129,7 +128,7 @@ class TransactionController extends Controller
         $user = $transaction['user'];
         switch ($transaction['type']){
             case 'withdrawal':
-                $user->nairaWallet()->increment('balance', $transaction['amount']);
+                $user->wallet()->increment('balance', $transaction['amount']);
                 NotificationController::sendWithdrawalCancelledNotification($transaction);
                 break;
             case 'deposit':

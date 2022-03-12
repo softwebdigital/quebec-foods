@@ -15,6 +15,7 @@ use App\Models\User;
 use App\Notifications\CustomNotificationByEmailWithoutGreeting;
 use App\Notifications\CustomNotificationWithoutGreeting;
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Notification;
@@ -124,8 +125,9 @@ class CommandController extends Controller
                         \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
                     } else if ($totalPayments < $milestones) {
                         $user->wallet()->increment('balance', $roi);
-                        TransactionController::storeInvestmentPayoutTransaction($investment, $roi);
-                        \App\Http\Controllers\NotificationController::sendInvestmentMilestoneSettledNotification($investment, $roi);
+                        TransactionController::storeInvestmentPayoutTransaction($investment, $roi);try {
+                            \App\Http\Controllers\NotificationController::sendInvestmentMilestoneSettledNotification($investment, $roi);
+                        } catch (Exception $e) { logger($e->getMessage()); }
                     }
                 }
             } else {

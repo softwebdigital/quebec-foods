@@ -658,7 +658,7 @@
                                             @elseif($plantInvestment['status'] == 'pending')
                                                 <span class="badge badge-pill badge-warning">Pending</span>
                                             @elseif($plantInvestment['status'] == 'settled')
-                                                <span class="badge badge-pill badge-warning">Settled</span>
+                                                <span class="badge badge-pill badge-secondary">Settled</span>
                                             @elseif($plantInvestment['status'] == 'cancelled')
                                                 <span class="badge badge-pill badge-danger">Declined</span>
                                             @endif
@@ -729,7 +729,7 @@
                                             @elseif($farmInvestment['status'] == 'pending')
                                                 <span class="badge badge-pill badge-warning">Pending</span>
                                             @elseif($farmInvestment['status'] == 'settled')
-                                                <span class="badge badge-pill badge-warning">Settled</span>
+                                                <span class="badge badge-pill badge-secondary">Settled</span>
                                             @elseif($farmInvestment['status'] == 'cancelled')
                                                 <span class="badge badge-pill badge-danger">Declined</span>
                                             @endif
