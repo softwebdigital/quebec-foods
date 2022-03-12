@@ -14,7 +14,7 @@
 		<meta property="og:url" content="{{env("APP_URL")}}" />
 		<meta property="og:site_name" content="{{env("APP_NAME")}}" />
 		<link rel="canonical" href="{{env('APP_URL')}}" />
-		<link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+		<link rel="shortcut icon" href="{{ asset('assets/logo/Favicon.png') }}" />
 		<!--begin::Fonts-->
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
@@ -40,8 +40,8 @@
 					<!--begin::Brand-->
 					<div class="aside-logo flex-column-auto px-9 mb-9 mb-lg-17 mx-auto" id="kt_aside_logo">
 						<!--begin::Logo-->
-						<a href="../../demo15/dist/index.html">
-							<img alt="Logo" src="/assets/media/logos/logo-1.svg" class="h-30px logo" />
+						<a href="{{ route('admin.dashboard') }}">
+							<img alt="Logo" src="{{ asset('assets/logo/medium.png') }}" class="h-100px logo" />
 						</a>
 						<!--end::Logo-->
 					</div>
