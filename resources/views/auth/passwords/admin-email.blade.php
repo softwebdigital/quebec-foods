@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('pageTitle', 'Admin - Forgot Password')
+
 @section('content')
     <!--begin::Wrapper-->
     <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">

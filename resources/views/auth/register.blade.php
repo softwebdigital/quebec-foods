@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('pageTitle', 'Register')
+
 @section('content')
 <div class="w-lg-600px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
     <!--begin::Form-->
