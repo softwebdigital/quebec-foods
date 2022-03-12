@@ -10,6 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\NotificationController;
+use Exception;
 
 class AdminController extends Controller
 {
@@ -50,7 +51,11 @@ class AdminController extends Controller
         $admin->assignRole($role);
 //        Send password to admin email
         if ($admin){
-            NotificationController::sendAdminRegistrationEmailNotification($admin, $password);
+            try {
+                NotificationController::sendAdminRegistrationEmailNotification($admin, $password);
+            } catch(Exception $e) {
+                logger($e->getMessage());
+            }
             return redirect()->route('admin.admins')->with('success', 'Admin created successfully');
         }
         return back()->with('error', 'Error creating admin');

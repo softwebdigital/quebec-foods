@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\NotificationController;
 use App\Models\BankAccounts;
+use Exception;
 use Illuminate\Support\Carbon;
 
 class TransactionController extends Controller
@@ -41,7 +42,11 @@ class TransactionController extends Controller
             'method' => 'deposit' ,'status' => 'approved'
         ]);
         if ($transaction) {
-            NotificationController::sendDepositSuccessfulNotification($transaction);
+            try {
+                NotificationController::sendDepositSuccessfulNotification($transaction);
+            } catch(Exception $e) {
+                logger($e->getMessage());
+            }
             return redirect()->route('admin.users.show', $user['id'])->with('success', 'Deposit made successfully');
         }
         return redirect()->route('admin.users.show', $user['id'])->with('error', 'Error processing deposit');
@@ -71,7 +76,11 @@ class TransactionController extends Controller
             'description' => 'Withdrawal by '.env('APP_NAME'), 'status' => 'approved'
         ]);
         if ($transaction) {
-            NotificationController::sendWithdrawalSuccessfulNotification($transaction);
+            try {
+                NotificationController::sendWithdrawalSuccessfulNotification($transaction);
+            } catch (Exception $e) {
+                logger($e->getMessage());
+            }
             return redirect()->route('admin.users.show', $user['id'])->with('success', 'Withdrawal made successfully');
         }
         return redirect()->route('admin.users.show', $user['id'])->with('error', 'Error processing withdrawal');
@@ -88,10 +97,18 @@ class TransactionController extends Controller
         switch ($transaction['type']){
             case 'deposit':
                 $user->wallet()->increment('balance', $transaction['amount']);
-                NotificationController::sendDepositSuccessfulNotification($transaction);
+                try {
+                    NotificationController::sendDepositSuccessfulNotification($transaction);
+                } catch (Exception $e) {
+                    logger($e->getMessage());
+                }
                 break;
             case 'withdrawal':
-                NotificationController::sendWithdrawalSuccessfulNotification($transaction);
+                try {
+                    NotificationController::sendWithdrawalSuccessfulNotification($transaction);
+                } catch (Exception $e) {
+                    logger($e->getMessage());
+                }
                 break;
             case 'investment':
                 if ($transaction['investment']){
@@ -107,7 +124,11 @@ class TransactionController extends Controller
                         'status'          => 'active',
                         'start_date'      => $startDate
                     ]);
-                    NotificationController::sendInvestmentCreatedNotification($transaction['investment']);
+                    try {
+                        NotificationController::sendInvestmentCreatedNotification($transaction['investment']);
+                    } catch (Exception $e) {
+                        logger($e->getMessage());
+                    }
                 }
                 break;
         }
@@ -129,10 +150,18 @@ class TransactionController extends Controller
         switch ($transaction['type']){
             case 'withdrawal':
                 $user->wallet()->increment('balance', $transaction['amount']);
-                NotificationController::sendWithdrawalCancelledNotification($transaction);
+                try {
+                    NotificationController::sendWithdrawalCancelledNotification($transaction);
+                } catch (Exception $e) {
+                    logger($e->getMessage());
+                }
                 break;
             case 'deposit':
-                NotificationController::sendDepositCancelledNotification($transaction);
+                try {
+                    NotificationController::sendDepositCancelledNotification($transaction);
+                } catch (Exception $e) {
+                    logger($e->getMessage());
+                }
                 break;
             case 'investment':
                 if ($transaction['investment']){
@@ -140,7 +169,11 @@ class TransactionController extends Controller
                         'payment' => 'declined',
                         'status'  => 'cancelled'
                     ]);
-                    NotificationController::sendInvestmentCancelledNotification($transaction['investment']);
+                    try {
+                        NotificationController::sendInvestmentCancelledNotification($transaction['investment']);
+                    } catch(Exception $e){
+                        logger($e->getMessage());
+                    }
                 }
                 break;
         }

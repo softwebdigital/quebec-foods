@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Setting;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -115,7 +116,11 @@ class TransactionController extends Controller
             'description' => 'Deposit', 'status' => 'pending'
         ]);
         if ($transaction) {
-            NotificationController::sendDepositQueuedNotification($transaction);
+            try {
+                NotificationController::sendDepositQueuedNotification($transaction);
+            } catch(Exception $e) {
+                logger($e->getMessage());
+            }
             return redirect()->route('wallet')->with('success', 'Deposit queued successfully');
         }
         return redirect()->route('wallet')->with('error', 'Error processing deposit');
@@ -170,7 +175,11 @@ class TransactionController extends Controller
             'description' => 'Withdrawal', 'status' => 'pending'
         ]);
         if ($transaction) {
-            NotificationController::sendWithdrawalQueuedNotification($transaction);
+            try {
+                NotificationController::sendWithdrawalQueuedNotification($transaction);
+            } catch(Exception $e) {
+                logger($e->getMessage());
+            }
             return redirect()->route('wallet')->with('success', 'Withdrawal queued successfully');
         }
         return redirect()->route('wallet')->with('error', 'Error processing withdrawal');

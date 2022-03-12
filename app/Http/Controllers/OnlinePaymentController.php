@@ -104,7 +104,10 @@ class OnlinePaymentController extends Controller
                 if ($transaction)
                     try {
                         NotificationController::sendDepositSuccessfulNotification($transaction);
-                    } catch (\Exception $e) { $emailError = true; }
+                    } catch (\Exception $e) {
+                        $e->getMessage();
+                        $emailError = true;
+                    }
                 break;
             case 'investment':
                 $package = Package::find($meta['package']['id']);

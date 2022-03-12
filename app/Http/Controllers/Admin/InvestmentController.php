@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\NotificationController;
+use Exception;
 
 class InvestmentController extends Controller
 {
@@ -65,8 +66,12 @@ class InvestmentController extends Controller
             'return_date' => now()->addMonths($package['duration'])->format('Y-m-d H:i:s'), 'status' => 'active'
         ]);
         if ($investment) {
-            TransactionController::storeInvestmentTransaction($investment, $request['payment'], true);
-            NotificationController::sendInvestmentCreatedNotification($investment);
+            try {
+                TransactionController::storeInvestmentTransaction($investment, $request['payment'], true);
+                NotificationController::sendInvestmentCreatedNotification($investment);
+            } catch(Exception $e) {
+                logger($e->getMessage());
+            }
             return redirect()->route('admin.users.show', $user['id'])->with('success', 'Investment created successfully');
         }
         return back()->withInput()->with('error', 'Error processing investment');

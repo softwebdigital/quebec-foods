@@ -41,7 +41,11 @@ class CommandController extends Controller
                                     ->get();
         foreach ($investments as $investment){
             if (now()->diffInDays(date('Y-m-d', strtotime($investment['return_date']))) == 30){
-                \App\Http\Controllers\NotificationController::sendInvestmentAlmostMaturedNotification($investment->user);
+                try {
+                    \App\Http\Controllers\NotificationController::sendInvestmentAlmostMaturedNotification($investment->user);
+                } catch (Exception $e) {
+                    logger($e->getMessage());
+                }
             }
         }
     }
@@ -54,7 +58,11 @@ class CommandController extends Controller
             if ($settings['pending_transaction_mail'] == 1){
                 $dateTime = date('Y-m-d H:i:s', strtotime($settings['last_pending_transaction_notification'].' + '.$settings['pending_transaction_mail_interval']));
                 if (now()->gte($dateTime)){
-                    NotificationController::sendPendingTransactionNotificationOnScheduleToAdmin($transactions);
+                    try {
+                        NotificationController::sendPendingTransactionNotificationOnScheduleToAdmin($transactions);
+                    } catch (Exception $e ) {
+                        logger($e->getMessage());
+                    }
                     $settings->update(['last_pending_transaction_notification' => now()]);
                 }
             }
@@ -121,13 +129,20 @@ class CommandController extends Controller
                         $user->wallet()->increment('balance', $investment->amount + $roi);
                         $investment->update(['status' => 'settled']);
                         TransactionController::storeInvestmentPayoutTransaction($investment, $investment->amount + $roi);
-                        \App\Http\Controllers\NotificationController::sendInvestmentMilestoneSettledNotification($investment, $investment->amount + $roi);
-                        \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
+                        try {
+                            \App\Http\Controllers\NotificationController::sendInvestmentMilestoneSettledNotification($investment, $investment->amount + $roi);
+                            \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
+                        } catch(Exception $e) {
+                            logger($e->getMessage());
+                        }
                     } else if ($totalPayments < $milestones) {
                         $user->wallet()->increment('balance', $roi);
-                        TransactionController::storeInvestmentPayoutTransaction($investment, $roi);try {
+                        TransactionController::storeInvestmentPayoutTransaction($investment, $roi);
+                        try {
                             \App\Http\Controllers\NotificationController::sendInvestmentMilestoneSettledNotification($investment, $roi);
-                        } catch (Exception $e) { logger($e->getMessage()); }
+                        } catch (Exception $e) {
+                            logger($e->getMessage());
+                        }
                     }
                 }
             } else {
@@ -154,7 +169,11 @@ class CommandController extends Controller
                             ]);
                             if ($newInvestment){
                                 TransactionController::storeInvestmentTransaction($newInvestment, 'wallet');
-                                \App\Http\Controllers\NotificationController::sendRolloverInvestmentCreatedNotification($newInvestment);
+                                try {
+                                    \App\Http\Controllers\NotificationController::sendRolloverInvestmentCreatedNotification($newInvestment);
+                                } catch(Exception $e) {
+                                    logger($e->getMessage());
+                                }
                             }
     //                        Check if user has balance and refund
                             if ($balance > 0){
@@ -168,7 +187,11 @@ class CommandController extends Controller
                     }
                     $investment->update(['status' => 'settled']);
                     TransactionController::storeInvestmentPayoutTransaction($investment, $investment['amount']);
-                    \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
+                    try {
+                        \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
+                    } catch (Exception $e) {
+                        logger($e->getMessage());
+                    }
                 }
             }
         }
@@ -182,7 +205,11 @@ class CommandController extends Controller
                     'start_date' => now(),
                     'status'     => 'active'
                 ]);
-                \App\Http\Controllers\NotificationController::sendInvestmentStartedNotification($investment);
+                try {
+                    \App\Http\Controllers\NotificationController::sendInvestmentStartedNotification($investment);
+                } catch(Exception $e) {
+                    logger($e->getMessage());
+                }
             }
         }
     }
