@@ -1,6 +1,6 @@
 @extends('layouts.auth')
 
-@section('title', '| Login')
+@section('pageTitle', 'Admin Login')
 
 @section('content')
     <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">

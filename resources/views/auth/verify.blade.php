@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('pageTitle', 'Verify Email')
+
 @section('content')
 <!--begin::Wrapper-->
 <div class="pt-lg-10 mb-10 text-center">

@@ -1,5 +1,7 @@
 @extends('layouts.auth')
 
+@section('pageTitle', 'Admin - Reset Password')
+
 @section('content')
     <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
         <!--begin::Form-->
