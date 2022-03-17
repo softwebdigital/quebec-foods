@@ -86,8 +86,8 @@
                             <label class="required fs-5 fw-bold mb-2" for="payment">Pay Via</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <select name="payment" aria-label="Select the paymeny mode" data-placeholder="Select the payment mode" data-control="select2" class="form-select form-select-solid text-dark" id="payment">
-                                <option value=""></option>
+                            <select name="payment" aria-label="Select payment mode" data-placeholder="Select payment mode" class="form-select form-select-solid text-dark" id="payment">
+                                <option value="">Select payment mode </option>
                                 <option value="wallet">Wallet</option>
                                 <option value="card">Card</option>
                                 <option value="deposit">Deposit / Bank Transfer</option>
@@ -119,10 +119,10 @@
                             </table>
                         </div>
                         @if ($type == 'farm')
-                            <div id="rolloverInvestment" class="form-check mt-10 form-check-flat form-check-primary">
-                                <label class="form-check-label">
+                            <div id="rolloverInvestment" class="form-check form-switch form-check-custom form-check-solid me-10">
+                                <input required class="form-check-input h-30px w-50px" type="checkbox" value="yes" id="rollover" name="rollover"/>
+                                <label class="form-check-label" for="rollover">
                                     Rollover Investment
-                                    <input required type="checkbox" id="rollover" name="rollover" value="yes" class="form-check-input">
                                 </label>
                             </div>
                         @endif

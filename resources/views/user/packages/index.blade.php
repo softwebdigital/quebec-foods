@@ -17,6 +17,17 @@
         <h3 class="card-title align-items-start flex-column">
             <span class="card-label fw-bolder fs-3 mb-1">{{ ucfirst($type) }} Packages</span>
         </h3>
+        <div class="card-toolbar">
+            <a data-bs-toggle="modal" @if($type == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment"@endif  class="btn btn-sm btn-light-primary">
+            <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
+            <span class="svg-icon svg-icon-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <rect opacity="0.5" x="11.364" y="20.364" width="16" height="2" rx="1" transform="rotate(-90 11.364 20.364)" fill="black" />
+                    <rect x="4.36396" y="11.364" width="16" height="2" rx="1" fill="black" />
+                </svg>
+            </span>
+            <!--end::Svg Icon-->Creat New Investment</a>
+        </div>
     </div>
     <!--end::Header-->
     <!--begin::Body-->
@@ -92,7 +103,7 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="{{ route('invest', $type) }}"><span class="">Invest</span></a>
+                                        <a class="menu-link px-3" data-bs-toggle="modal" @if($type == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment"@endif ><span class="">Invest</span></a>
                                         <a class="menu-link px-3" href="{{ route('packages.show', ['type' => $type, 'package' => $package['id']]) }}"><span class="">Show</span></a>
                                     </div>
                                 </div>
@@ -109,6 +120,8 @@
     </div>
     <!--begin::Body-->
 </div>
+
+
 @endsection
 
 @section('script')

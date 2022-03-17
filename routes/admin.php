@@ -21,7 +21,7 @@ Route::post('/password/reset', [\App\Http\Controllers\Auth\AdminForgotPasswordCo
 Route::get('/password/reset/{token}', [\App\Http\Controllers\Auth\AdminResetPasswordController::class, 'showResetForm'])->name('password.change.show');
 Route::post('/password/reset/change', [\App\Http\Controllers\Auth\AdminResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::group(['middleware' => ['auth:admin']], function (){
+Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/logout', [\App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('logout');
     Route::get('/dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'dashboard'])->name('dashboard');
     Route::get('/profile', [App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('profile');

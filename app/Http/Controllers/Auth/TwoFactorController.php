@@ -21,12 +21,18 @@ class TwoFactorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'two_factor_code' => 'integer|required',
+            'input1' => 'integer|required',
+            'input2' => 'integer|required',
+            'input3' => 'integer|required',
+            'input4' => 'integer|required',
+            'input5' => 'integer|required',
+            'input6' => 'integer|required',
         ]);
 
+        $token = $request['input1'].$request['input2'].$request['input3'].$request['input4'].$request['input5'].$request['input6'];
         $user = auth()->user();
 
-        if($request->input('two_factor_code') == $user->two_factor_code)
+        if($token == $user->two_factor_code)
         {
             $user->resetTwoFactorCode();
 

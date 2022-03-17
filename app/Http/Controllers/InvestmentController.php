@@ -54,6 +54,7 @@ class InvestmentController extends Controller
             'slots' => ['required', 'numeric', 'min:1', 'integer'],
             'payment' => ['required']
         ]);
+        // return $request->all();
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }
@@ -180,5 +181,17 @@ class InvestmentController extends Controller
         $user = auth()->user();
         $packages = Package::all();
         return view('user.profile.showInvestment', compact('user', 'type', 'packages', 'investment', 'filter'));
+    }
+
+    public function updateRollover (Request $request, $type, Investment $investment)
+    {
+        if (auth()->id() != $investment["user_id"]) {
+            return back()->with('error', 'Investment not found');
+        }
+        $data['rollover'] = isset($request['rollover']) && $request['rollover'] == 'yes';
+        if($investment->update($data)) {
+            return redirect()->route('investments.show', ['type' => $type, 'investment' => $investment['id']])->with('success', 'Rollover updated successfully');
+        };
+        return back()->with('error', 'Error updating rollover status');;
     }
 }

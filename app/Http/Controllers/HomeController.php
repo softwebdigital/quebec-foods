@@ -95,10 +95,12 @@ class HomeController extends Controller
     {
         try {
             $banks = json_decode(Http::get('https://api.paystack.co/bank')->getBody(), true)['data'];
+            $countries = json_decode(file_get_contents(public_path('assets/data/countries.json')), TRUE);
         }catch (\Exception $exception){
             $banks = [];
+            $countries = [];
         }
-        return view('user.profile.index', compact('banks'));
+        return view('user.profile.index', compact('banks', 'countries'));
     }
 
     public function accountOverview() {

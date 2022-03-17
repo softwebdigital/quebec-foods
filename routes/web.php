@@ -24,7 +24,7 @@ Route::get('/verify/resend', [App\Http\Controllers\Auth\TwoFactorController::cla
 Route::get('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'index'])->name('verify.index');
 Route::post('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'store'])->name('verify.store');
 
-Route::group(['middleware' => ['auth', 'verified', 'two_factor']], function() {
+Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']], function() {
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.update');
     Route::put('/2fa/update', [App\Http\Controllers\HomeController::class, 'update2fa'])->name('2fa.update');
@@ -62,6 +62,7 @@ Route::group(['middleware' => ['auth', 'verified', 'two_factor']], function() {
             });;
             Route::get('/create', [App\Http\Controllers\InvestmentController::class, 'invest'])->name('invest');
             Route::get('/{investment}/show', [App\Http\Controllers\InvestmentController::class, 'show'])->name('investments.show');
+            Route::put('/{investment}/rollover/update', [App\Http\Controllers\InvestmentController::class, 'updateRollover'])->name('investment.update.rollover');
         });
         Route::post('/invest', [App\Http\Controllers\InvestmentController::class, 'store'])->name('invest.store');
         Route::get('/wallet', [App\Http\Controllers\WalletController::class, 'index'])->name('wallet');

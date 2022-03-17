@@ -17,7 +17,7 @@
         <!--begin::Heading-->
         <!--begin::Input group-->
         <div class="fv-row mb-7">
-            <label class="form-label fw-bolder text-dark fs-6">Email</label>
+            <label class="required form-label fw-bolder text-dark fs-6">Email</label>
             <input class="form-control form-control-lg form-control-solid" type="email" placeholder="" name="email" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email"/>
             @error('email')
                 <span class="text-danger small">
@@ -31,7 +31,7 @@
         <!--begin::Wrapper-->
         <div class="mb-1">
             <!--begin::Label-->
-            <label class="form-label fw-bolder text-dark fs-6">Password</label>
+            <label class="required form-label fw-bolder text-dark fs-6">Password</label>
             <!--end::Label-->
             <!--begin::Input wrapper-->
             <div class="position-relative mb-3">
@@ -52,11 +52,25 @@
     </div>
     <!--end::Input group=-->
     <!--begin::Input group-->
-    <div class="fv-row mb-5">
-        <label class="form-label fw-bolder text-dark fs-6">Confirm Password</label>
-        <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="password_confirmation" autocomplete="off" />
+    <div class="mb-10 fv-row" data-kt-password-meter="true">
+        <!--begin::Wrapper-->
+        <div class="mb-1">
+            <!--begin::Label-->
+            <label class="required form-label fw-bolder text-dark fs-6">Confirm Password</label>
+            <!--end::Label-->
+            <!--begin::Input wrapper-->
+            <div class="position-relative mb-3">
+                <input class="form-control form-control-lg form-control-solid" type="password" placeholder="" name="password_confirmation" autocomplete="off" />
+                <span class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2" data-kt-password-meter-control="visibility">
+                    <i class="bi bi-eye-slash fs-2"></i>
+                    <i class="bi bi-eye fs-2 d-none"></i>
+                </span>
+            </div>
+            <!--end::Input wrapper-->
+        </div>
+        <!--end::Wrapper-->
     </div>
-    <!--end::Input group-->
+    <!--end::Input group=-->
         <!--begin::Actions-->
         <div class="text-center">
             <!--begin::Submit button-->

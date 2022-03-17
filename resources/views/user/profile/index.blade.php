@@ -232,6 +232,30 @@
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
+                                <div class="d-flex flex-column mb-7 fv-row">
+                                    <!--begin::Label-->
+                                    <label class="required fs-6 fw-bold mb-2">
+                                        <span>Country</span>
+                                        {{-- <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i> --}}
+                                    </label>
+                                    <!--end::Label-->
+                                    <!--begin::Input-->
+                                    <select name="country" id="country" aria-label="Select a Country" data-control="select2" value="{{ old('country') ?? $user['country']}}" data-placeholder="Select a Country..." class="form-select form-select-solid" >
+                                        <option value="">Select a Country...</option>
+                                        @foreach($countries as $key => $country)
+                                            <option @if(old("country") == $country['name'] || $user['country'] == $country['name']) selected @elseif($key == 159) selected @endif value="{{$country['name']}}">{{$country['name']}}</option>
+                                        @endforeach
+                                    </select>
+                                    <!--end::Input-->
+                                    @error('country')
+                                        <span class="text-danger small">
+                                            <span>{{ $message }}</span>
+                                        </span>
+                                    @enderror
+
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Input group-->
                                 <div class="row mb-5">
                                     <!--begin::Col-->
                                     <div class="col-md-6 fv-row">
@@ -239,7 +263,13 @@
                                         <label class="required fs-5 fw-bold mb-2">State</label>
                                         <!--end::Label-->
                                         <!--begin::Input-->
-                                        <input type="text" class="form-control form-control-solid" name="state" value="{{ old('state') ?? $user['state'] }}" />
+                                        <select name="state" id="state" aria-label="Select your State" data-control="select2" value="{{ old('state') ?? $user['state']}}" data-placeholder="Select your State..." class="form-select form-select-solid" >
+                                            <option value="" id="option">Select your State...</option>
+                                            {{-- @foreach($countries as $key => $country)
+                                                <option @if(old("country") == $country['name'] || $user['country'] == $country['name']) selected @elseif($key == 159) selected @endif value="{{$country['name']}}">{{$country['name']}}</option>
+                                            @endforeach --}}
+                                        </select>
+                                        {{-- <input type="text" id="state" class="form-control form-control-solid" name="state" value="{{ old('state') ?? $user['state'] }}" /> --}}
                                         <!--end::Input-->
                                         @error('state')
                                             <span class="text-danger small">
@@ -263,30 +293,6 @@
                                         @enderror
                                     </div>
                                     <!--end::Col-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                 <div class="d-flex flex-column mb-7 fv-row">
-                                    <!--begin::Label-->
-                                    <label class="required fs-6 fw-bold mb-2">
-                                        <span>Country</span>
-                                        {{-- <i class="fas fa-exclamation-circle ms-1 fs-7" data-bs-toggle="tooltip" title="Country of origination"></i> --}}
-                                    </label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select name="country" aria-label="Select a Country" data-control="select2" value="{{ old('country') ?? $user['country']}}" data-placeholder="Select a Country..." class="form-select form-select-solid" >
-                                        <option value="">Select a Country...</option>
-                                        @foreach(\App\Models\User::$countries as $key => $country)
-                                            <option @if(old("country") == $country['name'] || $user['country'] == $country['name']) selected @elseif($key == 159) selected @endif value="{{$country['name']}}">{{$country['name']}}</option>
-                                        @endforeach
-                                    </select>
-                                    <!--end::Input-->
-                                    @error('country')
-                                        <span class="text-danger small">
-                                            <span>{{ $message }}</span>
-                                        </span>
-                                    @enderror
-
                                 </div>
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
@@ -674,106 +680,106 @@
     <!--end::Layout-->
     <!--begin::Modals-->
     <!--begin::Modal - New Card-->
-		<div class="modal fade" id="kt_modal_edit_bank" tabindex="-1" aria-hidden="true">
-			<!--begin::Modal dialog-->
-			<div class="modal-dialog modal-dialog-centered mw-650px">
-				<!--begin::Modal content-->
-				<div class="modal-content">
-					<!--begin::Modal header-->
-					<div class="modal-header">
-						<!--begin::Modal title-->
-						<h2>Edit Bank Account</h2>
-						<!--end::Modal title-->
-						<!--begin::Close-->
-						<div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
-							<!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
-							<span class="svg-icon svg-icon-1">
-								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-									<rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
-									<rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
-								</svg>
-							</span>
-							<!--end::Svg Icon-->
-						</div>
-						<!--end::Close-->
-					</div>
-					<!--end::Modal header-->
-					<!--begin::Modal body-->
-					<div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
-						<!--begin::Form-->
-                        <form id="update-bank-account" action="" method="post">
-                            @csrf
-                            @method('PUT')
-							<!--begin::Input group-->
-							<div class="d-flex flex-column mb-7 fv-row">
-								<!--begin::Label-->
-								<label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-									<span class="required">Bank Name</span>
-									<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a card holder's name"></i>
-								</label>
-								<!--end::Label-->
-								<input type="text" class="form-control form-control-solid" name="edit_bank_name" id="edit_bank_name" />
-                                @error('edit_bank_name')
+    <div class="modal fade" id="kt_modal_edit_bank" tabindex="-1" aria-hidden="true">
+        <!--begin::Modal dialog-->
+        <div class="modal-dialog modal-dialog-centered mw-650px">
+            <!--begin::Modal content-->
+            <div class="modal-content">
+                <!--begin::Modal header-->
+                <div class="modal-header">
+                    <!--begin::Modal title-->
+                    <h2>Edit Bank Account</h2>
+                    <!--end::Modal title-->
+                    <!--begin::Close-->
+                    <div class="btn btn-sm btn-icon btn-active-color-primary" data-bs-dismiss="modal">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr061.svg-->
+                        <span class="svg-icon svg-icon-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black" />
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black" />
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </div>
+                    <!--end::Close-->
+                </div>
+                <!--end::Modal header-->
+                <!--begin::Modal body-->
+                <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
+                    <!--begin::Form-->
+                    <form id="update-bank-account" action="" method="post">
+                        @csrf
+                        @method('PUT')
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-7 fv-row">
+                            <!--begin::Label-->
+                            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                <span class="required">Bank Name</span>
+                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a card holder's name"></i>
+                            </label>
+                            <!--end::Label-->
+                            <input type="text" class="form-control form-control-solid" name="edit_bank_name" id="edit_bank_name" />
+                            @error('edit_bank_name')
+                                <span class="text-danger small">
+                                    <span>{{ $message }}</span>
+                                </span>
+                            @enderror
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-7 fv-row">
+                            <!--begin::Label-->
+                            <label class="required fs-6 fw-bold form-label mb-2">Account Number</label>
+                            <!--end::Label-->
+                            <!--begin::Input wrapper-->
+                            <div class="position-relative">
+                                <!--begin::Input-->
+                                <input type="text" class="form-control form-control-solid" id="edit_account_number" name="edit_account_number" />
+                                <!--end::Input-->
+                                @error('edit_account_number')
                                     <span class="text-danger small">
                                         <span>{{ $message }}</span>
                                     </span>
                                 @enderror
-							</div>
-							<!--end::Input group-->
-							<!--begin::Input group-->
-							<div class="d-flex flex-column mb-7 fv-row">
-								<!--begin::Label-->
-								<label class="required fs-6 fw-bold form-label mb-2">Account Number</label>
-								<!--end::Label-->
-								<!--begin::Input wrapper-->
-								<div class="position-relative">
-									<!--begin::Input-->
-									<input type="text" class="form-control form-control-solid" id="edit_account_number" name="edit_account_number" />
-									<!--end::Input-->
-                                    @error('edit_account_number')
-                                        <span class="text-danger small">
-                                            <span>{{ $message }}</span>
-                                        </span>
-                                    @enderror
-								</div>
-								<!--end::Input wrapper-->
-							</div>
-							<!--end::Input group-->
-                            <!--begin::Input group-->
-							<div class="d-flex flex-column mb-7 fv-row">
-								<!--begin::Label-->
-								<label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
-									<span class="required">Account Name</span>
-									<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a card holder's name"></i>
-								</label>
-								<!--end::Label-->
-								<input type="text" class="form-control form-control-solid" name="edit_account_name" id="edit_account_name"/>
-                                @error('edit_account_name')
-                                        <span class="text-danger small">
-                                            <span>{{ $message }}</span>
-                                        </span>
-                                    @enderror
-							</div>
-							<!--end::Input group-->
-							<!--begin::Actions-->
-							<div class="text-center pt-7">
-								<button type="button" data-bs-dismiss="modal" id="kt_modal_new_card_cancel" class="btn btn-light me-3">Discard</button>
-								<button type="button" onclick="confirmFormSubmit(event, 'update-bank-account')" class="btn btn-primary">
-									<span class="indicator-label">Submit</span>
-									<span class="indicator-progress">Please wait...
-									<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
-								</button>
-							</div>
-							<!--end::Actions-->
-                        </form>
-						<!--end::Form-->
-					</div>
-					<!--end::Modal body-->
-				</div>
-				<!--end::Modal content-->
-			</div>
-			<!--end::Modal dialog-->
-		</div>
+                            </div>
+                            <!--end::Input wrapper-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-7 fv-row">
+                            <!--begin::Label-->
+                            <label class="d-flex align-items-center fs-6 fw-bold form-label mb-2">
+                                <span class="required">Account Name</span>
+                                <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Specify a card holder's name"></i>
+                            </label>
+                            <!--end::Label-->
+                            <input type="text" class="form-control form-control-solid" name="edit_account_name" id="edit_account_name"/>
+                            @error('edit_account_name')
+                                    <span class="text-danger small">
+                                        <span>{{ $message }}</span>
+                                    </span>
+                                @enderror
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Actions-->
+                        <div class="text-center pt-7">
+                            <button type="button" data-bs-dismiss="modal" id="kt_modal_new_card_cancel" class="btn btn-light me-3">Discard</button>
+                            <button type="button" onclick="confirmFormSubmit(event, 'update-bank-account')" class="btn btn-primary">
+                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-progress">Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                        <!--end::Actions-->
+                    </form>
+                    <!--end::Form-->
+                </div>
+                <!--end::Modal body-->
+            </div>
+            <!--end::Modal content-->
+        </div>
+        <!--end::Modal dialog-->
+    </div>
 	<!--end::Modal - New Card-->
     <!--begin::Modal - Update user details-->
     <div class="modal fade" id="kt_modal_update_details" tabindex="-1" aria-hidden="true">
@@ -1971,6 +1977,9 @@
 @section('script')
     <script>
         $(document).ready(function (){
+            const countryData = {!! json_encode($countries) !!};
+            const currentState = '{{ old('state') ?? auth()->user()->state }}';
+            console.log(countryData)
             console.log($('#tab-bank'))
             $('#tab-bank').click()
             const errorId = {!! json_encode(session('err_id')) !!}
@@ -1982,6 +1991,9 @@
             let bankCode = $('#bankCode');
             let accountNumber = $('#account_number');
             let accountName = $('#account_name');
+            let countryField = $('#country');
+            let state = $('#state');
+            const option = $('#option');
             let verifyingDisplay = $('#verifyingDisplay');
             bankList.on('change', function (){
                 $("#bankList option").each(function(){
@@ -1991,6 +2003,21 @@
                 })
                 verifyAccountNumber();
             });
+
+            setCountryStates();
+            countryField.on('change', setCountryStates);
+
+            function setCountryStates() {
+                let selectedCountry = countryField.val();
+                let country = countryData.find((country) => country.name === selectedCountry )
+                let selectedCountryStates = country.states;
+                let html = '';
+                for (let i = 0; i < selectedCountryStates.length; i++){
+                    html += `<option ${currentState === selectedCountryStates[i].name ? 'selected' : ''} value="${selectedCountryStates[i].name}">${selectedCountryStates[i].name}</option>`; 
+                }
+                state.html(html);
+            }
+           
             accountNumber.on('input', verifyAccountNumber);
             function verifyAccountNumber(){
                 if (bankList.val() && accountNumber.val().length === 10 && bankCode.val()){

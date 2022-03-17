@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Http\Requests\StorePackageRequest;
 use App\Http\Requests\UpdatePackageRequest;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Validator;
 
 class PackageController extends Controller
@@ -16,8 +17,9 @@ class PackageController extends Controller
      */
     public function index($type)
     {
+        $setting = Setting::all()->first();
         $packages = Package::latest()->where('type', $type)->get();
-        return view('user.packages.index', compact('packages', 'type'));
+        return view('user.packages.index', compact('packages', 'type', 'setting'));
     }
 
     /**

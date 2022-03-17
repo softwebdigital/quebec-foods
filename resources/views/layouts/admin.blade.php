@@ -46,7 +46,7 @@
 						<!--end::Logo-->
 					</div>
 					<!--end::Brand-->
-					<!--begin::Aside user-->
+					{{-- <!--begin::Aside user-->
 					<div class="aside-user mb-5 mb-lg-10" id="kt_aside_user">
 						<!--begin::User-->
 						<div class="d-flex align-items-center flex-column">
@@ -68,7 +68,7 @@
 						</div>
 						<!--end::User-->
 					</div>
-					<!--end::Aside user-->
+					<!--end::Aside user--> --}}
 					<!--begin::Aside menu-->
 					<div class="aside-menu flex-column-fluid ps-3 ps-lg-5 pe-1 mb-9" id="kt_aside_menu">
 						<!--begin::Aside Menu-->
@@ -473,7 +473,7 @@
                                         </div>
                                     </div>
                                 @endcan
-                                <div class="menu-item @if(request()->routeIs(['admin.profile'])) here show @endif">
+                                {{-- <div class="menu-item @if(request()->routeIs(['admin.profile'])) here show @endif">
 									<a class="menu-link" href="{{ route('admin.profile')}}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -487,7 +487,7 @@
 										</span>
 										<span class="menu-title">Profile</span>
 									</a>
-								</div>
+								</div> --}}
                                 @can('View Referrals')
                                     <div class="menu-item @if(request()->routeIs(['admin.referrals'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.referrals')}}">
@@ -505,7 +505,7 @@
                                         </a>
                                     </div>
                                 @endcan
-                                @can('View Settings')
+                                {{-- @can('View Settings')
                                     <div class="menu-item @if(request()->routeIs(['admin.settings'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.settings') }}">
                                             <span class="menu-icon">
@@ -521,7 +521,7 @@
                                             <span class="menu-title">Settings</span>
                                         </a>
                                     </div>
-                                @endcan
+                                @endcan --}}
 							</div>
 							<!--end::Menu-->
 						</div>

@@ -145,10 +145,39 @@
                 <input class="form-control form-control-solid" value="{{ $investment['return_date']->format('M d, Y \a\t h:i A') }}" disabled/>
             </div>
             @if ($investment['package']['type'] == 'farm')
-                <div class="col-md-12 mb-4">
+                {{-- <div class="col-md-12 mb-4">
                     <label class="form-label">Rollover</label>
                     <input class="form-control form-control-solid" value="{{ $investment['rollover'] ? "Yes" : "No" }}" disabled/>
-                </div>
+                </div> --}}
+                <form action="{{ route('investment.update.rollover', ['type' => $type, 'investment' => $investment['id']]) }}" method="POST" id="updateRolloverForm">
+                    @csrf
+                    @method('PUT')
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-5 fv-row">
+                        <!--begin::Label-->
+                        <label class="required fs-5 fw-bold mb-2" for="rollover">Rollover</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+                        <select name="rollover" aria-label="Select rollover status" data-placeholder="Select rollover status" class="form-select form-select-solid text-dark" id="rollover">
+                            <option value="">Select rollover status</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        @error('rollover')
+                            <span class="text-danger small" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <!--end::Input group-->
+                    <button type="button" onclick="confirmFormSubmit(event, 'updateRolloverForm')" class="btn btn-primary">Update</button>
+                    {{-- <div id="rollover" class="form-check form-switch form-check-custom form-check-solid me-10">
+                        <input required class="form-check-input h-30px w-50px" type="checkbox" @if($investment['rollover']) checked @endif value="yes" id="rollover" name="rollover"/>
+                        <label class="form-check-label" for="rollover">
+                            Rollover Investment
+                        </label>
+                    </div> --}}
+                </form>
             @endif
 
             @if ($investment['package']['type'] == 'plant')

@@ -221,7 +221,7 @@
                             @endif
                             <!--end::Input group-->
                             <!--begin::Submit-->
-                            <a href="{{ route('invest', $type) }}" class="btn btn-primary mt-3 w-100">
+                            <a data-bs-toggle="modal" @if($type == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment"@endif class="btn btn-primary mt-3 w-100">
                                 <!--begin::Indicator-->
                                 <span class="indicator-label">Invest</span>
                                 <!--end::Indicator-->
