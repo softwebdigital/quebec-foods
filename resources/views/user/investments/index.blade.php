@@ -29,17 +29,17 @@
                     <!--begin::Table head-->
                     <thead>
                         <tr class="fw-bolder text-muted bg-light">
-                            <th class="ps-4 text-dark rounded-start">SN</th>
+                            <th class="ps-4 text-dark rounded-start text-nowrap">SN</th>
                             <th class="text-dark">Package</th>
                             <th class="text-dark">Slots</th>
-                            <th class="text-dark">Total Invested</th>
-                            <th class="text-dark">Expected Returns</th>
-                            <th class="text-dark">Return Date</th>
+                            <th class="text-dark text-nowrap">Total Invested</th>
+                            <th class="text-dark text-nowrap">Expected Returns</th>
+                            <th class="text-dark text-nowrap">Return Date</th>
                             @if ($type == 'farm')
-                                <th class="text-dark">Rollover</th>
+                                <th class="text-dark text-nowrap">Rollover</th>
                             @endif
-                            <th class="text-dark">Payment</th>
-                            <th class="text-dark">Status</th>
+                            <th class="text-dark text-nowrap">Payment</th>
+                            <th class="text-dark text-nowrap">Status</th>
                             <th class="text-dark rounded-end"></th>
                         </tr>
                     </thead>
@@ -49,11 +49,11 @@
                         @foreach ($investments as $key=>$investment )
                             <tr>
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['package']['name'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($investment['slots']) }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($investment['amount']) }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($investment['total_return']) }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['return_date']->format('M d, Y') }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $investment['package']['name'] }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ number_format($investment['slots']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">₦ {{ number_format($investment['amount']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">₦ {{ number_format($investment['total_return']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $investment['return_date']->format('M d, Y') }}</span></td>
                                 @if ($type == 'farm')
                                     <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['rollover'] == 1 ? 'Yes' : 'No' }}</span></td>
                                 @endif

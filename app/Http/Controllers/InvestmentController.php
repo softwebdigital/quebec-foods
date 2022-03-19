@@ -54,7 +54,6 @@ class InvestmentController extends Controller
             'slots' => ['required', 'numeric', 'min:1', 'integer'],
             'payment' => ['required']
         ]);
-        // return $request->all();
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }

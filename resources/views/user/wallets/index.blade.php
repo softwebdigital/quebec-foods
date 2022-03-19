@@ -174,7 +174,7 @@
                                 <!--begin::Radio group-->
                                 <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                                     <!--begin::Radio-->
-                                    <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success active w-50" data-kt-button="true" for="cardPayment">
+                                    <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="cardPayment">
                                     <!--begin::Input-->
                                     <input class="btn-check" type="radio" name="payment" id="cardPayment" value="card" />
                                     <!--end::Input-->

@@ -766,7 +766,7 @@
                             <input type="text" value="₦ 0.00" disabled class="form-control form-control-solid" name="returns" id="plantReturns">
                         </div>
                         <!--end::Input group-->
-                        <!--begin::Input group-->
+                        {{-- <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
                             <label class="required fs-5 fw-bold mb-2" for="plantPayment">Pay Via</label>
@@ -784,7 +784,36 @@
                                 </span>
                             @enderror
                         </div>
-                        <!--end::Input group-->
+                        <!--end::Input group--> --}}
+                        <!--begin::Row-->
+                        <div class="fv-row mb-7">
+                            <!--begin::Radio group-->
+                            <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                                <!--begin::Radio-->
+                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="plantCardPayment" data-kt-button="true">
+                                <!--begin::Input-->
+                                <input class="btn-check" type="radio" name="payment" id="plantCardPayment" value="card" />
+                                <!--end::Input-->
+                                Card</label>
+                                <!--end::Radio-->
+                                <!--begin::Radio-->
+                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="plantWalletPayment" data-kt-button="true">
+                                <!--begin::Input-->
+                                <input class="btn-check" type="radio" name="payment" id="plantWalletPayment" value="wallet" />
+                                <!--end::Input-->
+                                Wallet</label>
+                                <!--end::Radio-->
+                                <!--begin::Radio-->
+                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="plantDepositPayment" data-kt-button="true">
+                                <!--begin::Input-->
+                                <input class="btn-check" type="radio" name="payment" id="plantDepositPayment" value="deposit" />
+                                <!--end::Input-->
+                                Bank Transfer</label>
+                                <!--end::Radio-->
+                            </div>
+                            <!--end::Radio group-->
+                        </div>
+                        <!--end::Row-->
                         <div id="plantSecuredByPaystack" style="display: none" class="mx-auto text-center">
                             <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
                         </div>
@@ -926,7 +955,7 @@
                             <input type="text" value="₦ 0.00" disabled class="form-control form-control-solid" name="returns" id="returns">
                         </div>
                         <!--end::Input group-->
-                        <!--begin::Input group-->
+                        {{-- <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
                             <label class="required fs-5 fw-bold mb-2" for="payment">Pay Via</label>
@@ -944,11 +973,40 @@
                                 </span>
                             @enderror
                         </div>
-                        <!--end::Input group-->
-                        <div id="securedByPaystack" style="display: none" class="mx-auto text-center">
+                        <!--end::Input group--> --}}
+                        <!--begin::Row-->
+                        <div class="fv-row mb-7">
+                            <!--begin::Radio group-->
+                            <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                                <!--begin::Radio-->
+                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="farmCardPayment" data-kt-button="true">
+                                <!--begin::Input-->
+                                <input class="btn-check" type="radio" name="payment" id="farmCardPayment" value="card" />
+                                <!--end::Input-->
+                                Card</label>
+                                <!--end::Radio-->
+                                <!--begin::Radio-->
+                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="farmWalletPayment" data-kt-button="true">
+                                <!--begin::Input-->
+                                <input class="btn-check" type="radio" name="payment" id="farmWalletPayment" value="wallet" />
+                                <!--end::Input-->
+                                Wallet</label>
+                                <!--end::Radio-->
+                                <!--begin::Radio-->
+                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="farmDepositPayment" data-kt-button="true">
+                                <!--begin::Input-->
+                                <input class="btn-check" type="radio" name="payment" id="farmDepositPayment" value="deposit" />
+                                <!--end::Input-->
+                                Bank Transfer</label>
+                                <!--end::Radio-->
+                            </div>
+                            <!--end::Radio group-->
+                        </div>
+                        <!--end::Row-->
+                        <div id="farmSecuredByPaystack" style="display: none" class="mx-auto text-center">
                             <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
                         </div>
-                        <div id="bankDetails" style="display: none" class="alert bg-secondary">
+                        <div id="farmBankDetails" style="display: none" class="alert bg-secondary">
                             <table>
                                 <tr>
                                     <td>Bank Name:</td>
@@ -1101,25 +1159,30 @@
             let amount = $('#amount');
             let returns = $('#returns');
             let returnInfo = $('#returnInfo');
-            let payment = $('#payment');
-            let bankDetails = $('#bankDetails');
-            let securedByPaystack = $('#securedByPaystack');
+            let depositPayment = $('#farmDepositPayment');
+            let cardPayment = $('#farmCardPayment');
+            let walletPayment = $('#farmWalletPayment');
+            let bankDetails = $('#farmBankDetails');
+            let securedByPaystack = $('#farmSecuredByPaystack');
             let submitButton = $('#submitButton');
             let agreed = $('#agreed');
             let nairaWalletBalance = parseFloat({{ auth()->user()['wallet']['balance'] }});
             let rolloverInvestment = $('#rolloverInvestment');
             agreed.on('change', checkIfFormCanSubmit);
-            payment.on('change', function (){
-                if (payment.val() === 'deposit') {
-                    bankDetails.show(500);
-                    securedByPaystack.hide(500);
-                }else if(payment.val() === 'card'){
-                    bankDetails.hide(500);
-                    securedByPaystack.show(500);
-                }else {
-                    bankDetails.hide(500);
-                    securedByPaystack.hide(500);
-                }
+
+            cardPayment.on('click', function () {
+                bankDetails.hide(500);
+                securedByPaystack.show(500);
+                checkIfFormCanSubmit();
+            });
+            depositPayment.on('click', function () {
+                bankDetails.show(500);
+                securedByPaystack.hide(500);
+                checkIfFormCanSubmit();
+            });
+            walletPayment.on('click', function () {
+                bankDetails.hide(500);
+                securedByPaystack.hide(500);
                 checkIfFormCanSubmit();
             });
             setFieldsForInvestment();
@@ -1156,8 +1219,8 @@
                 checkIfFormCanSubmit();
             }
             function checkIfFormCanSubmit(){
-                if (packageName.val() && slots.val() && (slots.val() > 0) && payment.val() && agreed.prop('checked')){
-                    if (payment.val() === 'wallet'){
+                if (packageName.val() && slots.val() && (slots.val() > 0) && ((walletPayment.val() || cardPayment.val()) || depositPayment.val()) && agreed.prop('checked')){
+                    if ($("input[id='farmWalletPayment']:checked")){
                         if ((slots.val() * price.val()) <= nairaWalletBalance ){
                             submitButton.removeAttr('disabled');
                             slots.css('borderColor', '#10B759');
@@ -1185,24 +1248,28 @@
             let plantAmount = $('#plantAmount');
             let plantReturns = $('#plantReturns');
             let plantReturnInfo = $('#plantReturnInfo');
-            let plantPayment = $('#plantPayment');
+            let plantDepositPayment = $('#plantDepositPayment');
+            let plantCardPayment = $('#plantCardPayment');
+            let plantWalletPayment = $('#plantWalletPayment');
             let plantBankDetails = $('#plantBankDetails');
             let plantSecuredByPaystack = $('#plantSecuredByPaystack');
             let plantSubmitButton = $('#plantSubmitButton');
             let plantAgreed = $('#plantAgreed');
             let walletBalance = parseFloat({{ auth()->user()['wallet']['balance'] }});
             plantAgreed.on('change', checkIfFormCanSubmit);
-            plantPayment.on('change', function (){
-                if (plantPayment.val() === 'deposit') {
-                    plantBankDetails.show(500);
-                    plantSecuredByPaystack.hide(500);
-                }else if(plantPayment.val() === 'card'){
-                    plantBankDetails.hide(500);
-                    plantSecuredByPaystack.show(500);
-                }else {
-                    plantBankDetails.hide(500);
-                    plantSecuredByPaystack.hide(500);
-                }
+            plantCardPayment.on('click', function () {
+                plantBankDetails.hide(500);
+                plantSecuredByPaystack.show(500);
+                checkIfFormCanSubmit();
+            });
+            plantDepositPayment.on('click', function () {
+                plantBankDetails.show(500);
+                plantSecuredByPaystack.hide(500);
+                checkIfFormCanSubmit();
+            });
+            plantWalletPayment.on('click', function () {
+                plantBankDetails.hide(500);
+                plantSecuredByPaystack.hide(500);
                 checkIfFormCanSubmit();
             });
             setFieldsForInvestment();
@@ -1235,8 +1302,8 @@
                 checkIfFormCanSubmit();
             }
             function checkIfFormCanSubmit(){
-                if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() > 0) && plantPayment.val() && plantAgreed.prop('checked')){
-                    if (plantPayment.val() === 'wallet'){
+                if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() > 0) && ((plantWalletPayment.val() || plantCardPayment.val()) || plantDepositPayment.val()) && plantAgreed.prop('checked')){
+                    if ($("input[id='plantWalletPayment']:checked")){
                         if ((plantSlots.val() * plantPrice.val()) <= walletBalance ){
                             plantSubmitButton.removeAttr('disabled');
                             plantSlots.css('borderColor', '#10B759');

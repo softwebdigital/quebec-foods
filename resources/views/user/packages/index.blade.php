@@ -39,24 +39,24 @@
                 <!--begin::Table head-->
                 <thead>
                     <tr class="fw-bolder text-muted bg-light">
-                        <th class="ps-4 text-dark rounded-start">SN</th>
+                        <th class="ps-4 text-dark rounded-start text-nowrap">SN</th>
                         @if ($type == 'plant')
-                        <th class="text-dark">Cover</th>
+                        <th class="text-dark text-nowrap">Cover</th>
                         @endif
-                        <th class="text-dark">Name</th>
-                        <th class="text-dark">ROI in %</th>
-                        <th class="text-dark">Price per slot</th>
-                        <th class="text-dark">Start date</th>
-                        <th class="text-dark">Duration</th>
+                        <th class="text-dark text-nowrap">Name</th>
+                        <th class="text-dark text-nowrap">ROI in %</th>
+                        <th class="text-dark text-nowrap">Price per slot</th>
+                        <th class="text-dark text-nowrap">Start date</th>
+                        <th class="text-dark text-nowrap">Duration</th>
                         @if ($type == 'plant')
-                            <th class="text-dark">Milestones</th>
-                            <th class="text-dark">Payout mode</th>
+                            <th class="text-dark text-nowrap">Milestones</th>
+                            <th class="text-dark text-nowrap">Payout mode</th>
                         @endif
                         @if ($type == 'farm')
-                            <th class="text-dark">Slots</th>
-                            <th class="text-dark">Rollover</th>
+                            <th class="text-dark text-nowrap">Slots</th>
+                            <th class="text-dark text-nowrap">Rollover</th>
                         @endif
-                        <th class="text-dark">Status</th>
+                        <th class="text-dark text-nowrap">Status</th>
                         <th class="text-dark rounded-end"></th>
                     </tr>
                 </thead>
@@ -65,7 +65,7 @@
                 <tbody>
                     @foreach ($packages as $key=>$package )
                         <tr>
-                            <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
+                            <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6 text-nowrap">{{ $key + 1 }}</span></td>
                             @if ($type == 'plant')
                             <td>
                                 <div class="symbol symbol-45px me-5">
@@ -73,18 +73,18 @@
                                 </div>
                             </td>
                             @endif
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['name'] }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['roi'] }}%</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($package['price']) }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['start_date']->format('M d, Y') }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['duration'] }} {{ $package['duration_mode'] }}{{ $package['duration'] > 1 ? 's' : '' }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['name'] }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['roi'] }}%</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">₦ {{ number_format($package['price']) }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['start_date']->format('M d, Y') }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['duration'] }} {{ $package['duration_mode'] }}{{ $package['duration'] > 1 ? 's' : '' }}</span></td>
                             @if ($type == 'plant')
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($package['milestones']) }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['payout_mode'] }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ number_format($package['milestones']) }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['payout_mode'] }}</span></td>
                             @endif
                             @if ($type == 'farm')
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ number_format($package['slots']) }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $package['rollover'] == 1 ? 'Yes' : 'No' }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ number_format($package['slots']) }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['rollover'] == 1 ? 'Yes' : 'No' }}</span></td>
                             @endif
                             <td>
                                 @if ($package['status'] == 'open')
