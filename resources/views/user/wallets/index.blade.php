@@ -90,7 +90,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="account">Select Account</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <select name="account" aria-label="Select account" data-placeholder="Select account" value="{{ old("account") }}" data-control="select2" class="form-select form-select-solid text-dark" id="account">
+                            <select name="account" aria-label="Select account" data-placeholder="Select account" value="{{ old("account") }}" data-control="select" class="form-select form-select-solid text-dark" id="account">
                                 @foreach (auth()->user()->bankAccounts()->get() as $bank)
                                     <option value="{{ $bank['id'] }}">{{ $bank['bank_name']. " - ". $bank['account_number'] }}</option>
                                 @endforeach
@@ -148,7 +148,7 @@
                             </span>
                             @enderror
                         </div>
-                        <!--end::Input group-->
+                        {{-- <!--end::Input group-->
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--begin::Label-->
@@ -165,7 +165,37 @@
                                 </span>
                             @enderror
                         </div>
-                        <!--end::Input group-->
+                        <!--end::Input group--> --}}
+                        <!--begin::Label-->
+                        <label class="required fs-5 fw-bold mb-2">Payment Method</label>
+                        <!--end::Label-->
+                        <!--begin::Row-->
+                            <div class="fv-row mb-7">
+                                <!--begin::Radio group-->
+                                <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
+                                    <!--begin::Radio-->
+                                    <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success active w-50" data-kt-button="true" for="cardPayment">
+                                    <!--begin::Input-->
+                                    <input class="btn-check" type="radio" name="payment" id="cardPayment" value="card" />
+                                    <!--end::Input-->
+                                    Card</label>
+                                    <!--end::Radio-->
+                                    <!--begin::Radio-->
+                                    <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="depositPayment">
+                                    <!--begin::Input-->
+                                    <input class="btn-check" type="radio" name="payment" id="depositPayment" value="deposit" />
+                                    <!--end::Input-->
+                                    Bank Transfer</label>
+                                    <!--end::Radio-->
+                                </div>
+                                <!--end::Radio group-->
+                                @error('payment')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        <!--end::Row-->
                         <div id="securedByPaystackLogo" class="mx-auto text-center">
                             <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
                         </div>
@@ -201,18 +231,46 @@
 @section('script')
 <script>
     $(document).ready(function (){
-        let payment = $('#paymentDeposit');
+        let cardPayment = $('#cardPayment');
+        let depositPayment = $('#depositPayment');
         let bankDetails = $('#bankDetailsForDepositForm');
         let securedLogo = $('#securedByPaystackLogo');
-        payment.on('change', function (){
-            if (payment.val() === 'deposit'){
-                bankDetails.show(500);
-                securedLogo.hide(500);
-            }else {
-                bankDetails.hide(500);
-                securedLogo.show(500);
-            }
+        cardPayment.on('click', function (){
+            bankDetails.hide(500);
+            securedLogo.show(500);
         });
+        depositPayment.on('click', function (){
+            bankDetails.show(500);
+            securedLogo.hide(500);
+        });
+
+        let withdrawInput = $('#amountWithdraw');
+        let depositInput = $('#amountDeposit');
+
+        withdrawInput.on('keyup', userInputAction);
+        depositInput.on('keyup', userInputAction);
+
+        function userInputAction (event) {
+            var selection = window.getSelection().toString();
+            if ( selection !== '' ) {
+                return;
+            }
+
+            if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+                return;
+            }
+
+            var $this = $( this );
+            var input = $this.val();
+
+            var input = input.replace(/[\D\s\._\-]+/g, "");
+
+            input = input ? parseInt( input, 10 ) : 0;
+
+            $this.val( function() {
+                return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
+            } );
+        }
     });
 </script>
 @endsection

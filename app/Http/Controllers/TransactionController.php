@@ -149,7 +149,7 @@ class TransactionController extends Controller
         ]);
     }
 
-    public function withdraw(Request $request): \Illuminate\Http\RedirectResponse
+    public function withdraw(Request $request)
     {
         // Validate request
         $validator = Validator::make($request->all(), [
