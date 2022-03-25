@@ -101,34 +101,34 @@ class NotificationController extends Controller
 
     public static function sendWithdrawalQueuedNotification($transaction)
     {
-        $description = 'Your withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> has been queued.';
-        $msg = 'Your withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> has been queued.<br>
+        $description = 'Your withdrawal of <b>₦ '.number_format((int)$transaction['amount']).'</b> has been queued.';
+        $msg = 'Your withdrawal of <b>₦ '.number_format((int)$transaction['amount']).'</b> has been queued.<br>
                 Your bank account will be credited after administrator approval.';
         $transaction->user->notify(new CustomNotification('pending', 'Withdrawal Queued', $msg, $description));
     }
 
     public static function sendDepositQueuedNotification($transaction)
     {
-        $description = 'Your deposit of <b>₦ '.number_format($transaction['amount']).'</b> has been queued.';
-        $msg = 'Your deposit of <b>₦ '.number_format($transaction['amount']).'</b> has been queued.<br>
+        $description = 'Your deposit of <b>₦ '.number_format((int)$transaction['amount']).'</b> has been queued.';
+        $msg = 'Your deposit of <b>₦ '.number_format((int)$transaction['amount']).'</b> has been queued.<br>
                 Your wallet will be automatically credited once you payment has been approved.';
         $transaction->user->notify(new CustomNotification('pending', 'Deposit Queued', $msg, $description));
     }
 
     public static function sendDepositCancelledNotification($transaction)
     {
-        $description = 'Your queued deposit of <b>₦ '.number_format($transaction['amount']).'</b> has been declined.';
-        $msg = 'Your queued deposit of <b>₦ '.number_format($transaction['amount']).'</b> has been declined.<br>
+        $description = 'Your queued deposit of <b>₦ '.number_format((int)$transaction['amount']).'</b> has been declined.';
+        $msg = 'Your queued deposit of <b>₦ '.number_format((int)$transaction['amount']).'</b> has been declined.<br>
                 Contact administrator <a href="mailto:'.env('SUPPORT_EMAIL').'">'.env('SUPPORT_EMAIL').'</a> for further complaints.';
         $transaction->user->notify(new CustomNotification('cancelled', 'Deposit Declined', $msg, $description));
     }
 
     public static function sendWithdrawalSuccessfulNotification($transaction)
     {
-        $description = 'Your withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> was successful.';
-        $msg = 'Your withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> was successful.<br><br>
+        $description = 'Your withdrawal of <b>₦ '.number_format((int)$transaction['amount']).'</b> was successful.';
+        $msg = 'Your withdrawal of <b>₦ '.number_format((int)$transaction['amount']).'</b> was successful.<br><br>
                 <b><u>Withdrawal details:</u></b><br>
-                Amount: <b>₦ '.number_format($transaction['amount']).'</b><br>
+                Amount: <b>₦ '.number_format((int)$transaction['amount']).'</b><br>
                 Withdrawal method: <b>'.$transaction["method"].'</b><br><br>
                 <b><u>Wallet details:</u></b><br>
                 Amount debited: <b>₦ '.number_format($transaction->amount).'</b><br>
@@ -139,21 +139,21 @@ class NotificationController extends Controller
     public static function sendDepositSuccessfulNotification($transaction)
     {
         $method = $transaction["method"] == 'deposit' ? 'deposit / bank transfer' : $transaction["method"];
-        $description = 'Your deposit of <b>₦ '.number_format($transaction['amount']).'</b> was successful.';
-        $msg = 'Your deposit of <b>₦ '.number_format($transaction['amount']).'</b> was successful.<br><br>
+        $description = 'Your deposit of <b>₦ '.number_format((int)$transaction['amount']).'</b> was successful.';
+        $msg = 'Your deposit of <b>₦ '.number_format((int)$transaction['amount']).'</b> was successful.<br><br>
                 <b><u>Deposit details:</u></b><br>
-                Amount: <b>₦ '.number_format($transaction['amount']).'</b><br>
+                Amount: <b>₦ '.number_format((int)$transaction['amount']).'</b><br>
                 Deposit method: <b>'.$method.'</b><br><br>
                 <b><u>Wallet details:</u></b><br>
-                Amount credited: <b>₦ '.number_format($transaction->amount, 2).'</b><br>
+                Amount credited: <b>₦ '.number_format((int)$transaction->amount, 2).'</b><br>
                 Wallet balance: <b>₦ '.number_format($transaction->user->wallet['balance'], 2).'</b><br>';
         $transaction->user->notify(new CustomNotification('deposit', 'Deposit Successful', $msg, $description));
     }
 
     public static function sendWithdrawalCancelledNotification($transaction)
     {
-        $description = 'Your queued withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> has been declined.';
-        $msg = 'Your queued withdrawal of <b>₦ '.number_format($transaction['amount']).'</b> has been declined.<br>
+        $description = 'Your queued withdrawal of <b>₦ '.number_format((int)$transaction['amount']).'</b> has been declined.';
+        $msg = 'Your queued withdrawal of <b>₦ '.number_format((int)$transaction['amount']).'</b> has been declined.<br>
                 Your wallet has been refunded, contact administrator <a href="mailto:'.env('SUPPORT_EMAIL').'">'.env('SUPPORT_EMAIL').'</a> for further complaints.';
         $transaction->user->notify(new CustomNotification('cancelled', 'Withdrawal Declined', $msg, $description));
     }

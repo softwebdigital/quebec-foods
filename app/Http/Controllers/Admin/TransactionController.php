@@ -96,7 +96,7 @@ class TransactionController extends Controller
         $user = $transaction['user'];
         switch ($transaction['type']){
             case 'deposit':
-                $user->wallet()->increment('balance', $transaction['amount']);
+                $user->wallet()->increment('balance', (int)$transaction['amount']);
                 try {
                     NotificationController::sendDepositSuccessfulNotification($transaction);
                 } catch (Exception $e) {
@@ -149,7 +149,7 @@ class TransactionController extends Controller
         $user = $transaction['user'];
         switch ($transaction['type']){
             case 'withdrawal':
-                $user->wallet()->increment('balance', $transaction['amount']);
+                $user->wallet()->increment('balance', (int)$transaction['amount']);
                 try {
                     NotificationController::sendWithdrawalCancelledNotification($transaction);
                 } catch (Exception $e) {
@@ -281,7 +281,7 @@ class TransactionController extends Controller
             // }else{
             //     $datum['name'] = ucwords($transaction->user['name']);
             // }
-            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($transaction['amount']).'</span>';
+            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format((int)$transaction['amount']).'</span>';
             $datum['description'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['description'].'</span>';
             $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['created_at']->format('M d, Y \a\t h:i A').'</span>';
             $datum['details'] = '<span class="text-gray-600 fw-bolder d-block fs-6 text-center">'.$details.'</span>';
