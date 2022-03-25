@@ -154,9 +154,12 @@ class TransactionController extends Controller
     {
         // Validate request
         $validator = Validator::make($request->all(), [
-            'amount' => ['required', 'numeric', 'gt:0'],
+            'amount' => ['required'],
             'account' => ['required']
         ]);
+
+        $request['amount'] = (int)(str_replace(",", "", $request['amount']));
+
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }
@@ -165,12 +168,12 @@ class TransactionController extends Controller
             return back()->with('error', 'Withdrawal from wallet is currently unavailable, check back later');
         }
         // Check if user has sufficient balance
-        if (!auth()->user()->hasSufficientBalanceForTransaction($request['amount'])) return back()->withInput()->with('error', 'Insufficient wallet balance');
+        if (!auth()->user()->hasSufficientBalanceForTransaction((int)$request['amount'])) return back()->withInput()->with('error', 'Insufficient wallet balance');
         // Process withdrawal
-        auth()->user()->wallet()->decrement('balance', $request['amount']);
+        auth()->user()->wallet()->decrement('balance', (int)$request['amount']);
         $bank = auth()->user()->bankAccounts()->where('id', $request['account'])->first();
         $transaction = auth()->user()->transactions()->create([
-            'type' => 'withdrawal', 'amount' => $request['amount'],
+            'type' => 'withdrawal', 'amount' => (int)$request['amount'],
             'method' => 'wallet',
             'preferred_bank' => json_encode($bank),
             'description' => 'Withdrawal', 'status' => 'pending'

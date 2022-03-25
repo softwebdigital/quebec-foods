@@ -359,13 +359,13 @@
     <div class="row g-5 g-lg-10">
         <!--begin::Col-->
         @if (count($data['investments']['plant']) > 0)
-            <div class="col-xxl-12 col-md-12 mb-xxl-10">
-                <!--begin::Tables Widget 9-->
+            <div class="col-xxl-12 col-md-12 mb-xxl-12">
+                <!--begin::Tables Widget 5-->
                 <div class="card h-md-100">
                     <!--begin::Header-->
                     <div class="card-header border-0 pt-5">
                         <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bolder fs-3 mb-1">Recent Plant Investments</span>
+                            <span class="card-label fw-bolder fs-3 mb-1">Plant Investments</span>
                             <span class="text-muted mt-1 fw-bold fs-7">Latest Investments</span>
                         </h3>
                     </div>
@@ -375,11 +375,12 @@
                         <!--begin::Table container-->
                         <div class="table-responsive">
                             <!--begin::Table-->
-                            <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                            <table class="table table-row-dashed table-row-gray-200 align-middle gs-0 gy-4">
                                 <!--begin::Table head-->
                                 <thead>
                                     <tr class="fw-bolder text-muted">
                                         <th class="ps-4 text-dark rounded-start">S/N</th>
+                                        <th class="text-dark">Cover</th>
                                         <th class="text-dark">Package</th>
                                         <th class="text-dark">Total Invested</th>
                                         <th class="text-dark">Expected Returns</th>
@@ -394,7 +395,14 @@
                                         @foreach ($data['investments']['plant'] as $key => $plantInvestment)
                                             <tr>
                                                 <td class="ps-4"><span
-                                                        class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span>
+                                                    class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span>
+                                                </td>
+                                                <td>
+                                                    <div class="symbol symbol-45px me-2">
+                                                        <span class="symbol-label">
+                                                            <img src="{{ asset($plantInvestment['package']['image']) }}" class="h-50 align-self-center" alt="" />
+                                                        </span>
+                                                    </div>
                                                 </td>
                                                 <td><span
                                                         class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['package']['name'] }}</span>
@@ -427,13 +435,12 @@
                                 </tbody>
                                 <!--end::Table body-->
                             </table>
-                            <!--end::Table-->
                         </div>
-                        <!--end::Table container-->
+                        <!--end::Table-->
                     </div>
-                    <!--begin::Body-->
+                    <!--end::Body-->
                 </div>
-                <!--end::Tables Widget 9-->
+                <!--end::Tables Widget 5-->
             </div>
         @endif
         <!--end::Col-->
@@ -444,13 +451,13 @@
     <div class="row g-5 g-lg-10">
         <!--begin::Col-->
         @if (count($data['investments']['farm']) > 0)
-            <div class="col-xxl-12 col-md-12 mb-xxl-10">
-                <!--begin::Tables Widget 9-->
+            <div class="col-xxl-12 col-md-12 mb-xxl-12">
+                <!--begin::Tables Widget 5-->
                 <div class="card h-md-100">
                     <!--begin::Header-->
                     <div class="card-header border-0 pt-5">
                         <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bolder fs-3 mb-1">Recent Farm Investments</span>
+                            <span class="card-label fw-bolder fs-3 mb-1">Farm Investments</span>
                             <span class="text-muted mt-1 fw-bold fs-7">Latest Investments</span>
                         </h3>
                     </div>
@@ -462,7 +469,7 @@
                             <!--begin::Table-->
                             <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
                                 <!--begin::Table head-->
-                                <thead>
+                                 <thead>
                                     <tr class="fw-bolder text-muted">
                                         <th class="ps-4 text-dark rounded-start">S/N</th>
                                         <th class="text-dark">Package</th>
@@ -512,13 +519,12 @@
                                 </tbody>
                                 <!--end::Table body-->
                             </table>
-                            <!--end::Table-->
                         </div>
-                        <!--end::Table container-->
+                        <!--end::Table-->
                     </div>
-                    <!--begin::Body-->
+                    <!--end::Body-->
                 </div>
-                <!--end::Tables Widget 9-->
+                <!--end::Tables Widget 5-->
             </div>
         @endif
         <!--end::Col-->
