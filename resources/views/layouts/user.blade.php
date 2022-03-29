@@ -766,26 +766,8 @@
                             <input type="text" value="₦ 0.00" disabled class="form-control form-control-solid" name="returns" id="plantReturns">
                         </div>
                         <!--end::Input group-->
-                        {{-- <!--begin::Input group-->
-                        <div class="d-flex flex-column mb-5 fv-row">
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2" for="plantPayment">Pay Via</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <select name="payment" aria-label="Select payment mode" data-placeholder="Select payment mode" class="form-select form-select-solid text-dark" id="plantPayment">
-                                <option value="">Select payment mode </option>
-                                <option value="wallet">Wallet</option>
-                                <option value="card">Card</option>
-                                <option value="deposit">Deposit / Bank Transfer</option>
-                            </select>
-                            @error('payment')
-                                <span class="text-danger small" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <!--end::Input group--> --}}
                         <!--begin::Row-->
+                        <label class="required fs-5 fw-bold mb-2" for="payment">Pay Via</label>
                         <div class="fv-row mb-7">
                             <!--begin::Radio group-->
                             <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
@@ -955,26 +937,8 @@
                             <input type="text" value="₦ 0.00" disabled class="form-control form-control-solid" name="returns" id="returns">
                         </div>
                         <!--end::Input group-->
-                        {{-- <!--begin::Input group-->
-                        <div class="d-flex flex-column mb-5 fv-row">
-                            <!--begin::Label-->
-                            <label class="required fs-5 fw-bold mb-2" for="payment">Pay Via</label>
-                            <!--end::Label-->
-                            <!--begin::Input-->
-                            <select name="payment" aria-label="Select payment mode" data-placeholder="Select payment mode" class="form-select form-select-solid text-dark" id="payment">
-                                <option value="">Select payment mode </option>
-                                <option value="wallet">Wallet</option>
-                                <option value="card">Card</option>
-                                <option value="deposit">Deposit / Bank Transfer</option>
-                            </select>
-                            @error('payment')
-                                <span class="text-danger small" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <!--end::Input group--> --}}
                         <!--begin::Row-->
+                        <label class="required fs-5 fw-bold mb-2" for="payment">Pay Via</label>
                         <div class="fv-row mb-7">
                             <!--begin::Radio group-->
                             <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
@@ -1295,7 +1259,7 @@
                     plantReturnInfo.html('');
                     plantSlotInfo.text('');
                 }
-                if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() > 0)){
+                if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() >= 0)){
                     plantAmount.val('₦ ' + numberFormat((plantSlots.val() * plantPrice.val()).toFixed(2)));
                     plantReturns.val('₦ ' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val()) + 100) / 100)).toFixed(2)));
                 }
@@ -1310,6 +1274,7 @@
                         }else{
                             plantSubmitButton.prop('disabled', true);
                             plantSlots.css('borderColor', 'red');
+                            plantSlots.after('<span style="color: red;">Insufficient wallet balance</span>');
                         }
                     }else{
                         plantSubmitButton.removeAttr('disabled');

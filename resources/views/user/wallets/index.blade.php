@@ -235,6 +235,8 @@
         let depositPayment = $('#depositPayment');
         let bankDetails = $('#bankDetailsForDepositForm');
         let securedLogo = $('#securedByPaystackLogo');
+        bankDetails.hide(500);
+        securedLogo.hide(500);
         cardPayment.on('click', function (){
             bankDetails.hide(500);
             securedLogo.show(500);
