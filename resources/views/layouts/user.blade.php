@@ -1167,6 +1167,7 @@
                 });
                 computeAmount();
             }
+
             slots.on('input', computeAmount);
             function computeAmount(){
                 if (packageName.val()){
@@ -1180,6 +1181,10 @@
                     amount.val('₦ ' + numberFormat((slots.val() * price.val()).toFixed(2)));
                     returns.val('₦ ' + numberFormat((slots.val() * price.val() * ((parseInt(roi.val()) + 100) / 100)).toFixed(2)));
                 }
+                if (slots.val() === "") {
+                    amount.val('₦ ' + numberFormat((0).toFixed(2)));
+                    returns.val('₦ ' + numberFormat((0).toFixed(2)));
+                }
                 checkIfFormCanSubmit();
             }
             function checkIfFormCanSubmit(){
@@ -1191,6 +1196,7 @@
                         }else{
                             submitButton.prop('disabled', true);
                             slots.css('borderColor', 'red');
+                            slots.after('<span style="color: red;">Insufficient wallet balance</span>');
                         }
                     }else{
                         submitButton.removeAttr('disabled');
@@ -1262,6 +1268,10 @@
                 if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() >= 0)){
                     plantAmount.val('₦ ' + numberFormat((plantSlots.val() * plantPrice.val()).toFixed(2)));
                     plantReturns.val('₦ ' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val()) + 100) / 100)).toFixed(2)));
+                }
+                if (plantSlots.val() === "") {
+                    plantAmount.val('₦ ' + numberFormat((0).toFixed(2)));
+                    plantReturns.val('₦ ' + numberFormat((0).toFixed(2)));
                 }
                 checkIfFormCanSubmit();
             }

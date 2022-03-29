@@ -170,80 +170,7 @@
                                         </div>
                                     </div>
                                 @endcan
-                                @can('View Transactions')
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.transactions'])) here show @endif">
-                                        <span class="menu-link">
-                                            <span class="menu-icon">
-                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
-                                                <span class="svg-icon svg-icon-5">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                        <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
-                                                        <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            @php
-                                                $pending = \App\Models\Transaction::where('status', 'pending')->count();
-                                            @endphp
 
-                                            <span class="menu-title">Transactions @if ($pending > 0)
-                                                <span class="ms-3 badge badge-warning">{{ $pending }}</span>
-                                            @endif</span>
-                                            <span class="menu-arrow"></span>
-                                        </span>
-                                        <div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.transactions'])) show @endif">
-                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'all') here @endif">
-                                                <a class="menu-link" href="{{ route('admin.transactions', 'all') }}">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">All</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'pending') here @endif">
-                                                <a class="menu-link" href="{{ route('admin.transactions', 'pending') }}">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Pending</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'withdrawal') here @endif">
-                                                <a class="menu-link" href="{{ route('admin.transactions', 'withdrawal') }}">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Withdrawal</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'deposit') here @endif">
-                                                <a class="menu-link" href="{{ route('admin.transactions', 'deposit') }}">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Deposits</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'investment') here @endif">
-                                                <a class="menu-link" href="{{ route('admin.transactions', 'investment') }}">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Investment</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'payout') here @endif">
-                                                <a class="menu-link" href="{{ route('admin.transactions', 'payout') }}">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Payout</span>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endcan
                                 @can('View Investments')
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion  @if(request()->routeIs(['admin.investments', 'admin.investments.show'])) here show @endif">
                                         <span class="menu-link">
@@ -269,7 +196,7 @@
                                                     <span class="menu-title">Processing Plants</span>
                                                     <span class="menu-arrow"></span>
                                                 </span>
-                                                 <div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.investments']) && request()->type == 'plant') show @endif">
+                                                <div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.investments']) && request()->type == 'plant') show @endif">
                                                     <div class="menu-item @if(request()->routeIs(['admin.investments']) && request()->type == 'plant' && request()->filter == 'all') here @endif">
                                                         <a class="menu-link" href="{{ route('admin.investments', ['type' => 'plant', 'filter' => 'all']) }}">
                                                             <span class="menu-bullet">
@@ -366,6 +293,82 @@
                                         </div>
                                     </div>
                                 @endcan
+
+                                @can('View Transactions')
+                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.transactions'])) here show @endif">
+                                        <span class="menu-link">
+                                            <span class="menu-icon">
+                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+                                                <span class="svg-icon svg-icon-5">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                        <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
+                                                        <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->
+                                            </span>
+                                            @php
+                                                $pending = \App\Models\Transaction::where('status', 'pending')->count();
+                                            @endphp
+
+                                            <span class="menu-title">Transactions @if ($pending > 0)
+                                                <span class="ms-3 badge badge-warning">{{ $pending }}</span>
+                                            @endif</span>
+                                            <span class="menu-arrow"></span>
+                                        </span>
+                                        <div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.transactions'])) show @endif">
+                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'all') here @endif">
+                                                <a class="menu-link" href="{{ route('admin.transactions', 'all') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">All</span>
+                                                </a>
+                                            </div>
+                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'pending') here @endif">
+                                                <a class="menu-link" href="{{ route('admin.transactions', 'pending') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">Pending</span>
+                                                </a>
+                                            </div>
+                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'withdrawal') here @endif">
+                                                <a class="menu-link" href="{{ route('admin.transactions', 'withdrawal') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">Withdrawal</span>
+                                                </a>
+                                            </div>
+                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'deposit') here @endif">
+                                                <a class="menu-link" href="{{ route('admin.transactions', 'deposit') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">Deposits</span>
+                                                </a>
+                                            </div>
+                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'investment') here @endif">
+                                                <a class="menu-link" href="{{ route('admin.transactions', 'investment') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">Investment</span>
+                                                </a>
+                                            </div>
+                                            <div class="menu-item @if(request()->routeIs(['admin.transactions']) && request()->type == 'payout') here @endif">
+                                                <a class="menu-link" href="{{ route('admin.transactions', 'payout') }}">
+                                                    <span class="menu-bullet">
+                                                        <span class="bullet bullet-dot"></span>
+                                                    </span>
+                                                    <span class="menu-title">Payout</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endcan
+
                                 @can('View Payments')
                                     <div class="menu-item @if(request()->routeIs(['admin.onlinepayments'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.onlinepayments') }}">

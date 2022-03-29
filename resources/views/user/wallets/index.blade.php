@@ -13,43 +13,151 @@
 @section('content')
     <!--begin::Referral program-->
     <div class="row">
-        <div class="col-md-7">
-            <div class="card mb-5 mb-xl-10">
+        <div class="col-xxl-4 col-md-4 mb-xxl-10">
+            <!--begin::Mixed Widget 1-->
+            <div class="card h-md-100">
                 <!--begin::Body-->
-                <div class="card-body py-10">
-                    <h2 class="mb-9">Wallet Details</h2>
-                    <!--begin::Stats-->
-                    <div class="">
-                        <!--begin::Col-->
-                        <div class="">
-                            <div class="card card-dashed flex-center my-3 p-6">
-                                <span class="fs-4 fw-bold text-success pb-1 px-2">Balance</span>
-                                <span class="fs-lg-2tx fw-bolder d-flex justify-content-center">₦
-                                <span data-kt-countup="true" data-kt-countup-value="{{ number_format(auth()->user()->wallet['balance'], 2) }}">{{ number_format(auth()->user()->wallet['balance'], 2) }}</span></span>
-                            </div>
+                <div class="card-body p-0">
+                    <!--begin::Header-->
+                    <div class="px-9 pt-7 card-rounded h-275px w-100 bg-success">
+                        <!--begin::Heading-->
+                        <div class="d-flex flex-stack">
+                            <h3 class="m-0 text-white fw-bolder fs-3">Summary</h3>
                         </div>
-                        <!--end::Col-->
-                        <!--begin::Col-->
-                        <div class="d-flex justify-content-around align-items-center mt-10">
-                            <div>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-success min-w-125px">Top Up Wallet</button>
-                            </div>
-                            @if($setting['withdrawal'] == 1)
-                                <div>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
-                                </div>
-                            @else
-                                <div>
-                                    <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" disabled>Withdraw</button>
-                                </div>
-                            @endif
+                        <!--end::Heading-->
+                        <!--begin::Balance-->
+                        <div class="d-flex text-center flex-column text-white pt-8">
+                            <span class="fw-bold fs-7">Your Balance</span>
+                            <span class="fs-2x fw-bolder">₦
+                            <span data-kt-countup="true" data-kt-countup-value="{{ number_format($data['wallet']) }}" class="fw-bolder fs-2x pt-1">{{ number_format($data['wallet']) }}</span>
                         </div>
-                        <!--end::Col-->
+                        <!--end::Balance-->
                     </div>
-                    <!--end::Stats-->
+                    <!--end::Header-->
+                    <!--begin::Items-->
+                    <div class="bg-body shadow-sm card-rounded mx-9 mb-9 px-6 py-9 position-relative z-index-1" style="margin-top: -100px">
+                        <!--begin::Item-->
+                        <div class="d-flex align-items-center mb-6">
+                            <!--begin::Symbol-->
+                            <div class="symbol symbol-45px w-40px me-5">
+                                <span class="symbol-label bg-lighten">
+                                    <!--begin::Svg Icon | path: icons/duotune/maps/map004.svg-->
+                                    <span class="svg-icon svg-icon-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path opacity="0.3" d="M18.4 5.59998C21.9 9.09998 21.9 14.8 18.4 18.3C14.9 21.8 9.2 21.8 5.7 18.3L18.4 5.59998Z" fill="black" />
+                                            <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM19.9 11H13V8.8999C14.9 8.6999 16.7 8.00005 18.1 6.80005C19.1 8.00005 19.7 9.4 19.9 11ZM11 19.8999C9.7 19.6999 8.39999 19.2 7.39999 18.5C8.49999 17.7 9.7 17.2001 11 17.1001V19.8999ZM5.89999 6.90002C7.39999 8.10002 9.2 8.8 11 9V11.1001H4.10001C4.30001 9.4001 4.89999 8.00002 5.89999 6.90002ZM7.39999 5.5C8.49999 4.7 9.7 4.19998 11 4.09998V7C9.7 6.8 8.39999 6.3 7.39999 5.5ZM13 17.1001C14.3 17.3001 15.6 17.8 16.6 18.5C15.5 19.3 14.3 19.7999 13 19.8999V17.1001ZM13 4.09998C14.3 4.29998 15.6 4.8 16.6 5.5C15.5 6.3 14.3 6.80002 13 6.90002V4.09998ZM4.10001 13H11V15.1001C9.1 15.3001 7.29999 16 5.89999 17.2C4.89999 16 4.30001 14.6 4.10001 13ZM18.1 17.1001C16.6 15.9001 14.8 15.2 13 15V12.8999H19.9C19.7 14.5999 19.1 16.0001 18.1 17.1001Z" fill="black" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <!--end::Symbol-->
+                            <!--begin::Description-->
+                            <div class="d-flex align-items-center flex-wrap w-100">
+                                <!--begin::Title-->
+                                <div class="mb-1 pe-3 flex-grow-1">
+                                    <span class="fs-5 text-gray-800 text-hover-primary fw-bolder">Pending</span>
+                                    <div class="text-gray-400 fw-bold fs-7">Transactions</div>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Label-->
+                                <div class="d-flex align-items-center">
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['transactions'] }}</div>
+                                </div>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Description-->
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="d-flex align-items-center mb-6">
+                            <!--begin::Symbol-->
+                            <div class="symbol symbol-45px w-40px me-5">
+                                <span class="symbol-label bg-lighten">
+                                    <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
+                                    <span class="svg-icon svg-icon-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
+                                            <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
+                                            <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
+                                            <rect opacity="0.3" x="2" y="13" width="9" height="9" rx="2" fill="black" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <!--end::Symbol-->
+                            <!--begin::Description-->
+                            <div class="d-flex align-items-center flex-wrap w-100">
+                                <!--begin::Title-->
+                                <div class="mb-1 pe-3 flex-grow-1">
+                                    <span class="fs-5 text-gray-800 text-hover-primary fw-bolder">Pending</span>
+                                    <div class="text-gray-400 fw-bold fs-7">Investments</div>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Label-->
+                                <div class="d-flex align-items-center">
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['investments']['pendingInvestments'] }}</div>
+                                </div>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Description-->
+                        </div>
+                        <!--end::Item-->
+                        <!--begin::Item-->
+                        <div class="d-flex align-items-center mb-6">
+                            <!--begin::Symbol-->
+                            <div class="symbol symbol-45px w-40px me-5">
+                                <span class="symbol-label bg-lighten">
+                                    <!--begin::Svg Icon | path: icons/duotune/electronics/elc005.svg-->
+                                    <span class="svg-icon svg-icon-1">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                            <path opacity="0.3" d="M15 19H7C5.9 19 5 18.1 5 17V7C5 5.9 5.9 5 7 5H15C16.1 5 17 5.9 17 7V17C17 18.1 16.1 19 15 19Z" fill="black" />
+                                            <path d="M8.5 2H13.4C14 2 14.5 2.4 14.6 3L14.9 5H6.89999L7.2 3C7.4 2.4 7.9 2 8.5 2ZM7.3 21C7.4 21.6 7.9 22 8.5 22H13.4C14 22 14.5 21.6 14.6 21L14.9 19H6.89999L7.3 21ZM18.3 10.2C18.5 9.39995 18.5 8.49995 18.3 7.69995C18.2 7.29995 17.8 6.90002 17.3 6.90002H17V10.9H17.3C17.8 11 18.2 10.7 18.3 10.2Z" fill="black" />
+                                        </svg>
+                                    </span>
+                                    <!--end::Svg Icon-->
+                                </span>
+                            </div>
+                            <!--end::Symbol-->
+                            <!--begin::Description-->
+                            <div class="d-flex align-items-center flex-wrap w-100">
+                                <!--begin::Title-->
+                                <div class="mb-1 pe-3 flex-grow-1">
+                                    <span class="fs-5 text-gray-800 text-hover-primary fw-bolder">Active</span>
+                                    <div class="text-gray-400 fw-bold fs-7">Investments</div>
+                                </div>
+                                <!--end::Title-->
+                                <!--begin::Label-->
+                                <div class="d-flex align-items-center">
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['investments']['activeInvestments'] }}</div>
+                                </div>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Description-->
+                        </div>
+                        <!--end::Item-->
+                    </div>
+                    <!--end::Items-->
+                    <div class="d-flex justify-content-around align-items-center my-7">
+                        <div>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-success min-w-125px">Top Up</button>
+                        </div>
+                        @if($setting['withdrawal'] == 1)
+                            <div>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
+                            </div>
+                        @else
+                            <div>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" disabled>Withdraw</button>
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <!--end::Body-->
+
             </div>
+            <!--end::Mixed Widget 1-->
         </div>
     </div>
     <!--end::Referral program-->
@@ -235,6 +343,9 @@
         let depositPayment = $('#depositPayment');
         let bankDetails = $('#bankDetailsForDepositForm');
         let securedLogo = $('#securedByPaystackLogo');
+        let withdrawInput = $('#amountWithdraw');
+        let depositInput = $('#amountDeposit');
+
         bankDetails.hide(500);
         securedLogo.hide(500);
         cardPayment.on('click', function (){
@@ -245,9 +356,6 @@
             bankDetails.show(500);
             securedLogo.hide(500);
         });
-
-        let withdrawInput = $('#amountWithdraw');
-        let depositInput = $('#amountDeposit');
 
         withdrawInput.on('keyup', userInputAction);
         depositInput.on('keyup', userInputAction);

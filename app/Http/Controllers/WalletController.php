@@ -17,8 +17,22 @@ class WalletController extends Controller
     public function index()
     {
         $setting = Setting::all()->first();
-        $wallet = auth()->user()->wallet();
-        return view('user.wallets.index', compact('wallet', 'setting'));
+
+        $pendingTransactions = auth()->user()->transactions()->where('status', 'pending');
+        $investments = auth()->user()->investments()->where('payment', 'approved');
+        $activeInvestments = auth()->user()->investments()->where('status', 'active');
+        $pendingInvestments = auth()->user()->investments()->where('status', 'pending');
+
+        $data = [
+            'investments' => [
+                'activeInvestments'   => HomeController::formatHumanFriendlyNumber($activeInvestments->sum('amount')),
+                'pendingInvestments'   => HomeController::formatHumanFriendlyNumber($pendingInvestments->sum('amount')),
+            ],
+            'transactions' => HomeController::formatHumanFriendlyNumber($pendingTransactions->sum('amount')),
+            'wallet'       => auth()->user()->wallet->balance,
+        ];
+
+        return view('user.wallets.index', compact('data', 'setting'));
     }
 
     /**

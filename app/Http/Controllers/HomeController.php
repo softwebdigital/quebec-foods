@@ -65,6 +65,7 @@ class HomeController extends Controller
         $pendingTransactions = auth()->user()->transactions()->where('status', 'pending');
         $investments = auth()->user()->investments()->where('payment', 'approved');
         $activeInvestments = auth()->user()->investments()->where('status', 'active');
+        $pendingInvestments = auth()->user()->investments()->where('status', 'pending');
         $data = [
             'package'     => Package::query()->latest()->where('type', 'plant')->first(),
             'investments' => [
@@ -72,6 +73,7 @@ class HomeController extends Controller
                 'farm'    => $this->getPackageInvestments('farm'),
                 'total'   => self::formatHumanFriendlyNumber($investments->sum('amount')),
                 'activeInvestments'   => self::formatHumanFriendlyNumber($activeInvestments->sum('amount')),
+                'pendingInvestments'   => self::formatHumanFriendlyNumber($pendingInvestments->sum('amount')),
                 'returns' => self::formatHumanFriendlyNumber($investments->sum('total_return')),
                 'slots'   => self::formatHumanFriendlyNumber($investments->sum('slots')),
             ],

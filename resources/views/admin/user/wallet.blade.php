@@ -87,7 +87,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     @can('Withdraw For Users')
-                        <button type="button" onclick="confirmFormSubmit(event, 'adminwithdrawalForm')" class="btn btn-primary">Process Withdrawal</button>   
+                        <button type="button" onclick="confirmFormSubmit(event, 'adminwithdrawalForm')" class="btn btn-primary">Process Withdrawal</button>
                     @endcan
                 </div>
             </div>
@@ -133,7 +133,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     @can('Deposit For Users')
-                        <button type="button" onclick="confirmFormSubmit(event, 'admindepositForm')" class="btn btn-primary">Deposit</button> 
+                        <button type="button" onclick="confirmFormSubmit(event, 'admindepositForm')" class="btn btn-primary">Deposit</button>
                     @endcan
                 </div>
             </div>
@@ -143,5 +143,37 @@
 @endsection
 
 @section('script')
+
+<script>
+    $(document).ready(function () {
+        let withdrawInput = $('#amountWithdraw');
+        let depositInput = $('#amountDeposit');
+        
+        withdrawInput.on('keyup', userInputAction);
+        depositInput.on('keyup', userInputAction);
+
+        function userInputAction (event) {
+            var selection = window.getSelection().toString();
+            if ( selection !== '' ) {
+                return;
+            }
+
+            if ( $.inArray( event.keyCode, [38,40,37,39] ) !== -1 ) {
+                return;
+            }
+
+            var $this = $( this );
+            var input = $this.val();
+
+            var input = input.replace(/[\D\s\._\-]+/g, "");
+
+            input = input ? parseInt( input, 10 ) : 0;
+
+            $this.val( function() {
+                return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
+            } );
+        }
+    })
+</script>
 
 @endsection

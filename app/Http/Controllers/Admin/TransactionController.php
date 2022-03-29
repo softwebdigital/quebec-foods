@@ -19,13 +19,14 @@ class TransactionController extends Controller
         return view('admin.transaction.index', compact('type'));
     }
 
-    public function deposit(Request $request): \Illuminate\Http\RedirectResponse
+    public function deposit(Request $request)
     {
 //        Validate request
         $validator = Validator::make($request->all(), [
             'user_id' => ['required', 'numeric'],
-            'amount' => ['required', 'numeric', 'gt:0'],
+            'amount' => ['required'],
         ]);
+
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }
@@ -34,6 +35,8 @@ class TransactionController extends Controller
         if (!$user) {
             return back()->with('error', 'Can\'t process investment, user not found');
         }
+        $request['amount'] = (int)(str_replace(",", "", $request['amount']));
+
 //        Check for deposit method and process
         $user->wallet()->increment('balance', $request['amount']);
         $transaction = $user->transactions()->create([
@@ -57,7 +60,7 @@ class TransactionController extends Controller
 //        Validate request
         $validator = Validator::make($request->all(), [
             'user_id' => ['required', 'numeric'],
-            'amount' => ['required', 'numeric'],
+            'amount' => ['required'],
         ]);
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
@@ -67,6 +70,7 @@ class TransactionController extends Controller
         if (!$user) {
             return back()->with('error', 'Can\'t process investment, user not found');
         }
+        $request['amount'] = (int)(str_replace(",", "", $request['amount']));
 //        Check if user has sufficient balance
         if (!$user->hasSufficientBalanceForTransaction($request['amount'])) return back()->withInput()->with('error', 'Insufficient wallet balance');
 //        Process withdrawal
