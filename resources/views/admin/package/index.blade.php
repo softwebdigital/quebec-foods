@@ -11,12 +11,12 @@
 @endsection
 
 @section('content')
-<div class="d-flex justify-content-between align-items-center">
+<div class="d-flex justify-content-end align-items-center mt-5 mb-7">
     <div>
-        <button type="button" class="btn btn-lg btn-light-primary">Processing Plants Packages</button>
+        <a href="{{ route('admin.packages', 'plant') }}" class="btn btn-lg btn-light-primary">Processing Plants Packages</a>
     </div>
     <div>
-        <button type="button" class="btn btn-lg btn-light-dark">Farm Packages</button>
+        <a href="{{ route('admin.packages', 'farm') }}" class="btn btn-lg btn-light-primary ms-5">Farm Packages</a>
     </div>
 </div>
 
@@ -156,10 +156,74 @@
         <div class="col-md-6 col-xxl-4">
             <!--begin::Card-->
             <div class="card">
+                <!--begin::Header-->
+                    <div class="card-header border-0">
+                        <h3 class="card-title fw-bolder text-dark">Package Details</h3>
+                        <div class="card-toolbar">
+                            <!--begin::Menu-->
+                            <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
+                                <!--begin::Svg Icon | path: icons/duotune/general/gen024.svg-->
+                                <span class="svg-icon svg-icon-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
+                                        <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                                            <rect x="5" y="5" width="5" height="5" rx="1" fill="#000000" />
+                                            <rect x="14" y="5" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
+                                            <rect x="5" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
+                                            <rect x="14" y="14" width="5" height="5" rx="1" fill="#000000" opacity="0.3" />
+                                        </g>
+                                    </svg>
+                                </span>
+                                <!--end::Svg Icon-->
+                            </button>
+                            <!--begin::Menu 2-->
+                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-bold w-200px" data-kt-menu="true">
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <div class="menu-content fs-6 text-dark fw-bolder px-3 py-4">Quick Actions</div>
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu separator-->
+                                <div class="separator opacity-75"></div>
+                                <!--end::Menu separator-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <a href="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')" class="menu-link px-3">Delete Package</a>
+                                </div>
+                                <form action="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" id="deletePackage{{ $package['id'] }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
+                                <!--end::Menu item-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <a href="{{ route('admin.packages.edit', [$type, $package['id']]) }}" class="menu-link px-3">Edit package</a>
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <a href="{{ route('admin.packages.investments', [$type, $package['id']]) }}" class="menu-link px-3">Package Investments</a>
+                                </div>
+                                <!--end::Menu item-->
+                                <!--begin::Menu separator-->
+                                <div class="separator mt-3 opacity-75"></div>
+                                <!--end::Menu separator-->
+                                <!--begin::Menu item-->
+                                <div class="menu-item px-3">
+                                    <div class="menu-content px-3 py-3">
+                                        <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
+                                    </div>
+                                </div>
+                                <!--end::Menu item-->
+                            </div>
+                            <!--end::Menu 2-->
+                            <!--end::Menu-->
+                        </div>
+                    </div>
+                <!--end::Header-->
                 <!--begin::Card body-->
-                <div class="card-body d-flex flex-center flex-column pt-12 p-9">
+                <div class="card-body d-flex flex-center flex-column pt-3 px-9 pb-7">
                     @if ($type == 'plant')
-                        <div class="symbol symbol-65px me-5">
+                        <div class="symbol symbol-65px mx-auto">
                             <img src="{{ asset($package['image']) }}" alt="Package Cover" />
                         </div>
                     @endif

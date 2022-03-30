@@ -135,8 +135,8 @@
                                     </div>
                                 @endcan
                                 @can('View Packages')
-                                    <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.packages'])) here show @endif">
-                                        <span class="menu-link">
+                                    <div class="menu-item @if(request()->routeIs(['admin.packages']) && (request()->type == 'all' || request()->type == 'plant' || request()->type == 'farm')) here show @endif">
+                                        <a class="menu-link" href="{{ route('admin.packages', 'all') }}">
                                             <span class="menu-icon">
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
                                                 <span class="svg-icon svg-icon-5">
@@ -148,26 +148,7 @@
                                                 <!--end::Svg Icon-->
                                             </span>
                                             <span class="menu-title">Packages</span>
-                                            <span class="menu-arrow"></span>
-                                        </span>
-                                        <div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.packages'])) show @endif">
-                                            <div class="menu-item @if(request()->routeIs(['admin.packages']) && request()->type == 'plant') here @endif">
-                                                <a class="menu-link" href="{{ route('admin.packages', 'plant') }}">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Processing Plants</span>
-                                                </a>
-                                            </div>
-                                            <div class="menu-item @if(request()->routeIs(['admin.packages']) && request()->type == 'farm') here @endif">
-                                                <a class="menu-link" href="{{ route('admin.packages', 'farm') }}">
-                                                    <span class="menu-bullet">
-                                                        <span class="bullet bullet-dot"></span>
-                                                    </span>
-                                                    <span class="menu-title">Farms</span>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        </a>
                                     </div>
                                 @endcan
 

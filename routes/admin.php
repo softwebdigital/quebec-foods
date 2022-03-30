@@ -78,7 +78,7 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
         });
         Route::get('{investment}/show', [App\Http\Controllers\Admin\InvestmentController::class, 'show'])->name('investments.show')->middleware('permission:View Investments');
     });
-    Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm']], function() {
+    Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm|all']], function() {
         Route::get('/', [\App\Http\Controllers\Admin\PackageController::class, 'index'])->name('packages')->middleware('permission:View Packages');
         Route::get('/investments', [App\Http\Controllers\Admin\PackageController::class, 'investments'])->name('packages.investments')->middleware('permission:View Package Investments');
         Route::get('/create', [App\Http\Controllers\Admin\PackageController::class, 'create'])->name('packages.create')->middleware('permission:Create Packages');
