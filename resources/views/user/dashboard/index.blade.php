@@ -202,7 +202,7 @@
                             <div
                                 class="flex-grow-1 bgi-no-repeat bgi-size-contain bgi-position-x-center mx-auto text-center card-rounded-bottom h-200px mh-200px my-5 mb-lg-12">
                                 <img src="{{ asset($data['package']['image']) }}" alt
-                                    style="height: 200px; border-radius: 20px;">
+                                    style="height: 200px; max-width: 100%; border-radius: 20px;">
                             </div>
                             <!--end::Illustration-->
                         </div>

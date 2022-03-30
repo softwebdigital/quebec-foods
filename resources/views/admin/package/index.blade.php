@@ -222,12 +222,12 @@
                 <!--end::Header-->
                 <!--begin::Card body-->
                 <div class="card-body d-flex flex-center flex-column pt-3 px-9 pb-7">
-                    @if ($type == 'plant')
+                    @if ($package['image'])
                         <div class="symbol symbol-65px mx-auto">
                             <img src="{{ asset($package['image']) }}" alt="Package Cover" />
                         </div>
                     @endif
-                    @if ($type == 'farm')
+                    @if (!$package['image'])
                         <div class="symbol symbol-65px symbol-circle mb-5">
                             <span class="symbol-label fs-2x fw-bold text-primary bg-light-primary">{{ucfirst($package['name'][0])}}</span>
                             <div class="bg-success position-absolute border border-4 border-white h-15px w-15px rounded-circle translate-middle start-100 top-100 ms-n3 mt-n3"></div>
@@ -269,7 +269,7 @@
                             </div>
                             <!--end::Stats-->
                         @endif
-                        @if ($type == 'farm')
+                        @if ($package['slots'] != -1)
                             <!--begin::Stats-->
                             <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3 text-center">
                                 <div class="fs-6 fw-bolder text-gray-700 text-center">{{ number_format($package['slots']) }}</div>
