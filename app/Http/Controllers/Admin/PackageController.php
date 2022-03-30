@@ -13,7 +13,7 @@ class PackageController extends Controller
 {
     public function index($type)
     {
-        $packages = Package::query()->where('type', $type)->get();
+        $packages = Package::query()->where('type', $type)->orWhere('status', 'open')->get();
         return view('admin.package.index', compact('packages', 'type'));
     }
 

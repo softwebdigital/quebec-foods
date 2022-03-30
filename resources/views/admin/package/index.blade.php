@@ -11,7 +11,16 @@
 @endsection
 
 @section('content')
-<div class="card mb-5 mb-xl-8">
+<div class="d-flex justify-content-between align-items-center">
+    <div>
+        <button type="button" class="btn btn-lg btn-light-primary">Processing Plants Packages</button>
+    </div>
+    <div>
+        <button type="button" class="btn btn-lg btn-light-dark">Farm Packages</button>
+    </div>
+</div>
+
+{{-- <div class="card mb-5 mb-xl-8">
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
         <h3 class="card-title align-items-start flex-column">
@@ -114,12 +123,12 @@
                                     @can('Delete Packages')
                                         <div class="menu-item px-3">
                                             <a class="menu-link px-3" href="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')"><span class="">Delete</span></a>
-                                        </div>                                
+                                        </div>
                                     @endcan
                                     @can('View Package Investments')
                                         <div class="menu-item px-3">
                                             <a class="menu-link px-3" href="{{ route('admin.packages.investments', [$type, $package['id']]) }}"><span style="white-space: nowrap;">Investments</span></a>
-                                        </div>  
+                                        </div>
                                     @endcan
                                 </div>
                                 <form action="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" id="deletePackage{{ $package['id'] }}" method="POST">
@@ -138,7 +147,93 @@
 
     </div>
     <!--begin::Body-->
+</div> --}}
+
+<!--begin::Row-->
+<div class="row g-6 g-xl-9">
+    @foreach ($packages as $package )
+        <!--begin::Col-->
+        <div class="col-md-6 col-xxl-4">
+            <!--begin::Card-->
+            <div class="card">
+                <!--begin::Card body-->
+                <div class="card-body d-flex flex-center flex-column pt-12 p-9">
+                    @if ($type == 'plant')
+                        <div class="symbol symbol-65px me-5">
+                            <img src="{{ asset($package['image']) }}" alt="Package Cover" />
+                        </div>
+                    @endif
+                    @if ($type == 'farm')
+                        <div class="symbol symbol-65px symbol-circle mb-5">
+                            <span class="symbol-label fs-2x fw-bold text-primary bg-light-primary">{{ucfirst($package['name'][0])}}</span>
+                            <div class="bg-success position-absolute border border-4 border-white h-15px w-15px rounded-circle translate-middle start-100 top-100 ms-n3 mt-n3"></div>
+                        </div>
+                    @endif
+                    <!--begin::Avatar-->
+                    <!--end::Avatar-->
+                    <!--begin::Name-->
+                    <a href="#" class="fs-4 text-gray-800 text-hover-primary fw-bolder mb-0">{{ $package['name'] }}</a>
+                    <!--end::Name-->
+                    <!--begin::Position-->
+                    <div class="fs-8 fw-bold text-gray-400 mb-6">{{ $package['description'] }}</div>
+                    <!--end::Position-->
+                    <!--begin::Info-->
+                    <div class="d-flex flex-center flex-wrap">
+                        <!--begin::Stats-->
+                        <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3">
+                            <div class="fs-6 fw-bolder text-gray-700 text-center">{{ $package['roi'] }}</div>
+                            <div class="fw-bold text-gray-400">ROI in %</div>
+                        </div>
+                        <!--end::Stats-->
+                        <!--begin::Stats-->
+                        <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3">
+                            <div class="fs-6 fw-bolder text-gray-700 text-center">₦{{ number_format($package['price']) }}</div>
+                            <div class="fw-bold text-gray-400">Price/slot</div>
+                        </div>
+                        <!--end::Stats-->
+                        <!--begin::Stats-->
+                        <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3">
+                            <div class="fs-6 fw-bolder text-gray-700">{{ $package['start_date']->format('M d, Y') }}</div>
+                            <div class="fw-bold text-gray-400">Start date</div>
+                        </div>
+                        <!--end::Stats-->
+                        @if ($type == 'plant')
+                            <!--begin::Stats-->
+                            <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3 text-center">
+                                <div class="fs-6 fw-bolder text-gray-700">{{ ucwords($package['status']) }}</div>
+                                <div class="fw-bold text-gray-400">Status</div>
+                            </div>
+                            <!--end::Stats-->
+                        @endif
+                        @if ($type == 'farm')
+                            <!--begin::Stats-->
+                            <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3 text-center">
+                                <div class="fs-6 fw-bolder text-gray-700 text-center">{{ number_format($package['slots']) }}</div>
+                                <div class="fw-bold text-gray-400">Slots</div>
+                            </div>
+                            <!--end::Stats-->
+                        @endif
+                    </div>
+                    <!--end::Info-->
+                </div>
+                <!--end::Card body-->
+                <div class="px-9 pb-9">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <div class="w-100">
+                            <button type="button" class="btn btn-sm btn-light-primary w-100">Invest in Package</button>
+                        </div>
+                        <div class="ms-2">
+                            <button type="button" class="btn btn-sm btn-light-primary"><i class="bi bi-eye"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--end::Card-->
+        </div>
+        <!--end::Col-->
+    @endforeach
 </div>
+<!--end::Row-->
 @endsection
 
 @section('script')
