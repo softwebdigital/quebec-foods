@@ -47,28 +47,6 @@
 						<!--end::Logo-->
 					</div>
 					<!--end::Brand-->
-					<!--begin::Aside user-->
-					<div class="aside-user mb-5 mb-lg-10" id="kt_aside_user">
-						<!--begin::User-->
-						<div class="d-flex align-items-center flex-column">
-							<!--begin::Symbol-->
-							<div class="symbol symbol-75px mb-4">
-								<img src="{{ auth()->user()['avatar'] ? asset(auth()->user()['avatar']) : asset('assets/media/svg/avatars/admin.png') }}" alt />
-							</div>
-							<!--end::Symbol-->
-							<!--begin::Info-->
-							<div class="text-center">
-								<!--begin::Username-->
-								<a href="{{ route('profile') }}" class="text-gray-900 text-hover-primary fs-4 fw-boldest">{{ auth()->user()['first_name'] . ' ' . auth()->user()['last_name'] }}</a>
-								<!--end::Username-->
-								<!--begin::Description-->
-								<span class="text-gray-600 fw-bold d-block fs-7 mb-1">{{ auth()->user()['email'] }}</span>
-								<!--end::Description-->
-							</div>
-							<!--end::Info-->
-						</div>
-						<!--end::User-->
-					</div>
 					<!--end::Aside user-->
 					<!--begin::Aside menu-->
 					<div class="aside-menu flex-column-fluid ps-3 ps-lg-5 pe-1 mb-9" id="kt_aside_menu">
@@ -117,40 +95,6 @@
 										</div>
                                         <div class="menu-item @if(request()->routeIs(['packages', 'packages.show']) && request()->type == 'farm') here show @endif">
 											<a class="menu-link" href="{{ route('packages', 'farm') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Farm</span>
-											</a>
-										</div>
-									</div>
-								</div>
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion  @if(request()->routeIs(['invest'])) here show @endif">
-									<span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
-											<span class="svg-icon svg-icon-5">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
-													<path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">New Investments</span>
-										<span class="menu-arrow"></span>
-									</span>
-									<div class="menu-sub menu-sub-accordion  @if(request()->routeIs(['invest'])) show @endif">
-										<div class="menu-item @if(request()->routeIs(['invest']) && request()->type == 'plant') here show @endif">
-											<a class="menu-link" data-bs-toggle="modal" data-bs-target="#createPlantInvestment">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Processing Plants</span>
-											</a>
-										</div>
-                                        <div class="menu-item @if(request()->routeIs(['invest']) && request()->type == 'farm') here show @endif">
-											<a class="menu-link" data-bs-toggle="modal" data-bs-target="#createFarmInvestment">
 												<span class="menu-bullet">
 													<span class="bullet bullet-dot"></span>
 												</span>
@@ -352,85 +296,6 @@
 										<span class="menu-title">Wallet</span>
 									</a>
 								</div>
-								<div class="menu-item @if(request()->routeIs(['referrals'])) here show @endif">
-									<a class="menu-link" href="{{ route('referrals') }}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
-											<span class="svg-icon svg-icon-5">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
-													<path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Refferals</span>
-									</a>
-								</div>
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['profile', 'account.overview', 'user.investments', 'user.investment.show', 'user.referrals', 'user.transactions', 'user.wallet'])) here show @endif">
-									<span class="menu-link">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
-											<span class="svg-icon svg-icon-5">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
-													<path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Account</span>
-										<span class="menu-arrow"></span>
-									</span>
-									<div class="menu-sub menu-sub-accordion  @if(request()->routeIs(['profile'])) show @endif">
-										<div class="menu-item @if(request()->routeIs(['profile'])) here @endif">
-											<a class="menu-link" href="{{ route('profile') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Profile</span>
-											</a>
-										</div>
-                                        <div class="menu-item @if(request()->routeIs(['account.overview', 'user.investments', 'user.investment.show', 'user.referrals', 'user.transactions', 'user.wallet'])) here @endif">
-											<a class="menu-link" href="{{ route('account.overview') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Account Overview</span>
-											</a>
-										</div>
-									</div>
-								</div>
-                                {{-- <div class="menu-item @if(request()->routeIs(['notifications', 'notifications.show'])) here show @endif">
-									<a class="menu-link" href="{{ route('notifications')}}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
-											<span class="svg-icon svg-icon-5">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
-													<path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Notifications</span>
-									</a>
-								</div> --}}
-                                {{-- <div class="menu-item @if(request()->routeIs(['faq'])) here show @endif">
-									<a class="menu-link" href="{{ route('faq')}}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
-											<span class="svg-icon svg-icon-5">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
-													<path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">FAQs</span>
-									</a>
-								</div> --}}
 							</div>
 							<!--end::Menu-->
 						</div>
@@ -508,6 +373,13 @@
 									<div class="menu-item px-5">
 										<a href="{{ route('faq') }}" class="menu-link px-5">
 											<span class="menu-text">FAQs</span>
+										</a>
+									</div>
+									<!--end::Menu item-->
+                                    <!--begin::Menu item-->
+									<div class="menu-item px-5">
+										<a href="{{ route('referrals') }}" class="menu-link px-5">
+											<span class="menu-text">Refferals</span>
 										</a>
 									</div>
 									<!--end::Menu item-->
