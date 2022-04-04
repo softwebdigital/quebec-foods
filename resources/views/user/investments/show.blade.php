@@ -62,6 +62,7 @@
                     </div>
                     <!--end::Info-->
                 </div>
+                <div class="separator mb-md-10"></div>
                 <!--end::User Info-->
                 <!--end::Summary-->
                 <!--begin::Details toggle-->
@@ -78,7 +79,6 @@
                     </span></div>
                 </div>
                 <!--end::Details toggle-->
-                <div class="separator"></div>
                 <!--begin::Details content-->
                 <div id="kt_user_view_details" class="collapse show">
                     <div class="pb-5 fs-6">

@@ -141,7 +141,7 @@
                     <!--end::Items-->
                     <div class="d-flex justify-content-around align-items-center my-7">
                         <div>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-success min-w-125px">Top Up</button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-primary min-w-125px">Top Up</button>
                         </div>
                         @if($setting['withdrawal'] == 1)
                             <div>
@@ -161,6 +161,67 @@
         </div>
     </div>
     <!--end::Referral program-->
+
+    <!--begin::SMS-->
+    <div class="modal fade" tabindex="-1" id="smsModal">
+        <div class="modal-dialog mw-600px">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!--begin::Heading-->
+                    <h3 class="text-dark fw-bolder fs-3">OTP Withdrawal Verification</h3>
+                    <!--end::Heading-->
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-2x bg-dark"></span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <!--begin::Sub-title-->
+                    <div class="text-muted text-center fw-bold fs-5 mb-5">Enter the verification code we sent to</div>
+                    <!--end::Sub-title-->
+                    <!--begin::Mobile no-->
+                    <div class="fw-bolder text-center text-success fs-3">{{ substr(auth()->user()['email'], 0, 5) }}******{{ substr(auth()->user()['email'], -12) }}</div>
+                    <!--end::Mobile no-->
+                    <!--begin::Form-->
+                    <form data-kt-element="sms-form" class="form" action="#">
+                        <!--begin::Input group-->
+                        <div class="my-10 px-md-10">
+                            <!--begin::Label-->
+                            <div class="fw-bolder text-start text-dark fs-6 mb-1 ms-1">Type your 6 digit security code</div>
+                            <!--end::Label-->
+                            <!--begin::Input group-->
+                            <div class="d-flex flex-wrap flex-stack">
+                                <input type="text" name="input1" data-inputmask="'mask': '9', 'placeholder': ''" min="0" max="9" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-1" value="{{ old('input1') }}" />
+                                <input type="text" name="input2" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-2" value="{{ old('input2') }}" />
+                                <input type="text" name="input3" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-3" value="{{ old('input3') }}" />
+                                <input type="text" name="input4" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-4" value="{{ old('input4') }}" />
+                                <input type="text" name="input5" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-5" value="{{ old('input5') }}" />
+                                <input type="text" name="input6" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-6" value="{{ old('input6') }}" />
+                            </div>
+                            <!--begin::Input group-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Actions-->
+                        <div class="d-flex flex-center">
+                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#withdrawalModal">Cancel</button>
+                            <button type="submit" data-kt-element="sms-submit" class="btn btn-primary">
+                                <span class="indicator-label">Submit</span>
+                                <span class="indicator-progress">Please wait...
+                                <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                            </button>
+                        </div>
+                        <!--end::Actions-->
+                    </form>
+                    <!--end::Form-->
+                </div>
+            </div>
+        </div>
+    </div>
+<!--end::SMS-->
+
     <!--begin::Withdrawal Modal-->
     <div class="modal fade" tabindex="-1" id="withdrawalModal">
         <div class="modal-dialog">
@@ -216,7 +277,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     @if ($setting['withdrawal'] == 1)
-                        <button type="button" onclick="confirmFormSubmit(event, 'withdrawalForm')" class="btn btn-primary">Process Withdrawal</button>
+                        <button type="button"  data-bs-toggle="modal" data-bs-target="#smsModal" class="btn btn-primary">Proceed to Withdraw</button>
                     @else
                         <button type="button" disabled class="btn btn-secondary">Unavailable</button>
                     @endif
@@ -345,6 +406,8 @@
         let securedLogo = $('#securedByPaystackLogo');
         let withdrawInput = $('#amountWithdraw');
         let depositInput = $('#amountDeposit');
+        let proceedWithdrawal = $('#proceedWithdrwal');
+        let smsModal = $('#smsModal');
 
         bankDetails.hide(500);
         securedLogo.hide(500);
@@ -355,6 +418,10 @@
         depositPayment.on('click', function (){
             bankDetails.show(500);
             securedLogo.hide(500);
+        });
+
+        proceedWithdrawal.on('click', function () {
+            smsModal.modal('show');
         });
 
         withdrawInput.on('keyup', userInputAction);
@@ -382,5 +449,129 @@
             } );
         }
     });
+</script>
+<script>
+    let i = 0, token = '', input1 = document.getElementById('otc-1'),
+        inputs = document.querySelectorAll('input[type="text"]'),
+        splitNumber = function(e) {
+            let data = e.target.value; // Chrome doesn't get the e.data, it's always empty, fallback to value then.
+            if ( ! data ) return; // Shouldn't happen, just in case.
+            if ( data.length === 1 ) return; // Here is a normal behavior, not a paste action.
+
+            popupNext(e.target, data);
+            for (i = 0; i < data.length; i++ ) { inputs[i].value = data[i]; }
+        },
+        popupNext = function(element, data) {
+            element.value = data[0]; // Apply first item to first input
+            data = data.substring(1); // remove the first char.
+            if ( element.nextElementSibling && data.length ) {
+                // Do the same with the next element and next data
+                popupNext(element.nextElementSibling, data);
+            }
+            // getToken();
+        },
+        getToken = function () {
+                if (inputs[inputs.length - 1].value !== '') {
+                    setTimeout(() => {
+                        inputs.forEach(input => {
+                            if (token.length < 6)
+                                token += input.value;
+                            if (token.length === 6)
+                                inputs.forEach(input => {
+                                    input.setAttribute('disabled', 'disabled');
+                                });
+                        })
+                        if (token.length === 6 && i === 0) {
+                            i++
+                            $.ajax({
+                                type: 'POST',
+                                headers: { "X-CSRF-TOKEN": '{{ csrf_token() }}' },
+                                url: '{{ route('verify.store') }}',
+                                data: { token },
+                                beforeSend() {
+                                    $('#invalid').addClass('d-none')
+                                    $('#expired').addClass('d-none')
+                                    $('#spinner').show()
+                                    $('#resend').hide()
+                                },
+                                success() {
+                                    $('#spinner').hide()
+                                    $('#success').removeClass('d-none')
+                                    setTimeout(() => {
+                                        window.location = '{{ route('dashboard') }}'
+                                    }, 2000)
+                                },
+                                error(error) {
+                                    i = 0;
+                                    inputs.forEach(input => {
+                                        input.removeAttribute('disabled');
+                                    });
+                                    $('#spinner').hide()
+                                    $('#resend').show()
+                                    if (error.status === 400)
+                                        $('#invalid').removeClass('d-none');
+                                    if (error.status === 422)
+                                        $('#expired').removeClass('d-none');
+                                }
+                            });
+                        }
+                    }, 1000);
+                }
+        }
+
+    inputs.forEach(function(input) {
+        /**
+         * Control on keyup to catch what the user intent to do.
+         * I could have check for numeric key only here, but I didn't.
+         */
+        input.addEventListener('keyup', function(e){
+            // Break if Shift, Tab, CMD, Option, Control.
+            if (e.keyCode === 16 || e.keyCode === 9 || e.keyCode === 224 || e.keyCode === 18 || e.keyCode === 17) {
+                return;
+            }
+
+            // On Backspace or left arrow, go to the previous field.
+            if ( (e.keyCode === 8 || e.keyCode === 37) && this.previousElementSibling && this.previousElementSibling.tagName === "INPUT" ) {
+                this.previousElementSibling.select();
+            } else if (e.keyCode !== 8 && this.nextElementSibling) {
+                this.nextElementSibling.select();
+            }
+
+            // If the target is populated to quickly, value length can be > 1
+            if ( e.target.value.length > 1 ) {
+                splitNumber(e);
+            }
+        });
+
+        /**
+         * Better control on Focus
+         * - don't allow focus on other field if the first one is empty
+         * - don't allow focus on field if the previous one if empty (debatable)
+         * - get the focus on the first empty field
+         */
+        input.addEventListener('focus', function(e) {
+            // If the focus element is the first one, do nothing
+            if ( this === input1 ) return;
+
+            // If value of input 1 is empty, focus it.
+            if ( input1.value === '' ) {
+                input1.focus();
+            }
+
+            // If value of a previous input is empty, focus it.
+            // To remove if you don't wanna force user respecting the fields order.
+            if ( this.previousElementSibling.value === '' ) {
+                this.previousElementSibling.focus();
+            }
+        });
+    });
+
+    /**
+     * Handle copy/paste of a big number.
+     * It catches the value pasted on the first field and spread it into the inputs.
+     */
+    input1.addEventListener('input', splitNumber);
+    // input1.addEventListener('input', getToken);
+    // inputs[inputs.length - 1].addEventListener('input', getToken);
 </script>
 @endsection

@@ -135,7 +135,22 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $setting = Setting::all()->first();
-        return view('user.profile.wallet', compact('user', 'setting'));
+
+        $pendingTransactions = $user->transactions()->where('status', 'pending');
+        $investments = $user->investments()->where('payment', 'approved');
+        $activeInvestments = $user->investments()->where('status', 'active');
+        $pendingInvestments = $user->investments()->where('status', 'pending');
+
+        $data = [
+            'investments' => [
+                'activeInvestments'   => HomeController::formatHumanFriendlyNumber($activeInvestments->sum('amount')),
+                'pendingInvestments'   => HomeController::formatHumanFriendlyNumber($pendingInvestments->sum('amount')),
+            ],
+            'transactions' => HomeController::formatHumanFriendlyNumber($pendingTransactions->sum('amount')),
+            'wallet'       => auth()->user()->wallet->balance,
+        ];
+
+        return view('user.profile.wallet', compact('user', 'setting', 'data'));
     }
 
     public function showReferrals ()

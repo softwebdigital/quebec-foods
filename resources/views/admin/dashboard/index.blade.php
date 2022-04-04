@@ -515,7 +515,7 @@
         @if ($data['package'])
             <div class="col-xl-4 mb-xl-10">
                 <!--begin::Engage widget 3-->
-                <div class="card bg-primary h-md-100">
+                <div class="card bg-success h-md-100">
                     <!--begin::Body-->
                     <div class="card-body d-flex flex-column pt-13 pb-14">
                         <!--begin::Heading-->

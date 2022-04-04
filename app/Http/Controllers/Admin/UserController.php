@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\HomeController;
+use App\Models\Setting;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -34,7 +36,22 @@ class UserController extends Controller
 
     public function showWallet (User $user)
     {
-        return view('admin.user.wallet', ['user' => $user]);
+        $setting = Setting::all()->first();
+
+        $pendingTransactions = $user->transactions()->where('status', 'pending');
+        $investments = $user->investments()->where('payment', 'approved');
+        $activeInvestments = $user->investments()->where('status', 'active');
+        $pendingInvestments = $user->investments()->where('status', 'pending');
+
+        $data = [
+            'investments' => [
+                'activeInvestments'   => HomeController::formatHumanFriendlyNumber($activeInvestments->sum('amount')),
+                'pendingInvestments'   => HomeController::formatHumanFriendlyNumber($pendingInvestments->sum('amount')),
+            ],
+            'transactions' => HomeController::formatHumanFriendlyNumber($pendingTransactions->sum('amount')),
+            'wallet'       => $user->wallet->balance,
+        ];
+        return view('admin.user.wallet', compact('user', 'setting', 'data'));
     }
 
     public function showReferrals (User $user)
@@ -151,7 +168,7 @@ class UserController extends Controller
             $datum['joined'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . $user['created_at']->format('F d, Y') . '</span>';
             $datum['verification'] = $user['email_verified_at'] ? '<span class="badge badge-pill badge-success">Verified</span>' : '<span class="badge badge-pill badge-warning">Unverified</span>';
             $datum['status'] = $user['active'] == 1 ? '<span class="badge badge-pill badge-success">Active</span>' : '<span class="badge badge-pill badge-danger">Blocked</span>';
-            $datum['action'] = '<a href="javascript:void();" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end" style="white-space: nowrap;">Action
+            $datum['action'] = '<a href="javascript:void();" class="btn btn-sm btn-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end" style="white-space: nowrap;">Action
                                     <span class="svg-icon svg-icon-5 m-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                             <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />

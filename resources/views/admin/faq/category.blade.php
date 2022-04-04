@@ -16,7 +16,7 @@
         </h3>
         @can('Create FAQs Category')
             <div class="card-toolbar">
-                <button type="button" data-bs-toggle="modal" data-bs-target="#createCategoryModal" class="btn btn-sm btn-light-primary">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#createCategoryModal" class="btn btn-sm btn-primary">
                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                 <span class="svg-icon svg-icon-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

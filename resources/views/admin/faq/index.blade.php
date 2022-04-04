@@ -24,7 +24,7 @@
                     <h4 class="fs-3 text-gray-800 w-bolder m-0">Frequently Asked Questions</h4>
                     @can('Create FAQs')
                         <div class="card-toolbar">
-                            <a href="{{ route('admin.faq.create') }}" class="btn btn-sm btn-light-primary">
+                            <a href="{{ route('admin.faq.create') }}" class="btn btn-sm btn-primary">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

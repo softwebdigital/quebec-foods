@@ -13,10 +13,10 @@
 @section('content')
 <div class="d-flex justify-content-end align-items-center mt-5 mb-7">
     <div>
-        <a href="{{ route('admin.packages', 'plant') }}" class="btn btn-lg btn-light-primary">Processing Plants Packages</a>
+        <a href="{{ route('admin.packages', 'plant') }}" class="btn btn-lg btn-primary">Processing Plants Packages</a>
     </div>
     <div>
-        <a href="{{ route('admin.packages', 'farm') }}" class="btn btn-lg btn-light-primary ms-5">Farm Packages</a>
+        <a href="{{ route('admin.packages', 'farm') }}" class="btn btn-lg btn-primary ms-5">Farm Packages</a>
     </div>
 </div>
 
@@ -284,10 +284,10 @@
                 <div class="px-9 pb-9">
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <div class="w-100">
-                            <button type="button" class="btn btn-sm btn-light-primary w-100">Invest in Package</button>
+                            <button type="button" class="btn btn-sm btn-primary w-100">Invest in Package</button>
                         </div>
                         <div class="ms-2">
-                            <button type="button" class="btn btn-sm btn-light-primary"><i class="bi bi-eye"></i></button>
+                            <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i></button>
                         </div>
                     </div>
                 </div>
