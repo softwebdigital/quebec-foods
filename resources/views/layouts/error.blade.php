@@ -18,8 +18,8 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
 		<!--end::Fonts-->
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
-		<link href="/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
-		<link href="/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{ asset('assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
 	</head>
 	<!--end::Head-->
@@ -34,19 +34,19 @@
 				<div class="d-flex flex-column flex-column-fluid text-center p-10 py-lg-15">
 					<!--begin::Logo-->
 					<a href="{{ route('dashboard') }}" class="mb-10 pt-lg-10">
-						<img alt="Logo" src="{{ asset('assets/media/logos/logo-1.svg') }}" class="h-40px mb-5" />
+						<img alt="Logo" src="{{ asset('assets/logo/medium.png') }}" class="h-100px mb-5" />
 					</a>
 					<!--end::Logo-->
 					<!--begin::Wrapper-->
 					<div class="pt-lg-10 mb-10">
 						<!--begin::Logo-->
-						<h1 class="fw-bolder fs-2qx text-black-800 mb-5">@yield('code')</h1>
+						<h1 class="fw-bolder fs-4qx text-black-800 mb-5">@yield('code')</h1>
 						<h3 class="fw-bold fs-2qx text-black-600 mb-10">@yield('message')</h3>
 
 						<!--end::Logo-->
 						<!--begin::Message-->
 						<div class="fw-bold fs-3 text-muted mb-15">@yield('description')
-						<br />Please try again later.</div>
+						<br/>Please try again later.</div>
 						<!--end::Message-->
 						<!--begin::Action-->
 						<div class="text-center">
@@ -54,10 +54,6 @@
 						</div>
 						<!--end::Action-->
 					</div>
-					<!--end::Wrapper-->
-					<!--begin::Illustration-->
-					<div class="d-flex flex-row-auto bgi-no-repeat bgi-position-x-center bgi-size-contain bgi-position-y-bottom min-h-100px min-h-lg-350px" style="background-image: url(/assets/media/illustrations/dozzy-1/17.png"></div>
-					<!--end::Illustration-->
 				</div>
 				<!--end::Content-->
 			</div>

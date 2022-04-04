@@ -7,7 +7,12 @@
 @section('pageTitle', 'Profile')
 
 @section('style')
-
+    <style>
+        #myRefLink:focus, #myRefLink:active {
+            outline: none;
+            border: none;
+        }
+    </style>
 @endsection
 
 @section('breadCrumbs')
@@ -77,7 +82,10 @@
                             <div class="text-gray-600">{{ $user['ref_code'] }}</div>
                             <!--begin::Details item-->
                             <div class="fw-bolder mt-5">Referral Link</div>
-                            <div class="text-gray-600">{{ url('/register?ref=').$user['ref_code'] }}</div>
+                            <div class="text-gray-600 d-flex">
+                                <input type="text" style="width: 100%; border: none" value="{{ url('/register?ref=').$user['ref_code'] }}" id="myRefLink">
+                                <button onclick="copyToClipboard()" class="btn btn-sm mx-2 btn-primary"><i class="fa fa-copy"></i></button>
+                            </div>
                         </div>
                     </div>
                     <!--end::Details content-->
@@ -2013,11 +2021,11 @@
                 let selectedCountryStates = country.states;
                 let html = '';
                 for (let i = 0; i < selectedCountryStates.length; i++){
-                    html += `<option ${currentState === selectedCountryStates[i].name ? 'selected' : ''} value="${selectedCountryStates[i].name}">${selectedCountryStates[i].name}</option>`; 
+                    html += `<option ${currentState === selectedCountryStates[i].name ? 'selected' : ''} value="${selectedCountryStates[i].name}">${selectedCountryStates[i].name}</option>`;
                 }
                 state.html(html);
             }
-           
+
             accountNumber.on('input', verifyAccountNumber);
             function verifyAccountNumber(){
                 if (bankList.val() && accountNumber.val().length === 10 && bankCode.val()){
@@ -2064,6 +2072,13 @@
             $('#edit_bank_name').val(account.bank_name);
             $('#edit_account_name').val(account.account_name);
             $('#update-bank-account').attr('action', link);
+        }
+
+        function copyToClipboard() {
+            var copyText = document.getElementById("myRefLink");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
         }
     </script>
 @endsection
