@@ -49,17 +49,17 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
         Route::get('/notifications/{notification?}/show', [App\Http\Controllers\NotificationController::class, 'show'])->name('notifications.show');
         Route::get('/notifications/read', [App\Http\Controllers\NotificationController::class, 'read'])->name('notifications.read');
 
-        Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'all|plant|farm']], function() {
+        Route::group(['prefix' => '/packages'], function() {
             Route::get('/', [\App\Http\Controllers\PackageController::class, 'index'])->name('packages');
             Route::get('/{package}/show', [\App\Http\Controllers\PackageController::class, 'show'])->name('packages.show');
         });
-        Route::group(['where' => ['type' => 'all|withdrawal|deposit|payout|investment']], function() {
-            Route::get('/transactions/{type?}', [App\Http\Controllers\TransactionController::class, 'index'])->name('transactions');
-        });
-        Route::group(['prefix' => '/investments/{type}', 'where' => ['type' => 'plant|farm']], function() {
-            Route::group(['prefix' => '/{filter}', 'where' => ['filter' => 'all|pending|active|cancelled|settled']], function() {
-                Route::get('/', [App\Http\Controllers\InvestmentController::class, 'index'])->name('investments');
-            });;
+
+        Route::get('/transactions', [App\Http\Controllers\TransactionController::class, 'index'])->name('transactions');
+
+        Route::group(['prefix' => '/investments'], function() {
+            Route::group(['where' => ['type' => 'farm|plant']], function () {
+                Route::get('/{type}', [App\Http\Controllers\InvestmentController::class, 'index'])->name('investments');
+            });
             Route::get('/create', [App\Http\Controllers\InvestmentController::class, 'invest'])->name('invest');
             Route::get('/{investment}/show', [App\Http\Controllers\InvestmentController::class, 'show'])->name('investments.show');
             Route::put('/{investment}/rollover/update', [App\Http\Controllers\InvestmentController::class, 'updateRollover'])->name('investment.update.rollover');

@@ -15,11 +15,11 @@ class PackageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($type)
+    public function index()
     {
         $setting = Setting::all()->first();
-        $packages = Package::latest()->where('type', $type)->get();
-        return view('user.packages.index', compact('packages', 'type', 'setting'));
+        $packages = Package::latest()->get();
+        return view('user.packages.index', compact('packages', 'setting'));
     }
 
     /**

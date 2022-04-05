@@ -18,16 +18,12 @@ class InvestmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($type, $filter)
+    public function index($type)
     {
         $investments = auth()->user()->investments()->latest()->whereHas('package', function($query) use ($type) {
             $query->where('type', $type);
-        });
-        if ($filter !== 'all') {
-            $investments->where('status', $filter);
-        }
-        $investments = $investments->get();
-        return view('user.investments.index', compact('investments', 'type', 'filter'));
+        })->get();
+        return view('user.investments.index', compact('investments', 'type'));
     }
 
     /**

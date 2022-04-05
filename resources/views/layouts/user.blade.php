@@ -24,7 +24,6 @@
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="{{asset('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-		<link href="{{asset('assets/css/style.dark.bundle.css')}}" rel="stylesheet" type="text/css" />
         @yield('style')
 		<!--end::Global Stylesheets Bundle-->
 	</head>
@@ -69,8 +68,8 @@
 										<span class="menu-title">Dashboard</span>
 									</a>
 								</div>
-								<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['packages', 'packages.show'])) here show @endif">
-									<span class="menu-link">
+                                <div class="menu-item @if(request()->routeIs(['packages'])) here show @endif">
+									<a class="menu-link" href="{{ route('packages') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -82,29 +81,10 @@
 											<!--end::Svg Icon-->
 										</span>
 										<span class="menu-title">Packages</span>
-										<span class="menu-arrow"></span>
-									</span>
-									<div class="menu-sub menu-sub-accordion  @if(request()->routeIs(['packages'])) show @endif">
-										<div class="menu-item @if(request()->routeIs(['packages', 'packages.show']) && request()->type == 'plant') here show @endif">
-											<a class="menu-link" href="{{ route('packages', 'plant') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Processing Plants</span>
-											</a>
-										</div>
-                                        <div class="menu-item @if(request()->routeIs(['packages', 'packages.show']) && request()->type == 'farm') here show @endif">
-											<a class="menu-link" href="{{ route('packages', 'farm') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Farm</span>
-											</a>
-										</div>
-									</div>
+									</a>
 								</div>
-								<div data-kt-menu-trigger="click" class="menu-item menu-accordion  @if(request()->routeIs(['investments', 'investments.show'])) here show @endif">
-									<span class="menu-link">
+                                <div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'plant') here show @endif">
+									<a class="menu-link" href="{{ route('investments', 'plant') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -115,116 +95,26 @@
 											</span>
 											<!--end::Svg Icon-->
 										</span>
-										<span class="menu-title">Investments</span>
-										<span class="menu-arrow"></span>
-									</span>
-									<div class="menu-sub menu-sub-accordion  @if(request()->routeIs(['investments', 'investments.show'])  && request()->type == 'plant') show @endif">
-										<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['investments', 'investments.show']) && request()->type == 'plant') here show @endif">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Processing Plants</span>
-												<span class="menu-arrow"></span>
-											</span>
-											<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['investments']) && request()->type == 'plant') show @endif">
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'plant' && request()->filter == 'all') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'all']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">All</span>
-													</a>
-												</div>
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'plant' && request()->filter == 'active') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'active']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Active</span>
-													</a>
-												</div>
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'plant' && request()->filter == 'pending') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'pending']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Pending</span>
-													</a>
-												</div>
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'plant' && request()->filter == 'cancelled') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'cancelled']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Cancelled</span>
-													</a>
-												</div>
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'plant' && request()->filter == 'settled') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'plant', 'filter' => 'settled']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Settled</span>
-													</a>
-												</div>
-											</div>
-										</div>
-										<div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['investments', 'investments.show']) && request()->type == 'farm') here show @endif">
-											<span class="menu-link">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Farm</span>
-												<span class="menu-arrow"></span>
-											</span>
-											<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['investments']) && request()->type == 'farm') show @endif">
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'farm' && request()->filter == 'all') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'all']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">All</span>
-													</a>
-												</div>
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'farm' && request()->filter == 'active') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'active']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Active</span>
-													</a>
-												</div>
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'farm' && request()->filter == 'pending') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'pending']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Pending</span>
-													</a>
-												</div>
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'farm' && request()->filter == 'cancelled') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'cancelled']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Cancelled</span>
-													</a>
-												</div>
-												<div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'farm' && request()->filter == 'settled') here @endif">
-													<a class="menu-link" href="{{ route('investments', ['type' => 'farm', 'filter' => 'settled']) }}">
-														<span class="menu-bullet">
-															<span class="bullet bullet-dot"></span>
-														</span>
-														<span class="menu-title">Settled</span>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
+										<span class="menu-title">Plant Investments</span>
+									</a>
 								</div>
-                                <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['transactions'])) here show @endif">
-									<span class="menu-link">
+                                <div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'farm') here show @endif">
+									<a class="menu-link" href="{{ route('investments', 'farm') }}">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+											<span class="svg-icon svg-icon-5">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
+													<path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+										</span>
+										<span class="menu-title">Farm Investments</span>
+									</a>
+								</div>
+								<div class="menu-item @if(request()->routeIs(['transactions'])) here show @endif">
+									<a class="menu-link" href="{{ route('transactions') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
 											<span class="svg-icon svg-icon-5">
@@ -236,50 +126,7 @@
 											<!--end::Svg Icon-->
 										</span>
 										<span class="menu-title">Transactions</span>
-										<span class="menu-arrow"></span>
-									</span>
-									<div class="menu-sub menu-sub-accordion @if(request()->routeIs(['transactions'])) show @endif">
-										<div class="menu-item @if(request()->routeIs(['transactions']) && request()->type == 'all') here @endif">
-											<a class="menu-link" href="{{ route('transactions', 'all') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">All</span>
-											</a>
-										</div>
-                                        <div class="menu-item  @if(request()->routeIs(['transactions']) && request()->type == 'withdrawal') here @endif">
-											<a class="menu-link" href="{{ route('transactions', 'withdrawal') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Withdrawal</span>
-											</a>
-										</div>
-                                        <div class="menu-item  @if(request()->routeIs(['transactions']) && request()->type == 'deposit') here @endif">
-											<a class="menu-link" href="{{ route('transactions', 'deposit') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Deposit</span>
-											</a>
-										</div>
-                                        <div class="menu-item  @if(request()->routeIs(['transactions']) && request()->type == 'investment') here @endif">
-											<a class="menu-link" href="{{ route('transactions', 'investment') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Investment</span>
-											</a>
-										</div>
-                                        <div class="menu-item  @if(request()->routeIs(['transactions']) && request()->type == 'payout') here @endif">
-											<a class="menu-link" href="{{ route('transactions', 'payout') }}">
-												<span class="menu-bullet">
-													<span class="bullet bullet-dot"></span>
-												</span>
-												<span class="menu-title">Payout</span>
-											</a>
-										</div>
-									</div>
+									</a>
 								</div>
 								<div class="menu-item @if(request()->routeIs(['wallet'])) here show @endif">
 									<a class="menu-link" href="{{ route('wallet') }}">
@@ -296,7 +143,7 @@
 										<span class="menu-title">Wallet</span>
 									</a>
 								</div>
-                                <div class="menu-item @if(request()->routeIs(['wallet'])) here show @endif">
+                                <div class="menu-item @if(request()->routeIs(['account.overview'])) here show @endif">
 									<a class="menu-link" href="{{ route('account.overview') }}">
 										<span class="menu-icon">
 											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -926,8 +773,9 @@
 		<script src="{{asset('assets/js/scripts.bundle.js')}}"></script>
 		<!--end::Global Javascript Bundle-->
 		<!--begin::Page Vendors Javascript(used by this page)-->
-		<script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
-		<script src="{{ asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script>
+		{{-- <script src="{{ asset('assets/vendors/datatables.net/jquery.dataTables.js') }}"></script>
+		<script src="{{ asset('assets/vendors/datatables.net-bs4/dataTables.bootstrap4.js') }}"></script> --}}
+        <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 		<!--end::Page Vendors Javascript-->
 		<!--begin::Page Custom Javascript(used by this page)-->
 		<script src="{{asset('assets/js/widgets.bundle.js')}}"></script>

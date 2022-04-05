@@ -23,7 +23,7 @@ class CreateTransactionsTable extends Migration
             $table->text('preferred_bank')->nullable();
             $table->enum('method', ['wallet', 'card', 'deposit']);
             $table->enum('channel', ['web', 'mobile'])->default('web');
-            $table->enum('status', ['approved', 'pending', 'declined']);
+            $table->enum('status', ['approved', 'pending', 'declined'])->default('pending');
             $table->timestamps();
         });
     }

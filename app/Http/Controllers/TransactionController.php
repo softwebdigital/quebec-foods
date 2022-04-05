@@ -17,14 +17,10 @@ class TransactionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($type)
+    public function index()
     {
-        $transactions = auth()->user()->transactions()->latest();
-        if ($type !== 'all') {
-            $transactions->where('type', $type);
-        }
-        $transactions = $transactions->get();
-        return view('user.transactions.index', compact('transactions', 'type'));
+        $transactions = auth()->user()->transactions()->latest()->get();
+        return view('user.transactions.index', compact('transactions'));
     }
 
     /**
