@@ -186,13 +186,16 @@
                     <div class="fw-bolder text-center text-success fs-3">{{ substr(auth()->user()['email'], 0, 5) }}******{{ substr(auth()->user()['email'], -12) }}</div>
                     <!--end::Mobile no-->
                     <!--begin::Form-->
-                    <form data-kt-element="sms-form" class="form" action="#">
+                    <form data-kt-element="sms-form" class="form" id="otpWithdrawalForm" method="POST" action="{{ route('withdraw') }}">
+                        @csrf
                         <!--begin::Input group-->
                         <div class="my-10 px-md-10">
                             <!--begin::Label-->
                             <div class="fw-bolder text-start text-dark fs-6 mb-1 ms-1">Type your 6 digit security code</div>
                             <!--end::Label-->
                             <!--begin::Input group-->
+                            <input type="hidden" name="amount" id="amountToWithdraw">
+                            <input type="hidden" name="account" id="selectedBank">
                             <div class="d-flex flex-wrap flex-stack">
                                 <input type="text" name="input1" data-inputmask="'mask': '9', 'placeholder': ''" min="0" max="9" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-1" value="{{ old('input1') }}" />
                                 <input type="text" name="input2" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-2" value="{{ old('input2') }}" />
@@ -207,7 +210,7 @@
                         <!--begin::Actions-->
                         <div class="d-flex flex-center">
                             <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#withdrawalModal">Cancel</button>
-                            <button type="submit" data-kt-element="sms-submit" class="btn btn-primary">
+                            <button type="submit" onclick="confirmFormSubmit(event, 'otpWithdrawalForm')" class="btn btn-primary">
                                 <span class="indicator-label">Submit</span>
                                 <span class="indicator-progress">Please wait...
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -220,7 +223,7 @@
             </div>
         </div>
     </div>
-<!--end::SMS-->
+    <!--end::SMS-->
 
     <!--begin::Withdrawal Modal-->
     <div class="modal fade" tabindex="-1" id="withdrawalModal">
@@ -237,7 +240,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form class="form mb-3" action="{{ route('withdraw') }}" method="post" id="withdrawalForm" enctype="multipart/form-data">
+                    <form class="form mb-3" action="{{ route('withdrawal.token') }}" method="post" id="withdrawalForm" enctype="multipart/form-data">
                         @csrf
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
@@ -277,7 +280,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     @if ($setting['withdrawal'] == 1)
-                        <button type="button"  data-bs-toggle="modal" data-bs-target="#smsModal" class="btn btn-primary">Proceed to Withdraw</button>
+                        <button type="submit" id="withdrawalBtn" class="btn btn-primary">Proceed to Withdraw</button>
                     @else
                         <button type="button" disabled class="btn btn-secondary">Unavailable</button>
                     @endif
@@ -408,6 +411,11 @@
         let depositInput = $('#amountDeposit');
         let proceedWithdrawal = $('#proceedWithdrwal');
         let smsModal = $('#smsModal');
+        let withdrawalBtn = $('#withdrawalBtn');
+        let account = $('#account');
+        let amountToWithdraw = $('#amountToWithdraw');
+        let selectedBank = $('#selectedBank');
+        let withdrawalForm = $('#withdrawalForm');
 
         bankDetails.hide(500);
         securedLogo.hide(500);
@@ -448,9 +456,41 @@
                 return ( input === 0 ) ? "" : input.toLocaleString( "en-US" );
             } );
         }
+
+        withdrawalBtn.on('click', function (event) {
+            event.preventDefault();
+            let withdrawAmount = withdrawInput.val();
+            let selectedAccount = account.val();
+
+            selectedBank.val(selectedAccount)
+            amountToWithdraw.val(withdrawAmount)
+
+            let formData = {
+                amount: withdrawInput.val(),
+                account: account.val(),
+                _token: "{{csrf_token()}}",
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "{{ route('withdrawal.token') }}",
+                data: formData,
+                dataType: "json",
+                encode: true,
+                error: function(err) {
+                    console.log(err);
+                },
+                success: function() {
+                    console.log('done')
+                    $('#withdrawalModal').modal('hide');
+                    $('#smsModal').modal('show');
+                }
+            })
+        });
     });
+
 </script>
-<script>
+{{-- <script>
     let i = 0, token = '', input1 = document.getElementById('otc-1'),
         inputs = document.querySelectorAll('input[type="text"]'),
         splitNumber = function(e) {
@@ -573,5 +613,5 @@
     input1.addEventListener('input', splitNumber);
     // input1.addEventListener('input', getToken);
     // inputs[inputs.length - 1].addEventListener('input', getToken);
-</script>
+</script> --}}
 @endsection

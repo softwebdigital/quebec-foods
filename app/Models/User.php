@@ -362,6 +362,14 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->save();
     }
 
+    public function generateWithdrawalToken()
+    {
+        $this->timestamps = false;
+        $this->withdrawal_otp = rand(100000, 999999);
+        $this->withdrawal_otp_expiry = now()->addMinutes(10);
+        $this->save();
+    }
+
     /**
      * Reset the MFA code generated earlier
      */

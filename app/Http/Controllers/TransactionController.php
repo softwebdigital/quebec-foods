@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Setting;
+use App\Notifications\WithdrawalTokenNotification;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -146,15 +147,32 @@ class TransactionController extends Controller
         ]);
     }
 
+    public function withdrawalToken(Request $request) {
+        $user = auth()->user();
+        $user->generateWithdrawalToken();
+        $user->notify(new WithdrawalTokenNotification());
+        return response()->json(['success' => true]);
+    }
+
+
     public function withdraw(Request $request)
     {
         // Validate request
         $validator = Validator::make($request->all(), [
             'amount' => ['required'],
-            'account' => ['required']
+            'account' => ['required'],
+            'input1' => ['required', 'integer'],
+            'input2' => ['required', 'integer'],
+            'input3' => ['required', 'integer'],
+            'input4' => ['required', 'integer'],
+            'input5' => ['required', 'integer'],
+            'input6' => ['required', 'integer'],
         ]);
 
+        return $request->all();
+
         $request['amount'] = (int)(str_replace(",", "", $request['amount']));
+        $token = $request['input1'].$request['input2'].$request['input3'].$request['input4'].$request['input5'].$request['input6'];
 
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');

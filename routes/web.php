@@ -69,6 +69,8 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
         Route::post('/deposit', [App\Http\Controllers\TransactionController::class, 'deposit'])->name('deposit');
         Route::post('/withdraw', [App\Http\Controllers\TransactionController::class, 'withdraw'])->name('withdraw');
         Route::get('/referrals', [App\Http\Controllers\ReferralController::class, 'index'])->name('referrals');
+
+        Route::post('/withdrawal/send-token', [App\Http\Controllers\TransactionController::class, 'withdrawalToken'])->name('withdrawal.token');
     });
 
     Route::get('/faqs', [App\Http\Controllers\FaqController::class, 'index'])->name('faq');

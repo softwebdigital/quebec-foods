@@ -219,7 +219,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                 @if ($setting['withdrawal'] == 1)
-                    <button type="button" onclick="confirmFormSubmit(event, 'withdrawalForm')" class="btn btn-primary">Process Withdrawal</button>
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#smsModal" class="btn btn-primary">Proceed to Withdraw</button>
                 @else
                     <button type="button" disabled class="btn btn-secondary">Unavailable</button>
                 @endif
@@ -337,6 +337,66 @@
     </div>
 </div>
 <!--end::Withdrawal Modal-->
+
+<!--begin::SMS-->
+<div class="modal fade" tabindex="-1" id="smsModal">
+    <div class="modal-dialog mw-600px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--begin::Heading-->
+                <h3 class="text-dark fw-bolder fs-3">OTP Withdrawal Verification</h3>
+                <!--end::Heading-->
+
+                <!--begin::Close-->
+                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="svg-icon svg-icon-2x bg-dark"></span>
+                </div>
+                <!--end::Close-->
+            </div>
+
+            <div class="modal-body">
+                <!--begin::Sub-title-->
+                <div class="text-muted text-center fw-bold fs-5 mb-5">Enter the verification code we sent to</div>
+                <!--end::Sub-title-->
+                <!--begin::Mobile no-->
+                <div class="fw-bolder text-center text-success fs-3">{{ substr(auth()->user()['email'], 0, 5) }}******{{ substr(auth()->user()['email'], -12) }}</div>
+                <!--end::Mobile no-->
+                <!--begin::Form-->
+                <form data-kt-element="sms-form" class="form" action="#" id="otpWithdrawalForm">
+                    <!--begin::Input group-->
+                    <div class="my-10 px-md-10">
+                        <!--begin::Label-->
+                        <div class="fw-bolder text-start text-dark fs-6 mb-1 ms-1">Type your 6 digit security code</div>
+                        <!--end::Label-->
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-wrap flex-stack">
+                            <input type="text" name="input1" data-inputmask="'mask': '9', 'placeholder': ''" min="0" max="9" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-1" value="{{ old('input1') }}" />
+                            <input type="text" name="input2" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-2" value="{{ old('input2') }}" />
+                            <input type="text" name="input3" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-3" value="{{ old('input3') }}" />
+                            <input type="text" name="input4" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-4" value="{{ old('input4') }}" />
+                            <input type="text" name="input5" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-5" value="{{ old('input5') }}" />
+                            <input type="text" name="input6" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-6" value="{{ old('input6') }}" />
+                        </div>
+                        <!--begin::Input group-->
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Actions-->
+                    <div class="d-flex flex-center">
+                        <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#withdrawalModal">Cancel</button>
+                        <button type="submit" onclick="confirmFormSubmit(event, 'otpWithdrawalForm')" class="btn btn-primary">
+                            <span class="indicator-label">Submit</span>
+                            <span class="indicator-progress">Please wait...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
+                    </div>
+                    <!--end::Actions-->
+                </form>
+                <!--end::Form-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::SMS-->
 @endsection
 
 @section('script')
