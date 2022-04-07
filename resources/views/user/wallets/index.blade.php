@@ -216,7 +216,9 @@
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
                         </div>
+                        <p class="text-center mt-2 mb-0">Didn't get a mail? <span><a class="link-primary fw-bolder" href="#" onclick="event.preventDefault(); sendToken();">Resend</a></span></p>
                         <!--end::Actions-->
+
                     </form>
                     <!--end::Form-->
                 </div>
@@ -402,7 +404,7 @@
 
 @section('script')
 <script>
-    $(document).ready(function (){
+    // $(document).ready(function (){
         let cardPayment = $('#cardPayment');
         let depositPayment = $('#depositPayment');
         let bankDetails = $('#bankDetailsForDepositForm');
@@ -459,38 +461,42 @@
 
         withdrawalBtn.on('click', function (event) {
             event.preventDefault();
+            sendToken();
+        });
+
+        function sendToken() {
             let withdrawAmount = withdrawInput.val();
             let selectedAccount = account.val();
 
             selectedBank.val(selectedAccount)
             amountToWithdraw.val(withdrawAmount)
 
-            let formData = {
+            let data = {
                 amount: withdrawInput.val(),
                 account: account.val(),
                 _token: "{{csrf_token()}}",
             }
 
             $.ajax({
-                type: "POST",
-                url: "{{ route('withdrawal.token') }}",
-                data: formData,
-                dataType: "json",
-                encode: true,
-                error: function(err) {
-                    console.log(err);
-                },
-                success: function() {
-                    console.log('done')
-                    $('#withdrawalModal').modal('hide');
-                    $('#smsModal').modal('show');
-                }
-            })
-        });
-    });
+                    type: "POST",
+                    url: "{{ route('withdrawal.token') }}",
+                    data,
+                    dataType: "json",
+                    encode: true,
+                    error: function(err) {
+                        console.log(err);
+                    },
+                    success: function() {
+                        console.log('done')
+                        $('#withdrawalModal').modal('hide');
+                        $('#smsModal').modal('show');
+                    }
+                })
+        }
+    // });
 
 </script>
-{{-- <script>
+<script>
     let i = 0, token = '', input1 = document.getElementById('otc-1'),
         inputs = document.querySelectorAll('input[type="text"]'),
         splitNumber = function(e) {
@@ -613,5 +619,5 @@
     input1.addEventListener('input', splitNumber);
     // input1.addEventListener('input', getToken);
     // inputs[inputs.length - 1].addEventListener('input', getToken);
-</script> --}}
+</script>
 @endsection

@@ -154,6 +154,13 @@ class TransactionController extends Controller
         return response()->json(['success' => true]);
     }
 
+    public function resendToken(Request $request) {
+        $user = auth()->user();
+        $user->generateWithdrawalToken();
+        $user->notify(new WithdrawalTokenNotification());
+        // return response()->json(['success' => true]);
+    }
+
 
     public function withdraw(Request $request)
     {
@@ -172,7 +179,13 @@ class TransactionController extends Controller
         return $request->all();
 
         $request['amount'] = (int)(str_replace(",", "", $request['amount']));
+        $user = auth()->user();
         $token = $request['input1'].$request['input2'].$request['input3'].$request['input4'].$request['input5'].$request['input6'];
+
+        if ($token != $user->withdrawal_otp) {
+            return redirect()->back()->with('error', 'The two factor code you have entered does not match');
+        };
+        $user->resetWithdrawalToken();
 
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');

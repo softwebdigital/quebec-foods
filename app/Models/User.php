@@ -380,6 +380,13 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->two_factor_expires_at = null;
         $this->save();
     }
+    public function resetWithdrawalToken()
+    {
+        $this->timestamps = false;
+        $this->withdrawal_otp = null;
+        $this->withdrawal_otp_expiry = null;
+        $this->save();
+    }
 
     public function canBeDeleted($duration): bool
     {
