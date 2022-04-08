@@ -59,29 +59,19 @@
                                 <div class="menu-item px-3">
                                     <a href="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')" class="menu-link px-3">Delete Package</a>
                                 </div>
-                                <form action="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" id="deletePackage{{ $package['id'] }}" method="POST">
+                                <form action="{{ route('admin.packages.destroy', [$package['type'], $package['id']]) }}" id="deletePackage{{ $package['id'] }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                 </form>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{ route('admin.packages.edit', [$type, $package['id']]) }}" class="menu-link px-3">Edit package</a>
+                                    <a href="{{ route('admin.packages.edit', [$package['type'], $package['id']]) }}" class="menu-link px-3">Edit package</a>
                                 </div>
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
-                                <div class="menu-item px-3">
+                                <div class="menu-item px-3 pb-3">
                                     <a href="{{ route('admin.packages.investments', [$type, $package['id']]) }}" class="menu-link px-3">Package Investments</a>
-                                </div>
-                                <!--end::Menu item-->
-                                <!--begin::Menu separator-->
-                                <div class="separator mt-3 opacity-75"></div>
-                                <!--end::Menu separator-->
-                                <!--begin::Menu item-->
-                                <div class="menu-item px-3">
-                                    <div class="menu-content px-3 py-3">
-                                        <a class="btn btn-primary btn-sm px-4" href="#">Generate Reports</a>
-                                    </div>
                                 </div>
                                 <!--end::Menu item-->
                             </div>
@@ -154,7 +144,7 @@
                 <div class="px-9 pb-9">
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <div class="w-100">
-                            <button type="button" class="btn btn-sm btn-primary w-100">Invest in Package</button>
+                            <button type="button" href="{{ route('admin.packages.edit', [$package['type'], $package['id']]) }}"  class="btn btn-sm btn-primary w-100"><a href="{{ route('admin.packages.edit', [$package['type'], $package['id']]) }}" >Edit Package<</a></button>
                         </div>
                         <div class="ms-2">
                             <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i></button>
