@@ -24,7 +24,7 @@
                     <h4 class="fs-3 text-gray-800 w-bolder m-0">Frequently Asked Questions</h4>
                     @can('Create FAQs')
                         <div class="card-toolbar">
-                            <a href="{{ route('admin.faq.create') }}" class="btn btn-sm btn-primary">
+                            <a data-bs-toggle="modal" data-bs-target="#createQuestionModal" class="btn btn-sm btn-primary">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -33,7 +33,7 @@
                                 </svg>
                             </span>
                             <!--end::Svg Icon-->New Question</a>
-                        </div>                        
+                        </div>
                     @endcan
                 </div>
                 <!--end::Title-->
@@ -145,6 +145,89 @@
     <!--end::Body-->
 </div>
 <!--end::FAQ card-->
+
+<!--begin::Deposit Modal-->
+<div class="modal fade" tabindex="-1" id="createQuestionModal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Create a Question</h4>
+                <!--begin::Close-->
+                <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="svg-icon svg-icon-2x"></span>
+                </div>
+                <!--end::Close-->
+            </div>
+
+            <div class="modal-body">
+                <!--begin:::Form-->
+                <form class="form mb-3" method="post" action="{{ route('admin.faq.store') }}" id="createFaqForm" enctype="multipart/form-data">
+                    @csrf
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-5 fv-row">
+                        <!--begin::Label-->
+                        <label class="required fs-5 fw-bold mb-2" for="category">Select Category</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+                        <select name="category" aria-label="Select the Faq Category" data-placeholder="Select the Faq Category" class="form-select form-select-solid text-dark" id="category">
+                            <option value="">Select the category</option>
+                            @foreach ($faqCategories as $faqCategory )
+                            <option @if((old('category') == $faqCategory['name']) || (request('category') == $faqCategory['name'])) selected @endif value="{{ $faqCategory['name'] }}" >{{ $faqCategory['name'] }}</option>
+                            @endforeach
+                        </select>
+                        @error('category')
+                            <span class="text-danger small" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-5 fv-row">
+                        <!--begin::Label-->
+                        <label class="required fs-5 fw-bold mb-2" for="question">Question</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+                        <input type="text" placeholder="Question" value="{{ old("question")}}" class="form-control form-control-solid" name="question" id="question">
+                        @error('question')
+                        <span class="text-danger small" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mt-4 mb-5 fv-row">
+                        <!--end::Label-->
+                        <label class="required fs-5 fw-bold mb-2" for="answer">Answer</label>
+                        <!--end::Label-->
+                        <!--end::Input-->
+                        <textarea placeholder="Answer" style="resize: none" class="form-control form-control-solid" name="answer" id="answer" rows="5">{{ old("answer") }}</textarea>
+                        @error('answer')
+                        <span class="text-danger small" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <!--end::Input group-->
+                </form>
+                <!--end:::Form-->
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                <!--begin::Submit-->
+                <button type="button" onclick="confirmFormSubmit(event, 'createFaqForm')" class="btn btn-primary">
+                    <!--begin::Indicator-->
+                    <span class="indicator-label">Create</span>
+                    <!--end::Indicator-->
+                </button>
+                <!--end::Submit-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--end::Withdrawal Modal-->
 
 
 @endsection

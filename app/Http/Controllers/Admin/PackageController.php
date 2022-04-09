@@ -38,6 +38,11 @@ class PackageController extends Controller
         return view('admin.package.edit', compact('package', 'type'));
     }
 
+    public function show($type, Package $package)
+    {
+        return view('admin.package.show', compact('type', 'package'));
+    }
+
     public function store(Request $request)
     {
         // Validate request

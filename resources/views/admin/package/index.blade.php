@@ -90,7 +90,7 @@
                     @if (!$package['image'])
                         <div class="symbol symbol-65px symbol-circle mb-5">
                             <span class="symbol-label fs-2x fw-bold text-primary bg-light-primary">{{ucfirst($package['name'][0])}}</span>
-                            <div class="bg-success position-absolute border border-4 border-white h-15px w-15px rounded-circle translate-middle start-100 top-100 ms-n3 mt-n3"></div>
+                            <div class="bg-success position-absolute border border-4 border-white"></div>
                         </div>
                     @endif
                     <!--begin::Avatar-->
@@ -99,7 +99,7 @@
                     <a href="#" class="fs-4 text-gray-800 text-hover-primary fw-bolder mb-0">{{ $package['name'] }}</a>
                     <!--end::Name-->
                     <!--begin::Position-->
-                    <div class="fs-8 fw-bold text-gray-400 mb-6">{{ $package['description'] }}</div>
+                    <div class="fs-8 fw-bold text-gray-400 mb-6">{{ ucwords($package['type']) }}</div>
                     <!--end::Position-->
                     <!--begin::Info-->
                     <div class="d-flex flex-center flex-wrap">
@@ -144,10 +144,10 @@
                 <div class="px-9 pb-9">
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <div class="w-100">
-                            <button type="button" href="{{ route('admin.packages.edit', [$package['type'], $package['id']]) }}"  class="btn btn-sm btn-primary w-100"><a href="{{ route('admin.packages.edit', [$package['type'], $package['id']]) }}" >Edit Package<</a></button>
+                            <a type="button" href="{{ route('admin.packages.edit', ['type' => $package['type'], 'package' => $package['id']]) }}" class="btn btn-sm btn-primary w-100">Edit Package</a>
                         </div>
                         <div class="ms-2">
-                            <button type="button" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i></button>
+                            <a type="button" href="{{ route('admin.packages.show', ['type' => $package['type'], 'package' => $package['id']]) }}" class="btn btn-sm btn-primary"><i class="bi bi-eye"></i></a>
                         </div>
                     </div>
                 </div>

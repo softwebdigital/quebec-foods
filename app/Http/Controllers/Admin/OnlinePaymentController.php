@@ -39,15 +39,14 @@ class OnlinePaymentController extends Controller
         }
         else {
             $payments = $payments->where('reference','LIKE',"%{$search}%")
-                ->orWhereHas('user',function ($q) use ($search) { $q->where('name', 'LIKE',"%{$search}%"); })
-                ->orWhereHas('user',function ($q) use ($search) { $q->where('email', 'LIKE',"%{$search}%"); })
-                ->orWhere('payment type', 'LIKE',"%{$search}%")
+                ->orWhereHas('user',function ($q) use ($search) { $q->where('first_name', 'LIKE',"%{$search}%")->orWhere('last_name', 'LIKE',"%{$search}%")->orWhere('email', 'LIKE',"%{$search}%"); })
+                ->orWhere('type', 'LIKE',"%{$search}%")
                 ->orWhere('created_at', 'LIKE',"%{$search}%")
                 ->orWhere('amount', 'LIKE',"%{$search}%")
                 ->orWhere('status', 'LIKE',"%{$search}%");
             $totalFiltered = $payments->count();
             $payments = $payments->offset($start)
-                ->limit($limit)
+                ->limit($limit) 
                 ->orderBy($order,$dir)
                 ->get();
         }

@@ -83,6 +83,7 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
         Route::get('/investments', [App\Http\Controllers\Admin\PackageController::class, 'investments'])->name('packages.investments')->middleware('permission:View Package Investments');
         Route::get('/create', [App\Http\Controllers\Admin\PackageController::class, 'create'])->name('packages.create')->middleware('permission:Create Packages');
         Route::get('/{package}/edit', [App\Http\Controllers\Admin\PackageController::class, 'edit'])->name('packages.edit')->middleware('permission:Edit Packages');
+        Route::get('/{package}/show', [App\Http\Controllers\Admin\PackageController::class, 'show'])->name('packages.show');
         Route::put('/{package}/update', [App\Http\Controllers\Admin\PackageController::class, 'update'])->name('packages.update')->middleware('permission:Edit Packages');
         Route::delete('/{package}/destroy', [App\Http\Controllers\Admin\PackageController::class, 'destroy'])->name('packages.destroy')->middleware('permission:Delete Packages');
     });

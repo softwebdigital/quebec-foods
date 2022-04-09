@@ -13,7 +13,7 @@
 @section('content')
     <!--begin::Referral program-->
     <div class="row">
-        <div class="col-xxl-4 col-md-4 mb-xxl-10">
+        <div class="col-xxl-5 col-md-5 mb-xxl-10">
             <!--begin::Mixed Widget 1-->
             <div class="card h-md-100">
                 <!--begin::Body-->
@@ -196,7 +196,7 @@
                             <!--begin::Input group-->
                             <input type="hidden" name="amount" id="amountToWithdraw">
                             <input type="hidden" name="account" id="selectedBank">
-                            <div class="d-flex flex-wrap flex-stack">
+                            <div id="parentWrapper" class="d-flex flex-wrap flex-stack">
                                 <input type="text" name="input1" data-inputmask="'mask': '9', 'placeholder': ''" min="0" max="9" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-1" value="{{ old('input1') }}" />
                                 <input type="text" name="input2" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-2" value="{{ old('input2') }}" />
                                 <input type="text" name="input3" data-inputmask="'mask': '9', 'placeholder': ''" maxlength="1" class="form-control form-control-solid h-60px w-60px fs-2qx text-center border-primary border-hover mx-1 my-2" id="otc-3" value="{{ old('input3') }}" />
@@ -209,7 +209,7 @@
                         <!--end::Input group-->
                         <!--begin::Actions-->
                         <div class="d-flex flex-center">
-                            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#withdrawalModal">Cancel</button>
+                            <button type="button" class="btn btn-light mx-2" data-bs-toggle="modal" data-bs-target="#withdrawalModal">Cancel</button>
                             <button type="submit" onclick="confirmFormSubmit(event, 'otpWithdrawalForm')" class="btn btn-primary">
                                 <span class="indicator-label">Submit</span>
                                 <span class="indicator-progress">Please wait...
@@ -282,7 +282,11 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     @if ($setting['withdrawal'] == 1)
-                        <button type="submit" id="withdrawalBtn" class="btn btn-primary">Proceed to Withdraw</button>
+                        <button id="withdrawalBtn" type="button" class="btn btn-primary">
+                            <span class="indicator-label">Proceed to Withdraw</span>
+                            <span class="indicator-progress">Please wait...
+                            <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                        </button>
                     @else
                         <button type="button" disabled class="btn btn-secondary">Unavailable</button>
                     @endif
@@ -476,7 +480,10 @@
                 account: account.val(),
                 _token: "{{csrf_token()}}",
             }
-
+            if (!(data.amount && data.account)) {
+                return;
+            }
+            setLoader('withdrawalBtn', true);
             $.ajax({
                     type: "POST",
                     url: "{{ route('withdrawal.token') }}",
@@ -484,21 +491,29 @@
                     dataType: "json",
                     encode: true,
                     error: function(err) {
+                        setLoader('withdrawalBtn', false);
                         console.log(err);
                     },
                     success: function() {
                         console.log('done')
+                        setLoader('withdrawalBtn', false);
                         $('#withdrawalModal').modal('hide');
                         $('#smsModal').modal('show');
                     }
                 })
+        }
+
+        function setLoader(id, loading) {
+            document.getElementById(id).dataset.ktIndicator = loading ? 'on' : 'off';
+            $(`#${id}`).prop('disabled', loading);
         }
     // });
 
 </script>
 <script>
     let i = 0, token = '', input1 = document.getElementById('otc-1'),
-        inputs = document.querySelectorAll('input[type="text"]'),
+        parent = document.getElementById('parentWrapper');
+        inputs = parent.querySelectorAll('input[type="text"]'),
         splitNumber = function(e) {
             let data = e.target.value; // Chrome doesn't get the e.data, it's always empty, fallback to value then.
             if ( ! data ) return; // Shouldn't happen, just in case.

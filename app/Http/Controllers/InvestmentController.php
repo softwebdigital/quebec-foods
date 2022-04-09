@@ -124,10 +124,10 @@ class InvestmentController extends Controller
      * @param  \App\Models\Investment  $investment
      * @return \Illuminate\Http\Response
      */
-    public function show($type, Investment $investment, $filter = 'all')
+    public function show(Investment $investment)
     {
         $packages = Package::where('status', 'open')->get();
-        return view('user.investments.show', compact('type', 'filter', 'investment', 'packages'));
+        return view('user.investments.show', compact('investment', 'packages'));
     }
 
     /**
