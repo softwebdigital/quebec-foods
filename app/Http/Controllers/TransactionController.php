@@ -169,7 +169,13 @@ class TransactionController extends Controller
             'input6' => ['required', 'integer'],
         ]);
 
-        // return $request->all();
+        if ($validator->fails()){
+            return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
+        }
+
+        if (!auth()->user()->documents()->where('status', 'approved')->exists()) {
+            return redirect()->back()->with('error', 'Identity not verified');
+        }
 
         $request['amount'] = (int)(str_replace(",", "", $request['amount']));
         $user = auth()->user();
@@ -184,10 +190,6 @@ class TransactionController extends Controller
         }
 
         $user->resetWithdrawalToken();
-
-        if ($validator->fails()){
-            return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
-        }
         // Check if withdrawal is allowed
         if (Setting::all()->first()['withdrawal'] == 0){
             return back()->with('error', 'Withdrawal from wallet is currently unavailable, check back later');

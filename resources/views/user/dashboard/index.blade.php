@@ -3,7 +3,151 @@
 @section('pageTitle', 'Dashboard')
 
 @section('style')
+    <style>
+        .carousel.carousel-custom .carousel-indicators {
+            align-items: center;
+            position: static;
+            z-index: auto;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
 
+        .carousel.carousel-custom .carousel-indicators li {
+            transform: none;
+            opacity: 1;
+        }
+
+        .carousel.carousel-custom .carousel-indicators li.active {
+            transform: none;
+            opacity: 1;
+        }
+
+        .carousel.carousel-custom .carousel-indicators.carousel-indicators-dots li {
+            border-radius: 0;
+            background-color: transparent;
+            height: 13px;
+            width: 13px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .carousel.carousel-custom .carousel-indicators.carousel-indicators-dots li:after {
+            display: inline-block;
+            content: " ";
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            background-color: #eff2f5;
+            height: 9px;
+            width: 9px;
+        }
+
+        .carousel.carousel-custom .carousel-indicators.carousel-indicators-dots li.active {
+            background-color: transparent;
+        }
+
+        .carousel.carousel-custom .carousel-indicators.carousel-indicators-dots li.active:after {
+            transition: all 0.3s ease;
+            height: 13px;
+            width: 13px;
+            background-color: #b5b5c3;
+        }
+
+        .carousel.carousel-custom .carousel-indicators.carousel-indicators-bullet li {
+            transition: all 0.3s ease;
+            background-color: transparent;
+            border-radius: 6px;
+            height: 6px;
+            width: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .carousel.carousel-custom .carousel-indicators.carousel-indicators-bullet li:after {
+            display: inline-block;
+            content: " ";
+            transition: all 0.3s ease;
+            background-color: #b5b5c3;
+            border-radius: 6px;
+            height: 6px;
+            width: 6px;
+        }
+
+        .carousel.carousel-custom .carousel-indicators.carousel-indicators-bullet li.active {
+            transition: all 0.3s ease;
+            background-color: transparent;
+            height: 6px;
+            width: 16px;
+        }
+
+        .carousel.carousel-custom .carousel-indicators.carousel-indicators-bullet li.active:after {
+            transition: all 0.3s ease;
+            height: 6px;
+            width: 16px;
+            background-color: #7e8299;
+        }
+
+        .carousel.carousel-custom .carousel-indicators-active-white li.active:after {
+            background-color: #fff !important;
+        }
+
+        .carousel.carousel-custom .carousel-indicators-active-light li.active:after {
+            background-color: #f5f8fa !important;
+        }
+
+        .carousel.carousel-custom .carousel-indicators-active-primary li.active:after {
+            background-color: #00A451 !important;
+        }
+
+        .carousel.carousel-custom .carousel-indicators-active-secondary li.active:after {
+            background-color: #e4e6ef !important;
+        }
+
+        .carousel.carousel-custom .carousel-indicators-active-success li.active:after {
+            background-color: #50cd89 !important;
+        }
+
+        .carousel.carousel-custom .carousel-indicators-active-info li.active:after {
+            background-color: #7239ea !important;
+        }
+
+        .carousel.carousel-custom .carousel-indicators-active-warning li.active:after {
+            background-color: #ffc700 !important;
+        }
+
+        .carousel.carousel-custom .carousel-indicators-active-danger li.active:after {
+            background-color: #f1416c !important;
+        }
+
+        .carousel.carousel-custom .carousel-indicators-active-dark li.active:after {
+            background-color: #181c32 !important;
+        }
+
+        .carousel.carousel-custom.carousel-stretch {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .carousel.carousel-custom.carousel-stretch .carousel-inner {
+            flex-grow: 1;
+        }
+
+        .carousel.carousel-custom.carousel-stretch .carousel-item {
+            height: 100%;
+        }
+
+        .carousel.carousel-custom.carousel-stretch .carousel-wrapper {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+    </style>
 @endsection
 
 @section('breadCrumbs')
@@ -12,7 +156,7 @@
 @section('content')
     <!--begin::Row-->
     <div class="row g-5 g-xl-8">
-        <div class="col-xxl-4 col-md-4 mb-xxl-10">
+        <div class="col-xl-4 col-md-4 mb-xxl-10">
             <!--begin::Mixed Widget 1-->
             <div class="card h-md-100">
                 <!--begin::Body-->
@@ -33,7 +177,8 @@
                     </div>
                     <!--end::Header-->
                     <!--begin::Items-->
-                    <div class="bg-body shadow-sm card-rounded mx-9 mb-9 px-6 py-9 position-relative z-index-1" style="margin-top: -100px">
+                    <div class="bg-body shadow-sm card-rounded mx-9 mb-9 px-6 py-9 position-relative z-index-1"
+                        style="margin-top: -100px">
                         <!--begin::Item-->
                         <div class="d-flex align-items-center mb-6">
                             <!--begin::Symbol-->
@@ -41,9 +186,14 @@
                                 <span class="symbol-label bg-lighten">
                                     <!--begin::Svg Icon | path: icons/duotune/maps/map004.svg-->
                                     <span class="svg-icon svg-icon-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path opacity="0.3" d="M18.4 5.59998C21.9 9.09998 21.9 14.8 18.4 18.3C14.9 21.8 9.2 21.8 5.7 18.3L18.4 5.59998Z" fill="black" />
-                                            <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM19.9 11H13V8.8999C14.9 8.6999 16.7 8.00005 18.1 6.80005C19.1 8.00005 19.7 9.4 19.9 11ZM11 19.8999C9.7 19.6999 8.39999 19.2 7.39999 18.5C8.49999 17.7 9.7 17.2001 11 17.1001V19.8999ZM5.89999 6.90002C7.39999 8.10002 9.2 8.8 11 9V11.1001H4.10001C4.30001 9.4001 4.89999 8.00002 5.89999 6.90002ZM7.39999 5.5C8.49999 4.7 9.7 4.19998 11 4.09998V7C9.7 6.8 8.39999 6.3 7.39999 5.5ZM13 17.1001C14.3 17.3001 15.6 17.8 16.6 18.5C15.5 19.3 14.3 19.7999 13 19.8999V17.1001ZM13 4.09998C14.3 4.29998 15.6 4.8 16.6 5.5C15.5 6.3 14.3 6.80002 13 6.90002V4.09998ZM4.10001 13H11V15.1001C9.1 15.3001 7.29999 16 5.89999 17.2C4.89999 16 4.30001 14.6 4.10001 13ZM18.1 17.1001C16.6 15.9001 14.8 15.2 13 15V12.8999H19.9C19.7 14.5999 19.1 16.0001 18.1 17.1001Z" fill="black" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                            fill="none">
+                                            <path opacity="0.3"
+                                                d="M18.4 5.59998C21.9 9.09998 21.9 14.8 18.4 18.3C14.9 21.8 9.2 21.8 5.7 18.3L18.4 5.59998Z"
+                                                fill="black" />
+                                            <path
+                                                d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM19.9 11H13V8.8999C14.9 8.6999 16.7 8.00005 18.1 6.80005C19.1 8.00005 19.7 9.4 19.9 11ZM11 19.8999C9.7 19.6999 8.39999 19.2 7.39999 18.5C8.49999 17.7 9.7 17.2001 11 17.1001V19.8999ZM5.89999 6.90002C7.39999 8.10002 9.2 8.8 11 9V11.1001H4.10001C4.30001 9.4001 4.89999 8.00002 5.89999 6.90002ZM7.39999 5.5C8.49999 4.7 9.7 4.19998 11 4.09998V7C9.7 6.8 8.39999 6.3 7.39999 5.5ZM13 17.1001C14.3 17.3001 15.6 17.8 16.6 18.5C15.5 19.3 14.3 19.7999 13 19.8999V17.1001ZM13 4.09998C14.3 4.29998 15.6 4.8 16.6 5.5C15.5 6.3 14.3 6.80002 13 6.90002V4.09998ZM4.10001 13H11V15.1001C9.1 15.3001 7.29999 16 5.89999 17.2C4.89999 16 4.30001 14.6 4.10001 13ZM18.1 17.1001C16.6 15.9001 14.8 15.2 13 15V12.8999H19.9C19.7 14.5999 19.1 16.0001 18.1 17.1001Z"
+                                                fill="black" />
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
@@ -74,7 +224,8 @@
                                 <span class="symbol-label bg-lighten">
                                     <!--begin::Svg Icon | path: icons/duotune/general/gen025.svg-->
                                     <span class="svg-icon svg-icon-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                            fill="none">
                                             <rect x="2" y="2" width="9" height="9" rx="2" fill="black" />
                                             <rect opacity="0.3" x="13" y="2" width="9" height="9" rx="2" fill="black" />
                                             <rect opacity="0.3" x="13" y="13" width="9" height="9" rx="2" fill="black" />
@@ -95,7 +246,8 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['investments']['pendingInvestments'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">
+                                        ₦{{ $data['investments']['pendingInvestments'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -109,9 +261,14 @@
                                 <span class="symbol-label bg-lighten">
                                     <!--begin::Svg Icon | path: icons/duotune/electronics/elc005.svg-->
                                     <span class="svg-icon svg-icon-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                            <path opacity="0.3" d="M15 19H7C5.9 19 5 18.1 5 17V7C5 5.9 5.9 5 7 5H15C16.1 5 17 5.9 17 7V17C17 18.1 16.1 19 15 19Z" fill="black" />
-                                            <path d="M8.5 2H13.4C14 2 14.5 2.4 14.6 3L14.9 5H6.89999L7.2 3C7.4 2.4 7.9 2 8.5 2ZM7.3 21C7.4 21.6 7.9 22 8.5 22H13.4C14 22 14.5 21.6 14.6 21L14.9 19H6.89999L7.3 21ZM18.3 10.2C18.5 9.39995 18.5 8.49995 18.3 7.69995C18.2 7.29995 17.8 6.90002 17.3 6.90002H17V10.9H17.3C17.8 11 18.2 10.7 18.3 10.2Z" fill="black" />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                            fill="none">
+                                            <path opacity="0.3"
+                                                d="M15 19H7C5.9 19 5 18.1 5 17V7C5 5.9 5.9 5 7 5H15C16.1 5 17 5.9 17 7V17C17 18.1 16.1 19 15 19Z"
+                                                fill="black" />
+                                            <path
+                                                d="M8.5 2H13.4C14 2 14.5 2.4 14.6 3L14.9 5H6.89999L7.2 3C7.4 2.4 7.9 2 8.5 2ZM7.3 21C7.4 21.6 7.9 22 8.5 22H13.4C14 22 14.5 21.6 14.6 21L14.9 19H6.89999L7.3 21ZM18.3 10.2C18.5 9.39995 18.5 8.49995 18.3 7.69995C18.2 7.29995 17.8 6.90002 17.3 6.90002H17V10.9H17.3C17.8 11 18.2 10.7 18.3 10.2Z"
+                                                fill="black" />
                                         </svg>
                                     </span>
                                     <!--end::Svg Icon-->
@@ -128,7 +285,8 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['investments']['activeInvestments'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">
+                                        ₦{{ $data['investments']['activeInvestments'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -144,7 +302,7 @@
         </div>
         <!--end::Col-->
         <!--begin::Col-->
-        <div class="col-xl-8">
+        <div class="col-md-8">
             <!--begin::Mixed Widget 13-->
             <div class="card card-xl-stretch mb-xl-8" style="background-color: #CBD4F4">
                 <!--begin::Body-->
@@ -179,6 +337,148 @@
             <!--end::Mixed Widget 13-->
         </div>
         <!--end::Col-->
+        <div class="col-md-6">
+            <div id="kt_sliders_widget_1_slider"
+                class="card card-flush carousel carousel-custom carousel-stretch slide h-xl-100" data-bs-ride="carousel"
+                data-bs-interval="5000">
+                <!--begin::Header-->
+                <div class="card-header pt-5">
+                    @php
+                        $pckgs = \App\Models\Package::latest()->where('status', 'open')->limit(3);
+                    @endphp
+                    <!--begin::Title-->
+                    <h4 class="card-title d-flex align-items-start flex-column">
+                        <span class="card-label fw-bolder text-gray-800">Open Packages</span>
+                        <span class="text-gray-400 mt-1 fw-bolder fs-7">{{ $pckgs->count() }} total package(s) open</span>
+                    </h4>
+                    <!--end::Title-->
+                    <!--begin::Toolbar-->
+                    <div class="card-toolbar">
+                        <!--begin::Carousel Indicators-->
+                        <ol
+                            class="p-0 m-0 carousel-indicators carousel-indicators-bullet carousel-indicators-active-primary">
+                            @foreach ($pckgs->get() as $key => $pcg)
+                            <li data-bs-target="#kt_sliders_widget_1_slider" data-bs-slide-to="{{ $key }}" class="ms-1 @if($key == 0) active @endif"
+                            @if($key == 0)  aria-current="true" active @endif></li>
+                            @endforeach
+                        </ol>
+                        <!--end::Carousel Indicators-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+                <!--end::Header-->
+                <!--begin::Body-->
+                <div class="card-body pt-6">
+                    <!--begin::Carousel-->
+                    <div class="carousel-inner mt-n5">
+                        <!--begin::Item-->
+                        @foreach ($pckgs->get() as $key => $pcg)
+                        <div class="carousel-item @if($key == 0) show active @endif">
+                            <!--begin::Wrapper-->
+                            <div class="d-flex align-items-center mb-5">
+                                @if ($pcg['type'] == 'plant')
+                                <img src="{{ asset($pcg['image']) }}" style="width: 80px; border-radius: 5px;" class="me-2">
+                                @endif
+                                <!--begin::Info-->
+                                <div class="m-0">
+                                    <!--begin::Subtitle-->
+                                    <h4 class="fw-bolder text-gray-800 mb-3">Ruby on Rails</h4>
+                                    <!--end::Subtitle-->
+                                    <!--begin::Items-->
+                                    <div class="d-flex d-grid gap-5">
+                                        <!--begin::Item-->
+                                        <div class="d-flex flex-column flex-shrink-0 me-4">
+                                            <!--begin::Section-->
+                                            <span class="d-flex align-items-center fs-7 fw-bolder text-gray-400 mb-2">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen057.svg-->
+                                                <span class="svg-icon svg-icon-6 svg-icon-gray-600 me-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                                            fill="currentColor"></rect>
+                                                        <path
+                                                            d="M11.9343 12.5657L9.53696 14.963C9.22669 15.2733 9.18488 15.7619 9.43792 16.1204C9.7616 16.5789 10.4211 16.6334 10.8156 16.2342L14.3054 12.7029C14.6903 12.3134 14.6903 11.6866 14.3054 11.2971L10.8156 7.76582C10.4211 7.3666 9.7616 7.42107 9.43792 7.87962C9.18488 8.23809 9.22669 8.72669 9.53696 9.03696L11.9343 11.4343C12.2467 11.7467 12.2467 12.2533 11.9343 12.5657Z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->3 Topics
+                                            </span>
+                                            <!--end::Section-->
+                                            <!--begin::Section-->
+                                            <span class="d-flex align-items-center text-gray-400 fw-bolder fs-7">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen057.svg-->
+                                                <span class="svg-icon svg-icon-6 svg-icon-gray-600 me-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                                            fill="currentColor"></rect>
+                                                        <path
+                                                            d="M11.9343 12.5657L9.53696 14.963C9.22669 15.2733 9.18488 15.7619 9.43792 16.1204C9.7616 16.5789 10.4211 16.6334 10.8156 16.2342L14.3054 12.7029C14.6903 12.3134 14.6903 11.6866 14.3054 11.2971L10.8156 7.76582C10.4211 7.3666 9.7616 7.42107 9.43792 7.87962C9.18488 8.23809 9.22669 8.72669 9.53696 9.03696L11.9343 11.4343C12.2467 11.7467 12.2467 12.2533 11.9343 12.5657Z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->1 Speakers
+                                            </span>
+                                            <!--end::Section-->
+                                        </div>
+                                        <!--end::Item-->
+                                        <!--begin::Item-->
+                                        <div class="d-flex flex-column flex-shrink-0">
+                                            <!--begin::Section-->
+                                            <span class="d-flex align-items-center fs-7 fw-bolder text-gray-400 mb-2">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen057.svg-->
+                                                <span class="svg-icon svg-icon-6 svg-icon-gray-600 me-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                                            fill="currentColor"></rect>
+                                                        <path
+                                                            d="M11.9343 12.5657L9.53696 14.963C9.22669 15.2733 9.18488 15.7619 9.43792 16.1204C9.7616 16.5789 10.4211 16.6334 10.8156 16.2342L14.3054 12.7029C14.6903 12.3134 14.6903 11.6866 14.3054 11.2971L10.8156 7.76582C10.4211 7.3666 9.7616 7.42107 9.43792 7.87962C9.18488 8.23809 9.22669 8.72669 9.53696 9.03696L11.9343 11.4343C12.2467 11.7467 12.2467 12.2533 11.9343 12.5657Z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->50 Min
+                                            </span>
+                                            <!--end::Section-->
+                                            <!--begin::Section-->
+                                            <span class="d-flex align-items-center text-gray-400 fw-bolder fs-7">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen057.svg-->
+                                                <span class="svg-icon svg-icon-6 svg-icon-gray-600 me-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                                            fill="currentColor"></rect>
+                                                        <path
+                                                            d="M11.9343 12.5657L9.53696 14.963C9.22669 15.2733 9.18488 15.7619 9.43792 16.1204C9.7616 16.5789 10.4211 16.6334 10.8156 16.2342L14.3054 12.7029C14.6903 12.3134 14.6903 11.6866 14.3054 11.2971L10.8156 7.76582C10.4211 7.3666 9.7616 7.42107 9.43792 7.87962C9.18488 8.23809 9.22669 8.72669 9.53696 9.03696L11.9343 11.4343C12.2467 11.7467 12.2467 12.2533 11.9343 12.5657Z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->72 students
+                                            </span>
+                                            <!--end::Section-->
+                                        </div>
+                                        <!--end::Item-->
+                                    </div>
+                                    <!--end::Items-->
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                            <!--end::Wrapper-->
+                            <!--begin::Action-->
+                            <div class="mb-1">
+                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#kt_modal_create_app">Invest in package</a>
+                            </div>
+                            <!--end::Action-->
+                        </div>
+                        @endforeach
+                        <!--end::Item-->
+                    </div>
+                    <!--end::Carousel-->
+                </div>
+                <!--end::Body-->
+            </div>
+        </div>
     </div>
     <!--end::Row-->
     <!--begin::Row-->
@@ -380,12 +680,13 @@
                                         @foreach ($data['investments']['plant'] as $key => $plantInvestment)
                                             <tr>
                                                 <td class="ps-4"><span
-                                                    class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span>
+                                                        class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span>
                                                 </td>
                                                 <td>
                                                     <div class="symbol symbol-45px me-2">
                                                         <span class="symbol-label">
-                                                            <img src="{{ asset($plantInvestment['package']['image']) }}" class="h-50 align-self-center" alt="" />
+                                                            <img src="{{ asset($plantInvestment['package']['image']) }}"
+                                                                class="h-50 align-self-center" alt="" />
                                                         </span>
                                                     </div>
                                                 </td>
@@ -454,7 +755,7 @@
                             <!--begin::Table-->
                             <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
                                 <!--begin::Table head-->
-                                 <thead>
+                                <thead>
                                     <tr class="fw-bolder text-muted">
                                         <th class="ps-4 text-dark rounded-start">S/N</th>
                                         <th class="text-dark">Package</th>
@@ -893,5 +1194,66 @@
         };
         var yearTransactionChart = new ApexCharts(yearTransactionEl, yearTransactionOptions);
         yearTransactionChart.render();
+    </script>
+    <script>
+        var KTSlidersWidget1 = (function() {
+            var e = function(e, a) {
+                var t = document.querySelector(e);
+                if (t && !t.classList.contains("initialized")) {
+                    var l = parseInt(KTUtil.css(t, "height")),
+                        o = KTUtil.getCssVariableValue("--bs-primary"),
+                        r = KTUtil.getCssVariableValue("--bs-light-primary");
+                    new ApexCharts(t, {
+                            series: [a],
+                            chart: {
+                                fontFamily: "inherit",
+                                height: l,
+                                type: "radialBar",
+                                sparkline: {
+                                    enabled: !0
+                                },
+                            },
+                            plotOptions: {
+                                radialBar: {
+                                    hollow: {
+                                        margin: 0,
+                                        size: "45%"
+                                    },
+                                    dataLabels: {
+                                        showOn: "always",
+                                        name: {
+                                            show: !1
+                                        },
+                                        value: {
+                                            show: !1
+                                        },
+                                    },
+                                    track: {
+                                        background: r,
+                                        strokeWidth: "100%"
+                                    },
+                                },
+                            },
+                            colors: [o],
+                            stroke: {
+                                lineCap: "round"
+                            },
+                            labels: ["Progress"],
+                        }).render(),
+                        t.classList.add("initialized");
+                }
+            };
+            return {
+                init: function() {
+                    e("#kt_slider_widget_1_chart_1", 76);
+                    var a = document.querySelector("#kt_sliders_widget_1_slider");
+                    a &&
+                        a.addEventListener("slid.bs.carousel", function(a) {
+                            1 === a.to && e("#kt_slider_widget_1_chart_2", 55),
+                                2 === a.to && e("#kt_slider_widget_1_chart_3", 25);
+                        });
+                },
+            };
+        })();
     </script>
 @endsection
