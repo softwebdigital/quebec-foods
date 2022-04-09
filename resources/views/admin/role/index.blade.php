@@ -16,7 +16,7 @@
         </h3>
         @can('Create Roles')
             <div class="card-toolbar">
-                <a href="{{ route('admin.roles.create') }}" class="btn btn-sm btn-light-primary">
+                <a href="{{ route('admin.roles.create') }}" class="btn btn-sm btn-primary">
                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                 <span class="svg-icon svg-icon-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -25,7 +25,7 @@
                     </svg>
                 </span>
                 <!--end::Svg Icon-->New Role</a>
-            </div> 
+            </div>
         @endcan
     </div>
     <!--end::Header-->
@@ -55,7 +55,7 @@
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ \App\Models\Admin::role($role['name'])->count() }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $role['created_at']->format('M d, Y') }}</span></td>
                             <td class="text-end">
-                                <a href="#" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
+                                <a href="#" class="btn btn-sm btn-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
                                     <span class="svg-icon svg-icon-5 m-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
                                             <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
@@ -68,7 +68,7 @@
                                             <a class="menu-link px-3" href="{{ route('admin.roles.edit', $role['id']) }}"><i data-feather="edit-2" class="icon-sm mr-2"></i> <span class="">Edit</span></a>
                                         @endcan
                                         @can('Delete Roles')
-                                            <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'roleDelete{{ $role['id'] }}')" href="{{ route('admin.roles.destroy', $role['id']) }}"><i data-feather="delete" class="icon-sm mr-2"></i> <span class="">Delete</span></a>  
+                                            <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'roleDelete{{ $role['id'] }}')" href="{{ route('admin.roles.destroy', $role['id']) }}"><i data-feather="delete" class="icon-sm mr-2"></i> <span class="">Delete</span></a>
                                         @endcan
                                         <form id="roleDelete{{ $role['id'] }}" action="{{ route('admin.roles.destroy', $role['id']) }}" method="POST">
                                             @csrf

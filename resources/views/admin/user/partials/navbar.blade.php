@@ -65,6 +65,7 @@
                     $activeInvestments = $user->investments()->where('status', 'active')->sum('amount');
                     $totalInvestments = $user->investments()->where('status', 'active')->orWhere('status', 'settled')->sum('amount');
                     $pendingTransactions = $user->transactions()->where('status', 'pending')->sum('amount');
+                    $pendingInvestments = $user->investments()->where('status', 'pending')->sum('amount');
                 @endphp
                 <div class="d-flex flex-wrap flex-stack">
                     <!--begin::Wrapper-->
@@ -133,6 +134,21 @@
                                 <!--end::Number-->
                                 <!--begin::Label-->
                                 <div class="fw-bold fs-6 text-gray-400">Pending Transactions</div>
+                                <!--end::Label-->
+                            </div>
+                            <!--end::Stat-->
+                            <!--begin::Stat-->
+                            <div class="border border-gray-300 border-dashed rounded min-w-70px py-3 px-4 me-6 mb-3">
+                                <!--begin::Number-->
+                                <div class="d-flex align-items-center">
+                                    <!--begin::Svg Icon | path: icons/duotune/arrows/arr066.svg-->
+                                    <i class="fa fa-layer-group text-warning me-2"></i>
+                                    <!--end::Svg Icon-->
+                                    <div class="fs-2 fw-bolder" data-kt-countup="true" data-kt-countup-value="{{ $pendingInvestments }}" data-kt-countup-prefix="₦">{{ $pendingInvestments }}</div>
+                                </div>
+                                <!--end::Number-->
+                                <!--begin::Label-->
+                                <div class="fw-bold fs-6 text-gray-400">Pending Investments</div>
                                 <!--end::Label-->
                             </div>
                             <!--end::Stat-->

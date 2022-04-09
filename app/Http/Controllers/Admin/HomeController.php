@@ -109,7 +109,9 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('admin.profile.index');
+        $user = auth()->user();
+        // return $user;
+        return view('admin.profile.index', compact('user'));
     }
 
     public function updateProfile(Request $request): \Illuminate\Http\RedirectResponse
