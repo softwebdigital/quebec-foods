@@ -475,6 +475,7 @@
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" placeholder="No of slots" value="{{ old("slots")}}" class="form-control form-control-solid" name="slots" id="plantSlots">
+                            <div id="planSlotsError"></div>
                             @error('slots')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -646,6 +647,8 @@
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" placeholder="No of slots" value="{{ old("slots")}}" class="form-control form-control-solid" name="slots" id="slots">
+                            <div id="slotError"></div>
+
                             @error('slots')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -924,18 +927,21 @@
             }
             function checkIfFormCanSubmit(){
                 if (packageName.val() && slots.val() && (slots.val() > 0) && ((walletPayment.val() || cardPayment.val()) || depositPayment.val()) && agreed.prop('checked')){
-                    if ($("input[id='farmWalletPayment']:checked")){
+                    if ($("input[id='farmWalletPayment']").prop('checked')){
                         if ((slots.val() * price.val()) <= nairaWalletBalance ){
                             submitButton.removeAttr('disabled');
                             slots.css('borderColor', '#10B759');
+                            $('#slotError').html('');
                         }else{
                             submitButton.prop('disabled', true);
                             slots.css('borderColor', 'red');
-                            slots.after('<span style="color: red;">Insufficient wallet balance</span>');
+                            $('#slotError').html('<span style="color: red;">Insufficient wallet balance</span>');
+                            // slots.after('<span style="color: red;">Insufficient wallet balance</span>');
                         }
                     }else{
                         submitButton.removeAttr('disabled');
                         slots.css('borderColor', '#10B759');
+                        $('#slotError').html('');
                     }
                 }else{
                     submitButton.prop('disabled', true);
@@ -1012,18 +1018,20 @@
             }
             function checkIfFormCanSubmit(){
                 if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() > 0) && ((plantWalletPayment.val() || plantCardPayment.val()) || plantDepositPayment.val()) && plantAgreed.prop('checked')){
-                    if ($("input[id='plantWalletPayment']:checked")){
+                    if ($("input[id='plantWalletPayment']").prop('checked')){
                         if ((plantSlots.val() * plantPrice.val()) <= walletBalance ){
                             plantSubmitButton.removeAttr('disabled');
                             plantSlots.css('borderColor', '#10B759');
+                            $('#planSlotsError').html('');
                         }else{
                             plantSubmitButton.prop('disabled', true);
                             plantSlots.css('borderColor', 'red');
-                            plantSlots.after('<span style="color: red;">Insufficient wallet balance</span>');
+                            $('#planSlotsError').html('<span style="color: red;">Insufficient wallet balance</span>');
                         }
                     }else{
                         plantSubmitButton.removeAttr('disabled');
                         plantSlots.css('borderColor', '#10B759');
+                        $('#planSlotsError').html('');
                     }
                 }else{
                     plantSubmitButton.prop('disabled', true);

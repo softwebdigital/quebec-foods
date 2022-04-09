@@ -101,11 +101,12 @@
             @php
                 $securityError = $errors->first('new_password') || $errors->first('old_password');
                 $bankError = $errors->first('account_name') || $errors->first('bank_name') || $errors->first('account_number');
+                $idError = $errors->first('photo') || $errors->first('number') || $errors->first('method');
             @endphp
             <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
                 <!--begin:::Tab item-->
                 <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4 @if(!$securityError && !$bankError) active @endif" data-bs-toggle="tab" href="#kt_user_view_overview_tab">Overview</a>
+                    <a class="nav-link text-active-primary pb-4 @if(!$securityError && !$bankError && !$idError) active @endif" data-bs-toggle="tab" href="#kt_user_view_overview_tab">Overview</a>
                 </li>
                 <!--end:::Tab item-->
                 <!--begin:::Tab item-->
@@ -118,13 +119,18 @@
                     <a class="nav-link text-active-primary pb-4 @if($bankError) active @endif" id='tab-bank' data-bs-toggle="tab" href="#kt_user_view_overview_events_and_logs_and_bank_information_tab">Bank</a>
                 </li>
                 <!--end:::Tab item-->
+                <!--begin:::Tab item-->
+                <li class="nav-item">
+                    <a class="nav-link text-active-primary pb-4 @if($idError) active @endif" id='tab-id' data-bs-toggle="tab" href="#kt_user_view_overview_identification">Identification</a>
+                </li>
+                <!--end:::Tab item-->
             </ul>
             <!--end:::Tabs-->
 
             <!--begin:::Tab content-->
             <div class="tab-content" id="myTabContent">
                 <!--begin:::Tab pane-->
-                <div class="tab-pane fade @if(!$securityError && !$bankError) show active @endif" id="kt_user_view_overview_tab" role="tabpanel">
+                <div class="tab-pane fade @if(!$securityError && !$bankError && !$idError) show active @endif" id="kt_user_view_overview_tab" role="tabpanel">
                     <!--begin::Card-->
                     <div class="card card-flush mb-6 mb-xl-9">
                         <!--begin::Card header-->
@@ -682,6 +688,214 @@
                         </div>
                         <!--end::Card body-->
                     </div>
+                    <!--end::Card-->
+                </div>
+                <!--end:::Tab pane-->
+                <!--begin:::Tab pane-->
+                <div class="tab-pane fade @if($idError) show active @endif" id="kt_user_view_overview_identification" role="tabpanel">
+                    @if ($user->documents()->where('status', 'pending')->count() > 0)
+                    <div class="notice mb-4 d-flex bg-light-warning rounded border-warning border border-dashed min-w-lg-600px flex-shrink-0 p-6">
+                        <!--begin::Wrapper-->
+                        <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+                            <!--begin::Content-->
+                            <div class="mb-3 mb-md-0 fw-bold">
+                                <h4 class="text-gray-900 fw-bolder">Submission Pending</h4>
+                                <div class="fs-6 text-gray-700 pe-7">You have a pending submission, you can make another submssion only if you submission was declined</div>
+                            </div>
+                            <!--end::Content-->
+                        </div>
+                        <!--end::Wrapper-->
+                    </div>
+                    @endif
+                    <!--begin::Card-->
+                    @if ($user->documents()->where('status', 'pending')->orWhere('status', 'approved')->count() == 0)
+                    <div class="card pt-4 mb-6 mb-xl-9">
+                        <!--begin::Card header-->
+                        <div class="card-header border-0">
+                            <!--begin::Card title-->
+                            <div class="card-title">
+                                <h2>Verify Your Identity</h2>
+                            </div>
+                            <!--end::Card title-->
+                            <!--begin::Card toolbar-->
+                        </div>
+                        <!--end::Card header-->
+                        <!--begin::Card body-->
+                        <div class="card-body pt-0 pb-5">
+                            <!--begin:::Form-->
+                            <form class="form mb-3" method="post" action="{{ route('document.store') }}" id="update-id-form" enctype="multipart/form-data">
+                                @csrf
+                                <!--begin::Input group-->
+                                <div class="row mb-5">
+                                    <!--begin::Col-->
+                                    <div class="col-md-12 mb-5 fv-row">
+                                        <!--begin::Label-->
+                                        <label class="required fs-5 fw-bold mb-2">Method</label>
+                                        <!--end::Label-->
+                                        <!--begin::Input-->
+                                        <select name="method" aria-label="Select Method" class="form-select form-select-solid text-dark">
+                                            <option value="">Select Method</option>
+                                            <option @if(old("method") == 'National ID') selected @endif value="National ID">National ID</option>
+                                            <option @if(old("method") == 'International Passport') selected @endif value="International Passport">International Passport</option>
+                                            <option @if(old("method") == 'Voters Card') selected @endif value="Voters Card">Voters Card</option>
+                                        </select>
+                                        @error('method')
+                                            <span class="text-danger small" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-md-12  mb-5 fv-row">
+                                        <!--end::Label-->
+                                        <label class="required fs-5 fw-bold mb-2">Photo</label>
+                                        <!--end::Label-->
+                                        <!--end::Input-->
+                                        <input type="file" class="form-control form-control-solid" name="photo" id="photo">
+                                        @error('photo')
+                                            <span class="text-danger small" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                    <!--begin::Col-->
+                                    <div class="col-md-12 fv-row">
+                                        <!--end::Label-->
+                                        <label class="fs-5 fw-bold mb-2">Number on ID</label>
+                                        <!--end::Label-->
+                                        <!--end::Input-->
+                                        <input type="text" value="{{ old("number") }}" class="form-control form-control-solid" name="number" id="number">
+                                        @error('number')
+                                            <span class="text-danger small" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <!--end::Col-->
+                                </div>
+                                <!--end::Input group-->
+                                <!--begin::Submit-->
+                                <button type="button" onclick="confirmFormSubmit(event, 'update-id-form')" class="btn btn-primary">
+                                    <!--begin::Indicator-->
+                                    <span class="indicator-label">Upload</span>
+                                    <!--end::Indicator-->
+                                </button>
+                                <!--end::Submit-->
+                            </form>
+                            <!--end:::Form-->
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    @endif
+                    @php
+                        $approved = $user->documents()->where('status', 'approved')->first();
+                    @endphp
+                    @if ($approved)
+                    <div class="card pt-4 mb-6 mb-xl-9">
+                        <!--begin::Card body-->
+                        <div class="card-body pt-0 pb-5">
+                            <img src="{{ asset($approved->photo) }}" class="mb-4" style="max-width: 300px; border-radius: 10px">
+                            <table class="table">
+                                <tr>
+                                    <th class="text-gray-900 fw-bolder">Method</th>
+                                    <td>{{ $approved->method }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-gray-900 fw-bolder">ID Number</th>
+                                    <td>{{ $approved->number ?? '---' }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-gray-900 fw-bolder">Date Submitted</th>
+                                    <td>{{ $approved->created_at->format('M d, Y \a\t H:i:s') }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-gray-900 fw-bolder">Date Approved</th>
+                                    <td>{{ $approved->updated_at->format('M d, Y \a\t H:i:s') }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    @endif
+                    <!--end::Card-->
+                    <!--begin::Card-->
+                    <div class="card pt-4 mb-6 mb-xl-9">
+                        <!--begin::Card header-->
+                        <div class="card-header border-0">
+                            <!--begin::Card title-->
+                            <div class="card-title">
+                                <h2>Submissions</h2>
+                            </div>
+                            <!--end::Card title-->
+                            <!--begin::Card toolbar-->
+                        </div>
+                        <!--end::Card header-->
+                        <!--begin::Card body-->
+                        <div class="card-body pt-0 pb-5">
+                            <!--begin::Table wrapper-->
+                            <div class="table-responsive">
+                                <!--begin::Table-->
+                                <table class="table align-middle table-row-dashed gy-5" id="kt_table_users_login_session">
+                                    <!--begin::Table head-->
+                                    <thead class="border-bottom border-gray-200 fs-7 fw-bolder">
+                                        <!--begin::Table row-->
+                                        <tr class="text-start text-muted text-uppercase gs-0">
+                                            <th>S/N</th>
+                                            <th>Method</th>
+                                            <th>ID Number</th>
+                                            <th>Status</th>
+                                            <th>Submitted On</th>
+                                        </tr>
+                                        <!--end::Table row-->
+                                    </thead>
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody class="fs-6 fw-bold text-gray-600">
+                                        @if (count($user->documents()->get()) > 0)
+                                            @foreach ($user->documents()->get() as $key => $doc)
+                                                <tr>
+                                                    <!--begin::Invoice=-->
+                                                    <td>{{ $key + 1 }}</td>
+                                                    <!--end::Invoice=-->
+                                                    <!--begin::Status=-->
+                                                    <td>{{ $doc->method }}</td>
+                                                    <!--end::Status=-->
+                                                    <!--begin::Amount=-->
+                                                    <td>{{ $doc->number ?? '---' }}</td>
+                                                    <!--end::Amount=-->
+                                                    <!--begin::Date=-->
+                                                    <td>
+                                                        @if($doc['status'] == 'approved')
+                                                            <span class="badge badge-pill badge-success">Approved</span>
+                                                        @elseif($doc['status'] == 'declined')
+                                                            <span class="badge badge-pill badge-danger">Declined</span>
+                                                        @elseif($doc['status'] == 'pending')
+                                                            <span class="badge badge-pill badge-warning">Pending</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ $doc->created_at->format('M d, Y') }}</td>
+                                                    <!--end::Date=-->
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="4" class="text-center">No data</td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                    <!--end::Table body-->
+                                </table>
+                                <!--end::Table-->
+                            </div>
+                            <!--end::Table wrapper-->
+                        </div>
+                        <!--end::Card body-->
+                    </div>
+                    <!--end::Card-->
+                     <!--end::Card-->
+                    <!--begin::Card-->
                     <!--end::Card-->
                 </div>
                 <!--end:::Tab pane-->

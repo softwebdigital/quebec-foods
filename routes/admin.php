@@ -104,4 +104,7 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::get('/onlinepayments', [App\Http\Controllers\Admin\OnlinePaymentController::class, 'index'])->name('onlinepayments')->middleware('permission:View Payments');
     Route::post('/onlinepayments/{payment}/resolve', [App\Http\Controllers\Admin\OnlinePaymentController::class, 'resolve'])->name('onlinepayments.resolve')->middleware('permission:Resolve Payments');
     Route::post('/onlinepayments/fetch/ajax', [App\Http\Controllers\Admin\OnlinePaymentController::class, 'fetchPaymentsWithAjax'])->name('onlinepayments.ajax')->middleware('permission:View Payments');
+
+    Route::get('/verifications', [App\Http\Controllers\Admin\VerificationController::class, 'index'])->name('verifications');
+    Route::put('/verifications/{verification}/{status}', [App\Http\Controllers\Admin\VerificationController::class, 'process'])->name('verification.process');
 });

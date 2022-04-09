@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
     Route::post('/banks', [App\Http\Controllers\BankAccountsController::class, 'store'])->name('bank.store');
     Route::delete('/banks/{bank}', [App\Http\Controllers\BankAccountsController::class, 'destroy'])->name('bank.destroy');
 
+    Route::post('/documents', [App\Http\Controllers\DocumentController::class, 'store'])->name('document.store');
+
     Route::group(['middleware' => ['profile_completed']], function () {
         Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 

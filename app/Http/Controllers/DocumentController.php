@@ -2,85 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use Image;
 use App\Models\Document;
-use App\Http\Requests\StoreDocumentRequest;
-use App\Http\Requests\UpdateDocumentRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class DocumentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\StoreDocumentRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreDocumentRequest $request)
+    public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Document  $document
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Document $document)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Document  $document
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Document $document)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateDocumentRequest  $request
-     * @param  \App\Models\Document  $document
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateDocumentRequest $request, Document $document)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Document  $document
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Document $document)
-    {
-        //
+        $validator = Validator::make($request->all(), [
+            'method' => ['required'],
+            'photo' => ['required', 'file', 'image']
+        ]);
+        if ($validator->fails()){
+            return back()->withInput()->withErrors($validator)->with('error', 'Invalid input data');
+        }
+        $data = $request->only(['method', 'number']);
+        $destinationPath = 'assets/photos'; // upload path
+        HomeController::createDirectoryIfNotExists($destinationPath);
+        $transferImage = \auth()->user()['id'].'-id-'. time() . '.' . $request['photo']->getClientOriginalExtension();
+        $image = Image::make($request->file('photo'));
+        $image->save($destinationPath . '/' . $transferImage, 40);
+        $data['photo'] = $destinationPath ."/".$transferImage;
+        auth()->user()->documents()->create($data);
+        return back()->with('success', 'ID submitted successfully');
     }
 }
