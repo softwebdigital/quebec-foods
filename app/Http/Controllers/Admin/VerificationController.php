@@ -11,6 +11,7 @@ class VerificationController extends Controller
     public function index()
     {
         $data = Document::where('status', 'pending')->get();
+        // return $data;
         return view('admin.verification.index', compact('data'));
     }
 
