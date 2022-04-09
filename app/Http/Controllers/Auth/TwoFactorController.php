@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Notifications\TwoFactorCode;
+use Carbon\Carbon;
 
 class TwoFactorController extends Controller
 {
@@ -37,6 +38,9 @@ class TwoFactorController extends Controller
             $user->resetTwoFactorCode();
 
             return redirect()->route('dashboard');
+        }
+        if (Carbon::parse($user->two_factor_code_expiry)->lt(now())) {
+            return redirect()->back()->with('error', 'The two factor code you entered has expired');
         }
 
         return redirect()->back()->with('error', 'The two factor code you have entered does not match');

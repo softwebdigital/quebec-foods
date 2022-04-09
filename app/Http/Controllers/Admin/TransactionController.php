@@ -220,7 +220,7 @@ class TransactionController extends Controller
         }
         else {
             $transactions = $transactions->where('description','LIKE',"%{$search}%")
-                ->orWhereHas('user',function ($q) use ($search) { $q->where('name', 'LIKE',"%{$search}%"); })
+                ->orWhereHas('user',function ($q) use ($search) { $q->where('first_name', 'LIKE',"%{$search}%")->orWhere('last_name', "%{$search}%"); })
                 ->orWhere('type', 'LIKE',"%{$search}%")
                 ->orWhere('amount', 'LIKE',"%{$search}%")
                 ->orWhere('status', 'LIKE',"%{$search}%");

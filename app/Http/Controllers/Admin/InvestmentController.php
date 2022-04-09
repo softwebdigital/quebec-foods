@@ -87,14 +87,14 @@ class InvestmentController extends Controller
     {
         //        Define all column names
         $columns = [
-            'id', 'name', 'package', 'slots', 'total_invested', 'expected_returns', 'return_date', 'payment', 'status', 'action'
+            'id', 'name', 'package', 'slots', 'total_invested', 'expected_returns', 'investment_date', 'payment', 'status', 'action'
         ];
 //        Find data based on page
         $investments = Investment::query()->whereHas('package', function($query) use ($type) {
             $query->where('type', $type);
-        });
+        })->latest();
         if ($filter !== 'all') {
-            $investments->where('status', $filter);
+            $investments->where('status', $filter)->latest();
         }
 //        Set helper variables from request and DB
         $totalData = $totalFiltered = $investments->count();
@@ -112,7 +112,7 @@ class InvestmentController extends Controller
                 ->get();
         }
         else {
-            $investments = $investments->whereHas('user',function ($q) use ($search) { $q->where('name', 'LIKE',"%{$search}%"); })
+            $investments = $investments->whereHas('user',function ($q) use ($search) { $q->where('first_name', 'LIKE',"%{$search}%")->orWhere('last_name', 'LIKE', "%{$search}"); })
                 ->orWhereHas('package',function ($q) use ($search) { $q->where('name', 'LIKE',"%{$search}%"); })
                 ->orWhere('slots', 'LIKE',"%{$search}%")
                 ->orWhere('status', 'LIKE',"%{$search}%")
@@ -168,15 +168,15 @@ class InvestmentController extends Controller
 
             $datum['sn'] = $i;
             if (auth()->user()->can('View Users')){
-                $datum['name'] = '<a class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" href="'.route('admin.users.show', $investment->user['id']).'">'.ucwords($investment->user['name']).'</a>';
+                $datum['name'] = '<a class="text-primary-700 text-hover-primary fw-bolder d-block fs-6 text-nowrap" href="'.route('admin.users.show', $investment->user['id']).'">'.ucwords($investment->user['name']).'</a>';
             }else{
-                $datum['name'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.ucwords($investment->user['name']).'</span>';
+                $datum['name'] = '<span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">'.ucwords($investment->user['name']).'</span>';
             }
             $datum['package'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$investment->package['name'].'</span>';
             $datum['slots'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$investment['slots'].'</span>';
             $datum['total_invested'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($investment['amount']).'</span>';
             $datum['expected_returns'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($investment['total_return']).'</span>';
-            $datum['return_date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$investment->return_date->format('M d, Y').'</span>';
+            $datum['investment_date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$investment->investment_date->format('M d, Y').'</span>';
             $datum['status'] = $status;
             $datum['payment'] = $payment;
             $datum['action'] = '<a href="javascript:void();" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end" style="white-space: nowrap;">Action

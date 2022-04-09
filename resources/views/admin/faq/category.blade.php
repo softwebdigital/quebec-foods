@@ -25,7 +25,7 @@
                     </svg>
                 </span>
                 <!--end::Svg Icon-->New Category</button>
-            </div> 
+            </div>
         @endcan
     </div>
     <!--end::Header-->
@@ -40,6 +40,7 @@
                     <tr class="fw-bolder text-muted bg-light">
                         <th class="ps-4 text-dark rounded-start">SN</th>
                         <th class="text-dark">Category Name</th>
+                        <th class="text-dark">Questions</th>
                         <th class="text-end rounded-end"></th>
                     </tr>
                 </thead>
@@ -48,8 +49,9 @@
                 <tbody>
                     @foreach ($faqCategories as $key => $faqCategory)
                         <tr>
-                            <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">1</span></td>
+                            <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $faqCategory['name']}}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $faqCategory->faqs()->count() }}</span></td>
                             <td class="text-end">
                                 <a href="#" class="btn btn-sm btn-light-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
                                     <span class="svg-icon svg-icon-5 m-0">

@@ -98,28 +98,33 @@
         <!--begin::Content-->
         <div class="flex-lg-row-fluid ms-lg-15">
             <!--begin:::Tabs-->
+            @php
+                $securityError = $errors->first('new_password') || $errors->first('old_password');
+                $bankError = $errors->first('account_name') || $errors->first('bank_name') || $errors->first('account_number');
+            @endphp
             <ul class="nav nav-custom nav-tabs nav-line-tabs nav-line-tabs-2x border-0 fs-4 fw-bold mb-8">
                 <!--begin:::Tab item-->
                 <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4 active" data-bs-toggle="tab" href="#kt_user_view_overview_tab">Overview</a>
+                    <a class="nav-link text-active-primary pb-4 @if(!$securityError && !$bankError) active @endif" data-bs-toggle="tab" href="#kt_user_view_overview_tab">Overview</a>
                 </li>
                 <!--end:::Tab item-->
                 <!--begin:::Tab item-->
                 <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4" data-kt-countup-tabs="true" data-bs-toggle="tab" href="#kt_user_view_overview_security">Security</a>
+                    <a class="nav-link text-active-primary pb-4 @if($securityError) active @endif" data-kt-countup-tabs="true" data-bs-toggle="tab" href="#kt_user_view_overview_security">Security</a>
                 </li>
                 <!--end:::Tab item-->
                 <!--begin:::Tab item-->
                 <li class="nav-item">
-                    <a class="nav-link text-active-primary pb-4" id='tab-bank' data-bs-toggle="tab" href="#kt_user_view_overview_events_and_logs_and_bank_information_tab">Bank</a>
+                    <a class="nav-link text-active-primary pb-4 @if($bankError) active @endif" id='tab-bank' data-bs-toggle="tab" href="#kt_user_view_overview_events_and_logs_and_bank_information_tab">Bank</a>
                 </li>
                 <!--end:::Tab item-->
             </ul>
             <!--end:::Tabs-->
+
             <!--begin:::Tab content-->
             <div class="tab-content" id="myTabContent">
                 <!--begin:::Tab pane-->
-                <div class="tab-pane fade show active" id="kt_user_view_overview_tab" role="tabpanel">
+                <div class="tab-pane fade @if(!$securityError && !$bankError) show active @endif" id="kt_user_view_overview_tab" role="tabpanel">
                     <!--begin::Card-->
                     <div class="card card-flush mb-6 mb-xl-9">
                         <!--begin::Card header-->
@@ -188,7 +193,7 @@
                                         <!--end::Input-->
                                         @error('first_name')
                                             <span class="text-danger small">
-                                                <span>{{ $message }}</span>
+                                                <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -203,7 +208,7 @@
                                         <!--end::Input-->
                                         @error('last_name')
                                             <span class="text-danger small">
-                                                <span>{{ $message }}</span>
+                                                <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -232,7 +237,7 @@
                                         <!--end::Input-->
                                         @error('phone')
                                             <span class="text-danger small">
-                                                <span>{{ $message }}</span>
+                                                <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -257,7 +262,7 @@
                                     <!--end::Input-->
                                     @error('country')
                                         <span class="text-danger small">
-                                            <span>{{ $message }}</span>
+                                            <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
 
@@ -281,7 +286,7 @@
                                         <!--end::Input-->
                                         @error('state')
                                             <span class="text-danger small">
-                                                <span>{{ $message }}</span>
+                                                <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -296,7 +301,7 @@
                                         <!--end::Input-->
                                         @error('city')
                                             <span class="text-danger small">
-                                                <span>{{ $message }}</span>
+                                                <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -307,7 +312,7 @@
                                 <div class="d-flex flex-column mb-5 fv-row">
                                     <!--begin::Label-->
                                     <label class="d-flex align-items-center fs-5 fw-bold mb-2">
-                                        <span class="required">Address</span>
+                                        <strong class="required">Address</strong>
                                         {{-- <i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Your payment statements may very based on selected position"></i> --}}
                                     </label>
                                     <!--end::Label-->
@@ -316,7 +321,7 @@
                                     <!--end::Input-->
                                     @error('address')
                                         <span class="text-danger small">
-                                            <span>{{ $message }}</span>
+                                            <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -336,7 +341,7 @@
                                         <!--end::Input-->
                                         @error('nk_name')
                                             <span class="text-danger small">
-                                                <span>{{ $message }}</span>
+                                                <strong>{{ $message }}</strong>
                                             </span>
 
                                         @enderror
@@ -352,7 +357,7 @@
                                         <!--end::Input-->
                                         @error('nk_phone')
                                             <span class="text-danger small">
-                                                <span>{{ $message }}</span>
+                                                <strong>{{ $message }}</strong>
                                             </span>
                                         @enderror
                                     </div>
@@ -369,7 +374,7 @@
                                     <!--end::Input-->
                                     @error('nk_address')
                                         <span class="text-danger small">
-                                            <span>{{ $message }}</span>
+                                            <strong>{{ $message }}</stro>
                                         </span>
                                     @enderror
                                 </div>
@@ -390,7 +395,7 @@
                 </div>
                 <!--end:::Tab pane-->
                 <!--begin:::Tab pane-->
-                <div class="tab-pane fade" id="kt_user_view_overview_security" role="tabpanel">
+                <div class="tab-pane fade @if($securityError) show active @endif" id="kt_user_view_overview_security" role="tabpanel">
                     <!--begin::Card-->
                     <div class="card pt-4 mb-6 mb-xl-9">
                         <!--begin::Card header-->
@@ -417,8 +422,8 @@
                                     <input class="form-control form-control-solid" name="old_password" type="password" id="old_password" autocomplete="off" placeholder="Old Password" />
                                     <!--end::Input-->
                                     @error('old_password')
-                                        <span class="text-manger small">
-                                            <span>{{ $message }}</span>
+                                        <span class="text-danger small">
+                                            <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -432,8 +437,8 @@
                                     <input class="form-control form-control-solid" name="new_password" type="password" id="new_password" autocomplete="off" placeholder="New Password" />
                                     <!--end::Input-->
                                     @error('new_password')
-                                        <span class="text-manger small">
-                                            <span>{{ $message }}</span>
+                                        <span class="text-danger small">
+                                            <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -447,8 +452,8 @@
                                     <input class="form-control form-control-solid" type="password" placeholder="Confirm Password" name="confirm_password" id="confirm_password" />
                                     <!--end::Input-->
                                     @error('confirm_password')
-                                        <span class="text-manger small">
-                                            <span>{{ $message }}</span>
+                                        <span class="text-danger small">
+                                            <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -503,7 +508,7 @@
                 </div>
                 <!--end:::Tab pane-->
                 <!--begin:::Tab pane-->
-                <div class="tab-pane fade" id="kt_user_view_overview_events_and_logs_and_bank_information_tab" role="tabpanel">
+                <div class="tab-pane fade @if($bankError) show active @endif" id="kt_user_view_overview_events_and_logs_and_bank_information_tab" role="tabpanel">
                     <!--begin::Card-->
                     <div class="card pt-4 mb-6 mb-xl-9">
                         <!--begin::Card header-->
@@ -575,8 +580,8 @@
                                     <input type="text" value="{{ old("account_name") ?? $user['account_name'] }}" readonly class="form-control form-control-solid bg-secondary" name="account_name" id="account_name">
                                     <!--end::Input-->
                                     @error('account_name')
-                                        <span class="text-manger small">
-                                            <span>Account name not verified</span>
+                                        <span class="text-danger small">
+                                            <strong>Account name not verified</strong>
                                         </span>
                                     @enderror
                                 </div>

@@ -9,6 +9,7 @@ use App\Models\Setting;
 use App\Notifications\WithdrawalTokenNotification;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
@@ -154,14 +155,6 @@ class TransactionController extends Controller
         return response()->json(['success' => true]);
     }
 
-    public function resendToken(Request $request) {
-        $user = auth()->user();
-        $user->generateWithdrawalToken();
-        $user->notify(new WithdrawalTokenNotification());
-        // return response()->json(['success' => true]);
-    }
-
-
     public function withdraw(Request $request)
     {
         // Validate request
@@ -176,15 +169,20 @@ class TransactionController extends Controller
             'input6' => ['required', 'integer'],
         ]);
 
-        return $request->all();
+        // return $request->all();
 
         $request['amount'] = (int)(str_replace(",", "", $request['amount']));
         $user = auth()->user();
         $token = $request['input1'].$request['input2'].$request['input3'].$request['input4'].$request['input5'].$request['input6'];
 
         if ($token != $user->withdrawal_otp) {
-            return redirect()->back()->with('error', 'The two factor code you have entered does not match');
-        };
+            return redirect()->back()->with('error', 'The withdrawal token you entered does not match');
+        }
+
+        if (Carbon::parse($user->withdrawal_otp_expiry)->lt(now())) {
+            return redirect()->back()->with('error', 'The withdrawal token you entered has expired');
+        }
+
         $user->resetWithdrawalToken();
 
         if ($validator->fails()){

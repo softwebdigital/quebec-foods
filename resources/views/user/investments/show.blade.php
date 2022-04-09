@@ -7,7 +7,7 @@
 @endsection
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="{{ route('investments', [$type, $filter]) }}" class="@if (request()->routeIs(['investments'])) text-dark @else text-muted @endif">Investments</a></li>
+{{-- <li class="breadcrumb-item"><a href="{{ route('investments', [$type, $filter]) }}" class="@if (request()->routeIs(['investments'])) text-dark @else text-muted @endif">Investments</a></li> --}}
 <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Details</a></li>
 @endsection
 
@@ -115,7 +115,7 @@
                         <div class="text-gray-600">{{ $investment['return_date']->format('M d, Y \a\t h:i A') }}</div>
                         <!--begin::Details item-->
                         @if ($investment['package']['type'] == 'farm')
-                            <form action="{{ route('investment.update.rollover', ['type' => $type, 'investment' => $investment['id']]) }}" method="POST" id="updateRolloverForm">
+                            <form action="{{ route('investment.update.rollover', ['type' => 'farm', 'investment' => $investment['id']]) }}" method="POST" id="updateRolloverForm">
                                 @csrf
                                 @method('PUT')
                                 <!--begin::Input group-->
