@@ -11,8 +11,25 @@
 @endsection
 
 @section('content')
+    @php
+    $approved = auth()->user()->documents()->where('status', 'approved')->first();
+    @endphp
     <!--begin::Referral program-->
     <div class="row">
+        @if (!$approved)
+        <div class="notice mb-5 d-flex bg-light-warning rounded border-warning border border-dashed min-w-lg-600px flex-shrink-0 p-6">
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+                <!--begin::Content-->
+                <div class="mb-3 mb-md-0 fw-bold">
+                    <h4 class="text-gray-900 fw-bolder">Withdrawal Unavailable</h4>
+                    <div class="fs-6 text-gray-700 pe-7">You need to verify your identity before you can make withdrawals from you wallet</div>
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        @endif
         <div class="col-xxl-5 col-md-5 mb-xxl-10">
             <!--begin::Mixed Widget 1-->
             <div class="card h-md-100">
@@ -143,7 +160,7 @@
                         <div>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-primary min-w-125px">Top Up</button>
                         </div>
-                        @if($setting['withdrawal'] == 1)
+                        @if($setting['withdrawal'] == 1 && $approved)
                             <div>
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
                             </div>
@@ -184,6 +201,7 @@
                     <!--end::Sub-title-->
                     <!--begin::Mobile no-->
                     <div class="fw-bolder text-center text-success fs-3">{{ substr(auth()->user()['email'], 0, 5) }}******{{ substr(auth()->user()['email'], -12) }}</div>
+                    <div id="resentMessage" style="display: none" class="text-primary my-3 fw-bolder fs-4 text-center">Verification code resent successfully</div>
                     <!--end::Mobile no-->
                     <!--begin::Form-->
                     <form data-kt-element="sms-form" class="form" id="otpWithdrawalForm" method="POST" action="{{ route('withdraw') }}">
@@ -216,7 +234,13 @@
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             </button>
                         </div>
-                        <p class="text-center mt-2 mb-0">Didn't get a mail? <span><a class="link-primary fw-bolder" href="#" onclick="event.preventDefault(); sendToken();">Resend</a></span></p>
+                        <p class="text-center mt-4 mb-0">Didn't get a mail?
+                            <span><a class="link-primary fw-bolder" href="#" onclick="event.preventDefault(); sendToken(true);">
+                            <span>Resend</span>
+                            <span id="resendSpinner" style="height: 15px; width: 15px; display: none" class="spinner-border text-primary" role="status">
+                            <span class="sr-only">Loading...</span>
+                          </span></a></span>
+                        </p>
                         <!--end::Actions-->
 
                     </form>
@@ -468,7 +492,7 @@
             sendToken();
         });
 
-        function sendToken() {
+        function sendToken(resent = false) {
             let withdrawAmount = withdrawInput.val();
             let selectedAccount = account.val();
 
@@ -484,6 +508,8 @@
                 return;
             }
             setLoader('withdrawalBtn', true);
+            $('#resendSpinner').show();
+            $('#resentMessage').hide();
             $.ajax({
                     type: "POST",
                     url: "{{ route('withdrawal.token') }}",
@@ -492,6 +518,8 @@
                     encode: true,
                     error: function(err) {
                         setLoader('withdrawalBtn', false);
+                        $('#resendSpinner').hide();
+                        $('#resentMessage').hide();
                         console.log(err);
                     },
                     success: function() {
@@ -499,6 +527,8 @@
                         setLoader('withdrawalBtn', false);
                         $('#withdrawalModal').modal('hide');
                         $('#smsModal').modal('show');
+                        $('#resendSpinner').hide();
+                        if (resent) $('#resentMessage').show();
                     }
                 })
         }
