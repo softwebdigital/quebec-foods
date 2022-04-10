@@ -107,4 +107,9 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
 
     Route::get('/verifications', [App\Http\Controllers\Admin\VerificationController::class, 'index'])->name('verifications');
     Route::put('/verifications/{verification}/{status}', [App\Http\Controllers\Admin\VerificationController::class, 'process'])->name('verification.process');
+
+    Route::get('/category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category');
+    Route::post('/category/create', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store');
+    Route::put('/category/{category}/update', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category.update');
+    Route::delete('/category/{category}/destroy', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('category.destroy');
 });
