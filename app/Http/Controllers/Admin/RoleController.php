@@ -46,6 +46,11 @@ class RoleController extends Controller
         return back()->with('error', 'Error creating role');
     }
 
+    public function show(Role $role)
+    {
+        return view('admin.role.show', ['role' => $role]);
+    }
+
     public function edit(Role $role)
     {
         return view('admin.role.edit', ['role' => $role]);
@@ -71,7 +76,7 @@ class RoleController extends Controller
         $permissions = $request['permissions'];
         $permissions[] = 'View Quick Overview';
         if ($role->syncPermissions($permissions))
-            return redirect()->route('admin.roles')->with('success', 'Role updated successfully');
+            return back()->with('success', 'Role updated successfully');
         return back()->with('error', 'Error updating role');
     }
 

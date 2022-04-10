@@ -1,23 +1,17 @@
 @extends('layouts.admin')
 
-@section('pageTitle', ucfirst($type).' Packages')
+@section('pageTitle', 'Packages')
 
 @section('style')
 
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item text-muted"><a href="javascript:void()" class="text-dark">{{ ucfirst($type) }} Package</a></li>
+    <li class="breadcrumb-item text-muted"><a href="javascript:void()" class="text-dark">Packages</a></li>
 @endsection
 
 @section('content')
 <div class="d-flex justify-content-end align-items-center mt-5 mb-7">
-    <div>
-        <a href="{{ route('admin.packages', 'plant') }}" class="btn btn-lg btn-primary">Processing Plants Packages</a>
-    </div>
-    <div>
-        <a href="{{ route('admin.packages', 'farm') }}" class="btn btn-lg btn-primary ms-5">Farm Packages</a>
-    </div>
     <button type="button" class="btn btn-primary ms-3" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
         <!--begin::Svg Icon | path: icons/duotune/general/gen031.svg-->
         <span class="svg-icon svg-icon-2">
@@ -39,7 +33,6 @@
         <!--begin::Content-->
         <div class="px-7 py-5">
             <form action="" method="get">
-                @csrf
                 <!--begin::Input group-->
                 <div class="mb-10">
                     <!--begin::Label-->
@@ -48,8 +41,8 @@
                     <!--begin::Input-->
                     <select name="category" class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
                         <option value="">Show All</option>
-                        <option value="plant">Processing Plants</option>
-                        <option value="farm">Farm</option>
+                        <option @if(request('category') == 'plant') selected @endif value="plant">Processing Plants</option>
+                        <option @if(request('category') == 'farm') selected @endif value="farm">Farm</option>
                     </select>
                     <!--end::Input-->
                 </div>
@@ -69,13 +62,13 @@
                         <!--end::Option-->
                         <!--begin::Option-->
                         <label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
-                            <input class="form-check-input" type="radio" name="status" value="closed" />
+                            <input class="form-check-input" type="radio" @if(request('status') == 'closed') checked @endif name="status" value="closed" />
                             <span class="form-check-label text-gray-600">Closed</span>
                         </label>
                         <!--end::Option-->
                         <!--begin::Option-->
                         <label class="form-check form-check-sm form-check-custom form-check-solid mb-3">
-                            <input class="form-check-input" type="radio" name="status" value="open" />
+                            <input class="form-check-input" type="radio" @if(request('status') == 'open') checked @endif name="status" value="open" />
                             <span class="form-check-label text-gray-600">Open</span>
                         </label>
                         <!--end::Option-->
@@ -98,6 +91,7 @@
 </div>
 <!--begin::Row-->
 <div class="row g-6 g-xl-9">
+    @if (count($packages) > 0)
     @foreach ($packages as $package )
         <!--begin::Col-->
         <div class="col-md-6 col-xxl-4">
@@ -105,7 +99,7 @@
             <div class="card">
                 <!--begin::Header-->
                     <div class="card-header border-0">
-                        <h3 class="card-title fw-bolder text-dark">Package Details</h3>
+                        <h3 class="card-title fw-bolder text-dark"></h3>
                         <div class="card-toolbar">
                             <!--begin::Menu-->
                             <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary" data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
@@ -134,7 +128,7 @@
                                 <!--end::Menu separator-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3">
-                                    <a href="{{ route('admin.packages.destroy', [$type, $package['id']]) }}" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')" class="menu-link px-3">Delete Package</a>
+                                    <a href="{{ route('admin.packages.destroy', [$package['type'], $package['id']]) }}" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')" class="menu-link px-3">Delete Package</a>
                                 </div>
                                 <form action="{{ route('admin.packages.destroy', [$package['type'], $package['id']]) }}" id="deletePackage{{ $package['id'] }}" method="POST">
                                     @csrf
@@ -148,7 +142,7 @@
                                 <!--end::Menu item-->
                                 <!--begin::Menu item-->
                                 <div class="menu-item px-3 pb-3">
-                                    <a href="{{ route('admin.packages.investments', [$type, $package['id']]) }}" class="menu-link px-3">Package Investments</a>
+                                    <a href="{{ route('admin.packages.investments', [$package['type'], $package['id']]) }}" class="menu-link px-3">Package Investments</a>
                                 </div>
                                 <!--end::Menu item-->
                             </div>
@@ -198,7 +192,7 @@
                             <div class="fw-bold text-gray-400">Start date</div>
                         </div>
                         <!--end::Stats-->
-                        @if ($type == 'plant')
+                        @if ($package['type'] == 'plant')
                             <!--begin::Stats-->
                             <div class="border border-gray-300 border-dashed rounded min-w-80px py-3 px-4 mx-2 mb-3 text-center">
                                 <div class="fs-6 fw-bolder text-gray-700">{{ ucwords($package['status']) }}</div>
@@ -233,6 +227,9 @@
         </div>
         <!--end::Col-->
     @endforeach
+    @else
+        <div class="text-center">No data available</div>
+    @endif
 </div>
 <!--end::Row-->
 @endsection
