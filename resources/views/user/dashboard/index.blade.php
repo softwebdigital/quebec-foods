@@ -337,15 +337,19 @@
             <!--end::Mixed Widget 13-->
         </div>
         <!--end::Col-->
+    </div>
+    <!--end::Row-->
+    <div class="row gy-5 g-xl-10 my-5">
+        @php
+            $pckgs = \App\Models\Package::latest()->where('status', 'open')->limit(3);
+        @endphp
+        @if ($pckgs->count() > 0)
         <div class="col-md-6">
             <div id="kt_sliders_widget_1_slider"
                 class="card card-flush carousel carousel-custom carousel-stretch slide h-xl-100" data-bs-ride="carousel"
                 data-bs-interval="5000">
                 <!--begin::Header-->
                 <div class="card-header pt-5">
-                    @php
-                        $pckgs = \App\Models\Package::latest()->where('status', 'open')->limit(3);
-                    @endphp
                     <!--begin::Title-->
                     <h4 class="card-title d-flex align-items-start flex-column">
                         <span class="card-label fw-bolder text-gray-800">Open Packages</span>
@@ -382,7 +386,7 @@
                                 <!--begin::Info-->
                                 <div class="m-0">
                                     <!--begin::Subtitle-->
-                                    <h4 class="fw-bolder text-gray-800 mb-3">Ruby on Rails</h4>
+                                    <h4 class="fw-bolder text-gray-800 mb-3">{{ $pcg['name'] }}</h4>
                                     <!--end::Subtitle-->
                                     <!--begin::Items-->
                                     <div class="d-flex d-grid gap-5">
@@ -401,7 +405,7 @@
                                                             fill="currentColor"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->3 Topics
+                                                <!--end::Svg Icon-->{{ $pcg['slots'] == '-1' ? 'Unlimted' : $pcg['slots'] }} Slots
                                             </span>
                                             <!--end::Section-->
                                             <!--begin::Section-->
@@ -417,7 +421,7 @@
                                                             fill="currentColor"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->1 Speakers
+                                                <!--end::Svg Icon-->{{ $pcg['roi'] }}% ROI
                                             </span>
                                             <!--end::Section-->
                                         </div>
@@ -437,7 +441,7 @@
                                                             fill="currentColor"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->50 Min
+                                                <!--end::Svg Icon-->₦{{ number_format($pcg['price']) }} / slot
                                             </span>
                                             <!--end::Section-->
                                             <!--begin::Section-->
@@ -453,7 +457,7 @@
                                                             fill="currentColor"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->72 students
+                                                <!--end::Svg Icon-->{{ $pcg->investments()->count() }} Investors
                                             </span>
                                             <!--end::Section-->
                                         </div>
@@ -466,8 +470,7 @@
                             <!--end::Wrapper-->
                             <!--begin::Action-->
                             <div class="mb-1">
-                                <a href="#" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                    data-bs-target="#kt_modal_create_app">Invest in package</a>
+                                <a class="btn btn-sm btn-primary" data-bs-toggle="modal" @if($pcg['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif >Invest in package</a>
                             </div>
                             <!--end::Action-->
                         </div>
@@ -479,8 +482,148 @@
                 <!--end::Body-->
             </div>
         </div>
+        @endif
+        @php
+            $pendingInvestments = \App\Models\Investment::latest()->where('status', 'pending')->where('payment', 'approved')->limit(3);
+        @endphp
+        @if ($pendingInvestments->count() > 0)
+        <div class="col-md-6">
+            <div id="kt_sliders_widget_1_slider"
+                class="card card-flush carousel carousel-custom carousel-stretch slide h-xl-100" data-bs-ride="carousel"
+                data-bs-interval="5000">
+                <!--begin::Header-->
+                <div class="card-header pt-5">
+                    <!--begin::Title-->
+                    <h4 class="card-title d-flex align-items-start flex-column">
+                        <span class="card-label fw-bolder text-gray-800">Pending Investments</span>
+                        <span class="text-gray-400 mt-1 fw-bolder fs-7">{{ $pendingInvestments->count() }} total pending(s) Investments</span>
+                    </h4>
+                    <!--end::Title-->
+                    <!--begin::Toolbar-->
+                    <div class="card-toolbar">
+                        <!--begin::Carousel Indicators-->
+                        <ol
+                            class="p-0 m-0 carousel-indicators carousel-indicators-bullet carousel-indicators-active-primary">
+                            @foreach ($pendingInvestments->get() as $key => $pendingInvestment)
+                            <li data-bs-target="#kt_sliders_widget_1_slider" data-bs-slide-to="{{ $key }}" class="ms-1 @if($key == 0) active @endif"
+                            @if($key == 0)  aria-current="true" active @endif></li>
+                            @endforeach
+                        </ol>
+                        <!--end::Carousel Indicators-->
+                    </div>
+                    <!--end::Toolbar-->
+                </div>
+                <!--end::Header-->
+                <!--begin::Body-->
+                <div class="card-body pt-6">
+                    <!--begin::Carousel-->
+                    <div class="carousel-inner mt-n5">
+                        <!--begin::Item-->
+                        @foreach ($pendingInvestments->get() as $key => $pendingInvestment)
+                        <div class="carousel-item @if($key == 0) show active @endif">
+                            <!--begin::Wrapper-->
+                            <div class="d-flex align-items-center mb-5">
+                                <!--begin::Info-->
+                                <div class="m-0">
+                                    <!--begin::Subtitle-->
+                                    <h4 class="fw-bolder text-gray-800 mb-3">{{ $pendingInvestment->currentPackage['name'] }}</h4>
+                                    <!--end::Subtitle-->
+                                    <!--begin::Items-->
+                                    <div class="d-flex d-grid gap-5">
+                                        <!--begin::Item-->
+                                        <div class="d-flex flex-column flex-shrink-0 me-4">
+                                            <!--begin::Section-->
+                                            <span class="d-flex align-items-center fs-7 fw-bolder text-gray-400 mb-2">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen057.svg-->
+                                                <span class="svg-icon svg-icon-6 svg-icon-gray-600 me-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                                            fill="currentColor"></rect>
+                                                        <path
+                                                            d="M11.9343 12.5657L9.53696 14.963C9.22669 15.2733 9.18488 15.7619 9.43792 16.1204C9.7616 16.5789 10.4211 16.6334 10.8156 16.2342L14.3054 12.7029C14.6903 12.3134 14.6903 11.6866 14.3054 11.2971L10.8156 7.76582C10.4211 7.3666 9.7616 7.42107 9.43792 7.87962C9.18488 8.23809 9.22669 8.72669 9.53696 9.03696L11.9343 11.4343C12.2467 11.7467 12.2467 12.2533 11.9343 12.5657Z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->{{ $pendingInvestment['slots'] }} Slots
+                                            </span>
+                                            <!--end::Section-->
+                                            <!--begin::Section-->
+                                            <span class="d-flex align-items-center text-gray-400 fw-bolder fs-7">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen057.svg-->
+                                                <span class="svg-icon svg-icon-6 svg-icon-gray-600 me-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                                            fill="currentColor"></rect>
+                                                        <path
+                                                            d="M11.9343 12.5657L9.53696 14.963C9.22669 15.2733 9.18488 15.7619 9.43792 16.1204C9.7616 16.5789 10.4211 16.6334 10.8156 16.2342L14.3054 12.7029C14.6903 12.3134 14.6903 11.6866 14.3054 11.2971L10.8156 7.76582C10.4211 7.3666 9.7616 7.42107 9.43792 7.87962C9.18488 8.23809 9.22669 8.72669 9.53696 9.03696L11.9343 11.4343C12.2467 11.7467 12.2467 12.2533 11.9343 12.5657Z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->₦{{ number_format($pendingInvestment['amount']) }} Invested
+                                            </span>
+                                            <!--end::Section-->
+                                        </div>
+                                        <!--end::Item-->
+                                        <!--begin::Item-->
+                                        <div class="d-flex flex-column flex-shrink-0">
+                                            <!--begin::Section-->
+                                            <span class="d-flex align-items-center fs-7 fw-bolder text-gray-400 mb-2">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen057.svg-->
+                                                <span class="svg-icon svg-icon-6 svg-icon-gray-600 me-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                                            fill="currentColor"></rect>
+                                                        <path
+                                                            d="M11.9343 12.5657L9.53696 14.963C9.22669 15.2733 9.18488 15.7619 9.43792 16.1204C9.7616 16.5789 10.4211 16.6334 10.8156 16.2342L14.3054 12.7029C14.6903 12.3134 14.6903 11.6866 14.3054 11.2971L10.8156 7.76582C10.4211 7.3666 9.7616 7.42107 9.43792 7.87962C9.18488 8.23809 9.22669 8.72669 9.53696 9.03696L11.9343 11.4343C12.2467 11.7467 12.2467 12.2533 11.9343 12.5657Z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->₦{{ number_format($pendingInvestment['total_return']) }} Returns
+                                            </span>
+                                            <!--end::Section-->
+                                            <!--begin::Section-->
+                                            <span class="d-flex align-items-center text-gray-400 fw-bolder fs-7">
+                                                <!--begin::Svg Icon | path: icons/duotune/general/gen057.svg-->
+                                                <span class="svg-icon svg-icon-6 svg-icon-gray-600 me-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                        viewBox="0 0 24 24" fill="none">
+                                                        <rect opacity="0.3" x="2" y="2" width="20" height="20" rx="5"
+                                                            fill="currentColor"></rect>
+                                                        <path
+                                                            d="M11.9343 12.5657L9.53696 14.963C9.22669 15.2733 9.18488 15.7619 9.43792 16.1204C9.7616 16.5789 10.4211 16.6334 10.8156 16.2342L14.3054 12.7029C14.6903 12.3134 14.6903 11.6866 14.3054 11.2971L10.8156 7.76582C10.4211 7.3666 9.7616 7.42107 9.43792 7.87962C9.18488 8.23809 9.22669 8.72669 9.53696 9.03696L11.9343 11.4343C12.2467 11.7467 12.2467 12.2533 11.9343 12.5657Z"
+                                                            fill="currentColor"></path>
+                                                    </svg>
+                                                </span>
+                                                <!--end::Svg Icon-->Starts on {{ $pendingInvestment['start_date']->format('M d, Y') }}
+                                            </span>
+                                            <!--end::Section-->
+                                        </div>
+                                        <!--end::Item-->
+                                    </div>
+                                    <!--end::Items-->
+                                </div>
+                                <!--end::Info-->
+                            </div>
+                            <!--end::Wrapper-->
+                            <!--begin::Action-->
+                            <div class="mb-1">
+                                <a href="{{ route('investments.show', ['investment' => $pendingInvestment['id']]) }}" class="btn btn-sm btn-primary">View Investments</a>
+                            </div>
+                            <!--end::Action-->
+                        </div>
+                        @endforeach
+                        <!--end::Item-->
+                    </div>
+                    <!--end::Carousel-->
+                </div>
+                <!--end::Body-->
+            </div>
+        </div>
+        @endif
     </div>
-    <!--end::Row-->
     <!--begin::Row-->
     <div class="row gy-5 g-xl-10 my-5">
         <!--begin::Col-->
