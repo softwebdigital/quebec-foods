@@ -136,7 +136,7 @@
                                 @endcan
                                 @can('View Packages')
                                     <div class="menu-item @if(request()->routeIs(['admin.packages']) && (request()->type == 'all' || request()->type == 'plant' || request()->type == 'farm')) here show @endif">
-                                        <a class="menu-link" href="{{ route('admin.packages', 'all') }}">
+                                        <a class="menu-link" href="{{ route('admin.packages') }}">
                                             <span class="menu-icon">
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
                                                 <span class="svg-icon svg-icon-5">
@@ -435,7 +435,12 @@
                                                 </span>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                            <span class="menu-title">Pending Verifications</span>
+                                            @php
+                                                $pendingVer = App\Models\Document::where('status', 'pending')->count();
+                                            @endphp
+                                            <span class="menu-title">Pending Verifications @if ($pendingVer > 0)
+                                                <span class="ms-3 badge badge-warning">{{ $pendingVer }}</span>
+                                            @endif</span>
                                         </a>
                                     </div>
                                 @endcan

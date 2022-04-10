@@ -1,13 +1,13 @@
 @extends('layouts.admin')
 
-@section('pageTitle', ucfirst($type).' Packages')
+@section('pageTitle', 'Packages')
 
 @section('style')
 
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item text-muted"><a href="javascript:void()" class="text-dark">{{ ucfirst($type) }} Package</a></li>
+    <li class="breadcrumb-item text-muted"><a href="javascript:void()" class="text-dark">Packages</a></li>
 @endsection
 
 @section('content')

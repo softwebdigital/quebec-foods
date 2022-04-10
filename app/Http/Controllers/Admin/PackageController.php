@@ -7,21 +7,21 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
-use function PHPSTORM_META\type;
-
 class PackageController extends Controller
 {
-    public function index($type)
+    public function index()
     {
-        if ($type == 'all')
-        {
-            $packages = Package::query()->where('status', 'open')->get();
-        } else
-        {
-            $packages = Package::query()->where('type', $type)->where('status', 'open')->get();
+        $packages = Package::query();
+        if (request('category')) {
+            $packages = $packages->where('type', request('category'));
         }
 
-        return view('admin.package.index', compact('packages', 'type'));
+        if (request('status')) {
+            $packages = $packages->where('status', request('status'));
+        }
+
+        $packages = $packages->get();
+        return view('admin.package.index', compact('packages'));
     }
 
     public function create($type)

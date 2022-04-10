@@ -43,6 +43,7 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::get('/roles', [App\Http\Controllers\Admin\RoleController::class, 'index'])->name('roles')->middleware('permission:View Roles');
     Route::get('/roles/create', [App\Http\Controllers\Admin\RoleController::class, 'create'])->name('roles.create')->middleware('permission:Create Roles');
     Route::get('/roles/{role?}/edit', [App\Http\Controllers\Admin\RoleController::class, 'edit'])->name('roles.edit')->middleware('permission:Edit Roles');
+    Route::get('/roles/{role?}/show', [App\Http\Controllers\Admin\RoleController::class, 'show'])->name('roles.show')->middleware('permission:View Roles');
     Route::post('/roles/store', [App\Http\Controllers\Admin\RoleController::class, 'store'])->name('roles.store')->middleware('permission:Create Roles');
     Route::put('/roles/{role?}/update', [App\Http\Controllers\Admin\RoleController::class, 'update'])->name('roles.update')->middleware('permission:Edit Roles');
     Route::delete('/roles/{role?}/destroy', [App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.destroy')->middleware('permission:Delete Roles');
@@ -78,9 +79,9 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
         });
         Route::get('{investment}/show', [App\Http\Controllers\Admin\InvestmentController::class, 'show'])->name('investments.show')->middleware('permission:View Investments');
     });
-    Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm|all']], function() {
-        Route::get('/', [\App\Http\Controllers\Admin\PackageController::class, 'index'])->name('packages')->middleware('permission:View Packages');
-        Route::get('/investments', [App\Http\Controllers\Admin\PackageController::class, 'investments'])->name('packages.investments')->middleware('permission:View Package Investments');
+    Route::get('/packages', [\App\Http\Controllers\Admin\PackageController::class, 'index'])->name('packages')->middleware('permission:View Packages');
+    Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm']], function() {
+        Route::get('/{package}/investments', [App\Http\Controllers\Admin\PackageController::class, 'investments'])->name('packages.investments')->middleware('permission:View Investments');
         Route::get('/create', [App\Http\Controllers\Admin\PackageController::class, 'create'])->name('packages.create')->middleware('permission:Create Packages');
         Route::get('/{package}/edit', [App\Http\Controllers\Admin\PackageController::class, 'edit'])->name('packages.edit')->middleware('permission:Edit Packages');
         Route::get('/{package}/show', [App\Http\Controllers\Admin\PackageController::class, 'show'])->name('packages.show');
