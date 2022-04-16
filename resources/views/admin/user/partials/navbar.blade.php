@@ -63,7 +63,7 @@
                 @php
                     $balance = $user['wallet']['balance'];
                     $activeInvestments = $user->investments()->where('status', 'active')->sum('amount');
-                    $totalInvestments = $user->investments()->where('status', 'active')->orWhere('status', 'settled')->sum('amount');
+                    $totalInvestments = $user->investments()->where(function ($q) { $q->where('status', 'active')->orWhere('status', 'settled'); })->sum('amount');
                     $pendingTransactions = $user->transactions()->where('status', 'pending')->sum('amount');
                     $pendingInvestments = $user->investments()->where('status', 'pending')->sum('amount');
                 @endphp
