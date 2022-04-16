@@ -655,7 +655,7 @@
                                                     <!--end::Date=-->
                                                     <td>
                                                         <div class="d-flex justify-content-end flex-shrink-0">
-                                                            <a href="#" onclick="confirmFormSubmit(event, 'delete-bank-form')" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
+                                                            <a href="#" onclick="confirmFormSubmit(event, 'delete-bank-form{{$account->id}}')" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm">
                                                                 <!--begin::Svg Icon | path: icons/duotune/general/gen027.svg-->
                                                                 <span class="svg-icon svg-icon-3">
                                                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -664,7 +664,7 @@
                                                                         <path opacity="0.5" d="M9 4C9 3.44772 9.44772 3 10 3H14C14.5523 3 15 3.44772 15 4V4H9V4Z" fill="black" />
                                                                     </svg>
                                                                 </span>
-                                                                <form id="delete-bank-form" action="{{ route('bank.destroy', $account->id) }}" method="post">
+                                                                <form id="delete-bank-form{{$account->id}}" action="{{ route('bank.destroy', $account->id) }}" method="post">
                                                                     @csrf
                                                                     @method('DELETE')
                                                                 </form>

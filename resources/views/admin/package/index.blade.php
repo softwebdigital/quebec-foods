@@ -203,9 +203,18 @@
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                     <div class="menu-item px-3">
-                                        {{-- <a class="menu-link px-3" data-bs-toggle="modal" @if($type == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment"@endif ><span class="">Invest</span></a> --}}
-                                        <a class="menu-link px-3" href="{{ route('packages.show', ['package' => $package['id']]) }}"><span class="">Show</span></a>
+                                        <a class="menu-link px-3" href="{{ route('admin.packages.show', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Show</span></a>
                                     </div>
+                                    <div class="menu-item px-3">
+                                        <a class="menu-link px-3" href="{{ route('admin.packages.edit', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Edit</span></a>
+                                    </div>
+                                    <div class="menu-item px-3">
+                                        <a class="menu-link px-3" href="" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')"><span class="">Delete</span></a>
+                                    </div>
+                                    <form action="{{ route('admin.packages.destroy', ['package' => $package['id'], 'type' => $package['type']]) }}" method="post" id="deletePackage{{ $package['id'] }}">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </div>
                             </td>
                         </tr>
