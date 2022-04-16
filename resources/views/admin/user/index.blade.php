@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('pageTitle', Str::ucfirst($type) . ' ' . 'Users')
+@section('pageTitle', 'Users')
 
 @section('style')
 
@@ -8,7 +8,9 @@
 
 @section('breadCrumbs')
     <li class="breadcrumb-item text-muted"><a href="javascript:void()" class="text-muted">Users</a></li>
-    <li class="breadcrumb-item text-muted"><a href="javscript:void()" class="text-dark">{{ Str::ucfirst($type) }}</a></li>
+    @if (request('type'))
+    <li class="breadcrumb-item text-muted"><a href="javscript:void()" class="text-dark">{{ ucwords(request('type')) }}</a></li>
+    @endif
 @endsection
 
 @section('content')
@@ -16,8 +18,8 @@
     <!--begin::Header-->
     <div class="card-header border-0 pt-5 py-3">
         <h3 class="card-title align-items-start flex-column">
-            <span class="card-label fw-bolder fs-3 mb-1">{{ Str::ucfirst($type) . ' ' . 'Users' }}</span>
-            @switch ($type)
+            <span class="card-label fw-bolder fs-3 mb-1">{{ ucwords(request('type')) . ' ' . 'Users' }}</span>
+            @switch (request('type'))
                 @case ('verified')
                     <span class="text-muted mt-1 fw-bold fs-7">{{ \App\Models\User::whereNotNull('email_verified_at')->count() }} Total Record(s)</span>
                     @break
@@ -53,17 +55,17 @@
                     <div class="separator border-gray-200"></div>
                     <!--end::Separator-->
                     <!--begin::Content-->
-                    <div class="px-7 py-5">
+                    <form class="px-7 py-5">
                         <!--begin::Input group-->
                         <div class="mb-10">
                             <!--begin::Label-->
                             <label class="form-label fs-5 fw-bold mb-3">Verifications:</label>
                             <!--end::Label-->
                             <!--begin::Input-->
-                            <select class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
-                                <option value="">Show All</option>
-                                <option value="verified">Verified</option>
-                                <option value="unverified">Unverified</option>
+                            <select name="type" class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
+                                <option @if(request('type') == 'all') selected @endif value="all">Show All</option>
+                                <option @if(request('type') == 'verified') selected @endif value="verified">Verified</option>
+                                <option @if(request('type') == 'unverified') selected @endif value="unverified">Unverified</option>
                             </select>
                             <!--end::Input-->
                         </div>
@@ -83,14 +85,14 @@
                                 <!--end::Option-->
                                 <!--begin::Option-->
                                 <label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
-                                    <input class="form-check-input" type="radio" name="status" value="active" />
+                                    <input class="form-check-input" type="radio" name="status" @if(request('status') == 'active') checked @endif value="active" />
                                     <span class="form-check-label text-gray-600">Active</span>
                                 </label>
                                 <!--end::Option-->
                                 <!--begin::Option-->
                                 <label class="form-check form-check-sm form-check-custom form-check-solid mb-3">
-                                    <input class="form-check-input" type="radio" name="status" value="block" />
-                                    <span class="form-check-label text-gray-600">Block</span>
+                                    <input class="form-check-input" type="radio" name="status" @if(request('status') == 'blocked') checked @endif value="blocked" />
+                                    <span class="form-check-label text-gray-600">Blocked</span>
                                 </label>
                                 <!--end::Option-->
                             </div>
@@ -103,7 +105,7 @@
                             <button type="submit" class="btn btn-primary" data-kt-menu-dismiss="true" data-kt-customer-table-filter="filter">Apply</button>
                         </div>
                         <!--end::Actions-->
-                    </div>
+                    </form>
                     <!--end::Content-->
                 </div>
                 <!--end::Menu 1-->
@@ -275,7 +277,7 @@
                 "serverSide": true,
                 "searching": true,
                 "ajax":{
-                    "url": "{{ route('admin.users.ajax', $type ?? 'all') }}",
+                    "url": "{{ route('admin.users.ajax', [request('type') ?? 'all', request('status') ?? 'all']) }}",
                     "dataType": "json",
                     "type": "POST",
                     "data":{ _token: "{{csrf_token()}}"}

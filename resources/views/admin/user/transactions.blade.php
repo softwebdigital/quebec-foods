@@ -12,7 +12,7 @@
 @endsection
 
 @section('content')
-    @include('admin.user.partials.navbar', ['user' => $user]);    
+    @include('admin.user.partials.navbar', ['user' => $user]);
 <!--begin::Col-->
 <div class="col-xl-12 mb-5 mb-xl-10">
     <!--begin::Table Widget 4-->

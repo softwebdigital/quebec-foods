@@ -48,7 +48,7 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::put('/roles/{role?}/update', [App\Http\Controllers\Admin\RoleController::class, 'update'])->name('roles.update')->middleware('permission:Edit Roles');
     Route::delete('/roles/{role?}/destroy', [App\Http\Controllers\Admin\RoleController::class, 'destroy'])->name('roles.destroy')->middleware('permission:Delete Roles');
 
-    Route::get('/users/{type?}', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users')->middleware('permission:View Users');
+    Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users')->middleware('permission:View Users');
     Route::get('/users/{user}/show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show')->middleware('permission:View Users');
     Route::get('/users/{user}/{type}/investments', [App\Http\Controllers\Admin\UserController::class, 'showUserInvestments'])->where('type', 'farm|plant')->name('users.investments');
     Route::get('/users/{user}/transactions', [App\Http\Controllers\Admin\UserController::class, 'showTransactions'])->name('users.transactions')->middleware('permission:View Transactions');
@@ -62,7 +62,7 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/deposit', [App\Http\Controllers\Admin\TransactionController::class, 'deposit'])->name('deposit')->middleware('permission:Deposit For Users');
     Route::post('/withdraw', [App\Http\Controllers\Admin\TransactionController::class, 'withdraw'])->name('withdraw')->middleware('permission:Withdraw For Users');
     Route::post('/download', [App\Http\Controllers\Admin\HomeController::class, 'download'])->name('download')->middleware('permission:Export Users CSV');
-    Route::post('/users/{type}/fetch/ajax', [App\Http\Controllers\Admin\UserController::class, 'fetchUsersWithAjax'])->name('users.ajax')->middleware('permission:View Users');
+    Route::post('/users/{type}/{status}fetch/ajax', [App\Http\Controllers\Admin\UserController::class, 'fetchUsersWithAjax'])->name('users.ajax')->middleware('permission:View Users');
 
     Route::get('/transactions/{type?}', [App\Http\Controllers\Admin\TransactionController::class, 'index'])->where('type', 'all|pending|deposit|withdrawal|investment|payout')->name('transactions')->middleware('permission:View Transactions');
     Route::put('/transactions/{transaction}/approve', [App\Http\Controllers\Admin\TransactionController::class, 'approve'])->name('transactions.approve')->middleware('permission:Approve Transactions');
@@ -70,12 +70,12 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/deposit', [App\Http\Controllers\Admin\TransactionController::class, 'deposit'])->name('deposit')->middleware('permission:Deposit For Users');
     Route::post('/withdraw', [App\Http\Controllers\Admin\TransactionController::class, 'withdraw'])->name('withdraw')->middleware('permission:Withdraw For Users');
     Route::get('/transactions/export/{type}/download', [\App\Http\Controllers\Admin\ExportController::class, 'exportTransactions'])->name('transactions.export')->middleware('permission:Export Transactions CSV');
-    Route::post('/transactions/{type}/fetch/ajax', [App\Http\Controllers\Admin\TransactionController::class, 'fetchTransactionsWithAjax'])->name('transactions.ajax')->middleware('permission:View Transactions');
+    Route::post('/transactions/{type}/{status}/fetch/ajax', [App\Http\Controllers\Admin\TransactionController::class, 'fetchTransactionsWithAjax'])->name('transactions.ajax')->middleware('permission:View Transactions');
 
-    Route::group(['prefix' => '/investments/{type?}', 'where' => ['type' => 'plant|farm']], function() {
+    Route::get('/investments', [App\Http\Controllers\Admin\InvestmentController::class, 'index'])->name('investments')->middleware('permission:View Investments');
+    Route::group(['prefix' => '/investments/{type?}', 'where' => ['type' => 'all|plant|farm']], function() {
         Route::group(['prefix' => '/{filter?}', 'where' => ['filter' => 'all|pending|active|cancelled|settled']], function() {
             Route::post('fetch/ajax', [App\Http\Controllers\Admin\InvestmentController::class, 'fetchInvestmentsWithAjax'])->name('investments.ajax')->middleware('permission:View Investments');
-            Route::get('/', [App\Http\Controllers\Admin\InvestmentController::class, 'index'])->name('investments')->middleware('permission:View Investments');
         });
         Route::get('{investment}/show', [App\Http\Controllers\Admin\InvestmentController::class, 'show'])->name('investments.show')->middleware('permission:View Investments');
     });

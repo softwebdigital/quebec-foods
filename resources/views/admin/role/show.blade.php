@@ -279,16 +279,6 @@
                                 <thead>
                                     <!--begin::Table row-->
                                     <tr class="text-start text-muted fw-bolder fs-7 text-uppercase gs-0">
-                                        <th class="w-10px pe-2 sorting_disabled" rowspan="1" colspan="1" aria-label="
-
-
-
-                                " style="width: 29.25px;">
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid me-3">
-                                                <input class="form-check-input" type="checkbox" data-kt-check="true"
-                                                    data-kt-check-target="#kt_roles_view_table .form-check-input" value="1">
-                                            </div>
-                                        </th>
                                         <th class="min-w-50px sorting" tabindex="0" aria-controls="kt_roles_view_table"
                                             rowspan="1" colspan="1" aria-label="ID: activate to sort column ascending"
                                             style="width: 58.9844px;">ID</th>
@@ -299,392 +289,36 @@
                                             rowspan="1" colspan="1"
                                             aria-label="Joined Date: activate to sort column ascending"
                                             style="width: 125px;">Joined Date</th>
-                                        <th class="text-end min-w-100px sorting_disabled" rowspan="1" colspan="1"
-                                            aria-label="Actions" style="width: 100px;">Actions</th>
                                     </tr>
                                     <!--end::Table row-->
                                 </thead>
                                 <!--end::Table head-->
                                 <!--begin::Table body-->
                                 <tbody class="fw-bold text-gray-600">
-                                    <tr class="odd">
-                                        <!--begin::Checkbox-->
-                                        <td>
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                <input class="form-check-input" type="checkbox" value="1">
-                                            </div>
-                                        </td>
-                                        <!--end::Checkbox-->
+                                    @foreach ($role->users()->get() as $key => $user)
+                                    <tr class="@if($key % 2 == 0) even @else odd @endif">
                                         <!--begin::ID-->
-                                        <td>ID3937</td>
+                                        <td>{{ $key + 1 }}</td>
                                         <!--begin::ID-->
                                         <!--begin::User=-->
                                         <td class="d-flex align-items-center">
-                                            <!--begin:: Avatar -->
-                                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html">
-                                                    <div class="symbol-label">
-                                                        <img src="/metronic8/demo15/assets/media/avatars/300-6.jpg"
-                                                            alt="Emma Smith" class="w-100">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <!--end::Avatar-->
                                             <!--begin::User details-->
                                             <div class="d-flex flex-column">
                                                 <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                    class="text-gray-800 text-hover-primary mb-1">Emma Smith</a>
-                                                <span>smith@kpmg.com</span>
+                                                    class="text-gray-800 text-hover-primary mb-1">{{ $user['name'] }}</a>
+                                                <span>{{ $user['email'] }}</span>
                                             </div>
                                             <!--begin::User details-->
                                         </td>
                                         <!--end::user=-->
                                         <!--begin::Joined date=-->
-                                        <td data-order="2022-11-10T11:30:00+01:00">10 Nov 2022, 11:30 am</td>
+                                        <td>{{ $user['created_at']->format('M d, Y') }}</td>
                                         <!--end::Joined date=-->
-                                        <!--begin::Action=-->
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                <span class="svg-icon svg-icon-5 m-0">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </a>
-                                            <!--begin::Menu-->
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                data-kt-menu="true">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                        class="menu-link px-3">View</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3"
-                                                        data-kt-roles-table-filter="delete_row">Delete</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
-                                            <!--end::Menu-->
-                                        </td>
-                                        <!--end::Action=-->
                                     </tr>
-                                    <tr class="even">
-                                        <!--begin::Checkbox-->
-                                        <td>
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                <input class="form-check-input" type="checkbox" value="1">
-                                            </div>
-                                        </td>
-                                        <!--end::Checkbox-->
-                                        <!--begin::ID-->
-                                        <td>ID2087</td>
-                                        <!--begin::ID-->
-                                        <!--begin::User=-->
-                                        <td class="d-flex align-items-center">
-                                            <!--begin:: Avatar -->
-                                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html">
-                                                    <div class="symbol-label fs-3 bg-light-danger text-danger">M</div>
-                                                </a>
-                                            </div>
-                                            <!--end::Avatar-->
-                                            <!--begin::User details-->
-                                            <div class="d-flex flex-column">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                    class="text-gray-800 text-hover-primary mb-1">Melody Macy</a>
-                                                <span>melody@altbox.com</span>
-                                            </div>
-                                            <!--begin::User details-->
-                                        </td>
-                                        <!--end::user=-->
-                                        <!--begin::Joined date=-->
-                                        <td data-order="2022-10-25T11:05:00+01:00">25 Oct 2022, 11:05 am</td>
-                                        <!--end::Joined date=-->
-                                        <!--begin::Action=-->
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                <span class="svg-icon svg-icon-5 m-0">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </a>
-                                            <!--begin::Menu-->
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                data-kt-menu="true">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                        class="menu-link px-3">View</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3"
-                                                        data-kt-roles-table-filter="delete_row">Delete</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
-                                            <!--end::Menu-->
-                                        </td>
-                                        <!--end::Action=-->
-                                    </tr>
-                                    <tr class="odd">
-                                        <!--begin::Checkbox-->
-                                        <td>
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                <input class="form-check-input" type="checkbox" value="1">
-                                            </div>
-                                        </td>
-                                        <!--end::Checkbox-->
-                                        <!--begin::ID-->
-                                        <td>ID9977</td>
-                                        <!--begin::ID-->
-                                        <!--begin::User=-->
-                                        <td class="d-flex align-items-center">
-                                            <!--begin:: Avatar -->
-                                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html">
-                                                    <div class="symbol-label">
-                                                        <img src="/metronic8/demo15/assets/media/avatars/300-1.jpg"
-                                                            alt="Max Smith" class="w-100">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <!--end::Avatar-->
-                                            <!--begin::User details-->
-                                            <div class="d-flex flex-column">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                    class="text-gray-800 text-hover-primary mb-1">Max Smith</a>
-                                                <span>max@kt.com</span>
-                                            </div>
-                                            <!--begin::User details-->
-                                        </td>
-                                        <!--end::user=-->
-                                        <!--begin::Joined date=-->
-                                        <td data-order="2022-06-24T11:30:00+01:00">24 Jun 2022, 11:30 am</td>
-                                        <!--end::Joined date=-->
-                                        <!--begin::Action=-->
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                <span class="svg-icon svg-icon-5 m-0">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </a>
-                                            <!--begin::Menu-->
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                data-kt-menu="true">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                        class="menu-link px-3">View</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3"
-                                                        data-kt-roles-table-filter="delete_row">Delete</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
-                                            <!--end::Menu-->
-                                        </td>
-                                        <!--end::Action=-->
-                                    </tr>
-                                    <tr class="even">
-                                        <!--begin::Checkbox-->
-                                        <td>
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                <input class="form-check-input" type="checkbox" value="1">
-                                            </div>
-                                        </td>
-                                        <!--end::Checkbox-->
-                                        <!--begin::ID-->
-                                        <td>ID8787</td>
-                                        <!--begin::ID-->
-                                        <!--begin::User=-->
-                                        <td class="d-flex align-items-center">
-                                            <!--begin:: Avatar -->
-                                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html">
-                                                    <div class="symbol-label">
-                                                        <img src="/metronic8/demo15/assets/media/avatars/300-5.jpg"
-                                                            alt="Sean Bean" class="w-100">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <!--end::Avatar-->
-                                            <!--begin::User details-->
-                                            <div class="d-flex flex-column">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                    class="text-gray-800 text-hover-primary mb-1">Sean Bean</a>
-                                                <span>sean@dellito.com</span>
-                                            </div>
-                                            <!--begin::User details-->
-                                        </td>
-                                        <!--end::user=-->
-                                        <!--begin::Joined date=-->
-                                        <td data-order="2022-06-24T11:05:00+01:00">24 Jun 2022, 11:05 am</td>
-                                        <!--end::Joined date=-->
-                                        <!--begin::Action=-->
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                <span class="svg-icon svg-icon-5 m-0">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </a>
-                                            <!--begin::Menu-->
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                data-kt-menu="true">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                        class="menu-link px-3">View</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3"
-                                                        data-kt-roles-table-filter="delete_row">Delete</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
-                                            <!--end::Menu-->
-                                        </td>
-                                        <!--end::Action=-->
-                                    </tr>
-                                    <tr class="odd">
-                                        <!--begin::Checkbox-->
-                                        <td>
-                                            <div class="form-check form-check-sm form-check-custom form-check-solid">
-                                                <input class="form-check-input" type="checkbox" value="1">
-                                            </div>
-                                        </td>
-                                        <!--end::Checkbox-->
-                                        <!--begin::ID-->
-                                        <td>ID5988</td>
-                                        <!--begin::ID-->
-                                        <!--begin::User=-->
-                                        <td class="d-flex align-items-center">
-                                            <!--begin:: Avatar -->
-                                            <div class="symbol symbol-circle symbol-50px overflow-hidden me-3">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html">
-                                                    <div class="symbol-label">
-                                                        <img src="/metronic8/demo15/assets/media/avatars/300-25.jpg"
-                                                            alt="Brian Cox" class="w-100">
-                                                    </div>
-                                                </a>
-                                            </div>
-                                            <!--end::Avatar-->
-                                            <!--begin::User details-->
-                                            <div class="d-flex flex-column">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                    class="text-gray-800 text-hover-primary mb-1">Brian Cox</a>
-                                                <span>brian@exchange.com</span>
-                                            </div>
-                                            <!--begin::User details-->
-                                        </td>
-                                        <!--end::user=-->
-                                        <!--begin::Joined date=-->
-                                        <td data-order="2022-12-20T06:43:00+01:00">20 Dec 2022, 6:43 am</td>
-                                        <!--end::Joined date=-->
-                                        <!--begin::Action=-->
-                                        <td class="text-end">
-                                            <a href="#" class="btn btn-sm btn-light btn-active-light-primary"
-                                                data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">Actions
-                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
-                                                <span class="svg-icon svg-icon-5 m-0">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                        viewBox="0 0 24 24" fill="none">
-                                                        <path
-                                                            d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z"
-                                                            fill="currentColor"></path>
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </a>
-                                            <!--begin::Menu-->
-                                            <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4"
-                                                data-kt-menu="true">
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
-                                                        class="menu-link px-3">View</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                                <!--begin::Menu item-->
-                                                <div class="menu-item px-3">
-                                                    <a href="#" class="menu-link px-3"
-                                                        data-kt-roles-table-filter="delete_row">Delete</a>
-                                                </div>
-                                                <!--end::Menu item-->
-                                            </div>
-                                            <!--end::Menu-->
-                                        </td>
-                                        <!--end::Action=-->
-                                    </tr>
+                                    @endforeach
                                 </tbody>
                                 <!--end::Table body-->
                             </table>
-                        </div>
-                        <div class="row">
-                            <div
-                                class="col-sm-12 col-md-5 d-flex align-items-center justify-content-center justify-content-md-start">
-                            </div>
-                            <div
-                                class="col-sm-12 col-md-7 d-flex align-items-center justify-content-center justify-content-md-end">
-                                <div class="dataTables_paginate paging_simple_numbers" id="kt_roles_view_table_paginate">
-                                    <ul class="pagination">
-                                        <li class="paginate_button page-item previous disabled"
-                                            id="kt_roles_view_table_previous"><a href="#"
-                                                aria-controls="kt_roles_view_table" data-dt-idx="0" tabindex="0"
-                                                class="page-link"><i class="previous"></i></a></li>
-                                        <li class="paginate_button page-item active"><a href="#"
-                                                aria-controls="kt_roles_view_table" data-dt-idx="1" tabindex="0"
-                                                class="page-link">1</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="kt_roles_view_table" data-dt-idx="2" tabindex="0"
-                                                class="page-link">2</a></li>
-                                        <li class="paginate_button page-item "><a href="#"
-                                                aria-controls="kt_roles_view_table" data-dt-idx="3" tabindex="0"
-                                                class="page-link">3</a></li>
-                                        <li class="paginate_button page-item next" id="kt_roles_view_table_next"><a
-                                                href="#" aria-controls="kt_roles_view_table" data-dt-idx="4" tabindex="0"
-                                                class="page-link"><i class="next"></i></a></li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <!--end::Table-->
@@ -698,6 +332,7 @@
 @endsection
 
 @section('script')
+<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script>
     "use strict";
 var KTUsersViewRole = (function () {
@@ -794,8 +429,8 @@ var KTUsersViewRole = (function () {
             (e = document.querySelector("#kt_roles_view_table")) &&
                 (e.querySelectorAll("tbody tr").forEach((t) => {
                     const e = t.querySelectorAll("td"),
-                        o = moment(e[3].innerHTML, "DD MMM YYYY, LT").format();
-                    e[3].setAttribute("data-order", o);
+                        o = moment(e[3]?.innerHTML, "DD MMM YYYY, LT").format();
+                    e[3]?.setAttribute("data-order", o);
                 }),
                 (t = $(e).DataTable({
                     info: !1,
@@ -804,7 +439,7 @@ var KTUsersViewRole = (function () {
                     lengthChange: !1,
                     columnDefs: [
                         { orderable: !1, targets: 0 },
-                        { orderable: !1, targets: 4 },
+                        { orderable: !1, targets: 2 },
                     ],
                 })),
                 document

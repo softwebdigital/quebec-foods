@@ -143,18 +143,16 @@
                 </div>
                 <!--end::Items-->
                 <div class="d-flex justify-content-around align-items-center my-7">
+                    @can('Deposit For Users')
                     <div>
                         <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-primary min-w-125px">Top Up</button>
                     </div>
-                    @if($setting['withdrawal'] == 1)
-                        <div>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
-                        </div>
-                    @else
-                        <div>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" disabled>Withdraw</button>
-                        </div>
-                    @endif
+                    @endcan
+                    @can('Withdraw For Users')
+                    <div>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
+                    </div>
+                    @endcan
                 </div>
             </div>
             <!--end::Body-->

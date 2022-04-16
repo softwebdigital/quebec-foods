@@ -10,9 +10,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index($type = 'all')
+    public function index()
     {
-        return view('admin.user.index', compact('type'));
+        return view('admin.user.index');
     }
 
     public function show(User $user)
@@ -96,7 +96,7 @@ class UserController extends Controller
         return redirect('/admin/users')->with('success', 'User deleted successfully');
     }
 
-    public function fetchUsersWithAjax(Request $request, $type)
+    public function fetchUsersWithAjax(Request $request, $type, $status)
     {
 //        Define all column names
         $columns = [
@@ -112,6 +112,11 @@ class UserController extends Controller
                 break;
             default:
                 $users = User::query()->latest();
+        }
+        if ($status == 'active') {
+            $users->where('active', 1);
+        } else if ($status == 'blocked') {
+            $users->where('active', 0);
         }
 //        Set helper variables from request and DB
         $totalData = $totalFiltered = $users->count();

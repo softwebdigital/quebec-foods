@@ -13,9 +13,9 @@ use Exception;
 
 class InvestmentController extends Controller
 {
-    public function index($type, $filter)
+    public function index()
     {
-        return view('admin.investment.index', compact('type', 'filter'));
+        return view('admin.investment.index');
     }
 
     public function show($type, Investment $investment, $filter = 'all')
@@ -90,11 +90,14 @@ class InvestmentController extends Controller
             'id', 'name', 'package', 'slots', 'total_invested', 'expected_returns', 'investment_date', 'payment', 'status', 'action'
         ];
 //        Find data based on page
-        $investments = Investment::query()->whereHas('package', function($query) use ($type) {
-            $query->where('type', $type);
-        })->latest();
+        $investments = Investment::query()->latest();
+        if ($type !== 'all') {
+            $investments->whereHas('package', function($query) use ($type) {
+                $query->where('type', $type);
+            });
+        }
         if ($filter !== 'all') {
-            $investments->where('status', $filter)->latest();
+            $investments->where('status', $filter);
         }
 //        Set helper variables from request and DB
         $totalData = $totalFiltered = $investments->count();

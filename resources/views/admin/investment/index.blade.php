@@ -7,8 +7,10 @@
 @endsection
 
 @section('breadCrumbs')
-<li class="breadcrumb-item"><a href="javascript:void()" class="text-muted">{{ ucfirst($type) }} Investments</a></li>
-<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">{{ ucfirst($filter) }}</a></li>
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-muted">{{ ucfirst(request('category')) }} Investments</a></li>
+@if (request('status'))
+<li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">{{ ucfirst(request('status')) }}</a></li>
+@endif
 @endsection
 
 @section('content')
@@ -16,7 +18,7 @@
     <!--begin::Header-->
     <div class="card-header border-0 pt-5">
         <h3 class="card-title align-items-start flex-column">
-            <span class="card-label fw-bolder fs-3 mb-1">{{ ucfirst($filter) }} {{ ucfirst($type) }} Investments</span>
+            <span class="card-label fw-bolder fs-3 mb-1">{{ ucfirst(request('status')) }} {{ ucfirst(request('category')) }} Investments</span>
         </h3>
 
         <!--begin::Card toolbar-->
@@ -43,17 +45,17 @@
                 <div class="separator border-gray-200"></div>
                 <!--end::Separator-->
                 <!--begin::Content-->
-                <div class="px-7 py-5">
+                <form class="px-7 py-5">
                     <!--begin::Input group-->
                     <div class="mb-10">
                         <!--begin::Label-->
                         <label class="form-label fs-5 fw-bold mb-3">Category:</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <select class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
-                            <option value="">Show All</option>
-                            <option value="plant">Processing Plants</option>
-                            <option value="farm">Farm</option>
+                        <select name="category" class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
+                            <option @if(request('category') == 'all') selected @endif value="all">Show All</option>
+                            <option @if(request('category') == 'plant') selected @endif value="plant">Processing Plants</option>
+                            <option @if(request('category') == 'farm') selected @endif value="farm">Farm</option>
                         </select>
                         <!--end::Input-->
                     </div>
@@ -73,25 +75,25 @@
                             <!--end::Option-->
                             <!--begin::Option-->
                             <label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
-                                <input class="form-check-input" type="radio" name="status" value="active" />
+                                <input class="form-check-input" type="radio" name="status" @if(request('status') == 'active') checked @endif value="active" />
                                 <span class="form-check-label text-gray-600">Active</span>
                             </label>
                             <!--end::Option-->
                             <!--begin::Option-->
                             <label class="form-check form-check-sm form-check-custom form-check-solid mb-3">
-                                <input class="form-check-input" type="radio" name="status" value="pending" />
+                                <input class="form-check-input" type="radio" name="status" @if(request('status') == 'pending') checked @endif value="pending" />
                                 <span class="form-check-label text-gray-600">Pending</span>
                             </label>
                             <!--end::Option-->
                             <!--begin::Option-->
                             <label class="form-check form-check-sm form-check-custom form-check-solid mb-3">
-                                <input class="form-check-input" type="radio" name="status" value="cancelled" />
+                                <input class="form-check-input" type="radio" name="status" @if(request('status') == 'cancelled') checked @endif value="cancelled" />
                                 <span class="form-check-label text-gray-600">Cancelled</span>
                             </label>
                             <!--end::Option-->
                             <!--begin::Option-->
                             <label class="form-check form-check-sm form-check-custom form-check-solid mb-3">
-                                <input class="form-check-input" type="radio" name="status" value="settled" />
+                                <input class="form-check-input" type="radio" name="status" @if(request('status') == 'settled') checked @endif value="settled" />
                                 <span class="form-check-label text-gray-600">Settled</span>
                             </label>
                             <!--end::Option-->
@@ -105,7 +107,7 @@
                         <button type="submit" class="btn btn-primary" data-kt-menu-dismiss="true" data-kt-customer-table-filter="filter">Apply</button>
                     </div>
                     <!--end::Actions-->
-                </div>
+                </form>
                 <!--end::Content-->
             </div>
             <!--end::Menu 1-->
@@ -281,7 +283,7 @@
             "serverSide": true,
             "searching": true,
             "ajax":{
-                "url": "{{ route('admin.investments.ajax', ['type' => $type, 'filter' => $filter]) }}",
+                "url": "{{ route('admin.investments.ajax', ['type' => request('category') ?? 'all', 'filter' => request('status') ?? 'all']) }}",
                 "dataType": "json",
                 "type": "POST",
                 "data":{ _token: "{{csrf_token()}}"}

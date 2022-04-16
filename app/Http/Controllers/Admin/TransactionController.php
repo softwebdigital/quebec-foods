@@ -14,9 +14,9 @@ use Illuminate\Support\Carbon;
 
 class TransactionController extends Controller
 {
-    public function index($type = 'all')
+    public function index()
     {
-        return view('admin.transaction.index', compact('type'));
+        return view('admin.transaction.index');
     }
 
     public function deposit(Request $request)
@@ -188,7 +188,7 @@ class TransactionController extends Controller
         return back()->with('error', 'Error declining transaction');
     }
 
-    public function fetchTransactionsWithAjax(Request $request, $type)
+    public function fetchTransactionsWithAjax(Request $request, $type, $status)
     {
 //        Define all column names
         $columns = [
@@ -196,11 +196,11 @@ class TransactionController extends Controller
         ];
 //        Find data based on page
         $transactions = Transaction::query()->latest();
-        if (!in_array($type, ['all', 'pending'])) {
-            $transactions = Transaction::query()->latest()->where('type', $type);
+        if ($type != 'all') {
+            $transactions->where('type', $type);
         }
-        if ($type == 'pending') {
-            $transactions = Transaction::query()->latest()->where('status', $type);
+        if ($status != 'all') {
+            $transactions->where('status', $status);
         }
 
 //        Set helper variables from request and DB
