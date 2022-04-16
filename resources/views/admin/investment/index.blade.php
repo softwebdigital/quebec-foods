@@ -275,7 +275,6 @@
 @endsection
 
 @section('script')
-<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script>
     function populateTransactionDetails(accountName, accountNumber, bankName) {
         $('#accountName').text(accountName);

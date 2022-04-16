@@ -75,7 +75,7 @@
                             <tr>
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6 text-nowrap">{{ $key + 1 }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $category['name'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap"></span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $category->packages()->count() }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $category['created_at']->format('M d, Y') }}</span></td>
                                 <td class="text-end">
                                     <a href="#" class="btn btn-sm btn-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
@@ -97,7 +97,7 @@
                                     </div>
                                 </td>
                             </tr>
-                        
+
                             <!--begin::Deposit Modal-->
                                 <div class="modal fade" tabindex="-1" id="updateCategoryModal">
                                     <div class="modal-dialog">
@@ -162,7 +162,7 @@
                                 </div>
                             <!--end::Withdrawal Modal-->
                         @endforeach
-                    @else 
+                    @else
                         <tr>
                             <td colspan="5" class="text-center">No available data</td>
                         </tr>

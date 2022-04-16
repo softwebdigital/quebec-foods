@@ -61,7 +61,6 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/users/invest/store', [App\Http\Controllers\Admin\InvestmentController::class, 'store'])->name('users.invest.store')->middleware('permission:Make Investments For Users');
     Route::post('/deposit', [App\Http\Controllers\Admin\TransactionController::class, 'deposit'])->name('deposit')->middleware('permission:Deposit For Users');
     Route::post('/withdraw', [App\Http\Controllers\Admin\TransactionController::class, 'withdraw'])->name('withdraw')->middleware('permission:Withdraw For Users');
-    Route::post('/download', [App\Http\Controllers\Admin\HomeController::class, 'download'])->name('download')->middleware('permission:Export Users CSV');
     Route::post('/users/{type}/{status}fetch/ajax', [App\Http\Controllers\Admin\UserController::class, 'fetchUsersWithAjax'])->name('users.ajax')->middleware('permission:View Users');
 
     Route::get('/transactions/{type?}', [App\Http\Controllers\Admin\TransactionController::class, 'index'])->where('type', 'all|pending|deposit|withdrawal|investment|payout')->name('transactions')->middleware('permission:View Transactions');
@@ -113,4 +112,6 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/category/create', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store');
     Route::put('/category/{category}/update', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category.update');
     Route::delete('/category/{category}/destroy', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('category.destroy');
+
+    Route::post('/users/export', [App\Http\Controllers\Admin\ExportController::class, 'exportUsers'])->name('users.export')->middleware('permission:Export Users CSV');
 });
