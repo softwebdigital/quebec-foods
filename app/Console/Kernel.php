@@ -38,6 +38,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('users:delete')
                     ->withoutOverlapping()
                     ->everyMinute();
+        $schedule->command('maintenance:generate')
+                    ->withoutOverlapping()
+                    ->everyMinute();
     }
 
     /**

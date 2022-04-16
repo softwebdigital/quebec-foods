@@ -49,7 +49,7 @@ class CustomNotificationByEmail extends Notification
             return (new MailMessage)
                 ->subject($this->title)
                 ->greeting('skip default')
-                ->line('Hello' .$notifiable->name.',')
+                ->line('Hello ' .$notifiable->name.',')
                 ->line(new HtmlString($this->message))
                 ->action($this->buttonText, $this->url);
         }else{

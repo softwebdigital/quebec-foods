@@ -49,6 +49,12 @@ class NotificationController extends Controller
         $user->notify(new CustomNotificationByEmail('Welcome to '.env('APP_NAME'), $msg, 'Login to Dashboard', route('login')));
     }
 
+    public static function sendMaintenancePaidNotitfication($item, $user)
+    {
+        $msg = "Maintenance payment for the month of {$item['month']} {$item['year']} has been queued, click below to process this payment.<br>";
+        $user->notify(new CustomNotificationByEmail('Maintenance Paid', $msg, 'Process Payment', route('admin.maintenance.index')));
+    }
+
     public static function sendInvestmentCreatedNotification($investment)
     {
         $transaction = $investment->transactions()->where('type', 'investment')->first();

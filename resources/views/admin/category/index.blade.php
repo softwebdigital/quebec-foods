@@ -87,9 +87,9 @@
                                     </a>
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                         <div class="menu-item px-3">
-                                            <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#updateCategoryModal"><span class="">Edit</span></a>
-                                            <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'deleteCategoryForm')"><span class="">Delete</span></a>
-                                            <form action="{{ route('admin.category.destroy', $category['id']) }}" method="post" id="deleteCategoryForm">
+                                            <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#updateCategoryModal{{  $category['id'] }}"><span class="">Edit</span></a>
+                                            <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'deleteCategoryForm{{  $category['id'] }}')"><span class="">Delete</span></a>
+                                            <form action="{{ route('admin.category.destroy', $category['id']) }}" method="post" id="deleteCategoryForm{{  $category['id'] }}">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
@@ -99,7 +99,7 @@
                             </tr>
 
                             <!--begin::Deposit Modal-->
-                                <div class="modal fade" tabindex="-1" id="updateCategoryModal">
+                                <div class="modal fade" tabindex="-1" id="updateCategoryModal{{  $category['id'] }}">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">

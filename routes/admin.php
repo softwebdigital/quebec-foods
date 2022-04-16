@@ -113,5 +113,8 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::put('/category/{category}/update', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category.update');
     Route::delete('/category/{category}/destroy', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('category.destroy');
 
+    Route::get('/maintenance', [App\Http\Controllers\Admin\MaintenanceController::class, 'index'])->name('maintenance.index');
+    Route::put('/maintenance/{maintenance}/change/{state}', [App\Http\Controllers\Admin\MaintenanceController::class, 'change'])->name('maintenance.change');
+
     Route::post('/users/export', [App\Http\Controllers\Admin\ExportController::class, 'exportUsers'])->name('users.export')->middleware('permission:Export Users CSV');
 });
