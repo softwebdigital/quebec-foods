@@ -67,8 +67,8 @@ class UserExport implements FromArray, WithHeadings
     public function headings(): array
     {
         return [
-            'first_name',
-            'last_name',
+            'first name',
+            'last name',
             'email',
             'phone',
             'state',

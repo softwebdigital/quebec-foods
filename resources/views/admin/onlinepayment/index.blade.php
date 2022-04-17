@@ -23,7 +23,7 @@
             <!--begin::Toolbar-->
             <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
             <!--begin::Export-->
-            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_customers_export_modal">
+            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_online_payments_export_modal">
             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
             <span class="svg-icon svg-icon-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -68,7 +68,7 @@
     <!--begin::Body-->
 </div>
 
-<div class="modal fade" id="kt_customers_export_modal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="kt_online_payments_export_modal" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
         <!--begin::Modal content-->
@@ -95,14 +95,15 @@
             <!--begin::Modal body-->
             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                 <!--begin::Form-->
-                <form id="kt_customers_export_form" class="form" action="#">
+                <form id="kt_online_payments_export_form" class="form" method="POST" action="{{ route('admin.onlinePayments.export') }}">
+                    @csrf
                     <!--begin::Input group-->
                     <div class="fv-row mb-10">
                         <!--begin::Label-->
-                        <label class="fs-5 fw-bold form-label mb-5">Select Export Format:</label>
+                        <label class="fs-5 fw-bold form-label mb-5">Category:</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <select data-control="select2" data-placeholder="Select a format" data-hide-search="true" name="format" class="form-select form-select-solid">
+                        <select data-control="select2" name="category" data-placeholder="Select a format" data-hide-search="true" name="format" class="form-select form-select-solid">
                             <option value="show all">Show All</option>
                             <option value="investment">Investments</option>
                             <option value="deposit">Deposits</option>
@@ -123,7 +124,7 @@
                     <!--begin::Actions-->
                     <div class="text-center">
                         <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light me-3">Discard</button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" onclick="confirmFormSubmit(event, 'kt_online_payments_export_form')" class="btn btn-primary">
                             <span class="indicator-label">Submit</span>
                             <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -142,7 +143,6 @@
 @endsection
 
 @section('script')
-<script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
 <script>
     $(document).ready(function () {
         $('#data-table').DataTable({
@@ -168,6 +168,30 @@
             "lengthMenu": [50, 100, 200, 500],
             "order": [[ 5, "desc" ]]
         });
+    });
+</script>
+<script>
+    "use strict";
+    var KTCustomersExport = (function() {
+        var t, e, n, o, r, i, a;
+        return {
+            init: function() {
+                (t = document.querySelector("#kt_online_payments_export_modal")),
+                (i = document.querySelector("#kt_online_payments_export_form")),
+                (function() {
+                    const t = i.querySelector("[name=date]");
+                    $(t).flatpickr({
+                        altInput: !0,
+                        altFormat: "F j, Y",
+                        dateFormat: "Y-m-d",
+                        mode: "range",
+                    });
+                })();
+            },
+        };
+    })();
+    KTUtil.onDOMContentLoaded(function() {
+        KTCustomersExport.init();
     });
 </script>
 @endsection

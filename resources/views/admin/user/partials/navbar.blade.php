@@ -199,11 +199,11 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
     $(document).ready(function () {
         let overviewNav = $('#overviewNav');
         let farmNav = $('#farmNav');
         let plantNav = $('#plantNav');
         let transactionNav = $('#transactio')
     })
-</script>
+</script> --}}

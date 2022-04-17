@@ -287,11 +287,11 @@ class TransactionController extends Controller
             //     $datum['name'] = ucwords($transaction->user['name']);
             // }
             $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format((int)$transaction['amount']).'</span>';
-            $datum['description'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['description'].'</span>';
+            $datum['description'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['description'].'</span>';
             $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['created_at']->format('M d, Y \a\t h:i A').'</span>';
-            $datum['details'] = '<span class="text-gray-600 fw-bolder d-block fs-6 text-center">'.$details.'</span>';
-            $datum['method'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['method'].'</span>';
-            $datum['channel'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$transaction['channel'].'</span>';
+            $datum['details'] = '<span class="text-gray-600 fw-bolder d-block fs-6 text-center" style="white-space: nowrap;">'.$details.'</span>';
+            $datum['method'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['method'].'</span>';
+            $datum['channel'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['channel'].'</span>';
             $datum['status'] = $status;
             $datum['action'] = '<a href="javascript:void();" class="btn btn-sm btn-primary btn-active-primary '.$disabled.'" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end" style="white-space: nowrap;">Action
                                     <span class="svg-icon svg-icon-5 m-0">
