@@ -11,7 +11,7 @@
 
 @section('content')
     <!--begin::Row-->
-    <div class="row g-5 g-xl-8">
+    <div class="row g-5 mb-10 g-xl-8">
         <!--begin::Col-->
         <div class="col-xl-4">
             <!--begin::Mixed Widget 14-->
@@ -177,7 +177,7 @@
     <!--end::Row-->
 
     <!--begin::Row-->
-    <div class="row g-5 g-xl-8">
+    <div class="row g-5 g-xl-8 mb-10">
         <!--begin::Col-->
         <div class="col-xl-6">
             <!--begin::Mixed Widget 1-->
@@ -571,9 +571,9 @@
     <!--end::Row-->
 
     <!--begin::Row-->
-    <div class="row gy-5 mb-20 g-xl-10">
+    <div class="row gy-5 mb-10 g-xl-10">
         <!--begin::Col-->
-        <div class="@if (count($data['wallet']['history']) > 0) col-xl-12 @else col-xl-12 @endif mb-5 mb-xxl-10">
+        <div class="col-xl-12 mb-5 mb-10">
             <!--begin::Chart widget 12-->
             <div class="card card-flush h-xl-100">
                 <!--begin::Header-->
@@ -602,7 +602,7 @@
     <div class="row g-5 g-lg-10">
         @if (count($data['investments']['plant']) > 0)
         <!--begin::Col-->
-        <div class="col-xxl-12 col-md-8 mb-xxl-10">
+        <div class="col-xxl-12 mb-10">
             <!--begin::Tables Widget 9-->
             <div class="card h-md-100">
                 <!--begin::Header-->
@@ -673,7 +673,7 @@
     <div class="row g-5 g-lg-10">
         @if (count($data['investments']['farm']) > 0)
         <!--begin::Col-->
-        <div class="col-xxl-12 col-md-8 mb-xxl-10">
+        <div class="col-xxl-12 mb-10">
             <!--begin::Tables Widget 9-->
             <div class="card h-md-100">
                 <!--begin::Header-->

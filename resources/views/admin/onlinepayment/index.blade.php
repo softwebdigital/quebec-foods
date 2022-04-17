@@ -104,7 +104,7 @@
                         <!--end::Label-->
                         <!--begin::Input-->
                         <select data-control="select2" name="category" data-placeholder="Select a format" data-hide-search="true" name="format" class="form-select form-select-solid">
-                            <option value="show all">Show All</option>
+                            <option value="all">Show All</option>
                             <option value="investment">Investments</option>
                             <option value="deposit">Deposits</option>
                         </select>
@@ -124,7 +124,7 @@
                     <!--begin::Actions-->
                     <div class="text-center">
                         <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light me-3">Discard</button>
-                        <button type="submit" onclick="confirmFormSubmit(event, 'kt_online_payments_export_form')" class="btn btn-primary">
+                        <button type="submit" onclick="confirmFormSubmit(event, 'kt_online_payments_export_form', 'kt_online_payments_export_modal')" class="btn btn-primary">
                             <span class="indicator-label">Submit</span>
                             <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

@@ -449,8 +449,8 @@
 								</div>
 								<!--end::Aside mobile toggle-->
 								<!--begin::Logo-->
-								<a href="../../demo15/dist/index.html" class="d-flex align-items-center">
-									<img alt="Logo" src="assets/media/logos/logo-2.svg" class="h-30px" />
+								<a href="{{ route('admin.dashboard') }}" class="d-flex align-items-center">
+									<img alt="Logo" src="{{ asset('assets/logo/medium.png') }}" class="h-30px" />
 								</a>
 								<!--end::Logo-->
 							</div>

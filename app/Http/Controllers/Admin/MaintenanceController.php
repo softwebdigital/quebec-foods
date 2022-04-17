@@ -20,11 +20,19 @@ class MaintenanceController extends Controller
         $maintenance->update([
             'status' => $status
         ]);
+        $soft = Admin::where('email', env('SOFTWEB_EMAIL'))->first();
+        $admin = Admin::where('email', env('ADMIN_EMAIL'))->first();
         if ($status == 'queued') {
-            $admin = Admin::where('email', 'softwebdigital@gmail.com')->first();
-            if ($admin) {
-                \App\Http\Controllers\NotificationController::sendMaintenancePaidNotitfication($maintenance, $admin);
-            }
+            if ($soft) \App\Http\Controllers\NotificationController::sendMaintenancePaidNotitfication($maintenance, $soft);
+            if ($admin) \App\Http\Controllers\NotificationController::sendMaintenancePaidNotitfication($maintenance, $admin);
+        }
+        if ($status == 'approved') {
+            if ($soft) \App\Http\Controllers\NotificationController::sendMaintenanceApprovedNotitfication($maintenance, $soft);
+            if ($admin) \App\Http\Controllers\NotificationController::sendMaintenanceApprovedNotitfication($maintenance, $admin);
+        }
+        if ($status == 'declined') {
+            if ($soft) \App\Http\Controllers\NotificationController::sendMaintenanceDeclinedNotitfication($maintenance, $soft);
+            if ($admin) \App\Http\Controllers\NotificationController::sendMaintenanceDeclinedNotitfication($maintenance, $admin);
         }
         return back()->with('success', "Payment {$status} successfully");
     }

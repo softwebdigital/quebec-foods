@@ -670,7 +670,7 @@
         @endif
         <!--end::Col-->
         <!--begin::Col-->
-        <div class="@if ($data['package']) col-xl-8 @else col-xl-12 @endif mb-5 mb-xl-10">
+        <div class="@if ($data['package']) col-xl-8 @else col-xl-12 @endif mb-5 mb-10">
             <!--begin::Chart widget 11-->
             <div class="card card-flush h-xl-100">
                 <!--begin::Header-->
@@ -699,7 +699,7 @@
     <div class="row gy-5 g-xl-10">
         @if (count($data['wallet']['history']) > 0)
             <!--begin::Col-->
-            <div class="col-xl-4 mb-xl-10">
+            <div class="col-xl-4 mb-10">
                 <!--begin::List widget 18-->
                 <div class="card card-flush h-xl-100">
                     <!--begin::Header-->
@@ -787,7 +787,7 @@
     <div class="row g-5 g-lg-10">
         <!--begin::Col-->
         @if (count($data['investments']['plant']) > 0)
-            <div class="col-xxl-12 col-md-12 mb-xxl-12">
+            <div class="col-xxl-12 col-md-12 mb-12">
                 <!--begin::Tables Widget 5-->
                 <div class="card h-md-100">
                     <!--begin::Header-->
@@ -880,7 +880,7 @@
     <div class="row g-5 g-lg-10">
         <!--begin::Col-->
         @if (count($data['investments']['farm']) > 0)
-            <div class="col-xxl-12 col-md-12 mb-xxl-12">
+            <div class="col-xxl-12 col-md-12 mb-12">
                 <!--begin::Tables Widget 5-->
                 <div class="card h-md-100">
                     <!--begin::Header-->

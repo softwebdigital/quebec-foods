@@ -52,7 +52,19 @@ class NotificationController extends Controller
     public static function sendMaintenancePaidNotitfication($item, $user)
     {
         $msg = "Maintenance payment for the month of {$item['month']} {$item['year']} has been queued, click below to process this payment.<br>";
-        $user->notify(new CustomNotificationByEmail('Maintenance Paid', $msg, 'Process Payment', route('admin.maintenance.index')));
+        $user->notify(new CustomNotificationByEmail('Maintenance Payment Queued', $msg, 'Process Payment', route('admin.maintenance.index')));
+    }
+
+    public static function sendMaintenanceApprovedNotitfication($item, $user)
+    {
+        $msg = "Maintenance payment for the month of {$item['month']} {$item['year']} has been approved.<br>";
+        $user->notify(new CustomNotificationByEmail('Maintenance Payment Approved', $msg, 'Process Payment', route('admin.maintenance.index')));
+    }
+
+    public static function sendMaintenanceDeclinedNotitfication($item, $user)
+    {
+        $msg = "Maintenance payment for the month of {$item['month']} {$item['year']} has been declined.<br>";
+        $user->notify(new CustomNotificationByEmail('Maintenance Payment Declined', $msg, 'Process Payment', route('admin.maintenance.index')));
     }
 
     public static function sendInvestmentCreatedNotification($investment)
