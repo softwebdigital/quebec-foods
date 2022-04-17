@@ -23,7 +23,7 @@ Route::post('/password/reset/change', [\App\Http\Controllers\Auth\AdminResetPass
 
 Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/logout', [\App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('logout');
-    Route::get('/dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'dashboard'])->name('dashboard')->middleware('permission: View Dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'dashboard'])->name('dashboard')->middleware('permission:View Dashboard');
     Route::get('/profile', [App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('profile');
 
     Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings')->middleware('permission:View Settings');
