@@ -23,7 +23,7 @@ Route::post('/password/reset/change', [\App\Http\Controllers\Auth\AdminResetPass
 
 Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/logout', [\App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('logout');
-    Route::get('/dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'dashboard'])->name('dashboard');
+    Route::get('/dashboard', [\App\Http\Controllers\Admin\HomeController::class, 'dashboard'])->name('dashboard')->middleware('permission: View Dashboard');
     Route::get('/profile', [App\Http\Controllers\Admin\HomeController::class, 'profile'])->name('profile');
 
     Route::get('/settings', [App\Http\Controllers\Admin\SettingController::class, 'index'])->name('settings')->middleware('permission:View Settings');
@@ -50,7 +50,7 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
 
     Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users')->middleware('permission:View Users');
     Route::get('/users/{user}/show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show')->middleware('permission:View Users');
-    Route::get('/users/{user}/{type}/investments', [App\Http\Controllers\Admin\UserController::class, 'showUserInvestments'])->where('type', 'farm|plant')->name('users.investments');
+    Route::get('/users/{user}/{type}/investments', [App\Http\Controllers\Admin\UserController::class, 'showUserInvestments'])->where('type', 'farm|plant')->name('users.investments')->middleware('permission:View Investments');
     Route::get('/users/{user}/transactions', [App\Http\Controllers\Admin\UserController::class, 'showTransactions'])->name('users.transactions')->middleware('permission:View Transactions');
     Route::get('/users/{user}/wallet', [App\Http\Controllers\Admin\UserController::class, 'showWallet'])->name('users.wallet')->middleware('permission:View Users Wallet');
     Route::get('/users/{user}/referrals', [App\Http\Controllers\Admin\UserController::class, 'showReferrals'])->name('users.referrals')->middleware('permission:View Referrals');
@@ -105,20 +105,20 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/onlinepayments/{payment}/resolve', [App\Http\Controllers\Admin\OnlinePaymentController::class, 'resolve'])->name('onlinepayments.resolve')->middleware('permission:Resolve Payments');
     Route::post('/onlinepayments/fetch/ajax', [App\Http\Controllers\Admin\OnlinePaymentController::class, 'fetchPaymentsWithAjax'])->name('onlinepayments.ajax')->middleware('permission:View Payments');
 
-    Route::get('/verifications', [App\Http\Controllers\Admin\VerificationController::class, 'index'])->name('verifications');
-    Route::put('/verifications/{verification}/{status}', [App\Http\Controllers\Admin\VerificationController::class, 'process'])->name('verification.process');
+    Route::get('/verifications', [App\Http\Controllers\Admin\VerificationController::class, 'index'])->name('verifications')->middleware('permission:View Pending Verifications');
+    Route::put('/verifications/{verification}/{status}', [App\Http\Controllers\Admin\VerificationController::class, 'process'])->name('verification.process')->middleware('permission:Process Pending Verifications');
 
-    Route::get('/category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category');
-    Route::post('/category/create', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store');
-    Route::put('/category/{category}/update', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category.update');
-    Route::delete('/category/{category}/destroy', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('category.destroy');
+    Route::get('/category', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category')->middleware('permission:View Categories');
+    Route::post('/category/create', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('category.store')->middleware('permission:Create Categories');
+    Route::put('/category/{category}/update', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('category.update')->middleware('permission:Edit Categories');
+    Route::delete('/category/{category}/destroy', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('category.destroy')->middleware('permission:Delete Categories');
 
-    Route::get('/maintenance', [App\Http\Controllers\Admin\MaintenanceController::class, 'index'])->name('maintenance.index');
-    Route::put('/maintenance/{maintenance}/change/{state}', [App\Http\Controllers\Admin\MaintenanceController::class, 'change'])->name('maintenance.change');
+    Route::get('/maintenance', [App\Http\Controllers\Admin\MaintenanceController::class, 'index'])->name('maintenance.index')->middleware('permission:View Maintenance');
+    Route::put('/maintenance/{maintenance}/change/{state}', [App\Http\Controllers\Admin\MaintenanceController::class, 'change'])->name('maintenance.change')->middleware('permission:Pay Maintenance Fee');
 
-    Route::post('/users/export', [App\Http\Controllers\Admin\ExportController::class, 'exportUsers'])->name('users.export')->middleware('permission:Export Users CSV');
-    Route::post('/investments/export', [App\Http\Controllers\Admin\ExportController::class, 'exportInvestments'])->name('investments.export');
-    Route::post('/transactions/export', [App\Http\Controllers\Admin\ExportController::class, 'exportTransactions'])->name('transactions.export');
-    Route::post('/referrals/export', [App\Http\Controllers\Admin\ExportController::class, 'exportReferrals'])->name('referrals.export');
-    Route::post('/onlinepayments/export', [App\Http\Controllers\Admin\ExportController::class, 'exportOnlinePayments'])->name('onlinePayments.export');
+    Route::post('/users/export', [App\Http\Controllers\Admin\ExportController::class, 'exportUsers'])->name('users.export')->middleware('permission:Export Users');
+    Route::post('/investments/export', [App\Http\Controllers\Admin\ExportController::class, 'exportInvestments'])->name('investments.export')->middleware('permission:Export Investments');
+    Route::post('/transactions/export', [App\Http\Controllers\Admin\ExportController::class, 'exportTransactions'])->name('transactions.export')->middleware('permission:Export Transactions');
+    Route::post('/referrals/export', [App\Http\Controllers\Admin\ExportController::class, 'exportReferrals'])->name('referrals.export')->middleware('permission:Export Referrals');
+    Route::post('/onlinepayments/export', [App\Http\Controllers\Admin\ExportController::class, 'exportOnlinePayments'])->name('onlinePayments.export')->middleware('permission:Export Payments');
 });

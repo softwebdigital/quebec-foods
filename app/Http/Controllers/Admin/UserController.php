@@ -150,23 +150,62 @@ class UserController extends Controller
         $i = $start + 1;
         foreach ($users as $user)
         {
-            $action = null;
+            $action = '';
+            if (auth()->user()->can('View Transactions')) {
+                $action .= '<div class="menu-item px-3">
+                    <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/transactions"><span class="">Transactions</span></a>
+                </div>';
+            }
+            if (auth()->user()->can('View Investments')) {
+                $action .= '<div class="menu-item px-3">
+                        <div class="menu-link px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
+                            Investments
+                            <span class="svg-icon svg-icon-5 ms-3 m-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                    <path d="M12.6343 12.5657L8.45001 16.75C8.0358 17.1642 8.0358 17.8358 8.45001 18.25C8.86423 18.6642 9.5358 18.6642 9.95001 18.25L15.4929 12.7071C15.8834 12.3166 15.8834 11.6834 15.4929 11.2929L9.95001 5.75C9.5358 5.33579 8.86423 5.33579 8.45001 5.75C8.0358 6.16421 8.0358 6.83579 8.45001 7.25L12.6343 11.4343C12.9467 11.7467 12.9467 12.2533 12.6343 12.5657Z" fill="black"></path>
+                                </svg>
+                            </span>
+                        </div>
+                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
+                            data-kt-menu="true">
+                            <div class="menu-item px-3">
+                                <a href="/admin/users/'.$user['id'].'/plant/investments" class="menu-link px-3">
+                                    Processing Plants
+                                </a>
+                            </div>
+                            <div class="menu-item px-3">
+                                <a href="/admin/users/'.$user['id'].'/farm/investments" class="menu-link px-3">
+                                    Farms
+                                </a>
+                            </div>
+                        </div>
+                    </div>';
+            }
+            if (auth()->user()->can('View Referrals')) {
+                $action .= '<div class="menu-item px-3">
+                <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/referrals"><span class="">Referrals</span></a>
+            </div>';
+            }
             if ($user['active'] == 1){
-                $action = '<div class="menu-item px-3">
-                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'userBlock'.$user['id'].'\')" href="'.route('admin.users.block', $user['id']).'"><span class="">Block</span></a>
-                            </div>
-                            <form id="userBlock'.$user['id'].'" action="'.route('admin.users.block', $user['id']).'" method="POST">
-                                <input type="hidden" name="_token" value="'.csrf_token().'">
-                                <input type="hidden" name="_method" value="PUT">
-                            </form>';
+                if (auth()->user()->can('Block Users')) {
+                    $action .= '<div class="menu-item px-3">
+                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'userBlock'.$user['id'].'\')" href="'.route('admin.users.block', $user['id']).'"><span class="">Block</span></a>
+                                </div>
+                                <form id="userBlock'.$user['id'].'" action="'.route('admin.users.block', $user['id']).'" method="POST">
+                                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                                    <input type="hidden" name="_method" value="PUT">
+                                </form>';
+                }
             }else{
-                $action = '<div class="menu-item px-3">
-                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'userUnblock'.$user['id'].'\')" href="'.route('admin.users.unblock', $user['id']).'"><span class="">Unblock</span></a>
-                            </div>
-                            <form id="userUnblock'.$user['id'].'" action="'.route('admin.users.unblock', $user['id']).'" method="POST">
-                                <input type="hidden" name="_token" value="'.csrf_token().'">
-                                <input type="hidden" name="_method" value="PUT">
-                            </form>';
+                if (auth()->user()->can('Unblock Users')) {
+                    $action .= '<div class="menu-item px-3">
+                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'userUnblock'.$user['id'].'\')" href="'.route('admin.users.unblock', $user['id']).'"><span class="">Unblock</span></a>
+                                </div>
+                                <form id="userUnblock'.$user['id'].'" action="'.route('admin.users.unblock', $user['id']).'" method="POST">
+                                    <input type="hidden" name="_token" value="'.csrf_token().'">
+                                    <input type="hidden" name="_method" value="PUT">
+                                </form>';
+                }
             }
             $datum['sn'] = '<span class="text-dark fw-bolder ps-4 d-block mb-1 fs-6">' . $i . '</span>';
             $datum['name'] = '<a href="'.route('admin.users.show', $user['id']).'" class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" style="white-space: nowrap;">'.ucwords($user['first_name']).' '.ucwords($user['last_name']).'</a>';
@@ -187,36 +226,7 @@ class UserController extends Controller
                                         <a class="menu-link px-3" href="'.route('admin.users.show', $user['id']).'"><span class="">View User</span></a>
                                     </div>
                                     <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/transactions"><span class="">Transactions</span></a>
-                                    </div>
-                                    <div class="menu-item px-3">
-                                        <div class="menu-link px-3" data-kt-menu-trigger="hover" data-kt-menu-placement="right-start">
-                                            Investments
-                                            <span class="svg-icon svg-icon-5 ms-3 m-0">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                    <path d="M12.6343 12.5657L8.45001 16.75C8.0358 17.1642 8.0358 17.8358 8.45001 18.25C8.86423 18.6642 9.5358 18.6642 9.95001 18.25L15.4929 12.7071C15.8834 12.3166 15.8834 11.6834 15.4929 11.2929L9.95001 5.75C9.5358 5.33579 8.86423 5.33579 8.45001 5.75C8.0358 6.16421 8.0358 6.83579 8.45001 7.25L12.6343 11.4343C12.9467 11.7467 12.9467 12.2533 12.6343 12.5657Z" fill="black"></path>
-                                                </svg>
-                                            </span>
-                                        </div>
-                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-200px py-4"
-                                            data-kt-menu="true">
-                                            <div class="menu-item px-3">
-                                                <a href="/admin/users/'.$user['id'].'/plant/investments" class="menu-link px-3">
-                                                    Processing Plants
-                                                </a>
-                                            </div>
-                                            <div class="menu-item px-3">
-                                                <a href="/admin/users/'.$user['id'].'/farm/investments" class="menu-link px-3">
-                                                    Farms
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="menu-item px-3">
                                         <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/wallet"><span class="">Wallet</span></a>
-                                    </div>
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/referrals"><span class="">Referrals</span></a>
                                     </div>'.
                                     $action.'
                                 </div>';

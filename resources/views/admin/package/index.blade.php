@@ -133,12 +133,14 @@
                             </span>
                         </a>
                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                            <div class="menu-item px-3">
-                                <a class="menu-link px-3" href="{{ route('admin.packages.create', ['type' => 'plant']) }}"><span class="text-nowrap">Plant</span></a>
-                            </div>
-                            <div class="menu-item px-3">
-                                <a class="menu-link px-3" href="{{ route('admin.packages.create', ['type' => 'farm']) }}"><span class="">Farm</span></a>
-                            </div>
+                            @can('Create Packages')
+                                <div class="menu-item px-3">
+                                    <a class="menu-link px-3" href="{{ route('admin.packages.create', ['type' => 'plant']) }}"><span class="text-nowrap">Plant</span></a>
+                                </div>
+                                <div class="menu-item px-3">
+                                    <a class="menu-link px-3" href="{{ route('admin.packages.create', ['type' => 'farm']) }}"><span class="">Farm</span></a>
+                                </div>
+                            @endcan
                         </div>
                     </div>
                 </div>
@@ -202,16 +204,20 @@
                                     </span>
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="{{ route('admin.packages.edit', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Edit</span></a>
-                                    </div>
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')"><span class="">Delete</span></a>
-                                    </div>
-                                    <form action="{{ route('admin.packages.destroy', ['package' => $package['id'], 'type' => $package['type']]) }}" method="post" id="deletePackage{{ $package['id'] }}">
-                                        @csrf
-                                        @method('DELETE')
-                                    </form>
+                                    @can('Edit Packages')
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link px-3" href="{{ route('admin.packages.edit', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Edit</span></a>
+                                        </div>
+                                    @endcan
+                                    @can('Delete Packages')
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link px-3" href="" onclick="confirmFormSubmit(event, 'deletePackage{{ $package['id'] }}')"><span class="">Delete</span></a>
+                                        </div>
+                                        <form action="{{ route('admin.packages.destroy', ['package' => $package['id'], 'type' => $package['type']]) }}" method="post" id="deletePackage{{ $package['id'] }}">
+                                            @csrf
+                                            @method('DELETE')
+                                        </form>
+                                    @endcan
                                 </div>
                             </td>
                         </tr>

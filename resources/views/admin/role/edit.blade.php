@@ -74,13 +74,15 @@
                             @enderror
                         </div>
                     </div>
-                    <!--begin::Submit-->
-                    <button type="button" class="btn btn-primary mt-3" onclick="confirmFormSubmit(event, 'update-role-form')">
-                        <!--begin::Indicator-->
-                        <span class="indicator-label">Update Role</span>
-                        <!--end::Indicator-->
-                    </button>
-                    <!--end::Submit-->
+                    @can('Edit Roles')
+                        <!--begin::Submit-->
+                        <button type="button" class="btn btn-primary mt-3" onclick="confirmFormSubmit(event, 'update-role-form')">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Update Role</span>
+                            <!--end::Indicator-->
+                        </button>
+                        <!--end::Submit-->
+                    @endcan
                 </form>
                <!--end::Form-->
             </div>

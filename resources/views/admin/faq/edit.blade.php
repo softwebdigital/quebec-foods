@@ -75,13 +75,15 @@
                             @enderror
                         </div>
                         <!--end::Input group-->
-                        <!--begin::Submit-->
-                        <button type="button" onclick="confirmFormSubmit(event, 'editFaqForm')" class="btn btn-primary w-100">
-                            <!--begin::Indicator-->
-                            <span class="indicator-label">Update</span>
-                            <!--end::Indicator-->
-                        </button>
-                        <!--end::Submit-->
+                        @can('Edit FAQs')
+                            <!--begin::Submit-->
+                            <button type="button" onclick="confirmFormSubmit(event, 'editFaqForm')" class="btn btn-primary w-100">
+                                <!--begin::Indicator-->
+                                <span class="indicator-label">Update</span>
+                                <!--end::Indicator-->
+                            </button>
+                            <!--end::Submit-->
+                        @endcan
                     </form>
                     <!--end:::Form-->
                 </div>

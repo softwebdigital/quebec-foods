@@ -170,29 +170,37 @@
             </li>
             <!--end::Nav item-->
             <!--begin::Nav item-->
+            @can('View Investments')
             <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.investments']) && request()->type == 'farm') active @endif" id="farmNav" href="{{ route('admin.users.investments', ['user' => $user['id'], 'type' => 'farm']) }}">Farms Investments</a>
             </li>
+            @endcan
             <!--end::Nav item-->
             <!--begin::Nav item-->
+            @can('View Investments')
             <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.investments']) && request()->type == 'plant') active @endif"  id="plantNav" href="{{ route('admin.users.investments', ['user' => $user['id'], 'type' => 'plant']) }}">Plant Investments</a>
             </li>
+            @endcan
             <!--end::Nav item-->
             <!--begin::Nav item-->
+            @can('View Transactions')
             <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.transactions'])) active @endif"  id="transactionNav" href="{{ route('admin.users.transactions', $user['id']) }}">Transactions</a>
             </li>
+            @endcan
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.wallet'])) active @endif" id="walletNav" href="{{ route('admin.users.wallet', $user['id']) }}">Wallet</a>
             </li>
             <!--end::Nav item-->
+            @can('View Referrals')
              <!--begin::Nav item-->
              <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.referrals'])) active @endif" id="referralNav" href="{{ route('admin.users.referrals', $user['id']) }}">Referrals</a>
             </li>
+            @endcan
             <!--end::Nav item-->
         </ul>
         <!--end::Navs-->

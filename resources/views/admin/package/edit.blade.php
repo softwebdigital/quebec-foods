@@ -315,23 +315,25 @@
                                     @enderror
                                 </div>
                             @endif
+                            @can('Edit Packages')
+                                @if ($type == 'farm' && $package['status'] == 'closed')
+                                    <button type="button" disabled class="btn btn-primary w-100">
+                                        <!--begin::Indicator-->
+                                        <span class="indicator-label">Package Closed</span>
+                                        <!--end::Indicator-->
+                                    </button>
+                                @else
+                                    <!--begin::Submit-->
+                                    <button type="button" onclick="confirmFormSubmit(event, 'editPackageForm')"
+                                        class="btn btn-primary w-100">
+                                        <!--begin::Indicator-->
+                                        <span class="indicator-label">Update Package</span>
+                                        <!--end::Indicator-->
+                                    </button>
+                                    <!--end::Submit-->
+                                @endif
+                            @endcan
                             <!--end::Input group-->
-                            @if ($type == 'farm' && $package['status'] == 'closed')
-                                <button type="button" disabled class="btn btn-primary w-100">
-                                    <!--begin::Indicator-->
-                                    <span class="indicator-label">Package Closed</span>
-                                    <!--end::Indicator-->
-                                </button>
-                            @else
-                                <!--begin::Submit-->
-                                <button type="button" onclick="confirmFormSubmit(event, 'editPackageForm')"
-                                    class="btn btn-primary w-100">
-                                    <!--begin::Indicator-->
-                                    <span class="indicator-label">Update Package</span>
-                                    <!--end::Indicator-->
-                                </button>
-                                <!--end::Submit-->
-                            @endif
                         </form>
                         <!--end:::Form-->
                     </div>

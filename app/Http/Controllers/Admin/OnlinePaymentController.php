@@ -16,10 +16,10 @@ class OnlinePaymentController extends Controller
     public function fetchPaymentsWithAjax (Request $request)
     {
         // Define all the column
-        $columns = [ 'id', 'name', 'amount', 'reference', 'payment type', 'created_at', 'status', 'action' ];
+        $columns = [ 'id', 'name', 'amount', 'reference', 'type', 'created_at', 'status', 'action' ];
 
         // Fetch data for the page from database
-        $payments = OnlinePayment::query()->latest();
+        $payments = OnlinePayment::query();
 
         // Set helper variables from request and DB
         $totalData = $totalFiltered = $payments->count();
@@ -28,6 +28,7 @@ class OnlinePaymentController extends Controller
         $order = $columns[$request['order.0.column']];
         $dir = $request['order.0.dir'];
         $search = $request['search.value'];
+        if ($request['draw'] == '1')  $dir = 'desc';
 
         // Check if request wants to search or not and fetch data
         if(empty($search))
@@ -63,7 +64,7 @@ class OnlinePaymentController extends Controller
                 $disabled = 'disabled';
             }elseif ($payment['status'] == 'pending') {
                 $status = '<span class="badge badge-pill badge-warning text-center">Pending</span>';
-                // if (auth()->user()->can('Resolve Payments')) {
+                if (auth()->user()->can('Resolve Payments')) {
                     $action = '<div class="menu-item px-3">
                         <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'onlinePaymentResolve' . $payment['id'] . '\')" href="' . route('admin.onlinepayments.resolve', $payment['id']) . '"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Resolve</span></a>
                         <form id="onlinePaymentResolve' . $payment['id'] . '" action="' . route('admin.onlinepayments.resolve', $payment['id']) . '" method="POST">
@@ -71,22 +72,22 @@ class OnlinePaymentController extends Controller
                             <input type="hidden" name="_method" value="POST">
                         </form>
                     </div>';
-                // }
+                }
 
-                // if (!auth()->user()->can('Resolve Payments')){
-                    // $disabled = 'disabled';
-                // }
+                if (!auth()->user()->can('Resolve Payments')){
+                    $disabled = 'disabled';
+                }
             }elseif ($payment['status'] == 'failed') {
                 $status = '<span class="badge badge-pill badge-danger text-center">Failed</span>';
                 $disabled = 'disabled';
             }
 
             $datum['sn'] = '<span class="text-dark fw-bolder ps-4 d-block mb-1 fs-6">' . $i . '</span>';
-            // if ($payment->user && auth()->user()->can('View Users')){
+            if ($payment->user && auth()->user()->can('View Users')){
                 $datum['name'] = '<a class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" style="white-space: nowrap;" href="'.route('admin.users.show', $payment->user['id']).'">'.ucwords($payment->user['name']).'</a>';
-            // }else{
-                // $datum['name'] = $payment->user['name'] ?? '---';
-            // }
+            }else{
+                $datum['name'] = $payment->user['name'] ?? '---';
+            }
             $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($payment['amount']).'</span>';
             $datum['reference'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$payment['reference'].'</span>';
             $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$payment['created_at']->format('M d, Y \a\t h:i A').'</span>';

@@ -255,7 +255,7 @@ class TransactionController extends Controller
                 $disabled = 'disabled';
             }elseif ($transaction['status'] == 'pending') {
                 $status = '<span class="badge badge-pill badge-warning">Pending</span>';
-                // if (auth()->user()->can('Approve Transactions')){
+                if (auth()->user()->can('Approve Transactions')){
                     $action .= '<div class="menu-item px-3">
                         <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'transactionApprove' . $transaction['id'] . '\')" href="' . route('admin.transactions.approve', $transaction['id']) . '"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
                             <form id="transactionApprove' . $transaction['id'] . '" action="' . route('admin.transactions.approve', $transaction['id']) . '" method="POST">
@@ -263,8 +263,8 @@ class TransactionController extends Controller
                                 <input type="hidden" name="_method" value="PUT">
                             </form>
                         </div>';
-                // }
-                // if (auth()->user()->can('Decline Transactions')) {
+                }
+                if (auth()->user()->can('Decline Transactions')) {
                     $action .= '<div class="menu-item px-3">
                         <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'transactionDecline' . $transaction['id'] . '\')" href="' . route('admin.transactions.decline', $transaction['id']) . '"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
                             <form id="transactionDecline' . $transaction['id'] . '" action="' . route('admin.transactions.decline', $transaction['id']) . '" method="POST">
@@ -272,20 +272,20 @@ class TransactionController extends Controller
                                 <input type="hidden" name="_method" value="PUT">
                             </form>
                         </div>';
-                // }
-                // if (!auth()->user()->can('Approve Transactions') && !auth()->user()->can('Decline Transactions')){
-                    // $disabled = 'disabled';
-                // }
+                }
+                if (!auth()->user()->can('Approve Transactions') && !auth()->user()->can('Decline Transactions')){
+                    $disabled = 'disabled';
+                }
             }elseif ($transaction['status'] == 'declined'){
                 $status = '<span class="badge badge-pill badge-danger">Declined</span>';
                 $disabled = 'disabled';
             }
             $datum['sn'] = '<span class="text-dark fw-bolder ps-4 d-block mb-1 fs-6">' . $i . '</span>';
-            // if (auth()->user()->can('View Users')){
+            if (auth()->user()->can('View Users')){
                 $datum['name'] = '<a class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" style="white-space: nowrap;" href="'.route('admin.users.show', $transaction->user['id']).'">'.ucwords($transaction->user['name']).'</a>';
-            // }else{
-            //     $datum['name'] = ucwords($transaction->user['name']);
-            // }
+            }else{
+                $datum['name'] = ucwords($transaction->user['name']);
+            }
             $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format((int)$transaction['amount']).'</span>';
             $datum['description'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['description'].'</span>';
             $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['created_at']->format('M d, Y \a\t h:i A').'</span>';

@@ -91,7 +91,7 @@
 									</a>
 								</div>
                                 @can('View Users')
-                                    <div class="menu-item @if(request()->routeIs(['admin.users', 'admin.users.show'])) here show @endif">
+                                    <div class="menu-item @if(request()->routeIs(['admin.users', 'admin.users.show', 'admin.users.investments', 'admin.users.transactions', 'admin.users.wallet', 'admin.users.referrals'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.users') }}">
                                             <span class="menu-icon">
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->

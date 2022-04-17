@@ -82,13 +82,15 @@
                         @enderror
                     </div>
                     <!--end::Input group-->
-                    <!--begin::Submit-->
-                    <button type="button" class="btn btn-primary" onclick="confirmFormSubmit(event, 'create-admin-form')">
-                        <!--begin::Indicator-->
-                        <span class="indicator-label">Create Administrator</span>
-                        <!--end::Indicator-->
-                    </button>
-                    <!--end::Submit-->
+                    @can('Create Admins')
+                        <!--begin::Submit-->
+                        <button type="button" class="btn btn-primary" onclick="confirmFormSubmit(event, 'create-admin-form')">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Create Administrator</span>
+                            <!--end::Indicator-->
+                        </button>
+                        <!--end::Submit-->
+                    @endcan
                 </form>
                <!--end::Form-->
             </div>

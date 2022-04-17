@@ -61,40 +61,42 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="#" class="btn btn-sm btn-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
-                                        <span class="svg-icon svg-icon-5 m-0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
-                                            </svg>
-                                        </span>
-                                    </a>
-                                    <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                        @if($item['status'] == 'pending')
-                                        <div class="menu-item px-3">
-                                            <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'queued{{ $item['id'] }}')" href="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'queued']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Pay Now</span></a>
+                                    @can('Pay Maintenance Fee')
+                                        <a href="#" class="btn btn-sm btn-primary btn-active-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end">Action
+                                            <span class="svg-icon svg-icon-5 m-0">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+                                                </svg>
+                                            </span>
+                                        </a>
+                                        <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+                                            @if($item['status'] == 'pending')
+                                            <div class="menu-item px-3">
+                                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'queued{{ $item['id'] }}')" href="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'queued']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Pay Now</span></a>
+                                            </div>
+                                            <form id="queued{{ $item['id'] }}" action="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'queued']) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                            </form>
+                                            @endif
+                                            @if(auth()->user()['email'] == 'softwebdigital@gmail.com')
+                                                <div class="menu-item px-3">
+                                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'approve{{ $item['id'] }}')" href="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'approved']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
+                                                </div>
+                                                <form id="approve{{ $item['id'] }}" action="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'approved']) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                </form>
+                                                <div class="menu-item px-3">
+                                                    <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'decline{{ $item['id'] }}')" href="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'declined']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
+                                                </div>
+                                                <form id="decline{{ $item['id'] }}" action="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'declined']) }}" method="POST">
+                                                    @csrf
+                                                    @method('PUT')
+                                                </form>
+                                            @endif
                                         </div>
-                                        <form id="queued{{ $item['id'] }}" action="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'queued']) }}" method="POST">
-                                            @csrf
-                                            @method('PUT')
-                                        </form>
-                                        @endif
-                                        @if($item['status'] == 'queued')
-                                            <div class="menu-item px-3">
-                                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'approve{{ $item['id'] }}')" href="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'approved']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Approve</span></a>
-                                            </div>
-                                            <form id="approve{{ $item['id'] }}" action="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'approved']) }}" method="POST">
-                                                @csrf
-                                                @method('PUT')
-                                            </form>
-                                            <div class="menu-item px-3">
-                                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'decline{{ $item['id'] }}')" href="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'declined']) }}"><i data-feather="user-x" class="icon-sm mr-2"></i> <span class="">Decline</span></a>
-                                            </div>
-                                            <form id="decline{{ $item['id'] }}" action="{{ route('admin.maintenance.change', ['maintenance' => $item['id'], 'state' => 'declined']) }}" method="POST">
-                                                @csrf
-                                                @method('PUT')
-                                            </form>
-                                        @endif
-                                    </div>
+                                    @endcan
                                 </td>
                             </tr>
                         @endforeach

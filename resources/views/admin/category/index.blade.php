@@ -36,9 +36,11 @@
             <!--begin::Card toolbar-->
             <div class="card-toolbar">
                 <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
-                    <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#createCategoryModal">New Category</button>
-                </div>
+                @can('Create Categories')
+                    <div class="d-flex justify-content-end" data-kt-customer-table-toolbar="base">
+                        <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#createCategoryModal">New Category</button>
+                    </div>
+                @endcan
                 <!--end::Toolbar-->
                 <!--begin::Group actions-->
                 <div class="d-flex justify-content-end align-items-center d-none" data-kt-customer-table-toolbar="selected">
@@ -87,12 +89,16 @@
                                     </a>
                                     <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                         <div class="menu-item px-3">
-                                            <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#updateCategoryModal{{  $category['id'] }}"><span class="">Edit</span></a>
-                                            <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'deleteCategoryForm{{  $category['id'] }}')"><span class="">Delete</span></a>
-                                            <form action="{{ route('admin.category.destroy', $category['id']) }}" method="post" id="deleteCategoryForm{{  $category['id'] }}">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
+                                            @can('Edit Categories')
+                                                <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#updateCategoryModal{{  $category['id'] }}"><span class="">Edit</span></a>
+                                            @endcan
+                                            @can('Delete Categories')
+                                                <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'deleteCategoryForm{{  $category['id'] }}')"><span class="">Delete</span></a>
+                                                <form action="{{ route('admin.category.destroy', $category['id']) }}" method="post" id="deleteCategoryForm{{  $category['id'] }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                </form>
+                                            @endcan
                                         </div>
                                     </div>
                                 </td>
