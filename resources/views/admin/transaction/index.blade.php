@@ -110,7 +110,7 @@
             <!--end::Menu 1-->
             <!--end::Filter-->
             <!--begin::Export-->
-            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_customers_export_modal">
+            <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_transactions_export_modal">
             <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
             <span class="svg-icon svg-icon-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -193,7 +193,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="kt_customers_export_modal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="kt_transactions_export_modal" tabindex="-1" aria-hidden="true">
     <!--begin::Modal dialog-->
     <div class="modal-dialog modal-dialog-centered mw-650px">
         <!--begin::Modal content-->
@@ -220,14 +220,15 @@
             <!--begin::Modal body-->
             <div class="modal-body scroll-y mx-5 mx-xl-15 my-7">
                 <!--begin::Form-->
-                <form id="kt_customers_export_form" class="form" action="#">
+                <form id="kt_transactions_export_form" class="form" method="POST" action="{{ route('admin.transactions.export') }}">
+                    @csrf
                     <!--begin::Input group-->
                     <div class="fv-row mb-10">
                         <!--begin::Label-->
                         <label class="form-label fs-5 fw-bold mb-3">Category:</label>
                         <!--end::Label-->
                         <!--begin::Input-->
-                        <select class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
+                        <select class="form-select form-select-solid fw-bolder" name="category" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
                             <option value="">Show All</option>
                             <option value="withdrawal">Withdrawal</option>
                             <option value="deposit">Deposit</option>
@@ -280,7 +281,7 @@
                     <!--begin::Actions-->
                     <div class="text-center">
                         <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light me-3">Discard</button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" onclick="confirmFormSubmit(event, 'kt_transactions_export_form')" class="btn btn-primary">
                             <span class="indicator-label">Submit</span>
                             <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
@@ -299,6 +300,31 @@
 @endsection
 
 @section('script')
+
+<script>
+    "use strict";
+    var KTCustomersExport = (function() {
+        var t, e, n, o, r, i, a;
+        return {
+            init: function() {
+                (t = document.querySelector("#kt_transactions_export_modal")),
+                (i = document.querySelector("#kt_transactions_export_form")),
+                (function() {
+                    const t = i.querySelector("[name=date]");
+                    $(t).flatpickr({
+                        altInput: !0,
+                        altFormat: "F j, Y",
+                        dateFormat: "Y-m-d",
+                        mode: "range",
+                    });
+                })();
+            },
+        };
+    })();
+    KTUtil.onDOMContentLoaded(function() {
+        KTCustomersExport.init();
+    });
+</script>
 <script>
     function populateTransactionDetails(accountName, accountNumber, bankName) {
         $('#accountName').text(accountName);

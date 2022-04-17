@@ -117,4 +117,8 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::put('/maintenance/{maintenance}/change/{state}', [App\Http\Controllers\Admin\MaintenanceController::class, 'change'])->name('maintenance.change');
 
     Route::post('/users/export', [App\Http\Controllers\Admin\ExportController::class, 'exportUsers'])->name('users.export')->middleware('permission:Export Users CSV');
+    Route::post('/investments/export', [App\Http\Controllers\Admin\ExportController::class, 'exportInvestments'])->name('investments.export');
+    Route::post('/transactions/export', [App\Http\Controllers\Admin\ExportController::class, 'exportTransactions'])->name('transactions.export');
+    Route::post('/referrals/export', [App\Http\Controllers\Admin\ExportController::class, 'exportReferrals'])->name('referrals.export');
+    Route::post('/onlinepayments/export', [App\Http\Controllers\Admin\ExportController::class, 'exportOnlinePayments'])->name('onlinePayments.export');
 });
