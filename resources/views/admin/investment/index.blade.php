@@ -196,7 +196,7 @@
                         <!--end::Label-->
                         <!--begin::Input-->
                         <select class="form-select form-select-solid fw-bolder" name="category" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
-                            <option value="">Show All</option>
+                            <option value="all">Show All</option>
                             <option value="plant">Processing Plants</option>
                             <option value="farm">Farm</option>
                         </select>
@@ -222,7 +222,7 @@
                         <div class="d-flex flex-column flex-wrap fw-bold" data-kt-customer-table-filter="status">
                             <!--begin::Option-->
                             <label class="form-check form-check-sm form-check-custom form-check-solid mb-3 me-5">
-                                <input class="form-check-input" type="radio" name="status" value="" checked="checked" />
+                                <input class="form-check-input" type="radio" name="status" value="all" checked="checked" />
                                 <span class="form-check-label text-gray-600">All</span>
                             </label>
                             <!--end::Option-->
@@ -257,7 +257,7 @@
                     <!--begin::Actions-->
                     <div class="text-center">
                         <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light me-3">Discard</button>
-                        <button type="submit" onclick="confirmFormSubmit(event, 'kt_investments_export_form')" class="btn btn-primary">
+                        <button type="submit" onclick="confirmFormSubmit(event, 'kt_investments_export_form', 'kt_investments_export_modal')" class="btn btn-primary">
                             <span class="indicator-label">Submit</span>
                             <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

@@ -61,6 +61,7 @@ class UpdatePermissionDataOnPermissionsTable extends Migration
             ['name' => 'Delete FAQs', 'guard_name' => 'admin'],
             ['name' => 'Edit FAQs', 'guard_name' => 'admin'],
             ['name' => 'View Referrals', 'guard_name' => 'admin'],
+            ['name' => 'Export Referrals', 'guard_name' => 'admin'],
             ['name' => 'View Maintenance', 'guard_name' => 'admin'],
             ['name' => 'Pay Maintenance Fee', 'guard_name' => 'admin'],
             ['name' => 'View Settings', 'guard_name' => 'admin'],
