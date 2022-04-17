@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use App\Models\User;
 use App\Models\Referral;
 use Maatwebsite\Excel\Concerns\FromArray;
 use Maatwebsite\Excel\Concerns\WithHeadings;
@@ -20,19 +21,23 @@ class ReferralExport implements FromArray, WithHeadings
     {
         $dates = explode('to', $this->dates);
 
-        $referrals = Referral::query()->latest();
+        $users = User::whereHas('referrals')
+            ->with('referrals')
+            ->withCount('referrals')
+            ->orderBy('referrals_count', 'desc');
 
         if (count($dates) > 1) {
-            $referrals = $referrals->whereDate('created_at', '>=', $dates[0])->whereDate('created_at', '<=', $dates[1]);
+            $users = $users->whereDate('created_at', '>=', $dates[0])->whereDate('created_at', '<=', $dates[1]);
         }
 
-        $referrals = $referrals->get();
+        $users = $users->get();
 
-        return $referrals->map(function($referral) {
+        return $users->map(function($user) {
             return [
-                'referee_name' => $referral['referred']['name'],
-                'referee_email' => $referral['referred']['email'],
-                'date_joined' => $referral['created_at']->format('M d, Y')
+                'referee_name' => $user['name'],
+                'referee_email' => $user['email'],
+                'referrals' => count($user['referrals']),
+                'date_joined' => $user['created_at']->format('M d, Y')
             ];
         })->toArray();
     }
@@ -40,8 +45,9 @@ class ReferralExport implements FromArray, WithHeadings
     public function headings(): array
     {
         return [
-            'Referee Name',
-            'Referee Email',
+            'Name',
+            'Email',
+            'Total Referred',
             'Date Joined',
         ];
     }

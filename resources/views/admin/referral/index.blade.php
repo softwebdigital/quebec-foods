@@ -120,7 +120,7 @@
                         <!--begin::Actions-->
                         <div class="text-center">
                             <button type="button" data-bs-dismiss="modal" aria-label="Close" class="btn btn-light me-3">Discard</button>
-                            <button type="submit" onclick="confirmFormSubmit(event, 'kt_referrals_export_form')" class="btn btn-primary">
+                            <button type="submit" onclick="confirmFormSubmit(event, 'kt_referrals_export_form', 'kt_referrals_export_modal')" class="btn btn-primary">
                                 <span class="indicator-label">Submit</span>
                                 <span class="indicator-progress">Please wait...
                                 <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

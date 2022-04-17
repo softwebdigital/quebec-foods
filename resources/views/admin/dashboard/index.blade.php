@@ -10,39 +10,37 @@
 @endsection
 
 @section('content')
-    @can('View Dashboard')
-        <!--begin::Row-->
-        <div class="row g-5 g-xl-8">
-            <!--begin::Col-->
-            <div class="col-xl-4">
-                <!--begin::Mixed Widget 14-->
-                    <div class="card card-xxl-stretch mb-5 mb-xl-8" style="background-color: #F7D9E3">
-                        <!--begin::Body-->
-                        <div class="card-body d-flex flex-column">
-                            <!--begin::Wrapper-->
-                            <div class="d-flex flex-column mb-7">
-                                <!--begin::Title-->
-                                <a href="#" class="text-dark text-hover-primary fw-bolder fs-3">Summary</a>
-                                <!--end::Title-->
-                            </div>
-                            <!--end::Wrapper-->
-                            <!--begin::Row-->
-                            <div class="row g-0">
-                                <!--begin::Col-->
-                                <div class="col-6">
-                                    <div class="d-flex align-items-center mb-9 me-2">
-                                        <!--begin::Symbol-->
-                                        <div class="symbol symbol-40px me-3">
-                                            <div class="symbol-label bg-white bg-opacity-50">
-                                                <!--begin::Svg Icon | path: icons/duotune/abstract/abs043.svg-->
-                                                <span class="svg-icon svg-icon-1 svg-icon-dark">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                        <path opacity="0.3" d="M22 8H8L12 4H19C19.6 4 20.2 4.39999 20.5 4.89999L22 8ZM3.5 19.1C3.8 19.7 4.4 20 5 20H12L16 16H2L3.5 19.1ZM19.1 20.5C19.7 20.2 20 19.6 20 19V12L16 8V22L19.1 20.5ZM4.9 3.5C4.3 3.8 4 4.4 4 5V12L8 16V2L4.9 3.5Z" fill="black" />
-                                                        <path d="M22 8L20 12L16 8H22ZM8 16L4 12L2 16H8ZM16 16L12 20L16 22V16ZM8 8L12 4L8 2V8Z" fill="black" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </div>
+    <!--begin::Row-->
+    <div class="row g-5 mb-10 g-xl-8">
+        <!--begin::Col-->
+        <div class="col-xl-4">
+            <!--begin::Mixed Widget 14-->
+                <div class="card card-xxl-stretch mb-5 mb-xl-8" style="background-color: #F7D9E3">
+                    <!--begin::Body-->
+                    <div class="card-body d-flex flex-column">
+                        <!--begin::Wrapper-->
+                        <div class="d-flex flex-column mb-7">
+                            <!--begin::Title-->
+                            <a href="#" class="text-dark text-hover-primary fw-bolder fs-3">Summary</a>
+                            <!--end::Title-->
+                        </div>
+                        <!--end::Wrapper-->
+                        <!--begin::Row-->
+                        <div class="row g-0">
+                            <!--begin::Col-->
+                            <div class="col-6">
+                                <div class="d-flex align-items-center mb-9 me-2">
+                                    <!--begin::Symbol-->
+                                    <div class="symbol symbol-40px me-3">
+                                        <div class="symbol-label bg-white bg-opacity-50">
+                                            <!--begin::Svg Icon | path: icons/duotune/abstract/abs043.svg-->
+                                            <span class="svg-icon svg-icon-1 svg-icon-dark">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                                    <path opacity="0.3" d="M22 8H8L12 4H19C19.6 4 20.2 4.39999 20.5 4.89999L22 8ZM3.5 19.1C3.8 19.7 4.4 20 5 20H12L16 16H2L3.5 19.1ZM19.1 20.5C19.7 20.2 20 19.6 20 19V12L16 8V22L19.1 20.5ZM4.9 3.5C4.3 3.8 4 4.4 4 5V12L8 16V2L4.9 3.5Z" fill="black" />
+                                                    <path d="M22 8L20 12L16 8H22ZM8 16L4 12L2 16H8ZM16 16L12 20L16 22V16ZM8 8L12 4L8 2V8Z" fill="black" />
+                                                </svg>
+                                            </span>
+                                            <!--end::Svg Icon-->
                                         </div>
                                         <!--end::Symbol-->
                                         <!--begin::Title-->
@@ -177,27 +175,25 @@
         </div>
         <!--end::Row-->
 
-        <!--begin::Row-->
-        <div class="row g-5 g-xl-8">
-            <!--begin::Col-->
-            <div class="col-xl-6">
-                <!--begin::Mixed Widget 1-->
-                <div class="card card-xl-stretch mb-xl-8">
-                    <!--begin::Body-->
-                    <div class="card-body p-0">
-                        <!--begin::Header-->
-                        <div class="px-9 pt-7 card-rounded h-275px w-100 bg-primary">
-                            <!--begin::Heading-->
-                            <div class="d-flex flex-stack">
-                                <h3 class="m-0 text-white fw-bolder fs-3">Plant Investments</h3>
-                            </div>
-                            <!--end::Heading-->
-                            <!--begin::Balance-->
-                            <div class="d-flex text-center flex-column text-white pt-8">
-                                <span class="fw-bold fs-7">Active Investment</span>
-                                <span class="fw-bolder fs-2x pt-1">₦ {{ number_format($data['plantInvestments']['active']) }}</span>
-                            </div>
-                            <!--end::Balance-->
+    <!--begin::Row-->
+    <div class="row g-5 g-xl-8 mb-10">
+        <!--begin::Col-->
+        <div class="col-xl-6">
+            <!--begin::Mixed Widget 1-->
+            <div class="card card-xl-stretch mb-xl-8">
+                <!--begin::Body-->
+                <div class="card-body p-0">
+                    <!--begin::Header-->
+                    <div class="px-9 pt-7 card-rounded h-275px w-100 bg-primary">
+                        <!--begin::Heading-->
+                        <div class="d-flex flex-stack">
+                            <h3 class="m-0 text-white fw-bolder fs-3">Plant Investments</h3>
+                        </div>
+                        <!--end::Heading-->
+                        <!--begin::Balance-->
+                        <div class="d-flex text-center flex-column text-white pt-8">
+                            <span class="fw-bold fs-7">Active Investment</span>
+                            <span class="fw-bolder fs-2x pt-1">₦ {{ number_format($data['plantInvestments']['active']) }}</span>
                         </div>
                         <!--end::Header-->
                         <!--begin::Items-->
@@ -571,27 +567,25 @@
         </div>
         <!--end::Row-->
 
-        <!--begin::Row-->
-        <div class="row gy-5 mb-20 g-xl-10">
-            <!--begin::Col-->
-            <div class="@if (count($data['wallet']['history']) > 0) col-xl-12 @else col-xl-12 @endif mb-5 mb-xxl-10">
-                <!--begin::Chart widget 12-->
-                <div class="card card-flush h-xl-100">
-                    <!--begin::Header-->
-                    <div class="card-header pt-7 mb-3">
-                        <!--begin::Title-->
-                        <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bolder text-gray-800">This year transactions</span>
-                            <span class="text-gray-400 mt-1 fw-bold fs-6">Transactions History</span>
-                        </h3>
-                        <!--end::Title-->
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::Body-->
-                    <div class="card-body pt-4">
-                        <div id="transaction-stat-yearly" class="ms-n5 me-n3 min-h-auto" style="height: 300px"></div>
-                    </div>
-                    <!--end::Body-->
+    <!--begin::Row-->
+    <div class="row gy-5 mb-10 g-xl-10">
+        <!--begin::Col-->
+        <div class="col-xl-12 mb-5 mb-10">
+            <!--begin::Chart widget 12-->
+            <div class="card card-flush h-xl-100">
+                <!--begin::Header-->
+                <div class="card-header pt-7 mb-3">
+                    <!--begin::Title-->
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="card-label fw-bolder text-gray-800">This year transactions</span>
+                        <span class="text-gray-400 mt-1 fw-bold fs-6">Transactions History</span>
+                    </h3>
+                    <!--end::Title-->
+                </div>
+                <!--end::Header-->
+                <!--begin::Body-->
+                <div class="card-body pt-4">
+                    <div id="transaction-stat-yearly" class="ms-n5 me-n3 min-h-auto" style="height: 300px"></div>
                 </div>
                 <!--end::Chart widget 12-->
             </div>
@@ -599,36 +593,59 @@
         </div>
         <!--end::Row-->
 
-        <!--begin::Row-->
-        <div class="row g-5 g-lg-10">
-            @if (count($data['investments']['plant']) > 0)
-            <!--begin::Col-->
-            <div class="col-xxl-12 col-md-8 mb-xxl-10">
-                <!--begin::Tables Widget 9-->
-                <div class="card h-md-100">
-                    <!--begin::Header-->
-                    <div class="card-header border-0 pt-5">
-                        <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bolder fs-3 mb-1">Recent Plant Investments</span>
-                            <span class="text-muted mt-1 fw-bold fs-7">Over 500 members</span>
-                        </h3>
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::Body-->
-                    <div class="card-body py-3">
-                        <!--begin::Table container-->
-                        <div class="table-responsive">
-                            <!--begin::Table-->
-                            <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
-                                <!--begin::Table head-->
-                                <thead>
-                                    <tr class="fw-bolder text-muted">
-                                        <th class="ps-4 text-dark rounded-start">S/N</th>
-                                        <th class="text-dark">Package</th>
-                                        <th class="text-dark">Total Invested</th>
-                                        <th class="text-dark">Expected Returns</th>
-                                        <th class="text-dark">Return Date</th>
-                                        <th class="text-dark">Status</th>
+    <!--begin::Row-->
+    <div class="row g-5 g-lg-10">
+        @if (count($data['investments']['plant']) > 0)
+        <!--begin::Col-->
+        <div class="col-xxl-12 mb-10">
+            <!--begin::Tables Widget 9-->
+            <div class="card h-md-100">
+                <!--begin::Header-->
+                <div class="card-header border-0 pt-5">
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="card-label fw-bolder fs-3 mb-1">Recent Plant Investments</span>
+                        <span class="text-muted mt-1 fw-bold fs-7">Over 500 members</span>
+                    </h3>
+                </div>
+                <!--end::Header-->
+                <!--begin::Body-->
+                <div class="card-body py-3">
+                    <!--begin::Table container-->
+                    <div class="table-responsive">
+                        <!--begin::Table-->
+                        <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                            <!--begin::Table head-->
+                            <thead>
+                                <tr class="fw-bolder text-muted">
+                                    <th class="ps-4 text-dark rounded-start">S/N</th>
+                                    <th class="text-dark">Package</th>
+                                    <th class="text-dark">Total Invested</th>
+                                    <th class="text-dark">Expected Returns</th>
+                                    <th class="text-dark">Return Date</th>
+                                    <th class="text-dark">Status</th>
+                                </tr>
+                            </thead>
+                            <!--end::Table head-->
+                            <!--begin::Table body-->
+                            <tbody>
+                                @foreach ($data['investments']['plant'] as $key => $plantInvestment )
+                                    <tr>
+                                        <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['package']['name'] }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($plantInvestment['amount']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($plantInvestment['total_return']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['return_date']->format('M d, Y') }}</span></td>
+                                        <td>
+                                            @if($plantInvestment['status'] == 'active')
+                                                <span class="badge badge-pill badge-success">Active</span>
+                                            @elseif($plantInvestment['status'] == 'pending')
+                                                <span class="badge badge-pill badge-warning">Pending</span>
+                                            @elseif($plantInvestment['status'] == 'settled')
+                                                <span class="badge badge-pill badge-secondary">Settled</span>
+                                            @elseif($plantInvestment['status'] == 'cancelled')
+                                                <span class="badge badge-pill badge-danger">Declined</span>
+                                            @endif
+                                        </td>
                                     </tr>
                                 </thead>
                                 <!--end::Table head-->
@@ -670,36 +687,59 @@
         </div>
         <!--end::Row-->
 
-        <!--begin::Row-->
-        <div class="row g-5 g-lg-10">
-            @if (count($data['investments']['farm']) > 0)
-            <!--begin::Col-->
-            <div class="col-xxl-12 col-md-8 mb-xxl-10">
-                <!--begin::Tables Widget 9-->
-                <div class="card h-md-100">
-                    <!--begin::Header-->
-                    <div class="card-header border-0 pt-5">
-                        <h3 class="card-title align-items-start flex-column">
-                            <span class="card-label fw-bolder fs-3 mb-1">Recent Farm Investments</span>
-                            <span class="text-muted mt-1 fw-bold fs-7">Over 500 members</span>
-                        </h3>
-                    </div>
-                    <!--end::Header-->
-                    <!--begin::Body-->
-                    <div class="card-body py-3">
-                        <!--begin::Table container-->
-                        <div class="table-responsive">
-                            <!--begin::Table-->
-                            <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
-                                <!--begin::Table head-->
-                                <thead>
-                                    <tr class="fw-bolder text-muted">
-                                        <th class="ps-4 text-dark rounded-start">S/N</th>
-                                        <th class="text-dark">Package</th>
-                                        <th class="text-dark">Total Invested</th>
-                                        <th class="text-dark">Expected Returns</th>
-                                        <th class="text-dark">Return Date</th>
-                                        <th class="text-dark">Status</th>
+    <!--begin::Row-->
+    <div class="row g-5 g-lg-10">
+        @if (count($data['investments']['farm']) > 0)
+        <!--begin::Col-->
+        <div class="col-xxl-12 mb-10">
+            <!--begin::Tables Widget 9-->
+            <div class="card h-md-100">
+                <!--begin::Header-->
+                <div class="card-header border-0 pt-5">
+                    <h3 class="card-title align-items-start flex-column">
+                        <span class="card-label fw-bolder fs-3 mb-1">Recent Farm Investments</span>
+                        <span class="text-muted mt-1 fw-bold fs-7">Over 500 members</span>
+                    </h3>
+                </div>
+                <!--end::Header-->
+                <!--begin::Body-->
+                <div class="card-body py-3">
+                    <!--begin::Table container-->
+                    <div class="table-responsive">
+                        <!--begin::Table-->
+                        <table class="table table-row-dashed table-row-gray-300 align-middle gs-0 gy-4">
+                            <!--begin::Table head-->
+                            <thead>
+                                <tr class="fw-bolder text-muted">
+                                    <th class="ps-4 text-dark rounded-start">S/N</th>
+                                    <th class="text-dark">Package</th>
+                                    <th class="text-dark">Total Invested</th>
+                                    <th class="text-dark">Expected Returns</th>
+                                    <th class="text-dark">Return Date</th>
+                                    <th class="text-dark">Status</th>
+                                </tr>
+                            </thead>
+                            <!--end::Table head-->
+                            <!--begin::Table body-->
+                            <tbody>
+                                @foreach ($data['investments']['farm'] as $key => $farmInvestment )
+                                    <tr>
+                                        <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['package']['name'] }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($farmInvestment['amount']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($farmInvestment['total_return']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['return_date']->format('M d, Y') }}</span></td>
+                                        <td>
+                                            @if($farmInvestment['status'] == 'active')
+                                                <span class="badge badge-pill badge-success">Active</span>
+                                            @elseif($farmInvestment['status'] == 'pending')
+                                                <span class="badge badge-pill badge-warning">Pending</span>
+                                            @elseif($farmInvestment['status'] == 'settled')
+                                                <span class="badge badge-pill badge-secondary">Settled</span>
+                                            @elseif($farmInvestment['status'] == 'cancelled')
+                                                <span class="badge badge-pill badge-danger">Declined</span>
+                                            @endif
+                                        </td>
                                     </tr>
                                 </thead>
                                 <!--end::Table head-->
