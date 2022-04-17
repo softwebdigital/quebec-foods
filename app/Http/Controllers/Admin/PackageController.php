@@ -11,7 +11,7 @@ class PackageController extends Controller
 {
     public function index()
     {
-        $packages = Package::query();
+        $packages = Package::latest();
         if (request('category')) {
             $packages = $packages->where('type', request('category'));
         }
@@ -45,7 +45,7 @@ class PackageController extends Controller
             'type' => ['required', 'in:plant,farm'],
             'name' => ['required', 'unique:packages,name'],
             'roi' => ['required', 'numeric'],
-            'start_date' => ['required'],
+            'start_date' => ['required', 'date', 'after:'.date('Y-m-d')],
             'slots' => ['required_if:type,farm'],
             'duration' => ['required_if:type,farm', 'numeric'],
             'price' => ['required', 'numeric', 'gt:0'],
@@ -55,13 +55,18 @@ class PackageController extends Controller
             'rollover' => ['sometimes'],
             'description' => ['required'],
             'image' => ['required_if:type,plant', 'mimes:jpeg,jpg,png', 'max:1024'],
-            'status' => ['required_if:type,plant']
+            'category' => ['required_if:type,farm']
         ]);
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }
         // Collect data from request
         $data = $request->except('image', 'image_remove');
+        if ($request->type == 'plant') $data['status'] = $data['status'] ?? "closed";
+        if ($request->category) {
+            $data['category_id'] = $data['category'];
+            unset($data['category']);
+        }
         // Save file to folder
         if ($request['type'] == 'plant') {
             $data['image'] = $this->uploadPackageImageAndReturnPathToSave($request['image']);
@@ -69,7 +74,7 @@ class PackageController extends Controller
         }
         // Store package
         if (Package::create($data)){
-            return redirect()->route('admin.packages', $request['type'])->with('success', 'Package created successfully');
+            return redirect()->route('admin.packages')->with('success', 'Package created successfully');
         }
         return back()->with('error', 'Error creating package');
     }
@@ -81,7 +86,7 @@ class PackageController extends Controller
             'type' => ['required', 'in:plant,farm'],
             'name' => ['required', 'unique:packages,name,'.$package['id']],
             'roi' => ['required', 'numeric'],
-            'start_date' => ['required'],
+            'start_date' => ['required', 'date', 'after:'.date('Y-m-d')],
             'slots' => ['required_if:type,farm'],
             'duration' => ['required_if:type,farm', 'numeric'],
             'price' => ['required', 'numeric', 'gt:0'],
@@ -91,20 +96,25 @@ class PackageController extends Controller
             'rollover' => ['sometimes'],
             'description' => ['required'],
             'image' => ['mimes:jpeg,jpg,png', 'max:1024'],
-            'status' => ['required_if:type,plant']
+            'category' => ['required_if:type,farm']
         ]);
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }
         // Collect data from request
         $data = $request->except('image', 'image_remove');
+        if ($type == 'plant') $data['status'] = $data['status'] ?? "closed";
+        if ($request->category) {
+            $data['category_id'] = $data['category'];
+            unset($data['category']);
+        }
         // Save file to folder if uploaded
         if ($request->file('image')){
             $data['image'] = $this->uploadPackageImageAndReturnPathToSave($request['image']);
         }
         // Store package
         if ($package->update($data)){
-            return redirect()->route('admin.packages', $type)->with('success', 'Package updated successfully');
+            return redirect()->route('admin.packages')->with('success', 'Package updated successfully');
         }
         return back()->with('error', 'Error updating package');
     }

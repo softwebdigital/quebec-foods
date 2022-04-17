@@ -40,7 +40,7 @@ class Kernel extends ConsoleKernel
                     ->everyMinute();
         $schedule->command('maintenance:generate')
                     ->withoutOverlapping()
-                    ->everyMinute();
+                    ->monthlyOn(25, '00:00');
     }
 
     /**

@@ -35,6 +35,16 @@ class Package extends Model
         return $this->status == 'open' || ($this->type == 'farms' && !$this->hasStarted());
     }
 
+    public function getNameAttribute()
+    {
+        return strlen($this->attributes['name']) > 15 ? substr($this->attributes['name'], 0, 15).'...' : $this->attributes['name'];
+    }
+
+    public function getRawNameAttribute()
+    {
+        return $this->attributes['name'];
+    }
+
     public function getPlantTotalROI($amount)
     {
         $sum = 0;

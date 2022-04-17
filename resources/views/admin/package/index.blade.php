@@ -61,7 +61,7 @@
                             <!--begin::Input group-->
                             <div class="mb-10">
                                 <!--begin::Label-->
-                                <label class="form-label fs-5 fw-bold mb-3">Category:</label>
+                                <label class="form-label fs-5 fw-bold mb-3">Type:</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <select class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
@@ -167,7 +167,7 @@
                         <th class="text-muted text-nowrap">ROI in %</th>
                         <th class="text-muted text-nowrap">Price per slot</th>
                         <th class="text-muted text-nowrap">Start date</th>
-                        <th class="text-muted text-nowrap">Category</th>
+                        <th class="text-muted text-nowrap">Type</th>
                         <th class="text-muted text-nowrap">Investments</th>
                         <th class="text-muted text-nowrap">Status</th>
                         <th class="text-muted text-end rounded-end">Action</th>
@@ -202,9 +202,6 @@
                                     </span>
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
-                                    <div class="menu-item px-3">
-                                        <a class="menu-link px-3" href="{{ route('admin.packages.show', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Show</span></a>
-                                    </div>
                                     <div class="menu-item px-3">
                                         <a class="menu-link px-3" href="{{ route('admin.packages.edit', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Edit</span></a>
                                     </div>

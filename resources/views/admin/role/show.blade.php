@@ -167,10 +167,10 @@
                                                                         <label
                                                                             class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
                                                                             <input name="permissions[]"
-                                                                                @if ($permission['name'] == 'View Quick Overview') disabled @endif
-                                                                                @if ($role->hasPermissionTo($permission['name']) || $permission['name'] == 'View Quick Overview') checked @endif
+                                                                                @if ($permission['name'] == 'View Dashboard') disabled @endif
+                                                                                @if ($role->hasPermissionTo($permission['name']) || $permission['name'] == 'View Dashboard') checked @endif
                                                                                 value="{{ $permission['name'] }}"
-                                                                                class="form-check-input @if ($permission['name'] != 'View Quick Overview') permission-check-box @endif"
+                                                                                class="form-check-input @if ($permission['name'] != 'View Dashboard') permission-check-box @endif"
                                                                                 type="checkbox">
                                                                             <span class="form-check-label">Enable</span>
                                                                         </label>
@@ -333,6 +333,21 @@
 
 @section('script')
 <script src="{{asset('assets/plugins/custom/datatables/datatables.bundle.js')}}"></script>
+<script>
+    function selectAll(self, parent) {
+        let selectAll = $(`#${self}`);
+        let permissionCheckBoxes = $(`#${parent} .permission-check-box`);
+        if (selectAll.prop('checked')){
+            permissionCheckBoxes.each(function (){
+                $(this).prop('checked', true);
+            });
+        }else {
+            permissionCheckBoxes.each(function (){
+                $(this).prop('checked', false);
+            });
+        }
+    }
+</script>
 <script>
     "use strict";
 var KTUsersViewRole = (function () {

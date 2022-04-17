@@ -87,10 +87,13 @@ class InvestmentController extends Controller
     {
         //        Define all column names
         $columns = [
-            'id', 'name', 'package', 'slots', 'total_invested', 'expected_returns', 'investment_date', 'payment', 'status', 'action'
+            'investments.created_at', 'users.first_name', 'packages.name', 'investments.slots', 'investments.amount', 'investments.total_return', 'investments.investment_date', 'investments.payment', 'investments.status', 'investments.created_at'
         ];
 //        Find data based on page
-        $investments = Investment::query()->latest();
+        $investments = Investment::query()
+                                    ->join('users', 'users.id', '=', 'investments.user_id')
+                                    ->join('packages', 'packages.id', '=', 'investments.user_id')
+                                    ->select('investments.*');
         if ($type !== 'all') {
             $investments->whereHas('package', function($query) use ($type) {
                 $query->where('type', $type);
@@ -106,6 +109,7 @@ class InvestmentController extends Controller
         $order = $columns[$request['order.0.column']];
         $dir = $request['order.0.dir'];
         $search = $request['search.value'];
+        if ($request['draw'] == '1')  $dir = 'desc';
 //        Check if request wants to search or not and fetch data
         if(empty($search))
         {
@@ -117,10 +121,10 @@ class InvestmentController extends Controller
         else {
             $investments = $investments->whereHas('user',function ($q) use ($search) { $q->where('first_name', 'LIKE',"%{$search}%")->orWhere('last_name', 'LIKE', "%{$search}"); })
                 ->orWhereHas('package',function ($q) use ($search) { $q->where('name', 'LIKE',"%{$search}%"); })
-                ->orWhere('slots', 'LIKE',"%{$search}%")
-                ->orWhere('status', 'LIKE',"%{$search}%")
-                ->orWhere('total_return', 'LIKE',"%{$search}%")
-                ->orWhere('amount', 'LIKE',"%{$search}%");
+                ->orWhere('investments.slots', 'LIKE',"%{$search}%")
+                ->orWhere('investments.status', 'LIKE',"%{$search}%")
+                ->orWhere('investments.total_return', 'LIKE',"%{$search}%")
+                ->orWhere('investments.amount', 'LIKE',"%{$search}%");
             $totalFiltered = $investments->count();
             $investments = $investments->offset($start)
                 ->limit($limit)

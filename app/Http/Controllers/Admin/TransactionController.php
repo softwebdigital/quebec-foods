@@ -192,10 +192,10 @@ class TransactionController extends Controller
     {
 //        Define all column names
         $columns = [
-            'id', 'name', 'amount', 'description', 'date', 'id', 'method', 'channel', 'status', 'action'
+            'transactions.created_at', 'users.first_name', 'transactions.amount', 'transactions.description', 'transactions.created_at', 'transactions.id', 'transactions.method', 'transactions.channel', 'transactions.status', 'transactions.created_at'
         ];
 //        Find data based on page
-        $transactions = Transaction::query()->latest();
+        $transactions = Transaction::query()->join('users', 'users.id', '=', 'transactions.user_id');
         if ($type != 'all') {
             $transactions->where('type', $type);
         }
@@ -210,6 +210,7 @@ class TransactionController extends Controller
         $order = $columns[$request['order.0.column']];
         $dir = $request['order.0.dir'];
         $search = $request['search.value'];
+        if ($request['draw'] == '1')  $dir = 'desc';
 //        Check if request wants to search or not and fetch data
         if(empty($search))
         {

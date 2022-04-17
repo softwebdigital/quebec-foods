@@ -32,7 +32,7 @@
                             <!--begin::Image input-->
                             <div class="image-input image-input-empty mb-5" data-kt-image-input="true">
                                 <!--begin::Image preview wrapper-->
-                                <div class="image-input-wrapper w-125px h-125px" style="background: url(/assets/media/avatars/image_placeholder.png) center/cover no-repeat;"></div>
+                                <div class="image-input-wrapper w-125px h-125px" style="background: url({{ asset('assets/media/avatars/image_placeholder.png') }}) center/cover no-repeat;"></div>
                                 <!--end::Image preview wrapper-->
 
                                 <!--begin::Edit button-->
@@ -106,7 +106,26 @@
                             </span>
                             @enderror
                         </div>
+                        @if ($type == 'farm')
                         <!--end::Input group-->
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2" for="category">Category</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <select name="category" aria-label="Select the package category" data-placeholder="Select the package category" data-control="select2" class="form-select form-select-solid text-dark" id="category">
+                                <option value=""></option>
+                                @foreach (\App\Models\Category::all() as $category)
+                                    <option @if(old('category') == $category['id']) selected @endif value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+                                @endforeach
+                            </select>
+                            @error('category')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        @endif
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--end::Label-->
@@ -235,38 +254,22 @@
                                 @enderror
                             </div>
                             <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="row my-10">
+                            <div class="my-4">
                                 <!--end::Label-->
-                                <label class="required fs-5 fw-bold mb-2">Status of package</label>
-                                <!--end::Label-->
-                                <!--begin::Col-->
-                                <div class="col-md-6 fv-row">
-                                    <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input class="form-check-input" type="radio" @if(old('status') == 'open') checked @endif name="status" id="open" value="open"  />
-                                        <label class="form-check-label" for="open">
-                                            Open
-                                        </label>
-                                    </div>
+                                <div class="form-check form-switch form-check-custom form-check-solid my-7">
+                                    <input class="form-check-input mb-2 h-20px w-30px" type="checkbox"
+                                        @if (old('status') == 'open') checked @endif name="status" value="open"
+                                        id="makePackageOpen" />
+                                    <label class="form-check-label fs-5 fw-bold mb-2" for="makePackageOpen">
+                                        Package Status
+                                    </label>
                                 </div>
-                                <!--end::Col-->
-                                <!--begin::Col-->
-                                <div class="col-md-6 fv-row">
-                                    <div class="form-check form-check-custom form-check-solid form-check-sm">
-                                        <input class="form-check-input" @if(old('status') == 'closed') checked @endif type="radio" name="status" id="closed" value="closed"  />
-                                        <label class="form-check-label" for="close">
-                                            Closed
-                                        </label>
-                                    </div>
-                                </div>
-                                <!--end::Col-->
                                 @error('status')
                                     <div class="small text-danger">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
-                            <!--end::Input group-->
                         @endif
                         @if ($type == 'farm')
                             <div class="form-check form-switch form-check-custom form-check-solid my-7">

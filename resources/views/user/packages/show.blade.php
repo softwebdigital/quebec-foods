@@ -1,14 +1,14 @@
 @extends('layouts.user')
 
-@section('pageTitle', ucfirst($type) . ' Packages')
+@section('pageTitle', ucfirst($package['type']) . ' Packages')
 
 @section('style')
 
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="{{ route('packages', $type) }}"
-            class="@if (request()->routeIs(['packages'])) text-dark @else text-muted @endif">{{ ucfirst($type) }} Packages</a>
+    <li class="breadcrumb-item"><a href="{{ route('packages', $package['type']) }}"
+            class="@if (request()->routeIs(['packages'])) text-dark @else text-muted @endif">{{ ucfirst($package['type']) }} Packages</a>
     </li>
     <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Details</a>
     </li>
@@ -24,13 +24,13 @@
                     <div class="card-body p-9">
                         <!--begin::Card title-->
                         <div class="card-title flex-column">
-                            <h4 class="mb-5">Edit {{ ucfirst($type) }} Package</h4>
+                            <h4 class="mb-5">Edit {{ ucfirst($package['type']) }} Package</h4>
                         </div>
                         <!--end::Card title-->
                         <!--begin:::Form-->
                         <form class="form mb-3">
-                            <input disabled type="hidden" value="{{ strtolower($type) }}" name="type">
-                            @if ($type == 'plant')
+                            <input disabled type="hidden" value="{{ strtolower($package['type']) }}" name="type">
+                            @if ($package['type'] == 'plant')
                                 <!--begin::Image input-->
                                 <div class="mb-5">
                                     <img src="{{ asset($package['image']) }}" width="200px" style="border-radius: 10px"
@@ -113,7 +113,7 @@
                                 @enderror
                             </div>
                             <!--end::Input group-->
-                            @if ($type == 'farm')
+                            @if ($package['type'] == 'farm')
                                 <!--begin::Input group-->
                                 <div class="d-flex flex-column mb-5 fv-row">
                                     <!--end::Label-->
@@ -131,7 +131,7 @@
                                 </div>
                                 <!--end::Input group-->
                             @endif
-                            @if ($type == 'plant')
+                            @if ($package['type'] == 'plant')
                                 <!--begin::Input group-->
                                 <div class="d-flex flex-column mb-5 fv-row">
                                     <!--end::Label-->
@@ -149,7 +149,7 @@
                                 </div>
                                 <!--end::Input group-->
                             @endif
-                            @if ($type == 'farm')
+                            @if ($package['type'] == 'farm')
                                 <!--begin::Input group-->
                                 <div class="d-flex flex-column mb-5 fv-row">
                                     <!--begin::Label-->
@@ -189,7 +189,7 @@
                                     @enderror
                                 </div>
                             @endif
-                            @if ($type == 'plant')
+                            @if ($package['type'] == 'plant')
                                 <!--begin::Input group-->
                                 <div class="d-flex flex-column mb-5 fv-row">
                                     <!--begin::Label-->
@@ -221,7 +221,7 @@
                             @endif
                             <!--end::Input group-->
                             <!--begin::Submit-->
-                            <a data-bs-toggle="modal" @if($type == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment"@endif class="btn btn-primary mt-3 w-100">
+                            <a data-bs-toggle="modal" @if($package['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment"@endif class="btn btn-primary mt-3 w-100">
                                 <!--begin::Indicator-->
                                 <span class="indicator-label">Invest</span>
                                 <!--end::Indicator-->

@@ -386,15 +386,15 @@
             (n = document.querySelector("#kt_customers_table")) &&
                 (n.querySelectorAll("tbody tr").forEach((t) => {
                     const e = t.querySelectorAll("td"),
-                        o = moment(e[5].innerHTML, "DD MMM YYYY, LT").format();
-                    e[5].setAttribute("data-order", o);
+                        o = moment(e[5]?.innerHTML, "DD MMM YYYY, LT").format();
+                    e[5]?.setAttribute("data-order", o);
                 }),
                 (t = $(n).DataTable({
                     info: !1,
                     order: [],
                     columnDefs: [
                         { orderable: !1, targets: 0 },
-                        { orderable: !1, targets: 6 },
+                        { orderable: !1, targets: 3 },
                     ],
                 })).on("draw", function () {
                     r(), c(), l();

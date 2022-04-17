@@ -535,18 +535,6 @@
                             <!--end::Illustration-->
                         </div>
                         <!--end::Heading-->
-                        <!--begin::Links-->
-                        <div class="text-center">
-                            <!--begin::Link-->
-                            <a class="btn btn-sm btn-white btn-color-gray-800 me-2"
-                                href="{{ route('packages', 'plant') }}">View Package</a>
-                            <!--end::Link-->
-                            <!--begin::Link-->
-                            <a class="btn btn-sm bg-white btn-color-white bg-opacity-20"
-                                href="{{ route('invest', 'plant') }}">Invest</a>
-                            <!--end::Link-->
-                        </div>
-                        <!--end::Links-->
                     </div>
                     <!--end::Body-->
                 </div>
@@ -771,9 +759,11 @@
                     <div class="flex-grow-1">
                         <div class="paid-investments-chart" data-kt-chart-color="primary" data-kt-type="plant" style="height: 200px"></div>
                     </div>
+                    @can('View Investments')
                     <div class="pt-5">
                         <a href="{{ route('admin.investments', ['plant', 'all']) }}" class="btn btn-primary w-100 py-3">View Investments</a>
                     </div>
+                    @endcan
                 </div>
                 <!--end::Body-->
             </div>
@@ -797,9 +787,11 @@
                     <div class="flex-grow-1">
                         <div class="paid-investments-chart" data-kt-chart-color="danger" data-kt-type="farm" style="height: 200px"></div>
                     </div>
+                    @can('View Investments')
                     <div class="pt-5">
                         <a href="{{ route('admin.investments', ['farm', 'all']) }}" class="btn btn-danger w-100 py-3">View Investments</a>
                     </div>
+                    @endcan
                 </div>
                 <!--end::Body-->
             </div>

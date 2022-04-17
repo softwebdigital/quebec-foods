@@ -148,7 +148,7 @@
                                                         <!--begin::Wrapper-->
                                                         <div class="d-flex">
                                                             <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input name="permissions[]" @if($permission['name'] == 'View Quick Overview') disabled @endif @if($role->hasPermissionTo($permission['name']) || $permission['name'] == 'View Quick Overview') checked @endif value="{{ $permission['name'] }}" class="form-check-input @if($permission['name'] != 'View Quick Overview') permission-check-box @endif" type="checkbox">
+                                                                <input name="permissions[]" @if($permission['name'] == 'View Dashbaord') disabled @endif @if($role->hasPermissionTo($permission['name']) || $permission['name'] == 'View Dashbaord') checked @endif value="{{ $permission['name'] }}" class="form-check-input @if($permission['name'] != 'View Dashbaord') permission-check-box @endif" type="checkbox">
                                                                 <span class="form-check-label">Enable</span>
                                                             </label>
                                                         </div>
@@ -300,7 +300,7 @@
                                                         <!--begin::Wrapper-->
                                                         <div class="d-flex">
                                                             <label class="form-check form-check-sm form-check-custom form-check-solid me-5 me-lg-20">
-                                                                <input name="permissions[]" @if($permission['name'] == 'View Quick Overview') disabled @endif @if($permission['name'] == 'View Quick Overview') checked @endif value="{{ $permission['name'] }}" class="form-check-input @if($permission['name'] != 'View Quick Overview') permission-check-box @endif" type="checkbox">
+                                                                <input name="permissions[]" @if($permission['name'] == 'View Dashbaord') disabled @endif @if($permission['name'] == 'View Dashbaord') checked @endif value="{{ $permission['name'] }}" class="form-check-input @if($permission['name'] != 'View Dashbaord') permission-check-box @endif" type="checkbox">
                                                                 <span class="form-check-label">Enable</span>
                                                             </label>
                                                         </div>

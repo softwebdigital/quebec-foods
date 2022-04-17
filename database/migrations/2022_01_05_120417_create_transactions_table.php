@@ -18,7 +18,7 @@ class CreateTransactionsTable extends Migration
             $table->foreignId('user_id')->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('investment_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->enum('type', ['deposit', 'withdrawal', 'investment', 'payout']);
-            $table->string('amount');
+            $table->double('amount', 15, 2);
             $table->string('description');
             $table->text('preferred_bank')->nullable();
             $table->enum('method', ['wallet', 'card', 'deposit']);

@@ -131,6 +131,7 @@
                     <!--end::Menu 1-->
                     <!--end::Filter-->
                     <!--begin::Export-->
+                    @can('Export Users')
                     <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal"
                         data-bs-target="#kt_customers_export_modal">
                         <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->
@@ -148,6 +149,7 @@
                         </span>
                         <!--end::Svg Icon-->Export
                     </button>
+                    @endcan
                     <!--end::Export-->
                 </div>
                 <!--end::Toolbar-->
@@ -282,7 +284,7 @@
                         <div class="text-center">
                             <button type="button" data-bs-dismiss="modal" aria-label="Close"
                                 class="btn btn-light me-3">Discard</button>
-                            <button onclick="confirmFormSubmit(event, 'kt_customers_export_form')" type="submit" class="btn btn-primary">
+                            <button onclick="confirmFormSubmit(event, 'kt_customers_export_form', 'kt_customers_export_modal')" type="submit" class="btn btn-primary">
                                 <span class="indicator-label">Export</span>
                                 <span class="indicator-progress">Please wait...
                                     <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>

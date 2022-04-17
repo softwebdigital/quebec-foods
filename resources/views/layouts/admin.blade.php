@@ -108,7 +108,7 @@
                                     </div>
                                 @endcan
                                 @can('View Packages')
-                                    <div class="menu-item @if(request()->routeIs(['admin.packages']) && (request()->type == 'all' || request()->type == 'plant' || request()->type == 'farm')) here show @endif">
+                                    <div class="menu-item @if(request()->routeIs(['admin.packages', 'admin.packages.edit', 'admin.packages.create'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.packages') }}">
                                             <span class="menu-icon">
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -124,7 +124,7 @@
                                         </a>
                                     </div>
                                 @endcan
-
+                                @can('View Categories')
                                 <div class="menu-item @if(request()->routeIs(['admin.category'])) here show @endif">
                                     <a class="menu-link" href="{{ route('admin.category') }}">
                                         <span class="menu-icon">
@@ -140,9 +140,9 @@
                                         <span class="menu-title">Category</span>
                                     </a>
                                 </div>
-
+                                @endcan
                                 @can('View Investments')
-                                    <div class="menu-item @if(request()->routeIs(['admin.investments'])) here show @endif">
+                                    <div class="menu-item @if(request()->routeIs(['admin.investments', 'admin.investments.show'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.investments') }}">
                                             <span class="menu-icon">
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -217,7 +217,7 @@
                                     </div>
                                 @endcan
                                 @can('View Roles')
-                                    <div class="menu-item @if(request()->routeIs(['admin.roles'])) here show @endif">
+                                    <div class="menu-item @if(request()->routeIs(['admin.roles', 'admin.roles.show'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.roles') }}">
                                             <span class="menu-icon">
                                                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
@@ -233,7 +233,7 @@
                                         </a>
                                     </div>
                                 @endcan
-                                @can('View Roles')
+                                @can('View Pending Verifications')
                                     <div class="menu-item @if(request()->routeIs(['admin.verifications'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.verifications') }}">
                                             <span class="menu-icon">
@@ -255,22 +255,7 @@
                                         </a>
                                     </div>
                                 @endcan
-                                {{-- <div class="menu-item">
-									<a class="menu-link" href="#">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
-											<span class="svg-icon svg-icon-5">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
-													<path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Blog Management</span>
-									</a>
-								</div> --}}
-                                @can('View FAQs')
+                                @if(auth()->user()->can('View FAQs') || auth()->user()->can('View FAQs Category'))
                                     <div data-kt-menu-trigger="click" class="menu-item menu-accordion @if(request()->routeIs(['admin.faq', 'admin.faq.category'])) here show @endif">
                                         <span class="menu-link">
                                             <span class="menu-icon">
@@ -287,6 +272,7 @@
                                             <span class="menu-arrow"></span>
                                         </span>
                                         <div class="menu-sub menu-sub-accordion @if(request()->routeIs(['admin.faq', 'admin.faq.category'])) show @endif">
+                                            @can('View FAQs Category')
                                             <div class="menu-item @if(request()->routeIs(['admin.faq.category'])) here @endif">
                                                 <a class="menu-link" href="{{ route('admin.faq.category') }}">
                                                     <span class="menu-bullet">
@@ -295,6 +281,8 @@
                                                     <span class="menu-title">Categories</span>
                                                 </a>
                                             </div>
+                                            @endcan
+                                            @can('View FAQs')
                                             <div class="menu-item @if(request()->routeIs(['admin.faq'])) here @endif">
                                                 <a class="menu-link" href="{{ route('admin.faq') }}">
                                                     <span class="menu-bullet">
@@ -303,24 +291,10 @@
                                                     <span class="menu-title">FAQs</span>
                                                 </a>
                                             </div>
+                                            @endcan
                                         </div>
                                     </div>
-                                @endcan
-                                {{-- <div class="menu-item @if(request()->routeIs(['admin.profile'])) here show @endif">
-									<a class="menu-link" href="{{ route('admin.profile')}}">
-										<span class="menu-icon">
-											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
-											<span class="svg-icon svg-icon-5">
-												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
-													<path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
-												</svg>
-											</span>
-											<!--end::Svg Icon-->
-										</span>
-										<span class="menu-title">Profile</span>
-									</a>
-								</div> --}}
+                                @endif
                                 @can('View Referrals')
                                     <div class="menu-item @if(request()->routeIs(['admin.referrals'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.referrals')}}">
@@ -338,7 +312,7 @@
                                         </a>
                                     </div>
                                 @endcan
-                                {{-- @can('View Referrals') --}}
+                                @can('View Maintenance')
                                     <div class="menu-item @if(request()->routeIs(['admin.maintenance.index'])) here show @endif">
                                         <a class="menu-link" href="{{ route('admin.maintenance.index')}}">
                                             <span class="menu-icon">
@@ -354,24 +328,7 @@
                                             <span class="menu-title">SWD Maintenance</span>
                                         </a>
                                     </div>
-                                {{-- @endcan --}}
-                                {{-- @can('View Settings')
-                                    <div class="menu-item @if(request()->routeIs(['admin.settings'])) here show @endif">
-                                        <a class="menu-link" href="{{ route('admin.settings') }}">
-                                            <span class="menu-icon">
-                                                <!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
-                                                <span class="svg-icon svg-icon-5">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                                        <path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
-                                                        <path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
-                                                    </svg>
-                                                </span>
-                                                <!--end::Svg Icon-->
-                                            </span>
-                                            <span class="menu-title">Settings</span>
-                                        </a>
-                                    </div>
-                                @endcan --}}
+                                @endcan
 							</div>
 							<!--end::Menu-->
 						</div>
@@ -608,7 +565,7 @@
 				$('table').on('click', 'tbody tr td a', function () {
 					KTMenu.createInstances();
 				});
-                confirmFormSubmit = function(e, form) {
+                confirmFormSubmit = function(e, form, modal = null) {
                     e.preventDefault();
                     Swal.fire({
                         text: "Are you sure you would like to proceed?",
@@ -621,6 +578,9 @@
                     }).then(((result) => {
                         if (result.value) {
                             $('#'+form).submit();
+                            if (modal) {
+                                $('#'+modal).modal('hide');
+                            }
                         } else if (result.dismiss === "cancel") {
                             Swal.fire({
                                 text: "The action was cancelled!.",

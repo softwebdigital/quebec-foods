@@ -100,18 +100,18 @@ class UserController extends Controller
     {
 //        Define all column names
         $columns = [
-            'id', 'name', 'email', 'phone', 'verification', 'status', 'action'
+            'created_at', 'first_name', 'email', 'phone', 'email_verified_at', 'created_at', 'active', 'created_at'
         ];
 //        Find data based on page
         switch ($type){
             case 'verified':
-                $users = User::query()->latest()->whereNotNull('email_verified_at');
+                $users = User::query()->whereNotNull('email_verified_at');
                 break;
             case 'unverified':
-                $users = User::query()->latest()->whereNull('email_verified_at');
+                $users = User::query()->whereNull('email_verified_at');
                 break;
             default:
-                $users = User::query()->latest();
+                $users = User::query();
         }
         if ($status == 'active') {
             $users->where('active', 1);
@@ -125,6 +125,7 @@ class UserController extends Controller
         $order = $columns[$request['order.0.column']];
         $dir = $request['order.0.dir'];
         $search = $request['search.value'];
+        if ($request['draw'] == '1')  $dir = 'desc';
 //        Check if request wants to search or not and fetch data
         if(empty($search))
         {
@@ -136,6 +137,7 @@ class UserController extends Controller
         else {
             $users = $users->where('email','LIKE',"%{$search}%")
                 ->orWhere('first_name', 'LIKE',"%{$search}%")
+                ->orWhere('phone', 'LIKE',"%{$search}%")
                 ->orWhere('last_name', 'LIKE',"%{$search}%");
             $totalFiltered = $users->count();
             $users = $users->offset($start)
@@ -169,7 +171,7 @@ class UserController extends Controller
             $datum['sn'] = '<span class="text-dark fw-bolder ps-4 d-block mb-1 fs-6">' . $i . '</span>';
             $datum['name'] = '<a href="'.route('admin.users.show', $user['id']).'" class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" style="white-space: nowrap;">'.ucwords($user['first_name']).' '.ucwords($user['last_name']).'</a>';
             $datum['email'] = '<span class="text-gray-600 fw-bolder d-block fs-6">' . $user['email'] . '</span>';
-            $datum['phone'] = '<span class="text-gray-600 fw-bolder d-block fs-6">' . $user['phone'] . '</span>';
+            $datum['phone'] = '<span class="text-gray-600 fw-bolder d-block fs-6">' . $user['phone'] ?? '---' . '</span>';
             $datum['joined'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . $user['created_at']->format('F d, Y') . '</span>';
             $datum['verification'] = $user['email_verified_at'] ? '<span class="badge badge-pill badge-success">Verified</span>' : '<span class="badge badge-pill badge-warning">Unverified</span>';
             $datum['status'] = $user['active'] == 1 ? '<span class="badge badge-pill badge-success">Active</span>' : '<span class="badge badge-pill badge-danger">Blocked</span>';

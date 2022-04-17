@@ -147,7 +147,7 @@ class CommandController extends Controller
                 }
             } else {
                 if ($investment->canSettle()){
-                    $availablePackage = Package::where('type', 'farm')->where('status', 'open')->latest()->first();
+                    $availablePackage = Package::where('type', 'farm')->where('category_id', $investment['currentPackage']['category_id'])->where('status', 'open')->first();
                     if ($availablePackage && $investment->rollover){
                         $slots = floor($investment['total_return'] / $availablePackage['price']);
                         $amount = $slots * $availablePackage['price'];

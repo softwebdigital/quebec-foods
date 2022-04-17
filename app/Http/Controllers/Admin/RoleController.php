@@ -38,7 +38,7 @@ class RoleController extends Controller
         ]);
 //        Sync permissions to role
         $permissions = $request['permissions'];
-        $permissions[] = 'View Quick Overview';
+        $permissions[] = 'View Dashboard';
         if ($role){
             $role->syncPermissions($permissions);
             return redirect()->route('admin.roles')->with('success', 'Role created successfully');
@@ -56,7 +56,7 @@ class RoleController extends Controller
         return view('admin.role.edit', ['role' => $role]);
     }
 
-    public function update(Role $role, Request $request): \Illuminate\Http\RedirectResponse
+    public function update(Role $role, Request $request)
     {
 //        Validate request
         $validator = Validator::make($request->all(), [
@@ -74,7 +74,7 @@ class RoleController extends Controller
         ]);
 //        Sync permissions to role
         $permissions = $request['permissions'];
-        $permissions[] = 'View Quick Overview';
+        $permissions[] = 'View Dashboard';
         if ($role->syncPermissions($permissions))
             return back()->with('success', 'Role updated successfully');
         return back()->with('error', 'Error updating role');
