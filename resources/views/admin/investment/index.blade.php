@@ -112,7 +112,7 @@
             </div>
             <!--end::Menu 1-->
             <!--end::Filter-->
-            @can('Export Investment')
+            @can('Export Investments')
                 <!--begin::Export-->
                 <button type="button" class="btn btn-primary me-3" data-bs-toggle="modal" data-bs-target="#kt_investments_export_modal">
                 <!--begin::Svg Icon | path: icons/duotune/arrows/arr078.svg-->

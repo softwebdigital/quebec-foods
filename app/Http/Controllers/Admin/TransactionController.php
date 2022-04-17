@@ -90,7 +90,7 @@ class TransactionController extends Controller
         return redirect()->route('admin.users.show', $user['id'])->with('error', 'Error processing withdrawal');
     }
 
-    public function approve(Transaction $transaction): \Illuminate\Http\RedirectResponse
+    public function approve(Transaction $transaction)
     {
 //        Check if transaction is pending
         if ($transaction['status'] != 'pending'){
@@ -195,7 +195,7 @@ class TransactionController extends Controller
             'transactions.created_at', 'users.first_name', 'transactions.amount', 'transactions.description', 'transactions.created_at', 'transactions.id', 'transactions.method', 'transactions.channel', 'transactions.status', 'transactions.created_at'
         ];
 //        Find data based on page
-        $transactions = Transaction::query()->join('users', 'users.id', '=', 'transactions.user_id');
+        $transactions = Transaction::query()->join('users', 'users.id', '=', 'transactions.user_id')->select('transactions.*');
         if ($type != 'all') {
             $transactions->where('type', $type);
         }

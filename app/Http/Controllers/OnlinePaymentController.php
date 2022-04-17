@@ -12,7 +12,7 @@ use App\Http\Requests\UpdateOnlinePaymentRequest;
 
 class OnlinePaymentController extends Controller
 {
-    public static function initializeOnlineTransaction($amount, $data): \Illuminate\Http\RedirectResponse
+    public static function initializeOnlineTransaction($amount, $data)
     {
         if ($amount >= 10000000)
             return redirect()->route('dashboard')->with('error', 'We can\'t process card payment of ₦10,000,000 and above');

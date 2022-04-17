@@ -304,7 +304,7 @@
                                         <td class="d-flex align-items-center">
                                             <!--begin::User details-->
                                             <div class="d-flex flex-column">
-                                                <a href="/metronic8/demo15/../demo15/apps/user-management/users/view.html"
+                                                <a href="#"
                                                     class="text-gray-800 text-hover-primary mb-1">{{ $user['name'] }}</a>
                                                 <span>{{ $user['email'] }}</span>
                                             </div>
