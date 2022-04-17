@@ -65,7 +65,7 @@
                                         </a>
                                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                             <div class="menu-item px-3">
-                                                <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#documentDetailsModal" ><span class="">View</span></a>
+                                                <a class="menu-link px-3" data-bs-toggle="modal" data-bs-target="#documentDetailsModal{{ $item['id'] }}" ><span class="">View</span></a>
                                             </div>
                                             <div class="menu-item px-3">
                                                 <a class="menu-link px-3" onclick="confirmFormSubmit(event, 'approve{{ $item['id'] }}')" href="{{ route('admin.verification.process', ['verification' => $item['id'], 'status' => 'approved']) }}"><span class="">Approve</span></a>
@@ -85,6 +85,45 @@
                                     </td>
                                 @endcan
                             </tr>
+                            <div class="modal fade" tabindex="-1" id="documentDetailsModal{{ $item['id'] }}">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Documents Details</h5>
+                                            <!--begin::Close-->
+                                            <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                                                <span class="svg-icon svg-icon-2x"></span>
+                                            </div>
+                                            <!--end::Close-->
+                                        </div>
+
+                                        <div class="modal-body">
+                                            <table class="table table-borderless">
+                                                <tr>
+                                                    <th class="fw-bolder">Method: </th>
+                                                    <td id="method">{{ $item->method ?? '---' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="fw-bolder">ID Number:</th>
+                                                    <td id="idNumber">{{ $item->number ?? '---' }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="fw-bolder">Date Submitted:</th>
+                                                    <td id="submitted">{{ $item->created_at->format('M d, Y \a\t H:i:s') }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th class="fw-bolder">Photo</th>
+                                                    <td id="photo"><img src="{{ asset($item->photo) }}" class="mb-4" style="max-width: 300px; border-radius: 10px"></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endforeach
                     </tbody>
                     <!--end::Table body-->
@@ -94,49 +133,6 @@
             <!--end::Table container-->
         </div>
         <!--begin::Body-->
-    </div>
-
-    <div class="modal fade" tabindex="-1" id="documentDetailsModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Documents Details</h5>
-                    <!--begin::Close-->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="svg-icon svg-icon-2x"></span>
-                    </div>
-                    <!--end::Close-->
-                </div>
-
-                <div class="modal-body">
-                    @foreach ($data as $userItem)
-
-                    @endforeach
-                    <table class="table table-borderless">
-                        <tr>
-                            <th class="fw-bolder">Method: </th>
-                            <td id="method">{{ $userItem->method ?? '---' }}</td>
-                        </tr>
-                        <tr>
-                            <th class="fw-bolder">ID Number:</th>
-                            <td id="idNumber">{{ $userItem->number ?? '---' }}</td>
-                        </tr>
-                        <tr>
-                            <th class="fw-bolder">Date Submitted:</th>
-                            <td id="submitted">{{ $userItem->created_at->format('M d, Y \a\t H:i:s') }}</td>
-                        </tr>
-                        <tr>
-                            <th class="fw-bolder">Photo</th>
-                            <td id="photo"><img src="{{ asset($userItem->photo) }}" class="mb-4" style="max-width: 300px; border-radius: 10px"></td>
-                        </tr>
-                    </table>
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 
