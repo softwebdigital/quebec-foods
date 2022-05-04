@@ -708,7 +708,7 @@
                     </div>
                     @endif
                     <!--begin::Card-->
-                    @if ($user->documents()->where('status', 'pending')->orWhere('status', 'approved')->count() == 0)
+                    @if ($user->documents()->where(function($q) { $q->where('status', 'pending')->orWhere('status', 'approved'); })->count() == 0)
                     <div class="card pt-4 mb-6 mb-xl-9">
                         <!--begin::Card header-->
                         <div class="card-header border-0">
