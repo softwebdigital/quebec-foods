@@ -44,7 +44,7 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <input disabled type="text" placeholder="Package name"
-                                    value="{{ old('name') ?? $package['name'] }}" class="form-control form-control-solid"
+                                    value="{{ old('name') ?? $package['raw_name'] }}" class="form-control form-control-solid"
                                     name="name" id="name">
                                 @error('name')
                                     <span class="text-danger small" role="alert">
