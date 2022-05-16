@@ -18,6 +18,14 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
+Route::get('/', function () {
+    return redirect('/dashboard');
+});
+
+Route::get('/', function () {
+    return redirect('/dashboard');
+});
+
 Auth::routes(['verify' => true]);
 
 Route::get('/verify/resend', [App\Http\Controllers\Auth\TwoFactorController::class, 'resend'])->name('verify.resend');
