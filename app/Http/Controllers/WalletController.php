@@ -18,6 +18,8 @@ class WalletController extends Controller
     {
         $setting = Setting::all()->first();
 
+        $international = Setting::all()->skip(1)->first();
+
         $pendingTransactions = auth()->user()->transactions()->where('status', 'pending');
         $investments = auth()->user()->investments()->where('payment', 'approved');
         $activeInvestments = auth()->user()->investments()->where('status', 'active');
@@ -32,7 +34,7 @@ class WalletController extends Controller
             'wallet'       => auth()->user()->wallet->balance,
         ];
 
-        return view('user.wallets.index', compact('data', 'setting'));
+        return view('user.wallets.index', compact('data', 'setting', 'international'));
     }
 
     /**

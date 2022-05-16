@@ -207,7 +207,7 @@
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['name'] }}</span></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['roi'] }}%</span></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">₦ {{ number_format($package['price']) }}</span></td>
-                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</span></td>
+                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['start_date']->format('M d, Y') }}</span></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ ucwords($package['type'])}}</span></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-center">{{ $package->investments()->count() }}</span></td>
                         <td>

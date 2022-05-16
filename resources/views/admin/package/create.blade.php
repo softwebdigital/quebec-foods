@@ -188,7 +188,7 @@
                                 <label class="required fs-5 fw-bold mb-2" for="duration">Milestones</label>
                                 <!--end::Label-->
                                 <!--end::Input-->
-                                <input type="number" placeholder="No of Milestones" value="{{ old("milestones") }}" class="form-control form-control-solid" name="milestones" id="milestones">
+                                <input onkeyup="getVal()" type="number" placeholder="No of Milestones" value="{{ old("milestones") }}" class="form-control form-control-solid" name="milestones" id="milestones">
                                 @error('milestones')
                                     <span class="text-danger small" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -239,7 +239,7 @@
                                 <label class="required fs-5 fw-bold mb-2" for="payout_mode">Payout Mode</label>
                                 <!--end::Label-->
                                 <!--begin::Input-->
-                                <select name="payout_mode" aria-label="Select the payout mode" data-placeholder="Select the payout mode" data-control="select2" class="form-select form-select-solid text-dark" id="payoutMode">
+                                <select onchange="getVals()" name="payout_mode" aria-label="Select the payout mode" data-placeholder="Select the payout mode" data-control="select2" class="form-select form-select-solid text-dark" id="payoutMode">
                                     <option value=""></option>
                                     <option @if(old('payout_mode') == 'monthly') selected @endif value="monthly">Monthly</option>
                                     <option @if(old('payout_mode') == 'quarterly') selected @endif value="quarterly">Quarterly</option>
@@ -252,6 +252,52 @@
                                     <strong>{{ $message }}</strong>
                                 </span>
                                 @enderror
+
+                                <div class="small mt-4" id="statement" style="display: none;">
+                                    <strong>Investments will run for <span id="numberOfYears" ></span> <span id="year-value" ></span> with <span id="milestones-value" ></span> payment milestones</strong>
+                                </div>
+
+                                <script>
+                                    const mV = document.getElementById('milestones-value');
+                                    const yV = document.getElementById('year-value');
+                                    const nY = document.getElementById('numberOfYears');
+
+                                    function getVal() {
+                                        const milestones = document.getElementById('milestones').value;
+                                        // console.log(milestones);
+                                        mV.innerText = milestones
+                                        nY.innerText = milestones
+                                    }
+                                    function getVals() {
+                                        const sT = document.getElementById('statement');
+                                        const milestones = document.getElementById('milestones').value;
+                                        if (milestones == null) {
+                                            sT.style = 'none'
+                                        } else {
+                                            sT.style = 'block'
+                                        }
+                                        
+                                        const pM = document.getElementById('payoutMode').value;
+                                        console.log(milestones)
+
+                                        if (pM == "monthly" || pM == "quarterly" || pM == "semi-annually") {
+                                            if (milestones == 1) {
+                                                yV.innerText = "month"
+                                            } else {
+                                                yV.innerText = "months"
+                                            }
+                                        }
+                                        if (pM == "annually" || pM == "biannually") {
+                                            
+                                            if (milestones == 1) {
+                                                yV.innerText = "year"
+                                            } else {
+                                                yV.innerText = "years"
+                                            }
+                                        }
+
+                                    }
+                                </script>
                             </div>
                             <!--end::Input group-->
                             <div class="my-4">
@@ -270,6 +316,7 @@
                                     </div>
                                 @enderror
                             </div>
+        
                         @endif
                         @if ($type == 'farm')
                             <div class="form-check form-switch form-check-custom form-check-solid my-7">
@@ -319,10 +366,8 @@
         showDropdowns: true,
         minYear: 1901,
         maxYear: parseInt(moment().format("YYYY"),10),
-        timePicker: true,
-        startDate: moment().startOf("hour"),
         locale: {
-            format: "YYYY-MM-DD HH:mm:ss"
+            format: "YYYY-MM-DD"
         }
     },
 );

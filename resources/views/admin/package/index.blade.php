@@ -185,7 +185,7 @@
                             <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['name'] }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['roi'] }}%</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">₦ {{ number_format($package['price']) }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['start_date']->format('M d, Y') }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ ucwords($package['type'])}}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6 text-center">{{ $package->investments()->count() }}</span></td>
                             <td>
@@ -204,6 +204,9 @@
                                     </span>
                                 </a>
                                 <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link px-3" href="{{ route('admin.packages.show', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Show</span></a>
+                                        </div>
                                     @can('Edit Packages')
                                         <div class="menu-item px-3">
                                             <a class="menu-link px-3" href="{{ route('admin.packages.edit', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Edit</span></a>

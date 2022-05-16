@@ -267,7 +267,7 @@
                         <!--end::Label-->
                         <!--begin::Input-->
                         <select name="payment" aria-label="Payment method" data-placeholder="Select account" value="{{ old("payment") }}" data-control="select2" class="form-select form-select-solid text-dark" id="paymentDeposit">
-                            <option value="card">Card</option>
+                            <!-- <option value="card">Card</option> -->
                             <option value="deposit">Bank Transfer / Deposit</option>
                         </select>
                         @error('payment')
@@ -285,11 +285,11 @@
                             <!--begin::Radio group-->
                             <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                                 <!--begin::Radio-->
-                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="cardPayment">
+                                <!-- <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="cardPayment"> -->
                                 <!--begin::Input-->
-                                <input class="btn-check" type="radio" name="payment" id="cardPayment" value="card" />
+                                <!-- <input class="btn-check" type="radio" name="payment" id="cardPayment" value="card" /> -->
                                 <!--end::Input-->
-                                Card</label>
+                                <!-- Card</label> -->
                                 <!--end::Radio-->
                                 <!--begin::Radio-->
                                 <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="depositPayment">
@@ -308,10 +308,14 @@
                         </div>
                     <!--end::Row-->
                     <div id="securedByPaystackLogo" class="mx-auto text-center">
-                        <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
+                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>
+                        <!-- <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack"> -->
                     </div>
                     <div id="bankDetailsForDepositForm" style="display: none" class="alert mx-3 bg-secondary">
                         <table>
+                            <tr>
+                                <h6>Local Bank Details</h6>
+                            </tr>
                             <tr>
                                 <td>Bank Name:</td>
                                 <td><span class="ms-2">{{ $setting['bank_name'] }}</span></td>
@@ -323,6 +327,25 @@
                             <tr>
                                 <td>Account Number: </td>
                                 <td><span class="ms-2">{{ $setting['account_number'] }}</span></td>
+                            </tr>
+                        </table>
+                        <br>
+                        <br>
+                        <table>
+                            <tr>
+                                <h6>International Bank Details</h6>
+                            </tr>
+                            <tr>
+                                <td>Bank Name:</td>
+                                <td><span class="ms-2">{{ $international['bank_name'] }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Account Name:</td>
+                                <td><span class="ms-2">{{ $international['account_name'] }}</span></td>
+                            </tr>
+                            <tr>
+                                <td>Account Number: </td>
+                                <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
                             </tr>
                         </table>
                     </div>

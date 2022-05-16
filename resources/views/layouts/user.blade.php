@@ -413,6 +413,7 @@
 		<!--begin::Modals-->
         @php
             $setting = \App\Models\Setting::all()->first();
+            $international = \App\Models\Setting::all()->skip(1)->first();
             $plantPackages = \App\Models\Package::latest()->where('type', 'plant')->get();
             $farmPackages = \App\Models\Package::latest()->where('type', 'farm')->get();
         @endphp
@@ -452,7 +453,7 @@
                             <select name="package" aria-label="Select the package" data-placeholder="Select the package" data-control="select2" class="form-select form-select-solid text-dark" id="plantPackage">
                                 <option value="">Select Package</option>
                                 @foreach($plantPackages as $package)
-                                    <option @if((old('package') == $package['raw_name']) || (request('package') == $package['raw_name'])) selected @endif value="{{ $package['raw_name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['raw_name'] }}</option>
+                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
                                 @endforeach
                             </select>
                             <input type="hidden" id="plantPrice">
@@ -505,11 +506,11 @@
                             <!--begin::Radio group-->
                             <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                                 <!--begin::Radio-->
-                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="plantCardPayment" data-kt-button="true">
+                                <!-- <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="plantCardPayment" data-kt-button="true"> -->
                                 <!--begin::Input-->
-                                <input class="btn-check" type="radio" name="payment" id="plantCardPayment" value="card" />
+                                <!-- <input class="btn-check" type="radio" name="payment" id="plantCardPayment" value="card" /> -->
                                 <!--end::Input-->
-                                Card</label>
+                                <!-- Card</label> -->
                                 <!--end::Radio-->
                                 <!--begin::Radio-->
                                 <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="plantWalletPayment" data-kt-button="true">
@@ -535,6 +536,9 @@
                         <div id="plantBankDetails" style="display: none" class="alert bg-secondary">
                             <table>
                                 <tr>
+                                    <h6>Local Bank Details</h6>
+                                </tr>
+                                <tr>
                                     <td>Bank Name:</td>
                                     <td><span class="ms-3">{{ $setting['bank_name'] }}</span></td>
                                 </tr>
@@ -545,6 +549,25 @@
                                 <tr>
                                     <td>Account Number:</td>
                                     <td><span class="ms-3">{{ $setting['account_number'] }}</span></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <table>
+                                <tr>
+                                    <h6>International Bank Details</h6>
+                                </tr>
+                                <tr>
+                                    <td>Bank Name:</td>
+                                    <td><span class="ms-2">{{ $international['bank_name'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Account Name:</td>
+                                    <td><span class="ms-2">{{ $international['account_name'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Account Number: </td>
+                                    <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
                                 </tr>
                             </table>
                         </div>
@@ -624,7 +647,7 @@
                             <select name="package" aria-label="Select the package" data-placeholder="Select the package" data-control="select2" class="form-select form-select-solid text-dark" id="package">
                                 <option value="">Select Package</option>
                                 @foreach($farmPackages as $package)
-                                    <option @if((old('package') == $package['raw_name']) || (request('package') == $package['raw_name'])) selected @endif value="{{ $package['raw_name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['raw_name'] }}</option>
+                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
                                 @endforeach
                             </select>
                             <input type="hidden" id="price">
@@ -678,11 +701,11 @@
                             <!--begin::Radio group-->
                             <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                                 <!--begin::Radio-->
-                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="farmCardPayment" data-kt-button="true">
+                                <!-- <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="farmCardPayment" data-kt-button="true"> -->
                                 <!--begin::Input-->
-                                <input class="btn-check" type="radio" name="payment" id="farmCardPayment" value="card" />
+                                <!-- <input class="btn-check" type="radio" name="payment" id="farmCardPayment" value="card" /> -->
                                 <!--end::Input-->
-                                Card</label>
+                                <!-- Card</label> -->
                                 <!--end::Radio-->
                                 <!--begin::Radio-->
                                 <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="farmWalletPayment" data-kt-button="true">
@@ -703,10 +726,14 @@
                         </div>
                         <!--end::Row-->
                         <div id="farmSecuredByPaystack" style="display: none" class="mx-auto text-center">
+                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>
                             <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
                         </div>
                         <div id="farmBankDetails" style="display: none" class="alert bg-secondary">
                             <table>
+                                <tr>
+                                    <h6>Local Bank Details</h6>
+                                </tr>
                                 <tr>
                                     <td>Bank Name:</td>
                                     <td><span class="ms-3">{{ $setting['bank_name'] }}</span></td>
@@ -718,6 +745,25 @@
                                 <tr>
                                     <td>Account Number:</td>
                                     <td><span class="ms-3">{{ $setting['account_number'] }}</span></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <table>
+                                <tr>
+                                    <h6>International Bank Details</h6>
+                                </tr>
+                                <tr>
+                                    <td>Bank Name:</td>
+                                    <td><span class="ms-2">{{ $international['bank_name'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Account Name:</td>
+                                    <td><span class="ms-2">{{ $international['account_name'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Account Number: </td>
+                                    <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
                                 </tr>
                             </table>
                         </div>

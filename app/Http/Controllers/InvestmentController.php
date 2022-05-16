@@ -63,7 +63,8 @@ class InvestmentController extends Controller
             return back()->with('error', 'Can\'t process investment, package not found, disabled or closed');
         }
         // Check if package is sold out.
-        if ($package->isSoldOut()){
+        if ($package->isSoldOut())
+        {
             return back()->with('error', 'Can\'t process investment, package is sold out');
         }
 //        Process investment based on payment method
@@ -167,8 +168,9 @@ class InvestmentController extends Controller
     public function invest($type)
     {
         $setting = Setting::all()->first();
+        $international = Setting::all()->skip(1)->first();
         $packages = Package::all()->where('status', 'open')->where('type', $type);
-        return view('user.investments.create', compact('packages', 'setting', 'type'));
+        return view('user.investments.create', compact('packages', 'setting', 'type', 'international'));
     }
 
     public function showUserInvestment($type, Investment $investment, $filter = 'all')

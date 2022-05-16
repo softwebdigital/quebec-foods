@@ -18,8 +18,9 @@ class PackageController extends Controller
     public function index()
     {
         $setting = Setting::all()->first();
+        $international = Setting::all()->skip(1)->first();
         $packages = Package::latest()->get();
-        return view('user.packages.index', compact('packages', 'setting'));
+        return view('user.packages.index', compact('packages', 'setting', 'international'));
     }
 
     /**

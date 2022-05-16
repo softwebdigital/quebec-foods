@@ -94,6 +94,9 @@ class HomeController extends Controller
             ]
         ];
 
+        $packages = Package::latest();
+        $packages->whereDate('start_date', '<', now())->update(['status' => 'closed']);
+
         return view('user.dashboard.index', compact('data'));
     }
 
@@ -135,7 +138,7 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $setting = Setting::all()->first();
-
+        $international = Setting::all()->skip(1)->first();
         $pendingTransactions = $user->transactions()->where('status', 'pending');
         $investments = $user->investments()->where('payment', 'approved');
         $activeInvestments = $user->investments()->where('status', 'active');
@@ -150,7 +153,7 @@ class HomeController extends Controller
             'wallet'       => auth()->user()->wallet->balance,
         ];
 
-        return view('user.profile.wallet', compact('user', 'setting', 'data'));
+        return view('user.profile.wallet', compact('user', 'setting', 'data', 'international'));
     }
 
     public function showReferrals ()

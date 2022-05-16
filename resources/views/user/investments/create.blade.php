@@ -34,7 +34,7 @@
                             <select name="package" aria-label="Select the package" data-placeholder="Select the package" data-control="select2" class="form-select form-select-solid text-dark" id="package">
                                 <option value="">Select Package</option>
                                 @foreach($packages as $package)
-                                    <option @if((old('package') == $package['raw_name']) || (request('package') == $package['raw_name'])) selected @endif value="{{ $package['raw_name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['raw_name'] }}</option>
+                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
                                 @endforeach
                             </select>
                             <input type="hidden" id="price">
@@ -89,7 +89,7 @@
                             <select name="payment" aria-label="Select payment mode" data-placeholder="Select payment mode" class="form-select form-select-solid text-dark" id="payment">
                                 <option value="">Select payment mode </option>
                                 <option value="wallet">Wallet</option>
-                                <option value="card">Card</option>
+                                <!-- <option value="card">Card</option> -->
                                 <option value="deposit">Deposit / Bank Transfer</option>
                             </select>
                             @error('payment')
@@ -105,6 +105,9 @@
                         <div id="bankDetails" style="display: none" class="alert bg-secondary">
                             <table>
                                 <tr>
+                                    <h6>Local Bank Details</h6>
+                                </tr>
+                                <tr>
                                     <td>Bank Name:</td>
                                     <td><span class="ms-3">{{ $setting['bank_name'] }}</span></td>
                                 </tr>
@@ -115,6 +118,25 @@
                                 <tr>
                                     <td>Account Number:</td>
                                     <td><span class="ms-3">{{ $setting['account_number'] }}</span></td>
+                                </tr>
+                            </table>
+                            <br>
+                            <br>
+                            <table>
+                                <tr>
+                                    <h6>International Bank Details</h6>
+                                </tr>
+                                <tr>
+                                    <td>Bank Name:</td>
+                                    <td><span class="ms-2">{{ $international['bank_name'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Account Name:</td>
+                                    <td><span class="ms-2">{{ $international['account_name'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Account Number: </td>
+                                    <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
                                 </tr>
                             </table>
                         </div>

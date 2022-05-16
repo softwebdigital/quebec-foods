@@ -25,7 +25,9 @@ Route::get('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'in
 Route::post('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'store'])->name('verify.store');
 
 Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']], function() {
+    // Route::group(['middleware' => []], function() {
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+    Route::get('/profile/identification', [App\Http\Controllers\HomeController::class, 'profile_id'])->name('profile.identification');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.update');
     Route::put('/2fa/update', [App\Http\Controllers\HomeController::class, 'update2fa'])->name('2fa.update');
     Route::post('/password/custom/update', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('password.custom.update');
@@ -36,7 +38,8 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
 
     Route::post('/documents', [App\Http\Controllers\DocumentController::class, 'store'])->name('document.store');
 
-    Route::group(['middleware' => ['profile_completed']], function () {
+    // Route::group(['middleware' => ['profile_completed']], function () {
+        Route::group(['middleware' => []], function () {
         Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
         Route::get('/account/overview', [App\Http\Controllers\HomeController::class, 'accountOverview'])->name('account.overview');

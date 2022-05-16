@@ -18,7 +18,7 @@ class SettingController extends Controller
         }catch (\Exception $exception){
             $banks = [];
         }
-        return view('admin.settings.index', ['banks' => $banks, 'setting' => Setting::all()->first()]);
+        return view('admin.settings.index', ['banks' => $banks, 'setting' => Setting::all()->first(), 'international' => Setting::all()->skip(1)->first()]);
     }
 
     // Save Settings
@@ -64,6 +64,28 @@ class SettingController extends Controller
         }
 //        Update bank details
         if (Setting::all()->first()->update([
+            'bank_name' => $request['bank_name'],
+            'account_name' => $request['account_name'],
+            'account_number' => $request['account_number']
+        ]))
+            return back()->with('success', 'Bank details updated successfully');
+        return back()->with('error', 'Error updating bank details');
+    }
+
+
+    public function updateInternationalBankDetails(Request $request)
+    {
+        //        Validate request
+        $validator = Validator::make($request->all(), [
+            'bank_name' => ['required'],
+            'account_name' => ['required'],
+            'account_number' => ['required'],
+        ]);
+        if ($validator->fails()){
+            return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
+        }
+//        Update bank details
+        if (Setting::all()->skip(1)->first()->update([
             'bank_name' => $request['bank_name'],
             'account_name' => $request['account_name'],
             'account_number' => $request['account_number']
