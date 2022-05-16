@@ -94,9 +94,6 @@ class HomeController extends Controller
             ]
         ];
 
-        $packages = Package::latest();
-        $packages->whereDate('start_date', '<', now())->update(['status' => 'closed']);
-
         return view('user.dashboard.index', compact('data'));
     }
 
