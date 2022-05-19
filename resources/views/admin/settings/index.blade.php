@@ -153,15 +153,6 @@
                         </span>
                     @enderror -->
                 </div>
-<<<<<<< HEAD
-                <!-- <div class="d-flex flex-column mb-5 fv-row">
-                    <label for="account_name" class="fs-5 fw-bold mb-2 d-flex justify-content-between">
-                        <span class="d-block">Add Information <span class="text-danger">*</span></span>
-                        <span id="verifyingDisplay" class="small d-block"></span>
-                    </label>
-                    <textarea  name="add-info" id="add-info" cols="20" rows="5" class="form-control form-control-solid"></textarea>        
-                </div> -->
-=======
                 <div class="d-flex flex-column mb-5 fv-row">
                     <label for="account_name" class="fs-5 fw-bold mb-2 d-flex justify-content-between">
                         <span class="d-block">Added Information <span class="text-danger">*</span></span>
@@ -169,7 +160,6 @@
                     </label>
                     <textarea  name="added_information" id="added_information" value="{{ old("added_information") ?? $international['added_information'] }}" cols="20" rows="5" class="form-control form-control-solid">{{  $international['added_information']  }}</textarea>        
                 </div>
->>>>>>> master
 
                 <!--end::Input group-->
                 <!--begin::Submit-->
