@@ -457,6 +457,13 @@
                                     <td>Account Number: </td>
                                     <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
                                 </tr>
+<<<<<<< HEAD
+=======
+                                <tr>
+                                    <td>Added Information: </td>
+                                    <td><span class="ms-2">{{ $international['added_information'] }}</span></td>
+                                </tr>
+>>>>>>> master
                             </table>
 
                         </div>

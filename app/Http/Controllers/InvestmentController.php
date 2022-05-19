@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Models\Setting;
+<<<<<<< HEAD
+=======
+use App\Models\InternationalBank;
+>>>>>>> master
 use App\Models\Investment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -168,7 +172,11 @@ class InvestmentController extends Controller
     public function invest($type)
     {
         $setting = Setting::all()->first();
+<<<<<<< HEAD
         $international = Setting::all()->skip(1)->first();
+=======
+        $international = InternationalBank::all()->first();
+>>>>>>> master
         $packages = Package::all()->where('status', 'open')->where('type', $type);
         return view('user.investments.create', compact('packages', 'setting', 'type', 'international'));
     }

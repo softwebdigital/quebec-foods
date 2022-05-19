@@ -6,6 +6,10 @@ use App\Models\Wallet;
 use App\Http\Requests\StoreWalletRequest;
 use App\Http\Requests\UpdateWalletRequest;
 use App\Models\Setting;
+<<<<<<< HEAD
+=======
+use App\Models\InternationalBank;
+>>>>>>> master
 
 class WalletController extends Controller
 {
@@ -18,7 +22,11 @@ class WalletController extends Controller
     {
         $setting = Setting::all()->first();
 
+<<<<<<< HEAD
         $international = Setting::all()->skip(1)->first();
+=======
+        $international = InternationalBank::all()->first();
+>>>>>>> master
 
         $pendingTransactions = auth()->user()->transactions()->where('status', 'pending');
         $investments = auth()->user()->investments()->where('payment', 'approved');

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSettingsTable extends Migration
+class CreateInternationalBanksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('international_banks', function (Blueprint $table) {
             $table->id();
             $table->string('bank_name')->nullable();
             $table->string('account_name')->nullable();
             $table->string('account_number')->nullable();
+            $table->string('added_information')->nullable();
             $table->string('base_currency')->default('NGN');
             $table->boolean('show_cash')->default(true);
             $table->double('usd_to_ngn', 10, 2)->default(0);
@@ -32,24 +33,16 @@ class CreateSettingsTable extends Migration
             $table->string('error_mail_interval')->default('30 minutes');
             $table->string('pending_transaction_mail_interval')->default('5 minutes');
             $table->dateTime('last_pending_transaction_notification')->default(now());
+
             $table->timestamps();
         });
 
-        \Illuminate\Support\Facades\DB::table('settings')->insert([
+        \Illuminate\Support\Facades\DB::table('international_banks')->insert([
             [
                 'created_at' => now(),
                 'updated_at' => now()
             ]
         ]);
-<<<<<<< HEAD
-        \Illuminate\Support\Facades\DB::table('settings')->insert([
-            [
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        ]);
-=======
->>>>>>> master
     }
 
     /**
@@ -59,6 +52,6 @@ class CreateSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('international_banks');
     }
 }

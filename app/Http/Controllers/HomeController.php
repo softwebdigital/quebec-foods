@@ -6,6 +6,10 @@ use Image;
 use Carbon\Carbon;
 use App\Models\Package;
 use App\Models\Setting;
+<<<<<<< HEAD
+=======
+use App\Models\InternationalBank;
+>>>>>>> master
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -135,7 +139,11 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $setting = Setting::all()->first();
+<<<<<<< HEAD
         $international = Setting::all()->skip(1)->first();
+=======
+        $international = InternationalBank::all()->first();
+>>>>>>> master
         $pendingTransactions = $user->transactions()->where('status', 'pending');
         $investments = $user->investments()->where('payment', 'approved');
         $activeInvestments = $user->investments()->where('status', 'active');

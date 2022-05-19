@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Setting;
+<<<<<<< HEAD
+=======
+use App\Models\InternationalBank;
+>>>>>>> master
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -18,7 +22,11 @@ class SettingController extends Controller
         }catch (\Exception $exception){
             $banks = [];
         }
+<<<<<<< HEAD
         return view('admin.settings.index', ['banks' => $banks, 'setting' => Setting::all()->first(), 'international' => Setting::all()->skip(1)->first()]);
+=======
+        return view('admin.settings.index', ['banks' => $banks, 'setting' => Setting::all()->first(), 'international' => InternationalBank::all()->first()]);
+>>>>>>> master
     }
 
     // Save Settings
@@ -27,15 +35,26 @@ class SettingController extends Controller
 
         // Validate request
         $validator = Validator::make($request->all(), [
+<<<<<<< HEAD
             'rate_plus' => ['required', 'numeric'],
         ]);
+=======
+            // 'rate_plus' => ['required', 'numeric'],
+        ]);
+
+>>>>>>> master
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }
         // Update settings
         if (Setting::all()->first()->update([
+<<<<<<< HEAD
             'base_currency' => $request['base_currency'],
             'rate_plus' => $request['rate_plus'],
+=======
+            // 'base_currency' => $request['base_currency'],
+            // 'rate_plus' => $request['rate_plus'],
+>>>>>>> master
             'show_cash' => $request['show_cash'] == 'yes',
             'invest' => $request['invest'] == 'yes',
             'rollover' => $request['rollover'] == 'yes',
@@ -47,7 +66,11 @@ class SettingController extends Controller
             'error_mail_interval' => $request['error_mail_interval'],
             'pending_transaction_mail_interval' => $request['pending_transaction_mail_interval'],
         ]))
+<<<<<<< HEAD
             return back()->with('success', 'Settings updated successfully');
+=======
+        return back()->with('success', 'Settings updated successfully');
+>>>>>>> master
         return back()->with('error', 'Error updating settings');
     }
 
@@ -80,16 +103,29 @@ class SettingController extends Controller
             'bank_name' => ['required'],
             'account_name' => ['required'],
             'account_number' => ['required'],
+<<<<<<< HEAD
+=======
+            'added_information' => ['required'],
+>>>>>>> master
         ]);
         if ($validator->fails()){
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }
 //        Update bank details
+<<<<<<< HEAD
         if (Setting::all()->skip(1)->first()->update([
             'bank_name' => $request['bank_name'],
             'account_name' => $request['account_name'],
             'account_number' => $request['account_number']
         ]))
+=======
+        if (InternationalBank::all()->first()->update([
+            'bank_name' => $request['bank_name'],
+            'account_name' => $request['account_name'],
+            'account_number' => $request['account_number'],
+            'added_information' => $request['added_information']
+        ]));
+>>>>>>> master
             return back()->with('success', 'Bank details updated successfully');
         return back()->with('error', 'Error updating bank details');
     }

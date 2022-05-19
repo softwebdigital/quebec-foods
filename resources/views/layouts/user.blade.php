@@ -413,7 +413,11 @@
 		<!--begin::Modals-->
         @php
             $setting = \App\Models\Setting::all()->first();
+<<<<<<< HEAD
             $international = \App\Models\Setting::all()->skip(1)->first();
+=======
+            $international = \App\Models\InternationalBank::all()->first();
+>>>>>>> master
             $plantPackages = \App\Models\Package::latest()->where('type', 'plant')->get();
             $farmPackages = \App\Models\Package::latest()->where('type', 'farm')->get();
         @endphp
@@ -569,6 +573,13 @@
                                     <td>Account Number: </td>
                                     <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
                                 </tr>
+<<<<<<< HEAD
+=======
+                                <tr>
+                                    <td>Added Information: </td>
+                                    <td><span class="ms-2">{{ $international['added_information'] }}</span></td>
+                                </tr>
+>>>>>>> master
                             </table>
                         </div>
                         <div class="form-check mt-7 mb-10 form-check-flat form-check-primary">
@@ -765,6 +776,13 @@
                                     <td>Account Number: </td>
                                     <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
                                 </tr>
+<<<<<<< HEAD
+=======
+                                <tr>
+                                    <td>Added Information: </td>
+                                    <td><span class="ms-2">{{ $international['added_information'] }}</span></td>
+                                </tr>
+>>>>>>> master
                             </table>
                         </div>
                         <div id="rolloverInvestment" class="form-check form-switch form-check-custom form-check-solid me-10">
