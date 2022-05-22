@@ -126,13 +126,20 @@
                         @endif
                         <!--begin::Details item-->
                         <!--begin::Details item-->
-
+                        @if ($package['status'] == 'open')
                         <!--begin::Submit-->
-                        <a data-bs-toggle="modal" @if($package['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment"@endif class="btn btn-primary mt-3 w-100">
+                        <a data-bs-toggle="modal" @if($package['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif class="btn btn-primary mt-3 w-100">
                             <!--begin::Indicator-->
                             <span class="indicator-label">Invest</span>
                             <!--end::Indicator-->
                         </a>
+                        @else
+                        <button type="button" disabled class="btn btn-primary w-100">
+                                <!--begin::Indicator-->
+                                <span class="indicator-label">Closed</span>
+                                <!--end::Indicator-->
+                        </button>
+                        @endif
                         <!--end::Submit-->
                     </div>
                 </div>

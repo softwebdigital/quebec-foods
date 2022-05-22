@@ -254,7 +254,7 @@ class HomeController extends Controller
         return back()->with('error', 'Error changing password');
     }
 
-    private function getPackageInvestments($type, $limit = 10)
+    private function getPackageInvestments($type, $limit = 5)
     {
         return auth()->user()->investments()->latest()->whereHas('package', function($query) use ($type) {
             $query->where('type', $type);
