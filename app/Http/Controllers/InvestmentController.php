@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Models\Setting;
-use App\Models\Investment;
 use Illuminate\Http\Request;
+use App\Models\InternationalBank;
+use App\Models\Investment;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreInvestmentRequest;
 use App\Http\Requests\UpdateInvestmentRequest;
@@ -63,7 +64,8 @@ class InvestmentController extends Controller
             return back()->with('error', 'Can\'t process investment, package not found, disabled or closed');
         }
         // Check if package is sold out.
-        if ($package->isSoldOut()){
+        if ($package->isSoldOut())
+        {
             return back()->with('error', 'Can\'t process investment, package is sold out');
         }
 //        Process investment based on payment method
@@ -167,8 +169,9 @@ class InvestmentController extends Controller
     public function invest($type)
     {
         $setting = Setting::all()->first();
+        $international = InternationalBank::all()->first();
         $packages = Package::all()->where('status', 'open')->where('type', $type);
-        return view('user.investments.create', compact('packages', 'setting', 'type'));
+        return view('user.investments.create', compact('packages', 'setting', 'type', 'international'));
     }
 
     public function showUserInvestment($type, Investment $investment, $filter = 'all')

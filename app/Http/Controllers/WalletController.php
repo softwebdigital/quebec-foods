@@ -6,6 +6,7 @@ use App\Models\Wallet;
 use App\Http\Requests\StoreWalletRequest;
 use App\Http\Requests\UpdateWalletRequest;
 use App\Models\Setting;
+use App\Models\InternationalBank;
 
 class WalletController extends Controller
 {
@@ -17,6 +18,8 @@ class WalletController extends Controller
     public function index()
     {
         $setting = Setting::all()->first();
+
+        $international = InternationalBank::all()->first();
 
         $pendingTransactions = auth()->user()->transactions()->where('status', 'pending');
         $investments = auth()->user()->investments()->where('payment', 'approved');
@@ -32,7 +35,7 @@ class WalletController extends Controller
             'wallet'       => auth()->user()->wallet->balance,
         ];
 
-        return view('user.wallets.index', compact('data', 'setting'));
+        return view('user.wallets.index', compact('data', 'setting', 'international'));
     }
 
     /**

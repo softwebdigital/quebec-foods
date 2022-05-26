@@ -6,6 +6,7 @@ use App\Models\Transaction;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Setting;
+use App\Models\InternationalBank;
 use App\Notifications\WithdrawalTokenNotification;
 use Exception;
 use Illuminate\Http\Request;

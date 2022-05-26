@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/profile/update', [App\Http\Controllers\Admin\HomeController::class, 'updateProfile'])->name('profile.update');
     Route::post('/password/custom/update', [App\Http\Controllers\Admin\HomeController::class, 'changePassword'])->name('password.custom.update');
     Route::post('/setting/bank/update', [App\Http\Controllers\Admin\SettingController::class, 'updateBankDetails'])->name('bank.update')->middleware('permission:Update Company Bank Details');
+    Route::post('/setting/internationalbank/update', [App\Http\Controllers\Admin\SettingController::class, 'updateInternationalBankDetails'])->name('internationalbank.update')->middleware('permission:Update Company Bank Details');
 
     Route::get('/admins', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admins')->middleware('permission:View Admins');
     Route::get('/admins/create', [App\Http\Controllers\Admin\AdminController::class, 'create'])->name('admins.create')->middleware('permission:Create Admins');
@@ -83,7 +84,7 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
         Route::get('/{package}/investments', [App\Http\Controllers\Admin\PackageController::class, 'investments'])->name('packages.investments')->middleware('permission:View Investments');
         Route::get('/create', [App\Http\Controllers\Admin\PackageController::class, 'create'])->name('packages.create')->middleware('permission:Create Packages');
         Route::get('/{package}/edit', [App\Http\Controllers\Admin\PackageController::class, 'edit'])->name('packages.edit')->middleware('permission:Edit Packages');
-        Route::get('/{package}/show', [App\Http\Controllers\Admin\PackageController::class, 'show'])->name('packages.show');
+        Route::get('/{package}/show', [App\Http\Controllers\Admin\PackageController::class, 'show'])->name('packages.show')->middleware('permission:View Investments');
         Route::put('/{package}/update', [App\Http\Controllers\Admin\PackageController::class, 'update'])->name('packages.update')->middleware('permission:Edit Packages');
         Route::delete('/{package}/destroy', [App\Http\Controllers\Admin\PackageController::class, 'destroy'])->name('packages.destroy')->middleware('permission:Delete Packages');
     });

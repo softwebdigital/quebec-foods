@@ -15,227 +15,144 @@
 @endsection
 
 @section('content')
-    <!--begin::Content-->
-    <div class="flex-lg-row-fluid me-lg-7 me-xl-10">
+
+    <!--begin::Layout-->
+<div class="d-flex flex-column flex-lg-row">
+    <!--begin::Sidebar-->
+    <div class="flex-column flex-lg-row-auto w-lg-250px w-xl-350px mb-10">
         <!--begin::Card-->
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card ">
-                    <div class="card-body p-9">
-                        <!--begin::Card title-->
-                        <div class="card-title flex-column">
-                            <h4 class="mb-5">Edit {{ ucfirst($package['type']) }} Package</h4>
+        <div class="card mb-5 mb-xl-8">
+            <!--begin::Card body-->
+            <div class="card-body">
+                <!--begin::Summary-->
+                <!--begin::User Info-->
+                <div class="d-flex flex-center flex-column py-5">
+                    @if ($package['cover'])
+                        <!--begin::Avatar-->
+                        <div class="symbol symbol-100px symbol-circle mb-7">
+                            <img src="assets/media/avatars/300-6.jpg" alt="image" />
                         </div>
-                        <!--end::Card title-->
-                        <!--begin:::Form-->
-                        <form class="form mb-3">
-                            <input disabled type="hidden" value="{{ strtolower($package['type']) }}" name="type">
-                            @if ($package['type'] == 'plant')
-                                <!--begin::Image input-->
-                                <div class="mb-5">
-                                    <img src="{{ asset($package['image']) }}" width="200px" style="border-radius: 10px"
-                                        alt>
-                                </div>
-                            @endif
-                            <!--begin::Input group-->
-                            <div class="d-flex flex-column mb-5 fv-row">
-                                <!--begin::Label-->
-                                <label class="fs-5 fw-bold mb-2" for="name">Name</label>
-                                <!--end::Label-->
-                                <!--begin::Input-->
-                                <input disabled type="text" placeholder="Package name"
-                                    value="{{ old('name') ?? $package['raw_name'] }}" class="form-control form-control-solid"
-                                    name="name" id="name">
-                                @error('name')
-                                    <span class="text-danger small" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        <!--end::Avatar-->
+                    @endif
+                    <!--begin::Name-->
+                    <a href="#" class="fs-3 text-gray-800 text-hover-primary fw-bolder mb-3">{{ $package['name'] }}</a>
+                    <!--end::Name-->
+                    <!--begin::Position-->
+                    <div class="mb-9">
+                        <!--begin::Badge-->
+                        @if ($package['status'] == 'open')
+                            <span class="badge badge-lg badge-light-primary d-inline">{{ ucwords($package['status']) }}</span>
+                        @else
+                            <span class="badge badge-lg badge-light-danger d-inline">{{ ucwords($package['status']) }}</span>
+                        @endif
+                            <!-- <div class="badge badge-lg badge-light-primary d-inline">{{ ucwords($package['status']) }}</div> -->
+                        <!--begin::Badge-->
+                    </div>
+                    <div class="mb-9">
+                        <!--begin::Badge-->
+                        <div class="d-inline">{{ ucwords($package['description']) }}</div>
+                        <!--begin::Badge-->
+                    </div>
+                    <!--end::Position-->
+                    <!--begin::Info-->
+                    <div class="d-flex flex-wrap flex-center">
+                        <!--begin::Stats-->
+                        <!-- <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
+                            <div class="fs-4 fw-bolder text-gray-700">
+                                <span class="w-120px">{{ ucfirst($package['type']) }}</span>
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="d-flex flex-column mb-5 fv-row">
-                                <!--end::Label-->
-                                <label class="fs-5 fw-bold mb-2" for="description">Description</label>
-                                <!--end::Label-->
-                                <!--end::Input-->
-                                <textarea placeholder="Description" disabled class="form-control form-control-solid"
-                                    name="description" style="resize: none" id="description"
-                                    rows="5">{{ old('description') ?? $package['description'] }}</textarea>
-                                @error('description')
-                                    <span class="text-danger small" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="fw-bold text-muted">Type</div>
+                        </div> -->
+                        <!--end::Stats-->
+                        <!--begin::Stats-->
+                        <!-- <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3 ms-5">
+                            <div class="fs-4 fw-bolder text-gray-700">
+                                <span class="w-100px">{{ $package['roi'] }}%</span>
                             </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="d-flex flex-column mb-5 fv-row">
-                                <!--end::Label-->
-                                <label class="fs-5 fw-bold mb-2" for="roi">ROI in %</label>
-                                <!--end::Label-->
-                                <!--end::Input-->
-                                <input disabled type="number" placeholder="ROI" value="{{ old('roi') ?? $package['roi'] }}"
-                                    class="form-control form-control-solid" name="roi" id="roi">
-                                @error('roi')
-                                    <span class="text-danger small" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="d-flex flex-column mb-5 fv-row">
-                                <!--end::Label-->
-                                <label class="fs-5 fw-bold mb-2" for="price">Price per Slot</label>
-                                <!--end::Label-->
-                                <!--end::Input-->
-                                <input disabled type="number" placeholder="Price per Slot"
-                                    value="{{ old('price') ?? $package['price'] }}"
-                                    class="form-control form-control-solid" name="price" id="price">
-                                @error('price')
-                                    <span class="text-danger small" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <!--end::Input group-->
-                            <!--begin::Input group-->
-                            <div class="mb-5">
-                                <label class="fs-5 fw-bold mb-2" for="start_date">Start Date</label>
-                                <input disabled class="form-control form-control-solid" placeholder="Start Date"
-                                    id="kt_daterangepicker_3" value="{{ old('start_date') ?? $package['start_date'] }}"
-                                    name="start_date" id="startDate" />
-                                @error('start_date')
-                                    <span class="text-danger small" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            <!--end::Input group-->
-                            @if ($package['type'] == 'farm')
-                                <!--begin::Input group-->
-                                <div class="d-flex flex-column mb-5 fv-row">
-                                    <!--end::Label-->
-                                    <label class="fs-5 fw-bold mb-2" for="slot">Total Available Slots</label>
-                                    <!--end::Label-->
-                                    <!--end::Input-->
-                                    <input disabled type="text" placeholder="Total Available Slots"
-                                        value="{{ old('slots') ?? $package['slots'] }}"
-                                        class="form-control form-control-solid" name="slots" id="slots">
-                                    @error('slots')
-                                        <span class="text-danger small" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <!--end::Input group-->
-                            @endif
-                            @if ($package['type'] == 'plant')
-                                <!--begin::Input group-->
-                                <div class="d-flex flex-column mb-5 fv-row">
-                                    <!--end::Label-->
-                                    <label class="fs-5 fw-bold mb-2" for="duration">Milestones</label>
-                                    <!--end::Label-->
-                                    <!--end::Input-->
-                                    <input disabled type="number" placeholder="No of Milestones"
-                                        value="{{ old('milestones') ?? $package['milestones'] }}"
-                                        class="form-control form-control-solid" name="milestones" id="milestones">
-                                    @error('milestones')
-                                        <span class="text-danger small" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <!--end::Input group-->
-                            @endif
-                            @if ($package['type'] == 'farm')
-                                <!--begin::Input group-->
-                                <div class="d-flex flex-column mb-5 fv-row">
-                                    <!--begin::Label-->
-                                    <label class="fs-5 fw-bold mb-2" for="duration_mode">Duration Mode</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select disabled name="duration_mode" aria-label="Select the duration mode"
-                                        data-placeholder="Select the duration mode" data-control="select2"
-                                        class="form-select form-select-solid text-dark" id="durationMode">
-                                        <option value=""></option>
-                                        <option @if (old('duration_mode') == 'day' || $package['duration_mode'] == 'day') selected @endif value="day">Days</option>
-                                        <option @if (old('duration_mode') == 'month' || $package['duration_mode'] == 'month') selected @endif value="month">Months
-                                        </option>
-                                        <option @if (old('duration_mode') == 'year' || $package['duration_mode'] == 'year') selected @endif value="year">Years
-                                        </option>
-                                    </select>
-                                    @error('duration_mode')
-                                        <span class="text-danger small" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="d-flex flex-column mb-5 fv-row">
-                                    <!--end::Label-->
-                                    <label class="fs-5 fw-bold mb-2" for="duration">Duration</label>
-                                    <!--end::Label-->
-                                    <!--end::Input-->
-                                    <input disabled type="text" placeholder="Duration"
-                                        value="{{ old('duration') ?? $package['duration'] }}"
-                                        class="form-control form-control-solid" name="duration" id="duration">
-                                    @error('duration')
-                                        <span class="text-danger small" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            @endif
-                            @if ($package['type'] == 'plant')
-                                <!--begin::Input group-->
-                                <div class="d-flex flex-column mb-5 fv-row">
-                                    <!--begin::Label-->
-                                    <label class="fs-5 fw-bold mb-2" for="payout_mode">Payout Mode</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select disabled name="payout_mode" aria-label="Select the payout mode"
-                                        data-placeholder="Select the payout mode" data-control="select2"
-                                        class="form-select form-select-solid text-dark" id="payoutMode">
-                                        <option value=""></option>
-                                        <option @if (old('payout_mode') == 'monthly' || $package['payout_mode'] == 'monthly') selected @endif value="monthly">Monthly
-                                        </option>
-                                        <option @if (old('payout_mode') == 'quarterly' || $package['payout_mode'] == 'quarterly') selected @endif value="quarterly">
-                                            Quarterly</option>
-                                        <option @if (old('payout_mode') == 'semi-annually' || $package['payout_mode'] == 'semi-annually') ) selected @endif value="semi-annually">
-                                            Semi Annually (Half a year)</option>
-                                        <option @if (old('payout_mode') == 'annually' || $package['payout_mode'] == 'annually') selected @endif value="annually">Annually
-                                        </option>
-                                        <option @if (old('payout_mode') == 'biannually' || $package['payout_mode'] == 'biannually') selected @endif value="biannually">
-                                            Biannually</option>
-                                    </select>
-                                    @error('payout_mode')
-                                        <span class="text-danger small" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <!--end::Input group-->
-                            @endif
-                            <!--end::Input group-->
-                            <!--begin::Submit-->
-                            <a data-bs-toggle="modal" @if($package['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment"@endif class="btn btn-primary mt-3 w-100">
+                            <div class="fw-bold text-muted">ROI</div>
+                        </div> -->
+                        <!--end::Stats-->
+                    </div>
+                    <!--end::Info-->
+                </div>
+                <div class="separator mb-md-10"></div>
+                <!--end::Summary-->
+                <!--begin::Details toggle-->
+                <div class="d-flex flex-stack fs-4 py-3">
+                    <div class="fw-bolder rotate collapsible" data-bs-toggle="collapse" href="#kt_user_view_details" role="button" aria-expanded="false" aria-controls="kt_user_view_details">Packages Details
+                    <span class="ms-2 rotate-180">
+                        <!--begin::Svg Icon | path: icons/duotune/arrows/arr072.svg-->
+                        <span class="svg-icon svg-icon-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <path d="M11.4343 12.7344L7.25 8.55005C6.83579 8.13583 6.16421 8.13584 5.75 8.55005C5.33579 8.96426 5.33579 9.63583 5.75 10.05L11.2929 15.5929C11.6834 15.9835 12.3166 15.9835 12.7071 15.5929L18.25 10.05C18.6642 9.63584 18.6642 8.96426 18.25 8.55005C17.8358 8.13584 17.1642 8.13584 16.75 8.55005L12.5657 12.7344C12.2533 13.0468 11.7467 13.0468 11.4343 12.7344Z" fill="black" />
+                            </svg>
+                        </span>
+                        <!--end::Svg Icon-->
+                    </span></div>
+                </div>
+                <!--end::Details toggle-->
+                <!--begin::Details content-->
+                <div id="kt_user_view_details" class="collapse show">
+                    <div class="pb-5 fs-6">
+                        <!--begin::Details item-->
+                        <div class="fw-bolder mt-5">Type</div>
+                        <div class="text-gray-600">{{ ucfirst($package['type']) }}</div>
+                        <div class="fw-bolder mt-5">ROI</div>
+                        <div class="text-gray-600">{{ $package['roi'] }}%</div>
+                        <div class="fw-bolder mt-5">Price per slot</div>
+                        <div class="text-gray-600">{{ $package['price'] }}</div>
+                        <!--begin::Details item-->
+                        <!--begin::Details item-->
+                        <div class="fw-bolder mt-5">Start Date</div>
+                        <div class="text-gray-600">
+                            <a href="#" class="text-gray-600 text-hover-primary">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</a>
+                        </div>
+                        <!--begin::Details item-->
+                        <!--begin::Details item-->
+                        @if ($package['type'] == 'farm')
+                            <div class="fw-bolder mt-5">Total Available Slots</div>
+                            <div class="text-gray-600">{{ $package['slots'] }}</div>
+
+                            <div class="fw-bolder mt-5">Duration Mode</div>
+                            <div class="text-gray-600">{{ $package['duration_mode'] }}</div>
+                        @endif
+
+                        @if ($package['type'] == 'plant')
+                            <div class="fw-bolder mt-5">Milestones</div>
+                            <div class="text-gray-600">{{ $package['milestones'] }}</div>
+
+                            <div class="fw-bolder mt-5">Payout Mode</div>
+                            <div class="text-gray-600">{{ $package['payout_mode'] }}</div>
+                        @endif
+                        <!--begin::Details item-->
+                        <!--begin::Details item-->
+                        @if ($package['status'] == 'open')
+                        <!--begin::Submit-->
+                        <a data-bs-toggle="modal" @if($package['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif class="btn btn-primary mt-3 w-100">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Invest</span>
+                            <!--end::Indicator-->
+                        </a>
+                        @else
+                        <button type="button" disabled class="btn btn-primary w-100">
                                 <!--begin::Indicator-->
-                                <span class="indicator-label">Invest</span>
+                                <span class="indicator-label">Closed</span>
                                 <!--end::Indicator-->
-                            </a>
-                            <!--end::Submit-->
-                        </form>
-                        <!--end:::Form-->
+                        </button>
+                        @endif
+                        <!--end::Submit-->
                     </div>
                 </div>
+                <!--end::Details content-->
             </div>
+            <!--end::Card body-->
         </div>
         <!--end::Card-->
     </div>
-    <!--end::Content-->
+
+    
+</div>
+<!--end::Layout-->
 @endsection
 
 @section('script')
@@ -254,11 +171,9 @@
             singleDatePicker: true,
             showDropdowns: true,
             minYear: 1901,
-            maxYear: parseInt(moment().format("YYYY"),10),
-            timePicker: true,
-            startDate: moment().startOf("hour"),
+            maxYear: parseInt(moment().format("YYYY"), 10),
             locale: {
-                format: "YYYY-MM-DD HH:mm:ss"
+                format: "YYYY-MM-DD"
             }
         }, );
     </script>

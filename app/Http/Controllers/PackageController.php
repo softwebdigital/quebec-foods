@@ -6,6 +6,7 @@ use App\Models\Package;
 use App\Http\Requests\StorePackageRequest;
 use App\Http\Requests\UpdatePackageRequest;
 use App\Models\Setting;
+use App\Models\InternationalBank;
 use Illuminate\Support\Facades\Validator;
 
 class PackageController extends Controller
@@ -18,8 +19,9 @@ class PackageController extends Controller
     public function index()
     {
         $setting = Setting::all()->first();
+        $international = InternationalBank::all()->first();
         $packages = Package::latest()->get();
-        return view('user.packages.index', compact('packages', 'setting'));
+        return view('user.packages.index', compact('packages', 'setting', 'international'));
     }
 
     /**

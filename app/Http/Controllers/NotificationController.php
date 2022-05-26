@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
+use \PDF;
 use App\Notifications\CustomNotification;
 use App\Notifications\CustomNotificationByEmail;
 
@@ -70,7 +71,7 @@ class NotificationController extends Controller
     public static function sendInvestmentCreatedNotification($investment)
     {
         $transaction = $investment->transactions()->where('type', 'investment')->first();
-        // $pdf = PDF::loadView('pdf.certificate', ['investment' => $investment]);
+        $pdf = PDF::loadView('pdf.certificate', ['investment' => $investment]);
         $description = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package was successful.';
         $msg = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package was successful.<br><br>
                 <b><u>Investment details:</u></b><br>
@@ -86,14 +87,14 @@ class NotificationController extends Controller
                 Amount debited: <b>₦ '.number_format($investment->amount, 2).'</b><br>
                 Wallet balance: <b>₦ '.number_format($investment->user->wallet['balance'], 2).'</b><br>
                 ';
-        // $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description, $pdf->output()));
-        $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description));
+        $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description, $pdf->output()));
+        // $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description));
     }
 
     public static function sendInvestmentStartedNotification($investment)
     {
         $transaction = $investment->transactions()->where('type', 'investment')->first();
-        // $pdf = PDF::loadView('pdf.certificate', ['investment' => $investment]);
+        $pdf = PDF::loadView('pdf.certificate', ['investment' => $investment]);
         $description = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has started.';
         $msg = 'Your investment of <b>₦ '.number_format($investment->amount).'</b> in our <b>'.$investment->package["name"].'</b> package has started.<br><br>
                 <b><u>Investment details:</u></b><br>
@@ -105,8 +106,8 @@ class NotificationController extends Controller
                 Investment date: <b>'.$investment->investment_date->format('M d, Y \a\t h:i A').'</b><br>
                 Return date: <b>'.Carbon::make($investment->return_date)->format('M d, Y \a\t h:i A').'</b><br>
                 Investment method: <b>'.$transaction->method.'</b><br>';
-        // $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description, $pdf->output()));
-        $investment->user->notify(new CustomNotification('investment', 'Investment Started', $msg, $description));
+        $investment->user->notify(new CustomNotification('investment', 'Investment Created', $msg, $description, $pdf->output()));
+        // $investment->user->notify(new CustomNotification('investment', 'Investment Started', $msg, $description));
     }
 
     public static function sendInvestmentQueuedNotification($investment)

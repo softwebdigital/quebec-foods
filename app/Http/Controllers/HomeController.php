@@ -6,6 +6,7 @@ use Image;
 use Carbon\Carbon;
 use App\Models\Package;
 use App\Models\Setting;
+use App\Models\InternationalBank;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
@@ -135,7 +136,7 @@ class HomeController extends Controller
     {
         $user = auth()->user();
         $setting = Setting::all()->first();
-
+        $international = InternationalBank::all()->first();
         $pendingTransactions = $user->transactions()->where('status', 'pending');
         $investments = $user->investments()->where('payment', 'approved');
         $activeInvestments = $user->investments()->where('status', 'active');
@@ -150,7 +151,7 @@ class HomeController extends Controller
             'wallet'       => auth()->user()->wallet->balance,
         ];
 
-        return view('user.profile.wallet', compact('user', 'setting', 'data'));
+        return view('user.profile.wallet', compact('user', 'setting', 'data', 'international'));
     }
 
     public function showReferrals ()
@@ -253,7 +254,7 @@ class HomeController extends Controller
         return back()->with('error', 'Error changing password');
     }
 
-    private function getPackageInvestments($type, $limit = 10)
+    private function getPackageInvestments($type, $limit = 5)
     {
         return auth()->user()->investments()->latest()->whereHas('package', function($query) use ($type) {
             $query->where('type', $type);

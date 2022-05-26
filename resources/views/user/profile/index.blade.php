@@ -708,91 +708,106 @@
                     </div>
                     @endif
                     <!--begin::Card-->
-                    @if ($user->documents()->where(function($q) { $q->where('status', 'pending')->orWhere('status', 'approved'); })->count() == 0)
-                    <div class="card pt-4 mb-6 mb-xl-9">
-                        <!--begin::Card header-->
-                        <div class="card-header border-0">
-                            <!--begin::Card title-->
-                            <div class="card-title">
-                                <h2>Verify Your Identity</h2>
-                            </div>
-                            <!--end::Card title-->
-                            <!--begin::Card toolbar-->
-                        </div>
-                        <!--end::Card header-->
-                        <!--begin::Card body-->
-                        <div class="card-body pt-0 pb-5">
-                            <!--begin:::Form-->
-                            <form class="form mb-3" method="post" action="{{ route('document.store') }}" id="update-id-form" enctype="multipart/form-data">
-                                @csrf
-                                <!--begin::Input group-->
-                                <div class="row mb-5">
-                                    <!--begin::Col-->
-                                    <div class="col-md-12 mb-5 fv-row">
-                                        <!--begin::Label-->
-                                        <label class="required fs-5 fw-bold mb-2">Method</label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <select name="method" aria-label="Select Method" class="form-select form-select-solid text-dark">
-                                            <option value="">Select Method</option>
-                                            <option @if(old("method") == 'National ID') selected @endif value="National ID">National ID</option>
-                                            <option @if(old("method") == 'International Passport') selected @endif value="International Passport">International Passport</option>
-                                            <option @if(old("method") == 'Voters Card') selected @endif value="Voters Card">Voters Card</option>
-                                        </select>
-                                        @error('method')
-                                            <span class="text-danger small" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col-md-12  mb-5 fv-row">
-                                        <!--end::Label-->
-                                        <label class="required fs-5 fw-bold mb-2">Photo</label>
-                                        <!--end::Label-->
-                                        <!--end::Input-->
-                                        <input type="file" class="form-control form-control-solid" name="photo" id="photo">
-                                        @error('photo')
-                                            <span class="text-danger small" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col-md-12 fv-row">
-                                        <!--end::Label-->
-                                        <label class="fs-5 fw-bold mb-2">Number on ID</label>
-                                        <!--end::Label-->
-                                        <!--end::Input-->
-                                        <input type="text" value="{{ old("number") }}" class="form-control form-control-solid" name="number" id="number">
-                                        @error('number')
-                                            <span class="text-danger small" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <!--end::Col-->
+                        <div id="validation-card" class="card pt-4 mb-6 mb-xl-9">
+                            <!--begin::Card header-->
+                            <div class="card-header border-0">
+                                <!--begin::Card title-->
+                                <div class="card-title">
+                                    <h2>Verify Your Identity</h2>
                                 </div>
-                                <!--end::Input group-->
-                                <!--begin::Submit-->
-                                <button type="button" onclick="confirmFormSubmit(event, 'update-id-form')" class="btn btn-primary">
-                                    <!--begin::Indicator-->
-                                    <span class="indicator-label">Upload</span>
-                                    <!--end::Indicator-->
-                                </button>
-                                <!--end::Submit-->
-                            </form>
-                            <!--end:::Form-->
+                                <!--end::Card title-->
+                                <!--begin::Card toolbar-->
+                            </div>
+                            <!--end::Card header-->
+                            <!--begin::Card body-->
+                            <div class="card-body pt-0 pb-5">
+                                <!--begin:::Form-->
+                                <form class="form mb-3" method="post" action="{{ route('document.store') }}" id="update-id-form" enctype="multipart/form-data">
+                                    @csrf
+                                    <!--begin::Input group-->
+                                    <div class="row mb-5">
+                                        <!--begin::Col-->
+                                        <div class="col-md-12 mb-5 fv-row">
+                                            <!--begin::Label-->
+                                            <label class="required fs-5 fw-bold mb-2">Method</label>
+                                            <!--end::Label-->
+                                            <!--begin::Input-->
+                                            <select name="method" aria-label="Select Method" class="form-select form-select-solid text-dark">
+                                                <option value="">Select Method</option>
+                                                <option @if(old("method") == 'National ID') selected @endif value="National ID">National ID</option>
+                                                <option @if(old("method") == 'International Passport') selected @endif value="International Passport">International Passport</option>
+                                                <!-- <option @if(old("method") == 'Voters Card') selected @endif value="Voters Card">Voters Card</option> -->
+                                            </select>
+                                            @error('method')
+                                                <span class="text-danger small" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <!--end::Col-->
+                                        <!--begin::Col-->
+                                        <div class="col-md-12  mb-5 fv-row">
+                                            <!--end::Label-->
+                                            <label class="required fs-5 fw-bold mb-2">Photo</label>
+                                            <!--end::Label-->
+                                            <!--end::Input-->
+                                            <input type="file" class="form-control form-control-solid" name="photo" id="photo">
+                                            @error('photo')
+                                                <span class="text-danger small" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <!--end::Col-->
+                                        <!--begin::Col-->
+                                        <div class="col-md-12 fv-row">
+                                            <!--end::Label-->
+                                            <label class="fs-5 fw-bold mb-2">Number on ID</label>
+                                            <!--end::Label-->
+                                            <!--end::Input-->
+                                            <input type="text" value="{{ old("number") }}" class="form-control form-control-solid" name="number" id="number">
+                                            @error('number')
+                                                <span class="text-danger small" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                        <!--end::Col-->
+                                    </div>
+                                    <!--end::Input group-->
+                                    <!--begin::Submit-->
+                                    <button type="button" onclick="confirmFormSubmit(event, 'update-id-form')" class="btn btn-primary">
+                                        <!--begin::Indicator-->
+                                        <span class="indicator-label">Upload</span>
+                                        <!--end::Indicator-->
+                                    </button>
+                                    <!--end::Submit-->
+                                </form>
+                                <!--end:::Form-->
+                            </div>
+                            <!--end::Card body-->
                         </div>
-                        <!--end::Card body-->
-                    </div>
+                    @php
+                        $pending = $user->documents()->where('status', 'pending')->first();
+                    @endphp
+
+                    @if($pending)
+                        <script>
+                            let id = document.getElementById('validation-card');
+
+                            id.style.display = 'none'
+                        </script>
                     @endif
+                    
                     @php
                         $approved = $user->documents()->where('status', 'approved')->first();
                     @endphp
                     @if ($approved)
+                        <script>
+                            let id = document.getElementById('validation-card');
+
+                            id.style.display = 'none'
+                        </script>
                     <div class="card pt-4 mb-6 mb-xl-9">
                         <!--begin::Card body-->
                         <div class="card-body pt-0 pb-5">

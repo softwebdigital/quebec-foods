@@ -13,23 +13,35 @@
 @section('content')
     @php
     $approved = auth()->user()->documents()->where('status', 'approved')->first();
+    $pending = auth()->user()->documents()->where('status', 'pending')->first();
     @endphp
     <!--begin::Referral program-->
     <div class="row">
         @if (!$approved)
-        <div class="notice mb-5 d-flex bg-light-warning rounded border-warning border border-dashed min-w-lg-600px flex-shrink-0 p-6">
+        <div id="notification" style="display: none !important;" class="notice mb-5 d-flex bg-light-warning rounded border-warning border border-dashed min-w-lg-600px flex-shrink-0 p-6">
             <!--begin::Wrapper-->
             <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
                 <!--begin::Content-->
                 <div class="mb-3 mb-md-0 fw-bold">
                     <h4 class="text-gray-900 fw-bolder">Withdrawal Unavailable</h4>
-                    <div class="fs-6 text-gray-700 pe-7">You need to verify your identity before you can make withdrawals from you wallet</div>
+                    @if ($pending)
+                        <div class="fs-6 text-gray-700 pe-7">
+                            You have a pending submission, you can make another submssion only if you submission was declined.
+                        </div>
+                    @else
+                        <div class="fs-6 text-gray-700 pe-7">
+                            You need to verify your identity before you can make withdrawals from your wallet 
+                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#verifyModal">click here</a>
+                        </div>
+                    @endif
                 </div>
                 <!--end::Content-->
             </div>
             <!--end::Wrapper-->
         </div>
         @endif
+        
+        
         <div class="col-xxl-5 col-md-5 mb-xxl-10">
             <!--begin::Mixed Widget 1-->
             <div class="card h-md-100">
@@ -160,14 +172,21 @@
                         <div>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-primary min-w-125px">Top Up</button>
                         </div>
+                        
                         @if($setting['withdrawal'] == 1 && $approved)
-                            <div>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
-                            </div>
+                        <div>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
+                        </div>
                         @else
                             <div>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" disabled>Withdraw</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" onclick="showDiv()">Withdraw</button>
                             </div>
+                            <script>
+                                let notify = document.getElementById('notification');
+                                function showDiv() {
+                                    notify.style.display = "block";
+                                }
+                            </script>
                         @endif
                     </div>
                 </div>
@@ -376,11 +395,11 @@
                                 <!--begin::Radio group-->
                                 <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                                     <!--begin::Radio-->
-                                    <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="cardPayment">
+                                    <!-- <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="cardPayment"> -->
                                     <!--begin::Input-->
-                                    <input class="btn-check" type="radio" name="payment" id="cardPayment" value="card" />
+                                    <!-- <input class="btn-check" type="radio" name="payment" id="cardPayment" value="card" /> -->
                                     <!--end::Input-->
-                                    Card</label>
+                                    <!-- Card</label> -->
                                     <!--end::Radio-->
                                     <!--begin::Radio-->
                                     <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="depositPayment">
@@ -399,10 +418,14 @@
                             </div>
                         <!--end::Row-->
                         <div id="securedByPaystackLogo" class="mx-auto text-center">
+                            <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>
                             <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
                         </div>
                         <div id="bankDetailsForDepositForm" style="display: none" class="alert mx-3 bg-secondary">
                             <table>
+                                <tr>
+                                    <h6>Local Bank Details</h6>
+                                </tr>
                                 <tr>
                                     <td>Bank Name:</td>
                                     <td><span class="ms-2">{{ $setting['bank_name'] }}</span></td>
@@ -416,6 +439,30 @@
                                     <td><span class="ms-2">{{ $setting['account_number'] }}</span></td>
                                 </tr>
                             </table>
+                            <br>
+                            <br>
+                            <table>
+                                <tr>
+                                    <h6>International Bank Details</h6>
+                                </tr>
+                                <tr>
+                                    <td>Bank Name:</td>
+                                    <td><span class="ms-2">{{ $international['bank_name'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Account Name:</td>
+                                    <td><span class="ms-2">{{ $international['account_name'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Account Number: </td>
+                                    <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Added Information: </td>
+                                    <td><span class="ms-2">{{ $international['added_information'] }}</span></td>
+                                </tr>
+                            </table>
+
                         </div>
                     </form>
                 </div>
@@ -423,6 +470,92 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                     <button type="button" onclick="confirmFormSubmit(event, 'depositForm')" class="btn btn-primary">Deposit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Withdrawal Modal-->
+
+    <!--begin::Validation Modal-->
+    <div class="modal fade" tabindex="-1" id="verifyModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Verify Your Identity</h5>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-2x"></span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                <form class="form mb-3" method="post" action="{{ route('document.store') }}" id="update-id-form" enctype="multipart/form-data">
+                    @csrf
+                    <!--begin::Input group-->
+                    <div class="row mb-5">
+                        <!--begin::Col-->
+                        <div class="col-md-12 mb-5 fv-row">
+                            <!--begin::Label-->
+                            <label class="required fs-5 fw-bold mb-2">Method</label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <select name="method" aria-label="Select Method" class="form-select form-select-solid text-dark" required>
+                                <option value="">Select Method</option>
+                                <option @if(old("method") == 'National ID') selected @endif value="National ID">National ID</option>
+                                <option @if(old("method") == 'International Passport') selected @endif value="International Passport">International Passport</option>
+                                <!-- <option @if(old("method") == 'Voters Card') selected @endif value="Voters Card">Voters Card</option> -->
+                            </select>
+                            @error('method')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <!--end::Col-->
+                        <!--begin::Col-->
+                        <div class="col-md-12  mb-5 fv-row">
+                            <!--end::Label-->
+                            <label class="required fs-5 fw-bold mb-2">Photo</label>
+                            <!--end::Label-->
+                            <!--end::Input-->
+                            <input type="file" class="form-control form-control-solid" name="photo" id="photo" required>
+                            @error('photo')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <!--end::Col-->
+                        <!--begin::Col-->
+                        <div class="col-md-12 fv-row">
+                            <!--end::Label-->
+                            <label class="fs-5 fw-bold mb-2">Number on ID</label>
+                            <!--end::Label-->
+                            <!--end::Input-->
+                            <input type="text" value="{{ old("number") }}" class="form-control form-control-solid" name="number" id="number" required>
+                            @error('number')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <!--end::Col-->
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Submit-->
+                    <!-- <button type="button" onclick="confirmFormSubmit(event, 'update-id-form')" class="btn btn-primary"> -->
+                        <!--begin::Indicator-->
+                        <!-- <span class="indicator-label">Upload</span> -->
+                        <!--end::Indicator-->
+                    <!-- </button> -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="button" onclick="confirmFormSubmit(event, 'update-id-form')" class="btn btn-primary">Upload</button>
+                    </div>
+                    <!--end::Submit-->
+                </form>
                 </div>
             </div>
         </div>

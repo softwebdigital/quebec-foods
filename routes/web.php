@@ -26,6 +26,7 @@ Route::post('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 's
 
 Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']], function() {
     Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+    Route::get('/profile/identification', [App\Http\Controllers\HomeController::class, 'profile_id'])->name('profile.identification');
     Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.update');
     Route::put('/2fa/update', [App\Http\Controllers\HomeController::class, 'update2fa'])->name('2fa.update');
     Route::post('/password/custom/update', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('password.custom.update');

@@ -41,6 +41,15 @@ class CreateSettingsTable extends Migration
                 'updated_at' => now()
             ]
         ]);
+<<<<<<< HEAD
+        \Illuminate\Support\Facades\DB::table('settings')->insert([
+            [
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+=======
+>>>>>>> master
     }
 
     /**

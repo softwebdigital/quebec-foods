@@ -657,9 +657,10 @@
                                 href="{{ route('packages', 'plant') }}">View Package</a>
                             <!--end::Link-->
                             <!--begin::Link-->
-                            <a class="btn btn-sm bg-white btn-color-white bg-opacity-20"
-                                href="{{ route('invest', 'plant') }}">Invest</a>
+                            <!-- <a class="btn btn-sm bg-white btn-color-white bg-opacity-20"
+                                href="{{ route('invest', 'plant') }}">Invest</a> -->
                             <!--end::Link-->
+                            <a class="btn btn-sm bg-white btn-color-white bg-opacity-20" data-bs-toggle="modal" data-bs-target="#createPlantInvestment" >Invest</a>
                         </div>
                         <!--end::Links-->
                     </div>

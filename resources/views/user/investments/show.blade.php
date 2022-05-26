@@ -44,20 +44,20 @@
                     <!--begin::Info-->
                     <div class="d-flex flex-wrap flex-center">
                         <!--begin::Stats-->
-                        <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
+                        <!-- <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3">
                             <div class="fs-4 fw-bolder text-gray-700">
                                 <span class="w-120px">{{ ucfirst($investment['package']['type']) }}</span>
                             </div>
                             <div class="fw-bold text-muted">Type</div>
-                        </div>
+                        </div> -->
                         <!--end::Stats-->
                         <!--begin::Stats-->
-                        <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3 ms-5">
+                        <!-- <div class="border border-gray-300 border-dashed rounded py-3 px-3 mb-3 ms-5">
                             <div class="fs-4 fw-bolder text-gray-700">
                                 <span class="w-100px">{{ $investment['currentPackage']['roi'] }}%</span>
                             </div>
                             <div class="fw-bold text-muted">ROI</div>
-                        </div>
+                        </div> -->
                         <!--end::Stats-->
                     </div>
                     <!--end::Info-->
@@ -83,6 +83,10 @@
                 <div id="kt_user_view_details" class="collapse show">
                     <div class="pb-5 fs-6">
                         <!--begin::Details item-->
+                        <div class="fw-bolder mt-5">Type</div>
+                        <div class="text-gray-600">{{ ucfirst($investment['package']['type']) }}</div>
+                        <div class="fw-bolder mt-5">ROI</div>
+                        <div class="text-gray-600">{{ $investment['currentPackage']['roi'] }}%</div>
                         <div class="fw-bolder mt-5">Slots Purchased</div>
                         <div class="text-gray-600">{{ number_format($investment['slots']) }}</div>
                         <!--begin::Details item-->

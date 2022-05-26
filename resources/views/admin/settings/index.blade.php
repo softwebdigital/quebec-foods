@@ -96,6 +96,87 @@
             </div>
         </div>
         <!--end::Card-->
+
+        <!--begin::Card-->
+        <div class="card mt-5">
+            <div class="card-body p-9">
+                <!--begin::Card title-->
+                <div class="card-title flex-column">
+                    <h4 class="mb-5">International Bank Details</h4>
+                </div>
+                <!--end::Card title-->
+               <!--begin:::Form-->
+               <form class="form mb-3" method="post" action="{{ route('admin.internationalbank.update') }}" id="update-bank-form">
+                @csrf
+                <!--begin::Input group-->
+                <div class="d-flex flex-column mb-5 fv-row">
+                        <!--begin::Label-->
+                        <label class="required fs-5 fw-bold mb-2" for="bank_name">Bank Name</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+                        <input type="text" value="{{ old("bank_name") ?? $international['bank_name'] }}" class="form-control form-control-solid" name="bank_name" id="bank_name" required>
+                        <!-- @error('bank_name')
+                            <span class="text-danger small" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror -->
+                </div>
+                <!--end::Input group-->
+                <!--begin::Input group-->
+                <div class="d-flex flex-column mb-5 fv-row">
+                     <!--end::Label-->
+                     <label class="required fs-5 fw-bold mb-2" for="account_number">Account Number</label>
+                     <!--end::Label-->
+                     <!--end::Input-->
+                     <input type="text" value="{{ old("account_number") ?? $international['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number" required>
+                     <!-- @error('account_number')
+                         <span class="text-danger small" role="alert">
+                             <strong>{{ $message }}</strong>
+                         </span>
+                     @enderror -->
+                </div>
+                <!--end::Input group-->
+                <!--begin::Input group-->
+                <div class="d-flex flex-column mb-5 fv-row">
+                    <!--begin::Label-->
+                    <label for="account_name" class="fs-5 fw-bold mb-2 d-flex justify-content-between">
+                        <span class="d-block">Account Name <span class="text-danger">*</span></span>
+                        <span id="verifyingDisplay" class="small d-block"></span>
+                    </label>
+                    <!--end::Label-->
+                    <!--begin::Input-->
+                    <input type="text" value="{{ old("account_name") ?? $international['account_name'] }}" class="form-control form-control-solid bg-secondary" name="account_name" id="account_name" require >
+                    <!--end::Input-->
+                    <!-- @error('account_name')
+                        <span class="text-manger small">
+                            <span>Account name not verified</span>
+                        </span>
+                    @enderror -->
+                </div>
+                <div class="d-flex flex-column mb-5 fv-row">
+                    <label for="account_name" class="fs-5 fw-bold mb-2 d-flex justify-content-between">
+                        <span class="d-block">Added Information <span class="text-danger">*</span></span>
+                        <span id="verifyingDisplay" class="small d-block"></span>
+                    </label>
+                    <textarea  name="added_information" id="added_information" value="{{ old("added_information") ?? $international['added_information'] }}" cols="20" rows="5" class="form-control form-control-solid">{{  $international['added_information']  }}</textarea>        
+                </div>
+
+                <!--end::Input group-->
+                <!--begin::Submit-->
+                @can('Update Company Bank Details')
+                    <button type="submit" class="btn btn-primary">
+                        <!--begin::Indicator-->
+                        <span class="indicator-label">Update Account Details</span>
+                        <!--end::Indicator-->
+                    </button>   
+                @endcan
+                <!--end::Submit-->
+            </form>
+            <!--end:::Form-->
+            </div>
+        </div>
+        <!--end::Card-->
+
     </div>
     <!--end::Content-->
     <!--begin::Sidebar-->
