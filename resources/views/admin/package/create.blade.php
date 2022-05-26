@@ -276,7 +276,7 @@
                                         } else {
                                             sT.style = 'block'
                                         }
-                                        
+
                                         const pM = document.getElementById('payoutMode').value;
                                         console.log(milestones)
 
@@ -288,7 +288,7 @@
                                             }
                                         }
                                         if (pM == "annually" || pM == "biannually") {
-                                            
+
                                             if (milestones == 1) {
                                                 yV.innerText = "year"
                                             } else {
@@ -316,7 +316,7 @@
                                     </div>
                                 @enderror
                             </div>
-        
+
                         @endif
                         @if ($type == 'farm')
                             <div class="form-check form-switch form-check-custom form-check-solid my-7">
@@ -366,8 +366,10 @@
         showDropdowns: true,
         minYear: 1901,
         maxYear: parseInt(moment().format("YYYY"),10),
+        timePicker: true,
+        startDate: moment().startOf("hour"),
         locale: {
-            format: "YYYY-MM-DD"
+            format: "YYYY-MM-DD HH:mm:ss"
         }
     },
 );
