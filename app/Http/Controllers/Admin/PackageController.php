@@ -140,7 +140,10 @@ class PackageController extends Controller
         if ($package->investments()->count() > 0){
             return back()->with('error', 'Can\'t delete package, investments already associated');
         }
-        unlink($package['image']);
+        if ($package['type'] == 'plant') {
+            unlink($package['image']);
+        }
+        
         if ($package->delete()){
             return redirect()->route('admin.packages')->with('success', 'Package deleted successfully');
         }
