@@ -68,7 +68,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="amount">Amount to Invest</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" value="₦ 0.00" class="form-control form-control-solid bg-secondary" name="amount" id="amount" disabled>
+                            <input type="text" value="{{ getCurrency() }} 0.00" class="form-control form-control-solid bg-secondary" name="amount" id="amount" disabled>
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
@@ -77,7 +77,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="returns">Expected Returns <span @if($type == 'plant') style="display: none" @endif id="returnInfo"></span></label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" value="₦ 0.00" disabled class="form-control form-control-solid" name="returns" id="returns">
+                            <input type="text" value="{{ getCurrency() }} 0.00" disabled class="form-control form-control-solid" name="returns" id="returns">
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
@@ -242,14 +242,14 @@
             function computeAmount(){
                 if (packageName.val()){
                     returnInfo.html('after <b>'+ duration.val() +' ' + durationMode.val() + '(s)</b>');
-                    slotInfo.text('₦ ' + price.val() + '/slot' );
+                    slotInfo.text('{{ getCurrency() }}' + price.val() + '/slot' );
                 }else{
                     returnInfo.html('');
                     slotInfo.text('');
                 }
                 if (packageName.val() && slots.val() && (slots.val() > 0)){
-                    amount.val('₦ ' + numberFormat((slots.val() * price.val()).toFixed(2)));
-                    returns.val('₦ ' + numberFormat((slots.val() * price.val() * ((parseInt(roi.val()) + 100) / 100)).toFixed(2)));
+                    amount.val('{{ getCurrency() }}' + numberFormat((slots.val() * price.val()).toFixed(2)));
+                    returns.val('{{ getCurrency() }}' + numberFormat((slots.val() * price.val() * ((parseInt(roi.val()) + 100) / 100)).toFixed(2)));
                 }
                 checkIfFormCanSubmit();
             }

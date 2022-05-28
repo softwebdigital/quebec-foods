@@ -36,7 +36,7 @@ class SettingController extends Controller
         }
         // Update settings
         if (Setting::all()->first()->update([
-            // 'base_currency' => $request['base_currency'],
+            'base_currency' => $request['base_currency'],
             // 'rate_plus' => $request['rate_plus'],
             'show_cash' => $request['show_cash'] == 'yes',
             'invest' => $request['invest'] == 'yes',

@@ -30,7 +30,7 @@
                     <!--begin::Balance-->
                     <div class="d-flex text-center flex-column text-white pt-8">
                         <span class="fw-bold fs-7">Your Balance</span>
-                        <span class="fs-2x fw-bolder">₦
+                        <span class="fs-2x fw-bolder">{{ getCurrency() }}
                         <span data-kt-countup="true" data-kt-countup-value="{{ number_format($data['wallet']) }}" class="fw-bolder fs-2x pt-1">{{ number_format($data['wallet']) }}</span>
                     </div>
                     <!--end::Balance-->
@@ -64,7 +64,7 @@
                             <!--end::Title-->
                             <!--begin::Label-->
                             <div class="d-flex align-items-center">
-                                <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['transactions'] }}</div>
+                                <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }}{{ $data['transactions'] }}</div>
                             </div>
                             <!--end::Label-->
                         </div>
@@ -99,7 +99,7 @@
                             <!--end::Title-->
                             <!--begin::Label-->
                             <div class="d-flex align-items-center">
-                                <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['investments']['pendingInvestments'] }}</div>
+                                <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }}{{ $data['investments']['pendingInvestments'] }}</div>
                             </div>
                             <!--end::Label-->
                         </div>
@@ -132,7 +132,7 @@
                             <!--end::Title-->
                             <!--begin::Label-->
                             <div class="d-flex align-items-center">
-                                <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['investments']['activeInvestments'] }}</div>
+                                <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }}{{ $data['investments']['activeInvestments'] }}</div>
                             </div>
                             <!--end::Label-->
                         </div>

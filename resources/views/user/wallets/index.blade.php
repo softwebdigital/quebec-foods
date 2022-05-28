@@ -30,7 +30,7 @@
                         </div>
                     @else
                         <div class="fs-6 text-gray-700 pe-7">
-                            You need to verify your identity before you can make withdrawals from your wallet 
+                            You need to verify your identity before you can make withdrawals from your wallet
                             <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#verifyModal">click here</a>
                         </div>
                     @endif
@@ -40,8 +40,8 @@
             <!--end::Wrapper-->
         </div>
         @endif
-        
-        
+
+
         <div class="col-xxl-5 col-md-5 mb-xxl-10">
             <!--begin::Mixed Widget 1-->
             <div class="card h-md-100">
@@ -57,7 +57,7 @@
                         <!--begin::Balance-->
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Your Balance</span>
-                            <span class="fs-2x fw-bolder">₦
+                            <span class="fs-2x fw-bolder">{{ getCurrency() }}
                             <span data-kt-countup="true" data-kt-countup-value="{{ number_format($data['wallet']) }}" class="fw-bolder fs-2x pt-1">{{ number_format($data['wallet']) }}</span>
                         </div>
                         <!--end::Balance-->
@@ -91,7 +91,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['transactions'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }}{{ $data['transactions'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -126,7 +126,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['investments']['pendingInvestments'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }}{{ $data['investments']['pendingInvestments'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -159,7 +159,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['investments']['activeInvestments'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }}{{ $data['investments']['activeInvestments'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -172,7 +172,7 @@
                         <div>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-primary min-w-125px">Top Up</button>
                         </div>
-                        
+
                         @if($setting['withdrawal'] == 1 && $approved)
                         <div>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>

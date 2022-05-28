@@ -488,7 +488,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="plantAmount">Amount to Invest</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" value="₦ 0.00" class="form-control form-control-solid bg-secondary" name="amount" id="plantAmount" disabled>
+                            <input type="text" value="{{ getCurrency() }} 0.00" class="form-control form-control-solid bg-secondary" name="amount" id="plantAmount" disabled>
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
@@ -497,7 +497,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="plantReturns">Expected Returns <span style="display: none" id="plantReturnInfo"></span></label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" value="₦ 0.00" disabled class="form-control form-control-solid" name="returns" id="plantReturns">
+                            <input type="text" value="{{ getCurrency() }} 0.00" disabled class="form-control form-control-solid" name="returns" id="plantReturns">
                         </div>
                         <!--end::Input group-->
                         <!--begin::Row-->
@@ -687,7 +687,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="amount">Amount to Invest</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" value="₦ 0.00" class="form-control form-control-solid bg-secondary" name="amount" id="amount" disabled>
+                            <input type="text" value="{{ getCurrency() }} 0.00" class="form-control form-control-solid bg-secondary" name="amount" id="amount" disabled>
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
@@ -696,7 +696,7 @@
                             <label class="required fs-5 fw-bold mb-2" for="returns">Expected Returns <span id="returnInfo"></span></label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <input type="text" value="₦ 0.00" disabled class="form-control form-control-solid" name="returns" id="returns">
+                            <input type="text" value="{{ getCurrency() }} 0.00" disabled class="form-control form-control-solid" name="returns" id="returns">
                         </div>
                         <!--end::Input group-->
                         <!--begin::Row-->
@@ -962,18 +962,18 @@
             function computeAmount(){
                 if (packageName.val()){
                     returnInfo.html('after <b>'+ duration.val() +' ' + durationMode.val() + '(s)</b>');
-                    slotInfo.text('₦ ' + price.val() + '/slot' );
+                    slotInfo.text('{{ getCurrency() }}' + price.val() + '/slot' );
                 }else{
                     returnInfo.html('');
                     slotInfo.text('');
                 }
                 if (packageName.val() && slots.val() && (slots.val() > 0)){
-                    amount.val('₦ ' + numberFormat((slots.val() * price.val()).toFixed(2)));
-                    returns.val('₦ ' + numberFormat((slots.val() * price.val() * ((parseInt(roi.val()) + 100) / 100)).toFixed(2)));
+                    amount.val('{{ getCurrency() }}' + numberFormat((slots.val() * price.val()).toFixed(2)));
+                    returns.val('{{ getCurrency() }}' + numberFormat((slots.val() * price.val() * ((parseInt(roi.val()) + 100) / 100)).toFixed(2)));
                 }
                 if (slots.val() === "") {
-                    amount.val('₦ ' + numberFormat((0).toFixed(2)));
-                    returns.val('₦ ' + numberFormat((0).toFixed(2)));
+                    amount.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));
+                    returns.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));
                 }
                 checkIfFormCanSubmit();
             }
@@ -1053,18 +1053,18 @@
             function computeAmount(){
                 if (plantPackageName.val()){
                     plantReturnInfo.html('after <b>'+ plantDuration.val() +' ' + plantDurationMode.val() + '(s)</b>');
-                    plantSlotInfo.text('₦ ' + plantPrice.val() + '/slot' );
+                    plantSlotInfo.text('{{ getCurrency() }}' + plantPrice.val() + '/slot' );
                 }else{
                     plantReturnInfo.html('');
                     plantSlotInfo.text('');
                 }
                 if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() >= 0)){
-                    plantAmount.val('₦ ' + numberFormat((plantSlots.val() * plantPrice.val()).toFixed(2)));
-                    plantReturns.val('₦ ' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val()) + 100) / 100)).toFixed(2)));
+                    plantAmount.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val()).toFixed(2)));
+                    plantReturns.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val()) + 100) / 100)).toFixed(2)));
                 }
                 if (plantSlots.val() === "") {
-                    plantAmount.val('₦ ' + numberFormat((0).toFixed(2)));
-                    plantReturns.val('₦ ' + numberFormat((0).toFixed(2)));
+                    plantAmount.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));
+                    plantReturns.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));
                 }
                 checkIfFormCanSubmit();
             }

@@ -46,9 +46,9 @@
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $item['month'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $item['year'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦{{ number_format($item['active_investments']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($item['active_investments']) }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $item['percentage'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦{{ number_format($item['amount']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($item['amount']) }}</span></td>
                                 <td>
                                     @if($item['status'] == 'approved')
                                         <span class="badge badge-pill badge-success">Approved</span>

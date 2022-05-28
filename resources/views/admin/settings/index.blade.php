@@ -88,7 +88,7 @@
                         <!--begin::Indicator-->
                         <span class="indicator-label">Update Account Details</span>
                         <!--end::Indicator-->
-                    </button>   
+                    </button>
                 @endcan
                 <!--end::Submit-->
             </form>
@@ -158,7 +158,7 @@
                         <span class="d-block">Added Information <span class="text-danger">*</span></span>
                         <span id="verifyingDisplay" class="small d-block"></span>
                     </label>
-                    <textarea  name="added_information" id="added_information" value="{{ old("added_information") ?? $international['added_information'] }}" cols="20" rows="5" class="form-control form-control-solid">{{  $international['added_information']  }}</textarea>        
+                    <textarea  name="added_information" id="added_information" value="{{ old("added_information") ?? $international['added_information'] }}" cols="20" rows="5" class="form-control form-control-solid">{{  $international['added_information']  }}</textarea>
                 </div>
 
                 <!--end::Input group-->
@@ -168,7 +168,7 @@
                         <!--begin::Indicator-->
                         <span class="indicator-label">Update Account Details</span>
                         <!--end::Indicator-->
-                    </button>   
+                    </button>
                 @endcan
                 <!--end::Submit-->
             </form>
@@ -340,6 +340,23 @@
                         @enderror
                     </div>
                     <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-5 fv-row">
+                        <!--begin::Label-->
+                        <label class="required fs-5 fw-bold mb-2" for="base_currency">Base Currency</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+                        <select name="base_currency" data-control="select2" class="form-select form-select-solid text-dark" id="base_currency">
+                            <option @if($setting['base_currency'] == 'NGN') selected @endif value="NGN">NGN</option>
+                            <option @if($setting['base_currency'] == 'USD') selected @endif value="USD">USD</option>
+                        </select>
+                        @error('base_currency')
+                            <span class="text-danger small" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <!--end::Input group-->
                     <!--begin::Submit-->
                     @can('Update Other Settings')
                         <button type="submit" onclick="confirmFormSubmit(event, 'otherSettingForm')" class="btn btn-primary" id="bank_submit_button">
@@ -348,7 +365,7 @@
                             <span class="indicator-progress">Please wait...
                             <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
                             <!--end::Indicator-->
-                        </button>                    
+                        </button>
                     @endcan
                     <!--end::Submit-->
                 </form>

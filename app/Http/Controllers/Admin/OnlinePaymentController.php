@@ -88,7 +88,7 @@ class OnlinePaymentController extends Controller
             }else{
                 $datum['name'] = $payment->user['name'] ?? '---';
             }
-            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($payment['amount']).'</span>';
+            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . getCurrency() .' '.number_format($payment['amount']).'</span>';
             $datum['reference'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$payment['reference'].'</span>';
             $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$payment['created_at']->format('M d, Y \a\t h:i A').'</span>';
             $datum['payment type'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$payment['type'].'</span>';
