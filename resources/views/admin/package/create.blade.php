@@ -378,10 +378,8 @@
         showDropdowns: true,
         minYear: 1901,
         maxYear: parseInt(moment().format("YYYY"),10),
-        timePicker: true,
-        startDate: moment().startOf("hour"),
         locale: {
-            format: "YYYY-MM-DD HH:mm:ss"
+            format: "YYYY-MM-DD"
         }
     },
 );
