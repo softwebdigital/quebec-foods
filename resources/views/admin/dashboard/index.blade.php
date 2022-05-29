@@ -46,7 +46,7 @@
                                     <!--end::Symbol-->
                                     <!--begin::Title-->
                                     <div>
-                                        <div class="fs-5 text-dark fw-bolder lh-1">₦ {{ $data['wallet']['balance'] }}</div>
+                                        <div class="fs-5 text-dark fw-bolder lh-1">{{ getCurrency() }} {{ $data['wallet']['balance'] }}</div>
                                         <div class="fs-7 text-gray-600 fw-bold">Wallet</div>
                                     </div>
                                     <!--end::Title-->
@@ -72,7 +72,7 @@
                                     <!--end::Symbol-->
                                     <!--begin::Title-->
                                     <div>
-                                        <div class="fs-5 text-dark fw-bolder lh-1">₦ {{ $data['investments']['total'] }}</div>
+                                        <div class="fs-5 text-dark fw-bolder lh-1">{{ getCurrency() }} {{ $data['investments']['total'] }}</div>
                                         <div class="fs-7 text-gray-600 fw-bold">Invested</div>
                                     </div>
                                     <!--end::Title-->
@@ -124,7 +124,7 @@
                                     <!--end::Symbol-->
                                     <!--begin::Title-->
                                     <div>
-                                        <div class="fs-5 text-dark fw-bolder lh-1">₦ {{ $data['investments']['returns'] }}</div>
+                                        <div class="fs-5 text-dark fw-bolder lh-1">{{ getCurrency() }} {{ $data['investments']['returns'] }}</div>
                                         <div class="fs-7 text-gray-600 fw-bold">Returns</div>
                                     </div>
                                     <!--end::Title-->
@@ -157,7 +157,7 @@
                     <!--begin::Stats-->
                     <div class="pt-5">
                         <!--begin::Symbol-->
-                        <span class="text-dark fw-bolder fs-2x lh-0">₦</span>
+                        <span class="text-dark fw-bolder fs-2x lh-0">{{ getCurrency() }}</span>
                         <!--end::Symbol-->
                         <!--begin::Number-->
                         <span class="text-dark fw-bolder fs-3x me-2 lh-0">{{ number_format(array_sum($data['chartData']['transactions']['week'])) }}</span>
@@ -194,7 +194,7 @@
                         <!--begin::Balance-->
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Active Investment</span>
-                            <span class="fw-bolder fs-2x pt-1">₦ {{ number_format($data['plantInvestments']['active']) }}</span>
+                            <span class="fw-bolder fs-2x pt-1">{{ getCurrency() }} {{ number_format($data['plantInvestments']['active']) }}</span>
                         </div>
                         <!--end::Balance-->
                     </div>
@@ -260,7 +260,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦ {{ $data['plantInvestments']['total'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }} {{ $data['plantInvestments']['total'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -292,7 +292,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦ {{ $data['plantInvestments']['returns'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }} {{ $data['plantInvestments']['returns'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -358,7 +358,7 @@
                         <!--begin::Balance-->
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Active Investments</span>
-                            <span class="fw-bolder fs-2x pt-1">₦ {{ number_format($data['farmInvestments']['active']) }}</span>
+                            <span class="fw-bolder fs-2x pt-1">{{ getCurrency() }} {{ number_format($data['farmInvestments']['active']) }}</span>
                         </div>
                         <!--end::Balance-->
                     </div>
@@ -424,7 +424,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦ {{ $data['farmInvestments']['total'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }} {{ $data['farmInvestments']['total'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -456,7 +456,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦ {{ $data['farmInvestments']['returns'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }} {{ $data['farmInvestments']['returns'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -637,8 +637,8 @@
                                     <tr>
                                         <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['package']['name'] }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($plantInvestment['amount']) }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($plantInvestment['total_return']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['amount']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['total_return']) }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['return_date']->format('M d, Y') }}</span></td>
                                         <td>
                                             @if($plantInvestment['status'] == 'active')
@@ -708,8 +708,8 @@
                                     <tr>
                                         <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['package']['name'] }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($farmInvestment['amount']) }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($farmInvestment['total_return']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($farmInvestment['amount']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($farmInvestment['total_return']) }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['return_date']->format('M d, Y') }}</span></td>
                                         <td>
                                             @if($farmInvestment['status'] == 'active')
@@ -895,7 +895,7 @@
             },
             y: {
                 formatter: function(e) {
-                    return "₦" + numberFormat(e);
+                    return '{{ getCurrency() }}' + numberFormat(e);
                 },
             },
         },
@@ -1020,7 +1020,7 @@
             },
             y: {
                 formatter: function(e) {
-                    return "₦" + numberFormat(e);
+                    return '{{ getCurrency() }}' + numberFormat(e);
                 },
             },
         },
@@ -1077,7 +1077,7 @@
                 colors: ["labelColor"]
             },
             formatter: function(e) {
-                return "₦" + numberFormat(e);
+                return '{{ getCurrency() }}' + numberFormat(e);
             },
         },
         stroke: {
@@ -1153,7 +1153,7 @@
             },
             y: {
                 formatter: function(e) {
-                    return "₦" + numberFormat(e);
+                    return '{{ getCurrency() }}' + numberFormat(e);
                 },
             },
         },

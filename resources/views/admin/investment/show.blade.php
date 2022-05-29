@@ -97,16 +97,16 @@
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Amount Invested</div>
                         <div class="text-gray-600">
-                            <a href="#" class="text-gray-600 text-hover-primary">{{ '₦ '. number_format($investment['amount']) }}</a>
+                            <a href="#" class="text-gray-600 text-hover-primary">{{ getCurrency() }} {{ number_format($investment['amount']) }}</a>
                         </div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Expected ROI</div>
-                        <div class="text-gray-600">{{ '₦ '. number_format($investment['total_return'] - $investment['amount']) }}</div>
+                        <div class="text-gray-600">{{ getCurrency() }} {{ number_format($investment['total_return'] - $investment['amount']) }}</div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Total Returns</div>
-                        <div class="text-gray-600">{{ '₦ '. number_format($investment['total_return']) }}</div>
+                        <div class="text-gray-600">{{ getCurrency() }} {{ number_format($investment['total_return']) }}</div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Investment Date</div>
@@ -122,37 +122,8 @@
                         <div class="fw-bolder mt-5">Return Date</div>
                         <div class="text-gray-600">{{ $investment['return_date']->format('M d, Y \a\t h:i A') }}</div>
                         <!--begin::Details item-->
-                        @if ($investment['package']['type'] == 'farm')
-                            <form action="{{ route('investment.update.rollover', ['type' => 'farm', 'investment' => $investment['id']]) }}" method="POST" id="updateRolloverForm">
-                                @csrf
-                                @method('PUT')
-                                <!--begin::Input group-->
-                                <div class="d-flex flex-column my-5 fv-row">
-                                    <!--begin::Label-->
-                                    <label class="required fs-5 fw-bold mb-2" for="rollover">Rollover</label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <select name="rollover" aria-label="Select rollover status" data-placeholder="Select rollover status" class="form-select form-select-solid text-dark" id="rollover">
-                                        <option value="">Select rollover status</option>
-                                        <option @if ($investment['package']['rollover'] == true) selected @endif value="yes">Yes</option>
-                                        <option @if ($investment['package']['rollover'] == false) selected @endif value="no">No</option>
-                                    </select>
-                                    @error('rollover')
-                                        <span class="text-danger small" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <!--end::Input group-->
-                                <button type="button" onclick="confirmFormSubmit(event, 'updateRolloverForm')" class="btn btn-primary">Update</button>
-                                {{-- <div id="rollover" class="form-check form-switch form-check-custom form-check-solid me-10">
-                                    <input required class="form-check-input h-30px w-50px" type="checkbox" @if($investment['rollover']) checked @endif value="yes" id="rollover" name="rollover"/>
-                                    <label class="form-check-label" for="rollover">
-                                        Rollover Investment
-                                    </label>
-                                </div> --}}
-                            </form>
-                        @endif
+                        <div class="fw-bolder mt-5">Rollover</div>
+                        <div class="text-gray-600">{{ $investment['rollover'] ? "Yes" : "No" }}</div>
                     </div>
                 </div>
                 <!--end::Details content-->
@@ -299,7 +270,7 @@
                                             <tr>
                                                 <!--begin::Invoice=-->
                                                 <td class="ps-4"><span class="text-gray-600 fw-bolder d-block fs-6"></span>Milestone {{ $i }}</td>
-                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦ {{ number_format($i == $milestones ? $investment['amount'] + $roi  : $roi) }}</span></td>
+                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($i == $milestones ? $investment['amount'] + $roi  : $roi) }}</span></td>
                                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ \Carbon\Carbon::make($investment['start_date'])->addMonths($investment->getPlantDurationIncreaseByMonth($i))->format('M d, Y H:m:s') }}</span></td>
                                                 <td>
                                                     @if ($paid >= $i)

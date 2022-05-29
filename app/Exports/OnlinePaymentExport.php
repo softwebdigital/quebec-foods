@@ -36,7 +36,7 @@ class OnlinePaymentExport implements FromArray, WithHeadings
         return $onlinePayments->map(function($onlinePayment){
             return [
                 'user_name' => ucwords($onlinePayment['user']['name']),
-                'amount' => '₦'.number_format($onlinePayment['amount']),
+                'amount' => getCurrency().number_format($onlinePayment['amount']),
                 'reference' => $onlinePayment['reference'],
                 'payment_type' => ucfirst($onlinePayment['type']),
                 'date' => $onlinePayment['created_at']->format('M d, Y \a\t h:i A'),

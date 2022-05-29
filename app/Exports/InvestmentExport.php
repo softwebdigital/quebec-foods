@@ -22,7 +22,7 @@ class InvestmentExport implements FromArray, WithHeadings
     public function array() : array
     {
         $dates = explode('to', $this->dates);
-        
+
         if ($this->category != 'all') {
             $investments = Investment::query()->latest()->whereHas('package', function ($query) {
                 $query->where('type', $this->category);
@@ -48,10 +48,10 @@ class InvestmentExport implements FromArray, WithHeadings
                 'package_type' => ucfirst($investment->package['type']),
                 'package_start_date' => $investment->package['start_date']->format('M d, Y'),
                 'package_roi' => $investment->package['roi'].'%',
-                'price_per_slot' => '₦'.number_format($investment->package['price']),
+                'price_per_slot' => getCurrency().number_format($investment->package['price']),
                 'slots' => $investment['slots'],
-                'total_invested' => '₦'.number_format($investment['amount']),
-                'returns' => '₦'.number_format($investment['total_return']),
+                'total_invested' => getCurrency().number_format($investment['amount']),
+                'returns' => getCurrency().number_format($investment['total_return']),
                 'investment_date' => $investment['investment_date']->format('M d, Y'),
                 'payment' => ucfirst($investment['payment']),
                 'status' => ucfirst($investment['status'])
