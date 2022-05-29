@@ -254,61 +254,20 @@
                                 @enderror
 
                                 <div class="small mt-4" id="statement" style="display: none;">
-                                    <strong>Investments will run for <span id="numberOfYears" ></span> <span id="year-value" ></span> with <span id="milestones-value" ></span> payment milestones</strong>
+                                    <strong>Investments will run for <span id="year-value" ></span> with <span id="milestones-value" ></span> payment milestones</strong>
                                 </div>
-
-                                <script>
-                                    const mV = document.getElementById('milestones-value');
-                                    const yV = document.getElementById('year-value');
-                                    const nY = document.getElementById('numberOfYears');
-
-                                    function getVal() {
-                                        const milestones = document.getElementById('milestones').value;
-                                        // console.log(milestones);
-                                        mV.innerText = milestones
-                                        nY.innerText = milestones
-                                    }
-                                    function getVals() {
-                                        const sT = document.getElementById('statement');
-                                        const milestones = document.getElementById('milestones').value;
-                                        if (milestones == null) {
-                                            sT.style = 'none'
-                                        } else {
-                                            sT.style = 'block'
-                                        }
-
-                                        const pM = document.getElementById('payoutMode').value;
-                                        console.log(milestones)
-
-                                        if (pM == "monthly" || pM == "quarterly" || pM == "semi-annually") {
-                                            if (milestones == 1) {
-                                                yV.innerText = "month"
-                                            } else {
-                                                yV.innerText = "months"
-                                            }
-                                        }
-                                        if (pM == "annually" || pM == "biannually") {
-
-                                            if (milestones == 1) {
-                                                yV.innerText = "year"
-                                            } else {
-                                                yV.innerText = "years"
-                                            }
-                                        }
-
-                                    }
-                                </script>
                             </div>
                             <!--end::Input group-->
                             <div class="my-4">
                                 <!--end::Label-->
                                 <div class="form-check form-switch form-check-custom form-check-solid my-7">
+                                    <label class="form-check-label fs-5 fw-bold mb-2" for="makePackageOpen" style="margin-right: 4px;">
+                                        Package Status 
+                                    </label><p id="active" style="margin: 0px 10px 0px 5px; font-size: 10px;">(Inactive)</p>
                                     <input class="form-check-input mb-2 h-20px w-30px" type="checkbox"
                                         @if (old('status') == 'open') checked @endif name="status" value="open"
-                                        id="makePackageOpen" />
-                                    <label class="form-check-label fs-5 fw-bold mb-2" for="makePackageOpen">
-                                        Package Status
-                                    </label>
+                                        id="makePackageOpen" onchange="doalert(this)" />
+                                    
                                 </div>
                                 @error('status')
                                     <div class="small text-danger">
@@ -316,7 +275,7 @@
                                     </div>
                                 @enderror
                             </div>
-
+        
                         @endif
                         @if ($type == 'farm')
                             <div class="form-check form-switch form-check-custom form-check-solid my-7">
@@ -349,6 +308,59 @@
     </div>
     <!--end::Card-->
 </div>
+<script>
+    var active = document.getElementById('active');
+    const mV = document.getElementById('milestones-value');
+    
+    function doalert(checkboxElem) {
+        if (checkboxElem.checked) {
+            // active.style.display = "block"
+            active.innerText = '(Active)'
+        } else {
+            // active.style.display = "none"
+            active.innerText = '(Inactive)'
+        }
+    }
+
+    const yV = document.getElementById('year-value');
+    const nY = document.getElementById('numberOfYears');
+
+    function getVal() {
+        const milestones = document.getElementById('milestones').value;
+        // console.log(milestones);
+        mV.innerText = milestones
+        nY.innerText = milestones
+    }
+    function getVals() {
+        const sT = document.getElementById('statement');
+        const milestones = document.getElementById('milestones').value;
+        if (milestones == null) {
+            sT.style = 'none'
+        } else {
+            sT.style = 'block'
+        }
+        
+        const pM = document.getElementById('payoutMode').value;
+        console.log(milestones)
+
+        if (pM == "monthly") {
+            yV.innerText = "a month"
+        }
+        if (pM == "quarterly") {
+            yV.innerText = "3 months"
+        }
+        if (pM == "semi-annually") {
+            yV.innerText = "6 months"
+        }
+        if (pM == "annually") {
+            yV.innerText = "a year"
+        }
+        if (pM == "biannually") {
+            yV.innerText = "2 years"
+        }
+
+    }
+</script>
 <!--end::Content-->
 @endsection
 
