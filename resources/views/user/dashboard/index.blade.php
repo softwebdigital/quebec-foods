@@ -171,7 +171,7 @@
                         <!--begin::Balance-->
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Your Balance</span>
-                            <span class="fw-bolder fs-2x pt-1">₦{{ $data['wallet']['balance'] }}</span>
+                            <span class="fw-bolder fs-2x pt-1">{{ getCurrency() }}{{ $data['wallet']['balance'] }}</span>
                         </div>
                         <!--end::Balance-->
                     </div>
@@ -210,7 +210,7 @@
                                 <!--end::Title-->
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
-                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">₦{{ $data['transactions'] }}</div>
+                                    <div class="fw-bolder fs-5 text-gray-800 pe-1">{{ getCurrency() }}{{ $data['transactions'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -247,7 +247,7 @@
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
                                     <div class="fw-bolder fs-5 text-gray-800 pe-1">
-                                        ₦{{ $data['investments']['pendingInvestments'] }}</div>
+                                        {{ getCurrency() }}{{ $data['investments']['pendingInvestments'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -286,7 +286,7 @@
                                 <!--begin::Label-->
                                 <div class="d-flex align-items-center">
                                     <div class="fw-bolder fs-5 text-gray-800 pe-1">
-                                        ₦{{ $data['investments']['activeInvestments'] }}</div>
+                                        {{ getCurrency() }}{{ $data['investments']['activeInvestments'] }}</div>
                                 </div>
                                 <!--end::Label-->
                             </div>
@@ -320,7 +320,7 @@
                     <!--begin::Stats-->
                     <div class="pt-5 mt-2">
                         <!--begin::Symbol-->
-                        <span class="text-dark fw-bolder fs-2x lh-0">₦</span>
+                        <span class="text-dark fw-bolder fs-2x lh-0">{{ getCurrency() }}</span>
                         <!--end::Symbol-->
                         <!--begin::Number-->
                         <span
@@ -441,7 +441,7 @@
                                                             fill="currentColor"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->₦{{ number_format($pcg['price']) }} / slot
+                                                <!--end::Svg Icon-->{{ getCurrency() }}{{ number_format($pcg['price']) }} / slot
                                             </span>
                                             <!--end::Section-->
                                             <!--begin::Section-->
@@ -561,7 +561,7 @@
                                                             fill="currentColor"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->₦{{ number_format($pendingInvestment['amount']) }} Invested
+                                                <!--end::Svg Icon-->{{ getCurrency() }}{{ number_format($pendingInvestment['amount']) }} Invested
                                             </span>
                                             <!--end::Section-->
                                         </div>
@@ -581,7 +581,7 @@
                                                             fill="currentColor"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->₦{{ number_format($pendingInvestment['total_return']) }} Returns
+                                                <!--end::Svg Icon-->{{ getCurrency() }}{{ number_format($pendingInvestment['total_return']) }} Returns
                                             </span>
                                             <!--end::Section-->
                                             <!--begin::Section-->
@@ -697,7 +697,7 @@
     <!--end::Row-->
 
     <!--begin::Row-->
-    <div class="row gy-5 g-xl-10">
+    <div class="row gy-5 g-xl-10 ">
         @if (count($data['wallet']['history']) > 0)
             <!--begin::Col-->
             <div class="col-xl-4 mb-10">
@@ -740,7 +740,7 @@
                                                         class="text-gray-400 fw-bold fs-7">{{ $userWalletHistory['description'] }}</span>
                                                 </td>
                                                 <td>
-                                                    <span class="text-gray-800 fw-bolder fs-4">₦
+                                                    <span class="text-gray-800 fw-bolder fs-4">{{ getCurrency() }}
                                                         {{ $userWalletHistory['amount'] }}</span>
                                                 </td>
                                             </tr>
@@ -788,7 +788,7 @@
     <div class="row g-5 g-lg-10">
         <!--begin::Col-->
         @if (count($data['investments']['plant']) > 0)
-            <div class="col-xxl-12 col-md-12 mb-12">
+            <div class="col-xxl-12 col-md-12 my-12">
                 <!--begin::Tables Widget 5-->
                 <div class="card h-md-100">
                     <!--begin::Header-->
@@ -837,9 +837,9 @@
                                                 <td><span
                                                         class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['package']['name'] }}</span>
                                                 </td>
-                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦
+                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }}
                                                         {{ number_format($plantInvestment['amount']) }}</span></td>
-                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦
+                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }}
                                                         {{ number_format($plantInvestment['total_return']) }}</span></td>
                                                 <td><span
                                                         class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['return_date']->format('M d, Y') }}</span>
@@ -881,7 +881,7 @@
     <div class="row g-5 g-lg-10">
         <!--begin::Col-->
         @if (count($data['investments']['farm']) > 0)
-            <div class="col-xxl-12 col-md-12 mb-12">
+            <div class="col-xxl-12 col-md-12 my-10">
                 <!--begin::Tables Widget 5-->
                 <div class="card h-md-100">
                     <!--begin::Header-->
@@ -921,9 +921,9 @@
                                                 <td><span
                                                         class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['package']['name'] }}</span>
                                                 </td>
-                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦
+                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }}
                                                         {{ number_format($farmInvestment['amount']) }}</span></td>
-                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">₦
+                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }}
                                                         {{ number_format($farmInvestment['total_return']) }}</span></td>
                                                 <td><span
                                                         class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['return_date']->format('M d, Y') }}</span>
@@ -1056,7 +1056,7 @@
                 },
                 y: {
                     formatter: function(e) {
-                        return "₦" + numberFormat(e);
+                        return '{{ getCurrency() }}' + numberFormat(e);
                     },
                 },
             },
@@ -1183,7 +1183,7 @@
                 },
                 y: {
                     formatter: function(e) {
-                        return "₦" + numberFormat(e);
+                        return '{{ getCurrency() }}' + numberFormat(e);
                     },
                 },
             },
@@ -1241,7 +1241,7 @@
                     colors: ["labelColor"]
                 },
                 formatter: function(e) {
-                    return "₦" + numberFormat(e);
+                    return '{{ getCurrency() }}' + numberFormat(e);
                 },
             },
             stroke: {
@@ -1317,7 +1317,7 @@
                 },
                 y: {
                     formatter: function(e) {
-                        return "₦" + numberFormat(e);
+                        return '{{ getCurrency() }}' + numberFormat(e);
                     },
                 },
             },

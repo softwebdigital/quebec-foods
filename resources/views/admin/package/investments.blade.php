@@ -50,8 +50,8 @@
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['package']['name'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{  $investment['slots']}}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ {{ number_format($investment['amount']) }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ {{ number_format($investment['total_return']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ getCurrency() }} {{ number_format($investment['amount']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ getCurrency() }} {{ number_format($investment['total_return']) }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ $investment['return_date']->format('M d, Y') }}</span></td>
                                 <td>
                                     @if($investment['payment'] == 'approved')
@@ -93,7 +93,7 @@
                                                         @csrf
                                                         @method('PUT')
                                                     </form>
-                                                </div> 
+                                                </div>
                                             @endcan
                                             @can('Decline Transactions')
                                                 <div class="menu-item px-3">
@@ -102,7 +102,7 @@
                                                         @csrf
                                                         @method('PUT')
                                                     </form>
-                                                </div>                                                
+                                                </div>
                                             @endcan
                                         @endif
                                     </div>

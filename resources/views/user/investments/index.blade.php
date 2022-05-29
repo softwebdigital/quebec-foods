@@ -167,8 +167,8 @@
                             <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $investment['package']['name'] }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ number_format($investment['slots']) }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">₦ {{ number_format($investment['amount']) }}</span></td>
-                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">₦ {{ number_format($investment['total_return']) }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ getCurrency() }} {{ number_format($investment['amount']) }}</span></td>
+                            <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ getCurrency() }} {{ number_format($investment['total_return']) }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $investment['return_date']->format('M d, Y') }}</span></td>
                             <td>
                                 @if($investment['payment'] == 'approved')

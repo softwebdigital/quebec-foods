@@ -36,7 +36,7 @@
                         <img src="{{ asset('assets/photos/investment.svg') }}" width="200px" class="img-fluid mb-10" alt="success">
                     @endif
                     <h4 class="mb-5 fw-bolder text-black-800">{{ ucfirst($type) }} Payment Was Successful</h4>
-                    <h6 class="text-muted mb-10 text-center">Your payment of ₦ {{ number_format($payment['amount']) }} was successful</h6>
+                    <h6 class="text-muted mb-10 text-center">Your payment of {{ getCurrency() }} {{ number_format($payment['amount']) }} was successful</h6>
                     @if ($type == "deposit")
                         <a href="{{ route('wallet') }}" class="btn btn-primary">My Wallet</a>
                     @elseif($type == "investment")

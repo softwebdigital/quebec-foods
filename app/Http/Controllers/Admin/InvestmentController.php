@@ -181,8 +181,8 @@ class InvestmentController extends Controller
             }
             $datum['package'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$investment->package['name'].'</span>';
             $datum['slots'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$investment['slots'].'</span>';
-            $datum['total_invested'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($investment['amount']).'</span>';
-            $datum['expected_returns'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">₦ '.number_format($investment['total_return']).'</span>';
+            $datum['total_invested'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . getCurrency() .' '.number_format($investment['amount']).'</span>';
+            $datum['expected_returns'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . getCurrency() .' '.number_format($investment['total_return']).'</span>';
             $datum['investment_date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$investment->investment_date->format('M d, Y').'</span>';
             $datum['status'] = $status;
             $datum['payment'] = $payment;
