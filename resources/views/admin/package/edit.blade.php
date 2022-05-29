@@ -207,7 +207,7 @@
                                     <label class="required fs-5 fw-bold mb-2" for="duration">Milestones</label>
                                     <!--end::Label-->
                                     <!--end::Input-->
-                                    <input type="number" placeholder="No of Milestones"
+                                    <input onkeyup="getVal()" type="number" placeholder="No of Milestones"
                                         value="{{ old('milestones') ?? $package['milestones'] }}"
                                         class="form-control form-control-solid" name="milestones" id="milestones">
                                     @error('milestones')
@@ -276,7 +276,7 @@
                                     <!--begin::Input-->
                                     <select name="payout_mode" aria-label="Select the payout mode"
                                         data-placeholder="Select the payout mode" data-control="select2"
-                                        class="form-select form-select-solid text-dark" id="payoutMode">
+                                        class="form-select form-select-solid text-dark" id="payoutMode" onchange="getVals()">
                                         <option value=""></option>
                                         <option @if (old('payout_mode') == 'monthly' || $package['payout_mode'] == 'monthly') selected @endif value="monthly">Monthly
                                         </option>
@@ -294,19 +294,30 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+                                    <div class="small mt-4" id="statement">
+                                        <strong>Investments will run for <span id="year-value" ></span> with <span id="milestones-value" ></span> payment milestones</strong>
+                                    </div>
                                 </div>
                                 <!--end::Input group-->
 
                                 <!--begin::Input group-->
                                 <div class="my-4">
                                     <!--end::Label-->
-                                    <div class="form-check form-switch form-check-custom form-check-solid my-7">
-                                        <input class="form-check-input mb-2 h-20px w-30px" type="checkbox"
-                                            @if (old('status') == 'open' || $package['status'] == 'open') checked @endif name="status" value="open"
-                                            id="makePackageOpen" />
+                                <div class="form-check form-switch form-check-custom form-check-solid my-7">
+                                        
                                         <label class="form-check-label fs-5 fw-bold mb-2" for="makePackageOpen">
                                             Package Status
                                         </label>
+                                        <p id="active" style="margin: 0px 10px 0px 5px; font-size: 10px;">
+                                            @if (old('status') == 'open' || $package['status'] == 'open')
+                                                (Active)
+                                            @else
+                                                (Inactive)
+                                            @endif
+                                        </p>
+                                        <input class="form-check-input mb-2 h-20px w-30px" type="checkbox"
+                                            @if (old('status') == 'open' || $package['status'] == 'open') checked @endif name="status" value="open"
+                                            id="makePackageOpen" onchange="doalert(this)"  />
                                     </div>
                                     @error('status')
                                         <div class="small text-danger">
@@ -342,6 +353,75 @@
         </div>
         <!--end::Card-->
     </div>
+    <script>
+    var active = document.getElementById('active');
+    const mV = document.getElementById('milestones-value');
+    
+    function doalert(checkboxElem) {
+        if (checkboxElem.checked) {
+            active.innerText = '(Active)'
+        } else {
+            active.innerText = '(Inactive)'
+        }
+    }
+
+    const yV = document.getElementById('year-value');
+    
+        const milestones = document.getElementById('milestones').value;
+        console.log(milestones);
+        mV.innerText = milestones
+        const sT = document.getElementById('statement');
+        if (milestones == null) {
+            sT.style = 'none'
+        } else {
+            sT.style = 'block'
+        }
+        
+        const pM = document.getElementById('payoutMode').value;
+
+        if (pM == "monthly") {
+            yV.innerText = "a month"
+        }
+        if (pM == "quarterly") {
+            yV.innerText = "3 months"
+        }
+        if (pM == "semi-annually") {
+            yV.innerText = "6 months"
+        }
+        if (pM == "annually") {
+            yV.innerText = "a year"
+        }
+        if (pM == "biannually") {
+            yV.innerText = "2 years"
+        }
+        function getVal() {
+            const milestones = document.getElementById('milestones').value;
+        console.log(milestones);
+        mV.innerText = milestones
+    }
+    function getVals() {
+        const sT = document.getElementById('statement');
+        const pM = document.getElementById('payoutMode').value;
+        // console.log(pm)
+
+        if (pM == "monthly") {
+            yV.innerText = "a month"
+        }
+        if (pM == "quarterly") {
+            yV.innerText = "3 months"
+        }
+        if (pM == "semi-annually") {
+            yV.innerText = "6 months"
+        }
+        if (pM == "annually") {
+            yV.innerText = "a year"
+        }
+        if (pM == "biannually") {
+            yV.innerText = "2 years"
+        }
+
+    }
+</script>
     <!--end::Content-->
 @endsection
 
@@ -362,8 +442,10 @@
             showDropdowns: true,
             minYear: 1901,
             maxYear: parseInt(moment().format("YYYY"), 10),
+            timePicker: true,
+            startDate: moment().startOf("hour"),
             locale: {
-                format: "YYYY-MM-DD"
+                format: "YYYY-MM-DD HH:mm:ss"
             }
         }, );
     </script>
