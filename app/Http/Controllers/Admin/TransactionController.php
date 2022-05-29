@@ -125,6 +125,7 @@ class TransactionController extends Controller
                     $transaction->investment()->update([
                         'investment_date' => now()->format('Y-m-d H:i:s'),
                         'payment'          => 'approved',
+                        'status'          => 'active',
                         'start_date'      => $startDate
                     ]);
                     try {

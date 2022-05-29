@@ -513,7 +513,7 @@
 						<div class="container-fluid d-flex flex-column flex-md-row flex-stack">
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
-								<span class="text-gray-400 fw-bold me-1">Copyright © {{ date('Y') }} <strong class="text-gray-600">Quebec</strong>. All rights reserved</span>
+								<span class="text-gray-400 fw-bold me-1">Copyright © {{ date('Y') }} <strong class="text-gray-600">Quebec Foods Processing</strong>. All rights reserved</span>
 							</div>
 							<!--end::Copyright-->
 							<!--begin::Menu-->
