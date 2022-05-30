@@ -13,7 +13,11 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'default' => env('QUEUE_CONNECTION', 'sync'),
+=======
+    'default' => 'database',
+>>>>>>> 01869ff (queue custom notifications)
 
     /*
     |--------------------------------------------------------------------------
