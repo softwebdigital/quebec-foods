@@ -18,12 +18,6 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-<<<<<<< HEAD
-Route::get('/pdf', function () {
-    return view('pdf.certificate');
-});
-=======
->>>>>>> 01869ff (queue custom notifications)
 
 Auth::routes(['verify' => true]);
 
