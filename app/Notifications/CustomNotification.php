@@ -6,9 +6,11 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\HtmlString;
+use File;
 
-class CustomNotification extends Notification
+class CustomNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -17,12 +19,19 @@ class CustomNotification extends Notification
      *
      * @return void
      */
+    public $title;
+    public $body;
+    public $description;
+    public $file;
+    public $icon;
+
     public function __construct($type, $title, $body, $description, $file = null)
     {
         $this->title = $title;
         $this->body = $body;
         $this->description = $description;
-        $this->file = $file;
+        $this->file = base64_encode($file);
+        // $this->icon = base64_encode($icon);
         switch ($type) {
             case 'deposit':
                 $this->icon = '<div class="icon icon-sm"><i data-feather="corner-right-down"></i></div>';
@@ -73,13 +82,14 @@ class CustomNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        
         if ($this->file) {
             return (new MailMessage)
                 ->subject($this->title)
                 ->greeting('skip default')
                 ->line('Hello '.$notifiable->name.',')
                 ->line(new HtmlString($this->body))
-                ->attachData($this->file, 'certificate.pdf');
+                ->attachData(base64_decode($this->file), 'certificate.pdf');
         }
         return (new MailMessage)
             ->subject($this->title)

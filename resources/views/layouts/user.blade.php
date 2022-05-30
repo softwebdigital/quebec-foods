@@ -414,8 +414,8 @@
         @php
             $setting = \App\Models\Setting::all()->first();
             $international = \App\Models\InternationalBank::all()->first();
-            $plantPackages = \App\Models\Package::latest()->where('type', 'plant')->get();
-            $farmPackages = \App\Models\Package::latest()->where('type', 'farm')->get();
+            $plantPackages = \App\Models\Package::latest()->where('type', 'plant')->where('status', 'open')->get();
+            $farmPackages = \App\Models\Package::latest()->where('type', 'farm')->where('status', 'open')->get();
         @endphp
         <div class="modal fade" id="createPlantInvestment" tabindex="-1" aria-hidden="true">
             <!--begin::Modal dialog-->

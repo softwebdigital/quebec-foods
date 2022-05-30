@@ -18,9 +18,6 @@ Route::get('/', function () {
     return redirect('/dashboard');
 });
 
-Route::get('/pdf', function () {
-    return view('pdf.certificate');
-});
 
 Auth::routes(['verify' => true]);
 
