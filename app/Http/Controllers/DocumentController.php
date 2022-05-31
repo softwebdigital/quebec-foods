@@ -19,7 +19,8 @@ class DocumentController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'method' => ['required'],
-            'photo' => ['required', 'file', 'image']
+            'photo' => ['required', 'file', 'image'],
+            'number' => ['required']
         ]);
         if ($validator->fails()){
             return back()->withInput()->withErrors($validator)->with('error', 'Invalid input data');

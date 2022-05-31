@@ -12,8 +12,9 @@
 
 @section('content')
     @php
-    $approved = auth()->user()->documents()->where('status', 'approved')->first();
-    $pending = auth()->user()->documents()->where('status', 'pending')->first();
+        $approved = auth()->user()->documents()->where('status', 'approved')->first();
+        $pending = auth()->user()->documents()->where('status', 'pending')->first();
+        $idError = $errors->first('photo') || $errors->first('number') || $errors->first('method');
     @endphp
     <!--begin::Referral program-->
     <div class="row">
@@ -478,7 +479,7 @@
 
     <!--begin::Validation Modal-->
     <div class="modal fade" tabindex="-1" id="verifyModal">
-        <div class="modal-dialog">
+        <div class="modal-dialog @if($idError) show active @endif">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Verify Your Identity</h5>
