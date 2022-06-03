@@ -128,11 +128,9 @@
                                     <label class="required fs-5 fw-bold mb-2" for="rollover">Rollover</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
-                                    <select name="rollover" aria-label="Select rollover status" data-placeholder="Select rollover status" class="form-select form-select-solid text-dark" id="rollover">
-                                        <option value="">Select rollover status</option>
-                                        <option @if ($investment['package']['rollover'] == true) selected @endif value="yes">Yes</option>
-                                        <option @if ($investment['package']['rollover'] == false) selected @endif value="no">No</option>
-                                    </select>
+                                    <div class="form-check form-switch form-check-custom form-check-solid me-10">
+                                        <input @if ($investment['rollover'] == 1) checked @endif @if ($investment['status'] == 'closed' || $investment['status'] == 'cancelled') disabled @endif required class="form-check-input h-30px w-50px" type="checkbox" value="yes" id="rollover" name="rollover"/>
+                                    </div>
                                     @error('rollover')
                                         <span class="text-danger small" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -140,7 +138,11 @@
                                     @enderror
                                 </div>
                                 <!--end::Input group-->
+                                @if ($investment['status'] == 'closed' || $investment['status'] == 'cancelled')
+                                <button type="button" disabled class="btn btn-primary">Update</button>
+                                @else
                                 <button type="button" onclick="confirmFormSubmit(event, 'updateRolloverForm')" class="btn btn-primary">Update</button>
+                                @endif
                                 {{-- <div id="rollover" class="form-check form-switch form-check-custom form-check-solid me-10">
                                     <input required class="form-check-input h-30px w-50px" type="checkbox" @if($investment['rollover']) checked @endif value="yes" id="rollover" name="rollover"/>
                                     <label class="form-check-label" for="rollover">

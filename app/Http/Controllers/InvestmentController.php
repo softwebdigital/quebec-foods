@@ -184,14 +184,14 @@ class InvestmentController extends Controller
         return view('user.profile.showInvestment', compact('user', 'type', 'packages', 'investment', 'filter'));
     }
 
-    public function updateRollover (Request $request, $type, Investment $investment)
+    public function updateRollover (Request $request, Investment $investment)
     {
         if (auth()->id() != $investment["user_id"]) {
             return back()->with('error', 'Investment not found');
         }
         $data['rollover'] = isset($request['rollover']) && $request['rollover'] == 'yes';
         if($investment->update($data)) {
-            return redirect()->route('investments.show', ['type' => $type, 'investment' => $investment['id']])->with('success', 'Rollover updated successfully');
+            return redirect()->route('investments.show', ['type' => $request->type, 'investment' => $investment['id']])->with('success', 'Rollover updated successfully');
         };
         return back()->with('error', 'Error updating rollover status');;
     }
