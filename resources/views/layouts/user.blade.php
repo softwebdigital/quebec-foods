@@ -377,7 +377,7 @@
 						<div class="container-fluid d-flex flex-column flex-md-row flex-stack">
 							<!--begin::Copyright-->
 							<div class="text-dark order-2 order-md-1">
-								<span class="text-gray-400 fw-bold me-1">Copyright © {{ date('Y') }} <strong class="text-gray-600">Quebec</strong>. All rights reserved</span>
+								<span class="text-gray-400 fw-bold me-1">Copyright © {{ date('Y') }} <strong class="text-gray-600">Quebec Foods Processing</strong>. All rights reserved</span>
 							</div>
 							<!--end::Copyright-->
 							<!--begin::Menu-->
@@ -414,8 +414,8 @@
         @php
             $setting = \App\Models\Setting::all()->first();
             $international = \App\Models\InternationalBank::all()->first();
-            $plantPackages = \App\Models\Package::latest()->where('type', 'plant')->get();
-            $farmPackages = \App\Models\Package::latest()->where('type', 'farm')->get();
+            $plantPackages = \App\Models\Package::latest()->where('type', 'plant')->where('status', 'open')->get();
+            $farmPackages = \App\Models\Package::latest()->where('type', 'farm')->where('status', 'open')->get();
         @endphp
         <div class="modal fade" id="createPlantInvestment" tabindex="-1" aria-hidden="true">
             <!--begin::Modal dialog-->
@@ -837,6 +837,19 @@
 		{{-- <script src="{{asset('assets/js/custom/widgets.js')}}"></script> --}}
 		<script src="{{asset('assets/js/custom/apps/chat/chat.js')}}"></script>
 		<script src="{{asset('assets/js/custom/utilities/modals/users-search.js')}}"></script>
+        <!--Start of Tawk.to Script-->
+        <script type="text/javascript">
+            var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+                (function(){
+                var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+                s1.async=true;
+                s1.src='https://embed.tawk.to/628e36c6b0d10b6f3e73fe3c/1g3tobtsp';
+                s1.charset='UTF-8';
+                s1.setAttribute('crossorigin','*');
+                s0.parentNode.insertBefore(s1,s0);
+            })();
+        </script>
+        <!--End of Tawk.to Script-->
         <script>
             $(function() {
                 closeModal = function(e, modalId) {
