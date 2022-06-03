@@ -186,7 +186,7 @@ class CommandController extends Controller
                         $user->wallet()->increment('balance', $investment['total_return']);
                     }
                     $investment->update(['status' => 'settled']);
-                    TransactionController::storeInvestmentPayoutTransaction($investment, $investment['amount']);
+                    TransactionController::storeInvestmentPayoutTransaction($investment, $investment['total_return']);
                     try {
                         \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
                     } catch (Exception $e) {
