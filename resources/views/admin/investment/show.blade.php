@@ -36,13 +36,15 @@
                     <!--end::Name-->
                     <!--begin::Position-->
                     <div class="mb-9">
-                        <!--begin::Badge-->
-                        @if ($investment['package']['status'] == 'open')
-                            <span class="badge badge-lg badge-light-primary d-inline">{{ ucwords($investment['package']['status']) }}</span>
-                        @else
-                            <span class="badge badge-lg badge-light-danger d-inline">{{ ucwords($investment['package']['status']) }}</span>
+                        @if($investment['status'] == 'active')
+                            <span class="badge badge-lg d-inline badge-pill badge-light-success">Active</span>
+                        @elseif($investment['status'] == 'pending')
+                            <span class="badge badge-lg d-inline badge-pill badge-light-warning">Pending</span>
+                        @elseif($investment['status'] == 'settled')
+                            <span class="badge badge-lg d-inline badge-pill badge-light-secondary">Settled</span>
+                        @elseif($investment['status'] == 'cancelled')
+                            <span class="badge badge-lg d-inline badge-pill badge-light-danger">Declined</span>
                         @endif
-                        <!--begin::Badge-->
                     </div>
                     <!--end::Position-->
                     <!--begin::Info-->
