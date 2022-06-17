@@ -470,7 +470,7 @@
                             <!--end::Wrapper-->
                             <!--begin::Action-->
                             <div class="mb-1">
-                                <a class="btn btn-sm btn-primary" data-bs-toggle="modal" @if($pcg['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif >Invest in package</a>
+                                <a class="btn btn-sm btn-primary" data-bs-toggle="modal" onclick="populateInvestModal('{{ $pcg['type'] }}', '{{ $pcg['name'] }}')" @if($pcg['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif >Invest in package</a>
                             </div>
                             <!--end::Action-->
                         </div>

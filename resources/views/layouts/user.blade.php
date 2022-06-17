@@ -915,6 +915,9 @@
 			}
         </script>
         <script>
+        function populateInvestModal(type, name) {
+            $(`#${type === "plant" ? 'plantPackage' : 'package'}`).val(name).trigger('change');
+        }
         $(document).ready(function (){
             let packageName = $('#package');
             let slots = $('#slots');
