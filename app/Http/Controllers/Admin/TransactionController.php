@@ -117,7 +117,7 @@ class TransactionController extends Controller
             case 'investment':
                 if ($transaction['investment']){
                     $package = $transaction['investment']['package'];
-                    if ($package->available_slots < $transaction['investment']['slots']) {
+                    if ($package->type == "farm" && $package->available_slots < $transaction['investment']['slots']) {
                         return back()->with('error', "Can't process investment, not enough available slots ({$package->available_slots} left)");
                     }
                     if (Carbon::make($package['start_date'])->lt(now())) {

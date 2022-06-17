@@ -453,7 +453,7 @@
                             <select name="package" aria-label="Select the package" data-placeholder="Select the package" data-control="select2" class="form-select form-select-solid text-dark" id="plantPackage">
                                 <option value="">Select Package</option>
                                 @foreach($plantPackages as $package)
-                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
+                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-milestones="{{ $package['milestones'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
                                 @endforeach
                             </select>
                             <input type="hidden" id="plantPrice">
@@ -1033,6 +1033,7 @@
             let plantBankDetails = $('#plantBankDetails');
             let plantSecuredByPaystack = $('#plantSecuredByPaystack');
             let plantSubmitButton = $('#plantSubmitButton');
+            let plantMilestones = $('#milestones');
             let plantAgreed = $('#plantAgreed');
             let walletBalance = parseFloat({{ auth()->user()['wallet']['balance'] }});
             plantAgreed.on('change', checkIfFormCanSubmit);
@@ -1061,6 +1062,7 @@
                         plantRoi.val($(this).attr('data-roi'));
                         plantDuration.val($(this).attr('data-duration'));
                         plantDurationMode.val($(this).attr('data-duration-mode'));
+                        plantMilestones.val($(this).attr('data-milestones'));
                     }
                 });
                 computeAmount();
@@ -1076,7 +1078,7 @@
                 }
                 if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() >= 0)){
                     plantAmount.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val()).toFixed(2)));
-                    plantReturns.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val()) + 100) / 100)).toFixed(2)));
+                    plantReturns.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val() * 3) + 100) / 100)).toFixed(2)));
                 }
                 if (plantSlots.val() === "") {
                     plantAmount.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));
