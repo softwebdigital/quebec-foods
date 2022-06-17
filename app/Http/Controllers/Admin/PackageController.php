@@ -12,7 +12,7 @@ class PackageController extends Controller
     public function index()
     {
         $packages = Package::latest();
-        
+
         if (request('category')) {
             $packages = $packages->where('type', request('category'));
         }
@@ -23,11 +23,11 @@ class PackageController extends Controller
 
         $packages = $packages->get();
 
-        
-        
+
+
         return view('admin.package.index', compact('packages'));
 
-        
+
     }
 
     public function show($type, Package $package)
@@ -56,7 +56,7 @@ class PackageController extends Controller
             'type' => ['required', 'in:plant,farm'],
             'name' => ['required', 'unique:packages,name'],
             'roi' => ['required', 'numeric'],
-            'start_date' => ['required', 'date', 'after:'.date('Y-m-d h:m:d')],
+            'start_date' => ['required', 'date'],
             'slots' => ['required_if:type,farm'],
             'duration' => ['required_if:type,farm', 'numeric'],
             'price' => ['required', 'numeric', 'gt:0'],
@@ -97,7 +97,7 @@ class PackageController extends Controller
             'type' => ['required', 'in:plant,farm'],
             'name' => ['required', 'unique:packages,name,'.$package['id']],
             'roi' => ['required', 'numeric'],
-            'start_date' => ['required', 'date', 'after:'.date('Y-m-d h:m:d')],
+            'start_date' => ['required', 'date'],
             'slots' => ['required_if:type,farm'],
             'duration' => ['required_if:type,farm', 'numeric'],
             'price' => ['required', 'numeric', 'gt:0'],
@@ -143,7 +143,7 @@ class PackageController extends Controller
         if ($package['type'] == 'plant') {
             unlink($package['image']);
         }
-        
+
         if ($package->delete()){
             return redirect()->route('admin.packages')->with('success', 'Package deleted successfully');
         }
