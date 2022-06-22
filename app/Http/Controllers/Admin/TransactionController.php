@@ -117,6 +117,9 @@ class TransactionController extends Controller
             case 'investment':
                 if ($transaction['investment']){
                     $package = $transaction['investment']['package'];
+                    if ($package->status == "closed") {
+                        return back()->with('error', "Can't process investment, package already closed");
+                    }
                     if ($package->type == "farm" && $package->available_slots < $transaction['investment']['slots']) {
                         return back()->with('error', "Can't process investment, not enough available slots ({$package->available_slots} left)");
                     }
