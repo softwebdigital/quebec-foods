@@ -150,11 +150,11 @@ class CommandController extends Controller
                     $availablePackage = Package::where('type', 'farm')->where('category_id', $investment['currentPackage']['category_id'])->where('status', 'open')->first();
                     if ($availablePackage && $investment->rollover){
                         $slots = floor($investment['total_return'] / $availablePackage['price']);
-                        $amount = $slots * $availablePackage['price'];
-                        $balance = $investment['total_return'] - $amount;
                         if ($availablePackage->available_slots < $slots) {
                             $slots = $availablePackage->available_slots;
                         }
+                        $amount = $slots * $availablePackage['price'];
+                        $balance = $investment['total_return'] - $amount;
 
                         if ($slots > 0){
                             if ($availablePackage['duration_mode'] == 'day') {
