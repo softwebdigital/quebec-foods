@@ -152,6 +152,9 @@ class CommandController extends Controller
                         $slots = floor($investment['total_return'] / $availablePackage['price']);
                         $amount = $slots * $availablePackage['price'];
                         $balance = $investment['total_return'] - $amount;
+                        if ($availablePackage->available_slots < $slots) {
+                            $slots = $availablePackage->available_slots;
+                        }
 
                         if ($slots > 0){
                             if ($availablePackage['duration_mode'] == 'day') {
