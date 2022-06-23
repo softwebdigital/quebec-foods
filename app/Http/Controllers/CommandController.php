@@ -157,18 +157,17 @@ class CommandController extends Controller
                         $balance = $investment['total_return'] - $amount;
 
                         if ($slots > 0){
-                            if ($availablePackage['duration_mode'] == 'day') {
-                                $returnDate = now()->addDays($availablePackage['duration'])->format('Y-m-d H:i:s');
-                            } elseif ($availablePackage['duration_mode'] == 'month') {
-                                $returnDate = now()->addMonths($availablePackage['duration'])->format('Y-m-d H:i:s');
+                            if (Carbon::make($package['start_date'])->lt(now())) {
+                                $startDate = now();
                             } else {
-                                $returnDate = now()->addYears($availablePackage['duration'])->format('Y-m-d H:i:s');
+                                $startDate = $package['start_date'];
                             }
                             $newInvestment = Investment::create([
                                 'user_id' => $investment->user['id'], 'package_id'=> $availablePackage['id'], 'slots' => $slots,
                                 'amount' => $amount, 'total_return' => $amount * (( 100 + $availablePackage['roi'] ) / 100 ),
-                                'investment_date' => now()->format('Y-m-d H:i:s'),
-                                'return_date' => $returnDate, 'status' => 'active'
+                                'investment_date' => now()->format('Y-m-d H:i:s'), 'status' => 'active',
+                                'start_date' => $startDate, 'payment' => 'approved',
+                                'package_data' => json_encode($availablePackage)
                             ]);
                             if ($newInvestment){
                                 TransactionController::storeInvestmentTransaction($newInvestment, 'wallet');
