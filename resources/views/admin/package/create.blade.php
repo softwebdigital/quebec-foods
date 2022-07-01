@@ -28,7 +28,7 @@
                     <form class="form mb-3" method="post" action="{{ route('admin.packages.store') }}" id="createPackageForm" enctype="multipart/form-data">
                         @csrf
                         <input type="hidden" value="{{ strtolower($type) }}" name="type">
-                        @if ($type == 'plant')
+                        @if ($type != 'farm')
                             <!--begin::Image input-->
                             <div class="image-input image-input-empty mb-5" data-kt-image-input="true">
                                 <!--begin::Image preview wrapper-->
@@ -181,7 +181,7 @@
                         </div>
                         <!--end::Input group-->
                         @endif
-                        @if ($type == 'plant')
+                        @if ($type != 'farm')
                             <!--begin::Input group-->
                             <div class="d-flex flex-column mb-5 fv-row">
                                 <!--end::Label-->
@@ -232,7 +232,7 @@
                         </div>
                         @endif
                         <!--end::Input group-->
-                        @if ($type == 'plant')
+                        @if ($type != 'farm')
                             <!--begin::Input group-->
                             <div class="d-flex flex-column mb-5 fv-row">
                                 <!--begin::Label-->
@@ -262,12 +262,12 @@
                                 <!--end::Label-->
                                 <div class="form-check form-switch form-check-custom form-check-solid my-7">
                                     <label class="form-check-label fs-5 fw-bold mb-2" for="makePackageOpen" style="margin-right: 4px;">
-                                        Package Status 
+                                        Package Status
                                     </label><p id="active" style="margin: 0px 10px 0px 5px; font-size: 10px;">(Inactive)</p>
                                     <input class="form-check-input mb-2 h-20px w-30px" type="checkbox"
                                         @if (old('status') == 'open') checked @endif name="status" value="open"
                                         id="makePackageOpen" onchange="doalert(this)" />
-                                    
+
                                 </div>
                                 @error('status')
                                     <div class="small text-danger">
@@ -275,7 +275,7 @@
                                     </div>
                                 @enderror
                             </div>
-        
+
                         @endif
                         @if ($type == 'farm')
                             <div class="form-check form-switch form-check-custom form-check-solid my-7">
@@ -311,7 +311,7 @@
 <script>
     var active = document.getElementById('active');
     const mV = document.getElementById('milestones-value');
-    
+
     function doalert(checkboxElem) {
         if (checkboxElem.checked) {
             // active.style.display = "block"
@@ -339,7 +339,7 @@
         } else {
             sT.style = 'block'
         }
-        
+
         const pM = document.getElementById('payoutMode').value;
         console.log(milestones)
 

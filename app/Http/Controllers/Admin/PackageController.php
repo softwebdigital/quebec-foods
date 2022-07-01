@@ -53,19 +53,19 @@ class PackageController extends Controller
     {
         // Validate request
         $validator = Validator::make($request->all(), [
-            'type' => ['required', 'in:plant,farm'],
+            'type' => ['required', 'in:plant,farm,tractor'],
             'name' => ['required', 'unique:packages,name'],
             'roi' => ['required', 'numeric'],
             'start_date' => ['required', 'date'],
             'slots' => ['required_if:type,farm'],
             'duration' => ['required_if:type,farm', 'numeric'],
             'price' => ['required', 'numeric', 'gt:0'],
-            'milestones' => ['required_if:type,plant'],
+            'milestones' => ['required_if:type,plant,tractor'],
             'duration' => ['required_if:type,farm', 'numeric'],
-            'payout_mode' => ['required_if:type,plant'],
+            'payout_mode' => ['required_if:type,plant,tractor'],
             'rollover' => ['sometimes'],
             'description' => ['required'],
-            'image' => ['required_if:type,plant', 'mimes:jpeg,jpg,png', 'max:1024'],
+            'image' => ['required_if:type,plant,tractor', 'mimes:jpeg,jpg,png', 'max:1024'],
             'category' => ['required_if:type,farm']
         ]);
         if ($validator->fails()){
@@ -73,13 +73,13 @@ class PackageController extends Controller
         }
         // Collect data from request
         $data = $request->except('image', 'image_remove');
-        if ($request->type == 'plant') $data['status'] = $data['status'] ?? "closed";
+        if ($request->type != 'farm') $data['status'] = $data['status'] ?? "closed";
         if ($request->category) {
             $data['category_id'] = $data['category'];
             unset($data['category']);
         }
         // Save file to folder
-        if ($request['type'] == 'plant') {
+        if ($request['type'] != 'farm') {
             $data['image'] = $this->uploadPackageImageAndReturnPathToSave($request['image']);
             $data['slots'] = -1;
         }
@@ -94,16 +94,16 @@ class PackageController extends Controller
     {
         // Validate request
         $validator = Validator::make($request->all(), [
-            'type' => ['required', 'in:plant,farm'],
+            'type' => ['required', 'in:plant,farm,tractor'],
             'name' => ['required', 'unique:packages,name,'.$package['id']],
             'roi' => ['required', 'numeric'],
             'start_date' => ['required', 'date'],
             'slots' => ['required_if:type,farm'],
             'duration' => ['required_if:type,farm', 'numeric'],
             'price' => ['required', 'numeric', 'gt:0'],
-            'milestones' => ['required_if:type,plant'],
+            'milestones' => ['required_if:type,plant,tractor'],
             'duration' => ['required_if:type,farm', 'numeric'],
-            'payout_mode' => ['required_if:type,plant'],
+            'payout_mode' => ['required_if:type,plant,tractor'],
             'rollover' => ['sometimes'],
             'description' => ['required'],
             'image' => ['mimes:jpeg,jpg,png', 'max:1024'],
@@ -114,7 +114,7 @@ class PackageController extends Controller
         }
         // Collect data from request
         $data = $request->except('image', 'image_remove');
-        if ($type == 'plant') $data['status'] = $data['status'] ?? "closed";
+        if ($type != 'farm') $data['status'] = $data['status'] ?? "closed";
         if ($request->category) {
             $data['category_id'] = $data['category'];
             unset($data['category']);
@@ -140,7 +140,7 @@ class PackageController extends Controller
         if ($package->investments()->count() > 0){
             return back()->with('error', 'Can\'t delete package, investments already associated');
         }
-        if ($package['type'] == 'plant') {
+        if ($package['type'] != 'farm') {
             unlink($package['image']);
         }
 

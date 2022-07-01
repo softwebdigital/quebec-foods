@@ -67,6 +67,7 @@
                                 <select class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
                                     <option value="">Show All</option>
                                     <option value="plant">Processing Plants</option>
+                                    <option value="tractor">Tractor</option>
                                     <option value="farm">Farm</option>
                                 </select>
                                 <!--end::Input-->
@@ -136,6 +137,9 @@
                             @can('Create Packages')
                                 <div class="menu-item px-3">
                                     <a class="menu-link px-3" href="{{ route('admin.packages.create', ['type' => 'plant']) }}"><span class="text-nowrap">Plant</span></a>
+                                </div>
+                                <div class="menu-item px-3">
+                                    <a class="menu-link px-3" href="{{ route('admin.packages.create', ['type' => 'tractor']) }}"><span class="text-nowrap">Tractor</span></a>
                                 </div>
                                 <div class="menu-item px-3">
                                     <a class="menu-link px-3" href="{{ route('admin.packages.create', ['type' => 'farm']) }}"><span class="">Farm</span></a>

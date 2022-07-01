@@ -42,11 +42,11 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
         Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
         Route::get('/account/overview', [App\Http\Controllers\HomeController::class, 'accountOverview'])->name('account.overview');
-        Route::get('/overview/{type}/investments', [App\Http\Controllers\HomeController::class, 'showUserInvestments'])->where('type', 'farm|plant')->name('user.investments');
+        Route::get('/overview/{type}/investments', [App\Http\Controllers\HomeController::class, 'showUserInvestments'])->where('type', 'farm|plant|tractor')->name('user.investments');
         Route::get('/overview/transactions', [App\Http\Controllers\HomeController::class, 'showTransactions'])->name('user.transactions');
         Route::get('/overview/wallet', [App\Http\Controllers\HomeController::class, 'showWallet'])->name('user.wallet');
         Route::get('/overview/referrals', [App\Http\Controllers\HomeController::class, 'showReferrals'])->name('user.referrals');
-        Route::get('/overview/{type}/investments/{investment}/show', [App\Http\Controllers\InvestmentController::class, 'showUserInvestment'])->where('type', 'farm|plant')->name('user.investment.show');
+        Route::get('/overview/{type}/investments/{investment}/show', [App\Http\Controllers\InvestmentController::class, 'showUserInvestment'])->where('type', 'farm|plant|tractor')->name('user.investment.show');
         Route::post('/overview/invest/store', [App\Http\Controllers\InvestmentController::class, 'store'])->name('user.invest.store');
 
         Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications');
@@ -61,7 +61,7 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
         Route::get('/transactions', [App\Http\Controllers\TransactionController::class, 'index'])->name('transactions');
 
         Route::group(['prefix' => '/investments'], function() {
-            Route::group(['where' => ['type' => 'farm|plant']], function () {
+            Route::group(['where' => ['type' => 'farm|plant|tractor']], function () {
                 Route::get('/{type}', [App\Http\Controllers\InvestmentController::class, 'index'])->name('investments');
             });
             Route::get('/create', [App\Http\Controllers\InvestmentController::class, 'invest'])->name('invest');

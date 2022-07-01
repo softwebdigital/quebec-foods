@@ -55,6 +55,7 @@
                         <select name="category" class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
                             <option @if(request('category') == 'all') selected @endif value="all">Show All</option>
                             <option @if(request('category') == 'plant') selected @endif value="plant">Processing Plants</option>
+                            <option @if(request('category') == 'tractor') selected @endif value="plant">Tractor</option>
                             <option @if(request('category') == 'farm') selected @endif value="farm">Farm</option>
                         </select>
                         <!--end::Input-->
@@ -200,6 +201,7 @@
                         <select class="form-select form-select-solid fw-bolder" name="category" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
                             <option value="all">Show All</option>
                             <option value="plant">Processing Plants</option>
+                            <option value="tractor">Tractor</option>
                             <option value="farm">Farm</option>
                         </select>
                         <!--end::Input-->

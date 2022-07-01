@@ -183,6 +183,13 @@
             </li>
             @endcan
             <!--end::Nav item-->
+             <!--begin::Nav item-->
+             @can('View Investments')
+             <li class="nav-item mt-2">
+                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['admin.users.investments']) && request()->type == 'tractor') active @endif"  id="tractorNav" href="{{ route('admin.users.investments', ['user' => $user['id'], 'type' => 'tractor']) }}">Tractor Investments</a>
+             </li>
+             @endcan
+             <!--end::Nav item-->
             <!--begin::Nav item-->
             @can('View Transactions')
             <li class="nav-item mt-2">

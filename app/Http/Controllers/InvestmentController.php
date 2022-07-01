@@ -64,10 +64,6 @@ class InvestmentController extends Controller
             return back()->with('error', 'Can\'t process investment, package not found, disabled or closed');
         }
         // Check if package is sold out.
-        if ($package->isSoldOut())
-        {
-            return back()->with('error', 'Can\'t process investment, package is sold out');
-        }
         if ($package->type == "farm" && $package->available_slots < $request->slots) {
             return back()->with('error', "Can't process investment, not enough available slots ({$package->available_slots} left)");
         }

@@ -184,6 +184,11 @@
             <!--end::Nav item-->
             <!--begin::Nav item-->
             <li class="nav-item mt-2">
+                <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['user.investments']) && request()->type == 'tractor') active @endif"  id="tractorNav" href="{{ route('user.investments', 'tractor') }}">Tractor Investments</a>
+            </li>
+            <!--end::Nav item-->
+            <!--begin::Nav item-->
+            <li class="nav-item mt-2">
                 <a class="nav-link text-active-primary ms-0 me-10 py-5 @if (request()->routeIs(['user.transactions'])) active @endif"  id="transactionNav" href="{{ route('user.transactions') }}">Transactions</a>
             </li>
             <!--end::Nav item-->
