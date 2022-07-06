@@ -119,7 +119,7 @@ class CommandController extends Controller
         foreach ($investments as $investment) {
             $package = $investment->package;
             $user = $investment->user;
-            if ($package->type == 'plant') {
+            if ($package->type != 'farm') {
                 $totalPayments = $investment->transactions()->where('type', 'payout')->count();
                 $milestones = $investment->current_package['milestones'];
                 $roi = $investment['amount'] * ($investment->current_package['roi'] / 100);

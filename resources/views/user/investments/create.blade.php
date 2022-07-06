@@ -74,7 +74,7 @@
                         <!--begin::Input group-->
                         <div class="d-flex flex-column mb-5 fv-row">
                             <!--end::Label-->
-                            <label class="required fs-5 fw-bold mb-2" for="returns">Expected Returns <span @if($type == 'plant') style="display: none" @endif id="returnInfo"></span></label>
+                            <label class="required fs-5 fw-bold mb-2" for="returns">Expected Returns <span @if($type != 'farm') style="display: none" @endif id="returnInfo"></span></label>
                             <!--end::Label-->
                             <!--end::Input-->
                             <input type="text" value="{{ getCurrency() }} 0.00" disabled class="form-control form-control-solid" name="returns" id="returns">

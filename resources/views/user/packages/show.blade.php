@@ -120,7 +120,7 @@
                             <div class="text-gray-600">{{ $package['duration_mode'] }}</div>
                         @endif
 
-                        @if ($package['type'] == 'plant')
+                        @if ($package['type'] != 'farm')
                             <div class="fw-bolder mt-5">Milestones</div>
                             <div class="text-gray-600">{{ $package['milestones'] }}</div>
 

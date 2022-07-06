@@ -224,7 +224,7 @@
                     <!--end::Card body-->
                 </div>
                 <!--end::Card-->
-                @if ($investment['package']['type'] == 'plant')
+                @if ($investment['package']['type'] != 'farm')
                     <!--begin::Card-->
                     <div class="card pt-4">
                         <!--begin::Card header-->
