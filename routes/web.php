@@ -14,10 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/dashboard');
-});
-
+Route::get('/', [App\Http\Controllers\StaticPageController::class, 'home'])->name('static.home');
+Route::get('/about', [App\Http\Controllers\StaticPageController::class, 'about'])->name('static.about');
+Route::get('/contact', [App\Http\Controllers\StaticPageController::class, 'contact'])->name('static.contact');
+Route::get('/faqs', [App\Http\Controllers\StaticPageController::class, 'faq'])->name('static.faq');
+Route::get('/farm-estate', [App\Http\Controllers\StaticPageController::class, 'farm'])->name('static.farm');
+Route::get('/privacy-policy', [App\Http\Controllers\StaticPageController::class, 'privacy'])->name('static.privacy');
+Route::get('/processing-plant', [App\Http\Controllers\StaticPageController::class, 'plant'])->name('static.plant');
+Route::get('/terms', [App\Http\Controllers\StaticPageController::class, 'terms'])->name('static.terms');
+Route::get('/tractor-investment', [App\Http\Controllers\StaticPageController::class, 'tractor'])->name('static.tractor');
 
 Auth::routes(['verify' => true]);
 
@@ -78,7 +83,7 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
         Route::post('/withdraw/resend-token', [App\Http\Controllers\TransactionController::class, 'resendToken'])->name('withdrawalToken.resend');
     });
 
-    Route::get('/faqs', [App\Http\Controllers\FaqController::class, 'index'])->name('faq');
+    Route::get('/app/faqs', [App\Http\Controllers\FaqController::class, 'index'])->name('faq');
 
     Route::get('/payment/callback', [\App\Http\Controllers\OnlinePaymentController::class, 'handlePaymentCallback'])->name('payment.callback');
     Route::get('/payment/initiate', [\App\Http\Controllers\OnlinePaymentController::class, 'initiatePayment'])->name('payment.initiate');
