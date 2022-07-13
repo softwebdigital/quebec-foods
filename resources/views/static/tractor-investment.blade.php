@@ -9,10 +9,10 @@
                 <div class="py-2 md:px-0 md:w-2/5 ">
                     <div class="w-full py-6 md:pr-10 lg:mt-10 ">
                         <h1 class="mb-3 text-3xl font-bold leading-tight text-ink md:leading-h-2 md:text-heading-2">
-                            Invest in our our agric tractor scheme
+                        Invest in our Agric Tractor & Agro- haulage Venture scheme
                         </h1>
                         <p class="inline-block py-1 text-sm text-ink md:text-[22px] md:leading-h-5 md:py-4">
-                            Open an account and start investing in our processing plant scheme in <span
+                            Open an account and start investing in our tractor venture scheme in <span
                                 class="font-bold text-primary">just 5 minutes.</span>
                         </p>
                         <div
@@ -46,26 +46,23 @@
 
     <section class="md:mt-6 lg:overflow-hidden">
         <div class="text-center section-container">
-            <h2
-                class="mb-10 text-2xl font-bold lg:mb-0 md:text-heading-3 md:leading-h-3 text-ink md:py-10 md:mb-10">
-                Why Invest In Agric Tractors
-                Scheme?</h2>
-
             <div class="flex flex-col-reverse items-center text-left lg:-mr-32 lg:flex-row">
+            
                 <div class="py-2 shadow-2xl md:px-0 md:w-[55%] rounded-3xl">
                     <div class="w-full px-5 py-4 mt-5 lg:mt-10 lg:px-10 ">
+
+                    <div class="pb-5 lg:px-10 text-left flex flex-col items-center gap-y-5">
+                            <!-- <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Quebec Food Processing Industrial Park Ltd.</span> -->
+                            <h3
+                                class="max-w-[400px] text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5 self-start">
+                                Why Invest in Agric Tractors & Agro-haulage Venture Scheme (ATAHVS)?
+                            </h3>
+                        </div>
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                            The market potential for tractor and agro-haulage services is about $4,861,000,000.
-                            Nigeria requires 1.5 million tractors to be considered “mechanized” but has fewer than
-                            5,000 functional tractors in circulation. There are six (6) tractors for every 10,000
-                            hectares of arable land, compared to the global average of 195 tractors per hectare.
+                        The growth of agricultural mechanization is low in sub-Saharan Africa and is estimated at 1.2% in Nigeria. The global agricultural tractors market was valued at USD 55.37 billion in 2018 and is expected to grow at a CAGR of 5.8% to USD77.74 billion by 2024. North America dominates the global agricultural tractors market, at 15.2% of the global market share in 2014, led by the USA and Canada.
                         </p>
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                            The growth of agricultural mechanization is low in sub Saharan Africa, and is estimated
-                            at 1.2% in Nigeria. The global agricultural tractors market was valued at USD 55.37
-                            billion in 2018 and is expected to grow at a CAGR of 5.8% to USD77.74 billion by 2024.
-                            North America dominates the global agricultural tractors market, at 15.2% of global
-                            market share in 2014, led by the USA and Canada.
+                        Nigeria requires 1.5 million tractors to be considered “Mechanized” but has fewer than 5,000 functional tractors in circulation.  
                         </p>
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
@@ -139,18 +136,18 @@
             <div
                 class=" bg-[url('/images/icons/iconoir_percentage-round.png')] bg-left-bottom bg-contain  bg-no-repeat">
                 <div class=" section-container">
-                    <div class="flex flex-col gap-24 px-10 lg:py-32 md:flex-row justify-between">
+                    <div class="flex flex-col gap-24 px-10 lg:py-32 md:flex-row justify-around">
                         <div class="flex flex-col items-center justify-center text-center">
-                            <span class="text-primary text-[22px] inline-block">from 5,000 €</span>
+                            <span class="text-primary text-[22px] inline-block">from $ 30,000 </span>
                             <span class="font-bold text-[72px] leading-[96px] inline-block">10.6<span
                                     class="text-[#A9B1BC]">%</span></span>
                         </div>
                         <div class="flex flex-col items-center justify-center text-center">
-                            <span class="text-primary text-[22px] inline-block">from 10,000 €</span>
-                            <span class="font-bold text-[72px] leading-[96px] inline-block">11.6<span
+                            <span class="text-primary text-[22px] inline-block">from $ 50,000</span>
+                            <span class="font-bold text-[72px] leading-[96px] inline-block">12.5<span
                                     class="text-[#A9B1BC]">%</span></span>
                         </div>
-                        <div class="flex flex-col items-center justify-center text-center">
+                        <!-- <div class="flex flex-col items-center justify-center text-center">
                             <span class="text-primary text-[22px] inline-block">from 25,000 €</span>
                             <span class="font-bold text-[72px] leading-[96px] inline-block">12.7<span
                                     class="text-[#A9B1BC]">%</span></span>
@@ -159,7 +156,7 @@
                             <span class="text-primary text-[22px] inline-block">from 50,000 €</span>
                             <span class="font-bold text-[72px] leading-[96px] inline-block">13.1<span
                                     class="text-[#A9B1BC]">%</span></span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
 
@@ -178,16 +175,20 @@
             <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
                 <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
                     <div class="absolute download-tag bottom-6 -left-14">
-                        <img src="/static-assets/download-tag.4d6957af.png" alt="">
+                        <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
                     </div>
                     <div class="content-right">
                         <h3>Get Started Here</h3>
                         <p>Open an account and start investing in our processing plant scheme
                             <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
                         </p>
-                        <a href="#" class="btn ">
+                        <!-- <a href="#" class="btn ">
                             <i class="fa-brands fa-google-play"></i>
                             <span>Download App</span>
+                        </a> -->
+                        <a href="{{route('login')}}" class="btn ">
+                            <!-- <i class="fa-brands fa-google-play"></i> -->
+                            <span>Sign in</span>
                         </a>
                     </div>
                 </div>

@@ -9,13 +9,13 @@
             <div class="w-full py-9 lg:px-4">
               <h1
                 class="mb-4 text-4xl font-bold leading-tight text-primary text-heading-5 md:leading-h-1 md:text-heading-1">
-                Invest in our farm estate and buy back scheme
+                Invest in our farm estate and buy back venture scheme
               </h1>
               <p class="inline-block py-2 text-lg text-ink md:text-heading-5 md:leading-h-5 md:py-4">
                 Open an account and start investing in our food processing scheme in just 5 minutes.
               </p>
               <div class="flex items-baseline justify-center my-2 text-center lg:my-5 lg:justify-start">
-                <a href="#"
+                <a href="{{ route('login') }}"
                   class="btn-primary my-4 py-5 md:text-lg md:py-5  px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                   <span>
                     Get Started
@@ -38,16 +38,14 @@
       </section>
 
       <!-- Food Production Investment Scheme (FPIS) -->
-      <section class="bg-[url('/images/farm-bg-section-2.png')] bg-cover w-full h-full lg:py-28">
+      <section style="background-image: url(/static-assets/farm-bg-section-2.bef3240a.png);" class="bg-[url('/static-assets/farm-bg-section-2.bef3240a.png')] bg-cover w-full h-full lg:py-28">
         <div class="section-container ">
           <div
             class="bg-[#F3F7F5] rounded-2xl px-7 lg:px-20 py-12 max-w-[1000px] mx-auto text-center flex flex-col justify-center items-center gap-10">
-            <span class="py-2 px-4 rounded-3xl bg-[#BFFCD9] text-primary text-xs lg:text-sm">QUEBEC AGRO-FOOD COOPERATIVE
+            <!-- <span class="py-2 px-4 rounded-3xl bg-[#BFFCD9] text-primary text-xs lg:text-sm">QUEBEC AGRO-FOOD COOPERATIVE
               SOCIETY
-              LTD</span>
-            <h3 class="max-w-[400px] text-primary font-bold text-lg lg:text-heading-4 lg:leading-h-5">Food Production
-              Investment
-              Scheme (FPIS)</h3>
+              LTD</span> -->
+            <h3 class="max-w-[400px] text-primary font-bold text-lg lg:text-heading-4 lg:leading-h-5">Food Production Venture Scheme (FPVS)</h3>
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
               The Food production Investment Scheme allows an agribusiness investor to invest his/her fund into the
               AGRO-FARM PRODUCE BUYBACK SCHEME of Quebec Food Processing Industrial Parks Ltd’s planned MECHANIZED CROP
@@ -75,47 +73,65 @@
       </section>
 
       <!-- Why Invest In Agro-Farm Produce Buyback Scheme -->
-      <section class="bg-[url('/images/farm-1.png')] bg-cover w-full h-full my-20 flex justify-end">
-        <div class="lg:w-1/2">
-          <div
-            class="bg-[#F3F7F5] bg-opacity-90 lg:bg-opacity-100 shadow-3xl lg:rounded-tl-3xl lg:rounded-bl-3xl  px-7 lg:px-20 flex flex-col  py-10 lg:py-20 gap-10">
+      <section class="md:mt-6 lg:overflow-hidden">
+        <div class="text-center section-container">
 
-            <h3 class="text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5">Why Invest In Agro-Farm Produce
-              Buyback Scheme</h3>
-            <p class="text-ink font-medium text-sm lg:text-lg lg:leading-8 ">
-              Investing in Agro-Farm Produce Production is a good strategic move. One inevitable fact is that, whether the
-              overall economy is in a recession or booming, people still have to eat. Because of this, Quebec Food
-              management team & shareholders regards agriculture and farming investments as being recession-proof.
-
-            </p>
-
-            <p class="text-ink font-medium text-sm lg:text-lg lg:leading-8  ">
-              Furthermore, as the world’s population increases, the needs to feed a growing population has become a
-              serious subject matter to all nations and with the less land, farming will play an increasingly important
-              role in sustaining global societies and the interest in agricultural activities (Food production) as an
-              investment will continuously grow alongside the world’s population.
-            </p>
-
-            <p class="text-ink font-medium text-sm lg:text-lg lg:leading-8  ">
-              Based on this, the scheme is been introduced for Nigerians both home and abroad, to take advantage of the
-              huge opportunities available in the food supply chain in Nigeria, and to collaborate with us by investing
-              their funds in their own little ways in the food production site layout in Quebec Agritech City and Farm
-              Estates
-            </p>
-            <a href="#"
-              class="flex items-baseline justify-center w-full py-5 my-4 btn-primary md:text-lg md:py-5 lg:px-9 rounded-xl gap-x-10 lg:gap-x-6 lg:w-1/2">
-              <span>
-                Get Started
-              </span>
-              <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z"
-                  fill="#ffffff" />
-              </svg>
-            </a>
-          </div>
+            <div class="flex flex-col items-center text-left lg:-mr-32 lg:flex-row">
+                <div class="">
+                    <img src="/static-assets/image-46.png" alt="">
+                </div>
+                <div class="p-2 shadow-2xl md:px-0 md:w-[55%] rounded-3xl">
+                    <div class="w-full px-5 py-4 mt-5 lg:mt-10 lg:px-10 ">
+                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                          Investing in Agro-Farm Produce Production is a good strategic move. One inevitable fact is that, whether the overall economy is in recession or booming economy, people still have to eat. Because of this, Quebec Food management team & shareholders regards agriculture and farming investments as being recession-proof. 
+                        </p>
+                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                          Furthermore, as the world's population increases, the needs to feed a growing population has become imperative and a serious subject matter to all nations and with a less available land, farming will play an increasingly important role in sustaining global societies and the interest in agricultural activities (Food production), as the investment will continuously grow alongside the world’s population.
+                        </p>
+                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                          Based on this, the scheme is been introduced for Investors across board to take advantage of the huge opportunities available in the food production value chain in Nigeria and to collaborate with us by investing their funds in their own little ways in the food production site layout in Quebec Agritech City and Farm Estates, likewise to ensure regular supply of farm produce to sustain production for the Agro-food processing plants to be set-up in the agro-processing industrial layout of the Agritech Cities across Nigeria.
+                        </p>
+                        <div
+                            class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
+                            <a href="#"
+                                class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
+                                <span>
+                                    Learn more
+                                </span>
+                                <svg width="19" height="12" viewBox="0 0 19 12" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z"
+                                        fill="#ffffff" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </section>
+    </section>
+
+      <section class="mt-6 lg:overflow-hidden">
+        <div class="text-center section-container">
+
+            <div
+                class="flex flex-col-reverse items-center  lg:flex-row text-left bg-[url('/images/la_tractor.png')] bg-center bg-no-repeat">
+                <div class="py-2 md:px-0 md:w-[55%] rounded-3xl">
+                    <div class="w-full px-2 py-4 mt-10 lg:px-10 ">
+                        <p
+                            class="inline-block py-1 text-base text-ink md:text-heading-[20px] md:leading-h-5 md:py-4">
+                            Moreso, Quebec Food aim is to contribute to nation building through this platform by supporting the Federal Government initiatives through the Central Bank of Nigeria (CBN) and Nirsal Plc, of cultivating 4 million hectares of farmland by engaging 8 million Farmers across the country with expectation of producing about 12 million metric tons of Grain Product Equivalent (GPE) annually over the medium to long term.
+                        </p>
+
+                    </div>
+                </div>
+                <div class="">
+                    <img src="/static-assets/tractor-4.c63522e3.png" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
 
       <!-- Our business Structure -->
       <section class="section-container ">
@@ -222,16 +238,19 @@
           <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
             <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
               <div class="absolute download-tag bottom-6 -left-14">
-                <img src="/static-assets/download-tag.4d6957af.png" alt="">
+                <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
               </div>
               <div class="content-right">
                 <h3>Get Started Here</h3>
                 <p>Open an account and start investing in our processing plant scheme
                   <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
                 </p>
-                <a href="#" class="btn ">
+                <!-- <a href="#" class="btn ">
                   <i class="fa-brands fa-google-play"></i>
                   <span>Download App</span>
+                </a> -->
+                <a href="{{ route('login') }}" class="btn ">
+                  <span>Sign in</span>
                 </a>
               </div>
             </div>
