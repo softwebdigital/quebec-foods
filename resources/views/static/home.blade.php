@@ -312,7 +312,7 @@
 
   <!-- Testimonial -->
   <section>
-    <div class="overflow-hidden text-white bg-primary md:py-16">
+    <div class="overflow-hidden text-white bg-primary">
       <div class="section-container max-h-96 md:max-h-full">
         <div class="w-full text-center md:my-10">
           <h2 class="my-2 text-sm font-medium">TESTIMONIALS</h2>
@@ -432,7 +432,7 @@
         <img class="app" src="/static-assets/Mobile-App.a7165a51.png" alt="">
       </div>
       <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
-        <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
+        <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24" style="border-radius: 0px 40px 40px 0px; padding-top: 2rem; padding-bottom: 2rem;">
           <div class="absolute download-tag bottom-6 -left-14">
             <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
           </div>
