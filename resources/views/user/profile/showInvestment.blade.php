@@ -220,10 +220,17 @@
                         <!--end::Stats-->
                         <!--begin::Progress-->
                         @php
+<<<<<<< HEAD
+                            $total = Illuminate\Support\Carbon::parse($investment['start_date'])->diffInSeconds($investment['return_date']);
+                            $passed = $total - now()->diffInSeconds($investment['return_date']);
+                            if ($investment['status'] == 'active') {
+                                $percentage = ($passed / $total) * 100;
+=======
                             $total = Illuminate\Support\Carbon::parse($investment['start_date'])->diffInDays($investment['return_date']);
                             $passed = $total - now()->diffInDays($investment['return_date']);
                             if ($investment['status'] == 'active') {
                                 $percentage = round(($passed / $total) * 100);
+>>>>>>> david
                             } elseif ($investment['status'] == 'settled') {
                                 $percentage = 100;
                             } else {
@@ -246,7 +253,11 @@
                                 @else
                                     {{ ucwords($investment['status']) }}
                                 @endif</span>
+<<<<<<< HEAD
+                                <span class="fw-bolder fs-6">{{round($percentage)}}%</span>
+=======
                                 <span class="fw-bolder fs-6">{{$percentage}}%</span>
+>>>>>>> david
                             </div>
                             <div class="h-30px mx-3 w-100 bg-light mb-3" style="border-radius: 30px;">
                                 <div class="bg-success h-30px" role="progressbar" style="border-radius: 30px; width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -257,7 +268,11 @@
                     <!--end::Card body-->
                 </div>
                 <!--end::Card-->
+<<<<<<< HEAD
+                @if ($investment['package']['type'] != 'farm')
+=======
                 @if ($investment['package']['type'] == 'plant')
+>>>>>>> david
                     <!--begin::Card-->
                     <div class="card pt-4">
                         <!--begin::Card header-->

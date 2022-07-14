@@ -51,12 +51,20 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
 
     Route::get('/users', [App\Http\Controllers\Admin\UserController::class, 'index'])->name('users')->middleware('permission:View Users');
     Route::get('/users/{user}/show', [App\Http\Controllers\Admin\UserController::class, 'show'])->name('users.show')->middleware('permission:View Users');
+<<<<<<< HEAD
+    Route::get('/users/{user}/{type}/investments', [App\Http\Controllers\Admin\UserController::class, 'showUserInvestments'])->where('type', 'farm|plant|tractor')->name('users.investments')->middleware('permission:View Investments');
+=======
     Route::get('/users/{user}/{type}/investments', [App\Http\Controllers\Admin\UserController::class, 'showUserInvestments'])->where('type', 'farm|plant')->name('users.investments')->middleware('permission:View Investments');
+>>>>>>> david
     Route::get('/users/{user}/transactions', [App\Http\Controllers\Admin\UserController::class, 'showTransactions'])->name('users.transactions')->middleware('permission:View Transactions');
     Route::get('/users/{user}/wallet', [App\Http\Controllers\Admin\UserController::class, 'showWallet'])->name('users.wallet')->middleware('permission:View Users Wallet');
     Route::get('/users/{user}/referrals', [App\Http\Controllers\Admin\UserController::class, 'showReferrals'])->name('users.referrals')->middleware('permission:View Referrals');
     Route::get('/users/{user}/invest', [App\Http\Controllers\Admin\InvestmentController::class, 'invest'])->name('users.invest');
+<<<<<<< HEAD
+    Route::get('/users/{user}/{type}/investments/{investment}/show', [App\Http\Controllers\Admin\InvestmentController::class, 'showUserInvestment'])->where('type', 'farm|plant|tractor')->name('users.investment.show')->middleware('permission:View Investments');
+=======
     Route::get('/users/{user}/{type}/investments/{investment}/show', [App\Http\Controllers\Admin\InvestmentController::class, 'showUserInvestment'])->where('type', 'farm|plant')->name('users.investment.show')->middleware('permission:View Investments');
+>>>>>>> david
     Route::put('/users/{user}/block', [App\Http\Controllers\Admin\UserController::class, 'block'])->name('users.block')->middleware('permission:Block Users');
     Route::put('/users/{user}/unblock', [App\Http\Controllers\Admin\UserController::class, 'unblock'])->name('users.unblock')->middleware('permission:Unblock Users');
     Route::post('/users/invest/store', [App\Http\Controllers\Admin\InvestmentController::class, 'store'])->name('users.invest.store')->middleware('permission:Make Investments For Users');
@@ -73,14 +81,22 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/transactions/{type}/{status}/fetch/ajax', [App\Http\Controllers\Admin\TransactionController::class, 'fetchTransactionsWithAjax'])->name('transactions.ajax')->middleware('permission:View Transactions');
 
     Route::get('/investments', [App\Http\Controllers\Admin\InvestmentController::class, 'index'])->name('investments')->middleware('permission:View Investments');
+<<<<<<< HEAD
+    Route::group(['prefix' => '/investments/{type?}', 'where' => ['type' => 'all|plant|farm|tractor']], function() {
+=======
     Route::group(['prefix' => '/investments/{type?}', 'where' => ['type' => 'all|plant|farm']], function() {
+>>>>>>> david
         Route::group(['prefix' => '/{filter?}', 'where' => ['filter' => 'all|pending|active|cancelled|settled']], function() {
             Route::post('fetch/ajax', [App\Http\Controllers\Admin\InvestmentController::class, 'fetchInvestmentsWithAjax'])->name('investments.ajax')->middleware('permission:View Investments');
         });
         Route::get('{investment}/show', [App\Http\Controllers\Admin\InvestmentController::class, 'show'])->name('investments.show')->middleware('permission:View Investments');
     });
     Route::get('/packages', [\App\Http\Controllers\Admin\PackageController::class, 'index'])->name('packages')->middleware('permission:View Packages');
+<<<<<<< HEAD
+    Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm|tractor']], function() {
+=======
     Route::group(['prefix' => '/packages/{type}', 'where' => ['type' => 'plant|farm']], function() {
+>>>>>>> david
         Route::get('/{package}/investments', [App\Http\Controllers\Admin\PackageController::class, 'investments'])->name('packages.investments')->middleware('permission:View Investments');
         Route::get('/create', [App\Http\Controllers\Admin\PackageController::class, 'create'])->name('packages.create')->middleware('permission:Create Packages');
         Route::get('/{package}/edit', [App\Http\Controllers\Admin\PackageController::class, 'edit'])->name('packages.edit')->middleware('permission:Edit Packages');

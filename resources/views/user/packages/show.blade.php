@@ -110,14 +110,26 @@
                         <!--begin::Details item-->
                         <!--begin::Details item-->
                         @if ($package['type'] == 'farm')
+<<<<<<< HEAD
+                            <div class="fw-bolder mt-5">Total Created Slots</div>
+                            <div class="text-gray-600">{{ $package['slots'] }}</div>
+
+                            <div class="fw-bolder mt-5">Total Available Slots</div>
+                            <div class="text-gray-600">{{ $package['available_slots'] }}</div>
+=======
                             <div class="fw-bolder mt-5">Total Available Slots</div>
                             <div class="text-gray-600">{{ $package['slots'] }}</div>
+>>>>>>> david
 
                             <div class="fw-bolder mt-5">Duration Mode</div>
                             <div class="text-gray-600">{{ $package['duration_mode'] }}</div>
                         @endif
 
+<<<<<<< HEAD
+                        @if ($package['type'] != 'farm')
+=======
                         @if ($package['type'] == 'plant')
+>>>>>>> david
                             <div class="fw-bolder mt-5">Milestones</div>
                             <div class="text-gray-600">{{ $package['milestones'] }}</div>
 
@@ -128,7 +140,11 @@
                         <!--begin::Details item-->
                         @if ($package['status'] == 'open')
                         <!--begin::Submit-->
+<<<<<<< HEAD
+                        <a data-bs-toggle="modal" onclick="populateInvestModal('{{ $package['type'] }}', '{{ $package['name'] }}')" @if($package['type'] != 'farm') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif class="btn btn-primary mt-3 w-100">
+=======
                         <a data-bs-toggle="modal" @if($package['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif class="btn btn-primary mt-3 w-100">
+>>>>>>> david
                             <!--begin::Indicator-->
                             <span class="indicator-label">Invest</span>
                             <!--end::Indicator-->
@@ -150,7 +166,11 @@
         <!--end::Card-->
     </div>
 
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> david
 </div>
 <!--end::Layout-->
 @endsection

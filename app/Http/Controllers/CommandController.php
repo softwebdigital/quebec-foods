@@ -119,7 +119,11 @@ class CommandController extends Controller
         foreach ($investments as $investment) {
             $package = $investment->package;
             $user = $investment->user;
+<<<<<<< HEAD
+            if ($package->type != 'farm') {
+=======
             if ($package->type == 'plant') {
+>>>>>>> david
                 $totalPayments = $investment->transactions()->where('type', 'payout')->count();
                 $milestones = $investment->current_package['milestones'];
                 $roi = $investment['amount'] * ($investment->current_package['roi'] / 100);
@@ -150,22 +154,41 @@ class CommandController extends Controller
                     $availablePackage = Package::where('type', 'farm')->where('category_id', $investment['currentPackage']['category_id'])->where('status', 'open')->first();
                     if ($availablePackage && $investment->rollover){
                         $slots = floor($investment['total_return'] / $availablePackage['price']);
+<<<<<<< HEAD
+                        if ($availablePackage->available_slots < $slots) {
+                            $slots = $availablePackage->available_slots;
+                        }
+=======
+>>>>>>> david
                         $amount = $slots * $availablePackage['price'];
                         $balance = $investment['total_return'] - $amount;
 
                         if ($slots > 0){
+<<<<<<< HEAD
+                            if (Carbon::make($package['start_date'])->lt(now())) {
+                                $startDate = now();
+                            } else {
+                                $startDate = $package['start_date'];
+=======
                             if ($availablePackage['duration_mode'] == 'day') {
                                 $returnDate = now()->addDays($availablePackage['duration'])->format('Y-m-d H:i:s');
                             } elseif ($availablePackage['duration_mode'] == 'month') {
                                 $returnDate = now()->addMonths($availablePackage['duration'])->format('Y-m-d H:i:s');
                             } else {
                                 $returnDate = now()->addYears($availablePackage['duration'])->format('Y-m-d H:i:s');
+>>>>>>> david
                             }
                             $newInvestment = Investment::create([
                                 'user_id' => $investment->user['id'], 'package_id'=> $availablePackage['id'], 'slots' => $slots,
                                 'amount' => $amount, 'total_return' => $amount * (( 100 + $availablePackage['roi'] ) / 100 ),
+<<<<<<< HEAD
+                                'investment_date' => now()->format('Y-m-d H:i:s'), 'status' => 'active',
+                                'start_date' => $startDate, 'payment' => 'approved',
+                                'package_data' => json_encode($availablePackage)
+=======
                                 'investment_date' => now()->format('Y-m-d H:i:s'),
                                 'return_date' => $returnDate, 'status' => 'active'
+>>>>>>> david
                             ]);
                             if ($newInvestment){
                                 TransactionController::storeInvestmentTransaction($newInvestment, 'wallet');
@@ -186,7 +209,11 @@ class CommandController extends Controller
                         $user->wallet()->increment('balance', $investment['total_return']);
                     }
                     $investment->update(['status' => 'settled']);
+<<<<<<< HEAD
+                    TransactionController::storeInvestmentPayoutTransaction($investment, $investment['total_return']);
+=======
                     TransactionController::storeInvestmentPayoutTransaction($investment, $investment['amount']);
+>>>>>>> david
                     try {
                         \App\Http\Controllers\NotificationController::sendInvestmentSettledNotification($investment);
                     } catch (Exception $e) {

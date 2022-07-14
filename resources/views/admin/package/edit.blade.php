@@ -34,7 +34,11 @@
                             @csrf
                             @method('PUT')
                             <input type="hidden" value="{{ strtolower($type) }}" name="type">
+<<<<<<< HEAD
+                            @if ($type != 'farm')
+=======
                             @if ($type == 'plant')
+>>>>>>> david
                                 <!--begin::Image input-->
                                 <div class="image-input image-input-empty mb-5" data-kt-image-input="true"
                                     style="background: url({{ asset($package['image']) }}) center/cover no-repeat;">
@@ -200,7 +204,11 @@
                                 </div>
                                 <!--end::Input group-->
                             @endif
+<<<<<<< HEAD
+                            @if ($type != 'farm')
+=======
                             @if ($type == 'plant')
+>>>>>>> david
                                 <!--begin::Input group-->
                                 <div class="d-flex flex-column mb-5 fv-row">
                                     <!--end::Label-->
@@ -267,7 +275,11 @@
                                     </label>
                                 </div>
                             @endif
+<<<<<<< HEAD
+                            @if ($type != 'farm')
+=======
                             @if ($type == 'plant')
+>>>>>>> david
                                 <!--begin::Input group-->
                                 <div class="d-flex flex-column mb-5 fv-row">
                                     <!--begin::Label-->
@@ -304,7 +316,11 @@
                                 <div class="my-4">
                                     <!--end::Label-->
                                 <div class="form-check form-switch form-check-custom form-check-solid my-7">
+<<<<<<< HEAD
+
+=======
                                         
+>>>>>>> david
                                         <label class="form-check-label fs-5 fw-bold mb-2" for="makePackageOpen">
                                             Package Status
                                         </label>
@@ -356,7 +372,11 @@
     <script>
     var active = document.getElementById('active');
     const mV = document.getElementById('milestones-value');
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> david
     function doalert(checkboxElem) {
         if (checkboxElem.checked) {
             active.innerText = '(Active)'
@@ -366,7 +386,11 @@
     }
 
     const yV = document.getElementById('year-value');
+<<<<<<< HEAD
+
+=======
     
+>>>>>>> david
         const milestones = document.getElementById('milestones').value;
         console.log(milestones);
         mV.innerText = milestones
@@ -376,7 +400,11 @@
         } else {
             sT.style = 'block'
         }
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> david
         const pM = document.getElementById('payoutMode').value;
 
         if (pM == "monthly") {
@@ -437,6 +465,17 @@
             });
         });
 
+<<<<<<< HEAD
+        const date = new Date('{{ $package->start_date }}');
+        $("#kt_daterangepicker_3").daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            minDate: moment().startOf("hour"),
+            minYear: 1901,
+            maxYear: parseInt(moment().format("YYYY"), 10),
+            timePicker: true,
+            startDate: moment(date).startOf("hour"),
+=======
         $("#kt_daterangepicker_3").daterangepicker({
             singleDatePicker: true,
             showDropdowns: true,
@@ -444,6 +483,7 @@
             maxYear: parseInt(moment().format("YYYY"), 10),
             timePicker: true,
             startDate: moment().startOf("hour"),
+>>>>>>> david
             locale: {
                 format: "YYYY-MM-DD HH:mm:ss"
             }
