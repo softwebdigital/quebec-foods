@@ -26,6 +26,7 @@ class HomeController extends Controller
 
         $activePlantInvestment = $this->getPackageActiveInvestments('plant');
         $activeFarmInvestment = $this->getPackageActiveInvestments('farm');
+<<<<<<< HEAD
         $activeTractorInvestment = $this->getPackageActiveInvestments('tractor');
 
         $getPlantInvestor = $this->getInvestors('plant');
@@ -39,6 +40,17 @@ class HomeController extends Controller
         $totalPlantInvestment = $this->getPackageTotalInvestments('plant');
         $totalFarmInvestment = $this->getPackageTotalInvestments('farm');
         $totalTractorInvestment = $this->getPackageTotalInvestments('tractor');
+=======
+
+        $getPlantInvestor = $this->getInvestors('plant');
+        $getFarmInvestor = $this->getInvestors('farm');
+
+        $settledPlantInvestment = $this->getPackageSettledInvestments('plant');
+        $settledFarmInvestment = $this->getPackageSettledInvestments('farm');
+
+        $totalPlantInvestment = $this->getPackageTotalInvestments('plant');
+        $totalFarmInvestment = $this->getPackageTotalInvestments('farm');
+>>>>>>> david
 
         Carbon::setLocale('en_US');
         $weekTransactions = [];
@@ -71,7 +83,10 @@ class HomeController extends Controller
             'investments' => [
                 'plant'   => $this->getPackageInvestments('plant'),
                 'farm'    => $this->getPackageInvestments('farm'),
+<<<<<<< HEAD
                 'tractor' => $this->getPackageInvestments('tractor'),
+=======
+>>>>>>> david
                 'total'   => self::formatHumanFriendlyNumber($investments->sum('amount')),
                 'returns' => self::formatHumanFriendlyNumber($investments->sum('total_return')),
                 'slots'   => self::formatHumanFriendlyNumber($investments->sum('slots')),
@@ -87,6 +102,7 @@ class HomeController extends Controller
                 'returns'   => self::formatHumanFriendlyNumber($totalPlantInvestment->sum('total_return')),
                 'investors' => self::formatHumanFriendlyNumber($getPlantInvestor->count('id')),
             ],
+<<<<<<< HEAD
             'tractorInvestments' => [
                 'active'    => (int)$activeTractorInvestment->sum('amount'),
                 'slots'     => self::formatHumanFriendlyNumber($totalTractorInvestment->sum('slots')),
@@ -94,6 +110,8 @@ class HomeController extends Controller
                 'returns'   => self::formatHumanFriendlyNumber($totalTractorInvestment->sum('total_return')),
                 'investors' => self::formatHumanFriendlyNumber($getTractorInvestor->count('id')),
             ],
+=======
+>>>>>>> david
             'farmInvestments' => [
                 'active'  => (int)$activeFarmInvestment->sum('amount'),
                 'slots'   => self::formatHumanFriendlyNumber($totalFarmInvestment->sum('slots')),
@@ -102,9 +120,14 @@ class HomeController extends Controller
                 'investors' => self::formatHumanFriendlyNumber($getFarmInvestor->count('id')),
             ],
             'unSettledInvestments' => [
+<<<<<<< HEAD
                 'plant'   => ceil($settledPlantInvestment->sum('amount') / ($totalPlantInvestment->sum('amount') > 0 ? $totalPlantInvestment->sum('amount') : 1)) * 100,
                 'farm'    => ceil($settledFarmInvestment->sum('amount') / ($totalFarmInvestment->sum('amount') > 0 ? $totalFarmInvestment->sum('amount') : 1)) * 100,
                 'tractor' => ceil($settledFarmInvestment->sum('amount') / ($totalFarmInvestment->sum('amount') > 0 ? $totalFarmInvestment->sum('amount') : 1)) * 100
+=======
+                'plant' => ceil($settledPlantInvestment->sum('amount') / ($totalPlantInvestment->sum('amount') > 0 ? $totalPlantInvestment->sum('amount') : 1)) * 100,
+                'farm'  => ceil($settledFarmInvestment->sum('amount') / ($totalFarmInvestment->sum('amount') > 0 ? $totalFarmInvestment->sum('amount') : 1)) * 100
+>>>>>>> david
             ],
             'chartData'   => [
                 'transactions' => [
@@ -195,7 +218,11 @@ class HomeController extends Controller
     private function getInvestors($type)
     {
         return User::whereHas('investments', function($query) use ($type) {
+<<<<<<< HEAD
             $query->where('payment', 'approved')->whereHas('package', function($query) use ($type) {
+=======
+            $query->whereHas('package', function($query) use ($type) {
+>>>>>>> david
                 $query->where('type', $type);
             });
         })->distinct()->get();

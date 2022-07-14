@@ -67,7 +67,10 @@
                             <select class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true" data-kt-customer-table-filter="category" data-dropdown-parent="#kt-toolbar-filter">
                                 <option value="">Show All</option>
                                 <option value="plant">Processing Plants</option>
+<<<<<<< HEAD
                                 <option value="tractor">Tractor</option>
+=======
+>>>>>>> david
                                 <option value="farm">Farm</option>
                             </select>
                             <!--end::Input-->
@@ -149,9 +152,14 @@
                                 <!--end::Label-->
                                 <!--begin::Input-->
                                 <select id="packageCategory" class="form-select form-select-solid fw-bolder" data-placeholder="Select option" data-allow-clear="true">
+<<<<<<< HEAD
                                     <option value="plant">Processing Plants</option>
                                     <option value="tractor">Tractor</option>
                                     <option value="farm">Farm</option>
+=======
+                                    <option value="Plant">Processing Plants</option>
+                                    <option value="Farm">Farm</option>
+>>>>>>> david
                                 </select>
                                 <!--end::Input-->
                             </div>
@@ -159,7 +167,11 @@
                             <!--begin::Actions-->
                             <div class="d-flex justify-content-end">
                                 <button type="reset" class="btn btn-light btn-active-light-primary me-2" data-kt-menu-dismiss="true">Reset</button>
+<<<<<<< HEAD
                                 <button type="button" onclick="setInvestmentType(document.getElementById('packageCategory').value === 'farm' ? 'Farm' : 'Plant', document.getElementById('packageCategory').value)" data-bs-toggle="modal" class="btn btn-primary" data-kt-menu-dismiss="true">Apply</button>
+=======
+                                <button type="button" onclick="setInvestmentType(document.getElementById('packageCategory').value)" data-bs-toggle="modal" class="btn btn-primary" data-kt-menu-dismiss="true">Apply</button>
+>>>>>>> david
                             </div>
                             <!--end::Actions-->
                         </div>
@@ -206,7 +218,11 @@
                 @foreach ($packages as $key=>$package )
                     <tr>
                         <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6 text-nowrap">{{ $key + 1 }}</span></td>
+<<<<<<< HEAD
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['formatted_name'] }}</span></td>
+=======
+                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['name'] }}</span></td>
+>>>>>>> david
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['roi'] }}%</span></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ getCurrency() }} {{ number_format($package['price']) }}</span></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</span></td>
@@ -229,9 +245,13 @@
                             </a>
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                 <div class="menu-item px-3">
+<<<<<<< HEAD
                                     @if ($package['status'] == 'open')
                                         <a class="menu-link px-3" data-bs-toggle="modal" onclick="populateInvestModal('{{ $package['type'] }}', '{{ $package['name'] }}')" @if($package['type'] != 'Farm') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif ><span class="">Invest</span></a>
                                     @endif
+=======
+                                    {{-- <a class="menu-link px-3" data-bs-toggle="modal" @if($type == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment"@endif ><span class="">Invest</span></a> --}}
+>>>>>>> david
                                     <a class="menu-link px-3" href="{{ route('packages.show', ['package' => $package['id']]) }}"><span class="">Show</span></a>
                                 </div>
                             </div>
@@ -365,11 +385,15 @@
     //     });
     // });
 
+<<<<<<< HEAD
     function setInvestmentType(el, type) {
         if (type !== 'farm') {
             mode = type;
             $('#modeType').text(mode === 'plant' ? 'Plant' : 'Tractor')
         };
+=======
+    function setInvestmentType(el) {
+>>>>>>> david
         $(`#create${el}Investment`).modal('show');
     }
 

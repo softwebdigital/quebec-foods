@@ -72,7 +72,10 @@ class HomeController extends Controller
             'investments' => [
                 'plant'   => $this->getPackageInvestments('plant'),
                 'farm'    => $this->getPackageInvestments('farm'),
+<<<<<<< HEAD
                 'tractor' => $this->getPackageInvestments('tractor'),
+=======
+>>>>>>> david
                 'total'   => self::formatHumanFriendlyNumber($investments->sum('amount')),
                 'activeInvestments'   => self::formatHumanFriendlyNumber($activeInvestments->sum('amount')),
                 'pendingInvestments'   => self::formatHumanFriendlyNumber($pendingInvestments->sum('amount')),

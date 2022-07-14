@@ -380,7 +380,11 @@
                         <div class="carousel-item @if($key == 0) show active @endif">
                             <!--begin::Wrapper-->
                             <div class="d-flex align-items-center mb-5">
+<<<<<<< HEAD
                                 @if ($pcg['type'] != 'farm')
+=======
+                                @if ($pcg['type'] == 'plant')
+>>>>>>> david
                                 <img src="{{ asset($pcg['image']) }}" style="width: 80px; border-radius: 5px;" class="me-2">
                                 @endif
                                 <!--begin::Info-->
@@ -470,7 +474,11 @@
                             <!--end::Wrapper-->
                             <!--begin::Action-->
                             <div class="mb-1">
+<<<<<<< HEAD
                                 <a class="btn btn-sm btn-primary" data-bs-toggle="modal" onclick="populateInvestModal('{{ $pcg['type'] }}', '{{ $pcg['name'] }}')" @if($pcg['type'] != 'farm') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif >Invest in package</a>
+=======
+                                <a class="btn btn-sm btn-primary" data-bs-toggle="modal" @if($pcg['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif >Invest in package</a>
+>>>>>>> david
                             </div>
                             <!--end::Action-->
                         </div>
@@ -877,6 +885,7 @@
     </div>
     <!--end::Row-->
 
+<<<<<<< HEAD
         <!--begin::Row-->
         <div class="row g-5 g-lg-10">
             <!--begin::Col-->
@@ -970,6 +979,8 @@
         </div>
         <!--end::Row-->
 
+=======
+>>>>>>> david
     <!--begin::Row-->
     <div class="row g-5 g-lg-10">
         <!--begin::Col-->

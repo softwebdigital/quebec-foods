@@ -37,6 +37,7 @@
                     <!--begin::Position-->
                     <div class="mb-9">
                         <!--begin::Badge-->
+<<<<<<< HEAD
                         @if($investment['status'] == 'active')
                             <span class="badge badge-lg d-inline badge-pill badge-light-success">Active</span>
                         @elseif($investment['status'] == 'pending')
@@ -46,6 +47,9 @@
                         @elseif($investment['status'] == 'cancelled')
                             <span class="badge badge-lg d-inline badge-pill badge-light-danger">Declined</span>
                         @endif
+=======
+                        <div class="badge badge-lg badge-light-primary d-inline">{{ ucwords($investment['package']['status']) }}</div>
+>>>>>>> david
                         <!--begin::Badge-->
                     </div>
                     <!--end::Position-->
@@ -136,9 +140,17 @@
                                     <label class="required fs-5 fw-bold mb-2" for="rollover">Rollover</label>
                                     <!--end::Label-->
                                     <!--begin::Input-->
+<<<<<<< HEAD
                                     <div class="form-check form-switch form-check-custom form-check-solid me-10">
                                         <input @if ($investment['rollover'] == 1) checked @endif @if ($investment['status'] == 'closed' || $investment['status'] == 'cancelled') disabled @endif required class="form-check-input h-30px w-50px" type="checkbox" value="yes" id="rollover" name="rollover"/>
                                     </div>
+=======
+                                    <select name="rollover" aria-label="Select rollover status" data-placeholder="Select rollover status" class="form-select form-select-solid text-dark" id="rollover">
+                                        <option value="">Select rollover status</option>
+                                        <option @if ($investment['package']['rollover'] == true) selected @endif value="yes">Yes</option>
+                                        <option @if ($investment['package']['rollover'] == false) selected @endif value="no">No</option>
+                                    </select>
+>>>>>>> david
                                     @error('rollover')
                                         <span class="text-danger small" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -146,11 +158,15 @@
                                     @enderror
                                 </div>
                                 <!--end::Input group-->
+<<<<<<< HEAD
                                 @if ($investment['status'] == 'settled' || $investment['status'] == 'cancelled')
                                 <button type="button" disabled class="btn btn-primary">Update</button>
                                 @else
                                 <button type="button" onclick="confirmFormSubmit(event, 'updateRolloverForm')" class="btn btn-primary">Update</button>
                                 @endif
+=======
+                                <button type="button" onclick="confirmFormSubmit(event, 'updateRolloverForm')" class="btn btn-primary">Update</button>
+>>>>>>> david
                                 {{-- <div id="rollover" class="form-check form-switch form-check-custom form-check-solid me-10">
                                     <input required class="form-check-input h-30px w-50px" type="checkbox" @if($investment['rollover']) checked @endif value="yes" id="rollover" name="rollover"/>
                                     <label class="form-check-label" for="rollover">
@@ -229,10 +245,17 @@
                         <!--end::Stats-->
                         <!--begin::Progress-->
                         @php
+<<<<<<< HEAD
                             $total = Illuminate\Support\Carbon::parse($investment['start_date'])->diffInSeconds($investment['return_date']);
                             $passed = $total - now()->diffInSeconds($investment['return_date']);
                             if ($investment['status'] == 'active') {
                                 $percentage = ($passed / $total) * 100;
+=======
+                            $total = Illuminate\Support\Carbon::parse($investment['start_date'])->diffInDays($investment['return_date']);
+                            $passed = $total - now()->diffInDays($investment['return_date']);
+                            if ($investment['status'] == 'active') {
+                                $percentage = round(($passed / $total) * 100);
+>>>>>>> david
                             } elseif ($investment['status'] == 'settled') {
                                 $percentage = 100;
                             } else {
@@ -255,7 +278,11 @@
                                 @else
                                     {{ ucwords($investment['status']) }}
                                 @endif</span>
+<<<<<<< HEAD
                                 <span class="fw-bolder fs-6">{{round($percentage, 2)}}%</span>
+=======
+                                <span class="fw-bolder fs-6">{{$percentage}}%</span>
+>>>>>>> david
                             </div>
                             <div class="h-30px mx-3 w-100 bg-light mb-3" style="border-radius: 30px;">
                                 <div class="bg-success h-30px" role="progressbar" style="border-radius: 30px; width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -266,7 +293,11 @@
                     <!--end::Card body-->
                 </div>
                 <!--end::Card-->
+<<<<<<< HEAD
                 @if ($investment['package']['type'] != 'farm')
+=======
+                @if ($investment['package']['type'] == 'plant')
+>>>>>>> david
                     <!--begin::Card-->
                     <div class="card pt-4">
                         <!--begin::Card header-->

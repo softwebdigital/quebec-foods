@@ -183,6 +183,7 @@
             </li>
             @endcan
             <!--end::Nav item-->
+<<<<<<< HEAD
              <!--begin::Nav item-->
              @can('View Investments')
              <li class="nav-item mt-2">
@@ -190,6 +191,8 @@
              </li>
              @endcan
              <!--end::Nav item-->
+=======
+>>>>>>> david
             <!--begin::Nav item-->
             @can('View Transactions')
             <li class="nav-item mt-2">

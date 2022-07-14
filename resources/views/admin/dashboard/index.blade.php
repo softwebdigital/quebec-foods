@@ -179,7 +179,11 @@
     <!--begin::Row-->
     <div class="row g-5 g-xl-8">
         <!--begin::Col-->
+<<<<<<< HEAD
         <div class="col-xl-4">
+=======
+        <div class="col-xl-6">
+>>>>>>> david
             <!--begin::Mixed Widget 1-->
             <div class="card card-xl-stretch mb-xl-8">
                 <!--begin::Body-->
@@ -343,6 +347,7 @@
         </div>
         <!--end::Col-->
         <!--begin::Col-->
+<<<<<<< HEAD
         <div class="col-xl-4">
             <!--begin::Mixed Widget 1-->
             <div class="card card-xl-stretch mb-xl-8">
@@ -508,6 +513,9 @@
         <!--end::Col-->
         <!--begin::Col-->
         <div class="col-xl-4">
+=======
+        <div class="col-xl-6">
+>>>>>>> david
             <!--begin::Mixed Widget 1-->
             <div class="card card-xl-stretch mb-xl-8">
                 <!--begin::Body-->
@@ -835,6 +843,7 @@
 
     <!--begin::Row-->
     <div class="row g-5 g-lg-10">
+<<<<<<< HEAD
         @if (count($data['investments']['tractor']) > 0)
         <!--begin::Col-->
         <div class="col-xxl-12 col-md-8 mb-10">
@@ -906,6 +915,8 @@
 
     <!--begin::Row-->
     <div class="row g-5 g-lg-10">
+=======
+>>>>>>> david
         @if (count($data['investments']['farm']) > 0)
         <!--begin::Col-->
         <div class="col-xxl-12 col-md-8 mb-10">
@@ -978,7 +989,11 @@
     <!--begin::Row-->
     <div class="row g-5 g-xl-8">
         <!--begin::Col-->
+<<<<<<< HEAD
         <div class="col-xl-4">
+=======
+        <div class="col-xl-6">
+>>>>>>> david
             <!--begin::Mixed Widget 4-->
             <div class="card card-xl-stretch mb-xl-8">
                 <!--begin::Beader-->
@@ -1006,6 +1021,7 @@
         </div>
         <!--end::Col-->
         <!--begin::Col-->
+<<<<<<< HEAD
         <div class="col-xl-4">
             <!--begin::Mixed Widget 4-->
             <div class="card card-xl-stretch mb-xl-8">
@@ -1035,6 +1051,9 @@
         <!--end::Col-->
         <!--begin::Col-->
         <div class="col-xl-4">
+=======
+        <div class="col-xl-6">
+>>>>>>> david
             <!--begin::Mixed Widget 4-->
             <div class="card card-xl-stretch mb-5 mb-xl-8">
                 <!--begin::Beader-->

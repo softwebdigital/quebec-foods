@@ -64,10 +64,18 @@ class InvestmentController extends Controller
             return back()->with('error', 'Can\'t process investment, package not found, disabled or closed');
         }
         // Check if package is sold out.
+<<<<<<< HEAD
         if ($package->type == "farm" && $package->available_slots < $request->slots) {
             return back()->with('error', "Can't process investment, not enough available slots ({$package->available_slots} left)");
         }
         // Process investment based on payment method
+=======
+        if ($package->isSoldOut())
+        {
+            return back()->with('error', 'Can\'t process investment, package is sold out');
+        }
+//        Process investment based on payment method
+>>>>>>> david
         switch ($request['payment']){
             case 'wallet':
                 if (!auth()->user()->hasSufficientBalanceForTransaction($request['slots'] * $package['price'])){
@@ -180,14 +188,22 @@ class InvestmentController extends Controller
         return view('user.profile.showInvestment', compact('user', 'type', 'packages', 'investment', 'filter'));
     }
 
+<<<<<<< HEAD
     public function updateRollover (Request $request, Investment $investment)
+=======
+    public function updateRollover (Request $request, $type, Investment $investment)
+>>>>>>> david
     {
         if (auth()->id() != $investment["user_id"]) {
             return back()->with('error', 'Investment not found');
         }
         $data['rollover'] = isset($request['rollover']) && $request['rollover'] == 'yes';
         if($investment->update($data)) {
+<<<<<<< HEAD
             return redirect()->route('investments.show', ['type' => $request->type, 'investment' => $investment['id']])->with('success', 'Rollover updated successfully');
+=======
+            return redirect()->route('investments.show', ['type' => $type, 'investment' => $investment['id']])->with('success', 'Rollover updated successfully');
+>>>>>>> david
         };
         return back()->with('error', 'Error updating rollover status');;
     }
