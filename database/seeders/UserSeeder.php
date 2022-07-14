@@ -15,6 +15,6 @@ class UserSeeder extends Seeder
     {
         return [
             
-        ]
+        ];
     }
 }

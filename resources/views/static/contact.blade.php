@@ -7,7 +7,7 @@
           <span class="btn btn-primary !px-7 !text-sm !py-4 !rounded-full">Contact Us</span>
           <h1 class="max-w-[513px] mx-auto text-3xl  md:text-heading-1 font-bold py-5  md:leading-h-1 text-primary">Become
             a Partner Today.</h1>
-          <p class=" text-sm md:text-base text-[#192434]">
+          <p class="font-bold text-sm md:text-base text-[#192434]">
             Quebec Foods is looking for partners who align with our values and are ready to contribute to our mission of
             bringing investment-grade farmlands for Agricultural production from across the six (6) geo-political zones
             for investment purpose to ensure food sufficiency across the country.
@@ -15,13 +15,21 @@
         </div>
       </section>
 
-
+<style>
+  @media (min-width: 1024px){
+    .give-width {
+      padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+        width: 60%;
+    };
+  }
+</style>
       <!-- Form Cand Location-->
       <section class=" bg-primary">
         <div class="lg:px-5 mb-20 lg:pt-80 lg:pb-20 py-20 lg:mt-96 relative section-container ">
-          <div class=" max-w-[620px] mx-auto">
+          <div class="mx-auto" style="max-width: 716px;">
             <form action="" method="get"
-              class="bg-[#E5F0EB] rounded-lg lg:rounded-3xl py-7 lg:py-10 px-7 lg:px-10 lg:absolute lg:-top-[350px]">
+              class="give-width bg-[#E5F0EB] rounded-lg lg:rounded-3xl py-7 lg:py-10 px-7 lg:px-10 lg:absolute lg:-top-[350px]" style=""> 
               <div class="grid grid-cols-2 gap-5">
                 <div class="col-span-2 lg:col-span-1 ">
                   <label for="first-name" class="text-lg text-ink  my-1 lg:my-3 inline-block">First Name</label>

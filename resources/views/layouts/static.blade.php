@@ -141,16 +141,16 @@
     <footer class="footer">
       <div class="footer-content md:grid-cols-4 " style="font-weight: 500;">
           <!-- Location -->
-          <div class="flex flex-col gap-y-3">
+          <div class="flex flex-col gap-y-3" style="line-height: 22px;">
               <div>
                   <img src="/static-assets/logo.e8cd949b.svg" class="footer-logo" alt="Logo Footer">
               </div>
-              <span class="hidden text-base text-ink lg:inline-block">
+              <span class="hidden text-base text-ink lg:inline-block" style="margin-bottom: 15px;">
                   © Copyright 2022 Quebec Groups Limited. <br>
                   All rights reserved.
               </span>
 
-              <a href="https://www.google.com/maps/place/Boya+place/@9.0498425,7.4354707,15z/data=!4m5!3m4!1s0x0:0x63594dac8d4ae3ac!8m2!3d9.0499115!4d7.4354294"
+              <a style="margin-bottom: 15px;" href="https://www.google.com/maps/place/Boya+place/@9.0498425,7.4354707,15z/data=!4m5!3m4!1s0x0:0x63594dac8d4ae3ac!8m2!3d9.0499115!4d7.4354294"
                   target="_blank" class="mt-3 flex text-base text-ink">
                   <img class="h-6" style="margin-right: 15px; margin-top: 6px;" src="/static-assets/Vector.png" alt="Message icon">
                   Suite B15, Boya Place Ameh Ebute <br>
