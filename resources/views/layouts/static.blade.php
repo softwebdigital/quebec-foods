@@ -110,6 +110,15 @@
             Contact Us
           </a>
           @guest
+          <a class="btn btn-primary md:hidden" href="{{ route('login') }}">
+            Sign In
+          </a>
+          @else
+          <a class="btn btn-primary md:hidden" href="/dashboard">
+            Dashboard
+          </a>
+          @endguest
+          <!-- @guest
           <a class="drop-down-items" href="/login">
             Sign In
           </a>
@@ -120,7 +129,7 @@
           @endguest
           <a class="btn btn-primary md:hidden" href="#">
             Download App
-          </a>
+          </a> -->
         </div>
       </div>
 
@@ -148,7 +157,7 @@
                   Street,Wuye- Abuja, Nigeria.
               </a>
               <div class="mt-5 lg:flex flex-col !-my-1 hidden gap-x-2">
-                  <a class="text-primary" href="/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
+                  <a class="text-primary" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
               </div>
               
 

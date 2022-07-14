@@ -17,7 +17,7 @@
                         </p>
                         <div
                             class="flex flex-col items-center justify-center my-2 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
-                            <a href="#"
+                            <a href="{{ route('login') }}"
                                 class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                                 <span>
                                     Get Started
@@ -29,10 +29,10 @@
                                         fill="#ffffff" />
                                 </svg>
                             </a>
-                            <a href="#" class="btn !text-primary">
+                            <!-- <a href="#" class="btn !text-primary">
                                 <i class="fa-brands fa-google-play"></i>
                                 <span>Download App</span>
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                 </div>
@@ -51,7 +51,7 @@
                 <div
                     class="flex flex-col-reverse items-center lg:justify-between lg:gap-x-36 text-left lg:flex-row relative">
                     <div class="hidden lg:block lg:w-[15%]"></div>
-                    <div class="py-5 shadow-2xl md:px-0 md:absolute rounded-3xl bg-white md:w-[669px]">
+                    <div class="py-5 shadow-lg md:px-0 md:absolute rounded-3xl bg-white md:w-[669px]">
                         <div class="px-5 lg:px-10 py-5 text-left flex flex-col items-center gap-y-5">
                             <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Quebec Food Processing Industrial Park Ltd.</span>
                             <h3
@@ -116,7 +116,7 @@
                         after
                         commissioning of the plant.
                     </p>
-                    <a href="#"
+                    <a href="{{ route('login') }}"
                         class="bg-white hidden  text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg lg:flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                         <span>
                             Get Started
@@ -129,7 +129,7 @@
                 </div>
                 <div class="self-end w-full lg:w-2/5 lg:pb-20">
                     <img class="hidden lg:block" src="/static-assets/plant-process-2.1602509f.svg" alt="25%">
-                    <a href="#"
+                    <a href="{{ route('login') }}"
                         class="bg-white  lg:hidden text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[60%] lg:w-1/2 ">
                         <span>
                             Get Started

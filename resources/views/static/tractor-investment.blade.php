@@ -17,7 +17,7 @@
                         </p>
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
-                            <a href="#"
+                            <a href="{{ route('login') }}"
                                 class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                                 <span>
                                     Get Started
@@ -29,10 +29,10 @@
                                         fill="#ffffff" />
                                 </svg>
                             </a>
-                            <a href="#" class="btn !text-primary">
+                            <!-- <a href="#" class="btn !text-primary">
                                 <i class="fa-brands fa-google-play"></i>
                                 <span>Download App</span>
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                 </div>
@@ -48,7 +48,7 @@
         <div class="text-center section-container">
             <div class="flex flex-col-reverse items-center text-left lg:-mr-32 lg:flex-row">
             
-                <div class="py-2 shadow-2xl md:px-0 md:w-[55%] rounded-3xl">
+                <div class="py-2 shadow-lg md:px-0 md:w-[55%] rounded-3xl">
                     <div class="w-full px-5 py-4 mt-5 lg:mt-10 lg:px-10 ">
 
                     <div class="pb-5 lg:px-10 text-left flex flex-col items-center gap-y-5">

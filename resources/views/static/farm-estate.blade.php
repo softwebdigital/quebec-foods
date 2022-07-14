@@ -57,7 +57,7 @@
               By your Investment, you are eligible to earn for a tenure of 18months, 36months & 60months depending on your
               choice of crop or livestock to invest in.
             </p>
-            <a href="#"
+            <a href="{{ route('login') }}"
               class="flex items-baseline justify-center w-full py-5 my-4 btn-primary md:text-lg md:py-5 lg:px-9 rounded-xl gap-x-10 lg:gap-x-6 lg:w-1/2">
               <span>
                 Get Started
@@ -80,7 +80,7 @@
                 <div class="">
                     <img src="/static-assets/image-46.png" alt="">
                 </div>
-                <div class="p-2 shadow-2xl md:px-0 md:w-[55%] rounded-3xl">
+                <div class="p-2 shadow-lg md:px-0 md:w-[55%] rounded-3xl">
                     <div class="w-full px-5 py-4 mt-5 lg:mt-10 lg:px-10 ">
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
                           Investing in Agro-Farm Produce Production is a good strategic move. One inevitable fact is that, whether the overall economy is in recession or booming economy, people still have to eat. Because of this, Quebec Food management team & shareholders regards agriculture and farming investments as being recession-proof. 
@@ -145,7 +145,7 @@
             </p>
           </div>
           <div class="lg:w-1/4 lg:px-10">
-            <a href="#"
+            <a href="{{ route('login') }}"
               class="flex items-baseline justify-center w-full py-5 my-4 btn-primary md:text-lg md:py-5 lg:px-9 rounded-xl gap-x-10 lg:gap-x-6 ">
               <span>
                 Get Started
