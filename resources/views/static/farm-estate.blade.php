@@ -82,6 +82,13 @@
                 </div>
                 <div class="p-2 shadow-lg md:px-0 md:w-[55%] rounded-3xl">
                     <div class="w-full px-5 py-4 mt-5 lg:mt-10 lg:px-10 ">
+                    <div class="pb-5 text-left flex flex-col items-center gap-y-5">
+                            <!-- <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Quebec Food Processing Industrial Park Ltd.</span> -->
+                            <h3
+                                class="max-w-[400px] text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5 self-start">
+                                Why Invest In Agro-Farm Produce Buyback Scheme
+                            </h3>
+                        </div>
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
                           Investing in Agro-Farm Produce Production is a good strategic move. One inevitable fact is that, whether the overall economy is in recession or booming economy, people still have to eat. Because of this, Quebec Food management team & shareholders regards agriculture and farming investments as being recession-proof. 
                         </p>
@@ -236,7 +243,7 @@
             <img class="app" src="/static-assets/Mobile-App.a7165a51.png" alt="">
           </div>
           <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
-            <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
+            <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24" style="border-radius: 0px 40px 40px 0px; padding-top: 2rem; padding-bottom: 2rem;">
               <div class="absolute download-tag bottom-6 -left-14">
                 <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
               </div>
