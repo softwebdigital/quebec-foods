@@ -165,36 +165,32 @@
         </div>
     </section>
 
-    <!-- Mobile CTA -->
-    <section class="mobile-cta-section">
-        <div
-            class="grid items-center content-center justify-between grid-cols-1 py-4 mx-auto max-w-screen-max md:grid-cols-2 lg:grid-cols-8">
-            <div class="lg:col-start-1 lg:col-end-4">
-                <img class="app" src="/static-assets/Mobile-App.a7165a51.png" alt="">
-            </div>
-            <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
-                <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
-                    <div class="absolute download-tag bottom-6 -left-14">
-                        <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
-                    </div>
-                    <div class="content-right">
-                        <h3>Get Started Here</h3>
-                        <p>Open an account and start investing in our processing plant scheme
-                            <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
-                        </p>
-                        <!-- <a href="#" class="btn ">
-                            <i class="fa-brands fa-google-play"></i>
-                            <span>Download App</span>
-                        </a> -->
-                        <a href="{{route('login')}}" class="btn ">
-                            <!-- <i class="fa-brands fa-google-play"></i> -->
-                            <span>Sign in</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
+      <!-- Mobile CTA -->
+  <!-- <section class="mobile-cta-section">
+    <div
+      class="grid items-center content-center justify-between grid-cols-1 py-4 mx-auto max-w-screen-max md:grid-cols-2 lg:grid-cols-8">
+      <div class="lg:col-start-1 lg:col-end-4">
+        <img class="app" src="/static-assets/Mobile-App.a7165a51.png" alt="">
+      </div>
+      <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
+        <div class="give-padding relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24" style="border-radius: 0px 30px 30px 0px;">
+          <div class="absolute download-tag bottom-6 -left-14">
+          </div>
+          <div class="content-right">
+            <h3>Get Started Here</h3>
+            <p>Open an account and start investing in our processing plant scheme
+              <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
+            </p>
+            <a href="{{ route('login') }}" class="btn ">
+              {{-- <i class="fa-brands fa-google-play"></i>
+              <span>Download App</span> --}}
+              <span>Sign in</span>
+            </a>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section> -->
 
     <!-- FAQs Section -->
     <section class="mb-20 section-container ">
