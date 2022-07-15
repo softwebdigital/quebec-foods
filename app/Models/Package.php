@@ -22,11 +22,7 @@ class Package extends Model
 
     public function isSoldOut()
     {
-<<<<<<< HEAD
-        return !($this->type == 'plant' || $this->available_slots > 0);
-=======
         return !($this->type == 'plant' || $this->slots > 0);
->>>>>>> david
     }
 
     public function hasStarted()
@@ -39,34 +35,14 @@ class Package extends Model
         return $this->status == 'open' || ($this->type == 'farms' && !$this->hasStarted());
     }
 
-<<<<<<< HEAD
-    public function getRawNameAttribute()
-    {
-        return $this->attributes['name'];
-    }
-
-    public function getFormattedNameAttribute()
-=======
     public function getNameAttribute()
->>>>>>> david
     {
         return strlen($this->attributes['name']) > 15 ? substr($this->attributes['name'], 0, 15).'...' : $this->attributes['name'];
     }
 
-<<<<<<< HEAD
-    public function getSoldSlotsAttribute()
-    {
-        return $this->investments()->where('payment', 'approved')->sum('slots');
-    }
-
-    public function getAvailableSlotsAttribute()
-    {
-        return $this->slots - $this->sold_slots;
-=======
     public function getRawNameAttribute()
     {
         return $this->attributes['name'];
->>>>>>> david
     }
 
     public function getPlantTotalROI($amount)

@@ -15,10 +15,6 @@ class UserSeeder extends Seeder
     {
         return [
             
-<<<<<<< HEAD
-        ];
-=======
         ]
->>>>>>> david
     }
 }
