@@ -30,16 +30,16 @@
         </div>
       </section>
       <section class="bg-[#F3FFF9]" style="margin-top: 77px;">
-      <section class="section-container">
-        <div class="px-2 py-1 lg:py-0 md:px-0 lg:w-1/2">
-                  <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Our Products</h2>
-                  <p class="text-sm lg:text-lg text-gray-700 font-normal">
-                  We are committed to cultivating, producing processing, and packaging healthy food products such as; high quality cassava products, fruits, vegetables, and others for Nigeria and the global market.
-                  </p>
-                </div>
-      </section>
+        <section class="section-container">
+          <div class="px-2 py-1 lg:py-0 md:px-0 lg:w-1/2">
+                    <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Our Products</h2>
+                    <p class="text-sm lg:text-lg text-gray-700 font-normal">
+                    We are committed to cultivating, producing processing, and packaging healthy food products such as; high quality cassava products, fruits, vegetables, and others for Nigeria and the global market.
+                    </p>
+                  </div>
+        </section>
           
-      <section class="splide section-container" aria-labelledby="carousel-heading">
+        <section class="splide section-container" aria-labelledby="carousel-heading">
             
           <div class="splide__track">
               <ul class="splide__list">
