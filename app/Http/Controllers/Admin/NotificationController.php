@@ -33,9 +33,5 @@ class NotificationController extends Controller
         }
         Notification::route('mail', env('ADMIN_EMAIL'))->notify(new CustomNotificationByStaticEmail($title, $msg, 'View Transactions', route('admin.transactions')));
     }
-<<<<<<< HEAD
-}
-=======
 }
 
->>>>>>> david

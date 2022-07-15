@@ -14,22 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-<<<<<<< HEAD
-Route::get('/', [App\Http\Controllers\StaticPageController::class, 'home'])->name('static.home');
-Route::get('/about', [App\Http\Controllers\StaticPageController::class, 'about'])->name('static.about');
-Route::get('/contact', [App\Http\Controllers\StaticPageController::class, 'contact'])->name('static.contact');
-Route::get('/faqs', [App\Http\Controllers\StaticPageController::class, 'faq'])->name('static.faq');
-Route::get('/farm-estate', [App\Http\Controllers\StaticPageController::class, 'farm'])->name('static.farm');
-Route::get('/privacy-policy', [App\Http\Controllers\StaticPageController::class, 'privacy'])->name('static.privacy');
-Route::get('/processing-plant', [App\Http\Controllers\StaticPageController::class, 'plant'])->name('static.plant');
-Route::get('/terms', [App\Http\Controllers\StaticPageController::class, 'terms'])->name('static.terms');
-Route::get('/tractor-investment', [App\Http\Controllers\StaticPageController::class, 'tractor'])->name('static.tractor');
-=======
 Route::get('/', function () {
     return redirect('/dashboard');
 });
 
->>>>>>> david
 
 Auth::routes(['verify' => true]);
 
@@ -54,19 +42,11 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
         Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
 
         Route::get('/account/overview', [App\Http\Controllers\HomeController::class, 'accountOverview'])->name('account.overview');
-<<<<<<< HEAD
-        Route::get('/overview/{type}/investments', [App\Http\Controllers\HomeController::class, 'showUserInvestments'])->where('type', 'farm|plant|tractor')->name('user.investments');
-        Route::get('/overview/transactions', [App\Http\Controllers\HomeController::class, 'showTransactions'])->name('user.transactions');
-        Route::get('/overview/wallet', [App\Http\Controllers\HomeController::class, 'showWallet'])->name('user.wallet');
-        Route::get('/overview/referrals', [App\Http\Controllers\HomeController::class, 'showReferrals'])->name('user.referrals');
-        Route::get('/overview/{type}/investments/{investment}/show', [App\Http\Controllers\InvestmentController::class, 'showUserInvestment'])->where('type', 'farm|plant|tractor')->name('user.investment.show');
-=======
         Route::get('/overview/{type}/investments', [App\Http\Controllers\HomeController::class, 'showUserInvestments'])->where('type', 'farm|plant')->name('user.investments');
         Route::get('/overview/transactions', [App\Http\Controllers\HomeController::class, 'showTransactions'])->name('user.transactions');
         Route::get('/overview/wallet', [App\Http\Controllers\HomeController::class, 'showWallet'])->name('user.wallet');
         Route::get('/overview/referrals', [App\Http\Controllers\HomeController::class, 'showReferrals'])->name('user.referrals');
         Route::get('/overview/{type}/investments/{investment}/show', [App\Http\Controllers\InvestmentController::class, 'showUserInvestment'])->where('type', 'farm|plant')->name('user.investment.show');
->>>>>>> david
         Route::post('/overview/invest/store', [App\Http\Controllers\InvestmentController::class, 'store'])->name('user.invest.store');
 
         Route::get('/notifications', [App\Http\Controllers\NotificationController::class, 'index'])->name('notifications');
@@ -81,11 +61,7 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
         Route::get('/transactions', [App\Http\Controllers\TransactionController::class, 'index'])->name('transactions');
 
         Route::group(['prefix' => '/investments'], function() {
-<<<<<<< HEAD
-            Route::group(['where' => ['type' => 'farm|plant|tractor']], function () {
-=======
             Route::group(['where' => ['type' => 'farm|plant']], function () {
->>>>>>> david
                 Route::get('/{type}', [App\Http\Controllers\InvestmentController::class, 'index'])->name('investments');
             });
             Route::get('/create', [App\Http\Controllers\InvestmentController::class, 'invest'])->name('invest');
@@ -102,11 +78,7 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
         Route::post('/withdraw/resend-token', [App\Http\Controllers\TransactionController::class, 'resendToken'])->name('withdrawalToken.resend');
     });
 
-<<<<<<< HEAD
-    Route::get('/app/faqs', [App\Http\Controllers\FaqController::class, 'index'])->name('faq');
-=======
     Route::get('/faqs', [App\Http\Controllers\FaqController::class, 'index'])->name('faq');
->>>>>>> david
 
     Route::get('/payment/callback', [\App\Http\Controllers\OnlinePaymentController::class, 'handlePaymentCallback'])->name('payment.callback');
     Route::get('/payment/initiate', [\App\Http\Controllers\OnlinePaymentController::class, 'initiatePayment'])->name('payment.initiate');

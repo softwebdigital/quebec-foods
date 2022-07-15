@@ -92,11 +92,7 @@ class InvestmentController extends Controller
 //        Find data based on page
         $investments = Investment::query()
                                     ->join('users', 'users.id', '=', 'investments.user_id')
-<<<<<<< HEAD
-                                    ->join('packages', 'packages.id', '=', 'investments.package_id')
-=======
                                     ->join('packages', 'packages.id', '=', 'investments.user_id')
->>>>>>> david
                                     ->select('investments.*');
         if ($type !== 'all') {
             $investments->whereHas('package', function($query) use ($type) {
@@ -104,11 +100,7 @@ class InvestmentController extends Controller
             });
         }
         if ($filter !== 'all') {
-<<<<<<< HEAD
-            $investments->where('investments.status', $filter);
-=======
             $investments->where('status', $filter);
->>>>>>> david
         }
 //        Set helper variables from request and DB
         $totalData = $totalFiltered = $investments->count();
