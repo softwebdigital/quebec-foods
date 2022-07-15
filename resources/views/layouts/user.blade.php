@@ -96,6 +96,21 @@
 										<span class="menu-title">Plant Investments</span>
 									</a>
 								</div>
+                                <div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'tractor') here show @endif">
+									<a class="menu-link" href="{{ route('investments', 'tractor') }}">
+										<span class="menu-icon">
+											<!--begin::Svg Icon | path: icons/duotune/arrows/arr001.svg-->
+											<span class="svg-icon svg-icon-5">
+												<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+													<path d="M14.4 11H3C2.4 11 2 11.4 2 12C2 12.6 2.4 13 3 13H14.4V11Z" fill="black" />
+													<path opacity="0.3" d="M14.4 20V4L21.7 11.3C22.1 11.7 22.1 12.3 21.7 12.7L14.4 20Z" fill="black" />
+												</svg>
+											</span>
+											<!--end::Svg Icon-->
+										</span>
+										<span class="menu-title">Tractor Investments</span>
+									</a>
+								</div>
                                 <div class="menu-item @if(request()->routeIs(['investments']) && request()->type == 'farm') here show @endif">
 									<a class="menu-link" href="{{ route('investments', 'farm') }}">
 										<span class="menu-icon">
@@ -415,6 +430,7 @@
             $setting = \App\Models\Setting::all()->first();
             $international = \App\Models\InternationalBank::all()->first();
             $plantPackages = \App\Models\Package::latest()->where('type', 'plant')->where('status', 'open')->get();
+            $tractorPackages = \App\Models\Package::latest()->where('type', 'tractor')->where('status', 'open')->get();
             $farmPackages = \App\Models\Package::latest()->where('type', 'farm')->where('status', 'open')->get();
         @endphp
         <div class="modal fade" id="createPlantInvestment" tabindex="-1" aria-hidden="true">
@@ -425,7 +441,7 @@
                     <!--begin::Modal header-->
                     <div class="modal-header" id="kt_modal_create_api_key_header">
                         <!--begin::Modal title-->
-                        <h2>Plant Investment</h2>
+                        <h2><span id="modeType"></span> Investment</h2>
                         <!--end::Modal title-->
                         <!--begin::Close-->
                         <div class="btn btn-sm btn-icon btn-active-color-primary" id="createPlantInvestment_cancel" data-bs-dismiss="modal">
@@ -453,7 +469,10 @@
                             <select name="package" aria-label="Select the package" data-placeholder="Select the package" data-control="select2" class="form-select form-select-solid text-dark" id="plantPackage">
                                 <option value="">Select Package</option>
                                 @foreach($plantPackages as $package)
-                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
+                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-milestones="{{ $package['milestones'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
+                                @endforeach
+                                @foreach($tractorPackages as $package)
+                                    <option @if((old('package') == $package['name']) || (request('package') == $package['name'])) selected @endif value="{{ $package['name'] }}" data-rollover="{{ $package['rollover'] }}" data-price="{{ $package['price'] }}" data-roi="{{ $package['roi'] }}" data-duration="{{ $package['duration'] }}" data-milestones="{{ $package['milestones'] }}" data-duration-mode="{{ $package['duration_mode'] }}">{{ $package['name'] }}</option>
                                 @endforeach
                             </select>
                             <input type="hidden" id="plantPrice">
@@ -915,6 +934,14 @@
 			}
         </script>
         <script>
+        let mode;
+        function populateInvestModal(type, name = '') {
+            if (type !== "farm") {
+                mode = type;
+                $('#modeType').text(mode === 'plant' ? 'Plant' : 'Tractor')
+            }
+            $(`#${type !== "farm" ? 'plantPackage' : 'package'}`).val(name).trigger('change');
+        }
         $(document).ready(function (){
             let packageName = $('#package');
             let slots = $('#slots');
@@ -1013,6 +1040,31 @@
                 }
             }
         });
+
+        $("#createPlantInvestment").on('shown.bs.modal', function(){
+            const plantPackages = {!! $plantPackages !!}
+            const tractorPackages = {!! $tractorPackages !!}
+            const selected = $(`#plantPackage`).val();
+            const pckgs = mode === 'plant' ? plantPackages : tractorPackages;
+            let html = `<option value="">Select Package</option>`;
+            pckgs.forEach(package => {
+                html += `<option value="${package.name}" data-rollover="${package.rollover}" data-price="${package.price}" data-roi="${package.roi}" data-duration="${package.duration}" data-milestones="${package.milestones}" data-duration-mode="${package.duration_mode}">${package.name}</option>`;
+            });
+            $(`#plantPackage`).html(html);
+            $(`#plantPackage`).val(selected).trigger('change');
+        });
+
+        $("#createPlantInvestment").on('hidden.bs.modal', function(){
+            const plantPackages = {!! $plantPackages !!}
+            const tractorPackages = {!! $tractorPackages !!}
+            const pckgs = [...plantPackages, ...tractorPackages];
+            let html = `<option value="">Select Package</option>`;
+            pckgs.forEach(package => {
+                html += `<option value="${package.name}" data-rollover="${package.rollover}" data-price="${package.price}" data-roi="${package.roi}" data-duration="${package.duration}" data-milestones="${package.milestones}" data-duration-mode="${package.duration_mode}">${package.name}</option>`;
+            });
+            $(`#plantPackage`).html(html);
+        });
+
         $(document).ready(function (){
             let plantPackageName = $('#plantPackage');
             let plantSlots = $('#plantSlots');
@@ -1030,6 +1082,7 @@
             let plantBankDetails = $('#plantBankDetails');
             let plantSecuredByPaystack = $('#plantSecuredByPaystack');
             let plantSubmitButton = $('#plantSubmitButton');
+            let plantMilestones = $('#milestones');
             let plantAgreed = $('#plantAgreed');
             let walletBalance = parseFloat({{ auth()->user()['wallet']['balance'] }});
             plantAgreed.on('change', checkIfFormCanSubmit);
@@ -1058,6 +1111,7 @@
                         plantRoi.val($(this).attr('data-roi'));
                         plantDuration.val($(this).attr('data-duration'));
                         plantDurationMode.val($(this).attr('data-duration-mode'));
+                        plantMilestones.val($(this).attr('data-milestones'));
                     }
                 });
                 computeAmount();
@@ -1073,7 +1127,7 @@
                 }
                 if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() >= 0)){
                     plantAmount.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val()).toFixed(2)));
-                    plantReturns.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val()) + 100) / 100)).toFixed(2)));
+                    plantReturns.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val() * 3) + 100) / 100)).toFixed(2)));
                 }
                 if (plantSlots.val() === "") {
                     plantAmount.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));

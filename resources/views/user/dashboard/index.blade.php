@@ -380,7 +380,7 @@
                         <div class="carousel-item @if($key == 0) show active @endif">
                             <!--begin::Wrapper-->
                             <div class="d-flex align-items-center mb-5">
-                                @if ($pcg['type'] == 'plant')
+                                @if ($pcg['type'] != 'farm')
                                 <img src="{{ asset($pcg['image']) }}" style="width: 80px; border-radius: 5px;" class="me-2">
                                 @endif
                                 <!--begin::Info-->
@@ -470,7 +470,7 @@
                             <!--end::Wrapper-->
                             <!--begin::Action-->
                             <div class="mb-1">
-                                <a class="btn btn-sm btn-primary" data-bs-toggle="modal" @if($pcg['type'] == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif >Invest in package</a>
+                                <a class="btn btn-sm btn-primary" data-bs-toggle="modal" onclick="populateInvestModal('{{ $pcg['type'] }}', '{{ $pcg['name'] }}')" @if($pcg['type'] != 'farm') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif >Invest in package</a>
                             </div>
                             <!--end::Action-->
                         </div>
@@ -876,6 +876,99 @@
         <!--end::Col-->
     </div>
     <!--end::Row-->
+
+        <!--begin::Row-->
+        <div class="row g-5 g-lg-10">
+            <!--begin::Col-->
+            @if (count($data['investments']['tractor']) > 0)
+                <div class="col-xxl-12 col-md-12 my-12">
+                    <!--begin::Tables Widget 5-->
+                    <div class="card h-md-100">
+                        <!--begin::Header-->
+                        <div class="card-header border-0 pt-5">
+                            <h3 class="card-title align-items-start flex-column">
+                                <span class="card-label fw-bolder fs-3 mb-1">Tractor Investments</span>
+                                <span class="text-muted mt-1 fw-bold fs-7">Latest Investments</span>
+                            </h3>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body py-3">
+                            <!--begin::Table container-->
+                            <div class="table-responsive">
+                                <!--begin::Table-->
+                                <table class="table table-row-dashed table-row-gray-200 align-middle gs-0 gy-4">
+                                    <!--begin::Table head-->
+                                    <thead>
+                                        <tr class="fw-bolder text-muted">
+                                            <th class="ps-4 text-dark rounded-start">S/N</th>
+                                            <th class="text-dark">Cover</th>
+                                            <th class="text-dark">Package</th>
+                                            <th class="text-dark">Total Invested</th>
+                                            <th class="text-dark">Expected Returns</th>
+                                            <th class="text-dark">Return Date</th>
+                                            <th class="text-dark">Status</th>
+                                        </tr>
+                                    </thead>
+                                    <!--end::Table head-->
+                                    <!--begin::Table body-->
+                                    <tbody>
+                                        @if (count($data['investments']['tractor']) > 0)
+                                            @foreach ($data['investments']['tractor'] as $key => $plantInvestment)
+                                                <tr>
+                                                    <td class="ps-4"><span
+                                                            class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span>
+                                                    </td>
+                                                    <td>
+                                                        <div class="symbol symbol-45px me-2">
+                                                            <span class="symbol-label">
+                                                                <img src="{{ asset($plantInvestment['package']['image']) }}"
+                                                                    class="h-50 align-self-center" alt="" />
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td><span
+                                                            class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['package']['name'] }}</span>
+                                                    </td>
+                                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }}
+                                                            {{ number_format($plantInvestment['amount']) }}</span></td>
+                                                    <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }}
+                                                            {{ number_format($plantInvestment['total_return']) }}</span></td>
+                                                    <td><span
+                                                            class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['return_date']->format('M d, Y') }}</span>
+                                                    </td>
+                                                    <td>
+                                                        @if ($plantInvestment['status'] == 'active')
+                                                            <span class="badge badge-pill badge-success">Active</span>
+                                                        @elseif($plantInvestment['status'] == 'pending')
+                                                            <span class="badge badge-pill badge-warning">Pending</span>
+                                                        @elseif($plantInvestment['status'] == 'settled')
+                                                            <span class="badge badge-pill badge-secondary">Settled</span>
+                                                        @elseif($plantInvestment['status'] == 'cancelled')
+                                                            <span class="badge badge-pill badge-danger">Declined</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        @else
+                                            <tr>
+                                                <td colspan="6" class="text-center">No data available</td>
+                                            </tr>
+                                        @endif
+                                    </tbody>
+                                    <!--end::Table body-->
+                                </table>
+                            </div>
+                            <!--end::Table-->
+                        </div>
+                        <!--end::Body-->
+                    </div>
+                    <!--end::Tables Widget 5-->
+                </div>
+            @endif
+            <!--end::Col-->
+        </div>
+        <!--end::Row-->
 
     <!--begin::Row-->
     <div class="row g-5 g-lg-10">

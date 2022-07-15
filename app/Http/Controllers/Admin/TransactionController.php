@@ -117,6 +117,12 @@ class TransactionController extends Controller
             case 'investment':
                 if ($transaction['investment']){
                     $package = $transaction['investment']['package'];
+                    if ($package->status == "closed") {
+                        return back()->with('error', "Can't process investment, package already closed");
+                    }
+                    if ($package->type == "farm" && $package->available_slots < $transaction['investment']['slots']) {
+                        return back()->with('error', "Can't process investment, not enough available slots ({$package->available_slots} left)");
+                    }
                     if (Carbon::make($package['start_date'])->lt(now())) {
                         $startDate = now();
                     } else {
@@ -124,8 +130,7 @@ class TransactionController extends Controller
                     }
                     $transaction->investment()->update([
                         'investment_date' => now()->format('Y-m-d H:i:s'),
-                        'payment'          => 'approved',
-                        'status'          => 'active',
+                        'payment'         => 'approved',
                         'start_date'      => $startDate
                     ]);
                     try {

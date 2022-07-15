@@ -36,13 +36,15 @@
                     <!--end::Name-->
                     <!--begin::Position-->
                     <div class="mb-9">
-                        <!--begin::Badge-->
-                        @if ($investment['package']['status'] == 'open')
-                            <span class="badge badge-lg badge-light-primary d-inline">{{ ucwords($investment['package']['status']) }}</span>
-                        @else
-                            <span class="badge badge-lg badge-light-danger d-inline">{{ ucwords($investment['package']['status']) }}</span>
+                        @if($investment['status'] == 'active')
+                            <span class="badge badge-lg d-inline badge-pill badge-light-success">Active</span>
+                        @elseif($investment['status'] == 'pending')
+                            <span class="badge badge-lg d-inline badge-pill badge-light-warning">Pending</span>
+                        @elseif($investment['status'] == 'settled')
+                            <span class="badge badge-lg d-inline badge-pill badge-light-secondary">Settled</span>
+                        @elseif($investment['status'] == 'cancelled')
+                            <span class="badge badge-lg d-inline badge-pill badge-light-danger">Declined</span>
                         @endif
-                        <!--begin::Badge-->
                     </div>
                     <!--end::Position-->
                     <!--begin::Info-->
@@ -194,10 +196,10 @@
                         <!--end::Stats-->
                         <!--begin::Progress-->
                         @php
-                            $total = Illuminate\Support\Carbon::parse($investment['start_date'])->diffInDays($investment['return_date']);
-                            $passed = $total - now()->diffInDays($investment['return_date']);
+                            $total = Illuminate\Support\Carbon::parse($investment['start_date'])->diffInSeconds($investment['return_date']);
+                            $passed = $total - now()->diffInSeconds($investment['return_date']);
                             if ($investment['status'] == 'active') {
-                                $percentage = round(($passed / $total) * 100);
+                                $percentage = ($passed / $total) * 100;
                             } elseif ($investment['status'] == 'settled') {
                                 $percentage = 100;
                             } else {
@@ -220,7 +222,7 @@
                                 @else
                                     {{ ucwords($investment['status']) }}
                                 @endif</span>
-                                <span class="fw-bolder fs-6">{{$percentage}}%</span>
+                                <span class="fw-bolder fs-6">{{round($percentage)}}%</span>
                             </div>
                             <div class="h-30px mx-3 w-100 bg-light mb-3" style="border-radius: 30px;">
                                 <div class="bg-success h-30px" role="progressbar" style="border-radius: 30px; width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
@@ -231,7 +233,7 @@
                     <!--end::Card body-->
                 </div>
                 <!--end::Card-->
-                @if ($investment['package']['type'] == 'plant')
+                @if ($investment['package']['type'] != 'farm')
                     <!--begin::Card-->
                     <div class="card pt-4">
                         <!--begin::Card header-->

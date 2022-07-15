@@ -114,7 +114,7 @@
                     <div>
                         <!--begin::Add customer-->
                         <div class="justify-content-end">
-                            <a data-bs-toggle="modal" @if($type == 'plant') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif  class="btn btn-sm btn-primary">
+                            <a data-bs-toggle="modal" onclick="populateInvestModal('{{ $type }}')" @if($type != 'farm') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif  class="btn btn-sm btn-primary">
                             <!--begin::Svg Icon | path: icons/duotune/arrows/arr075.svg-->
                             <span class="svg-icon svg-icon-2">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
