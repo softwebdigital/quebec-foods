@@ -272,7 +272,7 @@
           <div>
             <h3 class="text-[#192434] text-4xl font-bold py-4">Tractors</h3>
             <p class="text-[#5B6676] text-base leading-8 py-5 text-justify pr-5">
-              Agro-Food processing is a key contributor to South Asia countries and motivates labor movement from agriculture to manufacturing....
+            This platform provide investors the opportunity to invest in the Agric mechanization space, thereby making tractors, machinery and trucks available to farmers, while you earn returns with the aim of increasing the numbers of tractors per hectare of farmland in Nigeria. 
             </p>
           </div>
           <div class="flex justify-between gap-3 lg:w-[80%]">
@@ -308,6 +308,70 @@
       </div>
     </div>
   </section>
+
+  <section class="bg-[#F3FFF9]" style="margin-top: 77px;">
+        <section class="section-container">
+          <div class="px-2 py-1 lg:py-0 md:px-0 lg:w-1/2">
+                    <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Our Products</h2>
+                    <p class="text-sm lg:text-lg text-gray-700 font-normal">
+                    We are committed to cultivating, producing processing, and packaging healthy food products such as; high quality cassava products, fruits, vegetables, and others for Nigeria and the global market.
+                    </p>
+                  </div>
+        </section>
+          
+        <section class="splide section-container" aria-labelledby="carousel-heading">
+            
+          <div class="splide__track">
+              <ul class="splide__list">
+                  <!-- <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
+                  </li> -->
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <!-- <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
+                  </li> -->
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <!-- <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
+                  </li> -->
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+              </ul>
+          </div>
+        </section>
+      </section>
 
 
   <!-- Testimonial -->
@@ -424,6 +488,15 @@
     </div>
   </section>
 
+  <style>
+    @media (min-width: 1024px){
+      .give-padding {
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+      }
+    }
+  </style>
+
   <!-- Mobile CTA -->
   <section class="mobile-cta-section">
     <div
@@ -432,7 +505,7 @@
         <img class="app" src="/static-assets/Mobile-App.a7165a51.png" alt="">
       </div>
       <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
-        <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
+        <div class="give-padding relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24" style="border-radius: 0px 30px 30px 0px;">
           <div class="absolute download-tag bottom-6 -left-14">
             <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
           </div>
