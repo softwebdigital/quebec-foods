@@ -17,7 +17,7 @@
                         </p>
                         <div
                             class="flex flex-col items-center justify-center my-2 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
-                            <a href="#"
+                            <a href="{{ route('login') }}"
                                 class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                                 <span>
                                     Get Started
@@ -29,10 +29,10 @@
                                         fill="#ffffff" />
                                 </svg>
                             </a>
-                            <a href="#" class="btn !text-primary">
+                            <!-- <a href="#" class="btn !text-primary">
                                 <i class="fa-brands fa-google-play"></i>
                                 <span>Download App</span>
-                            </a>
+                            </a> -->
                         </div>
                     </div>
                 </div>
@@ -51,14 +51,12 @@
                 <div
                     class="flex flex-col-reverse items-center lg:justify-between lg:gap-x-36 text-left lg:flex-row relative">
                     <div class="hidden lg:block lg:w-[15%]"></div>
-                    <div class="py-5 shadow-2xl md:px-0 md:absolute rounded-3xl bg-white md:w-[669px]">
+                    <div class="py-5 shadow-lg md:px-0 md:absolute rounded-3xl bg-white md:w-[669px]">
                         <div class="px-5 lg:px-10 py-5 text-left flex flex-col items-center gap-y-5">
-                            <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Why
-                                Invest in Agro-Food processing Plants</span>
+                            <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Quebec Food Processing Industrial Park Ltd.</span>
                             <h3
                                 class="max-w-[400px] text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5 self-start">
-                                Food Production Investment
-                                Scheme (FPIS)</h3>
+                                Why Invest in Agro-Food Processing Plants</h3>
                         </div>
                         <div class="w-full px-5 py-4 mt-5 lg:mt-2 lg:px-10 ">
                             <p class="inline-block py-1 text-sm text-ink md:text-[18px] md:leading-h-5 md:py-4">
@@ -76,7 +74,7 @@
                                 City, agro-processing industrial layout to reduce farm produce wastage and process what
                                 the six (6) geopolitical zones have to offer in the non-oil sector
                             </p>
-                            <div
+                            <!-- <div
                                 class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
                                 <a href="#"
                                     class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
@@ -90,7 +88,7 @@
                                             fill="#ffffff" />
                                     </svg>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="lg:w-[85%]">
@@ -105,10 +103,8 @@
             <div
                 class="flex flex-col lg:flex-row px-7 lg:px-16 gap-y-6 lg:gap-x-20 rounded-[32px] py-9 lg:py-14 bg-primary text-white ">
                 <div class="flex flex-col w-full gap-3 lg:gap-6 lg:w-3/5">
-                    <span class=" text-lg font-bold lg:text-[22px] lg:leading-h-4l">INVESTMENT OVERVIEW</span>
-                    <h3 class="text-3xl font-bold lg:text-heading-3 lg:leading-h-3">The Agro-processing plant investment
-                        scheme
-                    </h3>
+                    <span class=" text-lg font-bold lg:text-[22px] lg:leading-h-4l">VENTURE OVERVIEW</span>
+                    <h3 class="text-3xl font-bold lg:text-heading-3 lg:leading-h-3">The Agro-Food Processing Venture Scheme (AFPVS)</h3>
                     <p class="text-base text-white lg:text-lg">
                         This investment is absolutely without risk on your part, because investors capital are
                         collateralized with land backed asset security for 24months or Bank Guarantee (BG), until the
@@ -120,7 +116,7 @@
                         after
                         commissioning of the plant.
                     </p>
-                    <a href="#"
+                    <a href="{{ route('login') }}"
                         class="bg-white hidden  text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg lg:flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                         <span>
                             Get Started
@@ -132,8 +128,8 @@
                     </a>
                 </div>
                 <div class="self-end w-full lg:w-2/5 lg:pb-20">
-                    <img class="hidden lg:block" src="/static-assets/plant-process-2.1602509f.svg" alt="33%">
-                    <a href="#"
+                    <img class="hidden lg:block" src="/static-assets/plant-process-2.1602509f.svg" alt="25%">
+                    <a href="{{ route('login') }}"
                         class="bg-white  lg:hidden text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[60%] lg:w-1/2 ">
                         <span>
                             Get Started
@@ -241,16 +237,20 @@
                 <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
                     <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
                         <div class="absolute download-tag bottom-6 -left-14">
-                            <img src="/static-assets/download-tag.4d6957af.png" alt="">
+                            <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
                         </div>
                         <div class="content-right">
                             <h3>Get Started Here</h3>
                             <p>Open an account and start investing in our processing plant scheme
                                 <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
                             </p>
-                            <a href="#" class="btn ">
+                            <!-- <a href="#" class="btn ">
                                 <i class="fa-brands fa-google-play"></i>
                                 <span>Download App</span>
+                            </a> -->
+                            <a href="{{ route('login') }}" class="btn ">
+                                <!-- <i class="fa-brands fa-google-play"></i> -->
+                                <span>Sign in</span>
                             </a>
                         </div>
                     </div>

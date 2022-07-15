@@ -25,7 +25,7 @@
           </div>
 
           <!-- Links -->
-          <div class="flex justify-between content-center items-center xl:gap-x-8 w-2/3 lg:w-[80%] relative">
+          <div style="font-weight: 500;" class="flex justify-between content-center items-center xl:gap-x-8 w-2/3 lg:w-[80%] relative">
 
             <a class="cursor-pointer nav-link drop-down-items q-boss">
               <span> Quebec Foods </span>
@@ -62,7 +62,7 @@
         </div>
 
         <!-- Actions -->
-        <div class="flex items-center content-center justify-between lg:gap-x-5">
+        {{-- <div class="flex items-center content-center justify-between lg:gap-x-5">
           @guest
           <a class="hidden btn lg:block" href="/login">
             Sign In
@@ -75,6 +75,18 @@
           <a class="hidden btn btn-primary md:block" href="#">
             Download App
           </a>
+        </div> --}} 
+
+        <div class="flex items-center content-center justify-between lg:gap-x-5">
+          @guest
+          <a class="hidden btn btn-primary md:block" href="/login">
+            Sign In
+          </a>
+          @else
+          <a class="hidden btn btn-primary md:block" href="/dashboard">
+            Dashboard
+          </a>
+          @endguest
         </div>
 
         <!-- Mobile Hambugger -->
@@ -98,6 +110,15 @@
             Contact Us
           </a>
           @guest
+          <a class="btn btn-primary md:hidden" href="{{ route('login') }}">
+            Sign In
+          </a>
+          @else
+          <a class="btn btn-primary md:hidden" href="/dashboard">
+            Dashboard
+          </a>
+          @endguest
+          <!-- @guest
           <a class="drop-down-items" href="/login">
             Sign In
           </a>
@@ -108,7 +129,7 @@
           @endguest
           <a class="btn btn-primary md:hidden" href="#">
             Download App
-          </a>
+          </a> -->
         </div>
       </div>
 
@@ -118,27 +139,27 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-content md:grid-cols-4 ">
+      <div class="footer-content md:grid-cols-4 " style="font-weight: 500;">
           <!-- Location -->
           <div class="flex flex-col gap-y-3">
               <div>
                   <img src="/static-assets/logo.e8cd949b.svg" class="footer-logo" alt="Logo Footer">
               </div>
-
-              <a href="https://www.google.com/maps/place/Boya+place/@9.0498425,7.4354707,15z/data=!4m5!3m4!1s0x0:0x63594dac8d4ae3ac!8m2!3d9.0499115!4d7.4354294"
-                  target="_blank" class="text-base text-ink">
-
-                  Suite B15, Boya Place Ameh Ebute <br>
-                  Street,Wuye- Abuja, Nigeria.
-              </a>
-              <div class="lg:flex flex-col !-my-1 hidden gap-x-2">
-                  <a class="text-base text-ink" href="/terms">Terms and Conditions</a>
-                  <a class="text-base text-ink" href="/privacy-policy">Privacy Policy</a>
-              </div>
               <span class="hidden text-base text-ink lg:inline-block">
                   © Copyright 2022 Quebec Groups Limited. <br>
                   All rights reserved.
               </span>
+
+              <a href="https://www.google.com/maps/place/Boya+place/@9.0498425,7.4354707,15z/data=!4m5!3m4!1s0x0:0x63594dac8d4ae3ac!8m2!3d9.0499115!4d7.4354294"
+                  target="_blank" class="mt-3 flex text-base text-ink">
+                  <img class="h-6" style="margin-right: 15px; margin-top: 6px;" src="/static-assets/Vector.png" alt="Message icon">
+                  Suite B15, Boya Place Ameh Ebute <br>
+                  Street,Wuye- Abuja, Nigeria.
+              </a>
+              <div class="mt-5 lg:flex flex-col !-my-1 hidden gap-x-2">
+                  <a class="text-primary" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
+              </div>
+              
 
           </div>
 
@@ -180,8 +201,17 @@
                   <li>
                       <a href="/contact">Contact Us</a>
                   </li>
-
                   <li>
+                    <a href="/terms">Terms and Conditions</a>
+                  </li>
+                  <li>
+                    <a href="/privacy-policy">Privacy Policy</a>
+                  </li>
+                  <li>
+                    <a href="#">Quebec Foods Disclaimer</a>
+                  </li>
+
+                  <!-- <li>
                       <a href="tel:+2347016358414">Phone 1: (+234) 701-635-8414</a>
                   </li>
                   <li>
@@ -189,7 +219,7 @@
                   </li>
                   <li>
                       <a href="+2349095448354">Phone 3: (+234) 909-544-8354</a>
-                  </li>
+                  </li> -->
 
               </ul>
           </div>
@@ -197,7 +227,19 @@
 
           <!-- Socials -->
           <div class="footer-nav">
-              <h4 class="heading">Follow Us</h4>
+              <h4 class="heading">Get in Touch</h4>
+              <ul>
+                <li>
+                    <a href="tel:+2347016358414">Phone 1: (+234) 701-635-8414</a>
+                </li>
+                <li>
+                    <a href="tel:+2348146306036">Phone 2: (+234) 814-630-6036</a>
+                </li>
+                <li>
+                    <a href="+2349095448354">Phone 3: (+234) 909-544-8354</a>
+                </li>
+              </ul>
+              
               <div class="socials">
                   <a href="#">
                       <i class="fa-brands fa-facebook"></i>

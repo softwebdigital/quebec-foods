@@ -22,8 +22,8 @@
           <p class="inline-block py-2 text-lg text-ink md:text-heading-5 md:leading-h-5 md:py-4">Open an account and
             start investing in our food processing scheme in just 5 minutes.</p>
           <div class="my-5">
-            <a href="#"
-              class="btn-primary my-4 py-5 md:text-lg md:py-5  px-5 rounded-md flex justify-between items-baseline gap-x-2 w-[80%] lg:w-1/2">
+            <a href="{{ route('dashboard') }}" style="border-radius: 12px;"
+              class="btn-primary my-4 py-5 md:text-lg md:py-5  px-5 rounded-md flex justify-around items-baseline gap-x-2 w-[80%] lg:w-1/2">
               <span>
                 Get Started
               </span>
@@ -44,9 +44,7 @@
   <section class="pb-40 mt-10 mb-20 section-container md:mt-20 md:pb-0 md:mb-4">
     <div class="flex flex-col items-center justify-between md:flex-row gap-x-5">
       <div class="lg:w-1/2 ">
-        <h2 class="text-4xl lg:text-5xl lg:leading-[56px] text-[#192434] font-bold ">A smart app that helps you invest
-          in commodities
-          and make money.</h2>
+        <h2 class="text-4xl lg:text-5xl lg:leading-[56px] text-[#192434] font-bold ">A digital system that helps you invest in commodities and make money.</h2>
         <div class="py-7 ">
           <div
             class="py-8 px-7 my-2 flex flex-col md:flex-row items-start content-start gap-x-2 w-full border border-[#E5F0EB] bg-[#FCFFFD]  rounded-xl">
@@ -54,8 +52,7 @@
               <img class="w-8 " src="/static-assets/Activity-primary.2b427def.svg" alt="Activity Icon">
             </div>
             <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Invest in commodities and
-                make money.
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] my-2" style="font-weight: 500;">Get value returns (CVR) for 3 -10 years (s)
               </h3>
               <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
                 allowing you
@@ -68,12 +65,9 @@
               <img class="w-8 " src="/static-assets/Graph-prmary.bb3cb24d.svg" alt="Activity Icon">
             </div>
             <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Invest in commodities and
-                make money.
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Partner with Quebec Processing Foods today
               </h3>
-              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
-                allowing you
-                to zoom in on the trends that matter and make more informed decisions.</p>
+              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our business model ensures we work with experienced farmers, and processors to promote scalability and profitability.</p>
             </div>
           </div>
           <div
@@ -82,8 +76,7 @@
               <img class="w-8 " src="/static-assets/Category-primary.81a6157f.svg" alt="Activity Icon">
             </div>
             <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Invest in commodities and
-                make money.
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Join the Agribusiness profit venture global digital platform
               </h3>
               <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
                 allowing you
@@ -108,12 +101,12 @@
             <img src="/static-assets/profile-add.8fa32564.svg" alt="">
           </div>
           <div class="py-5 text-[#192434]">
-            <h3 class="py-2 text-2xl font-bold">Create Account</h3>
+            <h3 class="py-2 text-2xl" style="font-weight: 700;">Create Account</h3>
             <p class="text-[#5B6676] font-normal">
               Join our community by signing up today using your email to get started and start making profit as a
               farmer on the Go!
             </p>
-            <a href="#" class="btn flex !text-primary items-baseline gap-x-2 text-lg mt-4 !pl-0">
+            <a href="{{ route('dashboard') }}" class="btn flex !text-primary items-baseline gap-x-2 text-lg mt-4 !pl-0">
               <span>
                 Get Started
               </span>
@@ -136,7 +129,7 @@
               After signing in, choose a farm from the available open farms,. select the number of units you would
               like to fund and proceed to make the payments.
             </p>
-            <a href="#" class="btn flex !text-primary items-baseline gap-x-2 text-lg mt-4 !pl-0">
+            <a href="{{ route('dashboard') }}" class="btn flex !text-primary items-baseline gap-x-2 text-lg mt-4 !pl-0">
               <span>
                 Get Started
               </span>
@@ -159,7 +152,7 @@
               On your personalized dashboard, you would get regular real-time updates for farm progress as well as
               access details of all the farms you have funded till date.
             </p>
-            <a href="#" class="btn flex !text-primary items-baseline gap-x-2 text-lg mt-4 !pl-0">
+            <a href="{{ route('dashboard') }}" class="btn flex !text-primary items-baseline gap-x-2 text-lg mt-4 !pl-0">
               <span>
                 Get Started
               </span>
@@ -181,7 +174,7 @@
             <p class="text-[#5B6676] font-normal">
               Your returns on investment are calculated daily. Returns starts to count once a new cycle starts.
             </p>
-            <a href="#" class="btn flex !text-primary items-baseline gap-x-2 text-lg mt-4 !pl-0">
+            <a href="{{ route('dashboard') }}" class="btn flex !text-primary items-baseline gap-x-2 text-lg mt-4 !pl-0">
               <span>
                 Get Started
               </span>
@@ -214,7 +207,7 @@
             </p>
           </div>
           <div class="flex justify-between gap-3 lg:w-[80%]">
-            <a href="#"
+            <a href="/investments/farm"
               class="flex items-baseline justify-center w-1/2 px-3 py-5 my-4 text-sm rounded-md btn-primary md:text-base md:py-4 gap-x-3">
               <span>
                 Invest Now
@@ -225,7 +218,7 @@
                   fill="#ffffff" />
               </svg>
             </a>
-            <a href="#"
+            <a href="/investments/farm"
               class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
               <span>
                 Discover More
@@ -249,7 +242,7 @@
             </p>
           </div>
           <div class="flex justify-between gap-3 lg:w-[80%]">
-            <a href="#"
+            <a href="/investments/plant"
               class="flex items-baseline justify-center w-1/2 px-3 py-5 my-4 text-sm rounded-md btn-primary md:text-base md:py-4 gap-x-3">
               <span>
                 Invest Now
@@ -260,7 +253,7 @@
                   fill="#ffffff" />
               </svg>
             </a>
-            <a href="#"
+            <a href="/investments/plant"
               class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
               <span>
                 Discover More
@@ -283,7 +276,7 @@
             </p>
           </div>
           <div class="flex justify-between gap-3 lg:w-[80%]">
-            <a href="#"
+            <a href="/investments/tractor"
               class="flex items-baseline justify-center w-1/2 px-3 py-5 my-4 text-sm rounded-md btn-primary md:text-base md:py-4 gap-x-3">
               <span>
                 Invest Now
@@ -294,7 +287,7 @@
                   fill="#ffffff" />
               </svg>
             </a>
-            <a href="#"
+            <a href="/investments/tractor"
               class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
               <span>
                 Discover More
@@ -441,16 +434,17 @@
       <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
         <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
           <div class="absolute download-tag bottom-6 -left-14">
-            <img src="/static-assets/download-tag.4d6957af.png" alt="">
+            <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
           </div>
           <div class="content-right">
             <h3>Get Started Here</h3>
             <p>Open an account and start investing in our processing plant scheme
               <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
             </p>
-            <a href="#" class="btn ">
-              <i class="fa-brands fa-google-play"></i>
-              <span>Download App</span>
+            <a href="{{ route('login') }}" class="btn ">
+              <!-- {{-- <i class="fa-brands fa-google-play"></i>
+              <span>Download App</span> --}} -->
+              <span>Sign in</span>
             </a>
           </div>
         </div>
@@ -462,7 +456,7 @@
   <section class="mb-20 section-container">
     <div class="flex flex-col justify-between gap-8 md:flex-row">
       <div class="w-full px-5 md:w-2/5 md:px-3">
-        <h4 class="text-[#192434] text-3xl md:leading-h-2 md:text-5xl font-bold my-4">Some of our Clients</h4>
+        <h4 class="text-[#192434] text-3xl md:leading-h-2 md:text-5xl font-bold my-4">We are trusted!</h4>
         <p class="text-[#5B6676] text-base md:text-2xl">We are trusted by over 30 Companies in the ecosystem and we
           have been serving them without hassle</p>
       </div>
