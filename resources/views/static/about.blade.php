@@ -29,7 +29,69 @@
           </p>
         </div>
       </section>
-
+      <section class="bg-[#F3FFF9]" style="margin-top: 77px;">
+        <section class="section-container">
+          <div class="px-2 py-1 lg:py-0 md:px-0 lg:w-1/2">
+                    <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Our Products</h2>
+                    <p class="text-sm lg:text-lg text-gray-700 font-normal">
+                    We are committed to cultivating, producing processing, and packaging healthy food products such as; high quality cassava products, fruits, vegetables, and others for Nigeria and the global market.
+                    </p>
+                  </div>
+        </section>
+          
+        <section class="splide section-container" aria-labelledby="carousel-heading">
+            
+          <div class="splide__track">
+              <ul class="splide__list">
+                  <!-- <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
+                  </li> -->
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <!-- <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
+                  </li> -->
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <!-- <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
+                  </li> -->
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                  </li>
+              </ul>
+          </div>
+        </section>
+      </section>
       <!-- Our Processess -->
       <section class="section-container pb-10 pt-24 lg:mt-10">
         <div class="flex flex-col lg:flex-row items-center gap-6">
@@ -309,20 +371,42 @@
           <div class="lg:col-start-5 lg:col-end-9 px-3 lg:px-0">
             <div class="w-full bg-primary curved my-6 lg:my-0 lg:px-16 lg:py-24 relative">
               <div class="download-tag absolute bottom-6 -left-14">
-                <img src="/static-assets/download-tag.4d6957af.png" alt="">
+                <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
               </div>
               <div class="content-right">
                 <h3>Get Started Here</h3>
                 <p>Open an account and start investing in our processing plant scheme
                   <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
                 </p>
-                <a href="#" class="btn ">
+                <!-- <a href="#" class="btn ">
                   <i class="fa-brands fa-google-play"></i>
                   <span>Download App</span>
-                </a>
+                </a> -->
+                <a href="{{route('login')}}" class="btn ">
+                            <!-- <i class="fa-brands fa-google-play"></i> -->
+                            <span>Sign in</span>
+                        </a>
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tab-btn");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active-tab-btn", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active-tab-btn";
+  }
+
+  document.getElementById("defaultOpen").click();
+</script>
 @endsection
