@@ -97,7 +97,7 @@
         <div class="flex flex-col lg:flex-row items-center gap-6">
           <div class="px-6 py-5 lg:py-0 md:px-0 lg:w-1/2">
             <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-[#192434] font-bold mb-5">Our Processes</h2>
-            <p class="text-sm lg:text-lg text-gray-700 font-normal">
+            <p class="text-sm lg:text-lg md:text-2xl text-gray-700 font-normal">
               We enhance Farm produces production, minimize post-harvest losses, process and package, for Export while you
               also are earning for your own future as an alternative medium of investment and an additional source of
               income for living.
@@ -280,82 +280,74 @@
               <h3 class="text-[#192434] font-bold text-[40px] leading-[48px] lg:mb-5">Infrastructure</h3>
               <h4 class="lg:text-[28px]">Food Processing</h4>
               <p>
-                Q-bec Foods has taken on state of the art technology for processing of the cassava value chain, Tropical
-                fruits, vegetables and spices being one of the agricultural sub-sectors in West and Central Africa that
-                has great potential in terms of improving productivity, creating added value and developing regional
-                trade.
+                Q-bec Foods has taken on state of the art technology for processing of the cassava value chain, fruits, vegetables and spices being one of the agricultural sub-sectors in West and Central Africa that has great potential in terms of improving productivity, creating added value and developing regional trade. 
               </p>
               <p>
-                The Plants design are on-going by Henan Jinrui Food Engineering and Zhengzhou Jinghua Industry Co., for
-                processing aseptic packing of various cassava food products; While Alfa Laval Sweden for processing &
-                aseptic packing of various Tropical fruits and vegetables.
+                The Plants design are on-going by Henan Jinrui Food Engineering Ltd and  Zhengzhou jinghua industry co., Ltd, for processing aseptic packing of various cassava food products; While Alfa Laval Sweden for processing & aseptic packing of various fruits and vegetables.
               </p>
               <p>
-                All Q-bec Foods product will be packed directly into aseptic packs to ensure a long shelf life with
-                complete preservatives or refrigeration. This is also to protect the bags against flex cracking and pin
-                hole damage.
+                All Q-bec Foods product will be packed directly into aseptic packs to ensure a long shelf life with complete preservatives or refrigeration where and when necessary. This is also to protect the bags against flex cracking and pin hole damage.
               </p>
               <p>
-                All processing operations like extraction, refining, concentration, sterilization and aseptic packing are
-                automatic and take place in sealed systems for total hygiene. Computerized process controls is put in
-                place to ensure continuous maintenance of parameters that are essential to the preservation of color,
-                flavor and taste, to meet international standards.
+                All processing operations like extraction, refining, concentration, sterilization and aseptic packing are automatic and take place in sealed systems for total hygiene. 
               </p>
+
+              <p>Computerized process controls is put in place to ensure continuous maintenance of parameters that are essential to the preservation of color, flavor and taste, to meet international standards.</p>
 
               <h4 class="lg:text-[28px]">Food Production</h4>
               <p>
-                Q-bec Foods has designed Farm Estates model to create a sustainable linkage with the growers of agro-farm
-                produce, by adopting innovative practices like contract mechanized farming, across the states and
-                communities within and outside processing Units based on mutual trust and understanding.
+                  Q-bec Foods has designed Integrated Mechanized Farm Estates model to create a sustainable linkage with the growers of agro-farm produces, by adopting innovative practices like contract mechanized farming, across the states and communities within and outside processing Units based on mutual trust and understanding. 
               </p>
               <p>
-                This ensures complete traceability of the farm produce, right from the growers Field during production and
-                processing until in the storage facility; this is a highly desirable phenomenon in Nigerian food industry.
+                  This ensures complete traceability of the farm produce, right from the growers Field during production and processing until in the storage facility; this is a highly desirable phenomenon in Nigerian food industry.
               </p>
             </div>
             <div id="products" class="tabcontent">
               <h3 class="text-[#192434] font-bold text-[40px] leading-[48px] lg:mb-5">Products</h3>
               <p>
-                Q-bec Foods has distinguished itself to bridge the gap in the processing of various cassava multiples of
-                food products, including Garri (Fried Cassava Granules), Fufu (Cassava Dough), Lafun (Fermented Cassava
-                Flour), Tapioca (Cassava Flakes), Starch, flour, animal feed, alcohol, starches for sizing paper and
-                textiles, sweeteners, prepared foods and bio-degradable products.
+                Q-bec Foods has distinguished itself to bridge the gap in the processing of various cassava multiples of food products, including Garri (Fried Cassava Granules), Fufu (Cassava Dough), Lafun (Fermented Cassava Flour), Tapioca (Cassava Flakes), High Quality Cassava Starch (HQCS), High Quality Cassava flour (HQCF), animal feed, alcohol, starches for food, beverages, confectioneries, paper, textiles, adhesives and in pharmaceuticals;
               </p>
               <p>
-                Q-bec Foods has also distinguished itself to bridge the gap in the processing of tropical Fruits into
-                Pulses, Pastes and Concentrates, and also making special products like Ginger Paste, Garlic Paste and
-                other spices based products. We also offer variety blends of juice across the country and to the
-                International markets.
+                Q-bec Foods has also distinguished itself to bridge the gap in the processing of Fruits & Vegetables into Pulses, Pastes and Concentrates, and also making special products like Ginger Paste, Garlic Paste and other spices based products. We also offer variety blends of juice across the country and to the International markets.
               </p>
               <p>
-                Q-bec Foods have expertise to process fruits like Onion, Tomato, Mango, Cashew, Guava, Papaya, Tamarind,
-                Amla, pawpaw etc. to the desired specifications of the customer requirement.
+                Q-bec Foods have expertise to process fruits like Onion, Tomato, Mango, Cashew, Guava, Papaya, Tamarind, pawpaw etc. to the desired specifications of the customer requirement. 
               </p>
             </div>
             <div id="quality-assurance" class="tabcontent">
               <h3 class="text-[#192434] font-bold text-[40px] leading-[48px] lg:mb-5">Quality Assurance</h3>
-              <ul class="list-disc px-4">
-                <li>Q-bec Foods is certified by National Agency for Food & Drug Administration & Control (NAFDAC)</li>
-                <li>Q-bec Foods is certified by DNV (Det Norske Veritas), one of the world’s leading certification bodies/
-                  registrars, as being ISO 22000:2005 compliant.</li>
-                <li>Complied with the codex HACCP principles and provides a framework for third party certification.</li>
-                <li>Q-bec Foods is also SEDEX compliant company and has strong customer base both nationally &
-                  internationally.</li>
-                <li>KOSHER Certified for customers from Israel, Germany, USA & Canada.</li>
-                <li>Q-BEC FOODS is a member of the VOLUNTARY CONTROL SYSTEM of SGF. SGF Certification is obligatory for
-                  the exports to European Customers.</li>
-                <li>Stringent management policies in place.</li>
+              <p class="pt-3 pb-3"> All Q-bec Foods products will be certified by the following regulatory bodies:</p>
+              <ul class="list-disc px-4 p-4">
+                <li class="p-3">National Agency for Food & Drug Administration & Control (NAFDAC)</li>
+                <li class="p-3">DNV (Det Norske Veritas), one of the world’s leading certification bodies/ registrars, as being ISO 22000:2005 compliant.</li>
+                <li class="p-3">Complied with the codex HACCP principles and provides a framework for third party certification.</li>
+                <li class="p-3">SEDEX compliant company to have a strong customer base both nationally & internationally.</li>
+                <li class="p-3">KOSHER for customers from Israel, Germany, USA & Canada.</li>
               </ul>
+              <p class="pt-3 pb-3"> Q-BEC FOODS also identify with the VOLUNTARY CONTROL SYSTEM of SGF. SGF Certification is obligatory for the exports to European Customers.</p>
+              <p class="pt-3 pb-3">These processes are on-going to ensure we have stringent management policies in place.</p>
             </div>
             <div id="investments" class="tabcontent">
               <h3 class="text-[#192434] font-bold text-[40px] leading-[48px] lg:mb-5">Investment Scheme</h3>
-              <p>
-                Q-bec Foods have initiated an Investment scheme for interested agribusiness investors to invest in
-                <b>AGRO-PROCESSING PLANTS SCHEME AND AGRO-FARM PRODUCE BUYBACK OPTION SCHEME</b>, to ensure the vision laid out
-                by its promoters of developing Q-bec Agritech City & Farm Estates project model for the setting up
-                enormous processing plants and Mechanized Crop Production farm estates across the geo-political zones in
-                Nigeria is achieved within next 20 years.
-              </p>
+              <p class="pt-2 pb-4 font-bold">Partnerships</p>
+              <br>
+              <p class="pb-3">2.5.1</p>
+              <p class="pt-2 pb-4">Q-bec Foods have initiated plans to welcome anchor Investors, angel investor’s venture capitalists to invest in Q-bec Agritech City & Farm Estates Project sites across the selected zones in Nigeria. This is to ensure the vision laid out by its promoters of the on-going development plans for Q-bec Agritech City & Farm Estates project model is achieved.  </p>
+              <p class="pb-3">2.5.2</p>
+              <p class="pt-2 pb-4 font-bold">Government Agriculture Intervention Programmes.</p>
+              <p class="pt-2 pb-4">Quebec Food promoters aim is to contribute to nation building through this platform (Integrated Mechanized Farm Estates) by supporting the Federal Government initiatives through the Central Bank of Nigeria (CBN) and Nirsal Plc, of cultivating 4 million hectares of farmland by engaging 8 million Farmers across the country with expectation of producing about 12 million metric tonnes of Grain Product Equivalent (GPE) annually over the medium to long term.</p>
+              <a href="www.agritectcity.quebecgroups.com"
+                class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
+                <span>
+                  Discover More
+                </span>
+                <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" clip-rule="evenodd"
+                    d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z"
+                    fill="#00A451" />
+                </svg>
+
+              </a>
             </div>
           </div>
         </div>

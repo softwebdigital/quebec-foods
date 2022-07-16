@@ -18,7 +18,7 @@
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
                             <a href="{{ route('login') }}"
-                                class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
+                                class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-xl flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                                 <span>
                                     Get Started
                                 </span>
@@ -51,7 +51,7 @@
                 <div class="py-2 shadow-lg md:px-0 md:w-[55%] rounded-3xl">
                     <div class="w-full px-5 py-4 mt-5 lg:mt-10 lg:px-10 ">
 
-                    <div class="pb-5 lg:px-10 text-left flex flex-col items-center gap-y-5">
+                    <div class="pb-5 text-left flex flex-col items-center gap-y-5">
                             <!-- <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Quebec Food Processing Industrial Park Ltd.</span> -->
                             <h3
                                 class="max-w-[400px] text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5 self-start">
@@ -67,7 +67,7 @@
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
                             <a href="#"
-                                class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
+                                class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-xl flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                                 <span>
                                     Invest Now
                                 </span>
@@ -96,14 +96,14 @@
                 <div class="py-2 md:px-0 md:w-[55%] rounded-3xl">
                     <div class="w-full px-2 py-4 mt-10 lg:px-10 ">
                         <p
-                            class="inline-block py-1 text-base text-ink md:text-heading-[20px] md:leading-h-5 md:py-4">
+                            class="inline-block py-1 text-base text-ink md:text-[20px] md:leading-h-5 md:py-4">
                             Financing tractors for small holder farmers has been a daunting challenge, from the rise
                             in exchange rate to the hurdles of meeting banks’ requirement, small holder farmers
                             across Nigeria and Africa at large not being able to own tractors. Owning one is out of
                             their league, yet they constitute 70% of farmers in Sub Saharan Africa.
                         </p>
                         <p
-                            class="inline-block py-1 text-base text-ink md:text-heading-[20px] md:leading-h-5 md:py-4">
+                            class="inline-block py-1 text-base text-ink md:text-[20px] md:leading-h-5 md:py-4">
                             This platform provide investors the opportunity to invest in the Agric mechanization
                             space, thereby making tractors, machinery and trucks available to farmers, while you
                             earn returns with the aim of increasing the numbers of tractors per hectare of farmland
@@ -127,10 +127,7 @@
                 <div class="pt-16 max-w-[867px] mx-auto text-center">
                     <h4 class="py-6 text-4xl font-bold text-ink lg:leading-h-3 lg:text-heading-2">Ready to Start
                         Investing?</h4>
-                    <p class="md:text-[22px] md:leading-h-5 text-[#5B6676]">Register and create a new passive income
-                        stream with up
-                        to 14% Return on Investment (ROI) for a period of 10years depend on your choice of contract
-                        tenure.</p>
+                    <p class="md:text-[22px] md:leading-h-5 text-[#5B6676]">Register and create a new passive income stream with up to 12.5% cash value return (CVR) per annum for a period of 5years or 10years depending on your choice of contract tenure.</p>
                 </div>
             </div>
             <div
@@ -138,12 +135,12 @@
                 <div class=" section-container">
                     <div class="flex flex-col gap-24 px-10 lg:py-32 md:flex-row justify-around">
                         <div class="flex flex-col items-center justify-center text-center">
-                            <span class="text-primary text-[22px] inline-block">from $ 30,000 </span>
+                            <span class="font-bold text-primary text-[22px] inline-block">from $ 30,000 </span>
                             <span class="font-bold text-[72px] leading-[96px] inline-block">10.6<span
                                     class="text-[#A9B1BC]">%</span></span>
                         </div>
                         <div class="flex flex-col items-center justify-center text-center">
-                            <span class="text-primary text-[22px] inline-block">from $ 50,000</span>
+                            <span class="font-bold text-primary text-[22px] inline-block">from $ 50,000</span>
                             <span class="font-bold text-[72px] leading-[96px] inline-block">12.5<span
                                     class="text-[#A9B1BC]">%</span></span>
                         </div>

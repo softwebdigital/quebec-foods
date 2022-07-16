@@ -49,6 +49,19 @@
           <div
             class="py-8 px-7 my-2 flex flex-col md:flex-row items-start content-start gap-x-2 w-full border border-[#E5F0EB] bg-[#FCFFFD]  rounded-xl">
             <div class="my-2 md:w-1/6">
+              <img class="w-8 " src="/static-assets/Category-primary.81a6157f.svg" alt="Activity Icon">
+            </div>
+            <div>
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Join the Agribusiness profit venture global digital platform
+              </h3>
+              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
+                allowing you
+                to zoom in on the trends that matter and make more informed decisions.</p>
+            </div>
+          </div>
+          <div
+            class="py-8 px-7 my-2 flex flex-col md:flex-row items-start content-start gap-x-2 w-full border border-[#E5F0EB] bg-[#FCFFFD]  rounded-xl">
+            <div class="my-2 md:w-1/6">
               <img class="w-8 " src="/static-assets/Activity-primary.2b427def.svg" alt="Activity Icon">
             </div>
             <div>
@@ -68,19 +81,6 @@
               <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Partner with Quebec Processing Foods today
               </h3>
               <p class=" text-sm md:text-base text-[#5B6676] my-2">Our business model ensures we work with experienced farmers, and processors to promote scalability and profitability.</p>
-            </div>
-          </div>
-          <div
-            class="py-8 px-7 my-2 flex flex-col md:flex-row items-start content-start gap-x-2 w-full border border-[#E5F0EB] bg-[#FCFFFD]  rounded-xl">
-            <div class="my-2 md:w-1/6">
-              <img class="w-8 " src="/static-assets/Category-primary.81a6157f.svg" alt="Activity Icon">
-            </div>
-            <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Join the Agribusiness profit venture global digital platform
-              </h3>
-              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
-                allowing you
-                to zoom in on the trends that matter and make more informed decisions.</p>
             </div>
           </div>
         </div>
@@ -529,7 +529,7 @@
     <div class="flex flex-col justify-between gap-8 md:flex-row">
       <div class="w-full px-5 md:w-2/5 md:px-3">
         <h4 class="text-[#192434] text-3xl md:leading-h-2 md:text-5xl font-bold my-4">We are trusted!</h4>
-        <p class="text-[#5B6676] text-base md:text-2xl">We are trusted by over 30 Companies in the ecosystem and we
+        <p class="text-[#5B6676] text-base md:text-2xl">We are trusted by over 50 Companies in the ecosystem and we
           have been serving them without hassle</p>
       </div>
       <div class="flex items-center content-center justify-center w-full p-5 shadow-lg md:w-3/5 md:p-9 rounded-2xl">
