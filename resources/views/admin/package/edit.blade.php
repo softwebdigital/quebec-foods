@@ -295,7 +295,7 @@
                                         </span>
                                     @enderror
                                     <div class="small mt-4" id="statement">
-                                        <strong>Investments will run for <span id="year-value" ></span> with <span id="milestones-value" ></span> payment milestones</strong>
+                                        <strong>Investments will run for <span id="year-value" ></span> with <span id="milestones-value" ></span> payment milestone(s)</strong>
                                     </div>
                                 </div>
                                 <!--end::Input group-->
@@ -394,30 +394,39 @@
         if (pM == "biannually") {
             yV.innerText = "2 years"
         }
-        function getVal() {
-            const milestones = document.getElementById('milestones').value;
-        console.log(milestones);
+    getVals();
+    function getVal() {
+        const milestones = document.getElementById('milestones').value;
+        // console.log(milestones);
         mV.innerText = milestones
+        // nY.innerText = milestones
+        getVals();
     }
     function getVals() {
         const sT = document.getElementById('statement');
+        const milestones = document.getElementById('milestones').value;
         const pM = document.getElementById('payoutMode').value;
-        // console.log(pm)
+
+        if (!(milestones && pM)) {
+            sT.style.display = 'none'
+        } else {
+            sT.style.display = 'block'
+        }
 
         if (pM == "monthly") {
-            yV.innerText = "a month"
+            yV.innerText = (milestones + " month" + (milestones > 0 ? "s" : ''))
         }
         if (pM == "quarterly") {
-            yV.innerText = "3 months"
+            yV.innerText = (milestones * 3) + " months"
         }
         if (pM == "semi-annually") {
-            yV.innerText = "6 months"
+            yV.innerText = (milestones * 6) + " months"
         }
         if (pM == "annually") {
-            yV.innerText = "a year"
+            yV.innerText = (milestones + " year" + (milestones > 0 ? "s" : ''))
         }
         if (pM == "biannually") {
-            yV.innerText = "2 years"
+            yV.innerText = (milestones * 2) + " years"
         }
 
     }

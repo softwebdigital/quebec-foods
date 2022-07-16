@@ -382,6 +382,8 @@
                             <div class="d-flex align-items-center mb-5">
                                 @if ($pcg['type'] != 'farm')
                                 <img src="{{ asset($pcg['image']) }}" style="width: 80px; border-radius: 5px;" class="me-2">
+                                @else
+                                <img src="{{ asset($pcg->category['image']) }}" style="width: 80px; border-radius: 5px;" class="me-2">
                                 @endif
                                 <!--begin::Info-->
                                 <div class="m-0">
@@ -488,7 +490,7 @@
         @endphp
         @if ($pendingInvestments->count() > 0)
         <div class="col-md-6">
-            <div id="kt_sliders_widget_1_slider"
+            <div id="kt_sliders_widget_2_slider"
                 class="card card-flush carousel carousel-custom carousel-stretch slide h-xl-100" data-bs-ride="carousel"
                 data-bs-interval="5000">
                 <!--begin::Header-->
@@ -505,7 +507,7 @@
                         <ol
                             class="p-0 m-0 carousel-indicators carousel-indicators-bullet carousel-indicators-active-primary">
                             @foreach ($pendingInvestments->get() as $key => $pendingInvestment)
-                            <li data-bs-target="#kt_sliders_widget_1_slider" data-bs-slide-to="{{ $key }}" class="ms-1 @if($key == 0) active @endif"
+                            <li data-bs-target="#kt_sliders_widget_2_slider" data-bs-slide-to="{{ $key }}" class="ms-1 @if($key == 0) active @endif"
                             @if($key == 0)  aria-current="true" active @endif></li>
                             @endforeach
                         </ol>
