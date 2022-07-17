@@ -49,6 +49,19 @@
           <div
             class="py-8 px-7 my-2 flex flex-col md:flex-row items-start content-start gap-x-2 w-full border border-[#E5F0EB] bg-[#FCFFFD]  rounded-xl">
             <div class="my-2 md:w-1/6">
+              <img class="w-8 " src="/static-assets/Category-primary.81a6157f.svg" alt="Activity Icon">
+            </div>
+            <div>
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Join the Agribusiness profit venture global digital platform
+              </h3>
+              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
+                allowing you
+                to zoom in on the trends that matter and make more informed decisions.</p>
+            </div>
+          </div>
+          <div
+            class="py-8 px-7 my-2 flex flex-col md:flex-row items-start content-start gap-x-2 w-full border border-[#E5F0EB] bg-[#FCFFFD]  rounded-xl">
+            <div class="my-2 md:w-1/6">
               <img class="w-8 " src="/static-assets/Activity-primary.2b427def.svg" alt="Activity Icon">
             </div>
             <div>
@@ -68,19 +81,6 @@
               <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Partner with Quebec Processing Foods today
               </h3>
               <p class=" text-sm md:text-base text-[#5B6676] my-2">Our business model ensures we work with experienced farmers, and processors to promote scalability and profitability.</p>
-            </div>
-          </div>
-          <div
-            class="py-8 px-7 my-2 flex flex-col md:flex-row items-start content-start gap-x-2 w-full border border-[#E5F0EB] bg-[#FCFFFD]  rounded-xl">
-            <div class="my-2 md:w-1/6">
-              <img class="w-8 " src="/static-assets/Category-primary.81a6157f.svg" alt="Activity Icon">
-            </div>
-            <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Join the Agribusiness profit venture global digital platform
-              </h3>
-              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
-                allowing you
-                to zoom in on the trends that matter and make more informed decisions.</p>
             </div>
           </div>
         </div>
@@ -310,68 +310,68 @@
   </section>
 
   <section class="bg-[#F3FFF9]" style="margin-top: 77px;">
-        <section class="section-container">
-          <div class="px-2 py-1 lg:py-0 md:px-0 lg:w-1/2">
-                    <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Our Products</h2>
-                    <p class="text-sm lg:text-lg text-gray-700 font-normal">
-                    We are committed to cultivating, producing processing, and packaging healthy food products such as; high quality cassava products, fruits, vegetables, and others for Nigeria and the global market.
-                    </p>
-                  </div>
-        </section>
-          
-        <section class="splide section-container" aria-labelledby="carousel-heading">
-            
-          <div class="splide__track">
-              <ul class="splide__list">
-                  <!-- <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
-                  </li> -->
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-                  </li>
-                  <!-- <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
-                  </li> -->
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-                  </li>
-                  <!-- <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
-                  </li> -->
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-                  </li>
-              </ul>
-          </div>
-        </section>
-      </section>
+    <section class="section-container">
+      <div class="px-2 py-1 lg:py-0 md:px-0 lg:w-1/2">
+                <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Our Products</h2>
+                <p class="text-sm lg:text-lg text-gray-700 font-normal">
+                We are committed to cultivating, producing processing, and packaging healthy food products such as; high quality cassava products, fruits, vegetables, and others for Nigeria and the global market.
+                </p>
+              </div>
+    </section>
+      
+    <section class="splide section-container" aria-labelledby="carousel-heading">
+        
+      <div class="splide__track">
+          <ul class="splide__list">
+              <!-- <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
+              </li> -->
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+              </li>
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+              </li>
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+              </li>
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+              </li>
+              <!-- <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
+              </li> -->
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+              </li>
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+              </li>
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+              </li>
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+              </li>
+              <!-- <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
+              </li> -->
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+              </li>
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+              </li>
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+              </li>
+              <li class="splide__slide">
+                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+              </li>
+          </ul>
+      </div>
+    </section>
+  </section>
 
 
   <!-- Testimonial -->
@@ -498,7 +498,7 @@
   </style>
 
   <!-- Mobile CTA -->
-  <section class="mobile-cta-section">
+  <!-- <section class="mobile-cta-section">
     <div
       class="grid items-center content-center justify-between grid-cols-1 py-4 mx-auto max-w-screen-max md:grid-cols-2 lg:grid-cols-8">
       <div class="lg:col-start-1 lg:col-end-4">
@@ -507,7 +507,6 @@
       <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
         <div class="give-padding relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24" style="border-radius: 0px 30px 30px 0px;">
           <div class="absolute download-tag bottom-6 -left-14">
-            <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
           </div>
           <div class="content-right">
             <h3>Get Started Here</h3>
@@ -515,22 +514,22 @@
               <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
             </p>
             <a href="{{ route('login') }}" class="btn ">
-              <!-- {{-- <i class="fa-brands fa-google-play"></i>
-              <span>Download App</span> --}} -->
+              {{-- <i class="fa-brands fa-google-play"></i>
+              <span>Download App</span> --}}
               <span>Sign in</span>
             </a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- Clients -->
   <section class="mb-20 section-container">
     <div class="flex flex-col justify-between gap-8 md:flex-row">
       <div class="w-full px-5 md:w-2/5 md:px-3">
         <h4 class="text-[#192434] text-3xl md:leading-h-2 md:text-5xl font-bold my-4">We are trusted!</h4>
-        <p class="text-[#5B6676] text-base md:text-2xl">We are trusted by over 30 Companies in the ecosystem and we
+        <p class="text-[#5B6676] text-base md:text-2xl">We are trusted by over 50 Companies in the ecosystem and we
           have been serving them without hassle</p>
       </div>
       <div class="flex items-center content-center justify-center w-full p-5 shadow-lg md:w-3/5 md:p-9 rounded-2xl">
