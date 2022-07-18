@@ -55,7 +55,7 @@
                     <div class="py-2 shadow-lg md:px-0 md:w-[55%] rounded-3xl">
                         <div class="w-full px-5 py-4 mt-5 lg:mt-10 lg:px-10 ">
 
-                        <div class="pb-5 lg:px-10 text-left flex flex-col items-center gap-y-5">
+                        <div class="pb-5 text-left flex flex-col items-center gap-y-5">
                             <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Quebec Food Processing Industrial Park Ltd.</span>
                                 <h3
                                     class="max-w-[400px] text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5 self-start">
@@ -93,7 +93,7 @@
                 <div class="flex flex-col w-full gap-3 lg:gap-6 lg:w-3/5">
                     <span class=" text-lg font-bold lg:text-[22px] lg:leading-h-4l">VENTURE OVERVIEW</span>
                     <h3 class="text-3xl font-bold lg:text-heading-3 lg:leading-h-3">The Agro-Food Processing Venture Scheme (AFPVS)</h3>
-                    <p class="text-base text-white lg:text-lg">
+                    <p class="text-base text-white lg:text-lg md:text-[20px]">
                         This investment is absolutely without risk on your part, because investors capital are
                         collateralized with land backed asset security for 24months or Bank Guarantee (BG), until the
                         plants
@@ -196,7 +196,7 @@
                         Structure</h3>
 
                     <div class="w-full py-4 mt-5 lg:mt-2">
-                        <p class="inline-block py-1 text-sm text-ink md:text-[18px] md:leading-h-5 md:py-4">
+                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
                             The promoters are aware of the importance of building a solid business structure that can
                             support the picture of the kind of world-class business we want to own and manage, prior to
                             commencement of operations we are committed to only hiring the best hands that are
@@ -215,36 +215,32 @@
             </div>
         </section>
 
-        <!-- Mobile CTA -->
-        <section class="mobile-cta-section">
-            <div
-                class="grid items-center content-center justify-between grid-cols-1 py-4 mx-auto max-w-screen-max md:grid-cols-2 lg:grid-cols-8">
-                <div class="lg:col-start-1 lg:col-end-4">
-                    <img class="app" src="/static-assets/Mobile-App.a7165a51.png" alt="">
-                </div>
-                <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
-                    <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
-                        <div class="absolute download-tag bottom-6 -left-14">
-                            <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
-                        </div>
-                        <div class="content-right">
-                            <h3>Get Started Here</h3>
-                            <p>Open an account and start investing in our processing plant scheme
-                                <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
-                            </p>
-                            <!-- <a href="#" class="btn ">
-                                <i class="fa-brands fa-google-play"></i>
-                                <span>Download App</span>
-                            </a> -->
-                            <a href="{{ route('login') }}" class="btn ">
-                                <!-- <i class="fa-brands fa-google-play"></i> -->
-                                <span>Sign in</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+          <!-- Mobile CTA -->
+  <!-- <section class="mobile-cta-section">
+    <div
+      class="grid items-center content-center justify-between grid-cols-1 py-4 mx-auto max-w-screen-max md:grid-cols-2 lg:grid-cols-8">
+      <div class="lg:col-start-1 lg:col-end-4">
+        <img class="app" src="/static-assets/Mobile-App.a7165a51.png" alt="">
+      </div>
+      <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
+        <div class="give-padding relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24" style="border-radius: 0px 30px 30px 0px;">
+          <div class="absolute download-tag bottom-6 -left-14">
+          </div>
+          <div class="content-right">
+            <h3>Get Started Here</h3>
+            <p>Open an account and start investing in our processing plant scheme
+              <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
+            </p>
+            <a href="{{ route('login') }}" class="btn ">
+              {{-- <i class="fa-brands fa-google-play"></i>
+              <span>Download App</span> --}}
+              <span>Sign in</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
 
         <!-- FAQs Section -->
         <section class="mb-20 section-container ">

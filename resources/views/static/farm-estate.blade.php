@@ -12,11 +12,11 @@
                 Invest in our farm estate and buy back venture scheme
               </h1>
               <p class="inline-block py-2 text-lg text-ink md:text-heading-5 md:leading-h-5 md:py-4">
-                Open an account and start investing in our food processing scheme in just 5 minutes.
+                Open an account and start investing in our Food Production Venture Scheme in just 5 minutes.
               </p>
               <div class="flex items-baseline justify-center my-2 text-center lg:my-5 lg:justify-start">
                 <a href="{{ route('login') }}"
-                  class="btn-primary my-4 py-5 md:text-lg md:py-5  px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
+                  class="btn-primary my-4 py-5 md:text-lg md:py-5  px-9 rounded-xl flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                   <span>
                     Get Started
                   </span>
@@ -47,10 +47,7 @@
               LTD</span> -->
             <h3 class="max-w-[400px] text-primary font-bold text-lg lg:text-heading-4 lg:leading-h-5">Food Production Venture Scheme (FPVS)</h3>
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
-              The Food production Investment Scheme allows an agribusiness investor to invest his/her fund into the
-              AGRO-FARM PRODUCE BUYBACK SCHEME of Quebec Food Processing Industrial Parks Ltd’s planned MECHANIZED CROP
-              PRODUCTION to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project
-              sites.
+            The Food production venture Scheme allows an agribusiness investor to invest into the Agro-Farm Produce Buyback Venture Scheme of Quebec Food Processing Industrial Parks Ltd’s planned Integrated Mechanized Farm Estate to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites across Nigeria.
             </p>
 
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
@@ -82,6 +79,13 @@
                 </div>
                 <div class="p-2 shadow-lg md:px-0 md:w-[55%] rounded-3xl">
                     <div class="w-full px-5 py-4 mt-5 lg:mt-10 lg:px-10 ">
+                        <div class="pb-5 text-left flex flex-col items-center gap-y-5">
+                        <!-- <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Quebec Food Processing Industrial Park Ltd.</span> -->
+                            <h3
+                                class="max-w-[400px] text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5 self-start">
+                                Why Invest In Agro-Farm Produce Buyback Scheme
+                            </h3>
+                        </div>
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
                           Investing in Agro-Farm Produce Production is a good strategic move. One inevitable fact is that, whether the overall economy is in recession or booming economy, people still have to eat. Because of this, Quebec Food management team & shareholders regards agriculture and farming investments as being recession-proof. 
                         </p>
@@ -94,7 +98,7 @@
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
                             <a href="#"
-                                class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-md flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
+                                class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-xl flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
                                 <span>
                                     Learn more
                                 </span>
@@ -120,7 +124,7 @@
                 <div class="py-2 md:px-0 md:w-[55%] rounded-3xl">
                     <div class="w-full px-2 py-4 mt-10 lg:px-10 ">
                         <p
-                            class="inline-block py-1 text-base text-ink md:text-heading-[20px] md:leading-h-5 md:py-4">
+                            class="inline-block py-1 text-base text-ink md:text-[20px] md:leading-h-5 md:py-4">
                             Moreso, Quebec Food aim is to contribute to nation building through this platform by supporting the Federal Government initiatives through the Central Bank of Nigeria (CBN) and Nirsal Plc, of cultivating 4 million hectares of farmland by engaging 8 million Farmers across the country with expectation of producing about 12 million metric tons of Grain Product Equivalent (GPE) annually over the medium to long term.
                         </p>
 
@@ -138,7 +142,7 @@
         <div class="flex flex-col lg:flex-row justify-between ">
           <div class="lg:w-2/3 lg:px-10">
             <h3 class="text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5">Our Business Structure</h3>
-            <p class="text-ink font-medium text-sm lg:text-lg lg:leading-8 ">
+            <p class="text-ink font-medium text-sm md:text-[20px] lg:leading-8 ">
 
               The Investment Scheme is open for public and private participation to invest in the various value chains,
               categorized below:
@@ -228,35 +232,32 @@
         </div>
       </section>
 
-      <!-- Mobile CTA -->
-      <section class="mobile-cta-section">
-        <div
-          class="grid items-center content-center justify-between grid-cols-1 py-4 mx-auto max-w-screen-max md:grid-cols-2 lg:grid-cols-8">
-          <div class="lg:col-start-1 lg:col-end-4">
-            <img class="app" src="/static-assets/Mobile-App.a7165a51.png" alt="">
+        <!-- Mobile CTA -->
+  <!-- <section class="mobile-cta-section">
+    <div
+      class="grid items-center content-center justify-between grid-cols-1 py-4 mx-auto max-w-screen-max md:grid-cols-2 lg:grid-cols-8">
+      <div class="lg:col-start-1 lg:col-end-4">
+        <img class="app" src="/static-assets/Mobile-App.a7165a51.png" alt="">
+      </div>
+      <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
+        <div class="give-padding relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24" style="border-radius: 0px 30px 30px 0px;">
+          <div class="absolute download-tag bottom-6 -left-14">
           </div>
-          <div class="px-3 lg:col-start-5 lg:col-end-9 lg:px-0">
-            <div class="relative w-full my-6 bg-primary curved lg:my-0 lg:px-16 lg:py-24">
-              <div class="absolute download-tag bottom-6 -left-14">
-                <!-- <img src="/static-assets/download-tag.4d6957af.png" alt=""> -->
-              </div>
-              <div class="content-right">
-                <h3>Get Started Here</h3>
-                <p>Open an account and start investing in our processing plant scheme
-                  <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
-                </p>
-                <!-- <a href="#" class="btn ">
-                  <i class="fa-brands fa-google-play"></i>
-                  <span>Download App</span>
-                </a> -->
-                <a href="{{ route('login') }}" class="btn ">
-                  <span>Sign in</span>
-                </a>
-              </div>
-            </div>
+          <div class="content-right">
+            <h3>Get Started Here</h3>
+            <p>Open an account and start investing in our processing plant scheme
+              <span class="underline decoration-orange decoration-4">in just 5 minutes</span>.
+            </p>
+            <a href="{{ route('login') }}" class="btn ">
+              {{-- <i class="fa-brands fa-google-play"></i>
+              <span>Download App</span> --}}
+              <span>Sign in</span>
+            </a>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
+  </section> -->
 
       <!-- FAQs -->
       <section class="mb-20 section-container ">

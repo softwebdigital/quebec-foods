@@ -13,7 +13,7 @@
                 <ol class=" px-3 lg:px-12">
                     <li class="font-bold lg:text-[28px] lg:leading-[32px] py-3 lg:py-6">
                         <h3 class="lg:text-[28px] lg:leading-[32px] lg:py-6">Introduction</h3>
-                        <ol class="px-2 lg:px-11 gap-x-2 flex flex-col">
+                        <ol class="px-2 gap-x-2 flex flex-col">
                             <li class="font-normal text-sm lg:text-lg lg:leading-8 my-2">
                                 Welcome to our privacy policy. We respect your privacy and take the protection
                                 of personal information very seriously. The purpose of this policy is to
@@ -112,7 +112,7 @@
                             </p>
 
                         </ol>
-                        <div class="px-2 lg:px-14">
+                        <div class="px-2">
                             <p class="font-bold text-sm lg:text-lg lg:leading-8 my-2 mt-4">
                                 Personal information includes information we collect:
                             </p>
