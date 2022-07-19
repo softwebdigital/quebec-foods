@@ -198,13 +198,91 @@
         </h3>
         <div class="flex flex-col px-1 lg:px-20 gap-y-4 ">
             <div class="accordion-container">
-                <button class="accordion">Why Invest In Agric Tractors Scheme?</button>
+                <button class="accordion">How do I start the process of investing?</button>
                 <div class="panel">
                     <p>
-                        The market potential for tractor and agro-haulage services is about $4,861,000,000. Nigeria requires 1.5 million tractors to be considered “mechanized” but has fewer than 5,000 functional tractors in circulation. There are six (6) tractors for every 10,000 hectares of arable land, compared to the global average of 195 tractors per hectare.
+                        Simply create an account, once you have completed the account creation process, you will have immediate access to your personalized Quebec Food account. You can review your dashboard and click on new investment. Review the Tractor investment portfolios and select a project, enter the number of units you will like to invest in and click invest now then start earning cash value return <strong>(CVR)</strong> of up to <strong> 12.5%.</strong>
                     </p>
+                </div>
+            </div>
+            <div class="accordion-container">
+                <button class="accordion">How much can I invest?</button>
+                <div class="panel">
                     <p>
-                        The growth of agricultural mechanization is low in sub Saharan Africa, and is estimated at 1.2% in Nigeria. The global agricultural tractors market was valued at USD 55.37 billion in 2018 and is expected to grow at a CAGR of 5.8% to USD77.74 billion by 2024. North America dominates the global agricultural tractors market, at 15.2% of global market share in 2014, led by the USA and Canada.
+                        The amount of investment varies from $30,000 - $50,000 depending on your choice of project “tractor, machinery and haulage trucks” selected, Minimum investment unit you can invest is One (1) Unit, while maximum Investment Units is 20units at an investment cycle per project.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-container">
+                <button class="accordion">What’s the documents for my investment in the (TAHSV) scheme?</button>
+                <div class="panel">
+                    <div class="px-10 py-10">
+                        <p class="font-bold">
+                            You receive the following documents:
+                        </p>
+
+                        <ul class="list-disc">
+                            <li>Payment acknowledgment & electronic deed of investment subscription Agreement </li>
+                            <li> Provisional Letter of allocation for Land Asset backed security for your investment in Quebec Agritech City Residential Layout.</li>
+                            <li>A Site layout plan (to identify your allocated plot.</li>
+                            <li>Bank Guarantee (BG) for Investment above 100 units. (Optional)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-container">
+                <button class="accordion">When will I get back the invested money and accrued interest?</button>
+                <div class="panel">
+                    <p>
+                        CVR payout to Investors shall be made quarterly and first payment of returns is 180 working days after delivering and commissioning of the projects <strong> (tractors, machinery and trucks) from manufacturers.</strong>
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-container">
+                <button class="accordion">Are there plans for Insurance?</button>
+                <div class="panel">
+                    <p>
+                        Yes. We know that every business has its own risk, either systemic or non-systemic. At Quebec Food, security of investment and safety of investors' funds, trust are taken with Utmost importance. In other words, we know, understand and agree that we are investors' trust bank, and will therefore not compromise this fragile relationship. This has made the promoters to approach the Nigerian Agricultural Insurance Corporation <strong>(NAIC)</strong>  and other stakeholders in the insurance sector as a means of risk management and mitigation.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-container">
+                <button class="accordion">Which are your choice of tractors, machinery and trucks manufacturers?</button>
+                <div class="panel">
+                    <p>
+                        We are aware of the importance of building a solid business structure that can support the picture of the kind of world-class business we want to own. This is why we are committed to creating synergies with the Top 10 Popular Tractor companies in world like <strong> Mahindra & Mahindra, John Deere, Massey Ferguson, Case IH, Sonalika International, Escorts Group, Kubota, Fendt, Deutz Fahr, Claas,</strong> to help us build a prosperous business that will benefit all investors and project stakeholders.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-container">
+                <button class="accordion">How committed is your team?</button>
+                <div class="panel">
+                    <p>
+                        Every team member carries this level of dedication and commitment to the cause we stand for. It is our utmost priority to deliver on our promise. We are professionals in agriculture, economics and international trade. You can count on us!
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-container">
+                <button class="accordion">How are your investments protected?</button>
+                <div class="panel">
+                    <p>
+                        We ensure a high probability of success by using industry best practices, we have built a robust model to minimize and mitigate risks in our agricultural investment portfolios. We explore and provide best possible risk mitigation measures that meet our promises made to investors and partners.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-container">
+                <button class="accordion">How are tractors, machinery and trucks monitored for effective productivity? </button>
+                <div class="panel">
+                    <p>
+                        At Quebec Foods, we have a team of field officers attached to each farm estate. These officers provide constant oversight on all farm operations. We then use drones and CCTV cameras to conduct farm surveillance, GPS systems shall be installed on tractors and trucks with a supervisor assign when on transit. Each investor can watch live progress of farm estates on the Quebec Foods social media platforms on real-time as we progress.
+                    </p>
+                </div>
+            </div>
+            <div class="accordion-container">
+                <button class="accordion">How are investments Secured?  </button>
+                <div class="panel">
+                    <p>
+                        Every investment on the Quebec Food platform is backed with data. We have a   dedicated team of agro-professionals, economists, and data scientists who constantly monitor every agricultural commodity project. This team conducts rigorous data mining and reviews our investment portfolios to minimize risks. With data, we can determine which commodity, location, and season would bring the maximum returns for our investors.
                     </p>
                 </div>
             </div>
