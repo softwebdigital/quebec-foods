@@ -267,214 +267,174 @@
           <span>Frequently asked questions</span>
         </h3>
         <div class="flex flex-col px-1 lg:px-20 gap-y-4 ">
-          <div class="accordion-container">
-            <button class="accordion">How do I start the investment process?</button>
-            <div class="panel">
-                <p>
-                    Simply create an account, Once you have completed the account creation
-                    process, you will
-                    have immediate
-                    access to your personalized Quebec Food account. You can review your
-                    dashboard and click on
-                    new
-                    investment. Review the farm investment portfolios and select a farm. Enter
-                    the number of
-                    units you will
-                    like to invest in and click invest now.
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">What is the investment duration?</button>
-            <div class="panel">
-                <p>The program cycle is dependent on the specific farm type. It ranges from
-                    18months to 60 months.</p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">What is the amount of investment required per
-                unit?</button>
-            <div class="panel">
-                <p>
-                    The amount of investment varies from $1000USD – $2000USD depending on your
-                    choice of farm investment package.
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">What is the Minimum or Maximum Unit?</button>
-            <div class="panel">
-                <p>
-                    The minimum unit of investment is one unit. Participants can take as many
-                    units available but not exceeding 100 units at any given time and cycle of
-                    investment.
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">Is there any plan for insurance of the farms?</button>
-            <div class="panel">
-                <p>
-                    Yes, we know that every business has its own risk, either systemic or
-                    non-systemic. At Quebec FOODPRO IP, security of investment and safety of
-                    investors’ trust are taken with utmost importance. In other words, we know,
-                    understand and agree that we are investors’ trust bank, and we will
-                    therefore not compromise this fragile relationship. This has made us to
-                    commission the services of the Nigerian Agricultural Insurance Corporation
-                    (NAIC) and Leadway Insurance as a means of risk management and mitigation.
-                    <br>
-                    The farms are insured to mitigate against any form of crop losses from fire,
-                    lightning, aircraft, windstorm damage, flood, outbreak of pests and diseases
-                    etc.
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">Where are the Farm Estate locations in Nigeria?</button>
-            <div class="panel">
-                <ul class="!list-disc px-10 py-3">
-                    <li>
-                        South West (Oyo & Ondo State)
-                    </li>
-                    <li> South-South (Delta, Bayslea, Rivers, Cross-River & Akwa Ibom State)
-                    </li>
-                    <li>South East (Imo, Ebonyi, Abia & Enugu State)</li>
-                    <li>North Central (Nassarawa, Kogi & Kwara State)</li>
-                    <li> North West (Sokoto & Taraba State)</li>
-                </ul>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">Can I visit the site under this investment
-                scheme?</button>
-            <div class="panel">
-                <p>
-                    Yes. Quebec Agritech City and Farm Estates project site is open for
-                    visitation every third Saturday of the month, any other days at investors
-                    request is solely the responsibility of the investor.
-                </p>
-            </div>
-        </div>
+                <div class="accordion-container">
+                    <button class="accordion">How do I start the investment process?</button>
+                    <div class="panel">
+                        <p>
+                            Simply create an account, once you have completed the account creation process, you will have immediate access to your personalized Quebec Food account. You can review your dashboard and click on new investment. Review the farm investment portfolios and select a farm. Enter the number of units you will like to invest in and click invest now.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">What is the investment duration?</button>
+                    <div class="panel">
+                        <p>The program cycle is dependent on the specific farm type. It ranges from <strong>18months,</strong>  <strong>24months,</strong> <strong>36months & 60months</strong> depending on your choice of crop or Poultry & livestock to invest in.</p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">What is the amount of investment required per
+                        unit?</button>
+                    <div class="panel">
+                        <p>
+                            The amount of investment varies from $1,000 - $3,000 depending on your choice of farm investment package. 
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">What is the Minimum or Maximum Unit?</button>
+                    <div class="panel">
+                        <p>
+                            The minimum unit of investment is one unit. Investors can take as many units available but not exceeding 100 units at any given time and cycle of investment.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">Is there any plan for insurance of the farms?</button>
+                    <div class="panel">
+                        <p>
+                            Yes, we know that every business has its own risk, either systemic or
+                            non-systemic. At <strong> Quebec FOODPRO IP,</strong> security of investment and safety of
+                            investors’ trust are taken with utmost importance. In other words, we know,
+                            understand and agree that we are investors’ trust bank, and we will
+                            therefore not compromise this fragile relationship. This has made us to
+                            commission the services of the Nigerian Agricultural Insurance Corporation
+                              <strong>(NAIC)</strong> and Leadway Insurance as a means of risk management and mitigation.
+                            <br>
+                            The farms are insured to mitigate against any form of crop losses from fire,
+                            lightning, aircraft, windstorm damage, flood, outbreak of pests and diseases
+                            etc.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">Where are the Farm Estate locations in Nigeria?</button>
+                    <div class="panel">
+                        <ul class="!list-disc px-10 py-3">
+                            <li>
+                                South West (Oyo & Ondo State)
+                            </li>
+                            <li> South-South (Delta, Bayslea, Rivers, Cross-River & Akwa Ibom State)
+                            </li>
+                            <li>South East (Imo, Ebonyi, Abia & Enugu State)</li>
+                            <li>North Central (Nassarawa, Kogi & Kwara State)</li>
+                            <li> North West (Sokoto & Taraba State)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">Can I visit the site under this investment
+                        scheme?</button>
+                    <div class="panel">
+                        <p>
+                            Yes. Quebec Agritech City and Farm Estates project site is open for
+                            visitation every third Saturday of the month, any other days at investors
+                            request is solely the responsibility of the investor.
+                        </p>
+                    </div>
+                </div>
 
-        <div class="accordion-container">
-            <button class="accordion">What documents do I get when I choose to invest?</button>
-            <div class="panel">
-                <p class="font-bold">You receive the following documents:
-                </p>
-                <ul class="list-disc px-5 md:px-10 pt-2 pb-5">
-                    <li> A receipt of payment,</li>
-                    <li> Certificate of Investment & Deed of Investment</li>
-                    <li> Provisional Letter of allocation for Land Asset backed security for
-                        your</li>
-                    <li>investment in Quebec Agritech City Residential Layout.</li>
-                    <li>A Site layout plan (to identify your allocated plot)</li>
-                    <li>Bank Guarantee (BG) for Investment above 100 units.</li>
-                </ul>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">How long can I Hold onto the land as a security for my
-                investment?</button>
-            <div class="panel">
-                <p>
-                    You can hold onto the land for a maximum period of 24months. However, once
-                    your investment is matured, your right to the property is withdrawn
-                    immediately.
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">Does my earnings include my capital for my chosen tenure
-                of investment?</button>
-            <div class="panel">
-                <p>
-                    Your earnings are inclusive of your invested capital for investment above
-                    18months spread within the 36months or 60months. This is to ensure all
-                    investors gradually get their fund within the investment tenure.
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">What do I stand to benefit as an investor towards the
-                actualization of the project?</button>
-            <div class="panel">
-                <p>
-                    Investing in agricultural value chain has the potential of giving you
-                    financial freedom and generating enormous profits for you and other
-                    prospective investors.
+                <div class="accordion-container">
+                    <button class="accordion">What documents do I get when I choose to invest?</button>
+                    <div class="panel">
+                        <p class="font-bold">You receive the following documents:
+                        </p>
+                        <ul class="list-disc px-5 md:px-10 pt-2 pb-5">
+                            <li>	Payment Acknowledgment & Electronic Deed of Investment Subscription Agreement. </li>
+                            <li>	Provisional Letter of allocation for Land Asset backed security for your investment in Quebec Agritech City Residential Layout. </li>
+                            <li>	A Site layout plan (to identify your allocated plot.</li>
+                            <li>	Bank Guarantee (BG) for Investment above 100 units. (Optional)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">How long can I Hold onto the land as a security for my
+                        investment?</button>
+                    <div class="panel">
+                        <p>
+                            You can hold onto the land for a maximum period of 24months. However, once you start receiving returns, your right to the property is withdrawn immediately.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">What do I stand to benet as an investor towards the actualization of the project?</button>
+                    <div class="panel">
+                        <p> Investing in agricultural value chain has the potential of giving you financial freedom and generating enormous prots for the investor and other prospective investors. <br>
 
-                    <br>
+                            Quebec Food Processing Industrial Parks Ltd’s aim and objective of launching this scheme is to establish a financial legacy with greater sense of nancial stability for investors via entrepreneuring activities in the non-oil sector for global economic impact. <br>
 
-                    Quebec Food Processing Industrial Parks Ltd’s aim and objective of launching
-                    this scheme is to establish a financial legacy with greater sense of
-                    financial stability for Nigerians via entrepreneuring activities in the
-                    non-oil sector for global economic impact.
-                    <br>
-                    As an investor and a Nigerian through your investment you have contributed
-                    to the economy of this nation and as well saved this Nation from famine,
-                    starvation and hunger, and also restored hope to devoted farmers in Nigeria.
-                </p>
-            </div>
-        </div>
+                            As an investor through your investment you have contributed and saved the populaces from famine, starvation and hunger, and also restored hope to devoted farmers in Nigeria.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">How am I sure you have a committed team?</button>
+                    <div class="panel">
+                        <p>
+                            Every team member carries this level of dedication and commitment to the
+                            cause we stand for. It is our utmost priority to deliver on our promise. We
+                            are professionals in agriculture, economics and international trade. You can
+                            count on us!
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">How are your investments protected?</button>
+                    <div class="panel">
+                        <p>
 
-        <div class="accordion-container">
-            <button class="accordion">How am I sure you have a committed team?</button>
-            <div class="panel">
-                <p>
-                    Every team member carries this level of dedication and commitment to the
-                    cause we stand for. It is our utmost priority to deliver on our promise. We
-                    are professionals in agriculture, economics and international trade. You can
-                    count on us!
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">How are your investments protected?</button>
-            <div class="panel">
-                <p>
-
-                    We ensure a high probability of success by using industry best practices, we
-                    have built a robust model to minimize and mitigate risks in our agricultural
-                    investment portfolios. We explore and provide best possible mitigation
-                    measures that meet our promise made to investors and partners.
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">How are farms monitored?</button>
-            <div class="panel">
-                <p>
-                    At Quebec Foods, we have a team of field officers attached to each farm
-                    estate. These officers provide constant oversight on all farm operations. We
-                    then use drones and CCTV cameras to conduct farm surveillance. Each investor
-                    can watch live progress of farm estates on the Quebec Foods platforms.
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">How are investments Secured?</button>
-            <div class="panel">
-                <p>
-                    Every investment on the Quebec platform is backed with data. We have a
-                    dedicated team of agro-professionals, economists, and data scientists who
-                    constantly monitor every investment. This team conducts rigorous data mining
-                    and reviews our investment portfolios to minimize risks. With data, we can
-                    determine which commodity, location, and season would bring the maximum
-                    returns for our investors.
-                </p>
-            </div>
-        </div>
-        <div class="accordion-container">
-            <button class="accordion">How do you get buyers for farming produce?</button>
-            <div class="panel">
-                <p>
-                    Produce from our farms are for both local consumption and export markets. We
-                    have partnered with several off-takers including other food processing
-                    companies locally and internationally. We will produce according to the
-                    demands of our processing plants and from our partners.
-                </p>
-            </div>
-        </div>
+                            We ensure a high probability of success by using industry best practices, we
+                            have built a robust model to minimize and mitigate risks in our agricultural
+                            investment portfolios. We explore and provide best possible mitigation
+                            measures that meet our promise made to investors and partners.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">How are farms monitored?</button>
+                    <div class="panel">
+                        <p>
+                            At Quebec Foods, we have a team of field officers attached to each farm
+                            estate. These officers provide constant oversight on all farm operations. We
+                            then use drones and CCTV cameras to conduct farm surveillance. Each investor
+                            can watch live progress of farm estates on the Quebec Foods platforms.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">How are investments Secured?</button>
+                    <div class="panel">
+                        <p>
+                            Every investment on the Quebec platform is backed with data. We have a
+                            dedicated team of agro-professionals, economists, and data scientists who
+                            constantly monitor every investment. This team conducts rigorous data mining
+                            and reviews our investment portfolios to minimize risks. With data, we can
+                            determine which commodity, location, and season would bring the maximum
+                            returns for our investors.
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">How do you get buyers for farming produce?</button>
+                    <div class="panel">
+                        <p>
+                            Produce from our farms are for both local consumption and export markets. We
+                            have partnered with several off-takers including other food processing
+                            companies locally and internationally. We will produce according to the
+                            demands of our processing plants and from our partners.
+                        </p>
+                    </div>
+                </div>
+            
         </div>
       </section>
 @endsection

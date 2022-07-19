@@ -251,58 +251,45 @@
             </h3>
             <div class="flex flex-col px-1 lg:px-20 gap-y-4 ">
                 <div class="accordion-container">
-                    <button class="accordion">What is Quebec Food Processing Plants Investment Scheme
-                        all about (QFPPIS)?</button>
+                    <button class="accordion">What is Quebec Agro-Food Processing Venture Scheme all about (AFPVS)?</button>
                     <div class="panel">
                         <p>
-                            QFPPIS is an Agri-Business Small and Medium Enterprises Investment Scheme
-                            that allows you to invest your fund into Quebec Food Processing Industrial
-                            Parks Ltd planned Agro-Food processing plants to be set-up in the
-                            agro-processing industrial layout in Quebec Agritech City and Farm Estates
-                            across the geo-political zones in Nigeria.
+                            AFPVS is an Agribusiness profit venture Scheme that allows you to invest your fund into Quebec Food Processing Industrial Parks Ltd planned Agro-Food processing plants to be set-up in the agro-processing industrial layout in Quebec Agritech City and Farm Estates across the geo-political zones in Nigeria.  
                             <br><br>
-                            By your Investment, you are eligible to earn up to thirty-three percent
-                            (33%) per annum as return on investment (ROI), for a tenure of 3years,
-                            5years or 10years depending on the processing plant you desire and choose to
-                            invest in.
+                            By your Investment, you are eligible to earn cash value return (CVR), for a tenure of 3years, 5years or 10years depending on the processing plant you desire and choose to invest in. 
                         </p>
                     </div>
                 </div>
                 <div class="accordion-container">
-                    <button class="accordion">What is the amount of investment required and the planned
-                        processing plants in this scheme?</button>
+                    <button class="accordion">Which food & Agro processing plants are available for start-up in this venture scheme</button>
                     <div class="panel">
                         <p>
-                            The amount of investment varies from $1500USD – $3500USD depending on your
-                            choice of plant to invest on. Ten (10) processing plants is being planned
-                            for the agro processing industrial park layout in Quebec Agritech City and
-                            Farm Estates they are as follows:
+                            The following processing plants are planned for the agro-processing industrial park layout in Quebec Agritech City and Farm Estates project sites and they are as follows: 
                         </p>
                         <div class="px-10 py-10">
                             <span class="font-bold">Processing Cassava into:</span>
                             <ul class="px-10 py-4 list-disc">
-                                <li>Flour,</li>
-                                <li>Starch & Glucose Syrup,</li>
-                                <li>Garri (Fried Cassava Granules)</li>
-                                <li>Fufu (Cassava Dough)</li>
-                                <li>Lafun (Fermented Cassava Flour)</li>
+                                <li>High Quality Cassava Flour (HQCF),</li>
+                                <li>High Quality Cassava Starch(HQCS),</li>
+                                <li>High cassava Fructose Sweeteners (HCFS),</li>
+                                <li>Garri (Fried Cassava Granules),</li>
+                                <li>Odourless Fufu (Cassava Dough),</li>
+                                <li>Lafun (Fermented Cassava Flour),</li>
                                 <li>Tapioca (Cassava Flakes),</li>
                                 <li>Animal Feed</li>
                             </ul>
-                            <span class="font-bold">Other Processing Plants that deliberation is still
-                                ongoing with Manufacturers are:</span>
+                            <span class="font-bold">Other Processing Plants that deliberation is still ongoing with Manufacturers are: </span>
                             <ul class="px-10 py-4 list-disc">
-                                <li>Ethanol (for biofuels),</li>
-                                <li>Palm Oil Crude,</li>
-                                <li>Coconut Oil Crude.</li>
-                                <li>Fufu (Cassava Dough)</li>
-                                <li>Rice Mill</li>
-                                <li>Plantain Flour</li>
+                                <li>Palm Oil Crude, </li>
+                                <li>Coconut Oil Crude,</li>
+                                <li>Rice Mill,</li>
+                                <li>Plantain Flour,</li>
+                                <li>Cashew Nut Shell Liquid (CNSL)</li>
+                                <li>High fructose corn syrup (HFCS)</li>
                             </ul>
-                            <span class="font-bold">Tropical Fruits into Pulses, Pastes, Concentrates
-                                and Vegetables Processing Plant.</span>
+                            <span class="font-bold">Tropical Fruits into Pulses, Pastes, Concentrates and Vegetables Processing Plant.</span>
                             <ul class="px-10 py-4 list-disc">
-                                <li>Mangos, Cashew, Pineapples, Guava, Papaya, Tamarind, Amla, pawpaw
+                                <li>Mangos, Pineapples, Guava, Papaya, Tamarind, Amla, pawpaw
                                 </li>
                                 <li>Onion, Ginger Paste, Garlic Paste and other spices.</li>
                             </ul>
@@ -310,7 +297,15 @@
                     </div>
                 </div>
                 <div class="accordion-container">
-                    <button class="accordion">Can I invest in more than 1 Plant and Slot?</button>
+                    <button class="accordion">What is the amount of investment required in the venture scheme?</button>
+                    <div class="panel">
+                        <p>
+                            The amount of investment varies from <strong> $2000USD - $5000USD </strong>per unit depending on your choice of plant to invest in. 
+                        </p>
+                    </div>
+                </div>
+                <div class="accordion-container">
+                    <button class="accordion">Can I invest in more than 1 Plant and Unit?</button>
                     <div class="panel">
                         <p>
                             Yes you can
@@ -318,8 +313,7 @@
                     </div>
                 </div>
                 <div class="accordion-container">
-                    <button class="accordion">What is the duration for which I can invest in this
-                        scheme?</button>
+                    <button class="accordion">What is the duration I can invest in this scheme?</button>
                     <div class="panel">
                         <p>
                             3years Plan, 5years Plan & 10years Plan
@@ -327,32 +321,15 @@
                     </div>
                 </div>
                 <div class="accordion-container">
-                    <button class="accordion">What is the Return on Investment (RO1)?</button>
+                    <button class="accordion">Can I visit the site under this venture scheme?</button>
                     <div class="panel">
                         <p>
-                            For 5 years plan, you get half of the stated percentage of return on
-                            investment of the plant you choose to invest in.
-                        </p>
-                        <p>
-                            For 10 years plan, you get the full stated percentage of return on
-                            investment of the plant you choose to invest in.
+                            Yes. Quebec Agritech City and Farm Estates project sites is open for visitation every third Saturday of the month, any other day at investors request is solely the responsibility of the investor. Our social media platforms are also available for live-stream inspections on request.
                         </p>
                     </div>
                 </div>
                 <div class="accordion-container">
-                    <button class="accordion">Can I choose to visit the site under this investment
-                        scheme?</button>
-                    <div class="panel">
-                        <p>
-                            Yes. Quebec Agritech City and Farm Estates project site is open for
-                            visitation every third Saturday of the month, any other days at investors
-                            request is solely the responsibility of the investor.
-                        </p>
-                    </div>
-                </div>
-                <div class="accordion-container">
-                    <button class="accordion">What documents do I get when I choose to invest with the
-                        QFPPI scheme?</button>
+                    <button class="accordion">What documents do I get when I choose to invest with the AFPVS scheme?</button>
                     <div class="panel">
                         <div class="px-10 py-10">
                             <p class="font-bold">
@@ -360,73 +337,25 @@
                             </p>
 
                             <ul class="list-disc">
-                                <li>A receipt of payment & Deed of Investment</li>
-                                <li> Provisional Letter of allocation for Land Asset backed security for
-                                    your investment in Quebec Agritech City Residential Layout.</li>
-                                <li>A Site layout plan (to identify your allocated plot)</li>
-                                <li>Bank Guarantee (BG) for Investment above 100 slots</li>
+                                <li>Payment acknowledgment & electronic deed of investment subscription Agreement </li>
+                                <li> Provisional Letter of allocation for Land Asset backed security for your investment in Quebec Agritech City Residential Layout.</li>
+                                <li>A Site layout plan (to identify your allocated plot.</li>
+                                <li>Bank Guarantee (BG) for Investment above 100 units. (Optional)</li>
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="accordion-container">
-                    <button class="accordion">How long can I Hold onto the land as a security for my
-                        investment?</button>
+                    <button class="accordion">How long can I Hold onto the land as a security for my investment?</button>
                     <div class="panel">
-                        <p>
-                            You can hold onto the land for maximum of 24months. However, once you start
-                            earning returns on your investment, your right to the property is withdrawn
-                            immediately.
-                        </p>
+                        <p>You can hold onto the land for maximum of 24months. However, once you start earning returns, your right to the property is withdrawn immediately.</p>
                     </div>
                 </div>
                 <div class="accordion-container">
-                    <button class="accordion">When exactly will I start earning from my investment and
-                        how is my ROI paid Monthly, Quarterly or Yearly?</button>
+                    <button class="accordion">When exactly will I start earning from my investment and how is my CVR paid Monthly, Quarterly or Yearly?</button>
                     <div class="panel">
                         <p>
-                            ROI payout to Investors shall be made quarterly and First payment of returns
-                            is 180 working days after commissioning of the plants.
-                        </p>
-                    </div>
-                </div>
-                <div class="accordion-container">
-                    <button class="accordion">Does my earnings include my capital for my chosen tenure
-                        of investment?</button>
-                    <div class="panel">
-                        <p>
-                            Your earnings is inclusive of your invested capital spread within 3years,
-                            5years or 10years,
-                            <br>
-                            <br>
-                            this is to ensure all investors gradually gets their fund within the
-                            investment tenure.
-                        </p>
-                    </div>
-                </div>
-                <div class="accordion-container">
-                    <button class="accordion">What do I stand to benefit as an investor towards the
-                        actualization of the project?</button>
-                    <div class="panel">
-                        <p>
-                            Investing in cassava value chain processing has the potential of giving you
-                            financial freedom and generating enormous profits for you and other
-                            prospective investors.
-                        </p>
-                        <p>
-                            Quebec Food Processing Industrial Parks Ltd aim and objectives of launching
-                            this scheme is to establish a financial legacy with greater sense of
-                            financial stability for Nigerians via entrepreneuring activities in the
-                            non-oil sector for global economic impact.
-                        </p>
-                        <br>
-                        <br>
-                        <p>
-                            As an investor and a Nigerian through your investment you have contributed
-                            to the economy of this nation and as well save this Nation from famine,
-                            starvation and hunger ,and also reduce importation of processed foods from
-                            other nations in the world, and most especially create jobs for younger
-                            generation and investment opportunities.
+                            <strong>CVR </strong> payout to Investors shall be made quarterly and First payment of returns is 180 working days after commissioning of the plants.
                         </p>
                     </div>
                 </div>
@@ -434,34 +363,19 @@
                     <button class="accordion">Are there plans for Insurance of these Plants?</button>
                     <div class="panel">
                         <p>
-                            Yes. We know that every business has its own risk, either systemic or
-                            non-systemic. At
-                            Quebec Food, security of investment and safety of investors’ funds, trust
-                            are taken with
-
-                            Utmost importance. In other words, we know, understand and agree that we are
-                            investors’ trust bank, and will therefore not compromise this fragile
-                            relationship. This has made the promoters to approach the Nigerian
-                            Agricultural Insurance Corporation (NAIC) and other stakeholders in the
-                            insurance sector as a means of risk management and mitigation when the
-                            plants are fully installed and production commence.
+                            Yes. We know that every business has its own risk, either systemic or non-systemic. At Quebec Food, security of investment and safety of investors' funds, trust are taken with Utmost importance. In other words, we know, understand and agree that we are investors' trust bank, and will therefore not compromise this fragile relationship. This has made the promoters to approach the Nigerian Agricultural Insurance Corporation (NAIC) and other stakeholders in the insurance sector as a means of risk management and mitigation when the plants are fully installed and production commence.
                         </p>
                     </div>
                 </div>
+                
+                
+                
                 <div class="accordion-container">
-                    <button class="accordion">How do you intend to market your products considering
-                        other competitors in the country?</button>
+                    <button class="accordion">How do you intend to market your products considering other competitors in the country?</button>
                     <div class="panel">
-                        <p>
-                            Our take-off products is centered at the Cassava Value Chain and this gives
-                            us an edge in the market considering our location. We shall be launching our
-                            Food Network called the Q-BEC Foods Network a multi-level Marketing scheme
-                            to spread all our products to every part of Nigeria, Europe, Asia and North
-                            America through other partners involved in Quebec Agri-tech City & Farm
-                            Estates project. The cooperative arm of the company “Quebec AgrifoodPro Coop
-                            Group” would also be saddled with responsibility of marketing our products,
-                            our products shall be licensed under the company’s brand registered
-                            trademark name Q-BEC FOODS and marketed at such.
+                        <p>Our take-off products is centered at the Cassava Value Chain which are used by raw materials for  food, , beverages, confectioneries, paper, textiles, adhesives and in pharmaceuticals; and this gives us an edge in the market considering our site locations (South West, South East & North Central Nigeria). 
+                            <br>
+                            We are also launching our Food Network called the Q-BEC Foodies Network to spread all our products to every part of Nigeria, Europe, Asia and North America through other partners involved in Quebec Agritech City & Farm Estates project. The cooperative arm of the company “Quebec AgrifoodPro Coop Group” would also be saddled with responsibility of marketing our home food products (cassava chips, cassava starch, cassava flour & garri), our products shall be licensed under the company's brand registered trademark name Q-BEC FOODS and marketed at such.
                         </p>
                     </div>
                 </div>
