@@ -449,233 +449,263 @@
                              packaging of healthy food products for consumers 
                              at low-price.  
                         </p>
-                        <div>
-                            <p class="font-bold">
-                                1.	How do I Invest after creating an account on the Quebec Food Platform?
-                            </p>
-                            <p>Click on packages <strong>(Ventures - Farm, Processing Plant or Tractor) </strong> on the platform to select the venture you are interested in.</p>
+                        <div class="accordion-container">
+                            <button class="accordion">How do I Invest after creating an account on the Quebec Food Platform?</button>
+                            <div class="panel">
+                                <p>Click on packages <strong>(Ventures - Farm, Processing Plant or Tractor) </strong> on the platform to select the venture you are interested in.</p>
 
-                            <ul class="list-disc px-10">
-                                <li> <p class="font-bold">Farming venture:</p> <br> The amount of investment varies from <strong>$1000 – $3000</strong>  depending on your choice of farm venture selected, minimum investment unit you can invest is one (1) Unit, while maximum Investment Units is 100unit at an investment cycle per project. </li>
-                                <li> <p class="font-bold">Processing plants venture:</p> <br> The amount of investment varies from <strong>$2000 – $5000</strong> depending on your choice of plant selected,  minimum investment unit you can invest is one (1) unit, while maximum investment units is <strong>100unit</strong> at an investment cycle per project. </li>
-                                <li> <p class="font-bold">Agric Tractor & Agro-haulage Venture:</p> <br> The amount of investment varies from  $30,000 - $50,000 depending on your choice of project <strong>“tractor, machinery and haulage trucks”</strong>  selected, Minimum investment unit you can invest in One (1) Unit, while maximum Investment Units is <strong>20unit</strong>  at an investment cycle per project. </li>
-                            </ul>
+                                <ul class="list-disc px-10">
+                                    <li> <p class="font-bold">Farming venture:</p> <br> The amount of investment varies from <strong>$1000 – $3000</strong>  depending on your choice of farm venture selected, minimum investment unit you can invest is one (1) Unit, while maximum Investment Units is 100unit at an investment cycle per project. </li>
+                                    <li> <p class="font-bold">Processing plants venture:</p> <br> The amount of investment varies from <strong>$2000 – $5000</strong> depending on your choice of plant selected,  minimum investment unit you can invest is one (1) unit, while maximum investment units is <strong>100unit</strong> at an investment cycle per project. </li>
+                                    <li> <p class="font-bold">Agric Tractor & Agro-haulage Venture:</p> <br> The amount of investment varies from  $30,000 - $50,000 depending on your choice of project <strong>“tractor, machinery and haulage trucks”</strong>  selected, Minimum investment unit you can invest in One (1) Unit, while maximum Investment Units is <strong>20unit</strong>  at an investment cycle per project. </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                2.	Are there restrictions on the number of Venture “projects” an investor fund at a given time?
-                            </p>
-                            <p>There is no restriction but your investment per ventures are specified and your total funding should not exceed certain percentage of your income each year as provided by the federal social securities laws of your country of residence.</p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                Are there restrictions on the number of Venture “projects” an investor fund at a given time?
+                            </button>
+                            <div class="panel">
+                                <p>There is no restriction but your investment per ventures are specified and your total funding should not exceed certain percentage of your income each year as provided by the federal social securities laws of your country of residence.</p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                3.	What are the Payment Options?
-                            </p>
-                            <p>Once you have selected the venture to invest in, you can either <strong>“invest – option A” straight away or “pledge first – option B”. </strong> </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                What are the Payment Options?
+                            </button>
+                            <div class="panel">
+                                <p>Once you have selected the venture to invest in, you can either <strong>“invest – option A” straight away or “pledge first – option B”. </strong> </p>
 
-                            <ul class="list-disc px-10">
-                                <li> <p class="font-bold">Option A ( <span class="text-primary">Invest - wallet</span> ): </p> <br> In other to directly invest, you must have sufficient credits in your virtual wallet. You can do this by adding money to your virtual wallet through our partner payment platforms. </li>
-                                <li> <p class="font-bold">Option B ( <span class="text-primary">Pledge – Bank Transfer</span> ): </p> <br> In the case where you haven’t deposited any amount into your virtual wallet yet, you may choose to pledge. All pledges are given 3 working days to make transfer payment. It should be noted that the platform does not limit the amount of pledges that any user can make. A pledge will only be converted into an investment, once the payment has been made and verified. The amount transferred should be at least in equivalent to the value of the amount pledged and charges inclusive. Any excess of the transferred amount shall be credited to user’s virtual wallet.</li>
-                            </ul>
+                                <ul class="list-disc px-10">
+                                    <li> <p class="font-bold">Option A ( <span class="text-primary">Invest - wallet</span> ): </p> <br> In other to directly invest, you must have sufficient credits in your virtual wallet. You can do this by adding money to your virtual wallet through our partner payment platforms. </li>
+                                    <li> <p class="font-bold">Option B ( <span class="text-primary">Pledge – Bank Transfer</span> ): </p> <br> In the case where you haven’t deposited any amount into your virtual wallet yet, you may choose to pledge. All pledges are given 3 working days to make transfer payment. It should be noted that the platform does not limit the amount of pledges that any user can make. A pledge will only be converted into an investment, once the payment has been made and verified. The amount transferred should be at least in equivalent to the value of the amount pledged and charges inclusive. Any excess of the transferred amount shall be credited to user’s virtual wallet.</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                4.	Who can invest on Quebec Food Agribusiness Venture Scheme?
-                            </p>
-                            <p>Anyone over 18 years of age can invest, provided 
-                                they are accredited or non-accredited investors 
-                                in their country of residence.
-                                <br>
-                                Secondly, potential investors 
-                                are strongly advised to comply with the laws and 
-                                regulations of their country of residence. 
-                                The securities offered on this site are not offered in 
-                                jurisdictions where public solicitation for offerings is
-                                 not permitted; it is solely your responsibility to 
-                                 comply with the laws and regulations of your country 
-                                 of residence.
-                                 <br>
-                                 Thirdly, we do not run Ponzi schemes, but 
-                                 commodities investment scheme that connect 
-                                 investors to specific agricultural commodities
-                                  projects for the purpose of sponsoring such 
-                                  projects in exchange for cash value return 
-                                  <strong>(CVR),</strong>  thereby revamping the 
-                                  agricultural sector. 
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                Who can invest on Quebec Food Agribusiness Venture Scheme?
+                            </button>
+                            <div class="panel">
+                                <p>Anyone over 18 years of age can invest, provided 
+                                    they are accredited or non-accredited investors 
+                                    in their country of residence.
+                                    <br>
+                                    Secondly, potential investors 
+                                    are strongly advised to comply with the laws and 
+                                    regulations of their country of residence. 
+                                    The securities offered on this site are not offered in 
+                                    jurisdictions where public solicitation for offerings is
+                                    not permitted; it is solely your responsibility to 
+                                    comply with the laws and regulations of your country 
+                                    of residence.
+                                    <br>
+                                    Thirdly, we do not run Ponzi schemes, but 
+                                    commodities investment scheme that connect 
+                                    investors to specific agricultural commodities
+                                    projects for the purpose of sponsoring such 
+                                    projects in exchange for cash value return 
+                                    <strong>(CVR),</strong>  thereby revamping the 
+                                    agricultural sector. 
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                5.	How do I know if I am an accredited or non-accredited investor?
-                            </p>
-                            <p>An accredited investor is a person who has a 
-                                networth of at least <strong>$1million</strong>  (excluding 
-                                their primary residence) or earns at least 
-                                <strong>$200,000</strong>  in income each year – <strong>$300,000</strong> if 
-                                combined with a spouse. A non-accredited investor
-                                is everyone else! 
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do I know if I am an accredited or non-accredited investor?
+                            </button>
+                            <div class="panel">
+                                <p>An accredited investor is a person who has a 
+                                    networth of at least <strong>$1million</strong>  (excluding 
+                                    their primary residence) or earns at least 
+                                    <strong>$200,000</strong>  in income each year – <strong>$300,000</strong> if 
+                                    combined with a spouse. A non-accredited investor
+                                    is everyone else! 
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                6.	What is the "Error with your investment" notification?
-                            </p>
-                            <p>
-                                If you have received an email that says “Error with your 
-                                investment,” then that means there is information that 
-                                needs to be verified before the investment can be processed. 
-                                The link in the email will redirect you to a Quebec Food 
-                                page asking you to input some additional information. 
-                                Once you submit the required information, the system will 
-                                begin processing your investment. We will reach out to you 
-                                directly if we require any further information. 
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                What is the "Error with your investment" notification?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    If you have received an email that says “Error with your 
+                                    investment,” then that means there is information that 
+                                    needs to be verified before the investment can be processed. 
+                                    The link in the email will redirect you to a Quebec Food 
+                                    page asking you to input some additional information. 
+                                    Once you submit the required information, the system will 
+                                    begin processing your investment. We will reach out to you 
+                                    directly if we require any further information. 
 
-                                <br>
+                                    <br>
 
-                                Note: Please don’t click on the link when you are already
-                                 logged into your Quebec Food account.
-                            </p>
-                            <p>You can also update this information by following the steps below:</p>
+                                    Note: Please don’t click on the link when you are already
+                                    logged into your Quebec Food account.
+                                </p>
+                                <p>You can also update this information by following the steps below:</p>
 
-                            <ul class="list-disc px-10">
-                                <li>Login to your Quebec Food  account</li>
-                                <li>Once you are logged in, click on star button on same line with logout and click on “My Account” you will see Profile and Account Overview </li>
-                                <li>Click “View profile”  </li>
-                                <li>You will then be able to update your information by checking security, Bank and Identification and correcting the pending information’s and click on update profile.</li>
-                            </ul>
+                                <ul class="list-disc px-10">
+                                    <li>Login to your Quebec Food  account</li>
+                                    <li>Once you are logged in, click on star button on same line with logout and click on “My Account” you will see Profile and Account Overview </li>
+                                    <li>Click “View profile”  </li>
+                                    <li>You will then be able to update your information by checking security, Bank and Identification and correcting the pending information’s and click on update profile.</li>
+                                </ul>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                7.	When and how will I get confirmation on my investment?
-                            </p>
-                            <p>
-                                Once the company closes on your funds, you will receive a
-                                confirmation email from the company with details about your
-                                investment, along with a copy of your deed 
-                                of Investment subscription agreement with a
-                                record of your units and cash value returns (CVR). 
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                When and how will I get confirmation on my investment?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    Once the company closes on your funds, you will receive a
+                                    confirmation email from the company with details about your
+                                    investment, along with a copy of your deed 
+                                    of Investment subscription agreement with a
+                                    record of your units and cash value returns (CVR). 
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                8.	What happens if the company does not reach their funding goal?
-                            </p>
-                            <p>
-                                If the company does not reach their minimum funding goal, 
-                                all funds will be returned to the investor within 10 business 
-                                days after the closing of their offering.
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                What happens if the company does not reach their funding goal?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    If the company does not reach their minimum funding goal, 
+                                    all funds will be returned to the investor within 10 business 
+                                    days after the closing of their offering.
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                9.	If the company has reached their maximum funding goal, can I still invest?
-                            </p>
-                            <p>
-                                If the company has reached the maximum funding goal, 
-                                you can submit an “indication of interest.” An indication
-                                of interest is similar to a reservation. It’s a non-binding
-                                commitment that allows you to be placed on a waitlist for 
-                                any offerings that are oversubscribed, meaning they have 
-                                raised more than their maximum funding goal. This is not an investment and does not guarantee a place in the offering.
-                            </p>
-                            <p>If your indication of interest is accepted, you will be notified to sign your binding agreement. You will have only 72 hours to sign the approved indication of interest. </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                If the company has reached their maximum funding goal, can I still invest?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    If the company has reached the maximum funding goal, 
+                                    you can submit an “indication of interest.” An indication
+                                    of interest is similar to a reservation. It’s a non-binding
+                                    commitment that allows you to be placed on a waitlist for 
+                                    any offerings that are oversubscribed, meaning they have 
+                                    raised more than their maximum funding goal. This is not an investment and does not guarantee a place in the offering.
+                                </p>
+                                <p>If your indication of interest is accepted, you will be notified to sign your binding agreement. You will have only 72 hours to sign the approved indication of interest. </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                10.	 I forgot my password. What do I do?
-                            </p>
-                            <p>
-                                You can reset your password by clicking “Forgot Password”,
-                                which is located on the Login page below “Password.” Once
-                                you click “Forgot Password,” you will be asked to enter 
-                                your email. After you enter your email and click “Submit,”
-                                we will send you further instructions.
-                            </p>
-                            <p>Once the email arrives, please open it and click on the 
-                                <strong>“Reset your password”</strong>  link provided. 
-                                You will then be prompted to enter a new password and confirm 
-                                that password. After you do so, you will be logged in and
-                                redirected to the main QUEBEC Food page. Once logged in,
-                                you will be able to invest.
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                I forgot my password. What do I do?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    You can reset your password by clicking “Forgot Password”,
+                                    which is located on the Login page below “Password.” Once
+                                    you click “Forgot Password,” you will be asked to enter 
+                                    your email. After you enter your email and click “Submit,”
+                                    we will send you further instructions.
+                                </p>
+                                <p>Once the email arrives, please open it and click on the 
+                                    <strong>“Reset your password”</strong>  link provided. 
+                                    You will then be prompted to enter a new password and confirm 
+                                    that password. After you do so, you will be logged in and
+                                    redirected to the main QUEBEC Food page. Once logged in,
+                                    you will be able to invest.
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                11.	How do I view my Deed of Investment subscription agreement?
-                            </p>
-                            <p>
-                                You will not be able to view your signed subscription 
-                                agreement until the company closes on your funds, and 
-                                your status changes from <strong> “pending”</strong> to <strong>“approved”</strong> .
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do I view my Deed of Investment subscription agreement?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    You will not be able to view your signed subscription 
+                                    agreement until the company closes on your funds, and 
+                                    your status changes from <strong> “pending”</strong> to <strong>“approved”</strong> .
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                12. How do I view my investment status? 
-                            </p>
-                            <p>
-                                To view your investment status follow these steps:
-                            </p>
-                            <ul class="list-disc px-10">
-                                <li>Login to your Quebec Food  account</li>
-                                <li>Once you are logged in, click on your Dashboard and the status of your investment will display. </li>
-                            </ul>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do I view my investment status? 
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    To view your investment status follow these steps:
+                                </p>
+                                <ul class="list-disc px-10">
+                                    <li>Login to your Quebec Food  account</li>
+                                    <li>Once you are logged in, click on your Dashboard and the status of your investment will display. </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                13. Different stages of investments:
-                            </p>
-                            <p>
-                               <strong> Incomplete -</strong> You have begun the investment process but have not completed all of the steps to finalize your investment, select payment on option either “wallet” or “bank transfer”. Make sure that you click the green <strong>“Invest” button after clicking “creating an investment”</strong>  on the investment page. Once you have submitted your investment, you will receive a confirmation email immediately following submission. 
-                            </p>
-                            <p>
-                               <strong>Submitted - </strong> You have successfully submitted your investment, and it is currently pending waiting approval. It could be pending because the funds have not yet left or reached the escrow account, or are still undergoing the necessary checks. If there is any problem  with your investment, you will be notified by Quebec Food.
-                            </p>
-                            <p>
-                               <strong>Cleared – </strong> Quebec Food has received your payment for your investment, and we have successfully verified all of the required investor checks. There is nothing else that you need to do at this time.
-                            </p>
-                            <p>
-                               <strong>Invested - </strong> After the company has conducted a close on your payment, your investment will be <strong>approved</strong>  and then moved to <strong>“Invested.”</strong>  This means your funds have been disbursed to the venture you have chosen to invest in. 
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                Different stages of investments:
+                            </button>
+                            <div class="panel">
+                                <p>
+                                <strong> Incomplete -</strong> You have begun the investment process but have not completed all of the steps to finalize your investment, select payment on option either “wallet” or “bank transfer”. Make sure that you click the green <strong>“Invest” button after clicking “creating an investment”</strong>  on the investment page. Once you have submitted your investment, you will receive a confirmation email immediately following submission. 
+                                </p>
+                                <p>
+                                <strong>Submitted - </strong> You have successfully submitted your investment, and it is currently pending waiting approval. It could be pending because the funds have not yet left or reached the escrow account, or are still undergoing the necessary checks. If there is any problem  with your investment, you will be notified by Quebec Food.
+                                </p>
+                                <p>
+                                <strong>Cleared – </strong> Quebec Food has received your payment for your investment, and we have successfully verified all of the required investor checks. There is nothing else that you need to do at this time.
+                                </p>
+                                <p>
+                                <strong>Invested - </strong> After the company has conducted a close on your payment, your investment will be <strong>approved</strong>  and then moved to <strong>“Invested.”</strong>  This means your funds have been disbursed to the venture you have chosen to invest in. 
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                14.	How do my investments affect my taxes?
-                            </p>
-                            <p>
-                                Quebec Food cannot give you any tax or 
-                                investment advice. You may want to consult a tax advisor
-                                regarding your investment and any questions regarding 
-                                your taxes as an investor. However, we can provide you 
-                                with some useful information on how it may affect you 
-                                for the upcoming tax year.
-                                 <br>
-                                Tax liability is largely determined by what type of
-                                venture you invested in and Quebec Food Processing
-                                Industrial Parks Ltd is an LLC entity and as such we
-                                are tax payers.  
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do my investments affect my taxes?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    Quebec Food cannot give you any tax or 
+                                    investment advice. You may want to consult a tax advisor
+                                    regarding your investment and any questions regarding 
+                                    your taxes as an investor. However, we can provide you 
+                                    with some useful information on how it may affect you 
+                                    for the upcoming tax year.
+                                    <br>
+                                    Tax liability is largely determined by what type of
+                                    venture you invested in and Quebec Food Processing
+                                    Industrial Parks Ltd is an LLC entity and as such we
+                                    are tax payers.  
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                15.	What if the company venture you invested in goes bankrupt?
-                            </p>
-                            <p>
-                                The company or its trustee is responsible for providing tax
-                                documents directly to their investors, to reflect any loss. 
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                What if the company venture you invested in goes bankrupt?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    The company or its trustee is responsible for providing tax
+                                    documents directly to their investors, to reflect any loss. 
+                                </p>
+                            </div>
                         </div>
-                        <div>
-                            <p class="font-bold">
-                                16.	How do I contact someone at Quebec Food?
-                            </p>
-                            <p>
-                                If you have questions that have not been answered in the
-                                FAQ, feel free to email us at info-desk.agrovest@quebecgroups.com
-                                or use our green chat icon found in the lower right
-                                hand corner of all of our Quebec Food pages. We will
-                                do our best to answer your questions within 24 hours.
-                            </p>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do I contact someone at Quebec Food?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    If you have questions that have not been answered in the
+                                    FAQ, feel free to email us at info-desk.agrovest@quebecgroups.com
+                                    or use our green chat icon found in the lower right
+                                    hand corner of all of our Quebec Food pages. We will
+                                    do our best to answer your questions within 24 hours.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
