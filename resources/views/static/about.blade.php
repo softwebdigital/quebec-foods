@@ -43,50 +43,23 @@
             
           <div class="splide__track">
               <ul class="splide__list">
-                  <!-- <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
-                  </li> -->
                   <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal.jpg" alt="">
                   </li>
                   <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri.jpg" alt="">
                   </li>
                   <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-starch.jpg" alt="">
                   </li>
                   <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-                  </li>
-                  <!-- <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
-                  </li> -->
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cocoyam-flour.jpg" alt="">
                   </li>
                   <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                      <img class="rounded-2xl" src="/static-assets/quebec-plantain-meal.jpg" alt="">
                   </li>
                   <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-                  </li>
-                  <!-- <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
-                  </li> -->
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-                  </li>
-                  <li class="splide__slide">
-                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
+                      <img class="rounded-2xl" src="/static-assets/quebec-poundoyam-flour.jpg" alt="">
                   </li>
               </ul>
           </div>
