@@ -79,10 +79,20 @@
 
         <div class="flex items-center content-center justify-between lg:gap-x-5">
           @guest
-          <a class="hidden btn btn-primary md:block" href="/login">
+          <a class="hidden btn lg:block" href="{{ route('login') }}">
             Sign In
           </a>
+          <a class="hidden btn btn-primary md:block" href="{{ route('register') }}">
+            Sign Up
+          </a>
           @else
+          <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button class="hidden btn lg:block" type="submit">Sign Out</button>
+          </form>
+          <!-- <a class="hidden btn lg:block" href="/login">
+            Sign Out
+          </a> -->
           <a class="hidden btn btn-primary md:block" href="/dashboard">
             Dashboard
           </a>
@@ -110,10 +120,20 @@
             Contact Us
           </a>
           @guest
-          <a class="btn btn-primary md:hidden" href="{{ route('login') }}">
+          <a class="drop-down-items" href="{{ route('login') }}">
             Sign In
           </a>
+          <a class="btn btn-primary md:hidden" href="{{ route('register') }}">
+            Sign Up
+          </a>
           @else
+          <form method="POST" action="{{ route('logout') }}">
+              @csrf
+              <button class="drop-down-items" type="submit">Sign Out</button>
+          </form>
+          <!-- <a class="hidden btn lg:block" href="/login">
+            Sign Out
+          </a> -->
           <a class="btn btn-primary md:hidden" href="/dashboard">
             Dashboard
           </a>

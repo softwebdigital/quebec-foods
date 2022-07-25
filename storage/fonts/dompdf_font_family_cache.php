@@ -1,4 +1,5 @@
-<?php return array (
+<?php return function ($fontDir, $rootDir) {
+return array (
   'sans-serif' => array(
     'normal' => $rootDir . '/lib/fonts/Helvetica',
     'bold' => $rootDir . '/lib/fonts/Helvetica-Bold',
@@ -78,7 +79,8 @@
     'normal' => $rootDir . '/lib/fonts/DejaVuSerif',
   ),
   'overpass' => array(
-    '300' => $fontDir . '/overpass_300_a8b2584a324ccaec06899ae940d6e10c',
-    'normal' => $fontDir . '/overpass_normal_9104427789bc01c6b23fbc1d14fc7692',
+    '300' => $fontDir . '/overpass_300_33e1ba92775427f0b38b4c472e982c13',
+    'normal' => $fontDir . '/overpass_normal_dc17bce502cdb244d0e4c91d6b935807',
   ),
-) ?>
+);
+}; ?>

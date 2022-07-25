@@ -30,6 +30,11 @@
                     <span class="group-hover:!text-white font-bold !inline-block !text-sm lg:!text-lg">Tractor
                         Investment</span>
                 </button>
+                <button class="tab-btn hover:!text-white text-ink hover:!bg-primary group py-5 pl-2 lg:pl-10 "
+                    onclick="openCity(event, 'how-to-invest') ">
+                    <span class="group-hover:!text-white font-bold !inline-block !text-sm lg:!text-lg">How to
+                        Invest</span>
+                </button>
 
             </div>
             <div class="lg:col-span-5 details-text">
@@ -39,24 +44,14 @@
                             <button class="accordion">How do I start the investment process?</button>
                             <div class="panel">
                                 <p>
-                                    Simply create an account, Once you have completed the account creation
-                                    process, you will
-                                    have immediate
-                                    access to your personalized Quebec Food account. You can review your
-                                    dashboard and click on
-                                    new
-                                    investment. Review the farm investment portfolios and select a farm. Enter
-                                    the number of
-                                    units you will
-                                    like to invest in and click invest now.
+                                    Simply create an account, once you have completed the account creation process, you will have immediate access to your personalized Quebec Food account. You can review your dashboard and click on new investment. Review the farm investment portfolios and select a farm. Enter the number of units you will like to invest in and click invest now.
                                 </p>
                             </div>
                         </div>
                         <div class="accordion-container">
                             <button class="accordion">What is the investment duration?</button>
                             <div class="panel">
-                                <p>The program cycle is dependent on the specific farm type. It ranges from
-                                    18months to 60 months.</p>
+                                <p>The program cycle is dependent on the specific farm type. It ranges from <strong>18months,</strong>  <strong>24months,</strong> <strong>36months & 60months</strong> depending on your choice of crop or Poultry & livestock to invest in.</p>
                             </div>
                         </div>
                         <div class="accordion-container">
@@ -64,8 +59,7 @@
                                 unit?</button>
                             <div class="panel">
                                 <p>
-                                    The amount of investment varies from $1000USD – $2000USD depending on your
-                                    choice of farm investment package.
+                                    The amount of investment varies from $1,000 - $3,000 depending on your choice of farm investment package. 
                                 </p>
                             </div>
                         </div>
@@ -73,9 +67,7 @@
                             <button class="accordion">What is the Minimum or Maximum Unit?</button>
                             <div class="panel">
                                 <p>
-                                    The minimum unit of investment is one unit. Participants can take as many
-                                    units available but not exceeding 100 units at any given time and cycle of
-                                    investment.
+                                    The minimum unit of investment is one unit. Investors can take as many units available but not exceeding 100 units at any given time and cycle of investment.
                                 </p>
                             </div>
                         </div>
@@ -84,12 +76,12 @@
                             <div class="panel">
                                 <p>
                                     Yes, we know that every business has its own risk, either systemic or
-                                    non-systemic. At Quebec FOODPRO IP, security of investment and safety of
+                                    non-systemic. At <strong> Quebec FOODPRO IP,</strong> security of investment and safety of
                                     investors’ trust are taken with utmost importance. In other words, we know,
                                     understand and agree that we are investors’ trust bank, and we will
                                     therefore not compromise this fragile relationship. This has made us to
                                     commission the services of the Nigerian Agricultural Insurance Corporation
-                                    (NAIC) and Leadway Insurance as a means of risk management and mitigation.
+                                     <strong>(NAIC)</strong> and Leadway Insurance as a means of risk management and mitigation.
                                     <br>
                                     The farms are insured to mitigate against any form of crop losses from fire,
                                     lightning, aircraft, windstorm damage, flood, outbreak of pests and diseases
@@ -130,13 +122,10 @@
                                 <p class="font-bold">You receive the following documents:
                                 </p>
                                 <ul class="list-disc px-5 md:px-10 pt-2 pb-5">
-                                    <li> A receipt of payment,</li>
-                                    <li> Certificate of Investment & Deed of Investment</li>
-                                    <li> Provisional Letter of allocation for Land Asset backed security for
-                                        your</li>
-                                    <li>investment in Quebec Agritech City Residential Layout.</li>
-                                    <li>A Site layout plan (to identify your allocated plot)</li>
-                                    <li>Bank Guarantee (BG) for Investment above 100 units.</li>
+                                    <li>	Payment Acknowledgment & Electronic Deed of Investment Subscription Agreement. </li>
+                                    <li>	Provisional Letter of allocation for Land Asset backed security for your investment in Quebec Agritech City Residential Layout. </li>
+                                    <li>	A Site layout plan (to identify your allocated plot.</li>
+                                    <li>	Bank Guarantee (BG) for Investment above 100 units. (Optional)</li>
                                 </ul>
                             </div>
                         </div>
@@ -145,46 +134,21 @@
                                 investment?</button>
                             <div class="panel">
                                 <p>
-                                    You can hold onto the land for a maximum period of 24months. However, once
-                                    your investment is matured, your right to the property is withdrawn
-                                    immediately.
+                                    You can hold onto the land for a maximum period of 24months. However, once you start receiving returns, your right to the property is withdrawn immediately.
                                 </p>
                             </div>
                         </div>
                         <div class="accordion-container">
-                            <button class="accordion">Does my earnings include my capital for my chosen tenure
-                                of investment?</button>
+                            <button class="accordion">What do I stand to benet as an investor towards the actualization of the project?</button>
                             <div class="panel">
-                                <p>
-                                    Your earnings are inclusive of your invested capital for investment above
-                                    18months spread within the 36months or 60months. This is to ensure all
-                                    investors gradually get their fund within the investment tenure.
+                                <p> Investing in agricultural value chain has the potential of giving you financial freedom and generating enormous prots for the investor and other prospective investors. <br>
+
+                                    Quebec Food Processing Industrial Parks Ltd’s aim and objective of launching this scheme is to establish a financial legacy with greater sense of nancial stability for investors via entrepreneuring activities in the non-oil sector for global economic impact. <br>
+
+                                    As an investor through your investment you have contributed and saved the populaces from famine, starvation and hunger, and also restored hope to devoted farmers in Nigeria.
                                 </p>
                             </div>
                         </div>
-                        <div class="accordion-container">
-                            <button class="accordion">What do I stand to benefit as an investor towards the
-                                actualization of the project?</button>
-                            <div class="panel">
-                                <p>
-                                    Investing in agricultural value chain has the potential of giving you
-                                    financial freedom and generating enormous profits for you and other
-                                    prospective investors.
-
-                                    <br>
-
-                                    Quebec Food Processing Industrial Parks Ltd’s aim and objective of launching
-                                    this scheme is to establish a financial legacy with greater sense of
-                                    financial stability for Nigerians via entrepreneuring activities in the
-                                    non-oil sector for global economic impact.
-                                    <br>
-                                    As an investor and a Nigerian through your investment you have contributed
-                                    to the economy of this nation and as well saved this Nation from famine,
-                                    starvation and hunger, and also restored hope to devoted farmers in Nigeria.
-                                </p>
-                            </div>
-                        </div>
-
                         <div class="accordion-container">
                             <button class="accordion">How am I sure you have a committed team?</button>
                             <div class="panel">
@@ -248,58 +212,45 @@
                 <div id="processing-plant" class="tabcontent">
                     <div class="flex flex-col px-1 lg:px-5 gap-y-4 ">
                         <div class="accordion-container">
-                            <button class="accordion">What is Quebec Food Processing Plants Investment Scheme
-                                all about (QFPPIS)?</button>
+                            <button class="accordion">What is Quebec Agro-Food Processing Venture Scheme all about (AFPVS)?</button>
                             <div class="panel">
                                 <p>
-                                    QFPPIS is an Agri-Business Small and Medium Enterprises Investment Scheme
-                                    that allows you to invest your fund into Quebec Food Processing Industrial
-                                    Parks Ltd planned Agro-Food processing plants to be set-up in the
-                                    agro-processing industrial layout in Quebec Agritech City and Farm Estates
-                                    across the geo-political zones in Nigeria.
+                                    AFPVS is an Agribusiness profit venture Scheme that allows you to invest your fund into Quebec Food Processing Industrial Parks Ltd planned Agro-Food processing plants to be set-up in the agro-processing industrial layout in Quebec Agritech City and Farm Estates across the geo-political zones in Nigeria.  
                                     <br><br>
-                                    By your Investment, you are eligible to earn up to thirty-three percent
-                                    (33%) per annum as return on investment (ROI), for a tenure of 3years,
-                                    5years or 10years depending on the processing plant you desire and choose to
-                                    invest in.
+                                    By your Investment, you are eligible to earn cash value return (CVR), for a tenure of 3years, 5years or 10years depending on the processing plant you desire and choose to invest in. 
                                 </p>
                             </div>
                         </div>
                         <div class="accordion-container">
-                            <button class="accordion">What is the amount of investment required and the planned
-                                processing plants in this scheme?</button>
+                            <button class="accordion">Which food & Agro processing plants are available for start-up in this venture scheme</button>
                             <div class="panel">
                                 <p>
-                                    The amount of investment varies from $1500USD – $3500USD depending on your
-                                    choice of plant to invest on. Ten (10) processing plants is being planned
-                                    for the agro processing industrial park layout in Quebec Agritech City and
-                                    Farm Estates they are as follows:
+                                    The following processing plants are planned for the agro-processing industrial park layout in Quebec Agritech City and Farm Estates project sites and they are as follows: 
                                 </p>
                                 <div class="px-10 py-10">
                                     <span class="font-bold">Processing Cassava into:</span>
                                     <ul class="px-10 py-4 list-disc">
-                                        <li>Flour,</li>
-                                        <li>Starch & Glucose Syrup,</li>
-                                        <li>Garri (Fried Cassava Granules)</li>
-                                        <li>Fufu (Cassava Dough)</li>
-                                        <li>Lafun (Fermented Cassava Flour)</li>
+                                        <li>High Quality Cassava Flour (HQCF),</li>
+                                        <li>High Quality Cassava Starch(HQCS),</li>
+                                        <li>High cassava Fructose Sweeteners (HCFS),</li>
+                                        <li>Garri (Fried Cassava Granules),</li>
+                                        <li>Odourless Fufu (Cassava Dough),</li>
+                                        <li>Lafun (Fermented Cassava Flour),</li>
                                         <li>Tapioca (Cassava Flakes),</li>
                                         <li>Animal Feed</li>
                                     </ul>
-                                    <span class="font-bold">Other Processing Plants that deliberation is still
-                                        ongoing with Manufacturers are:</span>
+                                    <span class="font-bold">Other Processing Plants that deliberation is still ongoing with Manufacturers are: </span>
                                     <ul class="px-10 py-4 list-disc">
-                                        <li>Ethanol (for biofuels),</li>
-                                        <li>Palm Oil Crude,</li>
-                                        <li>Coconut Oil Crude.</li>
-                                        <li>Fufu (Cassava Dough)</li>
-                                        <li>Rice Mill</li>
-                                        <li>Plantain Flour</li>
+                                        <li>Palm Oil Crude, </li>
+                                        <li>Coconut Oil Crude,</li>
+                                        <li>Rice Mill,</li>
+                                        <li>Plantain Flour,</li>
+                                        <li>Cashew Nut Shell Liquid (CNSL)</li>
+                                        <li>High fructose corn syrup (HFCS)</li>
                                     </ul>
-                                    <span class="font-bold">Tropical Fruits into Pulses, Pastes, Concentrates
-                                        and Vegetables Processing Plant.</span>
+                                    <span class="font-bold">Tropical Fruits into Pulses, Pastes, Concentrates and Vegetables Processing Plant.</span>
                                     <ul class="px-10 py-4 list-disc">
-                                        <li>Mangos, Cashew, Pineapples, Guava, Papaya, Tamarind, Amla, pawpaw
+                                        <li>Mangos, Pineapples, Guava, Papaya, Tamarind, Amla, pawpaw
                                         </li>
                                         <li>Onion, Ginger Paste, Garlic Paste and other spices.</li>
                                     </ul>
@@ -307,7 +258,15 @@
                             </div>
                         </div>
                         <div class="accordion-container">
-                            <button class="accordion">Can I invest in more than 1 Plant and Slot?</button>
+                            <button class="accordion">What is the amount of investment required in the venture scheme?</button>
+                            <div class="panel">
+                                <p>
+                                    The amount of investment varies from <strong> $2000USD - $5000USD </strong>per unit depending on your choice of plant to invest in. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">Can I invest in more than 1 Plant and Unit?</button>
                             <div class="panel">
                                 <p>
                                     Yes you can
@@ -315,8 +274,7 @@
                             </div>
                         </div>
                         <div class="accordion-container">
-                            <button class="accordion">What is the duration for which I can invest in this
-                                scheme?</button>
+                            <button class="accordion">What is the duration I can invest in this scheme?</button>
                             <div class="panel">
                                 <p>
                                     3years Plan, 5years Plan & 10years Plan
@@ -324,32 +282,15 @@
                             </div>
                         </div>
                         <div class="accordion-container">
-                            <button class="accordion">What is the Return on Investment (RO1)?</button>
+                            <button class="accordion">Can I visit the site under this venture scheme?</button>
                             <div class="panel">
                                 <p>
-                                    For 5 years plan, you get half of the stated percentage of return on
-                                    investment of the plant you choose to invest in.
-                                </p>
-                                <p>
-                                    For 10 years plan, you get the full stated percentage of return on
-                                    investment of the plant you choose to invest in.
+                                    Yes. Quebec Agritech City and Farm Estates project sites is open for visitation every third Saturday of the month, any other day at investors request is solely the responsibility of the investor. Our social media platforms are also available for live-stream inspections on request.
                                 </p>
                             </div>
                         </div>
                         <div class="accordion-container">
-                            <button class="accordion">Can I choose to visit the site under this investment
-                                scheme?</button>
-                            <div class="panel">
-                                <p>
-                                    Yes. Quebec Agritech City and Farm Estates project site is open for
-                                    visitation every third Saturday of the month, any other days at investors
-                                    request is solely the responsibility of the investor.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="accordion-container">
-                            <button class="accordion">What documents do I get when I choose to invest with the
-                                QFPPI scheme?</button>
+                            <button class="accordion">What documents do I get when I choose to invest with the AFPVS scheme?</button>
                             <div class="panel">
                                 <div class="px-10 py-10">
                                     <p class="font-bold">
@@ -357,73 +298,25 @@
                                     </p>
 
                                     <ul class="list-disc">
-                                        <li>A receipt of payment & Deed of Investment</li>
-                                        <li> Provisional Letter of allocation for Land Asset backed security for
-                                            your investment in Quebec Agritech City Residential Layout.</li>
-                                        <li>A Site layout plan (to identify your allocated plot)</li>
-                                        <li>Bank Guarantee (BG) for Investment above 100 slots</li>
+                                        <li>Payment acknowledgment & electronic deed of investment subscription Agreement </li>
+                                        <li> Provisional Letter of allocation for Land Asset backed security for your investment in Quebec Agritech City Residential Layout.</li>
+                                        <li>A Site layout plan (to identify your allocated plot.</li>
+                                        <li>Bank Guarantee (BG) for Investment above 100 units. (Optional)</li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                         <div class="accordion-container">
-                            <button class="accordion">How long can I Hold onto the land as a security for my
-                                investment?</button>
+                            <button class="accordion">How long can I Hold onto the land as a security for my investment?</button>
                             <div class="panel">
-                                <p>
-                                    You can hold onto the land for maximum of 24months. However, once you start
-                                    earning returns on your investment, your right to the property is withdrawn
-                                    immediately.
-                                </p>
+                                <p>You can hold onto the land for maximum of 24months. However, once you start earning returns, your right to the property is withdrawn immediately.</p>
                             </div>
                         </div>
                         <div class="accordion-container">
-                            <button class="accordion">When exactly will I start earning from my investment and
-                                how is my ROI paid Monthly, Quarterly or Yearly?</button>
+                            <button class="accordion">When exactly will I start earning from my investment and how is my CVR paid Monthly, Quarterly or Yearly?</button>
                             <div class="panel">
                                 <p>
-                                    ROI payout to Investors shall be made quarterly and First payment of returns
-                                    is 180 working days after commissioning of the plants.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="accordion-container">
-                            <button class="accordion">Does my earnings include my capital for my chosen tenure
-                                of investment?</button>
-                            <div class="panel">
-                                <p>
-                                    Your earnings is inclusive of your invested capital spread within 3years,
-                                    5years or 10years,
-                                    <br>
-                                    <br>
-                                    this is to ensure all investors gradually gets their fund within the
-                                    investment tenure.
-                                </p>
-                            </div>
-                        </div>
-                        <div class="accordion-container">
-                            <button class="accordion">What do I stand to benefit as an investor towards the
-                                actualization of the project?</button>
-                            <div class="panel">
-                                <p>
-                                    Investing in cassava value chain processing has the potential of giving you
-                                    financial freedom and generating enormous profits for you and other
-                                    prospective investors.
-                                </p>
-                                <p>
-                                    Quebec Food Processing Industrial Parks Ltd aim and objectives of launching
-                                    this scheme is to establish a financial legacy with greater sense of
-                                    financial stability for Nigerians via entrepreneuring activities in the
-                                    non-oil sector for global economic impact.
-                                </p>
-                                <br>
-                                <br>
-                                <p>
-                                    As an investor and a Nigerian through your investment you have contributed
-                                    to the economy of this nation and as well save this Nation from famine,
-                                    starvation and hunger ,and also reduce importation of processed foods from
-                                    other nations in the world, and most especially create jobs for younger
-                                    generation and investment opportunities.
+                                    <strong>CVR </strong> payout to Investors shall be made quarterly and First payment of returns is 180 working days after commissioning of the plants.
                                 </p>
                             </div>
                         </div>
@@ -431,34 +324,19 @@
                             <button class="accordion">Are there plans for Insurance of these Plants?</button>
                             <div class="panel">
                                 <p>
-                                    Yes. We know that every business has its own risk, either systemic or
-                                    non-systemic. At
-                                    Quebec Food, security of investment and safety of investors’ funds, trust
-                                    are taken with
-
-                                    Utmost importance. In other words, we know, understand and agree that we are
-                                    investors’ trust bank, and will therefore not compromise this fragile
-                                    relationship. This has made the promoters to approach the Nigerian
-                                    Agricultural Insurance Corporation (NAIC) and other stakeholders in the
-                                    insurance sector as a means of risk management and mitigation when the
-                                    plants are fully installed and production commence.
+                                    Yes. We know that every business has its own risk, either systemic or non-systemic. At Quebec Food, security of investment and safety of investors' funds, trust are taken with Utmost importance. In other words, we know, understand and agree that we are investors' trust bank, and will therefore not compromise this fragile relationship. This has made the promoters to approach the Nigerian Agricultural Insurance Corporation (NAIC) and other stakeholders in the insurance sector as a means of risk management and mitigation when the plants are fully installed and production commence.
                                 </p>
                             </div>
                         </div>
+                        
+                        
+                        
                         <div class="accordion-container">
-                            <button class="accordion">How do you intend to market your products considering
-                                other competitors in the country?</button>
+                            <button class="accordion">How do you intend to market your products considering other competitors in the country?</button>
                             <div class="panel">
-                                <p>
-                                    Our take-off products is centered at the Cassava Value Chain and this gives
-                                    us an edge in the market considering our location. We shall be launching our
-                                    Food Network called the Q-BEC Foods Network a multi-level Marketing scheme
-                                    to spread all our products to every part of Nigeria, Europe, Asia and North
-                                    America through other partners involved in Quebec Agri-tech City & Farm
-                                    Estates project. The cooperative arm of the company “Quebec AgrifoodPro Coop
-                                    Group” would also be saddled with responsibility of marketing our products,
-                                    our products shall be licensed under the company’s brand registered
-                                    trademark name Q-BEC FOODS and marketed at such.
+                                <p>Our take-off products is centered at the Cassava Value Chain which are used by raw materials for  food, , beverages, confectioneries, paper, textiles, adhesives and in pharmaceuticals; and this gives us an edge in the market considering our site locations (South West, South East & North Central Nigeria). 
+                                    <br>
+                                    We are also launching our Food Network called the Q-BEC Foodies Network to spread all our products to every part of Nigeria, Europe, Asia and North America through other partners involved in Quebec Agritech City & Farm Estates project. The cooperative arm of the company “Quebec AgrifoodPro Coop Group” would also be saddled with responsibility of marketing our home food products (cassava chips, cassava starch, cassava flour & garri), our products shall be licensed under the company's brand registered trademark name Q-BEC FOODS and marketed at such.
                                 </p>
                             </div>
                         </div>
@@ -467,13 +345,365 @@
                 <div id="tractor-investment" class="tabcontent">
                     <div class="flex flex-col px-1 lg:px-5 gap-y-4 ">
                         <div class="accordion-container">
-                            <button class="accordion">Why Invest In Agric Tractors Scheme?</button>
+                            <button class="accordion">How do I start the process of investing?</button>
                             <div class="panel">
                                 <p>
-                                    The market potential for tractor and agro-haulage services is about $4,861,000,000. Nigeria requires 1.5 million tractors to be considered “mechanized” but has fewer than 5,000 functional tractors in circulation. There are six (6) tractors for every 10,000 hectares of arable land, compared to the global average of 195 tractors per hectare.
+                                    Simply create an account, once you have completed the account creation process, you will have immediate access to your personalized Quebec Food account. You can review your dashboard and click on new investment. Review the Tractor investment portfolios and select a project, enter the number of units you will like to invest in and click invest now then start earning cash value return <strong>(CVR)</strong> of up to <strong> 12.5%.</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">How much can I invest?</button>
+                            <div class="panel">
+                                <p>
+                                    The amount of investment varies from $30,000 - $50,000 depending on your choice of project “tractor, machinery and haulage trucks” selected, Minimum investment unit you can invest is One (1) Unit, while maximum Investment Units is 20units at an investment cycle per project.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">What’s the documents for my investment in the (TAHSV) scheme?</button>
+                            <div class="panel">
+                                <div class="px-10 py-10">
+                                    <p class="font-bold">
+                                        You receive the following documents:
+                                    </p>
+
+                                    <ul class="list-disc">
+                                        <li>Payment acknowledgment & electronic deed of investment subscription Agreement </li>
+                                        <li> Provisional Letter of allocation for Land Asset backed security for your investment in Quebec Agritech City Residential Layout.</li>
+                                        <li>A Site layout plan (to identify your allocated plot.</li>
+                                        <li>Bank Guarantee (BG) for Investment above 100 units. (Optional)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">When will I get back the invested money and accrued interest?</button>
+                            <div class="panel">
+                                <p>
+                                    CVR payout to Investors shall be made quarterly and first payment of returns is 180 working days after delivering and commissioning of the projects <strong> (tractors, machinery and trucks) from manufacturers.</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">Are there plans for Insurance?</button>
+                            <div class="panel">
+                                <p>
+                                    Yes. We know that every business has its own risk, either systemic or non-systemic. At Quebec Food, security of investment and safety of investors' funds, trust are taken with Utmost importance. In other words, we know, understand and agree that we are investors' trust bank, and will therefore not compromise this fragile relationship. This has made the promoters to approach the Nigerian Agricultural Insurance Corporation <strong>(NAIC)</strong>  and other stakeholders in the insurance sector as a means of risk management and mitigation.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">Which are your choice of tractors, machinery and trucks manufacturers?</button>
+                            <div class="panel">
+                                <p>
+                                    We are aware of the importance of building a solid business structure that can support the picture of the kind of world-class business we want to own. This is why we are committed to creating synergies with the Top 10 Popular Tractor companies in world like <strong> Mahindra & Mahindra, John Deere, Massey Ferguson, Case IH, Sonalika International, Escorts Group, Kubota, Fendt, Deutz Fahr, Claas,</strong> to help us build a prosperous business that will benefit all investors and project stakeholders.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">How committed is your team?</button>
+                            <div class="panel">
+                                <p>
+                                    Every team member carries this level of dedication and commitment to the cause we stand for. It is our utmost priority to deliver on our promise. We are professionals in agriculture, economics and international trade. You can count on us!
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">How are your investments protected?</button>
+                            <div class="panel">
+                                <p>
+                                    We ensure a high probability of success by using industry best practices, we have built a robust model to minimize and mitigate risks in our agricultural investment portfolios. We explore and provide best possible risk mitigation measures that meet our promises made to investors and partners.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">How are tractors, machinery and trucks monitored for effective productivity? </button>
+                            <div class="panel">
+                                <p>
+                                    At Quebec Foods, we have a team of field officers attached to each farm estate. These officers provide constant oversight on all farm operations. We then use drones and CCTV cameras to conduct farm surveillance, GPS systems shall be installed on tractors and trucks with a supervisor assign when on transit. Each investor can watch live progress of farm estates on the Quebec Foods social media platforms on real-time as we progress.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">How are investments Secured?  </button>
+                            <div class="panel">
+                                <p>
+                                    Every investment on the Quebec Food platform is backed with data. We have a   dedicated team of agro-professionals, economists, and data scientists who constantly monitor every agricultural commodity project. This team conducts rigorous data mining and reviews our investment portfolios to minimize risks. With data, we can determine which commodity, location, and season would bring the maximum returns for our investors.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="how-to-invest" class="tabcontent px-5 py-5 ">
+                    <div class="flex flex-col px-1 lg:px-5 gap-y-4 ">
+                        <h1 class="text-primary font-bold w-10 text-center mt-5">QUEBEC FOOD AGRIBUSINESS PROFIT VENTURES SCHEME (QFAPVS)</h1>
+                        <p>Quebec Food Agribusiness Profit Ventures (QFAPV) are classified Sustainable agricultural 
+                            ventures from production to processing, and 
+                            distribution for local consumption and export 
+                            market through the setting-up of Integrated
+                             Mechanized Farm Estates for food production 
+                             (crop production, poultry/livestock’s farming) 
+                             and establishment of Food & Agro-Processing 
+                             Plant Facilities (FAPPF) for processing and 
+                             packaging of healthy food products for consumers 
+                             at low-price.  
+                        </p>
+                        <div class="accordion-container">
+                            <button class="accordion">How do I Invest after creating an account on the Quebec Food Platform?</button>
+                            <div class="panel">
+                                <p>Click on packages <strong>(Ventures - Farm, Processing Plant or Tractor) </strong> on the platform to select the venture you are interested in.</p>
+
+                                <ul class="list-disc px-10">
+                                    <li> <p class="font-bold">Farming venture:</p> <br> The amount of investment varies from <strong>$1000 – $3000</strong>  depending on your choice of farm venture selected, minimum investment unit you can invest is one (1) Unit, while maximum Investment Units is 100unit at an investment cycle per project. </li>
+                                    <li> <p class="font-bold">Processing plants venture:</p> <br> The amount of investment varies from <strong>$2000 – $5000</strong> depending on your choice of plant selected,  minimum investment unit you can invest is one (1) unit, while maximum investment units is <strong>100unit</strong> at an investment cycle per project. </li>
+                                    <li> <p class="font-bold">Agric Tractor & Agro-haulage Venture:</p> <br> The amount of investment varies from  $30,000 - $50,000 depending on your choice of project <strong>“tractor, machinery and haulage trucks”</strong>  selected, Minimum investment unit you can invest in One (1) Unit, while maximum Investment Units is <strong>20unit</strong>  at an investment cycle per project. </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                Are there restrictions on the number of Venture “projects” an investor fund at a given time?
+                            </button>
+                            <div class="panel">
+                                <p>There is no restriction but your investment per ventures are specified and your total funding should not exceed certain percentage of your income each year as provided by the federal social securities laws of your country of residence.</p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                What are the Payment Options?
+                            </button>
+                            <div class="panel">
+                                <p>Once you have selected the venture to invest in, you can either <strong>“invest – option A” straight away or “pledge first – option B”. </strong> </p>
+
+                                <ul class="list-disc px-10">
+                                    <li> <p class="font-bold">Option A ( <span class="text-primary">Invest - wallet</span> ): </p> <br> In other to directly invest, you must have sufficient credits in your virtual wallet. You can do this by adding money to your virtual wallet through our partner payment platforms. </li>
+                                    <li> <p class="font-bold">Option B ( <span class="text-primary">Pledge – Bank Transfer</span> ): </p> <br> In the case where you haven’t deposited any amount into your virtual wallet yet, you may choose to pledge. All pledges are given 3 working days to make transfer payment. It should be noted that the platform does not limit the amount of pledges that any user can make. A pledge will only be converted into an investment, once the payment has been made and verified. The amount transferred should be at least in equivalent to the value of the amount pledged and charges inclusive. Any excess of the transferred amount shall be credited to user’s virtual wallet.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                Who can invest on Quebec Food Agribusiness Venture Scheme?
+                            </button>
+                            <div class="panel">
+                                <p>Anyone over 18 years of age can invest, provided 
+                                    they are accredited or non-accredited investors 
+                                    in their country of residence.
+                                    <br>
+                                    Secondly, potential investors 
+                                    are strongly advised to comply with the laws and 
+                                    regulations of their country of residence. 
+                                    The securities offered on this site are not offered in 
+                                    jurisdictions where public solicitation for offerings is
+                                    not permitted; it is solely your responsibility to 
+                                    comply with the laws and regulations of your country 
+                                    of residence.
+                                    <br>
+                                    Thirdly, we do not run Ponzi schemes, but 
+                                    commodities investment scheme that connect 
+                                    investors to specific agricultural commodities
+                                    projects for the purpose of sponsoring such 
+                                    projects in exchange for cash value return 
+                                    <strong>(CVR),</strong>  thereby revamping the 
+                                    agricultural sector. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do I know if I am an accredited or non-accredited investor?
+                            </button>
+                            <div class="panel">
+                                <p>An accredited investor is a person who has a 
+                                    networth of at least <strong>$1million</strong>  (excluding 
+                                    their primary residence) or earns at least 
+                                    <strong>$200,000</strong>  in income each year – <strong>$300,000</strong> if 
+                                    combined with a spouse. A non-accredited investor
+                                    is everyone else! 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                What is the "Error with your investment" notification?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    If you have received an email that says “Error with your 
+                                    investment,” then that means there is information that 
+                                    needs to be verified before the investment can be processed. 
+                                    The link in the email will redirect you to a Quebec Food 
+                                    page asking you to input some additional information. 
+                                    Once you submit the required information, the system will 
+                                    begin processing your investment. We will reach out to you 
+                                    directly if we require any further information. 
+
+                                    <br>
+
+                                    Note: Please don’t click on the link when you are already
+                                    logged into your Quebec Food account.
+                                </p>
+                                <p>You can also update this information by following the steps below:</p>
+
+                                <ul class="list-disc px-10">
+                                    <li>Login to your Quebec Food  account</li>
+                                    <li>Once you are logged in, click on star button on same line with logout and click on “My Account” you will see Profile and Account Overview </li>
+                                    <li>Click “View profile”  </li>
+                                    <li>You will then be able to update your information by checking security, Bank and Identification and correcting the pending information’s and click on update profile.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                When and how will I get confirmation on my investment?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    Once the company closes on your funds, you will receive a
+                                    confirmation email from the company with details about your
+                                    investment, along with a copy of your deed 
+                                    of Investment subscription agreement with a
+                                    record of your units and cash value returns (CVR). 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                What happens if the company does not reach their funding goal?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    If the company does not reach their minimum funding goal, 
+                                    all funds will be returned to the investor within 10 business 
+                                    days after the closing of their offering.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                If the company has reached their maximum funding goal, can I still invest?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    If the company has reached the maximum funding goal, 
+                                    you can submit an “indication of interest.” An indication
+                                    of interest is similar to a reservation. It’s a non-binding
+                                    commitment that allows you to be placed on a waitlist for 
+                                    any offerings that are oversubscribed, meaning they have 
+                                    raised more than their maximum funding goal. This is not an investment and does not guarantee a place in the offering.
+                                </p>
+                                <p>If your indication of interest is accepted, you will be notified to sign your binding agreement. You will have only 72 hours to sign the approved indication of interest. </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                I forgot my password. What do I do?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    You can reset your password by clicking “Forgot Password”,
+                                    which is located on the Login page below “Password.” Once
+                                    you click “Forgot Password,” you will be asked to enter 
+                                    your email. After you enter your email and click “Submit,”
+                                    we will send you further instructions.
+                                </p>
+                                <p>Once the email arrives, please open it and click on the 
+                                    <strong>“Reset your password”</strong>  link provided. 
+                                    You will then be prompted to enter a new password and confirm 
+                                    that password. After you do so, you will be logged in and
+                                    redirected to the main QUEBEC Food page. Once logged in,
+                                    you will be able to invest.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do I view my Deed of Investment subscription agreement?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    You will not be able to view your signed subscription 
+                                    agreement until the company closes on your funds, and 
+                                    your status changes from <strong> “pending”</strong> to <strong>“approved”</strong> .
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do I view my investment status? 
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    To view your investment status follow these steps:
+                                </p>
+                                <ul class="list-disc px-10">
+                                    <li>Login to your Quebec Food  account</li>
+                                    <li>Once you are logged in, click on your Dashboard and the status of your investment will display. </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                Different stages of investments:
+                            </button>
+                            <div class="panel">
+                                <p>
+                                <strong> Incomplete -</strong> You have begun the investment process but have not completed all of the steps to finalize your investment, select payment on option either “wallet” or “bank transfer”. Make sure that you click the green <strong>“Invest” button after clicking “creating an investment”</strong>  on the investment page. Once you have submitted your investment, you will receive a confirmation email immediately following submission. 
                                 </p>
                                 <p>
-                                    The growth of agricultural mechanization is low in sub Saharan Africa, and is estimated at 1.2% in Nigeria. The global agricultural tractors market was valued at USD 55.37 billion in 2018 and is expected to grow at a CAGR of 5.8% to USD77.74 billion by 2024. North America dominates the global agricultural tractors market, at 15.2% of global market share in 2014, led by the USA and Canada.
+                                <strong>Submitted - </strong> You have successfully submitted your investment, and it is currently pending waiting approval. It could be pending because the funds have not yet left or reached the escrow account, or are still undergoing the necessary checks. If there is any problem  with your investment, you will be notified by Quebec Food.
+                                </p>
+                                <p>
+                                <strong>Cleared – </strong> Quebec Food has received your payment for your investment, and we have successfully verified all of the required investor checks. There is nothing else that you need to do at this time.
+                                </p>
+                                <p>
+                                <strong>Invested - </strong> After the company has conducted a close on your payment, your investment will be <strong>approved</strong>  and then moved to <strong>“Invested.”</strong>  This means your funds have been disbursed to the venture you have chosen to invest in. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do my investments affect my taxes?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    Quebec Food cannot give you any tax or 
+                                    investment advice. You may want to consult a tax advisor
+                                    regarding your investment and any questions regarding 
+                                    your taxes as an investor. However, we can provide you 
+                                    with some useful information on how it may affect you 
+                                    for the upcoming tax year.
+                                    <br>
+                                    Tax liability is largely determined by what type of
+                                    venture you invested in and Quebec Food Processing
+                                    Industrial Parks Ltd is an LLC entity and as such we
+                                    are tax payers.  
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                What if the company venture you invested in goes bankrupt?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    The company or its trustee is responsible for providing tax
+                                    documents directly to their investors, to reflect any loss. 
+                                </p>
+                            </div>
+                        </div>
+                        <div class="accordion-container">
+                            <button class="accordion">
+                                How do I contact someone at Quebec Food?
+                            </button>
+                            <div class="panel">
+                                <p>
+                                    If you have questions that have not been answered in the
+                                    FAQ, feel free to email us at info-desk.agrovest@quebecgroups.com
+                                    or use our green chat icon found in the lower right
+                                    hand corner of all of our Quebec Food pages. We will
+                                    do our best to answer your questions within 24 hours.
                                 </p>
                             </div>
                         </div>

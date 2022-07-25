@@ -309,7 +309,7 @@
     </div>
   </section>
 
-  <section class="bg-[#F3FFF9]" style="margin-top: 77px;">
+  {{-- <section class="bg-[#F3FFF9]" style="margin-top: 77px;">
     <section class="section-container">
       <div class="px-2 py-1 lg:py-0 md:px-0 lg:w-1/2">
                 <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Our Products</h2>
@@ -371,119 +371,511 @@
           </ul>
       </div>
     </section>
-  </section>
+  </section> --}}
 
 
   <!-- Testimonial -->
   <section>
     <div class="overflow-hidden text-white bg-primary md:py-16">
-      <div class="section-container max-h-96 md:max-h-full">
+      <div class="section-container max-h-96 md:max-h-full" style="max-height: 38rem;">
         <div class="w-full text-center md:my-10">
           <h2 class="my-2 text-sm font-medium">TESTIMONIALS</h2>
           <span class="text-4xl font-medium">Hear What Our Users Have To Say</span>
         </div>
-        <div class="flex flex-col md:flex-row lg:-ml-56">
-          <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
-            <div class="flex gap-5 mb-3">
-              <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User">
-              <div>
-                <span class="block text-[#081131] font-medium text-base">Tom Haklin</span>
-                <span class="block text-sm text-[#828282] font-normal">Head of Growth, Accenture</span>
-              </div>
-            </div>
-            <p class="text-sm text-[#243141] font-normal">
-              Well-recommended way on monitoring your business from your mobile device. Kudos!
-            </p>
-          </div>
-          <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
-            <div class="flex gap-5 mb-3">
-              <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User">
-              <div>
-                <span class="block text-[#081131] font-medium text-base">Tom Haklin</span>
-                <span class="block text-sm text-[#828282] font-normal">Head of Growth, Accenture</span>
-              </div>
-            </div>
-            <p class="text-sm text-[#243141] font-normal">
-              Well-recommended way on monitoring your business from your mobile device. Kudos!
-            </p>
-          </div>
-          <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
-            <div class="flex gap-5 mb-3">
-              <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User">
-              <div>
-                <span class="block text-[#081131] font-medium text-base">Tom Haklin</span>
-                <span class="block text-sm text-[#828282] font-normal">Head of Growth, Accenture</span>
-              </div>
-            </div>
-            <p class="text-sm text-[#243141] font-normal">
-              Well-recommended way on monitoring your business from your mobile device. Kudos!
-            </p>
-          </div>
-          <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
-            <div class="flex gap-5 mb-3">
-              <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User">
-              <div>
-                <span class="block text-[#081131] font-medium text-base">Tom Haklin</span>
-                <span class="block text-sm text-[#828282] font-normal">Head of Growth, Accenture</span>
-              </div>
-            </div>
-            <p class="text-sm text-[#243141] font-normal">
-              Well-recommended way on monitoring your business from your mobile device. Kudos!
-            </p>
-          </div>
 
+        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
+        
+        <style>
+          @media (max-width: 465px) {
+            
+          }
+          @media (min-width: 1164px) {
+            .dsk-view {
+              display: block;
+              /* display: none; */
+            }
+            .tab-view {
+              /* display: block; */
+              display: none;
+            }
+            .mob-view {
+              /* display: block; */
+              display: none;
+            }
+          }
+          @media (max-width: 1163px) {
+            .dsk-view {
+              /* display: block; */
+              display: none;
+            }
+            .tab-view {
+              display: block;
+              /* display: none; */
+            }
+            .mob-view {
+              /* display: block; */
+              display: none;
+            }
+          }
+          @media (max-width: 850px) {
+            .dsk-view {
+              /* display: block; */
+              display: none;
+            }
+            .tab-view {
+              /* display: block; */
+              display: none;
+            }
+            .mob-view {
+              display: block;
+              /* display: none; */
+            }
+          }
+        </style>
+        
+        
+        <!-- desktop view -->
+        <div id="animation-carousel" class="dsk-view relative" data-carousel="static">
+            <!-- Carousel wrapper }} -->
+            <div class="overflow-hidden relative h-56 rounded-lg md:h-96">
+                <!-- Item 1 -->
+                <div class="hidden duration-200 ease-linear absolute inset-0 transition-all transform" data-carousel-item="">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">HARRIET W.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Quebec Food provides great details on each agribusiness profit venture investment, with the data presented in a clear format. I am sure of their growth and they will make a great impact in the cassava value chain space. I am eager to see more of their agri-food value chain investment opportunities as time goes on.
+                      </p>
+                    </div>
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">FRANK O.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(ITALY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                        I’ve reviewed other opportunities in Agribusiness Profit Venture investment Schemes, and I have discovered that Quebec Food is a one stop hub for agribusiness profit ventures that gives farmers and agribusiness investors the opportunity to invest in the Agri-food value chain so as to create availability of healthy processed food products globally.  
+                      </p>
+                    </div>
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">JULIET O.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(NIGERIA)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Investing in my Country is so much easier with Quebec Food!  Now, I can directly help to grow the Agriculture and Financial sector via agency banking in Nigeria simultaneously from my mobile phone!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="duration-200 ease-linear absolute inset-0 transition-all transform -translate-x-full z-10" data-carousel-item="active">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">HON. OKIRO A.I.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(NIGERIA)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Great Company! I have made multiple investments with Quebec Food. My experience has been excellent. Best of all, I get prompt responses regarding questions via call or email.
+                      </p>
+                    </div>
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">KAMA .S.</span>
+                          <span class="block text-sm text-[#828282] font-normal"> (TURKEY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      The agribusiness profit ventures scheme of Quebec Food is a welcomed development for social impact. This allows you to help and relate with devoted farmers, while also earning for your own future. Thanks to the promoters for this wonderful initiative. 
+                      </p>
+                    </div>
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">KINGSLEY A. </span>
+                          <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Quebec Food Agribusiness profit venture investment scheme, has been an opportunity in most recent Agri-food value chain investment opportunity that you probably have not heard of, you can be a pioneer of hope for the grassroots farmers. Let us harness the power of many and together to empower our farmers and ensure their effort is seen across the globe through Quebec’ healthy and processed food products.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Slider controls -->
+            <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev="">
+                <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next="">
+                <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
+        </div>
+
+        <!-- tablet view -->
+
+        <div id="animation-carousel" class="tab-view relative" data-carousel="static">
+            <!-- Carousel wrapper }} -->
+            <div class="overflow-hidden relative h-56 rounded-lg md:h-96">
+                <!-- Item 1 -->
+                <div class="duration-200 ease-linear absolute inset-0 transition-all transform" data-carousel-item="active">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">HARRIET W.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Quebec Food provides great details on each agribusiness profit venture investment, with the data presented in a clear format. I am sure of their growth and they will make a great impact in the cassava value chain space. I am eager to see more of their agri-food value chain investment opportunities as time goes on.
+                      </p>
+                    </div>
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">FRANK O.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(ITALY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                        I’ve reviewed other opportunities in Agribusiness Profit Venture investment Schemes, and I have discovered that Quebec Food is a one stop hub for agribusiness profit ventures that gives farmers and agribusiness investors the opportunity to invest in the Agri-food value chain so as to create availability of healthy processed food products globally.  
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="duration-200 ease-linear absolute inset-0 transition-all transform -translate-x-full z-10" data-carousel-item="">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">JULIET O.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(NIGERIA)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Investing in my Country is so much easier with Quebec Food!  Now, I can directly help to grow the Agriculture and Financial sector via agency banking in Nigeria simultaneously from my mobile phone!
+                      </p>
+                    </div>
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">HON. OKIRO A.I.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(NIGERIA)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Great Company! I have made multiple investments with Quebec Food. My experience has been excellent. Best of all, I get prompt responses regarding questions via call or email.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="duration-200 ease-linear absolute inset-0 transition-all transform -translate-x-full z-10" data-carousel-item="">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">KAMA .S.</span>
+                          <span class="block text-sm text-[#828282] font-normal"> (TURKEY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      The agribusiness profit ventures scheme of Quebec Food is a welcomed development for social impact. This allows you to help and relate with devoted farmers, while also earning for your own future. Thanks to the promoters for this wonderful initiative. 
+                      </p>
+                    </div>
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">KINGSLEY A. </span>
+                          <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Quebec Food Agribusiness profit venture investment scheme, has been an opportunity in most recent Agri-food value chain investment opportunity that you probably have not heard of, you can be a pioneer of hope for the grassroots farmers. Let us harness the power of many and together to empower our farmers and ensure their effort is seen across the globe through Quebec’ healthy and processed food products.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Slider controls -->
+            <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev="">
+                <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next="">
+                <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
+        </div>
+
+        <!-- mobile view -->
+
+        <di id="animation-carousel" class="mob-view relative" data-carousel="static">
+            <!-- Carousel wrapper }} -->
+            <div class="overflow-hidden relative h-56 rounded-lg md:h-96" style="height: 21rem;">
+                <!-- Item 1 -->
+                <div class="hidden duration-200 ease-linear absolute inset-0 transition-all transform" data-carousel-item="">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">HARRIET W.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Quebec Food provides great details on each agribusiness profit venture investment, with the data presented in a clear format. I am sure of their growth and they will make a great impact in the cassava value chain space. I am eager to see more of their agri-food value chain investment opportunities as time goes on.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="hidden duration-200 ease-linear absolute inset-0 transition-all transform" data-carousel-item="">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">FRANK O.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(ITALY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                        I’ve reviewed other opportunities in Agribusiness Profit Venture investment Schemes, and I have discovered that Quebec Food is a one stop hub for agribusiness profit ventures that gives farmers and agribusiness investors the opportunity to invest in the Agri-food value chain so as to create availability of healthy processed food products globally.  
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="hidden duration-200 ease-linear absolute inset-0 transition-all transform" data-carousel-item="">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">JULIET O.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(NIGERIA)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Investing in my Country is so much easier with Quebec Food!  Now, I can directly help to grow the Agriculture and Financial sector via agency banking in Nigeria simultaneously from my mobile phone!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Item 4 -->
+                <div class="duration-200 ease-linear absolute inset-0 transition-all transform -translate-x-full z-10" data-carousel-item="active">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">HON. OKIRO A.I.</span>
+                          <span class="block text-sm text-[#828282] font-normal">(NIGERIA)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Great Company! I have made multiple investments with Quebec Food. My experience has been excellent. Best of all, I get prompt responses regarding questions via call or email.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="duration-200 ease-linear absolute inset-0 transition-all transform -translate-x-full z-10" data-carousel-item="active">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">KAMA .S.</span>
+                          <span class="block text-sm text-[#828282] font-normal"> (TURKEY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      The agribusiness profit ventures scheme of Quebec Food is a welcomed development for social impact. This allows you to help and relate with devoted farmers, while also earning for your own future. Thanks to the promoters for this wonderful initiative. 
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="duration-200 ease-linear absolute inset-0 transition-all transform -translate-x-full z-10" data-carousel-item="active">
+                  <div class="flex" style="justify-content: center;">
+                    <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+                      <div class="flex gap-5 mb-3">
+                        <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                        <div>
+                          <span class="block text-[#081131] font-medium text-base">KINGSLEY A. </span>
+                          <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+                        </div>
+                      </div>
+                      <p class="text-sm text-[#243141] font-normal">
+                      Quebec Food Agribusiness profit venture investment scheme, has been an opportunity in most recent Agri-food value chain investment opportunity that you probably have not heard of, you can be a pioneer of hope for the grassroots farmers. Let us harness the power of many and together to empower our farmers and ensure their effort is seen across the globe through Quebec’ healthy and processed food products.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Slider controls -->
+            <button type="button" class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-prev="">
+                <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                    <span class="sr-only">Previous</span>
+                </span>
+            </button>
+            <button type="button" class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none" data-carousel-next="">
+                <span class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                    <span class="sr-only">Next</span>
+                </span>
+            </button>
+        </div>
+
+<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+
+{{--<section class="splide section-container" aria-labelledby="carousel-heading">
+        
+      <div class="splide__track float-right">
+        <div class="splide__list">
+          <div class="splide__slide md:w-[507px] px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+            <div class="flex gap-5 mb-3">
+              <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+              <div>
+                <span class="block text-[#081131] font-medium text-base">HARRIET W.</span>
+                <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+              </div>
+            </div>
+            <p class="text-sm text-[#243141] font-normal">
+            Quebec Food provides great details on each agribusiness profit venture investment, with the data presented in a clear format. I am sure of their growth and they will make a great impact in the cassava value chain space. I am eager to see more of their agri-food value chain investment opportunities as time goes on.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section> --}}
+        
+        {{--<div class="flex flex-col md:flex-row lg:-ml-56">
+          <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+            <div class="flex gap-5 mb-3">
+              <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+              <div>
+                <span class="block text-[#081131] font-medium text-base">HARRIET W.</span>
+                <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+              </div>
+            </div>
+            <p class="text-sm text-[#243141] font-normal">
+            Quebec Food provides great details on each agribusiness profit venture investment, with the data presented in a clear format. I am sure of their growth and they will make a great impact in the cassava value chain space. I am eager to see more of their agri-food value chain investment opportunities as time goes on.
+            </p>
+          </div>
+          <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+            <div class="flex gap-5 mb-3">
+              <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+              <div>
+                <span class="block text-[#081131] font-medium text-base">FRANK O.</span>
+                <span class="block text-sm text-[#828282] font-normal">(ITALY)</span>
+              </div>
+            </div>
+            <p class="text-sm text-[#243141] font-normal">
+              I’ve reviewed other opportunities in Agribusiness Profit Venture investment Schemes, and I have discovered that Quebec Food is a one stop hub for agribusiness profit ventures that gives farmers and agribusiness investors the opportunity to invest in the Agri-food value chain so as to create availability of healthy processed food products globally.  
+            </p>
+          </div>
+          <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+            <div class="flex gap-5 mb-3">
+              <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+              <div>
+                <span class="block text-[#081131] font-medium text-base">JULIET O.</span>
+                <span class="block text-sm text-[#828282] font-normal">(NIGERIA)</span>
+              </div>
+            </div>
+            <p class="text-sm text-[#243141] font-normal">
+            Investing in my Country is so much easier with Quebec Food!  Now, I can directly help to grow the Agriculture and Financial sector via agency banking in Nigeria simultaneously from my mobile phone!
+            </p>
+          </div>
         </div>
         <div class="flex flex-col md:flex-row lg:-mr-56">
+          
           <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
             <div class="flex gap-5 mb-3">
-              <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User">
+              <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
               <div>
-                <span class="block text-[#081131] font-medium text-base">Tom Haklin</span>
-                <span class="block text-sm text-[#828282] font-normal">Head of Growth, Accenture</span>
+                <span class="block text-[#081131] font-medium text-base">HON. OKIRO A.I.</span>
+                <span class="block text-sm text-[#828282] font-normal">(NIGERIA)</span>
               </div>
             </div>
             <p class="text-sm text-[#243141] font-normal">
-              Well-recommended way on monitoring your business from your mobile device. Kudos!
+            Great Company! I have made multiple investments with Quebec Food. My experience has been excellent. Best of all, I get prompt responses regarding questions via call or email.
             </p>
           </div>
           <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
             <div class="flex gap-5 mb-3">
-              <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User">
+              <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
               <div>
-                <span class="block text-[#081131] font-medium text-base">Tom Haklin</span>
-                <span class="block text-sm text-[#828282] font-normal">Head of Growth, Accenture</span>
+                <span class="block text-[#081131] font-medium text-base">KAMA .S.</span>
+                <span class="block text-sm text-[#828282] font-normal"> (TURKEY)</span>
               </div>
             </div>
             <p class="text-sm text-[#243141] font-normal">
-              Well-recommended way on monitoring your business from your mobile device. Kudos!
+            The agribusiness profit ventures scheme of Quebec Food is a welcomed development for social impact. This allows you to help and relate with devoted farmers, while also earning for your own future. Thanks to the promoters for this wonderful initiative. 
             </p>
           </div>
           <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
             <div class="flex gap-5 mb-3">
-              <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User">
+              <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
               <div>
-                <span class="block text-[#081131] font-medium text-base">Tom Haklin</span>
-                <span class="block text-sm text-[#828282] font-normal">Head of Growth, Accenture</span>
+                <span class="block text-[#081131] font-medium text-base">KINGSLEY A. </span>
+                <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
               </div>
             </div>
             <p class="text-sm text-[#243141] font-normal">
-              Well-recommended way on monitoring your business from your mobile device. Kudos!
+            Quebec Food Agribusiness profit venture investment scheme, has been an opportunity in most recent Agri-food value chain investment opportunity that you probably have not heard of, you can be a pioneer of hope for the grassroots farmers. Let us harness the power of many and together to empower our farmers and ensure their effort is seen across the globe through Quebec’ healthy and processed food products.
             </p>
           </div>
-          <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
-            <div class="flex gap-5 mb-3">
-              <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User">
-              <div>
-                <span class="block text-[#081131] font-medium text-base">Tom Haklin</span>
-                <span class="block text-sm text-[#828282] font-normal">Head of Growth, Accenture</span>
-              </div>
-            </div>
-            <p class="text-sm text-[#243141] font-normal">
-              Well-recommended way on monitoring your business from your mobile device. Kudos!
-            </p>
-          </div>
-
-        </div>
+        </div>--}}
       </div>
     </div>
   </section>
