@@ -89,7 +89,7 @@ class CustomNotification extends Notification implements ShouldQueue
                 ->greeting('skip default')
                 ->line('Hello '.$notifiable->name.',')
                 ->line(new HtmlString($this->body))
-                ->attachData(base64_decode($this->file), 'certificate.pdf');
+                ->attachData(base64_decode($this->file), 'Deed of Investment.pdf');
         }
         return (new MailMessage)
             ->subject($this->title)
