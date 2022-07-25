@@ -309,7 +309,7 @@
     </div>
   </section>
 
-  {{-- <section class="bg-[#F3FFF9]" style="margin-top: 77px;">
+  <section class="bg-[#F3FFF9]" style="margin-top: 77px;">
     <section class="section-container">
       <div class="px-2 py-1 lg:py-0 md:px-0 lg:w-1/2">
                 <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Our Products</h2>
@@ -323,55 +323,28 @@
         
       <div class="splide__track">
           <ul class="splide__list">
-              <!-- <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
-              </li> -->
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-              </li>
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-              </li>
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-              </li>
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-              </li>
-              <!-- <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
-              </li> -->
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-              </li>
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-              </li>
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-              </li>
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-              </li>
-              <!-- <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1.png" alt="">
-              </li> -->
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-              </li>
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-              </li>
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-3.png" alt="">
-              </li>
-              <li class="splide__slide">
-                  <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri-1-4.png" alt="">
-              </li>
+          <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal.jpg" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal-garri.jpg" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cassava-starch.jpg" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-cocoyam-flour.jpg" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-plantain-meal.jpg" alt="">
+                  </li>
+                  <li class="splide__slide">
+                      <img class="rounded-2xl" src="/static-assets/quebec-poundoyam-flour.jpg" alt="">
+                  </li>
           </ul>
       </div>
     </section>
-  </section> --}}
+  </section>
 
 
   <!-- Testimonial -->
