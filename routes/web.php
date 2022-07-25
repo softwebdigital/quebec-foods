@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/pdf', function() {
-    return view('pdf.certificate');
-});
-
 Route::get('/', [App\Http\Controllers\StaticPageController::class, 'home'])->name('static.home');
 Route::get('/about', [App\Http\Controllers\StaticPageController::class, 'about'])->name('static.about');
 Route::get('/contact', [App\Http\Controllers\StaticPageController::class, 'contact'])->name('static.contact');
