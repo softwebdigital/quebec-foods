@@ -194,7 +194,7 @@ $code = str_shuffle($pin);
 
         </div>
         <div style="top: 524px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-            {{ getCurrency() }} {{ number_format($investment["amount"]) }}
+            {{ $cur->base_currency }} {{ number_format($investment["amount"]) }}
         </div>
         <div style="top: 542px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
             {{ number_format($investment["slots"]) }} {{ number_format($investment["slots"]) > 1 ? 'Units' : 'Unit' }} 
@@ -302,7 +302,7 @@ $code = str_shuffle($pin);
                 @endif
             </div>
             <div style="top: 555px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-                {{ getCurrency() }} {{ number_format($investment["amount"]) }}
+                {{ $cur->base_currency }} {{ number_format($investment["amount"]) }}
             </div>
             <div style="top: 577px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ number_format($investment["slots"]) }} {{ number_format($investment["slots"]) > 1 ? 'Units' : 'Unit' }} 
