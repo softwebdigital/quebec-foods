@@ -19,7 +19,7 @@
       <!-- Form Cand Location-->
       <section class=" bg-primary">
         <div class="lg:px-5 mb-20 lg:pt-80 lg:pb-20 py-20 lg:mt-96 relative section-container ">
-          <div class=" max-w-[620px] mx-auto">
+          <div class=" max-w-[620px] mx-auto" style="max-width: 520px;">
             <form action="" method="get"
               class="bg-[#E5F0EB] rounded-lg lg:rounded-3xl py-7 lg:py-10 px-7 lg:px-10 lg:absolute lg:-top-[350px]">
               <div class="grid grid-cols-2 gap-5">

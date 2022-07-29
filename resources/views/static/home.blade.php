@@ -319,7 +319,7 @@
               </div>
     </section>
       
-    <section class="splide section-container" aria-labelledby="carousel-heading" style="padding: 0px; margin: 0px;">
+    <section class="splide section-container" aria-labelledby="carousel-heading">
         
       <div class="splide__track">
           <ul class="splide__list">
@@ -353,7 +353,7 @@
       <div class="section-container max-h-96 md:max-h-full" style="max-height: 38rem;">
         <div class="w-full text-center md:my-10">
           <h2 class="my-2 text-sm font-medium">TESTIMONIALS</h2>
-          <span class="text-4xl font-medium">Hear What Our Users Have To Say</span>
+          <span class="text-4xl font-medium">Hear what our users have to say</span>
         </div>
         <style>
           @media (max-width: 465px) {

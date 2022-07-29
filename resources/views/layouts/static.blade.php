@@ -29,7 +29,7 @@
           </div>
 
           <!-- Links -->
-          <div class="flex justify-between content-center items-center xl:gap-x-8 w-2/3 lg:w-[80%] relative">
+          <div style="font-weight: 600;" class="flex justify-between content-center items-center xl:gap-x-8 w-2/3 lg:w-[80%] relative">
 
             <a class="cursor-pointer nav-link drop-down-items q-boss">
               <span> Quebec Foods </span>
@@ -81,7 +81,7 @@
           </a>
         </div> --}} 
 
-        <div class="flex items-center content-center justify-between lg:gap-x-5">
+        <div style="font-weight: 600;" class="flex items-center content-center justify-between lg:gap-x-5">
           @guest
           <a class="hidden btn lg:block" href="{{ route('login') }}">
             Sign In
@@ -174,10 +174,10 @@
               </span>
 
               <a href="https://www.google.com/maps/place/Boya+place/@9.0498425,7.4354707,15z/data=!4m5!3m4!1s0x0:0x63594dac8d4ae3ac!8m2!3d9.0499115!4d7.4354294"
-                  target="_blank" class="mt-3 flex text-base text-ink">
-                  <img class="h-6" style="margin-right: 15px; margin-top: 6px;" src="/static-assets/Vector.png" alt="Message icon">Suite B15, Boya Place Ameh Ebute<br>Street,Wuye- Abuja, Nigeria.
+                  target="_blank" class="mt-3 mb-3 flex text-base text-ink">
+                  <img class="h-6" style="margin-right: 15px; margin-top: 6px;" src="/static-assets/Vector.png" alt="Message icon">Suite B15, Boya Place Ameh Ebute Street,Wuye- Abuja, Nigeria.
               </a>
-              <div class="mt-5 lg:flex flex-col !-my-1 hidden gap-x-2">
+              <div class="mt-6 lg:flex flex-col !-my-1 hidden gap-x-2">
                   <a class="text-primary" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
               </div>
               
