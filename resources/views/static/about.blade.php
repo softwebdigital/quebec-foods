@@ -7,8 +7,10 @@
           <div class="px-6 py-5 lg:pl-20 md:px-0 md:w-2/5">
             <h1 class="text-4xl lg:text-heading-1 lg:leading-h-1 text-[#192434] font-bold mb-5">About Us</h1>
             <p class="text-base lg:text-xl leading-5 lg:leading-8 text-gray-700 font-normal">
-              We provide you an opportunity to directly impact the lives of devoted farmers to enhance food security by
-              increasing production, reducing losses, raising incomes, ensure only healthy food products are processed.
+              Q-BEC Foods is a registered trademark of Quebec Food Processing Industrial Parks Ltd a startup agro-food, fruits & Vegetables processing firm incorporated in 2020 under the Companies & Allied Matters 1990 of the Federal Republic of Nigeria with  RC: 1710593. 
+            </p>
+            <p style="padding-top: 20px" class="text-base lg:text-xl leading-5 lg:leading-8 text-gray-700 font-normal">
+              Quebec Food is envisioned to deal in all-round agricultural production, processing, marketing, distribution and agro-export ventures with the aim of providing angel investors and venture capitalists agribusiness venture investment opportunities to directly impact the lives of devoted farmers, enhance food security by increasing production, reduce post-harvest losses, raise income, ensure only healthy food products are produced and processed.
             </p>
           </div>
           <div class="">
@@ -197,7 +199,7 @@
                 </svg>
 
               </div>
-              <span>Investment Scheme</span>
+              <span>Partnership</span>
             </button>
           </div>
           <div class="lg:col-span-5 details-text">
@@ -252,6 +254,7 @@
             <div id="infrastructure" class="tabcontent">
               <h3 class="text-[#192434] font-bold text-[40px] leading-[48px] lg:mb-5">Infrastructure</h3>
               <h4 class="lg:text-[28px]">Food Processing</h4>
+              <img src="./assets/media/about-us-infastructure.jpeg" alt="bg" class="md:w-[55%]" style="margin: 30px 0px;">
               <p>
                 Q-bec Foods has taken on state of the art technology for processing of the cassava value chain, fruits, vegetables and spices being one of the agricultural sub-sectors in West and Central Africa that has great potential in terms of improving productivity, creating added value and developing regional trade. 
               </p>
@@ -268,6 +271,7 @@
               <p>Computerized process controls is put in place to ensure continuous maintenance of parameters that are essential to the preservation of color, flavor and taste, to meet international standards.</p>
 
               <h4 class="lg:text-[28px]">Food Production</h4>
+              
               <p>
                   Q-bec Foods has designed Integrated Mechanized Farm Estates model to create a sustainable linkage with the growers of agro-farm produces, by adopting innovative practices like contract mechanized farming, across the states and communities within and outside processing Units based on mutual trust and understanding. 
               </p>
@@ -301,15 +305,16 @@
               <p class="pt-3 pb-3">These processes are on-going to ensure we have stringent management policies in place.</p>
             </div>
             <div id="investments" class="tabcontent">
-              <h3 class="text-[#192434] font-bold text-[40px] leading-[48px] lg:mb-5">Investment Scheme</h3>
-              <p class="pt-2 pb-4 font-bold">Partnerships</p>
+              <h3 class="text-[#192434] font-bold text-[40px] leading-[48px] lg:mb-5">Partnership</h3>
+              <!-- <img src="./assets/media/About-Us-Image.png" alt="bg" class="md:w-[55%]" style="margin: 30px 0px;"> -->
               <br>
-              <p class="pb-3">2.5.1</p>
-              <p class="pt-2 pb-4">Q-bec Foods have initiated plans to welcome anchor Investors, angel investor’s venture capitalists to invest in Q-bec Agritech City & Farm Estates Project sites across the selected zones in Nigeria. This is to ensure the vision laid out by its promoters of the on-going development plans for Q-bec Agritech City & Farm Estates project model is achieved.  </p>
-              <p class="pb-3">2.5.2</p>
+              <!-- <p class="pb-3">2.5.1</p> <br> -->
+              <p class="pt-2 pb-4 font-bold">Anchor Investors & Private Partnership</p>
+              <p class="pt-2 pb-4">Q-bec Foods have initiated plans to welcome anchor Investors, angel investor’s venture capitalists to invest in Q-bec Agritech City & Farm Estates Project sites across the selected zones in Nigeria. This is to ensure the vision laid out by its promoters of the on-going development plans for Q-bec Agritech City & Farm Estates project model is achieved within next 10 years.  </p>
+              <!-- <p class="pb-3">2.5.2</p> <br> -->
               <p class="pt-2 pb-4 font-bold">Government Agriculture Intervention Programmes.</p>
               <p class="pt-2 pb-4">Quebec Food promoters aim is to contribute to nation building through this platform (Integrated Mechanized Farm Estates) by supporting the Federal Government initiatives through the Central Bank of Nigeria (CBN) and Nirsal Plc, of cultivating 4 million hectares of farmland by engaging 8 million Farmers across the country with expectation of producing about 12 million metric tonnes of Grain Product Equivalent (GPE) annually over the medium to long term.</p>
-              <a href="www.agritectcity.quebecgroups.com"
+              <a href="https://quebecgroups.com/agrictech-city/" target="_blank"
                 class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
                 <span>
                   Discover More

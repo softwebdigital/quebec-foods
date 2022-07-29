@@ -6,6 +6,10 @@
   <link rel="icon" type="image/svg+xml" href="/static-assets/favicon.708cd543.ico" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Quebec Foods</title>
+  <!-- :begin home slider import -->
+  <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
+  <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+  <!-- :end home slider import -->
   <script src="https://kit.fontawesome.com/1b72b19568.js" crossorigin="anonymous"></script>
   <script type="module" crossorigin src="/static-assets/main.e0b7c54a.js"></script>
   <link rel="stylesheet" href="/static-assets/main.19a90050.css">
@@ -25,7 +29,7 @@
           </div>
 
           <!-- Links -->
-          <div style="font-weight: 500;" class="flex justify-between content-center items-center xl:gap-x-8 w-2/3 lg:w-[80%] relative">
+          <div class="flex justify-between content-center items-center xl:gap-x-8 w-2/3 lg:w-[80%] relative">
 
             <a class="cursor-pointer nav-link drop-down-items q-boss">
               <span> Quebec Foods </span>
@@ -159,22 +163,19 @@
 
     <!-- Footer -->
     <footer class="footer">
-      <div class="footer-content md:grid-cols-4 " style="font-weight: 500;">
+      <div class="footer-content md:grid-cols-4">
           <!-- Location -->
           <div class="flex flex-col gap-y-3">
               <div>
                   <img src="/static-assets/logo.e8cd949b.svg" class="footer-logo" alt="Logo Footer">
               </div>
               <span class="hidden text-base text-ink lg:inline-block">
-                  © Copyright 2022 Quebec Groups Limited. <br>
-                  All rights reserved.
+                All rights reserved © 2022. Quebec Food Processing Industrial Parks
               </span>
 
               <a href="https://www.google.com/maps/place/Boya+place/@9.0498425,7.4354707,15z/data=!4m5!3m4!1s0x0:0x63594dac8d4ae3ac!8m2!3d9.0499115!4d7.4354294"
                   target="_blank" class="mt-3 flex text-base text-ink">
-                  <img class="h-6" style="margin-right: 15px; margin-top: 6px;" src="/static-assets/Vector.png" alt="Message icon">
-                  Suite B15, Boya Place Ameh Ebute <br>
-                  Street,Wuye- Abuja, Nigeria.
+                  <img class="h-6" style="margin-right: 15px; margin-top: 6px;" src="/static-assets/Vector.png" alt="Message icon">Suite B15, Boya Place Ameh Ebute<br>Street,Wuye- Abuja, Nigeria.
               </a>
               <div class="mt-5 lg:flex flex-col !-my-1 hidden gap-x-2">
                   <a class="text-primary" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
@@ -272,6 +273,9 @@
                   </a>
                   <a href="#">
                       <i class="fa-brands fa-whatsapp"></i>
+                  </a>
+                  <a href="#">
+                      <i class="fa-brands fa-linkedin"></i>
                   </a>
               </div>
           </div>

@@ -39,7 +39,7 @@
                 <div class="md:w-3/5">
                     <div
                         class="bg-[url('/images/plant-hero-bg.png')] bg-contain bg-right-bottom bg-no-repeat lg:py-7 lg:px-8">
-                        <img class="rounded-2xl drop-shadow-xl md:h-[450px]" src="/static-assets/plant-hero.32d84d9c.png" alt="">
+                        <img class="rounded-2xl drop-shadow-xl md:h-[450px]" src="./assets/media/About-Us-Image.png" alt="">
                     </div>
                 </div>
             </div>

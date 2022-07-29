@@ -47,7 +47,7 @@
               LTD</span> -->
             <h3 class="max-w-[400px] text-primary font-bold text-lg lg:text-heading-4 lg:leading-h-5">Food Production Venture Scheme (FPVS)</h3>
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
-            The Food production venture Scheme allows an agribusiness investor to invest into the Agro-Farm Produce Buyback Venture Scheme of Quebec Food Processing Industrial Parks Ltd’s planned Integrated Mechanized Farm Estate to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites across Nigeria.
+            The Food production Venture Scheme allows an agribusiness investor to invest into the AGRO-FARM PRODUCE BUYBACK VENTURE SCHEME of Quebec Food Processing Industrial Parks Ltd’s planned INTEGRATED MECHANIZED FARM ESTATES to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites.
             </p>
 
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
