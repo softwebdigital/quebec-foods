@@ -437,7 +437,7 @@
                 </div>
                 <div id="how-to-invest" class="tabcontent px-5 py-5 ">
                     <div class="flex flex-col px-1 lg:px-5 gap-y-4 ">
-                        <h1 class="text-primary font-bold w-10 text-center mt-5">QUEBEC FOOD AGRIBUSINESS PROFIT VENTURES SCHEME (QFAPVS)</h1>
+                        <h1 class="text-primary font-bold mt-5" style="text-align: center;">QUEBEC FOOD AGRIBUSINESS PROFIT VENTURES SCHEME (QFAPVS)</h1>
                         <p>Quebec Food Agribusiness Profit Ventures (QFAPV) are classified Sustainable agricultural 
                             ventures from production to processing, and 
                             distribution for local consumption and export 

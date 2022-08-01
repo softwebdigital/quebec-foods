@@ -281,13 +281,13 @@
                                         <option @if (old('payout_mode') == 'monthly' || $package['payout_mode'] == 'monthly') selected @endif value="monthly">Monthly
                                         </option>
                                         <option @if (old('payout_mode') == 'quarterly' || $package['payout_mode'] == 'quarterly') selected @endif value="quarterly">
-                                            Quarterly</option>
+                                            3 Months</option>
                                         <option @if (old('payout_mode') == 'semi-annually' || $package['payout_mode'] == 'semi-annually') ) selected @endif value="semi-annually">
-                                            Semi Annually (Half a year)</option>
+                                            6 Months (Half a year)</option>
                                         <option @if (old('payout_mode') == 'annually' || $package['payout_mode'] == 'annually') selected @endif value="annually">Annually
                                         </option>
                                         <option @if (old('payout_mode') == 'biannually' || $package['payout_mode'] == 'biannually') selected @endif value="biannually">
-                                            Biannually</option>
+                                            Biannually (2 Years)</option>
                                     </select>
                                     @error('payout_mode')
                                         <span class="text-danger small" role="alert">

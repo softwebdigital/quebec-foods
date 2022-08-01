@@ -3,26 +3,25 @@
 <table class="footer" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation">
 <tr>
 <td class="content-cell" align="center">
-    <p style="font-size: 12px;">
-        <a style="font-size: 12px;  margin-left: 5px; font-weigth: bold;" href="mailto:{{env('ADMIN_EMAIL')}}">
+    <div style="font-size: 12px;">
+        <a style="font-size: 12px;  margin-left: 5px; font-weigth: bold;" href="https://g.page/r/CWh9GfHorOJmEAg/review">
             Write us a review
         </a> 
-        <a style="font-size: 12px;  margin-left: 5px; font-weigth: bold;" href="mailto:{{env('ADMIN_EMAIL')}}" href="{{route('faq')}}">
+        <a style="font-size: 12px;  margin-left: 5px; font-weigth: bold;" href="{{route('static.faq')}}">
             FAQ
         </a>
-        <a style="font-size: 12px;  margin-left: 5px; font-weigth: bold;" href="#">
+        <a style="font-size: 12px;  margin-left: 5px; font-weigth: bold;" href="{{route('static.terms')}}">
             Terms & Conditions
         </a>
-    </p>
+    </div>
     <p style="font-size: 12px;">
-        © {{ date('Y') }} 
+        All rights reserved ©️ {{ date('Y') }} 
         <a style="font-size: 12px; text-decoration: none; font-weigth: bold;" href="https://quebecagrifoodpro-coop.ng/" target="_blank">
-            Quebec Food Processing 
+            Quebec Food Processing Industrial Parks Ltd. 
         </a> 
-        <a style="font-size: 12px; text-decoration: none; font-weigth: bold;" href="https://quebecgroups.com/" target="_blank">
+        <!-- <a style="font-size: 12px; text-decoration: none; font-weigth: bold;" href="https://quebecgroups.com/" target="_blank">
             (Quebec Groups),
-        </a>
-            All rights reserved.
+        </a> -->
     </p>
     <p style="font-size: 12px;">
         Powered By 

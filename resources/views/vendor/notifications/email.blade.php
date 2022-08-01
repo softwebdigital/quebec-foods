@@ -45,8 +45,11 @@
 @if (! empty($salutation))
 {{ $salutation }}
 @else
-@lang('Regards'),<br>
-{{ config('app.name') }}
+<br>
+{{-- @lang('Regards'), --}}
+{{-- {{ config('app.name') }} --}}
+<p>Regards, <br> Agribusiness Profit Ventures Team</p>
+<p>For: Quebec Food Processing Industrial Parks Ltd</p>
 @endif
 
 {{-- Subcopy --}}
