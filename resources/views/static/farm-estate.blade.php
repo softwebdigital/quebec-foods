@@ -47,7 +47,7 @@
               LTD</span> -->
             <h3 class="max-w-[400px] text-primary font-bold text-lg lg:text-heading-4 lg:leading-h-5">Food Production Venture Scheme (FPVS)</h3>
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
-            The Food production venture Scheme allows an agribusiness investor to invest into the Agro-Farm Produce Buyback Venture Scheme of Quebec Food Processing Industrial Parks Ltd’s planned Integrated Mechanized Farm Estate to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites across Nigeria.
+            The Food production Venture Scheme allows an agribusiness investor to invest into the AGRO-FARM PRODUCE BUYBACK VENTURE SCHEME of Quebec Food Processing Industrial Parks Ltd’s planned INTEGRATED MECHANIZED FARM ESTATES to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites.
             </p>
 
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
@@ -164,16 +164,23 @@
         </div>
         <div class="py-10 lg:py-20">
           <div class="flex flex-col lg:flex-row gap-x-5">
+          @php 
+              $farms = App\Models\Package::where('type', 'farm')->where('status', 'open')->paginate(3);
+          @endphp
+        @if($farms->count() >= 1)
+          @foreach($farms as $farm)
+          @php 
+              $category = App\Models\Category::where('id', $farm->category_id)->first();
+          @endphp
             <div class="!self-start lg:w-1/3 relative">
-              <img class="rounded-3xl" src="/static-assets/image1.9d3d8362.png" alt="">
+              <img class="rounded-3xl" src="{{ $category->image }}" alt="">
               <div class="px-5 py-5 bg-white -translate-y-10 rounded-xl shadow-2xl lg:w-[90%]">
-                <h3 class="text-ink text-lg py-2 font-bold">Mechanized Crop Production</h3>
+                <h3 class="text-ink text-lg py-2 font-bold">{{ $farm->name }}</h3>
                 <p class="text-sm">
-                  This include cassava, rice, maize, millet, soya beans, sugar cane, tomato, vegetables, Fruits, Plantain
-                  and others.
+                  {{ $farm->description }}
                 </p>
                 <hr class="border-t-2 bg-[#414D5E] my-3">
-                <a href="#"
+                <a href="{{ route('packages.show', ['package' => $farm['id']]) }}"
                   class="flex text-ink text-base items-baseline py-1 justify-start w-full  my-1 md:text-lg rounded-xl gap-x-5 lg:gap-x-2 ">
                   <span class="text-base">
                     Invest Now
@@ -186,7 +193,13 @@
                 </a>
               </div>
             </div>
-            <div class="lg:self-center lg:w-1/3 lg:mt-16">
+          @endforeach
+        @endif
+
+
+
+
+            {{-- <div class="lg:self-center lg:w-1/3 lg:mt-16">
               <img class="rounded-3xl" src="/static-assets/image2.6f61e4a2.png" alt="">
               <div class="px-5 py-5 bg-white -translate-y-10 rounded-xl shadow-2xl lg:w-[90%]">
                 <h3 class="text-ink text-lg py-2 font-bold">Cash Crops</h3>
@@ -227,7 +240,7 @@
                   </svg>
                 </a>
               </div>
-            </div>
+            </div> --}}
           </div>
         </div>
       </section>

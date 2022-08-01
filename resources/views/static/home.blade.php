@@ -52,7 +52,7 @@
               <img class="w-8 " src="/static-assets/Category-primary.81a6157f.svg" alt="Activity Icon">
             </div>
             <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Join the Agribusiness profit venture global digital platform
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Join the Agribusiness profit venture global digital platform
               </h3>
               <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
                 allowing you
@@ -65,7 +65,7 @@
               <img class="w-8 " src="/static-assets/Activity-primary.2b427def.svg" alt="Activity Icon">
             </div>
             <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] my-2" style="font-weight: 500;">Get value returns (CVR) for 3 -10 years (s)
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Get Cash Value Returns (CVR) for 3 -10 year(s)
               </h3>
               <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
                 allowing you
@@ -78,7 +78,7 @@
               <img class="w-8 " src="/static-assets/Graph-prmary.bb3cb24d.svg" alt="Activity Icon">
             </div>
             <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2" style="font-weight: 500;">Partner with Quebec Processing Foods today
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Partner with Quebec Food Processing today
               </h3>
               <p class=" text-sm md:text-base text-[#5B6676] my-2">Our business model ensures we work with experienced farmers, and processors to promote scalability and profitability.</p>
             </div>
@@ -323,7 +323,7 @@
         
       <div class="splide__track">
           <ul class="splide__list">
-          <li class="splide__slide">
+                  <li class="splide__slide">
                       <img class="rounded-2xl" src="/static-assets/quebec-cassava-meal.jpg" alt="">
                   </li>
                   <li class="splide__slide">
@@ -353,11 +353,8 @@
       <div class="section-container max-h-96 md:max-h-full" style="max-height: 38rem;">
         <div class="w-full text-center md:my-10">
           <h2 class="my-2 text-sm font-medium">TESTIMONIALS</h2>
-          <span class="text-4xl font-medium">Hear What Our Users Have To Say</span>
+          <span class="text-4xl font-medium">Hear what our users have to say</span>
         </div>
-
-        <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css" />
-        
         <style>
           @media (max-width: 465px) {
             
@@ -749,9 +746,6 @@
                 </span>
             </button>
         </div>
-
-<script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
-
 {{--<section class="splide section-container" aria-labelledby="carousel-heading">
         
       <div class="splide__track float-right">

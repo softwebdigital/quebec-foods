@@ -77,7 +77,7 @@ class NotificationController extends Controller
                 <b><u>Investment details:</u></b><br>
                 Investment package: <b>' . $investment->package["name"] . '</b><br>
                 Total amount invested: <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b><br>
-                ROI amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount) . '</b><br>
+                CVR amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount) . '</b><br>
                 Expected returns: <b>' . getCurrency() .' ' . number_format($investment->total_return) . '</b><br>
                 Investment duration: <b>' . Carbon::make($investment['return_date'])->diffInMonths($investment['investment_date']) . ' month(s)</b><br>
                 Investment date: <b>' . $investment->investment_date->format('M d, Y \a\t h:i A') . '</b><br>
@@ -100,7 +100,7 @@ class NotificationController extends Controller
                 <b><u>Investment details:</u></b><br>
                 Investment package: <b>' . $investment->package["name"] . '</b><br>
                 Total amount invested: <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b><br>
-                ROI amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount) . '</b><br>
+                CVR amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount) . '</b><br>
                 Expected returns: <b>' . getCurrency() .' ' . number_format($investment->total_return) . '</b><br>
                 Investment duration: <b>' . Carbon::make($investment['return_date'])->diffInMonths($investment['investment_date']) . ' month(s)</b><br>
                 Investment date: <b>' . $investment->investment_date->format('M d, Y \a\t h:i A') . '</b><br>
@@ -211,7 +211,7 @@ class NotificationController extends Controller
                 <b><u>Investment details:</u></b><br>
                 Investment package: <b>' . $investment->package["name"] . '</b><br>
                 Total amount invested: <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b><br>
-                ROI amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount) . '</b><br>
+                CVR amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount) . '</b><br>
                 Expected returns: <b>' . getCurrency() .' ' . number_format($investment->total_return) . '</b><br>
                 Investment duration: <b>' . $investment['return_date']->diff($investment['investment_date'])->m . ' month(s)</b><br>
                 Investment date: <b>' . $investment->investment_date->format('M d, Y \a\t h:i A') . '</b><br>
