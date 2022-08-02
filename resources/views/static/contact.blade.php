@@ -20,18 +20,19 @@
       <section class=" bg-primary">
         <div class="lg:px-5 mb-20 lg:pt-80 lg:pb-20 py-20 lg:mt-96 relative section-container ">
           <div class=" max-w-[620px] mx-auto" style="max-width: 520px;">
-            <form action="" method="get"
+            <form action="{{ route('static.post.contact') }}" method="POST"
               class="bg-[#E5F0EB] rounded-lg lg:rounded-3xl py-7 lg:py-10 px-7 lg:px-10 lg:absolute lg:-top-[350px]">
+              @csrf
               <div class="grid grid-cols-2 gap-5">
                 <div class="col-span-2 lg:col-span-1 ">
                   <label for="first-name" class="text-lg text-ink  my-1 lg:my-3 inline-block">First Name</label>
                   <input type="text" class="rounded-xl border-0 text-base px-6 py-4 placeholder-[#8D97A4] w-full block"
-                    name="first-name" placeholder="First Name" id="first-name">
+                    name="first_name" placeholder="First Name" id="first-name">
                 </div>
                 <div class="col-span-2 lg:col-span-1 ">
                   <label for="last-name" class="text-lg text-ink my-1 lg:my-3 inline-block">Last Name</label>
                   <input type="text" class="rounded-xl border-0 text-base px-6 py-4 placeholder-[#8D97A4] w-full block"
-                    name="last-name" placeholder="Last Name" id="last-name">
+                    name="last_name" placeholder="Last Name" id="last-name">
                 </div>
                 <div class="col-span-2 ">
                   <label for="email" class="text-lg text-ink my-1 lg:my-3 inline-block">Email Address</label>
@@ -45,7 +46,7 @@
                     type="email" name="message" placeholder="Enter message here" id="message"></textarea>
                 </div>
                 <div class="col-span-2 w-full">
-                  <button
+                  <button type="submit"
                     class="py-4 px-4 text-center w-full bg-primary text-white rounded-lg hover:opacity-80 transition-opacity">Send
                     Message</button>
                 </div>

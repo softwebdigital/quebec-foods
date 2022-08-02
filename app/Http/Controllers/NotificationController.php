@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use \PDF;
 use App\Notifications\CustomNotification;
 use App\Notifications\CustomNotificationByEmail;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\CustomNotificationByStaticEmail;
 
 class NotificationController extends Controller
 {
@@ -244,5 +246,15 @@ class NotificationController extends Controller
                 Wallet balance: <b>' . getCurrency() .' ' . number_format($investment->user->wallet['balance'], 2) . '</b><br>
                 ';
         $investment->user->notify(new CustomNotification('investment', 'Investment Milestone Payment', $msg, $description));
+    }
+
+    public static function sendContactUsNotification($info)
+    {
+        $description = 'You have a contact us message';
+        $msg =  'Name: <b>' . $info['name'] . '</b><br>
+                 Email: <b>' . $info['email'] . '</b><br>
+                 Message: <b>' . $info['message'] . '</b><br>';
+                 Notification::route('mail', 'sandaiv001@gmail.com')
+                 ->notify(new CustomNotificationByStaticEmail('Contact Us Message', $msg, $description));
     }
 }

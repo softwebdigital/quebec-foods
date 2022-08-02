@@ -206,49 +206,73 @@
             <div id="overview" class="tabcontent">
               <h3 class="text-[#192434] font-bold text-3xl lg:text-[40px] leading-[48px] lg:mb-5">Overview</h3>
               <p>
-                The World Trade Organization ranks Nigeria as the largest food market in Africa, with significant
-                investment in the local industry and a high level of imports. The food Production and beverage sector is
-                estimated to contribute 22.5% of the manufacturing industry value, and 4.6% of the country’s GDP.
+                  The World Trade Organization ranks Nigeria as the largest food market
+                  in Africa, with significant investment in the local industry and a
+                  high level of imports. The food Production and beverage sector is
+                  estimated to contribute 22.5% of the manufacturing industry value,
+                  and 4.6% of the country's GDP.
               </p>
               <p>
-                In Nigeria, the food processing sector is dominated by small and medium enterprises, as well as
-                multinational food companies. Quality standards are usually related to improving the safety of food
-                products suitable for consumption in accordance with specifications by food regulatory bodies. These
-                standards are essential elements for local and international businesses which contribute to economic
-                progress through industrial development and trade.
+                  In Nigeria, the food processing sector is dominated by small and
+                  medium enterprises, as well as multinational food companies.
+                  Quality standards are usually related to improving the safety of food 
+                  products suitable for consumption in accordance with specifications by food 
+                  regulatory bodies. These standards are essential elements for local and international 
+                  businesses which contribute to economic progress through industrial development and trade. 
               </p>
               <p>
-                Q-BEC Foods is a registered Trademark of Quebec Food Processing Industrial Parks Ltd (a member of Quebec
-                Earthwork Group)which was setup in 2020, as a new/startup agro food and tropical fruits processing
-                investment firm in Nigeria, to deal in all-round agricultural production, processing, marketing,
-                distribution and agro export investments, with plans to set-up and manage agro-processing industrial parks
-                in all Q-bec Agritech City project sites across Nigeria, based on the business model that geared towards
-                creating direct/indirect jobs for both local farmers and agricultural graduates through setting up of
-                enormous processing plants, with a major aim of reducing massive unemployment rate in Nigeria, and
-                bringing-in new investment opportunities in the agricultural sector, to gain the trust of prospective
-                investors.
+                  Quebec Food Processing Industrial Parks Ltd plan 
+                  to set-up and manage agro-processing industrial 
+                  parks in all Q-bec Agritech City and Farm Estate 
+                  project sites across Nigeria, based on the 
+                  business model that geared towards creating 
+                  direct/indirect jobs for both local farmers 
+                  and agricultural graduates through setting up 
+                  of enormous processing plants, with a major aim of 
+                  reducing the unemployment rate in Nigeria, and 
+                  bringing-in new investment opportunities in 
+                  the agricultural sector, to gain the trust of 
+                  prospective investors.
               </p>
               <p>
-                This subsidiary has its own unique investment offers and opportunities for Nigerians in the
-                agricultural/Food sector that provides the rare privilege of having a large professional resource pool.
-                This ensures the running of the Unit with well-founded management objectives and policy directives,
-                fostering an environment which encourages sustained efficiency at all levels.
+                  Quebec Food has its own unique investment offers 
+                  and opportunities for all class of investors 
+                  in the agri-food value chain sector that 
+                  provides the rare privilege of having a large 
+                  professional resource pool. This ensures the 
+                  running of the Unit with well-founded 
+                  management objectives and policy directives, 
+                  fostering an environment which encourages 
+                  sustained efficiency at all levels.
               </p>
               <p>
-                The Food Division of the company is strategically positioned to take part in the developments that are
-                taking place across the food chain in Nigeria with the aim of becoming one of the leading and most
-                preferred agro producing and food processing company in the country that would meet worldwide market
-                demands and maintain a profitable return on investment for all its investors.
+                  Quebec Food is strategically positioned to take 
+                  part in the developments that are taking 
+                  place across the food chain in Nigeria 
+                  with the aim of becoming one of the leading 
+                  and most preferred agro producing and agro-food 
+                  processing company in the country that would 
+                  meet worldwide market demands and maintain a 
+                  protable cash value return (CVR) for all its 
+                  investors.
               </p>
               <p>
-                As a start-up Q-BEC Foods plans is to work with customers for their specific requirement in the area of
-                foods & beverages and develops products that is best suited for the specific needs of consumers.
+                  As a start-up Quebec Food is working hard to 
+                  ensure customers in the food, beverages, 
+                  confectioneries, paper, textiles, and 
+                  pharmaceuticals specific requirements is 
+                  achieved to enable their produced products 
+                  meets consumer’s needs in the Nigerian and 
+                  Export Market. 
               </p>
               <p>
-                Above all Q-bec Foods is determined to improve on processed food and production in Nigeria through the use
-                of Total Quality Management (TQM) technique and the use of computerized systems to produce high quality
-                and high value products while at the same time reduce the wastage of farm produce and production time and
-                cost.
+                  Above all Quebec Food promoters are determined to improve 
+                  on processed food and production in Nigeria through the use 
+                  Total Quality Management (TQM) technique and 
+                  the use of computerized systems to produce 
+                  high quality and high value products while 
+                  at the same time reduce the wastage of farm
+                  produce, production time and cost.
               </p>
             </div>
             <div id="infrastructure" class="tabcontent">
