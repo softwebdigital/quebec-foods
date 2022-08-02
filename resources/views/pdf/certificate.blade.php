@@ -63,7 +63,7 @@
 <body>
 @php
 
-//$investment = App\Models\Investment::where('id', 39)->first();
+//$investment = App\Models\Investment::where('id', 23)->first();
 
  $cur = App\Models\Setting::where('id', 1)->first();
 
@@ -230,7 +230,7 @@ $code = str_shuffle($pin);
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
             <div style="top: 701px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-                {{ $cur->base_currency }} {{ number_format($investment['total_return']) }}
+                {{ $investment["package"]["roi"] * $investment["package"]["milestones"] }}%
             </div>
             <div style="top: 759px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment['return_date']->format('F d,  Y') }}
@@ -335,7 +335,7 @@ $code = str_shuffle($pin);
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
             <div style="top: 735px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-                {{ $cur->base_currency }} {{ number_format($investment['total_return']) }}
+                {{ $investment["package"]["roi"] * $investment["package"]["milestones"] }}%
             </div>
             <div style="top: 793px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment['return_date']->format('F d,  Y') }}

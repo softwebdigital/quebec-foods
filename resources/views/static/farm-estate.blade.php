@@ -379,7 +379,7 @@
                     </div>
                 </div>
                 <div class="accordion-container">
-                    <button class="accordion">What do I stand to benet as an investor towards the actualization of the project?</button>
+                    <button class="accordion">What do I stand to benefit as an investor towards the actualization of the project?</button>
                     <div class="panel">
                         <p> Investing in agricultural value chain has the potential of giving you financial freedom and generating enormous prots for the investor and other prospective investors. <br>
 
