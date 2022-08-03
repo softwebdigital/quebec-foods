@@ -170,7 +170,7 @@
                   <img src="/static-assets/logo.e8cd949b.svg" class="footer-logo" alt="Logo Footer">
               </div>
               <span class="hidden text-base text-ink lg:inline-block">
-                All rights reserved © 2022. Quebec Food Processing Industrial Parks
+                ©️ Copyright 2022 Quebec Food Processing Industrial Parks Limited. All rights reserved.
               </span>
 
               <a href="https://www.google.com/maps/place/Boya+place/@9.0498425,7.4354707,15z/data=!4m5!3m4!1s0x0:0x63594dac8d4ae3ac!8m2!3d9.0499115!4d7.4354294"
