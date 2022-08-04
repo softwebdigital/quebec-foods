@@ -86,7 +86,7 @@
                 <!--end::Label-->
                 <!--begin::Col-->
                 <div class="col-lg-8">
-                    <span class="fw-bold fs-6 text-gray-800">{{ $user['phone'] ?? '-----' }}</span>
+                    <span class="fw-bold fs-6 text-gray-800">{{ $user['phone_code'] ? '+' . $user['phone_code'] : '' }}{{ $user['phone'] ?? '-----' }}</span>
                 </div>
                 <!--end::Col-->
             </div>

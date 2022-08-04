@@ -186,6 +186,7 @@ class HomeController extends Controller
             'first_name' => ['required'],
             'last_name' => ['required'],
             'phone' => ['required'],
+            'phone_code' => ['required'],
             'state' => ['required'],
             'country' => ['required'],
             'city' => ['required'],
@@ -204,7 +205,7 @@ class HomeController extends Controller
         }
         // Collect data from request
         $data = $request->only([
-            'first_name', 'last_name', 'phone', 'state', 'country', 'city',
+            'first_name', 'last_name', 'phone', 'phone_code', 'state', 'country', 'city',
             'address', 'nk_name', 'nk_phone', 'nk_address']);
         // Check if user uploaded file and save
         if ($request->file('avatar') || $request['avatar_remove']){

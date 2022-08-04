@@ -64,4 +64,9 @@ class Package extends Model
         }
         return $sum;
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

@@ -20,6 +20,7 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required'],
             'description' => ['required'],
+            'image' => ['required', 'mimes:jpeg,jpg,png', 'max:1024'],
         ]);
 
         if ($validator->fails()) {
@@ -27,7 +28,9 @@ class CategoryController extends Controller
         }
 
         // Store the data
-        if (Category::create($request->all())){
+        $data = $request->except('image', 'image_remove');
+        $data['image'] = $this->uploadPackageImageAndReturnPathToSave($request['image']);
+        if (Category::create($data)){
             return redirect()->route('admin.category')->with('success', 'Category Created Successfully');
         }
         return back()->with('error', 'Error creating category');
@@ -38,13 +41,19 @@ class CategoryController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'unique:categories,name,' .$category['id']],
             'description' => ['required'],
+            'image' => ['mimes:jpeg,jpg,png', 'max:1024'],
         ]);
-
+        
         if ($validator->fails()) {
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid Input data');
         }
 
-        if ($category->update($request->all())){
+        $data = $request->except('image', 'image_remove');
+        if ($request->file('image')){
+            $data['image'] = $this->uploadPackageImageAndReturnPathToSave($request['image']);
+        }
+
+        if ($category->update($data)){
             return redirect()->route('admin.category')->with('success', 'Category updated successfully');
         }
 
@@ -62,5 +71,13 @@ class CategoryController extends Controller
         }
 
         return back()->with('error', 'Error deleting category');
+    }
+
+    protected function uploadPackageImageAndReturnPathToSave($image): string
+    {
+        $destinationPath = 'assets/categories'; // upload path
+        $transferImage = time() . '.' . $image->getClientOriginalExtension();
+        $image->move($destinationPath, $transferImage);
+        return $destinationPath ."/".$transferImage;
     }
 }
