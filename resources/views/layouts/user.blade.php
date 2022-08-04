@@ -479,6 +479,7 @@
                             <input type="hidden" id="plantRoi">
                             <input type="hidden" id="plantDuration">
                             <input type="hidden" id="plantDurationMode">
+                            <input type="hidden" id="plantMilestones">
                             @error('package')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -1082,7 +1083,7 @@
             let plantBankDetails = $('#plantBankDetails');
             let plantSecuredByPaystack = $('#plantSecuredByPaystack');
             let plantSubmitButton = $('#plantSubmitButton');
-            let plantMilestones = $('#milestones');
+            let plantMilestones = $('#plantMilestones');
             let plantAgreed = $('#plantAgreed');
             let walletBalance = parseFloat({{ auth()->user()['wallet']['balance'] }});
             plantAgreed.on('change', checkIfFormCanSubmit);
@@ -1127,7 +1128,8 @@
                 }
                 if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() >= 0)){
                     plantAmount.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val()).toFixed(2)));
-                    plantReturns.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val() * 3) + 100) / 100)).toFixed(2)));
+                    plantReturns.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val() * plantMilestones.val()) + 100) / 100)).toFixed(2)));
+                    
                 }
                 if (plantSlots.val() === "") {
                     plantAmount.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));

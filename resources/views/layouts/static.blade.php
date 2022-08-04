@@ -201,7 +201,7 @@
                       <a href="/tractor-investment">Tractor Investment</a>
                   </li>
                   <li>
-                      <a href="#">Referral Program</a>
+                      <a href="/referal">Referral Program</a>
                   </li>
                   <li>
                       <a href="#">Community</a>
@@ -229,7 +229,7 @@
                     <a href="/privacy-policy">Privacy Policy</a>
                   </li>
                   <li>
-                    <a href="#">Quebec Foods Disclaimer</a>
+                    <a href="/disclaimer">Quebec Foods Disclaimer</a>
                   </li>
 
                   <!-- <li>
@@ -279,13 +279,12 @@
                   </a>
               </div>
           </div>
-          <div class="flex flex-col lg:hidden">
-              <a class="text-base text-ink" href="/terms">Terms and Conditions</a>
-              <a class="text-base text-ink" href="/privacy-policy">Privacy Policy</a>
-          </div>
           <span class="py-3 my-4 text-sm text-center lg:text-base lg:hidden text-ink opacity-95 md:text-left">
-              © Copyright 2022 Quebec Groups Limited. <br>
-              All rights reserved.
+              ©️ Copyright 2022 Quebec Food Processing Industrial Parks Limited. 
+              <br> All rights reserved.
+              <div class="mt-5 flex-col gap-x-2">
+                  <a class="text-primary" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
+              </div>
           </span>
 
       </div>

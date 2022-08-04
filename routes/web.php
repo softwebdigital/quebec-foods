@@ -27,6 +27,10 @@ Route::get('/privacy-policy', [App\Http\Controllers\StaticPageController::class,
 Route::get('/processing-plant', [App\Http\Controllers\StaticPageController::class, 'plant'])->name('static.plant');
 Route::get('/terms', [App\Http\Controllers\StaticPageController::class, 'terms'])->name('static.terms');
 Route::get('/tractor-investment', [App\Http\Controllers\StaticPageController::class, 'tractor'])->name('static.tractor');
+Route::get('/disclaimer', [App\Http\Controllers\StaticPageController::class, 'disclaimer'])->name('static.disclaimer');
+Route::get('/referal', [App\Http\Controllers\StaticPageController::class, 'referal'])->name('static.referal');
+
+
 Route::post('/contact/send', [App\Http\Controllers\ContactUsController::class, 'sendMail'])->name('static.post.contact');
 
 Auth::routes(['verify' => true]);

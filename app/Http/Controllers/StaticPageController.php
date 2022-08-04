@@ -51,4 +51,14 @@ class StaticPageController extends Controller
     {
         return view('static.tractor-investment');
     }
+
+    public function disclaimer(): View
+    {
+        return view('static.disclaimer');
+    }
+
+    public function referal(): View
+    {
+        return view('static.referal');
+    }
 }

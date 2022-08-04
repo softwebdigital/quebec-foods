@@ -136,7 +136,7 @@
               </div>
               <div class="text-black font-bold">
                 <h4 class="text-xl font-bold lg:text-[28px] lg:leading-10">Message Us</h4>
-                <a class="text-base lg:leading-8  font-medium " href="mailto:info-desk.agrovest@quebecgroups.com">info-desk.agrovest@quebecgroups.com</a>
+                <a class="text-base lg:leading-8  font-medium " href="mailto:info.quebecfoods@quebecgroups.com">info.quebecfoods@quebecgroups.com</a>
               </div>
             </div>
             <div class="flex flex-col lg:flex-row  justify-between gap-6">

@@ -253,7 +253,7 @@
                   and most preferred agro producing and agro-food 
                   processing company in the country that would 
                   meet worldwide market demands and maintain a 
-                  protable cash value return (CVR) for all its 
+                  profitable cash value return (CVR) for all its 
                   investors.
               </p>
               <p>
