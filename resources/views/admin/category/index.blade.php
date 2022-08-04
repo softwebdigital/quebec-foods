@@ -119,9 +119,56 @@
 
                                             <div class="modal-body">
                                                 <!--begin:::Form-->
-                                                <form class="form mb-3" method="POST" action="{{ route('admin.category.update', $category['id']) }}" id="updateCategoryForm" enctype="multipart/form-data">
+                                                <form class="form mb-3" method="POST" action="{{ route('admin.category.update', $category['id']) }}" id="updateCategoryForm{{ $category['id'] }}" enctype="multipart/form-data">
                                                     @csrf
                                                     @method('PUT')
+                                                                                    <!--begin::Image input-->
+                                                    <div class="image-input image-input-empty mb-5" data-kt-image-input="true"
+                                                        style="background: url({{ asset($category['image'] ?  $category['image'] : 'assets/media/avatars/image_placeholder.png') }}) center/cover no-repeat;">
+                                                        <!--begin::Image preview wrapper-->
+                                                        <div class="image-input-wrapper w-125px h-125px"
+                                                            style="background: url({{ asset($category['image'] ?  $category['image'] : 'assets/media/avatars/image_placeholder.png')}}) center/cover no-repeat;">
+                                                        </div>
+                                                        <!--end::Image preview wrapper-->
+
+                                                        <!--begin::Edit button-->
+                                                        <label
+                                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                            data-kt-image-input-action="change" id="image{{$category['id']}}" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                                            title="Change image">
+                                                            <i class="bi bi-pencil-fill fs-7"></i>
+
+                                                            <!--begin::Inputs-->
+                                                            <input type="file" name="image" accept=".png, .jpg, .jpeg" />
+                                                            <input type="hidden" name="image_remove" id="image_remove" />
+                                                            <!--end::Inputs-->
+                                                        </label>
+                                                        <!--end::Edit button-->
+
+                                                        <!--begin::Cancel button-->
+                                                        <span
+                                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                            data-kt-image-input-action="cancel" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                                            title="Cancel image">
+                                                            <i class="bi bi-x fs-2"></i>
+                                                        </span>
+                                                        <!--end::Cancel button-->
+
+                                                        <!--begin::Remove button-->
+                                                        <span
+                                                            class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                                                            data-kt-image-input-action="remove" data-bs-toggle="tooltip" data-bs-dismiss="click"
+                                                            title="Remove image">
+                                                            <i class="bi bi-x fs-2"></i>
+                                                        </span>
+                                                        <!--end::Remove button-->
+                                                    </div>
+                                                    @error('image')
+                                                        <span class="text-danger small" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                    <!--end::Image input-->
                                                     <div class="d-flex flex-column mb-5 fv-row">
                                                         <!--begin::Label-->
                                                         <label class="required fs-5 fw-bold mb-2" for="name">Name</label>
@@ -156,7 +203,7 @@
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
                                                 <!--begin::Submit-->
-                                                <button type="button" onclick="confirmFormSubmit(event, 'updateCategoryForm')" class="btn btn-primary">
+                                                <button type="button" onclick="confirmFormSubmit(event, 'updateCategoryForm{{$category['id']}}')" class="btn btn-primary">
                                                     <!--begin::Indicator-->
                                                     <span class="indicator-label">Update</span>
                                                     <!--end::Indicator-->
@@ -201,6 +248,55 @@
                 <!--begin:::Form-->
                 <form class="form mb-3" method="post" action="{{ route('admin.category.store') }}" id="createCategoryForm" enctype="multipart/form-data">
                     @csrf
+                    <!--begin::Image input-->
+                    <div class="image-input image-input-empty mb-5" data-kt-image-input="true">
+                        <!--begin::Image preview wrapper-->
+                        <div class="image-input-wrapper w-100px h-100px" style="background: url({{ asset('assets/media/avatars/image_placeholder.png') }}) center/cover no-repeat;"></div>
+                        <!--end::Image preview wrapper-->
+
+                        <!--begin::Edit button-->
+                        <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                        data-kt-image-input-action="change"
+                        data-bs-toggle="tooltip"
+                        data-bs-dismiss="click"
+                        title="Change image">
+                        <i class="bi bi-pencil-fill fs-7"></i>
+
+                        <!--begin::Inputs-->
+                        <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg" />
+                        <input type="hidden" name="image_remove" id="image_remove" />
+                        <!--end::Inputs-->
+                        </label>
+                        <!--end::Edit button-->
+
+                        <!--begin::Cancel button-->
+                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                        data-kt-image-input-action="cancel"
+                        data-bs-toggle="tooltip"
+                        data-bs-dismiss="click"
+                        title="Cancel image">
+                        <i class="bi bi-x fs-2"></i>
+                        </span>
+                        <!--end::Cancel button-->
+
+                        <!--begin::Remove button-->
+                        <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
+                        data-kt-image-input-action="remove"
+                        data-bs-toggle="tooltip"
+                        data-bs-dismiss="click"
+                        title="Remove image">
+                        <i class="bi bi-x fs-2"></i>
+                        </span>
+                        <!--end::Remove button-->
+                    </div>
+                    <!--end::Image input-->
+                    <div>
+                        @error('image')
+                        <span class="text-danger small d-block" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
                     <div class="d-flex flex-column mb-5 fv-row">
                         <!--begin::Label-->
                         <label class="required fs-5 fw-bold mb-2" for="name">Name</label>

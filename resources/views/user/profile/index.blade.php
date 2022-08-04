@@ -235,12 +235,25 @@
                                     <!--end::Col-->
                                     <!--begin::Col-->
                                     <div class="col-md-6 fv-row">
-                                        <!--end::Label-->
                                         <label class="required fs-5 fw-bold mb-2">Mobile No</label>
-                                        <!--end::Label-->
-                                        <!--end::Input-->
-                                        <input type="text" class="form-control form-control-solid" placeholder="E.g +2349039561875" name="phone" value="{{ old('phone') ?? $user['phone'] }}"/>
-                                        <!--end::Input-->
+                                        <div class="row">
+                                            <div class="col-4 pe-0 me-0">
+                                                <select name="phone_code" style="border-radius: 0.65rem 0 0 0.65rem" aria-label="Select Phone Code" data-control="select2" value="{{ old('phone_code') ?? $user['phone_code']}}" data-placeholder="Select Phone code..." class="form-select form-select-solid" >
+                                                    @php
+                                                        $countriesList = App\Models\User::$countries;
+                                                        $phoneCodes = array_column($countriesList, 'phonecode');
+                                                        uasort($phoneCodes, fn($a, $b) => $a > $b ? 1 : -1);
+                                                        $phoneCodes = array_unique(array_filter($phoneCodes, fn($item) => $item > 0));
+                                                    @endphp
+                                                    @foreach($phoneCodes as $key => $phoneCode)
+                                                        <option @if((old("phone_code") == $phoneCode || $user['phone_code'] == $phoneCode) && $phoneCode !== 0) selected @endif value="{{$phoneCode}}">+{{$phoneCode}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="col-8 ms-0 ps-0">
+                                                <input type="text" class="form-control form-control-solid" style="border-radius: 0 0.65rem 0.65rem 0" placeholder="E.g +2349039561875" name="phone" value="{{ old('phone') ?? $user['phone'] }}"/>
+                                            </div>
+                                        </div>
                                         @error('phone')
                                             <span class="text-danger small">
                                                 <strong>{{ $message }}</strong>
@@ -500,7 +513,7 @@
                                         <input class="form-check-input" type="checkbox" value="yes" name="2fa" @if($user['two_factor_enabled'] == 1) checked @endif id="flexSwitchChecked">
                                         <label class="form-check-label" for="flexSwitchChecked">Enable 2FA</label>
                                     </div>
-                                    <button type="submit" onclick="confirmFormSubmit(event, 'update_2fa_form')" class="btn btn-primary" id="bank_submit_button">
+                                    <button type="submit" onclick="confirmFormSubmit(event, 'update_2fa_form')" class="btn btn-primary">
                                         <!--begin::Indicator-->
                                         <span class="indicator-label">Update</span>
                                         <!--end::Indicator-->
@@ -798,7 +811,7 @@
                             id.style.display = 'none'
                         </script>
                     @endif
-                    
+
                     @php
                         $approved = $user->documents()->where('status', 'approved')->first();
                     @endphp

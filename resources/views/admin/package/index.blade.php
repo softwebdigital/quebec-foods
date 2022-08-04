@@ -211,6 +211,9 @@
                                         <div class="menu-item px-3">
                                             <a class="menu-link px-3" href="{{ route('admin.packages.show', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Show</span></a>
                                         </div>
+                                        <div class="menu-item px-3">
+                                            <a class="menu-link px-3" href="{{ route('admin.packages.investments', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Investments</span></a>
+                                        </div>
                                     @can('Edit Packages')
                                         <div class="menu-item px-3">
                                             <a class="menu-link px-3" href="{{ route('admin.packages.edit', ['package' => $package['id'], 'type' => $package['type']]) }}"><span class="">Edit</span></a>
