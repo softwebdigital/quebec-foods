@@ -32,7 +32,7 @@
                     <thead>
                         <tr class="fw-bolder text-muted bg-light">
                             <th class="ps-4 text-dark rounded-start">SN</th>
-                            <th class="text-dark">Package</th>
+                            <th class="ps-5 text-dark">Name</th>
                             <th class="text-dark">Slots</th>
                             <th class="text-dark" style="white-space: nowrap;">Total Invested</th>
                             <th class="text-dark" style="white-space: nowrap;">Expected Returns</th>
@@ -46,9 +46,12 @@
                     <!--begin::Table body-->
                     <tbody>
                         @foreach ($investments as $key=>$investment )
+                        @php 
+                            $name = App\Models\User::where('id', $investment['user_id'])->first();
+                        @endphp
                             <tr>
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $investment['package']['name'] }}</span></td>
+                                <td><a href="{{ route('admin.users.show', $name['id']) }}" class="text-primary fw-bolder d-block fs-6">{{ $name['first_name'] }} {{ $name['last_name'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{  $investment['slots']}}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ getCurrency() }} {{ number_format($investment['amount']) }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ getCurrency() }} {{ number_format($investment['total_return']) }}</span></td>
