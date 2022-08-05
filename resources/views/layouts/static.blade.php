@@ -178,7 +178,7 @@
                   <img class="h-6" style="margin-right: 15px; margin-top: 6px;" src="/static-assets/Vector.png" alt="Message icon">Suite B15, Boya Place Ameh Ebute Street,Wuye- Abuja, Nigeria.
               </a>
               <div class="mt-6 lg:flex flex-col !-my-1 hidden gap-x-2">
-                  <a class="text-primary" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
+                  <a class="text-primary" target="_blank" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
               </div>
               
 
@@ -262,19 +262,19 @@
               </ul>
               
               <div class="socials">
-                  <a href="#">
+                  <a href="https://web.facebook.com/Quebec-Foods-107032645442887" target="_blank">
                       <i class="fa-brands fa-facebook"></i>
                   </a>
-                  <a href="#">
+                  <a href="https://twitter.com/quebecfoods" target="_blank">
                       <i class="fa-brands fa-twitter"></i>
                   </a>
-                  <a href="#">
+                  <a href="https://www.instagram.com/quebecfoods/" target="_blank">
                       <i class="fa-brands fa-instagram"></i>
                   </a>
-                  <a href="#">
+                  <a href="https://api.whatsapp.com/send/?phone=2347016358414&text=Hello+Quebec+Foods!+👋🏼" target="_blank">
                       <i class="fa-brands fa-whatsapp"></i>
                   </a>
-                  <a href="#">
+                  <a href="https://www.linkedin.com/in/quebec-food-processing-industrial-parks-ltd-a137ba244/" target="_blank">
                       <i class="fa-brands fa-linkedin"></i>
                   </a>
               </div>
@@ -283,7 +283,7 @@
               ©️ Copyright 2022 Quebec Food Processing Industrial Parks Limited. 
               <br> All rights reserved.
               <div class="mt-5 flex-col gap-x-2">
-                  <a class="text-primary" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
+                  <a class="text-primary" target="_blank" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
               </div>
           </span>
 
