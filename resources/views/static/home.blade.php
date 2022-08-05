@@ -904,6 +904,9 @@
           <img src="/static-assets/quebec.75f9f935.svg" alt="Quebec">
           <img src="/static-assets/fmiti.942fdf83.svg" alt="FMITI">
           <img src="/static-assets/ifad.f1eebe5d.svg" alt="IFAD">
+          <img src="/static-assets/quebec-farm-erp.png" alt="FarmERP">
+          <img src="/static-assets/Quebec-John-Deere-logo.png" alt="JohnDEERE">
+          <img src="/static-assets/Quebec-IITA-logo.jpg" alt="IFAD">
           <img class="col-span-2" src="/static-assets/boi.2c832a6a.svg" alt="BOI">
         </div>
       </div>
