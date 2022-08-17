@@ -597,7 +597,7 @@
                         </div>
                         <div class="form-check mt-7 mb-10 form-check-flat form-check-primary">
                             <label class="form-check-label">
-                                I hereby agree to the <a href="" target="_blank">terms and conditions</a>
+                                I hereby agree to the <a href="{{ route('static.terms') }}" target="_blank">terms and conditions</a>
                                 <input required type="checkbox" id="plantAgreed" class="form-check-input">
                             </label>
                         </div>
@@ -779,19 +779,19 @@
                                 </tr>
                                 <tr>
                                     <td>Bank Name:</td>
-                                    <td><span class="ms-2">{{ $international['bank_name'] }}</span></td>
+                                    <td><span class="ms-3">{{ $international['bank_name'] }}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Account Name:</td>
-                                    <td><span class="ms-2">{{ $international['account_name'] }}</span></td>
+                                    <td><span class="ms-3">{{ $international['account_name'] }}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Account Number: </td>
-                                    <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
+                                    <td><span class="ms-3">{{ $international['account_number'] }}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Added Information: </td>
-                                    <td><span class="ms-2">{{ $international['added_information'] }}</span></td>
+                                    <td><span class="ms-3">{{ $international['added_information'] }}</span></td>
                                 </tr>
                             </table>
                         </div>
@@ -803,7 +803,7 @@
                         </div>
                         <div class="form-check mt-7 mb-10 form-check-flat form-check-primary">
                             <label class="form-check-label">
-                                I hereby agree to the <a href="" target="_blank">terms and conditions</a>
+                                I hereby agree to the <a href="{{ route('static.terms') }}" target="_blank">terms and conditions</a>
                                 <input required type="checkbox" id="agreed" class="form-check-input">
                             </label>
                         </div>

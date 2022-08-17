@@ -14,7 +14,7 @@
                     <li class="lg:text-[28px] lg:leading-[32px] py-3 lg:py-6">
                         <ol class="px-2 gap-x-2 flex flex-col">
                             <li class="font-normal text-sm lg:text-lg lg:leading-8 my-2">
-                                This website is operated by Quebec Earthwork Groups LLC,  
+                                This website is operated by Quebec Earthwork Groups LLC subsidiary,  
                                 <strong>(“Quebec Food”),</strong> which is not a registered broker-dealer 
                                 or funding portal. Unless indicated otherwise, all 
                                 securities-related activity on this site is conducted 
@@ -22,7 +22,7 @@
                                 a registered trademark of Quebec Food Processing Industrial 
                                 Parks Ltd, other affiliates “Quebec Earthwork Nig Ltd 
                                 developers of Q-bec Agritech City and Quebec Agrifoodpro 
-                                Coop, both located at Suite B15 Boya Place, Ameh Ebute, 
+                                Coop, both registered at Suite B15 Boya Place, Ameh Ebute, 
                                 Wuye – Abuja,  Federal Capital Territory, Nigeria.
                             </li>
                             <li class="text-sm lg:text-lg lg:leading-8 my-2">
@@ -44,10 +44,13 @@
                                 prior to investing in any offering and become familiar with 
                                 the investors requirements, investment limits and your ability 
                                 to resell the investment.
-                                By accessing our website, you agree to be bound by the Terms 
-                                of Use and Privacy Policy. Copyright © 2022 Quebec Food 
-                                Processing Industrial Parks Ltd, all rights reserved.
+                                
                             </p>
+
+                            <li class="text-sm lg:text-lg lg:leading-8 my-2">
+                                By accessing our website, you agree to be bound by the Terms 
+                                of Use and Privacy Policy.
+                            </li>
                         </ol>
                     </li>
 
