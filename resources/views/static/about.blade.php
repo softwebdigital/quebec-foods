@@ -7,7 +7,7 @@
           <div class="px-6 py-5 lg:pl-20 md:px-0 md:w-2/5">
             <h1 class="text-4xl lg:text-heading-1 lg:leading-h-1 text-[#192434] font-bold mb-5">About Us</h1>
             <p class="text-base lg:text-xl leading-5 lg:leading-8 text-gray-700 font-normal">
-              Q-BEC Foods is a registered trademark of Quebec Food Processing Industrial Parks Ltd a startup agro-food, fruits & Vegetables processing firm incorporated in 2020 under the Companies & Allied Matters 1990 of the Federal Republic of Nigeria with  RC: 1710593. 
+              Q-BEC Foods is a registered trademark of Quebec Food Processing Industrial Parks Ltd an agro-food, fruits & Vegetables processing firm incorporated in 2020 under the Companies & Allied Matters 1990 of the Federal Republic of Nigeria with  RC: 1710593. 
             </p>
             <p style="padding-top: 20px" class="text-base lg:text-xl leading-5 lg:leading-8 text-gray-700 font-normal">
               Quebec Food is envisioned to deal in all-round agricultural production, processing, marketing, distribution and agro-export ventures with the aim of providing angel investors and venture capitalists agribusiness venture investment opportunities to directly impact the lives of devoted farmers, enhance food security by increasing production, reduce post-harvest losses, raise income, ensure only healthy food products are produced and processed.
@@ -257,7 +257,7 @@
                   investors.
               </p>
               <p>
-                  As a start-up Quebec Food is working hard to 
+                  As Quebec Food is working hard to 
                   ensure customers in the food, beverages, 
                   confectioneries, paper, textiles, and 
                   pharmaceuticals specific requirements is 
@@ -322,10 +322,10 @@
                 <li class="p-3">National Agency for Food & Drug Administration & Control (NAFDAC)</li>
                 <li class="p-3">DNV (Det Norske Veritas), one of the world’s leading certification bodies/ registrars, as being ISO 22000:2005 compliant.</li>
                 <li class="p-3">Complied with the codex HACCP principles and provides a framework for third party certification.</li>
-                <li class="p-3">SEDEX compliant company to have a strong customer base both nationally & internationally.</li>
+                <li class="p-3">SEDEX compliant company is to have a strong customer base both nationally & internationally.</li>
                 <li class="p-3">KOSHER for customers from Israel, Germany, USA & Canada.</li>
               </ul>
-              <p class="pt-3 pb-3"> Q-BEC FOODS also identify with the VOLUNTARY CONTROL SYSTEM of SGF. SGF Certification is obligatory for the exports to European Customers.</p>
+              <p class="pt-3 pb-3"> Q-BEC FOODS will also identify with the VOLUNTARY CONTROL SYSTEM of SGF. <br> SGF Certification is obligatory for the exports to European Customers.</p>
               <p class="pt-3 pb-3">These processes are on-going to ensure we have stringent management policies in place.</p>
             </div>
             <div id="investments" class="tabcontent">
@@ -334,7 +334,7 @@
               <br>
               <!-- <p class="pb-3">2.5.1</p> <br> -->
               <p class="pt-2 pb-4 font-bold">Anchor Investors & Private Partnership</p>
-              <p class="pt-2 pb-4">Q-bec Foods have initiated plans to welcome anchor Investors, angel investor’s venture capitalists to invest in Q-bec Agritech City & Farm Estates Project sites across the selected zones in Nigeria. This is to ensure the vision laid out by its promoters of the on-going development plans for Q-bec Agritech City & Farm Estates project model is achieved within next 10 years.  </p>
+              <p class="pt-2 pb-4">Q-bec Foods have initiated plans to welcome anchor Investors, angel investor’s and venture capitalists to invest in Q-bec Agritech City & Farm Estates Project sites across the selected zones in Nigeria. This is to ensure the vision laid out by its promoters of the on-going development plans for Q-bec Agritech City & Farm Estates project model is achieved.  </p>
               <!-- <p class="pb-3">2.5.2</p> <br> -->
               <p class="pt-2 pb-4 font-bold">Government Agriculture Intervention Programmes.</p>
               <p class="pt-2 pb-4">Quebec Food promoters aim is to contribute to nation building through this platform (Integrated Mechanized Farm Estates) by supporting the Federal Government initiatives through the Central Bank of Nigeria (CBN) and Nirsal Plc, of cultivating 4 million hectares of farmland by engaging 8 million Farmers across the country with expectation of producing about 12 million metric tonnes of Grain Product Equivalent (GPE) annually over the medium to long term.</p>

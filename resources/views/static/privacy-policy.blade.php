@@ -538,7 +538,7 @@
                             </p>
 
                             <p class="font-normal text-sm lg:text-lg lg:leading-8 my-2 mt-2">
-                                If you have any questions or concerns arising from this privacy policy or the way in which we handle personal information, please contact us at <a href="mailto:quebecfoodcrm@quebecgroups.com">quebecfoodcrm@quebecgroups.com.</a>
+                                If you have any questions or concerns arising from this privacy policy or the way in which we handle personal information, please contact us at <a href="mailto:info.quebecfoods@quebecgroups.com">info.quebecfoods@quebecgroups.com</a>
                             </p>
 
                         </div>

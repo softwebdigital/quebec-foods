@@ -199,11 +199,7 @@
           <div class="">
             <h3 class="text-[#192434] text-4xl font-bold pb-4">Farm Estate</h3>
             <p class="text-[#5B6676] text-base leading-8 py-5 text-justify pr-5">
-              The Food production Investment Scheme allows an agribusiness investor to invest his/her fund into the
-              AGRO-FARM PRODUCE BUYBACK SCHEME of Quebec Food Processing Industrial Parks Ltd’s planned MECHANIZED
-              CROP
-              PRODUCTION to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project
-              sites.
+            The Food production Venture Scheme allows an agribusiness investor to invest into the AGRO-FARM PRODUCE BUYBACK VENTURE SCHEME of Quebec Food Processing Industrial Parks Ltd’s planned INTEGRATED MECHANIZED FARM ESTATES to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites.
             </p>
           </div>
           <div class="flex justify-between gap-3 lg:w-[80%]">
@@ -218,7 +214,7 @@
                   fill="#ffffff" />
               </svg>
             </a>
-            <a href="/investments/farm"
+            <a href="{{ route('static.farm') }}"
               class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
               <span>
                 Discover More
@@ -253,7 +249,7 @@
                   fill="#ffffff" />
               </svg>
             </a>
-            <a href="/investments/plant"
+            <a href="{{ route('static.plant') }}"
               class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
               <span>
                 Discover More
@@ -287,7 +283,7 @@
                   fill="#ffffff" />
               </svg>
             </a>
-            <a href="/investments/tractor"
+            <a href="{{ route('static.tractor') }}"
               class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
               <span>
                 Discover More
