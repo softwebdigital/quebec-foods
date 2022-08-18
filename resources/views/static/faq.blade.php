@@ -727,7 +727,7 @@
                 <div class="font-bold text-black">
                     <h4 class="text-xl font-bold lg:text-[28px] lg:leading-10">Message Us</h4>
                     <a class="text-base font-medium lg:leading-8 "
-                        href="mailto:info-desk.agrovest@quebecgroups.com">info-desk.agrovest@quebecgroups.com</a>
+                        href="mailto:info.quebecfoods@quebecgroups.com">info.quebecfoods@quebecgroups.com</a>
                 </div>
             </div>
             <div class="flex flex-col justify-between gap-6 lg:flex-row">
