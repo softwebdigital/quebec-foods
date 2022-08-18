@@ -49,7 +49,7 @@
                     </div>
                     <div class="mb-9">
                         <!--begin::Badge-->
-                        <div class="d-inline">{{ ucwords($package['description']) }}</div>
+                        <div class="d-inline">{!! ucwords($package['description']) !!}</div>
                         <!--begin::Badge-->
                     </div>
                     <!--end::Position-->

@@ -43,46 +43,59 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-20">
-          <div class="flex flex-col lg:flex-row gap-x-5">
-              @php 
-                  $farms = App\Models\Package::where('type', 'plant')->where('status', 'open')->paginate(3);
-              @endphp
-              @if($farms->count() >= 1)
-                @foreach($farms as $farm)
-                  <div class="!self-start lg:w-1/3 relative">
-                    @if($farm->image == null)
-                      <img class="rounded-3xl" src="/static-assets/farm-estate-hero-image.2b800cfc.png" alt="">
-                    @else
-                      <img class="rounded-3xl" src="{{ $farm->image }}" alt="">
-                    @endif
-                    <div class="px-5 py-5 bg-white -translate-y-10 rounded-xl shadow-2xl lg:w-[90%]">
-                      <h3 class="text-ink text-lg py-2 font-bold">{{ $farm->name }}</h3>
-                      <p class="text-sm" style="display: -webkit-box; width: 100%; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">
-                        {{ $farm->description }}
-                      </p>
-                      <hr class="border-t-2 bg-[#414D5E] my-3">
-                      <a href="{{ route('packages.show', ['package' => $farm['id']]) }}"
-                        class="flex text-ink text-base items-baseline py-1 justify-start w-full  my-1 md:text-lg rounded-xl gap-x-5 lg:gap-x-2 ">
-                        <span class="text-base">
-                          Invest Now
-                        </span>
-                        <svg width="19" height="12" viewBox="0 0 19 12" class="py-[1px] my-2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z"
-                            fill="#192434" />
-                        </svg>
-                      </a>
-                    </div>
-                  </div>
-                @endforeach
-              @endif
-          </div>
-          </div>
         </section>
 
-
-
+        @php 
+            $farms = App\Models\Package::where('type', 'plant')->where('status', 'open')->paginate(4);
+        @endphp
+        @if($farms->count() >= 1)
+        <section class="bg-[#F3FFF9]">
+            <section class="py-32 pb-10 mb-24 section-container">
+            <div class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:justify-between">
+                <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Available Investments</h2>
+                <a href="#" class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-xl flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2" style="max-width: 300px;">
+                    <span>
+                        View Packages
+                    </span>
+                    <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z" fill="#ffffff"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="mt-20">
+                <div class="flex flex-col lg:flex-row gap-x-5">
+                        @foreach($farms as $farm)
+                        <div class="!self-start lg:w-1/3 relative">
+                            @if($farm->image == null)
+                            <img class="rounded-3xl" src="/static-assets/farm-estate-hero-image.2b800cfc.png" alt="">
+                            @else
+                            <img class="rounded-3xl" src="{{ $farm->image }}" alt="" style="width: 100%; height: 260px; object-fit: cover;">
+                            @endif
+                            <div class="px-5 py-5 bg-white -translate-y-10 rounded-xl shadow-2xl lg:w-[90%]">
+                            <h3 class="text-ink text-lg py-2 font-bold">{{ $farm->name }}</h3>
+                            <p class="text-sm" style="display: -webkit-box; width: 100%; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
+                                {{ $farm->description }}
+                            </p>
+                            <hr class="border-t-2 bg-[#414D5E] my-3">
+                            <a href="{{ route('packages.show', ['package' => $farm['id']]) }}"
+                                class="flex text-ink text-base items-baseline py-1 justify-start w-full  my-1 md:text-lg rounded-xl gap-x-5 lg:gap-x-2 ">
+                                <span class="text-base">
+                                Invest Now
+                                </span>
+                                <svg width="19" height="12" viewBox="0 0 19 12" class="py-[1px] my-2" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z"
+                                    fill="#192434" />
+                                </svg>
+                            </a>
+                            </div>
+                        </div>
+                        @endforeach
+                </div>
+            </div>
+            </section>
+        </section>
+        @endif
 
         <section class="md:mt-6 lg:overflow-hidden">
             <div class="text-center section-container">

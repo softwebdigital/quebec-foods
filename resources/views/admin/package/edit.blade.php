@@ -105,14 +105,24 @@
                                 <label class="required fs-5 fw-bold mb-2" for="description">Description</label>
                                 <!--end::Label-->
                                 <!--end::Input-->
+                                <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+
                                 <textarea placeholder="Description" class="form-control form-control-solid" name="description" style="resize: none"
-                                    id="description"
+                                    id="editor"
                                     rows="5">{{ old('description') ?? $package['description'] }}</textarea>
                                 @error('description')
                                     <span class="text-danger small" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
+                                
+                            <script>
+                                ClassicEditor
+                                    .create( document.querySelector( '#editor' ) )
+                                    .catch( error => {
+                                        console.error( error );
+                                    } );
+                            </script>
                             </div>
                             <!--end::Input group-->
                             @if ($type == 'farm')
