@@ -50,7 +50,7 @@
         <section class="py-32 pb-10 mb-24 section-container">
           <div class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:justify-between">
               <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Available Investments</h2>
-              <a href="#" class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-xl flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2" style="max-width: 300px;">
+              <a href="{{ route('packages') }}" class="btn-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-xl flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2" style="max-width: 300px;">
                   <span>
                       View Packages
                   </span>
