@@ -99,7 +99,18 @@
                             <label class="required fs-5 fw-bold mb-2" for="description">Description</label>
                             <!--end::Label-->
                             <!--end::Input-->
-                            <textarea placeholder="Description" style="resize: none" class="form-control form-control-solid" name="description" id="description" rows="5">{{ old("description") }}</textarea>
+                            <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+
+                            <textarea placeholder="Description" style="resize: none" class="form-control form-control-solid" name="description" id="editor" rows="5">{{ old("description") }}</textarea>
+
+                            <script>
+                                ClassicEditor
+                                    .create( document.querySelector( '#editor' ) )
+                                    .catch( error => {
+                                        console.error( error );
+                                    } );
+                            </script>
+                            
                             @error('description')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>

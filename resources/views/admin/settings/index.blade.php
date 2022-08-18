@@ -158,7 +158,18 @@
                         <span class="d-block">Added Information <span class="text-danger">*</span></span>
                         <span id="verifyingDisplay" class="small d-block"></span>
                     </label>
-                    <textarea  name="added_information" id="added_information" value="{{ old("added_information") ?? $international['added_information'] }}" cols="20" rows="5" class="form-control form-control-solid">{{  $international['added_information']  }}</textarea>
+                    <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+
+                    <textarea  name="added_information" id="editor" value="{{ old("added_information") ?? $international['added_information'] }}" cols="20" rows="5" class="form-control form-control-solid">{{  $international['added_information']  }}</textarea>
+
+                    <script>
+                        ClassicEditor
+                            .create( document.querySelector( '#editor' ) )
+                            .catch( error => {
+                                console.error( error );
+                            } );
+                    </script>
+                    <!-- <textarea  name="added_information" id="added_information" value="{{ old("added_information") ?? $international['added_information'] }}" cols="20" rows="5" class="form-control form-control-solid">{{  $international['added_information']  }}</textarea> -->
                 </div>
 
                 <!--end::Input group-->
