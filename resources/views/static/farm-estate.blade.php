@@ -200,8 +200,8 @@
             <h3 class="text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5">Our Business Structure</h3>
             <p class="text-ink font-medium text-sm md:text-[20px] lg:leading-8 ">
 
-              The Investment Scheme is open for public and private participation to invest in the various value chains,
-              categorized below:
+              The Investment Scheme is open for public and private participation to invest in the various value chains.
+              
             </p>
           </div>
           <div class="lg:w-1/4 lg:px-10">

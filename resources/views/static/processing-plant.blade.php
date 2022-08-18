@@ -349,7 +349,7 @@
                     <button class="accordion">What is the amount of investment required in the venture scheme?</button>
                     <div class="panel">
                         <p>
-                            The amount of investment varies from <strong> $2000USD - $5000USD </strong>per unit depending on your choice of plant to invest in. 
+                            The amount of investment varies from <strong> $2000USD - $7000USD </strong>per unit depending on your choice of plant to invest in. 
                         </p>
                     </div>
                 </div>
