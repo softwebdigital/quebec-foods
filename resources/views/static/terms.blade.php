@@ -189,12 +189,12 @@
                         <ol class="list-decimal px-2 lg:px-11 gap-x-2 flex flex-col">
 
                             <li class="font-normal text-sm lg:text-lg lg:leading-8">
-                                here we discover that the Platform is being used to launder money or for any
+                                Where we discover that the Platform is being used to launder money or for any
                                 suspicious transactions, we have an obligation to report your activities to the
                                 relevant authorities without recourse to you.
                             </li>
                             <li class="font-normal text-sm lg:text-lg lg:leading-8">
-                                he Company reserves the right to require additional information and means of
+                                The Company reserves the right to require additional information and means of
                                 identification from a Sponsor when we discover any form of discrepancy in the
                                 name of the Sponsor and the profile of the payer vis-à-vis the profile of the
                                 receiving account of the Sponsor.
@@ -218,7 +218,7 @@
                             <li class="font-normal text-sm lg:text-lg lg:leading-8">
                                 In the event sponsor desires to terminate before the completion of the farm
                                 cycle, you shall send a notice to <a
-                                    href="mailto:crm@quebecgroups.com">crm@quebecgroups.com</a>, Quebec Food
+                                    href="mailto:info.quebecfoods@quebecgroups.com">info.quebecfoods@quebecgroups.com</a>, Quebec Food
                                 shall deduct an administrative fee for the pre-liquidation of sponsorship.
                             </li>
                             <li class="font-normal text-sm lg:text-lg lg:leading-8 ">
@@ -279,12 +279,12 @@
                     <li class="font-bold lg:text-[28px] lg:leading-[32px] py-3 lg:py-6">
                         <h3 class="lg:text-[28px] lg:leading-[32px] lg:py-6">CHANGES TO TERMS</h3>
                         <p class="font-normal text-sm lg:text-lg lg:leading-8 py-2">
-                            Emerald reserves the right, in its sole discretion, to change the Terms under which
+                            Quebec Foods reserves the right, in its sole discretion, to change the Terms under which
                             our business is offered. The most current version of the Terms will supersede all
                             previous versions. Quebec Food encourages you to periodically review the Terms to
                             stay informed of our updates.
                             If you have any question regarding this Agreement, or comments about the Site or its
-                            contents, please contact crm@quebecgroups.com
+                            contents, please contact info.quebecfoods@quebecgroups.com
                         </p>
 
                     </li>

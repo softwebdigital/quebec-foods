@@ -24,7 +24,15 @@
                                 	Only applies to Quebec Food AGRIBUSINESS PROFIT VENTURE PAID by sponsors
                                 </li>
                                 <li class="font-normal text-sm lg:text-lg lg:leading-8 my-2">
-                                	The sponsor must use your referral code upon signing up. You can find or create your own unique referral code by signing into your <strong>QUEBEC FOOD VENTURE ACCOUNT</strong>  and visiting your profile page: <strong>https://quebecfoods.quebecgroups.com/register?ref=406269502</strong> 
+                                	The sponsor must use your referral code upon signing up. You can find or create your own unique referral code by signing into your <strong>QUEBEC FOOD VENTURE ACCOUNT</strong>  and visiting your profile page: 
+                                    @guest
+                                        <a href="{{ route('profile')}}" class="text-primary font-bold">Click here</a>
+                                    @else
+                                        <input type="hidden" style="width: 100%;border: none" value="{{ url('/register?ref=').auth()->user()->ref_code }}" id="myRefLink">
+                                        <a href="javascript:void(0);" class="text-primary font-bold" onclick="copyToClipboard()">{{ url('/register?ref=').auth()->user()->ref_code }}</a>
+                                        <span style="display: none;" id="copied" class="font-bold lg:text-[15px] bg-primary text-white p-1 rounded">copied!</span>
+                                    @endguest
+                                    <!-- <strong>https://quebecfoods.quebecgroups.com/register?ref=406269502</strong>  -->
                                 </li>
                             </ul>
                             <h3 class="font-bold lg:text-[28px] lg:leading-[32px] lg:py-6 pt-5">Illustrative Example</h3>
@@ -35,7 +43,13 @@
                                 Your <strong>$50</strong> will be applied to your Quebec Food Venture wallet account and you are at your liberty to withdraw from your wallet or you can alternatively choose to have the fund accumulate pending when the amount can sponsor any venture of your choice, thereafter you will paid at the end of the venture cycle together with your cash value return (CVR) payout.
                             </p>
 
-                            <h3 class="font-bold text-center lg:text-[28px] lg:leading-[32px] lg:py-6">SIGN-UP TODAY <br> & <br> REFER SOMEONE TO START EARNING</h3>
+                            <h3 class="font-bold text-center lg:text-[28px] lg:leading-[32px] lg:py-6">SIGN-UP TODAY <br> & <br> REFER SOMEONE TO START EARNING</h3> <br> 
+                            <div class="text-sm lg:text-lg btn-primary text-center p-3 w-80" style="border-radius: 12px; margin: auto;">
+                                <a href="{{ route('dashboard') }}" style="border-radius: 12px;" class="text-sm lg:text-lg btn-primary text-center p-3 w-80">
+                                    Signup
+                                </a>
+                            </div>
+                            
                         </ol>
                     </li>
 
@@ -78,5 +92,15 @@
             }
         });
     }
+
+    function copyToClipboard() {
+            var copyText = document.getElementById("myRefLink");
+            // copyText.select();
+            // copyText.setSelectionRange(0, 99999);
+            navigator.clipboard.writeText(copyText.value);
+
+            var span = document.getElementById("copied");
+            span.style.display = "inline"
+        }
 </script>
 @endsection
