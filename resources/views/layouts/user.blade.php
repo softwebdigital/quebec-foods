@@ -22,6 +22,7 @@
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="{{asset('assets/plugins/global/plugins.bundle.css')}}" rel="stylesheet" type="text/css" />
 		<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+        <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
         @yield('style')
 		<!--end::Global Stylesheets Bundle-->
 	</head>
@@ -573,27 +574,27 @@
                             </table>
                             <br>
                             <br>
-                            <table>
-                                <tr>
+                            <div>
+                                <div style="margin: 10px 0px 15px 0px">
                                     <h6>International Bank Details</h6>
-                                </tr>
-                                <tr>
-                                    <td>Bank Name:</td>
-                                    <td><span class="ms-2">{{ $international['bank_name'] }}</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Account Name:</td>
-                                    <td><span class="ms-2">{{ $international['account_name'] }}</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Account Number: </td>
-                                    <td><span class="ms-2">{{ $international['account_number'] }}</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Added Information: </td>
-                                    <td><span class="ms-2">{{ $international['added_information'] }}</span></td>
-                                </tr>
-                            </table>
+                                </div>
+                                <div style="display: flex;">
+                                    <p style="width: 150px;">Bank Name:</p>
+                                    <p>{{ $international['bank_name'] }}</p>
+                                </div>
+                                <div style="display: flex;">
+                                    <p style="width: 150px;">Account Name:</p>
+                                    <p>{{ $international['account_name'] }}</p>
+                                </div>
+                                <div style="display: flex;">
+                                    <p style="width: 150px;">Account Number:</p>
+                                    <p>{{ $international['account_number'] }}</p>
+                                </div>
+                                <div>
+                                    <p>Added Information:</p>
+                                    <p>{!! $international['added_information'] !!}</p>
+                                </div>
+                            </div>
                         </div>
                         <div class="form-check mt-7 mb-10 form-check-flat form-check-primary">
                             <label class="form-check-label">
@@ -773,27 +774,27 @@
                             </table>
                             <br>
                             <br>
-                            <table>
-                                <tr>
+                            <div>
+                                <div style="margin: 10px 0px 15px 0px">
                                     <h6>International Bank Details</h6>
-                                </tr>
-                                <tr>
-                                    <td>Bank Name:</td>
-                                    <td><span class="ms-3">{{ $international['bank_name'] }}</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Account Name:</td>
-                                    <td><span class="ms-3">{{ $international['account_name'] }}</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Account Number: </td>
-                                    <td><span class="ms-3">{{ $international['account_number'] }}</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Added Information: </td>
-                                    <td><span class="ms-3">{{ $international['added_information'] }}</span></td>
-                                </tr>
-                            </table>
+                                </div>
+                                <div style="display: flex;">
+                                    <p style="width: 150px;">Bank Name:</p>
+                                    <p>{{ $international['bank_name'] }}</p>
+                                </div>
+                                <div style="display: flex;">
+                                    <p style="width: 150px;">Account Name:</p>
+                                    <p>{{ $international['account_name'] }}</p>
+                                </div>
+                                <div style="display: flex;">
+                                    <p style="width: 150px;">Account Number:</p>
+                                    <p>{{ $international['account_number'] }}</p>
+                                </div>
+                                <div>
+                                    <p>Added Information:</p>
+                                    <p>{!! $international['added_information'] !!}</p>
+                                </div>
+                            </div>
                         </div>
                         <div id="rolloverInvestment" class="form-check form-switch form-check-custom form-check-solid me-10">
                             <input required class="form-check-input h-30px w-50px" type="checkbox" value="yes" id="rollover" name="rollover"/>
