@@ -62,6 +62,7 @@
                     <!--begin::Table row-->
                     <tr class="text-start text-gray-400 fw-bolder fs-7 text-uppercase gs-0">
                         <th class="ps-4 text-muted rounded-start text-nowrap">SN</th>
+                        <th class="text-muted text-nowrap">Image</th>
                         <th class="text-muted text-nowrap">Name</th>
                         <th class="text-muted text-nowrap">Packages</th>
                         <th class="text-muted text-nowrap">Date</th>
@@ -76,6 +77,7 @@
                         @foreach ($categories as $key=>$category )
                             <tr>
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6 text-nowrap">{{ $key + 1 }}</span></td>
+                                <td><img src="{{ asset($category['image']) }}" alt="" style="max-width: 75px; max-height: 60px; cursor: pointer"></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $category['name'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $category->packages()->count() }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $category['created_at']->format('M d, Y') }}</span></td>
@@ -124,10 +126,10 @@
                                                     @method('PUT')
                                                                                     <!--begin::Image input-->
                                                     <div class="image-input image-input-empty mb-5" data-kt-image-input="true"
-                                                        style="background: url({{ asset($category['image'] ?  $category['image'] : 'assets/media/avatars/image_placeholder.png') }}) center/cover no-repeat;">
+                                                        style="background: url({{ asset($category['image'] ?: 'assets/media/avatars/image_placeholder.png') }}) center/cover no-repeat;">
                                                         <!--begin::Image preview wrapper-->
-                                                        <div class="image-input-wrapper w-125px h-125px"
-                                                            style="background: url({{ asset($category['image'] ?  $category['image'] : 'assets/media/avatars/image_placeholder.png')}}) center/cover no-repeat;">
+                                                        <div class="image-input-wrapper w-125px h-125px" id="edit-preview"
+                                                            style="background: url({{ asset($category['image'] ?: 'assets/media/avatars/image_placeholder.png')}}) center/cover no-repeat;">
                                                         </div>
                                                         <!--end::Image preview wrapper-->
 
@@ -139,7 +141,7 @@
                                                             <i class="bi bi-pencil-fill fs-7"></i>
 
                                                             <!--begin::Inputs-->
-                                                            <input type="file" name="image" accept=".png, .jpg, .jpeg" />
+                                                            <input type="file" name="image" accept=".png, .jpg, .jpeg" onchange="imagePreview(this, '#edit-preview', '{{ asset($category['image'] ?: 'assets/media/avatars/image_placeholder.png')}}')" />
                                                             <input type="hidden" name="image_remove" id="image_remove" />
                                                             <!--end::Inputs-->
                                                         </label>
@@ -251,7 +253,8 @@
                     <!--begin::Image input-->
                     <div class="image-input image-input-empty mb-5" data-kt-image-input="true">
                         <!--begin::Image preview wrapper-->
-                        <div class="image-input-wrapper w-100px h-100px" style="background: url({{ asset('assets/media/avatars/image_placeholder.png') }}) center/cover no-repeat;"></div>
+                        <div class="image-input-wrapper w-100px h-100px" id="create-preview"
+                             style="background: url({{ asset('assets/media/avatars/image_placeholder.png') }}) center/cover no-repeat;"></div>
                         <!--end::Image preview wrapper-->
 
                         <!--begin::Edit button-->
@@ -263,7 +266,7 @@
                         <i class="bi bi-pencil-fill fs-7"></i>
 
                         <!--begin::Inputs-->
-                        <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg" />
+                        <input type="file" name="image" id="image" accept=".png, .jpg, .jpeg" onchange="imagePreview(this, '#create-preview', '{{ asset('assets/media/avatars/image_placeholder.png')}}')" />
                         <input type="hidden" name="image_remove" id="image_remove" />
                         <!--end::Inputs-->
                         </label>
@@ -536,5 +539,15 @@
 KTUtil.onDOMContentLoaded(function () {
     KTCustomersList.init();
 });
+
+function imagePreview(input, id, defaultImg = null) {
+    if (input.files && input.files[0]) {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            $(id).css('background', `url(${e.target.result}) center/cover no-repeat`)
+        };
+        reader.readAsDataURL(input.files[0]);
+    } else $(id).css('background', `url(${defaultImg}) center/cover no-repeat`)
+}
 </script>
 @endsection
