@@ -94,13 +94,14 @@
                             <div class="panel">
                                 <ul class="!list-disc px-10 py-3">
                                     <li>
-                                        South West (Oyo & Ondo State)
+                                        South West (Oyo, Ogun, Ondo, Osun, & Ekiti State)
                                     </li>
-                                    <li> South-South (Delta, Bayslea, Rivers, Cross-River & Akwa Ibom State)
+                                    <li> South-South (Edo, Delta, Bayslea, Rivers, Cross-River & Akwa Ibom State)
                                     </li>
-                                    <li>South East (Imo, Ebonyi, Abia & Enugu State)</li>
-                                    <li>North Central (Nassarawa, Kogi & Kwara State)</li>
-                                    <li> North West (Sokoto & Taraba State)</li>
+                                    <li>South East (Imo, Ebonyi, Abia, Enugu & Anambra State)</li>
+                                    <li>North Central (Nassarawa, Benue, Kogi, Kwara, & Niger State)</li>
+                                    <li> North West (Kaduna, Sokoto & Katsina State)</li>
+                                    <li>North East (Adamawa, Gombe, & Taraba State)</li>
                                 </ul>
                             </div>
                         </div>
@@ -261,7 +262,7 @@
                             <button class="accordion">What is the amount of investment required in the venture scheme?</button>
                             <div class="panel">
                                 <p>
-                                    The amount of investment varies from <strong> $2000USD - $5000USD </strong>per unit depending on your choice of plant to invest in. 
+                                    The amount of investment varies from <strong> $2000USD - $7000USD </strong>per unit depending on your choice of plant to invest in. 
                                 </p>
                             </div>
                         </div>
@@ -269,7 +270,7 @@
                             <button class="accordion">Can I invest in more than 1 Plant and Unit?</button>
                             <div class="panel">
                                 <p>
-                                    Yes you can
+                                    Yes. Quebec Agritech City and Processing Plant project site is open for visitation every third Saturday of the month, any other days at investors request is solely the responsibility of the investor.
                                 </p>
                             </div>
                         </div>
@@ -456,7 +457,7 @@
 
                                 <ul class="list-disc px-10">
                                     <li> <p class="font-bold">Farming venture:</p> <br> The amount of investment varies from <strong>$1000 – $3000</strong>  depending on your choice of farm venture selected, minimum investment unit you can invest is one (1) Unit, while maximum Investment Units is 100unit at an investment cycle per project. </li>
-                                    <li> <p class="font-bold">Processing plants venture:</p> <br> The amount of investment varies from <strong>$2000 – $5000</strong> depending on your choice of plant selected,  minimum investment unit you can invest is one (1) unit, while maximum investment units is <strong>100unit</strong> at an investment cycle per project. </li>
+                                    <li> <p class="font-bold">Processing plants venture:</p> <br> The amount of investment varies from <strong>$2000 – $7000</strong> depending on your choice of plant selected,  minimum investment unit you can invest is one (1) unit, while maximum investment units is <strong>100unit</strong> at an investment cycle per project. </li>
                                     <li> <p class="font-bold">Agric Tractor & Agro-haulage Venture:</p> <br> The amount of investment varies from  $30,000 - $50,000 depending on your choice of project <strong>“tractor, machinery and haulage trucks”</strong>  selected, Minimum investment unit you can invest in One (1) Unit, while maximum Investment Units is <strong>20unit</strong>  at an investment cycle per project. </li>
                                 </ul>
                             </div>
@@ -726,7 +727,7 @@
                 <div class="font-bold text-black">
                     <h4 class="text-xl font-bold lg:text-[28px] lg:leading-10">Message Us</h4>
                     <a class="text-base font-medium lg:leading-8 "
-                        href="mailto:info-desk.agrovest@quebecgroups.com">info-desk.agrovest@quebecgroups.com</a>
+                        href="mailto:info.quebecfoods@quebecgroups.com">info.quebecfoods@quebecgroups.com</a>
                 </div>
             </div>
             <div class="flex flex-col justify-between gap-6 lg:flex-row">
