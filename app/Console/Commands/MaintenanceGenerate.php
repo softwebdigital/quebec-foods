@@ -42,12 +42,13 @@ class MaintenanceGenerate extends Command
     {
         $totalActive = Investment::where('status', 'active')->sum('amount');
         $totalActiveIds = Investment::where('status', 'active')->get()->pluck('id')->toArray();
-        MaintenanceItem::create([
-            'month' => date("F"),
-            'year' => date("Y"),
-            'active_investments' => $totalActive,
-            'active_investments_id' => json_encode($totalActiveIds),
-            'percentage' => 0.5
-        ]);
+        if (!MaintenanceItem::query()->where('month', date("F"))->where('year', date("Y"))->first())
+            MaintenanceItem::create([
+                'month' => date("F"),
+                'year' => date("Y"),
+                'active_investments' => $totalActive,
+                'active_investments_id' => json_encode($totalActiveIds),
+                'percentage' => 0.5
+            ]);
     }
 }
