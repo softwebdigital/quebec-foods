@@ -173,9 +173,7 @@
                                             @php
                                                 $pendingTrx = App\Models\Transaction::where('status', 'pending')->count();
                                             @endphp
-                                            <span class="menu-title">Transactions @if ($pendingTrx > 0)
-                                                <span class="ms-3 badge badge-warning">{{ $pendingTrx }}</span>
-                                            @endif</span>
+                                            <span class="menu-title">Transactions @if ($pendingTrx > 0) <span class="ms-3 badge badge-warning">{{ $pendingTrx }}</span> @endif </span>
                                         </a>
                                     </div>
                                 @endcan
@@ -328,7 +326,18 @@
                                                 </span>
                                                 <!--end::Svg Icon-->
                                             </span>
-                                            <span class="menu-title">SWD Maintenance</span>
+                                            @php
+                                                $pendingMaintenance = App\Models\MaintenanceItem::where('status', 'pending')->count();
+                                                $declinedMaintenance = App\Models\MaintenanceItem::where('status', 'declined')->count();
+                                            @endphp
+                                            <span class="menu-title">
+                                                SWD Maintenance
+                                                @if ($pendingMaintenance > 0)
+                                                    <span class="ms-3 badge badge-warning">{{ $pendingMaintenance }}</span>
+                                                @elseif($declinedMaintenance > 0)
+                                                    <span class="ms-3 badge badge-danger">{{ $declinedMaintenance }}</span>
+                                                @endif
+                                            </span>
                                         </a>
                                     </div>
                                 @endcan
