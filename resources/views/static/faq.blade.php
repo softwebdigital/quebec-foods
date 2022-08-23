@@ -270,7 +270,7 @@
                             <button class="accordion">Can I invest in more than 1 Plant and Unit?</button>
                             <div class="panel">
                                 <p>
-                                    Yes. Quebec Agritech City and Processing Plant project site is open for visitation every third Saturday of the month, any other days at investors request is solely the responsibility of the investor.
+                                    Yes you can.
                                 </p>
                             </div>
                         </div>
