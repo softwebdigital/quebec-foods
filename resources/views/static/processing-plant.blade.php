@@ -74,7 +74,7 @@
                             <div class="px-5 py-5 bg-white -translate-y-10 rounded-xl shadow-2xl lg:w-[90%]">
                             <h3 class="text-ink text-lg py-2 font-bold">{{ $farm->name }}</h3>
                             <p class="text-sm" style="display: -webkit-box; width: 100%; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
-                                {{ $farm->description }}
+                                {!! $farm->description !!}
                             </p>
                             <hr class="border-t-2 bg-[#414D5E] my-3">
                             <a href="{{ route('packages.show', ['package' => $farm['id']]) }}"
@@ -357,7 +357,7 @@
                     <button class="accordion">Can I invest in more than 1 Plant and Unit?</button>
                     <div class="panel">
                         <p>
-                            Yes. Quebec Agritech City and Processing Plant project site is open for visitation every third Saturday of the month, any other days at investors request is solely the responsibility of the investor.
+                            Yes you can.
                         </p>
                     </div>
                 </div>
