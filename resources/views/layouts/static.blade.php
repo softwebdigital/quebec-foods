@@ -40,24 +40,24 @@
             </a>
             <div id="q-drop-down" class="absolute z-30 hidden">
               <div class="drop-down">
-                <a href="/farm-estate" class="drop-down-items">
+                <a href="/farm-estate" class="drop-down-items" style="@if(Route::is('static.farm')) color: rgb(0 164 81 / var(--tw-text-opacity)); @endif">
                   Farm Estate
                 </a>
-                <a href="/processing-plant" class="drop-down-items">
+                <a href="/processing-plant" class="drop-down-items" style="@if(Route::is('static.plant')) color: rgb(0 164 81 / var(--tw-text-opacity)); @endif">
                   Processing Plant
                 </a>
-                <a href="/tractor-investment" class="drop-down-items">
+                <a href="/tractor-investment" class="drop-down-items" style="@if(Route::is('static.tractor')) color: rgb(0 164 81 / var(--tw-text-opacity)); @endif">
                   Tractor Investment
                 </a>
               </div>
             </div>
-            <a href="/faqs" class="nav-link">
+            <a href="/faqs" class="nav-link" style="@if(Route::is('static.faq')) color: rgb(0 164 81 / var(--tw-text-opacity)); @endif">
               FAQ
             </a>
-            <a href="/about" class="nav-link">
+            <a href="/about" class="nav-link" style="@if(Route::is('static.about')) color: rgb(0 164 81 / var(--tw-text-opacity)); @endif">
               About Us
             </a>
-            <a href="/contact" class="nav-link">
+            <a href="/contact" class="nav-link" style="@if(Route::is('static.contact')) color: rgb(0 164 81 / var(--tw-text-opacity)); @endif">
               Contact Us
             </a>
 
