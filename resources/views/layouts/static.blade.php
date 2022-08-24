@@ -79,7 +79,7 @@
           <a class="hidden btn btn-primary md:block" href="#">
             Download App
           </a>
-        </div> --}} 
+        </div> --}}
 
         <div style="font-weight: 600;" class="flex items-center content-center justify-between lg:gap-x-5">
           @guest
@@ -180,7 +180,7 @@
               <div class="mt-6 lg:flex flex-col !-my-1 hidden gap-x-2">
                   <a class="text-primary" target="_blank" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
               </div>
-              
+
 
           </div>
 
@@ -260,7 +260,7 @@
                     <a href="+2349095448354">Phone 3: (+234) 909-544-8354</a>
                 </li>
               </ul>
-              
+
               <div class="socials">
                   <a href="https://web.facebook.com/Quebec-Foods-107032645442887" target="_blank">
                       <i class="fa-brands fa-facebook"></i>
@@ -280,7 +280,7 @@
               </div>
           </div>
           <span class="py-3 my-4 text-sm text-center lg:text-base lg:hidden text-ink opacity-95 md:text-left">
-              ©️ Copyright 2022 Quebec Food Processing Industrial Parks Limited. 
+              ©️ Copyright 2022 Quebec Food Processing Industrial Parks Limited.
               <br> All rights reserved.
               <div class="mt-5 flex-col gap-x-2">
                   <a class="text-primary" target="_blank" href="https://www.softwebdigital.com/"> <span class="text-ink">Powered by </span> Soft-Web Digital</a>
@@ -294,10 +294,10 @@
   <!--Start of Tawk.to Script-->
   <script type="text/javascript">
       var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-          (function(){
+      (function(){
           var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
           s1.async=true;
-          s1.src='https://embed.tawk.to/628e36c6b0d10b6f3e73fe3c/1g3tobtsp';
+          s1.src='https://embed.tawk.to/6304e16a54f06e12d89047c6/1gb5h12rt';
           s1.charset='UTF-8';
           s1.setAttribute('crossorigin','*');
           s0.parentNode.insertBefore(s1,s0);
