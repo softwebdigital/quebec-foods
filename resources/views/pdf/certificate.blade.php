@@ -63,7 +63,7 @@
 <body>
 @php
 
-//$investment = App\Models\Investment::where('id', 9)->first();
+$investment = App\Models\Investment::where('id', 9)->first();
 
  $cur = App\Models\Setting::where('id', 1)->first();
 
@@ -120,13 +120,13 @@ $code = str_shuffle($pin);
             <div style="top: 663px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["package"]["roi"] }}% per {{ $investment["package"]["duration_mode"] }}
             </div>
-            <div style="top: 693px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <!-- <div style="top: 693px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["package"]["milestones"] }} {{ $investment["package"]["milestones"] > 1 ? 'milestones' : 'milestone' }}
-            </div>
-            <div style="top: 722px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            </div> -->
+            <div style="top: 690px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
-            <div style="top: 750px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 721px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment['return_date']->format('F d,  Y') }}
             </div>
             <img style="max-width: 100%;" src="./assets/media/FARM-ESTATE-DOI-02.png" alt="bg">
