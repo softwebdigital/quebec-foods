@@ -63,7 +63,7 @@
 <body>
 @php
 
-//$investment = App\Models\Investment::where('id', 9)->first();
+//$investment = App\Models\Investment::where('id', 4)->first();
 
  $cur = App\Models\Setting::where('id', 1)->first();
 
@@ -84,7 +84,7 @@ $code = str_shuffle($pin);
             <div style="text-transform: capitalize; top: 169px; left: 72%; font-size: 12px; font-weight: 900;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
-            <div style="text-transform: capitalize; top: 282px; left: 21%; font-size: 15px; font-weight: 900;" class="item">
+            <div style="text-transform: capitalize; top: 282px; left: 12%; font-size: 15px; font-weight: 900;" class="item">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
 
@@ -131,7 +131,7 @@ $code = str_shuffle($pin);
             </div>
             <img style="max-width: 100%;" src="./assets/media/FARM-ESTATE-DOI-02.png" alt="bg">
         
-            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 794px; left: 20%; font-size: 15px; font-weight: 500;">
+            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 753px; left: 13%; font-size: 15px; font-weight: 500;">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
     </div>
@@ -146,7 +146,7 @@ $code = str_shuffle($pin);
             <div style="text-transform: capitalize; top: 87px; left: 70%; font-size: 12px; font-weight: 900;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
-            <div style="text-transform: capitalize; top: 216px; left: 21%; font-size: 15px; font-weight: 900;" class="item">
+            <div style="text-transform: capitalize; top: 216px; left: 13%; font-size: 15px; font-weight: 900;" class="item">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
 
@@ -230,7 +230,7 @@ $code = str_shuffle($pin);
             </div>
             <img style="max-width: 100%;" src="./assets/media/Processing-Plant-DOI-02.png" alt="bg">
         
-            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 887px; left: 25%; font-size: 15px; font-weight: 500;">
+            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 887px; left: 15%; font-size: 15px; font-weight: 500;">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
     </div>
@@ -244,7 +244,7 @@ $code = str_shuffle($pin);
             <div style="text-transform: capitalize; top: 89px; left: 70%; font-size: 12px; font-weight: 900;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
-            <div style="text-transform: capitalize; top: 215px; left: 21%; font-size: 15px; font-weight: 900;" class="item">
+            <div style="text-transform: capitalize; top: 215px; left: 13%; font-size: 15px; font-weight: 900;" class="item">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
 
@@ -330,7 +330,7 @@ $code = str_shuffle($pin);
             </div>
             <img style="max-width: 100%;" src="./assets/media/AGRIC-TRACTOR-DOI-02.png" alt="bg">
         
-            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 809px; left: 25%; font-size: 15px; font-weight: 500;">
+            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 809px; left: 15%; font-size: 15px; font-weight: 500;">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
     </div>
