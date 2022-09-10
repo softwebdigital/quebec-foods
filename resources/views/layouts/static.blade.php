@@ -13,6 +13,16 @@
   <script src="https://kit.fontawesome.com/1b72b19568.js" crossorigin="anonymous"></script>
   <script type="module" crossorigin src="/static-assets/main.e0b7c54a.js"></script>
   <link rel="stylesheet" href="/static-assets/main.19a90050.css">
+    <!-- Google tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-240602613-1">
+    </script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-240602613-1');
+    </script>
 </head>
 
 <body>
