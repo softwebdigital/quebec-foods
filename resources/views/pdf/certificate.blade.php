@@ -63,7 +63,7 @@
 <body>
 @php
 
-//$investment = App\Models\Investment::where('id', 4)->first();
+//$investment = App\Models\Investment::where('id', 53)->first();
 
  $cur = App\Models\Setting::where('id', 1)->first();
 
@@ -81,57 +81,57 @@ $code = str_shuffle($pin);
             <img src="./assets/media/FARM-ESTATE-DOI-01.png" alt="bg">
         </div>
             
-            <div style="text-transform: capitalize; top: 169px; left: 72%; font-size: 12px; font-weight: 900;" class="item">
+            <div style="text-transform: capitalize; top: 144px; left: 72%; font-size: 12px; font-weight: 900;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
-            <div style="text-transform: capitalize; top: 282px; left: 12%; font-size: 15px; font-weight: 900;" class="item">
+            <div style="text-transform: capitalize; top: 259px; left: 12%; font-size: 15px; font-weight: 900;" class="item">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
 
-            <div style="text-transform: capitalize; top: 282px; left: 77%; font-size: 15px; font-weight: 900;" class="item">
+            <div style="text-transform: capitalize; top: 259px; left: 77%; font-size: 15px; font-weight: 900;" class="item">
                 {{ ucwords(strtolower($investment["user"]["country"])) }}
             </div>
             
-            <div style="top: 458px; left: 40%; font-size: 14px; font-weight: 900;" class="item">
+            <div style="top: 433px; left: 40%; font-size: 14px; font-weight: 900;" class="item">
                 Farm Estate
             </div>
-            <div style="top: 484px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 461px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ ucwords(strtolower($investment["package"]["name"])) }}
             </div>
-            <div style="top: 516px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 490px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $code }}
             </div>
-            <div style="top: 543px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 522px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["user"]["email"] }}
             </div>
-            <div style="top: 575px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 549px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 @if($investment["package"]["duration"] > 1)
                     {{ $investment["package"]["duration"] }} {{ $investment["package"]["duration_mode"] }}s
                 @else
                     {{ $investment["package"]["duration"] }} {{ $investment["package"]["duration_mode"] }} {{ $investment["package"]["milestones"] }} {{ $investment['return_date']->format('M d, Y \a\t h:i A') }}
                 @endif
             </div>
-            <div style="top: 604px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 579px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $cur->base_currency }} {{ number_format($investment["amount"]) }}
             </div>
-            <div style="top: 633px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 607px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ number_format($investment["slots"]) }} {{ number_format($investment["slots"]) > 1 ? 'Units' : 'Unit' }} 
             </div>
-            <div style="top: 663px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 639px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["package"]["roi"] }}% per {{ $investment["package"]["duration_mode"] }}
             </div>
             <!-- <div style="top: 693px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["package"]["milestones"] }} {{ $investment["package"]["milestones"] > 1 ? 'milestones' : 'milestone' }}
             </div> -->
-            <div style="top: 690px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 666px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
-            <div style="top: 721px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
+            <div style="top: 696px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment['return_date']->format('F d,  Y') }}
             </div>
             <img style="max-width: 100%;" src="./assets/media/FARM-ESTATE-DOI-02.png" alt="bg">
         
-            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 753px; left: 13%; font-size: 15px; font-weight: 500;">
+            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 774px; left: 13%; font-size: 15px; font-weight: 500;">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
     </div>
@@ -230,7 +230,7 @@ $code = str_shuffle($pin);
             </div>
             <img style="max-width: 100%;" src="./assets/media/Processing-Plant-DOI-02.png" alt="bg">
         
-            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 887px; left: 15%; font-size: 15px; font-weight: 500;">
+            <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 906px; left: 15%; font-size: 15px; font-weight: 500;">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
     </div>
