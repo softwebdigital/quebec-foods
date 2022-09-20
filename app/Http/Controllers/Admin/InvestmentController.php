@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Referral;
 use App\Models\User;
 use App\Models\Package;
 use App\Models\Investment;
@@ -63,11 +64,13 @@ class InvestmentController extends Controller
             'package_id'=>$package['id'], 'slots' => $request['slots'], 'amount' => $request['slots'] * $package['price'],
             'total_return' => $request['slots'] * $package['price'] * (( 100 + $package['roi'] ) / 100 ),
             'investment_date' => now()->format('Y-m-d H:i:s'),
+            'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira($request['slots'] * $package['price']),
             'return_date' => now()->addMonths($package['duration'])->format('Y-m-d H:i:s'), 'status' => 'active'
         ]);
         if ($investment) {
             try {
-                TransactionController::storeInvestmentTransaction($investment, $request['payment'], true);
+                self::processReferral($user, $investment['amount']);
+                \App\Http\Controllers\TransactionController::storeInvestmentTransaction($investment, $request['payment'], true);
                 NotificationController::sendInvestmentCreatedNotification($investment);
             } catch(Exception $e) {
                 logger($e->getMessage());
@@ -210,5 +213,31 @@ class InvestmentController extends Controller
             "data"            => $data
         );
         echo json_encode($res);
+    }
+
+    public static function processReferral($user, $amount): bool
+    {
+        $referral = Referral::where('referred_id', $user['id'])->where('paid', false)->first();
+        $referee = $referral->referee;
+        if ($referee && $referral && $amount >= 1000) {
+            $transaction =  $referee->transactions()->create([
+                'type' => 'deposit', 'amount' => 50,
+                'method' => 'deposit',
+                'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira(50),
+                'description' => 'Referral', 'status' => 'approved'
+            ]);
+            if ($transaction) {
+                $referee->wallet()->increment('balance', 50);
+                $referral->update(['paid' => true]);
+                try {
+                    NotificationController::sendReferralTransactionNotification($transaction);
+                } catch (Exception $e) {
+                    logger($e->getMessage());
+                }
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 }

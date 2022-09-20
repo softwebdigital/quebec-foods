@@ -19,6 +19,7 @@ class CreateOnlinePaymentsTable extends Migration
             $table->foreignId('transaction_id')->nullable()->constrained()->onUpdate('cascade')->onDelete('cascade');
             $table->string('reference');
             $table->string('amount');
+            $table->string('amount_in_naira')->nullable();
             $table->enum('type', ['deposit', 'investment']);
             $table->string('gateway')->default('paystack');
             $table->text('meta')->nullable();

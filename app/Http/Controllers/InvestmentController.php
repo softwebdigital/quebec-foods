@@ -101,6 +101,7 @@ class InvestmentController extends Controller
         $investment = auth()->user()->investments()->create([
             'package_id'=>$package['id'], 'slots' => $request['slots'],
             'amount' => $request['slots'] * $package['price'],
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['slots'] * $package['price']),
             'total_return' => $returns,
             'investment_date' => now()->format('Y-m-d H:i:s'),
             'rollover' => isset($request['rollover']) && $request['rollover'] == 'yes',

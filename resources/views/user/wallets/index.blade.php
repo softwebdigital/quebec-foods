@@ -295,6 +295,9 @@
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control form-control-solid" name="amount" id="amountWithdraw">
+                            <div class="d-flex justify-content-end">
+                                <span class="text-sm text-primary" id="amountWithdrawInNGN"></span>
+                            </div>
                             @error('amount')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -364,6 +367,9 @@
                             <!--end::Label-->
                             <!--begin::Input-->
                             <input type="text" placeholder="Amount" value="{{ old("amount") }}" class="form-control form-control-solid" name="amount" id="amountDeposit">
+                            <div class="d-flex justify-content-end">
+                                <span class="text-sm text-primary" id="amountDepositInNGN"></span>
+                            </div>
                             @error('amount')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -439,6 +445,10 @@
                                     <td>Account Number: </td>
                                     <td><span class="ms-2">{{ $setting['account_number'] }}</span></td>
                                 </tr>
+                                <tr>
+                                    <td>Amount: </td>
+                                    <td><span class="ms-2" id="nairaAmount"></span></td>
+                                </tr>
                             </table>
                             <br>
                             <br>
@@ -461,6 +471,10 @@
                                 <tr>
                                     <td>Added Information: </td>
                                     <td><span class="ms-2">{{ $international['added_information'] }}</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Amount: </td>
+                                    <td><span class="ms-2" id="dollarAmount"></span></td>
                                 </tr>
                             </table>
 
@@ -572,7 +586,9 @@
         let bankDetails = $('#bankDetailsForDepositForm');
         let securedLogo = $('#securedByPaystackLogo');
         let withdrawInput = $('#amountWithdraw');
+        let withdrawAmountInNGN = $('#amountWithdrawInNGN');
         let depositInput = $('#amountDeposit');
+        let depositAmountInNGN = $('#amountDepositInNGN');
         let proceedWithdrawal = $('#proceedWithdrwal');
         let smsModal = $('#smsModal');
         let withdrawalBtn = $('#withdrawalBtn');
@@ -580,6 +596,8 @@
         let amountToWithdraw = $('#amountToWithdraw');
         let selectedBank = $('#selectedBank');
         let withdrawalForm = $('#withdrawalForm');
+        let dollarAmount = $('#dollarAmount');
+        let nairaAmount = $('#nairaAmount');
 
         bankDetails.hide(500);
         securedLogo.hide(500);
@@ -612,7 +630,20 @@
             var $this = $( this );
             var input = $this.val();
 
-            var input = input.replace(/[\D\s\._\-]+/g, "");
+            input = input.replace(/[\D\s\._\-]+/g, "");
+
+            if (input.length > 0) {
+                withdrawAmountInNGN.html('₦' + numberFormat(getAmountInNaira(parseInt(input)).toFixed(2)))
+                depositAmountInNGN.html('₦' + numberFormat(getAmountInNaira(parseInt(input)).toFixed(2)))
+                dollarAmount.html('$' + numberFormat((parseInt(input)).toFixed(2)))
+                nairaAmount.html('₦' + numberFormat(getAmountInNaira(parseInt(input)).toFixed(2)))
+            }
+            else {
+                withdrawAmountInNGN.html('')
+                depositAmountInNGN.html('')
+                dollarAmount.html('$0.00')
+                nairaAmount.html('₦0.00')
+            }
 
             input = input ? parseInt( input, 10 ) : 0;
 

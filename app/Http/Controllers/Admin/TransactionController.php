@@ -41,6 +41,7 @@ class TransactionController extends Controller
         $user->wallet()->increment('balance', $request['amount']);
         $transaction = $user->transactions()->create([
             'type' => 'deposit', 'amount' => $request['amount'],
+            'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira($request['amount']),
             'description' => 'Deposit by '.env('APP_NAME'),
             'method' => 'deposit' ,'status' => 'approved'
         ]);
@@ -77,6 +78,7 @@ class TransactionController extends Controller
         $user->wallet()->decrement('balance', $request['amount']);
         $transaction = $user->transactions()->create([
             'type' => 'withdrawal', 'amount' => $request['amount'], 'method' => 'wallet',
+            'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira($request['amount']),
             'description' => 'Withdrawal by '.env('APP_NAME'), 'status' => 'approved'
         ]);
         if ($transaction) {
@@ -134,6 +136,7 @@ class TransactionController extends Controller
                         'start_date'      => $startDate
                     ]);
                     try {
+                        InvestmentController::processReferral($user, $transaction['amount']);
                         NotificationController::sendInvestmentCreatedNotification($transaction['investment']);
                     } catch (Exception $e) {
                         logger($e->getMessage());
@@ -197,7 +200,9 @@ class TransactionController extends Controller
     {
 //        Define all column names
         $columns = [
-            'transactions.created_at', 'users.first_name', 'transactions.amount', 'transactions.description', 'transactions.created_at', 'transactions.id', 'transactions.method', 'transactions.channel', 'transactions.status', 'transactions.created_at'
+            'transactions.created_at', 'users.first_name', 'transactions.amount', 'transactions.amount_in_naira',
+            'transactions.description', 'transactions.created_at', 'transactions.id', 'transactions.method',
+            'transactions.channel', 'transactions.status', 'transactions.created_at'
         ];
 //        Find data based on page
         $transactions = Transaction::query()->join('users', 'users.id', '=', 'transactions.user_id')->select('transactions.*');
@@ -292,6 +297,7 @@ class TransactionController extends Controller
                 $datum['name'] = ucwords($transaction->user['name']);
             }
             $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . getCurrency() .' '.number_format((int)$transaction['amount']).'</span>';
+            $datum['amount_in_naira'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;"> ₦ '.number_format((int)$transaction['amount_in_naira']).'</span>';
             $datum['description'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['description'].'</span>';
             $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['created_at']->format('M d, Y \a\t h:i A').'</span>';
             $datum['details'] = '<span class="text-gray-600 fw-bolder d-block fs-6 text-center" style="white-space: nowrap;">'.$details.'</span>';
