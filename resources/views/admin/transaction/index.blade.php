@@ -140,7 +140,8 @@
                     <tr class="fw-bolder text-muted bg-light">
                         <th class="ps-4 text-dark rounded-start">SN</th>
                         <th class="text-dark">Name</th>
-                        <th class="text-dark">Amount</th>
+                        <th class="text-dark">Amount(USD)</th>
+                        <th class="text-dark">Amount(NGN)</th>
                         <th class="text-dark">Description</th>
                         <th class="text-dark">Date</th>
                         <th class="text-dark">Details</th>
@@ -348,6 +349,7 @@
                 { "data": "sn" },
                 { "data": "name" },
                 { "data": "amount" },
+                { "data": "amount_in_naira" },
                 { "data": "description" },
                 { "data": "date" },
                 { "data": "details" },

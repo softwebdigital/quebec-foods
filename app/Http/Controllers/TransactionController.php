@@ -112,6 +112,7 @@ class TransactionController extends Controller
         }
         $transaction = auth()->user()->transactions()->create([
             'type' => 'deposit', 'amount' => $request['amount'],
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['amount']),
             'method' => $request['payment'],
             'description' => 'Deposit', 'status' => 'pending'
         ]);
@@ -133,6 +134,7 @@ class TransactionController extends Controller
             'investment_id' => $investment['id'],
             'user_id' => $investment->user['id'], 'type' => 'investment',
             'amount' => $investment['amount'], 'description' => $desc,
+            'amount_in_naira' => $investment['amount_in_naira'],
             'method' => $method, 'channel' => $channel,
             'status' => $investment['payment'] == 'approved' ? 'approved' : 'pending'
         ]);
@@ -144,6 +146,7 @@ class TransactionController extends Controller
             'investment_id' => $investment['id'],
             'user_id' => $investment->user['id'], 'type' => 'payout',
             'amount' => $amount, 'description' => "Payout",
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($amount),
             'method' => 'wallet', 'channel' => 'web',
             'status' => 'approved'
         ]);
@@ -196,12 +199,13 @@ class TransactionController extends Controller
             return back()->with('error', 'Withdrawal from wallet is currently unavailable, check back later');
         }
         // Check if user has sufficient balance
-        if (!auth()->user()->hasSufficientBalanceForTransaction((int)$request['amount'])) return back()->withInput()->with('error', 'Insufficient wallet balance');
+        if (!auth()->user()->hasSufficientBalanceForTransaction($request['amount'])) return back()->withInput()->with('error', 'Insufficient wallet balance');
         // Process withdrawal
-        auth()->user()->wallet()->decrement('balance', (int)$request['amount']);
+        auth()->user()->wallet()->decrement('balance', $request['amount']);
         $bank = auth()->user()->bankAccounts()->where('id', $request['account'])->first();
         $transaction = auth()->user()->transactions()->create([
-            'type' => 'withdrawal', 'amount' => (int)$request['amount'],
+            'type' => 'withdrawal', 'amount' => $request['amount'],
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['amount']),
             'method' => 'wallet',
             'preferred_bank' => json_encode($bank),
             'description' => 'Withdrawal', 'status' => 'pending'

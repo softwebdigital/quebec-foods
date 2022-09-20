@@ -204,31 +204,6 @@
                 <!--begin:::Form-->
                 <form action="{{ route('admin.settings.save') }}" class="form mb-3" method="post" id="otherSettingForm">
                     @csrf
-                    {{-- <!--begin::Input group-->
-                    <div class="d-flex flex-column mb-5 fv-row">
-                        <!--begin::Label-->
-                        <label class="required fs-5 fw-bold mb-2" for="base_currency">Base Currency</label>
-                        <!--end::Label-->
-                        <!--begin::Input-->
-                        <select name="base_currency" aria-label="Select the Base Currency" data-placeholder="Select the base currency" data-control="select2" class="form-select form-select-solid text-dark" id="currencyList">
-                            <option value=""></option>
-                            <option @if($setting['base_currency'] == "NGN") selected @endif value="NGN">NGN</option>
-                            <option @if($setting['base_currency'] == "USD") selected @endif value="USD">USD</option>
-                        </select>
-                        @error('base_currency')
-                            <span class="text-danger small" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <!--end::Input group-->
-                    <!--begin::Input group-->
-                    <label class="required fs-5 fw-bold mb-2" for="rate_plus">Rate</label>
-                    <div class="input-group mb-5">
-                        <span class="input-group-text">{{ $setting['usd_to_ngn'] }} ±</span>
-                        <input type="number" id="rate_plus" step="any" name="rate_plus" value="{{ old('rate_plus') ?? $setting['rate_plus']}}" class="form-control form-control-solid" placeholder="0.00"/>
-                    </div>
-                    <!--end::Input group--> --}}
 
                     <div class="form-check form-switch form-check-custom form-check-solid my-10">
                         <input class="form-check-input h-20px w-30px" name="show_cash" type="checkbox" @if($setting['show_cash'] == 1) checked @endif value="yes" id="showCash"/>
@@ -366,6 +341,13 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <label class="required fs-5 fw-bold mb-2" for="rate_plus">Rate</label>
+                    <div class="input-group mb-5">
+                        <span class="input-group-text">{{ $setting['usd_to_ngn'] }} ±</span>
+                        <input type="number" id="rate_plus" step="any" name="rate_plus" value="{{ old('rate_plus') ?? $setting['rate_plus']}}" class="form-control form-control-solid" placeholder="0.00"/>
                     </div>
                     <!--end::Input group-->
                     <!--begin::Submit-->
