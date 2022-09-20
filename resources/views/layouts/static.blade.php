@@ -39,7 +39,7 @@
               </svg>
             </a>
             <div id="q-drop-down" class="absolute z-30 hidden">
-              <div class="drop-down">
+              <div class="drop-down" style="width: 330px;">
                 <a href="/farm-estate" class="drop-down-items" style="@if(Route::is('static.farm')) color: rgb(0 164 81 / var(--tw-text-opacity)); @endif">
                   Farm Estate
                 </a>
@@ -47,7 +47,7 @@
                   Processing Plant
                 </a>
                 <a href="/tractor-investment" class="drop-down-items" style="@if(Route::is('static.tractor')) color: rgb(0 164 81 / var(--tw-text-opacity)); @endif">
-                  Tractor Investment
+                  Tractor & Agro- haulage
                 </a>
               </div>
             </div>
