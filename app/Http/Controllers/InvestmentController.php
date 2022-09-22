@@ -41,7 +41,7 @@ class InvestmentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \App\Http\Requests\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
@@ -111,6 +111,7 @@ class InvestmentController extends Controller
         if ($investment) {
             TransactionController::storeInvestmentTransaction($investment, $request['payment']);
             if ($investment['payment'] == 'approved'){
+                \App\Http\Controllers\Admin\InvestmentController::processReferral(auth()->user(), $investment);
                 NotificationController::sendInvestmentCreatedNotification($investment);
             }else{
                 NotificationController::sendInvestmentQueuedNotification($investment);

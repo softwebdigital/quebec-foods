@@ -23,7 +23,7 @@ class OnlinePaymentController extends Controller
 //            return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
         $data['channel'] = 'web';
         $paymentData = [
-            'amount' => $totalAmount,
+            'amount' => $totalAmount * 100,
             'reference' => Paystack::genTranxRef(),
             'email' => auth()->user()['email'],
             'currency' => 'NGN',

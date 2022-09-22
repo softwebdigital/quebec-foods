@@ -219,7 +219,7 @@ class InvestmentController extends Controller
     {
         $referral = Referral::where('referred_id', $user['id'])->where('paid', false)->first();
         $referee = $referral->referee;
-        if ($referee && $referral && $amount >= 1000) {
+        if ($referral && $referee && $user->investments()->count() <= 1 && $amount >= 1000) {
             $transaction =  $referee->transactions()->create([
                 'type' => 'deposit', 'amount' => 50,
                 'method' => 'deposit',
