@@ -218,25 +218,27 @@ class InvestmentController extends Controller
     public static function processReferral($user, $amount): bool
     {
         $referral = Referral::where('referred_id', $user['id'])->where('paid', false)->first();
-        $referee = $referral->referee;
-        if ($referral && $referee && $user->investments()->count() <= 1 && $amount >= 1000) {
-            $transaction =  $referee->transactions()->create([
-                'type' => 'deposit', 'amount' => 50,
-                'method' => 'deposit',
-                'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira(50),
-                'description' => 'Referral', 'status' => 'approved'
-            ]);
-            if ($transaction) {
-                $referee->wallet()->increment('balance', 50);
-                $referral->update(['paid' => true]);
-                try {
-                    NotificationController::sendReferralTransactionNotification($transaction);
-                } catch (Exception $e) {
-                    logger($e->getMessage());
+        if ($referral) {
+            $referee = $referral->referee;
+            if ($referee && $user->investments()->count() <= 1 && $amount >= 1000) {
+                $transaction = $referee->transactions()->create([
+                    'type' => 'deposit', 'amount' => 50,
+                    'method' => 'deposit',
+                    'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira(50),
+                    'description' => 'Referral', 'status' => 'approved'
+                ]);
+                if ($transaction) {
+                    $referee->wallet()->increment('balance', 50);
+                    $referral->update(['paid' => true]);
+                    try {
+                        NotificationController::sendReferralTransactionNotification($transaction);
+                    } catch (Exception $e) {
+                        logger($e->getMessage());
+                    }
+                    return true;
                 }
-                return true;
+                return false;
             }
-            return false;
         }
         return false;
     }
