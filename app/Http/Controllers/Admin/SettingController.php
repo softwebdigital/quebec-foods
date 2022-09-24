@@ -99,8 +99,13 @@ class SettingController extends Controller
         return back()->with('error', 'Error updating bank details');
     }
 
-    public function rates()
+    public static function fetchRates(): ?bool
     {
-
+        $settings = Setting::first();
+        $res = Http::withHeaders(['X-API-KEY' => env('GOLD_PRICE_API_KEY')])->get('http://goldpricez.com/api/rates/currency/ngn/measure/gram/metal/all');
+        $res = json_decode(json_decode($res, true), true);
+        if (isset($res['usd_to_ngn']))
+            return $settings->update(['usd_to_ngn' => $res['usd_to_ngn']]);
+        return false;
     }
 }
