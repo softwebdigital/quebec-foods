@@ -884,8 +884,9 @@
     <div class="flex flex-col justify-between gap-8 md:flex-row">
       <div class="w-full px-5 md:w-2/5 md:px-3">
         <h4 class="text-[#192434] text-3xl md:leading-h-2 md:text-5xl font-bold my-4">We are trusted!</h4>
-        <p class="text-[#5B6676] text-base md:text-2xl">We are trusted by over 50 Companies in the ecosystem and we
-          have been serving them without hassle</p>
+        <p class="text-[#5B6676] text-base md:text-2xl">
+          We are envisioned to serve over 50 Companies in the ecosystems.
+        </p>
       </div>
       <div class="flex items-center content-center justify-center w-full p-5 shadow-lg md:w-3/5 md:p-9 rounded-2xl">
         <div class="grid items-center content-center justify-center grid-cols-2 gap-10 md:grid-cols-3 md:gap-10">

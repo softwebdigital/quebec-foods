@@ -39,7 +39,7 @@
               </svg>
             </a>
             <div id="q-drop-down" class="absolute z-30 hidden">
-              <div class="drop-down" style="width: 330px;">
+              <div class="drop-down" style="width: 255px;">
                 <a href="/farm-estate" class="drop-down-items" style="@if(Route::is('static.farm')) color: rgb(0 164 81 / var(--tw-text-opacity)); @endif">
                   Farm Estate
                 </a>
