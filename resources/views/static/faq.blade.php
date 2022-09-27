@@ -59,7 +59,7 @@
                                 unit?</button>
                             <div class="panel">
                                 <p>
-                                    The amount of investment varies from $1,000 - $3,000 depending on your choice of farm investment package. 
+                                    The amount of investment varies from $150 - $3,000 depending on your choice of farm investment package.
                                 </p>
                             </div>
                         </div>
