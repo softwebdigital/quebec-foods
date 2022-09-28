@@ -199,7 +199,7 @@
           <div class="">
             <h3 class="text-[#192434] text-4xl font-bold pb-4">Farm Estate</h3>
             <p class="text-[#5B6676] text-base leading-8 py-5 text-justify pr-5">
-            The Food production Venture Scheme allows an agribusiness investor to invest into the AGRO-FARM PRODUCE BUYBACK VENTURE SCHEME of Quebec Food Processing Industrial Parks Ltd’s planned INTEGRATED MECHANIZED FARM ESTATES to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites.
+            The Food production Venture Scheme allows an investor to invest into the AGRO-FARM PRODUCE BUYBACK VENTURE SCHEME in the INTEGRATED MECHANIZED FARM ESTATES to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites.
             </p>
           </div>
           <div class="flex justify-between gap-3 lg:w-[80%]">

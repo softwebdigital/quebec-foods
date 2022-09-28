@@ -103,12 +103,11 @@
               LTD</span> -->
             <h3 class="max-w-[400px] text-primary font-bold text-lg lg:text-heading-4 lg:leading-h-5">Food Production Venture Scheme (FPVS)</h3>
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
-            The Food production Venture Scheme allows an agribusiness investor to invest into the AGRO-FARM PRODUCE BUYBACK VENTURE SCHEME of Quebec Food Processing Industrial Parks Ltd’s planned INTEGRATED MECHANIZED FARM ESTATES to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites.
+              The Food production Venture Scheme allows an investor to invest into the AGRO-FARM PRODUCE BUYBACK VENTURE SCHEME in the INTEGRATED MECHANIZED FARM ESTATES to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites.
             </p>
 
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
-              By your Investment, you are eligible to earn for a tenure of 18months, 36months & 60months depending on your
-              choice of crop or livestock to invest in.
+              By your Investment, you are eligible to earn for tenure of 4months - 60months depending on your choice of crop or livestock to invest in.
             </p>
             <a href="{{ route('login') }}"
               class="flex items-baseline justify-center w-full py-5 my-4 btn-primary md:text-lg md:py-5 lg:px-9 rounded-xl gap-x-10 lg:gap-x-6 lg:w-1/2">
@@ -274,11 +273,10 @@
                     </div>
                 </div>
                 <div class="accordion-container">
-                    <button class="accordion">What is the amount of investment required per
-                        unit?</button>
+                    <button class="accordion">What is the amount of investment required per unit?</button>
                     <div class="panel">
                         <p>
-                            The amount of investment varies from $1,000 - $3,000 depending on your choice of farm investment package. 
+                            The amount of investment varies from $150 - $3,000 depending on your choice of farm investment package. 
                         </p>
                     </div>
                 </div>
