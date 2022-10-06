@@ -44,6 +44,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('rate:update')
                     ->withoutOverlapping()
                     ->everyThirtyMinutes();
+        $schedule->command('sitemap:generate')
+                    ->weekly();
     }
 
     /**
