@@ -63,7 +63,7 @@
 <body>
 @php
 
-$investment = App\Models\Investment::where('id', 30)->first();
+//$investment = App\Models\Investment::where('id', 30)->first();
 
  $cur = App\Models\Setting::where('id', 1)->first();
 
