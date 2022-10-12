@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+  <script src="https://kit.fontawesome.com/1b72b19568.js" crossorigin="anonymous"></script>
+  <script type="module" crossorigin src="/static-assets/main.e0b7c54a.js"></script>
+  <link rel="stylesheet" href="/static-assets/main.19a90050.css">
+=======
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="/static-assets/favicon.708cd543.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -13,6 +17,11 @@
     <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.1/dist/flowbite.min.css"/>
     <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
     <!-- :end home slider import -->
+    <!-- :begin farm slider import -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <!-- :end farm slider import -->
     <script src="https://kit.fontawesome.com/1b72b19568.js" crossorigin="anonymous"></script>
     <script type="module" crossorigin src="/static-assets/main.e0b7c54a.js"></script>
     <link rel="stylesheet" href="/static-assets/main.19a90050.css">

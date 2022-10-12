@@ -54,13 +54,14 @@
                   </svg>
               </a>
           </div>
-          <div class="mt-20">
-              <div class="flex flex-col lg:flex-row gap-x-5">
+          
+          <div class="wrapper mt-20">
+              <div class="carousel owl-carousel flex flex-col lg:flex-row gap-x-5">
                     @foreach($farms as $farm)
                     @php 
                         $category = App\Models\Category::where('id', $farm->category_id)->first();
                     @endphp
-                      <div class="!self-start lg:w-1/3 relative">
+                      <div :class="card card-{{ $farm->id }} !self-start lg:w-1/3 relative">
                         @if($category->image == null)
                           <img class="rounded-3xl" src="/static-assets/farm-estate-hero-image.2b800cfc.png" alt="">
                         @else
@@ -91,7 +92,82 @@
         </section>
       </section>
       @endif
-      
+      <style>
+          .wrapper{
+            width: 100%;
+          }
+          .carousel{
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 30px;
+          }
+          .carousel .card{
+            color: #fff;
+            text-align: center;
+            margin: 20px 0;
+            line-height: 250px;
+            font-size: 90px;
+            font-weight: 600;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+          }
+          .carousel .card-1{
+            background: #ed1c24;
+          }
+          .carousel .card-2{
+            background: #0072bc;
+          }
+          .carousel .card-3{
+            background: #39b54a;
+          }
+          .carousel .card-4{
+            background: #f26522;
+          }
+          .carousel .card-5{
+            background: #630460;
+          }
+          .owl-dots{
+            text-align: center;
+            margin-top: 40px;
+          }
+          .owl-dot{
+            height: 15px;
+            width: 45px;
+            margin: 0 5px;
+            outline: none;
+            border-radius: 14px;
+            border: 2px solid #00A451!important;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+          }
+          .owl-dot.active,
+          .owl-dot:hover{
+            background: #00A451!important;
+          }
+      </style>
+      <script>
+          $(".carousel").owlCarousel({
+            margin: 20,
+            loop: true,
+            autoplay: true,
+            autoplayTimeout: 2000,
+            autoplayHoverPause: true,
+            responsive: {
+              0:{
+                items:1,
+                nav: false
+              },
+              600:{
+                items:2,
+                nav: false
+              },
+              1000:{
+                items:3,
+                nav: false
+              }
+            }
+          });
+      </script>
 
       <!-- Food Production Investment Scheme (FPIS) -->
       <section style="background-image: url(/static-assets/farm-bg-section-2.bef3240a.png);" class="bg-[url('/static-assets/farm-bg-section-2.bef3240a.png')] bg-cover w-full h-full lg:py-28">

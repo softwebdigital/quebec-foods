@@ -15,6 +15,15 @@
         $approved = auth()->user()->documents()->where('status', 'approved')->first();
         $pending = auth()->user()->documents()->where('status', 'pending')->first();
         $idError = $errors->first('photo') || $errors->first('number') || $errors->first('method');
+        $user = auth()->user();
+
+        try {
+            $banks = json_decode(Http::get('https://api.paystack.co/bank')->getBody(), true)['data'];
+            $countries = json_decode(file_get_contents(public_path('assets/data/countries.json')), TRUE);
+        }catch (\Exception $exception){
+            $banks = [];
+            $countries = [];
+        }
     @endphp
     <!--begin::Referral program-->
     <div class="row">
@@ -35,6 +44,22 @@
                             <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#verifyModal">click here</a>
                         </div>
                     @endif
+                </div>
+                <!--end::Content-->
+            </div>
+            <!--end::Wrapper-->
+        </div>
+        @endif
+        @if(auth()->user()->bankAccounts()->count() == 0)
+        <div id="bank_notification" style="display: none !important;" class="notice mb-5 d-flex bg-light-warning rounded border-warning border border-dashed min-w-lg-600px flex-shrink-0 p-6">
+            <!--begin::Wrapper-->
+            <div class="d-flex flex-stack flex-grow-1 flex-wrap flex-md-nowrap">
+                <!--begin::Content-->
+                <div class="mb-3 mb-md-0 fw-bold">
+                    <h4 class="text-gray-900 fw-bolder">Add Bank Account</h4>
+                        <div class="fs-6 text-gray-700 pe-7">
+                            You have to add a bank to proceed for withdrawal <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#addBankModal">click here</a>
+                        </div>
                 </div>
                 <!--end::Content-->
             </div>
@@ -173,21 +198,32 @@
                         <div>
                             <button type="button" data-bs-toggle="modal" data-bs-target="#depositModal" class="btn btn-primary min-w-125px">Top Up</button>
                         </div>
-
-                        @if($setting['withdrawal'] == 1 && $approved)
-                        <div>
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
-                        </div>
-                        @else
+                            @if(auth()->user()->bankAccounts()->count() == 0)
+                                <div>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" onclick="showDiv()">Withdraw</button>
+                                </div>
+                                <script>
+                                    let notify = document.getElementById('bank_notification');
+                                    function showDiv() {
+                                        notify.style.display = "block";
+                                    }
+                                </script>
+                            @else
+                            @if($setting['withdrawal'] == 1 && $approved)
                             <div>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" onclick="showDiv()">Withdraw</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
                             </div>
-                            <script>
-                                let notify = document.getElementById('notification');
-                                function showDiv() {
-                                    notify.style.display = "block";
-                                }
-                            </script>
+                            @else 
+                                <div>
+                                    <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" onclick="showDiv()">Withdraw</button>
+                                </div>
+                                <script>
+                                    let notify = document.getElementById('notification');
+                                    function showDiv() {
+                                        notify.style.display = "block";
+                                    }
+                                </script>
+                            @endif
                         @endif
                     </div>
                 </div>
@@ -270,6 +306,75 @@
         </div>
     </div>
     <!--end::SMS-->
+
+    <!--begin::Add International Bank Modal-->
+    <div class="modal fade" tabindex="-1" id="addIntBankModal">
+        <div class="modal-dialog @if($idError) show active @endif">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add International Bank Account</h5>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-2x"></span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <form class="form mb-3" method="post" action="{{ route('internationalBank.store') }}">
+                        @csrf
+                        <!--begin::Input group-->
+                        <div class="row mb-5">
+                            <!--begin::Col-->
+                            <div class="col-md-6 fv-row">
+                                <!--begin::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Bank Name</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" class="form-control form-control-solid" name="bank_name" id="name" value="{{ old("bank_name") ?? $user['bank_name'] }}">
+                            </div>
+                            <div class="col-md-6 fv-row">
+                                <!--begin::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Account Name</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" class="form-control form-control-solid" name="account_name" id="name"  value="{{ old("account_name") ?? $user['account_name'] }}">
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="d-flex flex-column mb-5 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Account Number</label>
+                                <!--end::Label-->
+                                <!--end::Input-->
+                                <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number">
+                                
+                            </div>
+                            <div class="d-flex flex-column mb-5 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Added Information</label>
+                                <!--end::Label-->
+                                <!--end::Input-->
+                                <textarea name="added_information" id="" cols="30" rows="10" class="form-control form-control-solid"></textarea>
+                                <!-- <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" name="account_number" id="account_number"> -->
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Submit-->
+                        <button type="submit" class="btn btn-primary">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Add Bank</span>
+                            <!--end::Indicator-->
+                        </button>
+                        <!--end::Submit-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Add International Bank Modal-->
 
     <!--begin::Withdrawal Modal-->
     <div class="modal fade" tabindex="-1" id="withdrawalModal">
@@ -575,10 +680,207 @@
             </div>
         </div>
     </div>
-    <!--end::Withdrawal Modal-->
+    <!--end::Validation Modal-->
+
+    <!--begin::Add Bank Modal-->
+    <div class="modal fade" tabindex="-1" id="addBankModal">
+        <div class="modal-dialog @if($idError) show active @endif">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Bank Account</h5>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-2x"></span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <form class="form mb-3" method="post" action="{{ route('bank.store') }}" id="update-bank-form">
+                        @csrf
+                        <!--begin::Input group-->
+                        <div class="row mb-5">
+                            <!--begin::Col-->
+                            <div class="col-md-6 fv-row">
+                                <!--begin::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Bank Name</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <select name="bank_name" aria-label="Select a Bank" data-control="select2" class="form-select form-select-solid text-dark" id="bankList">
+                                    @if(count($banks) > 0)
+                                        <option value="">Select Bank</option>
+                                        @foreach($banks as $bank)
+                                            <option @if(old("bank_name") == $bank['name'] || $user['bank_name'] == $bank['name']) selected @endif value="{{ $bank['name'] }}" data-code="{{ $bank['code'] }}">{{ $bank['name'] }}</option>
+                                        @endforeach
+                                    @else
+                                        <option value="">Error Fetching Banks</option>
+                                    @endif
+                                </select>
+                                @error('bank_name')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <input type="hidden" id="bankCode" value="@if(count($banks) > 0) @foreach($banks as $bank) @if(auth()->user()['bank_name'] == $bank['name']) {{ $bank['code'] }} @endif @endforeach @endif">
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-6 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Account Number</label>
+                                <!--end::Label-->
+                                <!--end::Input-->
+                                <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number">
+                                @error('account_number')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--begin::Label-->
+                            <label for="account_name" class="fs-5 fw-bold mb-2 d-flex justify-content-between">
+                                <span class="d-block">Account Name <span class="text-danger">*</span></span>
+                                <span id="verifyingDisplay" class="small d-block"></span>
+                            </label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text" value="{{ old("account_name") ?? $user['account_name'] }}" readonly class="form-control form-control-solid bg-secondary" name="account_name" id="account_name">
+                            <!--end::Input-->
+                            @error('account_name')
+                                <span class="text-danger small">
+                                    <strong>Account name not verified</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Submit-->
+                        <button type="button" onclick="confirmFormSubmit(event, 'update-bank-form')" class="btn btn-primary">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Add Bank</span>
+                            <!--end::Indicator-->
+                        </button>
+                        <!--end::Submit-->
+                        <!--begin::Submit-->
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#addIntBankModal" class="btn btn-primary">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Add International Bank</span>
+                            <!--end::Indicator-->
+                        </button>
+                        <!--end::Submit-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Add Bank Modal-->
 @endsection
 
 @section('script')
+<script>
+    $(document).ready(function (){
+        const countryData = {!! json_encode($countries) !!};
+        const currentState = '{{ old('state') ?? auth()->user()->state }}';
+        console.log(countryData)
+        console.log($('#tab-bank'))
+        $('#tab-bank').click()
+        const errorId = {!! json_encode(session('err_id')) !!}
+        if (errorId) {
+            $('#tab-bank').click();
+            $('#btn-'+errorId).click();
+        }
+        let bankList = $('#bankList');
+        let bankCode = $('#bankCode');
+        let accountNumber = $('#account_number');
+        let accountName = $('#account_name');
+        let countryField = $('#country');
+        let state = $('#state');
+        const option = $('#option');
+        let verifyingDisplay = $('#verifyingDisplay');
+        bankList.on('change', function (){
+            $("#bankList option").each(function(){
+                if($(this).val() === $('#bankList').val()){
+                    bankCode.val($(this).attr('data-code'))
+                }
+            })
+            verifyAccountNumber();
+        });
+
+        setCountryStates();
+        countryField.on('change', setCountryStates);
+
+        function setCountryStates() {
+            let selectedCountry = countryField.val();
+            let country = countryData.find((country) => country.name === selectedCountry )
+            let selectedCountryStates = country.states;
+            let html = '';
+            for (let i = 0; i < selectedCountryStates.length; i++){
+                html += `<option ${currentState === selectedCountryStates[i].name ? 'selected' : ''} value="${selectedCountryStates[i].name}">${selectedCountryStates[i].name}</option>`;
+            }
+            state.html(html);
+        }
+
+        accountNumber.on('input', verifyAccountNumber);
+        function verifyAccountNumber(){
+            if (bankList.val() && accountNumber.val().length === 10 && bankCode.val()){
+                verifyingDisplay.text('Verifying account number...');
+                verifyingDisplay.removeClass('d-none');
+                verifyingDisplay.removeClass('text-danger');
+                verifyingDisplay.removeClass('text-success');
+                verifyingDisplay.addClass('text-info');
+                $.ajax({
+                    url: "https://api.paystack.co/bank/resolve",
+                    data: { account_number: accountNumber.val(), bank_code: bankCode.val().trim() },
+                    type: "GET",
+                    beforeSend: function(xhr){
+                        xhr.setRequestHeader('Authorization', 'Bearer {{ env('PAYSTACK_SECRET_KEY') }}');
+                        xhr.setRequestHeader('Content-Type', 'application/json');
+                        xhr.setRequestHeader('Accept', 'application/json');
+                    },
+                    success: function(res) {
+                        verifyingDisplay.removeClass('text-info');
+                        verifyingDisplay.addClass('text-success');
+                        verifyingDisplay.text('Account details verified');
+                        accountName.val(res.data.account_name);
+                    },
+                    error: function (err){
+                        let msg = 'Error processing verification';
+                        verifyingDisplay.removeClass('text-info');
+                        verifyingDisplay.addClass('text-danger');
+                        if (parseInt(err.status) === 422){
+                            msg = 'Account details doesn\'t match any record';
+                        }
+                        verifyingDisplay.text(msg);
+                    }
+                });
+            }else{
+                accountName.val("");
+                verifyingDisplay.addClass('d-none');
+            }
+        }
+    });
+
+    function populateModal(account, link) {
+        console.log(account);
+        $('#edit_account_number').val(account.account_number);
+        $('#edit_bank_name').val(account.bank_name);
+        $('#edit_account_name').val(account.account_name);
+        $('#update-bank-account').attr('action', link);
+    }
+
+    function copyToClipboard() {
+        var copyText = document.getElementById("myRefLink");
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(copyText.value);
+    }
+</script>
+
 <script>
     // $(document).ready(function (){
         let cardPayment = $('#cardPayment');
@@ -705,6 +1007,7 @@
     // });
 
 </script>
+
 <script>
     let i = 0, token = '', input1 = document.getElementById('otc-1'),
         parent = document.getElementById('parentWrapper');
@@ -830,4 +1133,5 @@
     // input1.addEventListener('input', getToken);
     // inputs[inputs.length - 1].addEventListener('input', getToken);
 </script>
+
 @endsection
