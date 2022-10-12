@@ -230,7 +230,7 @@
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                 <div class="menu-item px-3">
                                     @if ($package['status'] == 'open')
-                                        <a class="menu-link px-3" data-bs-toggle="modal" onclick="populateInvestModal('{{ $package['type'] }}', '{{ $package['name'] }}')" @if($package['type'] != 'Farm') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif ><span class="">Invest</span></a>
+                                        <a class="menu-link px-3" data-bs-toggle="modal" onclick="populateInvestModal('{{ $package['type'] }}', '{{ $package['name'] }}')" @if($package['type'] != 'farm') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif ><span class="">Invest</span></a>
                                     @endif
                                     <a class="menu-link px-3" href="{{ route('packages.show', ['package' => $package['id']]) }}"><span class="">Show</span></a>
                                 </div>
