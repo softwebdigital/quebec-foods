@@ -612,6 +612,14 @@
                                     <!--end::Indicator-->
                                 </button>
                                 <!--end::Submit-->
+
+                                <!--begin::Submit-->
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#addBankModal" class="btn btn-primary">
+                                    <!--begin::Indicator-->
+                                    <span class="indicator-label">Add International Bank</span>
+                                    <!--end::Indicator-->
+                                </button>
+                                <!--end::Submit-->
                             </form>
                             <!--end:::Form-->
                         </div>
@@ -934,6 +942,74 @@
     </div>
     <!--end::Layout-->
     <!--begin::Modals-->
+    <!--begin::Add International Bank Modal-->
+    <div class="modal fade" tabindex="-1" id="addBankModal">
+        <div class="modal-dialog @if($idError) show active @endif">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add International Bank Account</h5>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-2x"></span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <form class="form mb-3" method="post" action="{{ route('internationalBank.store') }}">
+                        @csrf
+                        <!--begin::Input group-->
+                        <div class="row mb-5">
+                            <!--begin::Col-->
+                            <div class="col-md-6 fv-row">
+                                <!--begin::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Bank Name</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" class="form-control form-control-solid" name="bank_name" id="name" value="{{ old("bank_name") ?? $user['bank_name'] }}">
+                            </div>
+                            <div class="col-md-6 fv-row">
+                                <!--begin::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Account Name</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <input type="text" class="form-control form-control-solid" name="account_name" id="name"  value="{{ old("account_name") ?? $user['account_name'] }}">
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="d-flex flex-column mb-5 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Account Number</label>
+                                <!--end::Label-->
+                                <!--end::Input-->
+                                <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number">
+                                
+                            </div>
+                            <div class="d-flex flex-column mb-5 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Added Information</label>
+                                <!--end::Label-->
+                                <!--end::Input-->
+                                <textarea name="added_information" id="" cols="30" rows="10" class="form-control form-control-solid"></textarea>
+                                <!-- <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" name="account_number" id="account_number"> -->
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Submit-->
+                        <button type="submit" class="btn btn-primary">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Add Bank</span>
+                            <!--end::Indicator-->
+                        </button>
+                        <!--end::Submit-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Add International Bank Modal-->
     <!--begin::Modal - New Card-->
     <div class="modal fade" id="kt_modal_edit_bank" tabindex="-1" aria-hidden="true">
         <!--begin::Modal dialog-->

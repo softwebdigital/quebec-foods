@@ -31,7 +31,7 @@
                                     <!--end::Svg Icon-->
                                 </a>
                             </div>
-                            <a href="{{ route('profile') }}" class="btn btn-primary">My Profile</a>
+                            <a href="{{ route('profile') }}" class="btn btn-primary">Edit Profile</a>
                         </div>
                         <!--end::Name-->
                         <!--begin::Info-->

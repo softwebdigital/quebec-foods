@@ -19,6 +19,7 @@ class CreateBankAccountsTable extends Migration
             $table->string('bank_name');
             $table->string('account_name');
             $table->string('account_number');
+            $table->string('added_information')->nullable();
             $table->timestamps();
         });
     }

@@ -58,6 +58,31 @@ class BankAccountsController extends Controller
         return back()->withInput()->with('error', 'Error adding bank');
     }
 
+    public function storeInt(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'bank_name' => ['required'],
+            'account_name' => ['required'],
+            'account_number' => ['required'],
+            'added_information' => ['required'],
+        ]);
+        if ($validator->fails()){
+            return back()->withInput()->withErrors($validator)->with('error', 'Invalid input data');
+        }
+        $data = $request->only(['bank_name', 'account_name', 'account_number', 'added_information']);
+        if (auth()->user()->bankAccounts()->count() >= 3) {
+            return back()->withInput()->with('error', 'You can have a maximum of 3 account numbers');
+        }
+        if (auth()->user()->bankAccounts()->where($data)->exists()) {
+            return back()->withInput()->with('error', 'Bank account already exists');
+        }
+        $data = $request->only(['bank_name', 'account_name', 'account_number', 'added_information']);
+        if (auth()->user()->bankAccounts()->create($data)) {
+            return back()->with('success', 'Bank account added successfully');
+        }
+        return back()->withInput()->with('error', 'Error adding bank');
+    }
+
     /**
      * Display the specified resource.
      *
