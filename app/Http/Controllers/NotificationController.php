@@ -248,6 +248,12 @@ class NotificationController extends Controller
         $investment->user->notify(new CustomNotification('investment', 'Investment Milestone Payment', $msg, $description));
     }
 
+    public static function sendReferralTransactionNotification($transaction)
+    {
+        $description = 'You have just received <b>$' . number_format($transaction->amount) . '</b> bonus for a referral.';
+        $transaction->user->notify(new CustomNotification('referral', 'Referral Bonus', $description, $description));
+    }
+
     public static function sendContactUsNotification($info)
     {
         $description = 'You have a contact us message';

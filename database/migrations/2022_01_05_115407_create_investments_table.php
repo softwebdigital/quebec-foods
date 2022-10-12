@@ -19,6 +19,7 @@ class CreateInvestmentsTable extends Migration
             $table->foreignId('package_id')->constrained();
             $table->integer('slots');
             $table->decimal('amount', 15, 2);
+            $table->string('amount_in_naira')->nullable();
             $table->decimal('total_return', 15, 2);
             $table->text('package_data');
             $table->dateTime('investment_date');

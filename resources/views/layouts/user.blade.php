@@ -25,6 +25,16 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
         @yield('style')
 		<!--end::Global Stylesheets Bundle-->
+        <!-- Google tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-240602613-1">
+        </script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'UA-240602613-1');
+        </script>
 	</head>
 	<!--end::Head-->
 	<!--begin::Body-->
@@ -510,6 +520,9 @@
                             <!--end::Label-->
                             <!--end::Input-->
                             <input type="text" value="{{ getCurrency() }} 0.00" class="form-control form-control-solid bg-secondary" name="amount" id="plantAmount" disabled>
+                            <div class="d-flex justify-content-end">
+                                <span class="text-sm text-primary" id="plantAmountInNGN"></span>
+                            </div>
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
@@ -519,6 +532,9 @@
                             <!--end::Label-->
                             <!--end::Input-->
                             <input type="text" value="{{ getCurrency() }} 0.00" disabled class="form-control form-control-solid" name="returns" id="plantReturns">
+                            <div class="d-flex justify-content-end">
+                                <span class="text-sm text-primary" id="plantReturnsInNGN"></span>
+                            </div>
                         </div>
                         <!--end::Input group-->
                         <!--begin::Row-->
@@ -709,6 +725,9 @@
                             <!--end::Label-->
                             <!--end::Input-->
                             <input type="text" value="{{ getCurrency() }} 0.00" class="form-control form-control-solid bg-secondary" name="amount" id="amount" disabled>
+                            <div class="d-flex justify-content-end">
+                                <span class="text-sm text-primary" id="amountInNGN"></span>
+                            </div>
                         </div>
                         <!--end::Input group-->
                         <!--begin::Input group-->
@@ -718,6 +737,9 @@
                             <!--end::Label-->
                             <!--end::Input-->
                             <input type="text" value="{{ getCurrency() }} 0.00" disabled class="form-control form-control-solid" name="returns" id="returns">
+                            <div class="d-flex justify-content-end">
+                                <span class="text-sm text-primary" id="returnsInNGN"></span>
+                            </div>
                         </div>
                         <!--end::Input group-->
                         <!--begin::Row-->
@@ -861,16 +883,33 @@
         <!--Start of Tawk.to Script-->
         <script type="text/javascript">
             var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-                (function(){
+            (function(){
                 var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
                 s1.async=true;
-                s1.src='https://embed.tawk.to/628e36c6b0d10b6f3e73fe3c/1g3tobtsp';
+                s1.src='https://embed.tawk.to/6304e16a54f06e12d89047c6/1gb5h12rt';
                 s1.charset='UTF-8';
                 s1.setAttribute('crossorigin','*');
                 s0.parentNode.insertBefore(s1,s0);
             })();
         </script>
         <!--End of Tawk.to Script-->
+        <!-- Meta Pixel Code -->
+        <script>
+            !function(f,b,e,v,n,t,s)
+            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+                n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+                if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+                n.queue=[];t=b.createElement(e);t.async=!0;
+                t.src=v;s=b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t,s)}(window, document,'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '658171588636182');
+            fbq('track', 'PageView');
+        </script>
+        <noscript>
+            <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=658171588636182&ev=PageView&noscript=1">
+        </noscript>
+        <!-- End Meta Pixel Code -->
         <script>
             $(function() {
                 closeModal = function(e, modalId) {
@@ -922,18 +961,6 @@
                     }))
                 }
             });
-			function numberFormat(amount, decimal = ".", thousands = ",") {
-				try {
-					amount = Number.parseFloat(amount);
-					let decimalCount = Number.isInteger(amount) ? 0 : amount.toString().split('.')[1].length;
-					const negativeSign = amount < 0 ? "-" : "";
-					let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
-					let j = (i.length > 3) ? i.length % 3 : 0;
-					return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
-				} catch (e) {
-					console.log(e)
-				}
-			}
         </script>
         <script>
         let mode;
@@ -953,7 +980,9 @@
             let duration = $('#duration');
             let durationMode = $('#durationMode');
             let amount = $('#amount');
+            let amountInNGN = $('#amountInNGN');
             let returns = $('#returns');
+            let returnsInNGN = $('#returnsInNGN');
             let returnInfo = $('#returnInfo');
             let depositPayment = $('#farmDepositPayment');
             let cardPayment = $('#farmCardPayment');
@@ -1011,11 +1040,15 @@
                 }
                 if (packageName.val() && slots.val() && (slots.val() > 0)){
                     amount.val('{{ getCurrency() }}' + numberFormat((slots.val() * price.val()).toFixed(2)));
+                    amountInNGN.html('₦' + numberFormat(getAmountInNaira(slots.val() * price.val()).toFixed(2)));
                     returns.val('{{ getCurrency() }}' + numberFormat((slots.val() * price.val() * ((parseInt(roi.val()) + 100) / 100)).toFixed(2)));
+                    returnsInNGN.html('₦' + numberFormat(getAmountInNaira(slots.val() * price.val() * ((parseInt(roi.val()) + 100) / 100)).toFixed(2)));
                 }
                 if (slots.val() === "") {
                     amount.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));
+                    amountInNGN.html('');
                     returns.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));
+                    returnsInNGN.html('');
                 }
                 checkIfFormCanSubmit();
             }
@@ -1044,8 +1077,8 @@
         });
 
         $("#createPlantInvestment").on('shown.bs.modal', function(){
-            const plantPackages = {!! $plantPackages !!}
-            const tractorPackages = {!! $tractorPackages !!}
+            const plantPackages = {!! $plantPackages !!};
+            const tractorPackages = {!! $tractorPackages !!};
             const selected = $(`#plantPackage`).val();
             const pckgs = mode === 'plant' ? plantPackages : tractorPackages;
             let html = `<option value="">Select Package</option>`;
@@ -1057,8 +1090,8 @@
         });
 
         $("#createPlantInvestment").on('hidden.bs.modal', function(){
-            const plantPackages = {!! $plantPackages !!}
-            const tractorPackages = {!! $tractorPackages !!}
+            const plantPackages = {!! $plantPackages !!};
+            const tractorPackages = {!! $tractorPackages !!};
             const pckgs = [...plantPackages, ...tractorPackages];
             let html = `<option value="">Select Package</option>`;
             pckgs.forEach(package => {
@@ -1076,7 +1109,9 @@
             let plantDuration = $('#plantDuration');
             let plantDurationMode = $('#plantDurationMode');
             let plantAmount = $('#plantAmount');
+            let plantAmountInNGN = $('#plantAmountInNGN');
             let plantReturns = $('#plantReturns');
+            let plantReturnsInNGN = $('#plantReturnsInNGN');
             let plantReturnInfo = $('#plantReturnInfo');
             let plantDepositPayment = $('#plantDepositPayment');
             let plantCardPayment = $('#plantCardPayment');
@@ -1129,12 +1164,15 @@
                 }
                 if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() >= 0)){
                     plantAmount.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val()).toFixed(2)));
+                    plantAmountInNGN.html('₦' + numberFormat(getAmountInNaira(plantSlots.val() * plantPrice.val()).toFixed(2)));
                     plantReturns.val('{{ getCurrency() }}' + numberFormat((plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val() * plantMilestones.val()) + 100) / 100)).toFixed(2)));
-                    
+                    plantReturnsInNGN.html('₦' + numberFormat(getAmountInNaira(plantSlots.val() * plantPrice.val() * ((parseInt(plantRoi.val() * plantMilestones.val()) + 100) / 100)).toFixed(2)));
                 }
                 if (plantSlots.val() === "") {
                     plantAmount.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));
+                    plantAmountInNGN.html('');
                     plantReturns.val('{{ getCurrency() }}' + numberFormat((0).toFixed(2)));
+                    plantReturnsInNGN.html('');
                 }
                 checkIfFormCanSubmit();
             }
@@ -1160,6 +1198,23 @@
                 }
             }
         });
+
+        function getAmountInNaira(amount) {
+            return amount * {{ \App\Models\Setting::first()['usd_to_ngn'] + \App\Models\Setting::first()['rate_plus'] }}
+        }
+
+        function numberFormat(amount, decimal = ".", thousands = ",") {
+            try {
+                amount = Number.parseFloat(amount);
+                let decimalCount = Number.isInteger(amount) ? 0 : amount.toString().split('.')[1].length;
+                const negativeSign = amount < 0 ? "-" : "";
+                let i = parseInt(amount = Math.abs(Number(amount) || 0).toFixed(decimalCount)).toString();
+                let j = (i.length > 3) ? i.length % 3 : 0;
+                return negativeSign + (j ? i.substr(0, j) + thousands : '') + i.substr(j).replace(/(\d{3})(?=\d)/g, "$1" + thousands) + (decimalCount ? decimal + Math.abs(amount - i).toFixed(decimalCount).slice(2) : "");
+            } catch (e) {
+                console.log(e)
+            }
+        }
         </script>
         @yield('script')
 		<!--end::Page Custom Javascript-->
