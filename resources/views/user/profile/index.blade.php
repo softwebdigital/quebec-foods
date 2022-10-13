@@ -543,7 +543,7 @@
                         <!--begin::Card body-->
                         <div class="card-body pt-0 pb-5">
                             <!--begin::Submit-->
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#addNGNBankModal" class="btn btn-primary">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#addNGNBankModal" class="btn btn-primary m-1">
                                 <!--begin::Indicator-->
                                 <span class="indicator-label">Add Nigerian Bank</span>
                                 <!--end::Indicator-->
@@ -551,7 +551,7 @@
                             <!--end::Submit-->
 
                             <!--begin::Submit-->
-                            <button type="button" data-bs-toggle="modal" data-bs-target="#addBankModal" class="btn btn-primary">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#addBankModal" class="btn btn-primary m-1">
                                 <!--begin::Indicator-->
                                 <span class="indicator-label">Add International Bank</span>
                                 <!--end::Indicator-->
