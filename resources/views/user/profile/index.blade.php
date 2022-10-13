@@ -542,86 +542,21 @@
                         <!--end::Card header-->
                         <!--begin::Card body-->
                         <div class="card-body pt-0 pb-5">
-                            <!--begin:::Form-->
-                            <form class="form mb-3" method="post" action="{{ route('bank.store') }}" id="update-bank-form">
-                                @csrf
-                                <!--begin::Input group-->
-                                <div class="row mb-5">
-                                    <!--begin::Col-->
-                                    <div class="col-md-6 fv-row">
-                                        <!--begin::Label-->
-                                        <label class="required fs-5 fw-bold mb-2">Bank Name</label>
-                                        <!--end::Label-->
-                                        <!--begin::Input-->
-                                        <select name="bank_name" aria-label="Select a Bank" data-control="select2" class="form-select form-select-solid text-dark" id="bankList">
-                                            @if(count($banks) > 0)
-                                                <option value="">Select Bank</option>
-                                                @foreach($banks as $bank)
-                                                    <option @if(old("bank_name") == $bank['name'] || $user['bank_name'] == $bank['name']) selected @endif value="{{ $bank['name'] }}" data-code="{{ $bank['code'] }}">{{ $bank['name'] }}</option>
-                                                @endforeach
-                                            @else
-                                                <option value="">Error Fetching Banks</option>
-                                            @endif
-                                        </select>
-                                        @error('bank_name')
-                                            <span class="text-danger small" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                        <input type="hidden" id="bankCode" value="@if(count($banks) > 0) @foreach($banks as $bank) @if(auth()->user()['bank_name'] == $bank['name']) {{ $bank['code'] }} @endif @endforeach @endif">
-                                    </div>
-                                    <!--end::Col-->
-                                    <!--begin::Col-->
-                                    <div class="col-md-6 fv-row">
-                                        <!--end::Label-->
-                                        <label class="required fs-5 fw-bold mb-2">Account Number</label>
-                                        <!--end::Label-->
-                                        <!--end::Input-->
-                                        <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number">
-                                        @error('account_number')
-                                            <span class="text-danger small" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                    <!--end::Col-->
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Input group-->
-                                <div class="d-flex flex-column mb-5 fv-row">
-                                    <!--begin::Label-->
-                                    <label for="account_name" class="fs-5 fw-bold mb-2 d-flex justify-content-between">
-                                        <span class="d-block">Account Name <span class="text-danger">*</span></span>
-                                        <span id="verifyingDisplay" class="small d-block"></span>
-                                    </label>
-                                    <!--end::Label-->
-                                    <!--begin::Input-->
-                                    <input type="text" value="{{ old("account_name") ?? $user['account_name'] }}" readonly class="form-control form-control-solid bg-secondary" name="account_name" id="account_name">
-                                    <!--end::Input-->
-                                    @error('account_name')
-                                        <span class="text-danger small">
-                                            <strong>Account name not verified</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                                <!--end::Input group-->
-                                <!--begin::Submit-->
-                                <button type="button" onclick="confirmFormSubmit(event, 'update-bank-form')" class="btn btn-primary">
-                                    <!--begin::Indicator-->
-                                    <span class="indicator-label">Add Bank</span>
-                                    <!--end::Indicator-->
-                                </button>
-                                <!--end::Submit-->
+                            <!--begin::Submit-->
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#addNGNBankModal" class="btn btn-primary">
+                                <!--begin::Indicator-->
+                                <span class="indicator-label">Add Nigerian Bank</span>
+                                <!--end::Indicator-->
+                            </button>
+                            <!--end::Submit-->
 
-                                <!--begin::Submit-->
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#addBankModal" class="btn btn-primary">
-                                    <!--begin::Indicator-->
-                                    <span class="indicator-label">Add International Bank</span>
-                                    <!--end::Indicator-->
-                                </button>
-                                <!--end::Submit-->
-                            </form>
-                            <!--end:::Form-->
+                            <!--begin::Submit-->
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#addBankModal" class="btn btn-primary">
+                                <!--begin::Indicator-->
+                                <span class="indicator-label">Add International Bank</span>
+                                <!--end::Indicator-->
+                            </button>
+                            <!--end::Submit-->
                         </div>
                         <!--end::Card body-->
                     </div>
@@ -650,9 +585,10 @@
                                         <tr class="text-start text-muted text-uppercase gs-0">
                                             <th>S/N</th>
                                             <th>Bank Name</th>
+                                            <th>Account Type</th>
                                             <th class="min-w-125px">Account Name</th>
                                             <th>Account Number</th>
-                                            <th></th>
+                                            
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
@@ -667,6 +603,7 @@
                                                     <!--end::Invoice=-->
                                                     <!--begin::Status=-->
                                                     <td>{{ $account->bank_name }}</td>
+                                                    <td>{{ $account->added_information ? 'International Bank' : 'Nigerian Bank' }}</td>
                                                     <!--end::Status=-->
                                                     <!--begin::Amount=-->
                                                     <td>{{ $account->account_name }}</td>
@@ -942,6 +879,101 @@
     </div>
     <!--end::Layout-->
     <!--begin::Modals-->
+    <!--begin::Add Nigerian Bank Modal-->
+    <div class="modal fade" tabindex="-1" id="addNGNBankModal">
+        <div class="modal-dialog @if($idError) show active @endif">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Nigerian Bank Account</h5>
+
+                    <!--begin::Close-->
+                    <div class="btn btn-icon btn-sm btn-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
+                            </svg>
+                        </span>
+                    </div>
+                    <!--end::Close-->
+                </div>
+
+                <div class="modal-body">
+                    <form class="form mb-3" method="post" action="{{ route('bank.store') }}" id="update-bank-form">
+                        @csrf
+                        <!--begin::Input group-->
+                        <div class="row mb-5">
+                            <!--begin::Col-->
+                            <div class="col-md-6 fv-row">
+                                <!--begin::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Bank Name</label>
+                                <!--end::Label-->
+                                <!--begin::Input-->
+                                <select name="bank_name" aria-label="Select a Bank" data-control="select2" class="form-select form-select-solid text-dark" id="bankList">
+                                    @if(count($banks) > 0)
+                                        <option value="">Select Bank</option>
+                                        @foreach($banks as $bank)
+                                            <option @if(old("bank_name") == $bank['name'] || $user['bank_name'] == $bank['name']) selected @endif value="{{ $bank['name'] }}" data-code="{{ $bank['code'] }}">{{ $bank['name'] }}</option>
+                                        @endforeach
+                                    @else
+                                        <option value="">Error Fetching Banks</option>
+                                    @endif
+                                </select>
+                                @error('bank_name')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                                <input type="hidden" id="bankCode" value="@if(count($banks) > 0) @foreach($banks as $bank) @if(auth()->user()['bank_name'] == $bank['name']) {{ $bank['code'] }} @endif @endforeach @endif">
+                            </div>
+                            <!--end::Col-->
+                            <!--begin::Col-->
+                            <div class="col-md-6 fv-row">
+                                <!--end::Label-->
+                                <label class="required fs-5 fw-bold mb-2">Account Number</label>
+                                <!--end::Label-->
+                                <!--end::Input-->
+                                <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number">
+                                @error('account_number')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <!--end::Col-->
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Input group-->
+                        <div class="d-flex flex-column mb-5 fv-row">
+                            <!--begin::Label-->
+                            <label for="account_name" class="fs-5 fw-bold mb-2 d-flex justify-content-between">
+                                <span class="d-block">Account Name <span class="text-danger">*</span></span>
+                                <span id="verifyingDisplay" class="small d-block"></span>
+                            </label>
+                            <!--end::Label-->
+                            <!--begin::Input-->
+                            <input type="text" value="{{ old("account_name") ?? $user['account_name'] }}" readonly class="form-control form-control-solid bg-secondary" name="account_name" id="account_name">
+                            <!--end::Input-->
+                            @error('account_name')
+                                <span class="text-danger small">
+                                    <strong>Account name not verified</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <!--end::Input group-->
+                        <!--begin::Submit-->
+                        <button type="button" onclick="confirmFormSubmit(event, 'update-bank-form')" class="btn btn-primary">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Submit</span>
+                            <!--end::Indicator-->
+                        </button>
+                        <!--end::Submit-->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end::Add Nigerian Bank Modal-->
     <!--begin::Add International Bank Modal-->
     <div class="modal fade" tabindex="-1" id="addBankModal">
         <div class="modal-dialog @if($idError) show active @endif">
@@ -950,8 +982,13 @@
                     <h5 class="modal-title">Add International Bank Account</h5>
 
                     <!--begin::Close-->
-                    <div class="btn btn-icon btn-sm btn-active-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
-                        <span class="svg-icon svg-icon-2x"></span>
+                    <div class="btn btn-icon btn-sm btn-light-primary ms-2" data-bs-dismiss="modal" aria-label="Close">
+                        <span class="svg-icon svg-icon-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect opacity="0.5" x="6" y="17.3137" width="16" height="2" rx="1" transform="rotate(-45 6 17.3137)" fill="black"></rect>
+                                <rect x="7.41422" y="6" width="16" height="2" rx="1" transform="rotate(45 7.41422 6)" fill="black"></rect>
+                            </svg>
+                        </span>
                     </div>
                     <!--end::Close-->
                 </div>

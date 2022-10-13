@@ -38,7 +38,7 @@
       </section>
 
       @php 
-          $farms = App\Models\Package::where('type', 'farm')->where('status', 'open')->paginate(4);
+          $farms = App\Models\Package::where('type', 'farm')->where('status', 'open')->get();
       @endphp
       @if($farms->count() >= 1)
       <section class="bg-[#F3FFF9]">
@@ -56,7 +56,7 @@
           </div>
           
           <div class="wrapper mt-20">
-              <div class="carousel owl-carousel flex flex-col lg:flex-row gap-x-5">
+              <div class="carousel owl-carousel p-3">
                     @foreach($farms as $farm)
                     @php 
                         $category = App\Models\Category::where('id', $farm->category_id)->first();
@@ -67,7 +67,7 @@
                         @else
                           <img class="rounded-3xl" src="{{ $category->image }}" alt="" style="width: 100%; height: 260px; object-fit: cover;">
                         @endif
-                        <div class="px-5 py-5 bg-white -translate-y-10 rounded-xl shadow-2xl lg:w-[90%]">
+                        <div class="px-5 py-5 bg-white -translate-y-10 rounded-xl shadow-lg lg:w-[90%]">
                           <h3 class="text-ink text-lg py-2 font-bold">{{ $farm->name }}</h3>
                           <div class="text-sm" style="display: -webkit-box; width: 100%; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">
                             {!! $farm->description !!}
@@ -150,7 +150,7 @@
             margin: 20,
             loop: true,
             autoplay: true,
-            autoplayTimeout: 2000,
+            autoplayTimeout: 5000,
             autoplayHoverPause: true,
             responsive: {
               0:{
