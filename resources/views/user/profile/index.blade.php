@@ -16,8 +16,8 @@
 @endsection
 
 @section('breadCrumbs')
-    <li class="breadcrumb-item"><a href="javascript:void()" class="text-muted">Account</a></li>
-    <li class="breadcrumb-item"><a href="javascript:void()" class="text-dark">Profile</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void(0)" class="text-muted">Account</a></li>
+    <li class="breadcrumb-item"><a href="javascript:void(0)" class="text-dark">Profile</a></li>
 @endsection
 
 @section('content')
@@ -68,7 +68,7 @@
                             <div class="text-gray-600">{{ $user['address'] }}</div>
                             <!--begin::Details item-->
                             <!--begin::Details item-->
-                            <div class="fw-bolder mt-5">Stage</div>
+                            <div class="fw-bolder mt-5">State</div>
                             <div class="text-gray-600">{{ $user['state'] }}</div>
                             <!--begin::Details item-->
                             <!--begin::Details item-->
@@ -137,7 +137,7 @@
                         <div class="card-header mt-6">
                             <!--begin::Card title-->
                             <div class="card-title flex-column">
-                                <h4 class="mb-1">PERSONAL INFORMATION</h2>
+                                <h4 class="mb-1">PERSONAL INFORMATION</h4>
                             </div>
                             <!--end::Card title-->
                         </div>
@@ -251,7 +251,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-8 ms-0 ps-0">
-                                                <input type="text" class="form-control form-control-solid" style="border-radius: 0 0.65rem 0.65rem 0" placeholder="E.g +2349039561875" name="phone" value="{{ old('phone') ?? $user['phone'] }}"/>
+                                                <input type="text" class="form-control form-control-solid" style="border-radius: 0 0.65rem 0.65rem 0" placeholder="E.g 9039561875" name="phone" value="{{ old('phone') ?? $user['phone'] }}"/>
                                             </div>
                                         </div>
                                         @error('phone')
@@ -393,7 +393,7 @@
                                     <!--end::Input-->
                                     @error('nk_address')
                                         <span class="text-danger small">
-                                            <strong>{{ $message }}</stro>
+                                            <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
@@ -1021,7 +1021,7 @@
                                 <!--end::Label-->
                                 <!--end::Input-->
                                 <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number">
-                                
+
                             </div>
                             <div class="d-flex flex-column mb-5 fv-row">
                                 <!--end::Label-->
@@ -2350,7 +2350,7 @@
             console.log(countryData)
             console.log($('#tab-bank'))
             $('#tab-bank').click()
-            const errorId = {!! json_encode(session('err_id')) !!}
+            const errorId = {!! json_encode(session('err_id')) !!};
             if (errorId) {
                 $('#tab-bank').click();
                 $('#btn-'+errorId).click();

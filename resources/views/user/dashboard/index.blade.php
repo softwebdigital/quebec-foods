@@ -459,7 +459,7 @@
                                                             fill="currentColor"></path>
                                                     </svg>
                                                 </span>
-                                                <!--end::Svg Icon-->{{ $pcg->investments()->count() }} Investors
+                                                <!--end::Svg Icon-->{{ $pcg['total_investments'] }} Investors
                                             </span>
                                             <!--end::Section-->
                                         </div>

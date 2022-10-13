@@ -206,12 +206,12 @@
                 @foreach ($packages as $key=>$package )
                     <tr>
                         <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6 text-nowrap">{{ $key + 1 }}</span></td>
-                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['name'] }}</span></td>
+                        <td><a href="{{ route('packages.show', ['package' => $package['id']]) }}" class="fw-bolder d-block fs-6 text-nowrap">{{ $package['name'] }}</a></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['roi'] }}%</span></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ getCurrency() }} {{ number_format($package['price']) }}</span></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</span></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ ucwords($package['type'])}}</span></td>
-                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-center">{{ $package->investments()->count() }}</span></td>
+                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-center">{{ $package['total_investments'] }}</span></td>
                         <td>
                             @if ($package['status'] == 'open')
                                 <span class="badge badge-pill badge-success">Open</span>
@@ -230,7 +230,7 @@
                             <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-600 menu-state-bg-light-primary fw-bold fs-7 w-125px py-4" data-kt-menu="true">
                                 <div class="menu-item px-3">
                                     @if ($package['status'] == 'open')
-                                        <a class="menu-link px-3" data-bs-toggle="modal" onclick="populateInvestModal('{{ $package['type'] }}', '{{ $package['name'] }}')" @if($package['type'] != 'Farm') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif ><span class="">Invest</span></a>
+                                        <a class="menu-link px-3" data-bs-toggle="modal" onclick="populateInvestModal('{{ $package['type'] }}', '{{ $package['name'] }}')" @if($package['type'] != 'farm') data-bs-target="#createPlantInvestment" @else data-bs-target="#createFarmInvestment" @endif ><span class="">Invest</span></a>
                                     @endif
                                     <a class="menu-link px-3" href="{{ route('packages.show', ['package' => $package['id']]) }}"><span class="">Show</span></a>
                                 </div>

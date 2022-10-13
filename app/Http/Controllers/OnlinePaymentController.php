@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Package;
+use App\Models\Setting;
+use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\OnlinePayment;
 use Illuminate\Support\Carbon;
@@ -12,14 +15,15 @@ use App\Http\Requests\UpdateOnlinePaymentRequest;
 
 class OnlinePaymentController extends Controller
 {
-    public static function initializeOnlineTransaction($amount, $data)
+    public static function initializeOnlineTransaction($amount, $data): RedirectResponse
     {
-        $currency = getCurrency();
-        if ($amount >= 10000000)
-            return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
+//        $currency = getCurrency();
+        $totalAmount = self::getAmountInNaira($amount);
+//        if ($amount >= 10000000)
+//            return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
         $data['channel'] = 'web';
         $paymentData = [
-            'amount' => $amount * 100,
+            'amount' => $totalAmount * 100,
             'reference' => Paystack::genTranxRef(),
             'email' => auth()->user()['email'],
             'currency' => 'NGN',
@@ -28,6 +32,7 @@ class OnlinePaymentController extends Controller
         auth()->user()->payments()->create([
             'reference' => $paymentData['reference'],
             'amount' => $amount,
+            'amount_in_naira' => $totalAmount,
             'type' => $data['type'],
             'gateway' => 'paystack',
             'meta' => json_encode($data)
@@ -35,7 +40,7 @@ class OnlinePaymentController extends Controller
         \request()->merge($paymentData);
         try{
             return Paystack::getAuthorizationUrl()->redirectNow();
-        }catch(\Exception $e) {
+        }catch(Exception $e) {
             return back()->with('error', 'The paystack token has expired. Please refresh the page and try again.');
         }
     }
@@ -105,8 +110,8 @@ class OnlinePaymentController extends Controller
                 if ($transaction)
                     try {
                         NotificationController::sendDepositSuccessfulNotification($transaction);
-                    } catch (\Exception $e) {
-                        $e->getMessage();
+                    } catch (Exception $e) {
+                        logger($e->getMessage());
                         $emailError = true;
                     }
                 break;
@@ -136,10 +141,16 @@ class OnlinePaymentController extends Controller
                     try {
                         TransactionController::storeInvestmentTransaction($investment, 'card', false, $meta['channel'] ?? 'mobile');
                         NotificationController::sendInvestmentCreatedNotification($investment);
-                    } catch (\Exception $e) { $emailError = true; }
+                    } catch (Exception $e) { $emailError = true; }
                 }
                 break;
         }
         return $payment->update(['status' => 'success']);
+    }
+
+    public static function getAmountInNaira($amount)
+    {
+        $settings = Setting::first(['usd_to_ngn', 'rate_plus']);
+        return $amount * ($settings['usd_to_ngn'] + $settings['rate_plus']);
     }
 }
