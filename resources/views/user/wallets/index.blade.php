@@ -707,14 +707,14 @@
                 </div>
 
                 <div class="modal-body">
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#addNGNBankModal" class="btn btn-primary">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#addNGNBankModal" class="btn btn-primary m-1">
                         <!--begin::Indicator-->
                         <span class="indicator-label">Add Nigerian Bank</span>
                         <!--end::Indicator-->
                     </button>
                     <!--end::Submit-->
                     <!--begin::Submit-->
-                    <button type="button" data-bs-toggle="modal" data-bs-target="#addIntBankModal" class="btn btn-primary">
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#addIntBankModal" class="btn btn-primary m-1">
                         <!--begin::Indicator-->
                         <span class="indicator-label">Add International Bank</span>
                         <!--end::Indicator-->
