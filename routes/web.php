@@ -1,5 +1,12 @@
 <?php
 
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\InvestmentController;
+use App\Http\Controllers\OnlinePaymentController;
+use App\Http\Controllers\PackageController;
+use App\Http\Controllers\ReferralController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\WalletController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -69,33 +76,33 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
         Route::get('/notifications/read', [App\Http\Controllers\NotificationController::class, 'read'])->name('notifications.read');
 
         Route::group(['prefix' => '/packages'], function() {
-            Route::get('/', [\App\Http\Controllers\PackageController::class, 'index'])->name('packages');
-            Route::get('/{package}/show', [\App\Http\Controllers\PackageController::class, 'show'])->name('packages.show');
+            Route::get('/', [PackageController::class, 'index'])->name('packages');
+            Route::get('/{package}/show', [PackageController::class, 'show'])->name('packages.show');
         });
 
         Route::get('/transactions', [App\Http\Controllers\TransactionController::class, 'index'])->name('transactions');
 
         Route::group(['prefix' => '/investments'], function() {
             Route::group(['where' => ['type' => 'farm|plant|tractor']], function () {
-                Route::get('/{type}', [App\Http\Controllers\InvestmentController::class, 'index'])->name('investments');
+                Route::get('/{type}', [InvestmentController::class, 'index'])->name('investments');
             });
-            Route::get('/create', [App\Http\Controllers\InvestmentController::class, 'invest'])->name('invest');
-            Route::get('/{investment}/show', [App\Http\Controllers\InvestmentController::class, 'show'])->name('investments.show');
-            Route::put('/{investment}/rollover/update', [App\Http\Controllers\InvestmentController::class, 'updateRollover'])->name('investment.update.rollover');
+            Route::get('/create', [InvestmentController::class, 'invest'])->name('invest');
+            Route::get('/{investment}/show', [InvestmentController::class, 'show'])->name('investments.show');
+            Route::put('/{investment}/rollover/update', [InvestmentController::class, 'updateRollover'])->name('investment.update.rollover');
         });
-        Route::post('/invest', [App\Http\Controllers\InvestmentController::class, 'store'])->name('invest.store');
-        Route::get('/wallet', [App\Http\Controllers\WalletController::class, 'index'])->name('wallet');
-        Route::post('/deposit', [App\Http\Controllers\TransactionController::class, 'deposit'])->name('deposit');
-        Route::post('/withdraw', [App\Http\Controllers\TransactionController::class, 'withdraw'])->name('withdraw');
-        Route::get('/referrals', [App\Http\Controllers\ReferralController::class, 'index'])->name('referrals');
+        Route::post('/invest', [InvestmentController::class, 'store'])->name('invest.store');
+        Route::get('/wallet', [WalletController::class, 'index'])->name('wallet');
+        Route::post('/deposit', [TransactionController::class, 'deposit'])->name('deposit');
+        Route::post('/withdraw', [TransactionController::class, 'withdraw'])->name('withdraw');
+        Route::get('/referrals', [ReferralController::class, 'index'])->name('referrals');
 
-        Route::post('/withdrawal/send-token', [App\Http\Controllers\TransactionController::class, 'withdrawalToken'])->name('withdrawal.token');
-        Route::post('/withdraw/resend-token', [App\Http\Controllers\TransactionController::class, 'resendToken'])->name('withdrawalToken.resend');
+        Route::post('/withdrawal/send-token', [TransactionController::class, 'withdrawalToken'])->name('withdrawal.token');
+        Route::post('/withdraw/resend-token', [TransactionController::class, 'resendToken'])->name('withdrawalToken.resend');
     });
 
-    Route::get('/app/faqs', [App\Http\Controllers\FaqController::class, 'index'])->name('faq');
+    Route::get('/app/faqs', [FaqController::class, 'index'])->name('faq');
 
-    Route::get('/payment/callback', [\App\Http\Controllers\OnlinePaymentController::class, 'handlePaymentCallback'])->name('payment.callback');
-    Route::get('/payment/initiate', [\App\Http\Controllers\OnlinePaymentController::class, 'initiatePayment'])->name('payment.initiate');
+    Route::get('/payment/{gateway}/callback', [OnlinePaymentController::class, 'handlePaymentCallback'])->name('payment.callback');
+    Route::get('/payment/initiate', [OnlinePaymentController::class, 'initiatePayment'])->name('payment.initiate');
 
 });

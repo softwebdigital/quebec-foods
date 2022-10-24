@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OnlinePaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/payment/webhook', [\App\Http\Controllers\OnlinePaymentController::class, 'handlePaymentWebhook']);
+Route::post('/payment/webhook', [OnlinePaymentController::class, 'handlePaymentWebhook']);
+Route::post('/payment/flw/webhook', [OnlinePaymentController::class, 'handleFlwWebhook']);
+

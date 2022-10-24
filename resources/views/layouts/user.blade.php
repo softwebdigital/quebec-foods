@@ -24,6 +24,56 @@
 		<link href="{{asset('assets/css/style.bundle.css')}}" rel="stylesheet" type="text/css" />
         <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
         @yield('style')
+        <style>
+            #gatewayPaystack.active {
+                background: #50cd89;
+                padding: 6px;
+            }
+            #gatewayFlw.active {
+                background: #50cd89;
+                padding: 6px;
+            }
+            #farmGatewayPaystack.active {
+                background: #50cd89;
+                padding: 6px;
+            }
+            #farmGatewayFlw.active {
+                background: #50cd89;
+                padding: 6px;
+            }
+            #plantGatewayPaystack.active {
+                background: #50cd89;
+                padding: 6px;
+            }
+            #plantGatewayFlw.active {
+                background: #50cd89;
+                padding: 6px;
+            }
+            #gatewayPaystack {
+                background: #ffffff;
+                padding: 6px;
+            }
+            #gatewayFlw {
+                background: #ffffff;
+                padding: 6px;
+            }
+            #farmGatewayPaystack {
+                background: #ffffff;
+                padding: 6px;
+            }
+            #farmGatewayFlw {
+                background: #ffffff;
+                padding: 6px;
+            }
+            #plantGatewayPaystack {
+                background: #ffffff;
+                padding: 6px;
+            }
+            #plantGatewayFlw {
+                background: #ffffff;
+                padding: 6px;
+            }
+        </style>
 		<!--end::Global Stylesheets Bundle-->
         <!-- Google tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-240602613-1">
@@ -543,11 +593,11 @@
                             <!--begin::Radio group-->
                             <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                                 <!--begin::Radio-->
-                                <!-- <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="plantCardPayment" data-kt-button="true"> -->
+                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="plantCardPayment" data-kt-button="true">
                                 <!--begin::Input-->
-                                <!-- <input class="btn-check" type="radio" name="payment" id="plantCardPayment" value="card" /> -->
+                                <input class="btn-check" type="radio" name="payment" id="plantCardPayment" value="card" />
                                 <!--end::Input-->
-                                <!-- Card</label> -->
+                                Card</label>
                                 <!--end::Radio-->
                                 <!--begin::Radio-->
                                 <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="plantWalletPayment" data-kt-button="true">
@@ -568,7 +618,24 @@
                         </div>
                         <!--end::Row-->
                         <div id="plantSecuredByPaystack" style="display: none" class="mx-auto text-center">
-                            <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
+                            <h6 class="mt-5 mb-4">Select Currency.</h6>
+                            <input type="radio" name="currency" class="form-check-input" id="usd" value="USD" checked>
+                            <label for="usd" class="form-check-label" style="margin-right: 6px;">USD ($)</label>
+                            <label for="ngn" class="form-check-label" style="margin-left: 6px;">NGN (₦)</label>
+                            <input type="radio" name="currency" class="form-check-input" id="ngn" value="NGN">
+
+                            <h6 class="mt-5">Select Gateway.</h6>
+{{--                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>--}}
+                            <div class="d-flex justify-content-center">
+                                <div id="plantGatewayFlw" class="mr-10">
+                                    <img src="{{ asset('assets/photos/flutterwave.png') }}" class="img-fluid" width="150" alt="Secured-by-flutterwave" style="cursor: pointer">
+                                </div>
+                                <div id="plantGatewayPaystack" class="ml-10">
+                                    <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
+                                </div>
+                            </div>
+                            <input type="hidden" id="plantGatewayValue" name="gateway">
+                            <div id="plantGatewayError"></div>
                         </div>
                         <div id="plantBankDetails" style="display: none" class="alert bg-secondary">
                             <table>
@@ -748,11 +815,11 @@
                             <!--begin::Radio group-->
                             <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                                 <!--begin::Radio-->
-                                <!-- <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="farmCardPayment" data-kt-button="true"> -->
+                                <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="farmCardPayment" data-kt-button="true">
                                 <!--begin::Input-->
-                                <!-- <input class="btn-check" type="radio" name="payment" id="farmCardPayment" value="card" /> -->
+                                <input class="btn-check" type="radio" name="payment" id="farmCardPayment" value="card" />
                                 <!--end::Input-->
-                                <!-- Card</label> -->
+                                Card</label>
                                 <!--end::Radio-->
                                 <!--begin::Radio-->
                                 <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success" for="farmWalletPayment" data-kt-button="true">
@@ -773,8 +840,24 @@
                         </div>
                         <!--end::Row-->
                         <div id="farmSecuredByPaystack" style="display: none" class="mx-auto text-center">
-                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>
-                            <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
+                            <h6 class="mt-5 mb-4">Select Currency.</h6>
+                            <input type="radio" name="currency" class="form-check-input" id="usd" value="USD" checked>
+                            <label for="usd" class="form-check-label" style="margin-right: 6px;">USD ($)</label>
+                            <label for="ngn" class="form-check-label" style="margin-left: 6px;">NGN (₦)</label>
+                            <input type="radio" name="currency" class="form-check-input" id="ngn" value="NGN">
+
+                            <h6 class="mt-5">Select Gateway.</h6>
+{{--                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>--}}
+                            <div class="d-flex justify-content-center">
+                                <div id="farmGatewayFlw" class="mr-10">
+                                    <img src="{{ asset('assets/photos/flutterwave.png') }}" class="img-fluid" width="150" alt="Secured-by-flutterwave" style="cursor: pointer">
+                                </div>
+                                <div id="farmGatewayPaystack" class="ml-10">
+                                    <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
+                                </div>
+                            </div>
+                            <input type="hidden" id="farmGatewayValue" name="gateway">
+                            <div id="farmGatewayError"></div>
                         </div>
                         <div id="farmBankDetails" style="display: none" class="alert bg-secondary">
                             <table>
@@ -989,11 +1072,28 @@
             let walletPayment = $('#farmWalletPayment');
             let bankDetails = $('#farmBankDetails');
             let securedByPaystack = $('#farmSecuredByPaystack');
+            let paystackGateway = $('#farmGatewayPaystack');
+            let flwGateway = $('#farmGatewayFlw');
+            let farmGatewayVal = $('#farmGatewayValue');
             let submitButton = $('#submitButton');
             let agreed = $('#agreed');
             let nairaWalletBalance = parseFloat({{ auth()->user()['wallet']['balance'] }});
             let rolloverInvestment = $('#rolloverInvestment');
             agreed.on('change', checkIfFormCanSubmit);
+
+            paystackGateway.on('click', function () {
+                farmGatewayVal.val('paystack')
+                flwGateway.removeClass('active')
+                paystackGateway.addClass('active')
+                checkIfFormCanSubmit();
+            });
+
+            flwGateway.on('click', function () {
+                farmGatewayVal.val('flutterwave')
+                paystackGateway.removeClass('active')
+                flwGateway.addClass('active')
+                checkIfFormCanSubmit();
+            });
 
             cardPayment.on('click', function () {
                 bankDetails.hide(500);
@@ -1003,11 +1103,17 @@
             depositPayment.on('click', function () {
                 bankDetails.show(500);
                 securedByPaystack.hide(500);
+                farmGatewayVal.val('');
+                flwGateway.removeClass('active')
+                paystackGateway.removeClass('active')
                 checkIfFormCanSubmit();
             });
             walletPayment.on('click', function () {
                 bankDetails.hide(500);
                 securedByPaystack.hide(500);
+                farmGatewayVal.val('');
+                flwGateway.removeClass('active')
+                paystackGateway.removeClass('active')
                 checkIfFormCanSubmit();
             });
             setFieldsForInvestment();
@@ -1053,7 +1159,9 @@
                 checkIfFormCanSubmit();
             }
             function checkIfFormCanSubmit(){
-                if (packageName.val() && slots.val() && (slots.val() > 0) && ((walletPayment.val() || cardPayment.val()) || depositPayment.val()) && agreed.prop('checked')){
+                if (packageName.val() && slots.val() && (slots.val() > 0) &&
+                    (walletPayment.prop('checked') || cardPayment.prop('checked') || depositPayment.prop('checked')) &&
+                    agreed.prop('checked')) {
                     if ($("input[id='farmWalletPayment']").prop('checked')){
                         if ((slots.val() * price.val()) <= nairaWalletBalance ){
                             submitButton.removeAttr('disabled');
@@ -1065,7 +1173,18 @@
                             $('#slotError').html('<span style="color: red;">Insufficient wallet balance</span>');
                             // slots.after('<span style="color: red;">Insufficient wallet balance</span>');
                         }
-                    }else{
+                    }
+                    else if ($("input[id='farmCardPayment']").prop('checked')) {
+                        if (farmGatewayVal.val()){
+                            submitButton.removeAttr('disabled');
+                            $('#farmGatewayError').html('');
+                        }else{
+                            submitButton.prop('disabled', true);
+                            $('#farmGatewayError').html('<span style="color: red;">Select a payment gateway</span>');
+                        }
+                    }
+                    else
+                    {
                         submitButton.removeAttr('disabled');
                         slots.css('borderColor', '#10B759');
                         $('#slotError').html('');
@@ -1118,10 +1237,28 @@
             let plantWalletPayment = $('#plantWalletPayment');
             let plantBankDetails = $('#plantBankDetails');
             let plantSecuredByPaystack = $('#plantSecuredByPaystack');
+            let plantPaystackGateway = $('#plantGatewayPaystack');
+            let plantFlwGateway = $('#plantGatewayFlw');
+            let plantGatewayVal = $('#plantGatewayValue');
             let plantSubmitButton = $('#plantSubmitButton');
             let plantMilestones = $('#plantMilestones');
             let plantAgreed = $('#plantAgreed');
             let walletBalance = parseFloat({{ auth()->user()['wallet']['balance'] }});
+
+            plantPaystackGateway.on('click', function () {
+                plantGatewayVal.val('paystack')
+                plantFlwGateway.removeClass('active')
+                plantPaystackGateway.addClass('active')
+                checkIfFormCanSubmit();
+            });
+
+            plantFlwGateway.on('click', function () {
+                plantGatewayVal.val('flutterwave')
+                plantPaystackGateway.removeClass('active')
+                plantFlwGateway.addClass('active')
+                checkIfFormCanSubmit();
+            });
+
             plantAgreed.on('change', checkIfFormCanSubmit);
             plantCardPayment.on('click', function () {
                 plantBankDetails.hide(500);
@@ -1131,11 +1268,17 @@
             plantDepositPayment.on('click', function () {
                 plantBankDetails.show(500);
                 plantSecuredByPaystack.hide(500);
+                plantGatewayVal.val('')
+                plantFlwGateway.removeClass('active')
+                plantPaystackGateway.removeClass('active')
                 checkIfFormCanSubmit();
             });
             plantWalletPayment.on('click', function () {
                 plantBankDetails.hide(500);
                 plantSecuredByPaystack.hide(500);
+                plantGatewayVal.val('')
+                plantFlwGateway.removeClass('active')
+                plantPaystackGateway.removeClass('active')
                 checkIfFormCanSubmit();
             });
             setFieldsForInvestment();
@@ -1177,7 +1320,9 @@
                 checkIfFormCanSubmit();
             }
             function checkIfFormCanSubmit(){
-                if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() > 0) && ((plantWalletPayment.val() || plantCardPayment.val()) || plantDepositPayment.val()) && plantAgreed.prop('checked')){
+                if (plantPackageName.val() && plantSlots.val() && (plantSlots.val() > 0) &&
+                    (plantWalletPayment.prop('checked') || plantCardPayment.prop('checked') || plantDepositPayment.prop('checked')) &&
+                    plantAgreed.prop('checked')){
                     if ($("input[id='plantWalletPayment']").prop('checked')){
                         if ((plantSlots.val() * plantPrice.val()) <= walletBalance ){
                             plantSubmitButton.removeAttr('disabled');
@@ -1188,7 +1333,17 @@
                             plantSlots.css('borderColor', 'red');
                             $('#planSlotsError').html('<span style="color: red;">Insufficient wallet balance</span>');
                         }
-                    }else{
+                    }
+                    else if ($("input[id='plantCardPayment']").prop('checked')) {
+                        if (plantGatewayVal.val()){
+                            plantSubmitButton.removeAttr('disabled');
+                            $('#plantGatewayError').html('');
+                        }else{
+                            plantSubmitButton.prop('disabled', true);
+                            $('#plantGatewayError').html('<span style="color: red;">Select a payment gateway</span>');
+                        }
+                    }
+                    else{
                         plantSubmitButton.removeAttr('disabled');
                         plantSlots.css('borderColor', '#10B759');
                         $('#planSlotsError').html('');

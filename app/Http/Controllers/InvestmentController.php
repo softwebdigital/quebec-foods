@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\Package;
 use App\Models\Setting;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\InternationalBank;
 use App\Models\Investment;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\StoreInvestmentRequest;
 use App\Http\Requests\UpdateInvestmentRequest;
@@ -17,7 +20,7 @@ class InvestmentController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index($type)
     {
@@ -30,7 +33,7 @@ class InvestmentController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
@@ -40,8 +43,8 @@ class InvestmentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -49,9 +52,11 @@ class InvestmentController extends Controller
         $validator = Validator::make($request->all(), [
             'package' => ['required', 'exists:packages,name'],
             'slots' => ['required', 'numeric', 'min:1', 'integer'],
-            'payment' => ['required']
+            'payment' => ['required'],
+            'gateway' => ['required_if:payment,card'],
+            'currency' => ['required_if:payment,card', 'in:NGN,USD']
         ]);
-        if ($validator->fails()){
+        if ($validator->fails()) {
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }
         // Check if investment is allowed
@@ -83,7 +88,7 @@ class InvestmentController extends Controller
                 break;
             case 'card':
                 $data = ['type' => 'investment', 'package' => $package, 'slots' => $request['slots']];
-                return OnlinePaymentController::initializeOnlineTransaction($request['slots'] * $package['price'], $data);
+                return OnlinePaymentController::initializeOnlineTransaction($request['slots'] * $package['price'], $data, $request['gateway'], $request['currency']);
             default:
                 return back()->withInput()->with('error', 'Invalid payment method');
         }
@@ -111,7 +116,7 @@ class InvestmentController extends Controller
         if ($investment) {
             TransactionController::storeInvestmentTransaction($investment, $request['payment']);
             if ($investment['payment'] == 'approved'){
-                \App\Http\Controllers\Admin\InvestmentController::processReferral(auth()->user(), $investment);
+                Admin\InvestmentController::processReferral(auth()->user(), $investment);
                 NotificationController::sendInvestmentCreatedNotification($investment);
             }else{
                 NotificationController::sendInvestmentQueuedNotification($investment);
@@ -124,8 +129,8 @@ class InvestmentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Investment  $investment
-     * @return \Illuminate\Http\Response
+     * @param Investment $investment
+     * @return Renderable
      */
     public function show(Investment $investment)
     {
@@ -136,8 +141,8 @@ class InvestmentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Investment  $investment
-     * @return \Illuminate\Http\Response
+     * @param Investment $investment
+     * @return Response
      */
     public function edit(Investment $investment)
     {
@@ -147,9 +152,9 @@ class InvestmentController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateInvestmentRequest  $request
-     * @param  \App\Models\Investment  $investment
-     * @return \Illuminate\Http\Response
+     * @param UpdateInvestmentRequest $request
+     * @param Investment $investment
+     * @return Response
      */
     public function update(UpdateInvestmentRequest $request, Investment $investment)
     {
@@ -159,8 +164,8 @@ class InvestmentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Investment  $investment
-     * @return \Illuminate\Http\Response
+     * @param Investment $investment
+     * @return Response
      */
     public function destroy(Investment $investment)
     {
@@ -190,7 +195,7 @@ class InvestmentController extends Controller
         $data['rollover'] = isset($request['rollover']) && $request['rollover'] == 'yes';
         if($investment->update($data)) {
             return redirect()->route('investments.show', ['type' => $request->type, 'investment' => $investment['id']])->with('success', 'Rollover updated successfully');
-        };
-        return back()->with('error', 'Error updating rollover status');;
+        }
+        return back()->with('error', 'Error updating rollover status');
     }
 }
