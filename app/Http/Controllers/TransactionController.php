@@ -98,9 +98,11 @@ class TransactionController extends Controller
         // Validate request
         $validator = Validator::make($request->all(), [
             'amount' => ['required'],
-            'payment' => ['required']
+            'payment' => ['required'],
+            'gateway' => ['required_if:payment,card'],
+            'currency' => ['required_if:payment,card', 'in:NGN,USD']
         ]);
-        if ($validator->fails()){
+        if ($validator->fails()) {
             return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
         }
         $request['amount'] = (int)(str_replace(",", "", $request['amount']));
@@ -108,7 +110,7 @@ class TransactionController extends Controller
         // Check for deposit method and process
         if ($request['payment'] == 'card') {
             $data = ['type' => 'deposit'];
-            return OnlinePaymentController::initializeOnlineTransaction($request['amount'], $data);
+            return OnlinePaymentController::initializeOnlineTransaction($request['amount'], $data, $request['gateway'], $request['currency']);
         }
         $transaction = auth()->user()->transactions()->create([
             'type' => 'deposit', 'amount' => $request['amount'],

@@ -5,7 +5,6 @@
   <script src="https://kit.fontawesome.com/1b72b19568.js" crossorigin="anonymous"></script>
   <script type="module" crossorigin src="/static-assets/main.e0b7c54a.js"></script>
   <link rel="stylesheet" href="/static-assets/main.19a90050.css">
-=======
     <meta charset="UTF-8"/>
     <link rel="icon" type="image/svg+xml" href="/static-assets/favicon.708cd543.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>

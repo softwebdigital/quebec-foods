@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\OnlinePayment;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -118,15 +119,23 @@ class OnlinePaymentController extends Controller
         echo json_encode($res);
     }
 
-    public function resolve(OnlinePayment $payment): \Illuminate\Http\RedirectResponse
+    public function resolve(OnlinePayment $payment): RedirectResponse
     {
-        $paymentDetails = Http::withHeaders([
-            'Authorization' => 'Bearer '.env('PAYSTACK_SECRET_KEY')
-        ])->get('https://api.paystack.co/transaction/verify/'.$payment['reference']);
+
+        if ($payment['gateway'] == 'flutterwave')
+            $paymentDetails = Http::withHeaders([
+                'Authorization' => 'Bearer ' . env('FLW_SECRET_KEY')
+            ])->get('https://api.flutterwave.com/v3/transactions/verify_by_reference?tx_ref=' . $payment['reference']);
+
+        else
+            $paymentDetails = Http::withHeaders([
+                'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY')
+            ])->get('https://api.paystack.co/transaction/verify/' . $payment['reference']);
         if ($payment['status'] == 'pending' && isset($paymentDetails['status'])) {
             $res = $paymentDetails['data'] ?? null;
-            if (isset($res) && $res["status"] == 'success') {
-                \App\Http\Controllers\OnlinePaymentController::processTransaction($payment, $res['metadata']);
+            if (isset($res) && ($res['status'] == 'successful' || $res['status'] == 'success')) {
+                if ($payment['gateway'] == 'flutterwave')
+                \App\Http\Controllers\OnlinePaymentController::processTransaction($payment, json_decode($payment['meta'], true));
             }
         }
         if ($payment['status'] != "success") {

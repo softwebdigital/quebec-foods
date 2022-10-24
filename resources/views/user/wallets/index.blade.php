@@ -213,7 +213,7 @@
                             <div>
                                 <button type="button" data-bs-toggle="modal" data-bs-target="#withdrawalModal" class="btn btn-danger min-w-125px">Withdraw</button>
                             </div>
-                            @else 
+                            @else
                                 <div>
                                     <button type="button" data-bs-toggle="modal" data-bs-target="#" class="btn btn-danger min-w-125px" onclick="showDiv()">Withdraw</button>
                                 </div>
@@ -354,7 +354,7 @@
                                 <!--end::Label-->
                                 <!--end::Input-->
                                 <input type="text" value="{{ old("account_number") ?? $user['account_number'] }}" class="form-control form-control-solid" name="account_number" id="account_number">
-                                
+
                             </div>
                             <div class="d-flex flex-column mb-5 fv-row">
                                 <!--end::Label-->
@@ -512,11 +512,11 @@
                                 <!--begin::Radio group-->
                                 <div class="btn-group w-100" data-kt-buttons="true" data-kt-buttons-target="[data-kt-button]">
                                     <!--begin::Radio-->
-                                    <!-- <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="cardPayment"> -->
+                                    <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="cardPayment">
                                     <!--begin::Input-->
-                                    <!-- <input class="btn-check" type="radio" name="payment" id="cardPayment" value="card" /> -->
+                                    <input class="btn-check" type="radio" name="payment" id="cardPayment" value="card" />
                                     <!--end::Input-->
-                                    <!-- Card</label> -->
+                                    Card</label>
                                     <!--end::Radio-->
                                     <!--begin::Radio-->
                                     <label class="btn btn-outline-secondary text-muted text-hover-white text-active-white btn-outline btn-active-success w-50" data-kt-button="true" for="depositPayment">
@@ -535,8 +535,23 @@
                             </div>
                         <!--end::Row-->
                         <div id="securedByPaystackLogo" class="mx-auto text-center">
-                            <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>
-                            <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mb-3" alt="Secured-by-paystack">
+                            <h6 class="mt-5 mb-4">Select Currency.</h6>
+                            <input type="radio" name="currency" class="form-check-input" id="usd" value="USD" checked>
+                            <label for="usd" class="form-check-label" style="margin-right: 6px;">USD ($)</label>
+                            <label for="ngn" class="form-check-label" style="margin-left: 6px;">NGN (₦)</label>
+                            <input type="radio" name="currency" class="form-check-input" id="ngn" value="NGN">
+
+                            <h6 class="mt-5">Select Gateway.</h6>
+                            <div class="d-flex justify-content-center">
+                                <div id="gatewayFlw" class="mr-10">
+                                    <img src="{{ asset('assets/photos/flutterwave.png') }}" class="img-fluid" width="150" alt="Secured-by-flutterwave" style="cursor: pointer">
+                                </div>
+                                <div id="gatewayPaystack" class="ml-10">
+                                    <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
+                                </div>
+                            </div>
+                            <input type="hidden" id="gateway" name="gateway">
+                            <div id="gatewayError"></div>
                         </div>
                         <div id="bankDetailsForDepositForm" style="display: none" class="alert mx-3 bg-secondary">
                             <table>
@@ -923,11 +938,11 @@
 <script>
     $(document).ready(function (){
         const countryData = {!! json_encode($countries) !!};
-        const currentState = '{{ old('state') ?? auth()->user()->state }}';
-        console.log(countryData)
-        console.log($('#tab-bank'))
+        const currentState = '{{ old('state') ?? auth()->user()['state'] }}';
+        // console.log(countryData)
+        // console.log($('#tab-bank'))
         $('#tab-bank').click()
-        const errorId = {!! json_encode(session('err_id')) !!}
+        const errorId = {!! json_encode(session('err_id')) !!};
         if (errorId) {
             $('#tab-bank').click();
             $('#btn-'+errorId).click();
@@ -1020,7 +1035,7 @@
 </script>
 
 <script>
-    // $(document).ready(function (){
+    $(document).ready(function () {
         let cardPayment = $('#cardPayment');
         let depositPayment = $('#depositPayment');
         let bankDetails = $('#bankDetailsForDepositForm');
@@ -1038,6 +1053,9 @@
         let withdrawalForm = $('#withdrawalForm');
         let dollarAmount = $('#dollarAmount');
         let nairaAmount = $('#nairaAmount');
+        let paystackGateway = $('#gatewayPaystack');
+        let flwGateway = $('#gatewayFlw');
+        let gateway = $('#gateway');
 
         bankDetails.hide(500);
         securedLogo.hide(500);
@@ -1045,9 +1063,25 @@
             bankDetails.hide(500);
             securedLogo.show(500);
         });
+
+        paystackGateway.on('click', function () {
+            gateway.val('paystack')
+            flwGateway.removeClass('active')
+            paystackGateway.addClass('active')
+        });
+
+        flwGateway.on('click', function () {
+            gateway.val('flutterwave')
+            paystackGateway.removeClass('active')
+            flwGateway.addClass('active')
+        });
+
         depositPayment.on('click', function (){
             bankDetails.show(500);
             securedLogo.hide(500);
+            gateway.val('');
+            flwGateway.removeClass('active')
+            paystackGateway.removeClass('active')
         });
 
         proceedWithdrawal.on('click', function () {
@@ -1142,7 +1176,7 @@
             document.getElementById(id).dataset.ktIndicator = loading ? 'on' : 'off';
             $(`#${id}`).prop('disabled', loading);
         }
-    // });
+    });
 
 </script>
 
