@@ -15,6 +15,7 @@ class OnlinePaymentController extends Controller
 {
     public static function initializeOnlineTransaction($amount, $data, $gateway, $currency = 'USD'): RedirectResponse
     {
+        return back()->with('warning', 'Card payment is currently disabled, try another payment method.');
         $data['channel'] = 'web';
         if ($gateway == 'flutterwave' || $currency == 'USD') {
             $paymentData = [
@@ -29,8 +30,7 @@ class OnlinePaymentController extends Controller
                 ],
                 'customizations' => [
                     'title' => env('APP_NAME'),
-                    'logo' => 'https://quebecfoods.quebecgroups.com/assets/logo/small.png'
-//                    'logo' => asset(env('LOGO'))
+                    'logo' => asset(env('LOGO'))
                 ]
             ];
 
