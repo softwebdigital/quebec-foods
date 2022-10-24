@@ -15,7 +15,7 @@ class OnlinePaymentController extends Controller
 {
     public static function initializeOnlineTransaction($amount, $data, $gateway, $currency = 'USD'): RedirectResponse
     {
-        return back()->with('warning', 'Card payment is currently disabled, try another payment method.');
+        return back()->with('info', 'Card payment is currently disabled, try another payment method.');
         $data['channel'] = 'web';
         if ($gateway == 'flutterwave' || $currency == 'USD') {
             $paymentData = [
