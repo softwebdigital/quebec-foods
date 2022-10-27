@@ -53,7 +53,7 @@ class InvestmentController extends Controller
             'package' => ['required', 'exists:packages,name'],
             'slots' => ['required', 'numeric', 'min:1', 'integer'],
             'payment' => ['required'],
-            'gateway' => ['required_if:payment,card'],
+            'gateway' => ['required_if:payment,card', 'in:flutterwave,paystack'],
             'currency' => ['required_if:payment,card', 'in:NGN,USD']
         ]);
         if ($validator->fails()) {

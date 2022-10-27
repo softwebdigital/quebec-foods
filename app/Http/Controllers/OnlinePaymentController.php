@@ -15,7 +15,6 @@ class OnlinePaymentController extends Controller
 {
     public static function initializeOnlineTransaction($amount, $data, $gateway, $currency = 'USD'): RedirectResponse
     {
-        return back()->with('info', 'Card payment is currently disabled, try another payment method.');
         $data['channel'] = 'web';
         if ($gateway == 'flutterwave' || $currency == 'USD') {
             $paymentData = [
@@ -54,8 +53,10 @@ class OnlinePaymentController extends Controller
             }
         } else {
             $totalAmount = self::getAmountInNaira($amount);
-        if ($totalAmount >= 10000000)
-            return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
+            if ($totalAmount >= 10000000)
+                return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
+
+            return back()->with('info', 'Card payment through paystack is currently disabled, try another payment gateway.');
             $paymentData = [
                 'amount' => $totalAmount * 100,
                 'reference' => paystack()->genTranxRef(),
