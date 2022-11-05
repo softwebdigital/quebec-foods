@@ -56,7 +56,7 @@ class OnlinePaymentController extends Controller
             if ($totalAmount >= 10000000)
                 return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
 
-            return back()->with('info', 'Card payment through paystack is currently disabled, try another payment gateway.');
+            // return back()->with('info', 'Card payment through paystack is currently disabled, try another payment gateway.');
             $paymentData = [
                 'amount' => $totalAmount * 100,
                 'reference' => paystack()->genTranxRef(),

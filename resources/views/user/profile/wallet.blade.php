@@ -329,7 +329,7 @@
                                 <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
                             </div>
                         </div>
-                        <input type="hidden" id="gateway" name="gateway" value="flutterwave">
+                        <input type="hidden" id="gateway" name="gateway" value="paystack">
                         <div id="gatewayError"></div>
                     </div>
                     <div id="bankDetailsForDepositForm" style="display: none" class="alert mx-3 bg-secondary">

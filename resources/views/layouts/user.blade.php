@@ -856,7 +856,7 @@
                                     <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
                                 </div>
                             </div>
-                            <input type="hidden" id="farmGatewayValue" name="gateway" value="flutterwave">
+                            <input type="hidden" id="farmGatewayValue" name="gateway" value="paystack">
                             <div id="farmGatewayError"></div>
                         </div>
                         <div id="farmBankDetails" style="display: none" class="alert bg-secondary">
