@@ -619,10 +619,10 @@
                         <!--end::Row-->
                         <div id="plantSecuredByPaystack" style="display: none" class="mx-auto text-center">
                             <h6 class="mt-5 mb-4">Select Currency.</h6>
-                            <input type="radio" name="currency" class="form-check-input" id="usd" value="USD" checked>
-                            <label for="usd" class="form-check-label" style="margin-right: 6px;">USD ($)</label>
+                            <input type="radio" name="currency" class="form-check-input" id="ngn" value="NGN" checked>
                             <label for="ngn" class="form-check-label" style="margin-left: 6px;">NGN (₦)</label>
-                            <input type="radio" name="currency" class="form-check-input" id="ngn" value="NGN">
+                            <label for="usd" class="form-check-label" style="margin-right: 6px;">USD ($)</label>
+                            <input type="radio" name="currency" class="form-check-input" id="usd" value="USD">
 
                             <h6 class="mt-5">Select Gateway.</h6>
 {{--                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>--}}
@@ -841,10 +841,10 @@
                         <!--end::Row-->
                         <div id="farmSecuredByPaystack" style="display: none" class="mx-auto text-center">
                             <h6 class="mt-5 mb-4">Select Currency.</h6>
-                            <input type="radio" name="currency" class="form-check-input" id="usd" value="USD" checked>
-                            <label for="usd" class="form-check-label" style="margin-right: 6px;">USD ($)</label>
+                            <input type="radio" name="currency" class="form-check-input" id="ngn" value="NGN" checked>
                             <label for="ngn" class="form-check-label" style="margin-left: 6px;">NGN (₦)</label>
-                            <input type="radio" name="currency" class="form-check-input" id="ngn" value="NGN">
+                            <label for="usd" class="form-check-label" style="margin-right: 6px;">USD ($)</label>
+                            <input type="radio" name="currency" class="form-check-input" id="usd" value="USD">
 
                             <h6 class="mt-5">Select Gateway.</h6>
 {{--                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>--}}
