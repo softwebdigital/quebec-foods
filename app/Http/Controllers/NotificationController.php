@@ -260,7 +260,7 @@ class NotificationController extends Controller
         $msg =  'Name: <b>' . $info['name'] . '</b><br>
                  Email: <b>' . $info['email'] . '</b><br>
                  Message: <b>' . $info['message'] . '</b><br>';
-                 Notification::route('mail', 'sandaiv001@gmail.com')
+                 Notification::route('mail', 'quebecfoodprocessingparksng@gmail.com')
                  ->notify(new CustomNotificationByStaticEmail('Contact Us Message', $msg, $description));
     }
 }
