@@ -160,7 +160,7 @@
                         <span class="text-dark fw-bolder fs-2x lh-0">{{ getCurrency() }}</span>
                         <!--end::Symbol-->
                         <!--begin::Number-->
-                        <span class="text-dark fw-bolder fs-3x me-2 lh-0">{{ number_format(array_sum($data['chartData']['transactions']['week'])) }}</span>
+                        <span class="text-dark fw-bolder fs-3x me-2 lh-0">{{ number_format(array_sum($data['chartData']['transactions']['week']), 2) }}</span>
                         <!--end::Number-->
                         <!--begin::Text-->
                         <span class="text-dark fw-bolder fs-6 lh-0">this week</span>
@@ -194,7 +194,7 @@
                         <!--begin::Balance-->
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Active Investment</span>
-                            <span class="fw-bolder fs-2x pt-1">{{ getCurrency() }} {{ number_format($data['plantInvestments']['active']) }}</span>
+                            <span class="fw-bolder fs-2x pt-1">{{ getCurrency() }} {{ number_format($data['plantInvestments']['active'], 2) }}</span>
                         </div>
                         <!--end::Balance-->
                     </div>
@@ -358,7 +358,7 @@
                         <!--begin::Balance-->
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Active Investment</span>
-                            <span class="fw-bolder fs-2x pt-1">{{ getCurrency() }} {{ number_format($data['tractorInvestments']['active']) }}</span>
+                            <span class="fw-bolder fs-2x pt-1">{{ getCurrency() }} {{ number_format($data['tractorInvestments']['active'], 2) }}</span>
                         </div>
                         <!--end::Balance-->
                     </div>
@@ -522,7 +522,7 @@
                         <!--begin::Balance-->
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Active Investments</span>
-                            <span class="fw-bolder fs-2x pt-1">{{ getCurrency() }} {{ number_format($data['farmInvestments']['active']) }}</span>
+                            <span class="fw-bolder fs-2x pt-1">{{ getCurrency() }} {{ number_format($data['farmInvestments']['active'], 2) }}</span>
                         </div>
                         <!--end::Balance-->
                     </div>
@@ -801,8 +801,8 @@
                                     <tr>
                                         <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['package']['name'] }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['amount']) }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['total_return']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['amount'], 2) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['total_return'], 2) }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['return_date']->format('M d, Y') }}</span></td>
                                         <td>
                                             @if($plantInvestment['status'] == 'active')
@@ -872,8 +872,8 @@
                                     <tr>
                                         <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['package']['name'] }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['amount']) }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['total_return']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['amount'], 2) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($plantInvestment['total_return'], 2) }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $plantInvestment['return_date']->format('M d, Y') }}</span></td>
                                         <td>
                                             @if($plantInvestment['status'] == 'active')
@@ -943,8 +943,8 @@
                                     <tr>
                                         <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['package']['name'] }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($farmInvestment['amount']) }}</span></td>
-                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($farmInvestment['total_return']) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($farmInvestment['amount'], 2) }}</span></td>
+                                        <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($farmInvestment['total_return'], 2) }}</span></td>
                                         <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $farmInvestment['return_date']->format('M d, Y') }}</span></td>
                                         <td>
                                             @if($farmInvestment['status'] == 'active')

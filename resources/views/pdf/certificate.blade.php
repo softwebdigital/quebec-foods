@@ -80,7 +80,7 @@ $code = str_shuffle($pin);
         <div id="bg">
             <img src="./assets/media/FARM-ESTATE-DOI-01.png" alt="bg">
         </div>
-            
+
             <div style="text-transform: capitalize; top: 171px; left: 72%; font-size: 12px; font-weight: 900;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
@@ -91,7 +91,7 @@ $code = str_shuffle($pin);
             <div style="text-transform: capitalize; top: 305px; left: 77%; font-size: 15px; font-weight: 900;" class="item">
                 {{ ucwords(strtolower($investment["user"]["country"])) }}
             </div>
-            
+
             <div style="top: 480px; left: 40%; font-size: 14px; font-weight: 900;" class="item">
                 Farm Estate
             </div>
@@ -115,7 +115,7 @@ $code = str_shuffle($pin);
                 {{ $cur->base_currency }} {{ number_format($investment["amount"]) }}
             </div>
             <div style="top: 656px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-                {{ number_format($investment["slots"]) }} {{ number_format($investment["slots"]) > 1 ? 'Units' : 'Unit' }} 
+                {{ number_format($investment["slots"]) }} {{ number_format($investment["slots"]) > 1 ? 'Units' : 'Unit' }}
             </div>
             <div style="top: 685px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["package"]["roi"] }}%
@@ -130,19 +130,19 @@ $code = str_shuffle($pin);
                 {{ $investment['return_date']->format('F d,  Y') }}
             </div>
             <img style="max-width: 100%;" src="./assets/media/FARM-ESTATE-DOI-02.png" alt="bg">
-        
+
             <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 830px; left: 13%; font-size: 15px; font-weight: 500;">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
     </div>
     @endif
-   
+
     @if($investment["package"]["type"] == 'plant')
     <div class="certificate" style="position: relative;">
         <div id="bg">
             <img src="./assets/media/Processing-Plant-DOI-01.png" alt="bg">
         </div>
-            
+
             <div style="text-transform: capitalize; top: 87px; left: 70%; font-size: 12px; font-weight: 900;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
@@ -153,7 +153,7 @@ $code = str_shuffle($pin);
             <div style="text-transform: capitalize; top: 212px; left: 77%; font-size: 15px; font-weight: 900;" class="item">
                 {{ ucwords(strtolower($investment["user"]["country"])) }}
             </div>
-            
+
             <div style="top: 359px; left: 40%; font-size: 14px; font-weight: 900;" class="item">
                 Processing Plant
             </div>
@@ -176,7 +176,7 @@ $code = str_shuffle($pin);
                 @endif
 
                 @if($investment["package"]["payout_mode"] == 'quarterly')
-                    {{ $investment["package"]["milestones"] * 3 }} Months 
+                    {{ $investment["package"]["milestones"] * 3 }} Months
                 @endif
 
                 @if($investment["package"]["payout_mode"] == 'semi-annually')
@@ -186,20 +186,25 @@ $code = str_shuffle($pin);
                 @if($investment["package"]["payout_mode"] == 'biannually')
                     {{ $investment["package"]["milestones"] * 24 }} Months
                 @endif
+
+                @if($investment["package"]["payout_mode"] == 'custom')
+                    {{ $investment["package"]["milestones"] * $investment['package']['months'] }} Month(s)
+                @endif
             </div>
             <div style="top: 498px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $cur->base_currency }} {{ number_format($investment["amount"]) }}
             </div>
             <div style="top: 527px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-                {{ number_format($investment["slots"]) }} {{ number_format($investment["slots"]) > 1 ? 'Units' : 'Unit' }} 
+                {{ number_format($investment["slots"]) }} {{ number_format($investment["slots"]) > 1 ? 'Units' : 'Unit' }}
             </div>
             <div style="top: 555px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-                {{ $investment["package"]["roi"] }}% per 
-                    {{ $investment["package"]["payout_mode"] == 'annually' ? 'annum' : '' }} 
+                {{ $investment["package"]["roi"] }}% per
+                    {{ $investment["package"]["payout_mode"] == 'annually' ? 'annum' : '' }}
                     {{ $investment["package"]["payout_mode"] == 'monthly' ? 'month' : '' }}
                     {{ $investment["package"]["payout_mode"] == 'quarterly' ? '3 months' : '' }}
                     {{ $investment["package"]["payout_mode"] == 'semi-annually' ? '6 months' : '' }}
                     {{ $investment["package"]["payout_mode"] == 'biannually' ? '24 months' : '' }}
+                    {{ $investment["package"]["payout_mode"] == 'custom' ? $investment["package"]['months'].' month(s)' : '' }}
             </div>
             <div style="top: 583px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["package"]["milestones"] }} {{ $investment["package"]["milestones"] > 1 ? 'milestones' : 'milestone' }}
@@ -229,7 +234,7 @@ $code = str_shuffle($pin);
                 @endif --}}
             </div>
             <img style="max-width: 100%;" src="./assets/media/Processing-Plant-DOI-02.png" alt="bg">
-        
+
             <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 906px; left: 15%; font-size: 15px; font-weight: 500;">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
@@ -240,7 +245,7 @@ $code = str_shuffle($pin);
         <div id="bg">
             <img src="./assets/media/AGRIC-TRACTOR-DOI-01.png" alt="bg">
         </div>
-            
+
             <div style="text-transform: capitalize; top: 89px; left: 70%; font-size: 12px; font-weight: 900;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
             </div>
@@ -251,9 +256,9 @@ $code = str_shuffle($pin);
             <div style="text-transform: capitalize; top: 215px; left: 77%; font-size: 15px; font-weight: 900;" class="item">
                 {{ ucwords(strtolower($investment["user"]["country"])) }}
             </div>
-            
+
             <div style="top: 360px; left: 40%; font-size: 14px; font-weight: 900;" class="item">
-                Agric Tractor & Agro-Haulage Venture Scheme {ATAHVS} 
+                Agric Tractor & Agro-Haulage Venture Scheme {ATAHVS}
             </div>
             <div style="top: 389px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ ucwords(strtolower($investment["package"]["name"])) }}
@@ -266,7 +271,7 @@ $code = str_shuffle($pin);
             </div>
             <div style="top: 467px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 @if($investment["package"]["payout_mode"] == 'annually')
-                    {{ $investment["package"]["milestones"] * 12 }} Months 
+                    {{ $investment["package"]["milestones"] * 12 }} Months
                 @endif
 
                 @if($investment["package"]["payout_mode"] == 'monthly')
@@ -278,31 +283,36 @@ $code = str_shuffle($pin);
                 @endif
 
                 @if($investment["package"]["payout_mode"] == 'semi-annually')
-                    {{ $investment["package"]["milestones"] * 6 }} Months 
+                    {{ $investment["package"]["milestones"] * 6 }} Months
                 @endif
 
                 @if($investment["package"]["payout_mode"] == 'biannually')
                     {{ $investment["package"]["milestones"] * 24 }} Months
+                @endif
+
+                @if($investment["package"]["payout_mode"] == 'custom')
+                    {{ $investment["package"]["milestones"] * $investment["package"]['months'] }} Month(s)
                 @endif
             </div>
             <div style="top: 497px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $cur->base_currency }} {{ number_format($investment["amount"]) }}
             </div>
             <div style="top: 523px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-                {{ number_format($investment["slots"]) }} {{ number_format($investment["slots"]) > 1 ? 'Units' : 'Unit' }} 
+                {{ number_format($investment["slots"]) }} {{ number_format($investment["slots"]) > 1 ? 'Units' : 'Unit' }}
             </div>
             <div style="top: 555px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-                {{ $investment["package"]["roi"] }}% per 
-                    {{ $investment["package"]["payout_mode"] == 'annually' ? 'annum' : '' }} 
+                {{ $investment["package"]["roi"] }}% per
+                    {{ $investment["package"]["payout_mode"] == 'annually' ? 'annum' : '' }}
                     {{ $investment["package"]["payout_mode"] == 'monthly' ? 'month' : '' }}
                     {{ $investment["package"]["payout_mode"] == 'quarterly' ? '3 months' : '' }}
                     {{ $investment["package"]["payout_mode"] == 'semi-annually' ? '6 months' : '' }}
                     {{ $investment["package"]["payout_mode"] == 'biannually' ? '24 months' : '' }}
+                    {{ $investment["package"]["payout_mode"] == 'custom' ? $investment["package"]['months'].' month(s)' : '' }}
             </div>
             <div style="top: 584px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
-            
+
                 {{ $investment["package"]["milestones"] }} {{ $investment["package"]["milestones"] > 1 ? 'milestones' : 'milestone' }}
-            
+
             </div>
             <div style="top: 637px; left: 40%; font-size: 15px; font-weight: 500;" class="item">
                 {{ $investment["investment_date"]->format("F d,  Y") }}
@@ -329,7 +339,7 @@ $code = str_shuffle($pin);
                 @endif --}}
             </div>
             <img style="max-width: 100%;" src="./assets/media/AGRIC-TRACTOR-DOI-02.png" alt="bg">
-        
+
             <div style="text-transform: capitalize; position: absolute; text-align: center !important; top: 809px; left: 15%; font-size: 15px; font-weight: 500;">
                 {{ ucwords(strtolower($investment["user"]["name"])) }}
             </div>
