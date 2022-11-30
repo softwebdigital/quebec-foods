@@ -101,16 +101,16 @@
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Amount Invested</div>
                         <div class="text-gray-600">
-                            <a href="#" class="text-gray-600 text-hover-primary">{{ getCurrency() }} {{ number_format($investment['amount']) }}</a>
+                            <a href="#" class="text-gray-600 text-hover-primary">{{ getCurrency() }} {{ number_format($investment['amount'], 2) }}</a>
                         </div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Expected ROI</div>
-                        <div class="text-gray-600">{{ getCurrency() }}{{ number_format($investment['total_return'] - $investment['amount']) }}</div>
+                        <div class="text-gray-600">{{ getCurrency() }}{{ number_format($investment['total_return'] - $investment['amount'], 2) }}</div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Total Returns</div>
-                        <div class="text-gray-600">{{ getCurrency() }} {{ number_format($investment['total_return']) }}</div>
+                        <div class="text-gray-600">{{ getCurrency() }} {{ number_format($investment['total_return'], 2) }}</div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
                         <div class="fw-bolder mt-5">Investment Date</div>
@@ -305,7 +305,7 @@
                                             <tr>
                                                 <!--begin::Invoice=-->
                                                 <td class="ps-4"><span class="text-gray-600 fw-bolder d-block fs-6"></span>Milestone {{ $i }}</td>
-                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($i == $milestones ? $investment['amount'] + $roi  : $roi) }}</span></td>
+                                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($i == $milestones ? $investment['amount'] + $roi  : $roi, 2) }}</span></td>
                                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ \Carbon\Carbon::make($investment['start_date'])->addMonths($investment->getPlantDurationIncreaseByMonth($i))->format('M d, Y H:m:s') }}</span></td>
                                                 <td>
                                                     @if ($paid >= $i)

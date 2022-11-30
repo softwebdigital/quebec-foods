@@ -74,13 +74,13 @@ class NotificationController extends Controller
     {
         $transaction = $investment->transactions()->where('type', 'investment')->first();
         $pdf = PDF::loadView('pdf.certificate', ['investment' => $investment]);
-        $description = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package was successful.';
-        $msg = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package was successful.<br><br>
+        $description = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package was successful.';
+        $msg = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package was successful.<br><br>
                 <b><u>Investment details:</u></b><br>
                 Investment package: <b>' . $investment->package["name"] . '</b><br>
-                Total amount invested: <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b><br>
-                CVR amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount) . '</b><br>
-                Expected returns: <b>' . getCurrency() .' ' . number_format($investment->total_return) . '</b><br>
+                Total amount invested: <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b><br>
+                CVR amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount, 2) . '</b><br>
+                Expected returns: <b>' . getCurrency() .' ' . number_format($investment->total_return, 2) . '</b><br>
                 Investment duration: <b>' . Carbon::make($investment['return_date'])->diffInMonths($investment['investment_date']) . ' month(s)</b><br>
                 Investment date: <b>' . $investment->investment_date->format('M d, Y \a\t h:i A') . '</b><br>
                 Return date: <b>' . Carbon::make($investment->return_date)->format('M d, Y \a\t h:i A') . '</b><br>
@@ -97,13 +97,13 @@ class NotificationController extends Controller
     {
         $transaction = $investment->transactions()->where('type', 'investment')->first();
         $pdf = PDF::loadView('pdf.certificate', ['investment' => $investment]);
-        $description = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has started.';
-        $msg = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has started.<br><br>
+        $description = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has started.';
+        $msg = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has started.<br><br>
                 <b><u>Investment details:</u></b><br>
                 Investment package: <b>' . $investment->package["name"] . '</b><br>
-                Total amount invested: <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b><br>
-                CVR amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount) . '</b><br>
-                Expected returns: <b>' . getCurrency() .' ' . number_format($investment->total_return) . '</b><br>
+                Total amount invested: <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b><br>
+                CVR amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount, 2) . '</b><br>
+                Expected returns: <b>' . getCurrency() .' ' . number_format($investment->total_return, 2) . '</b><br>
                 Investment duration: <b>' . Carbon::make($investment['return_date'])->diffInMonths($investment['investment_date']) . ' month(s)</b><br>
                 Investment date: <b>' . $investment->investment_date->format('M d, Y \a\t h:i A') . '</b><br>
                 Return date: <b>' . Carbon::make($investment->return_date)->format('M d, Y \a\t h:i A') . '</b><br>
@@ -114,75 +114,75 @@ class NotificationController extends Controller
 
     public static function sendInvestmentQueuedNotification($investment)
     {
-        $description = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been queued.';
-        $msg = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been queued.<br>
+        $description = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been queued.';
+        $msg = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been queued.<br>
                 Your investment will be automatically created once you payment has been approved.';
         $investment->user->notify(new CustomNotification('pending', 'Investment Queued', $msg, $description));
     }
 
     public static function sendWithdrawalQueuedNotification($transaction)
     {
-        $description = 'Your withdrawal of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> has been queued.';
-        $msg = 'Your withdrawal of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> has been queued.<br>
+        $description = 'Your withdrawal of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> has been queued.';
+        $msg = 'Your withdrawal of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> has been queued.<br>
                 Your bank account will be credited after administrator approval.';
         $transaction->user->notify(new CustomNotification('pending', 'Withdrawal Queued', $msg, $description));
     }
 
     public static function sendDepositQueuedNotification($transaction)
     {
-        $description = 'Your deposit of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> has been queued.';
-        $msg = 'Your deposit of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> has been queued.<br>
+        $description = 'Your deposit of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> has been queued.';
+        $msg = 'Your deposit of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> has been queued.<br>
                 Your wallet will be automatically credited once you payment has been approved.';
         $transaction->user->notify(new CustomNotification('pending', 'Deposit Queued', $msg, $description));
     }
 
     public static function sendDepositCancelledNotification($transaction)
     {
-        $description = 'Your queued deposit of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> has been declined.';
-        $msg = 'Your queued deposit of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> has been declined.<br>
+        $description = 'Your queued deposit of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> has been declined.';
+        $msg = 'Your queued deposit of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> has been declined.<br>
                 Contact administrator <a href="mailto:' . env('SUPPORT_EMAIL') . '">' . env('SUPPORT_EMAIL') . '</a> for further complaints.';
         $transaction->user->notify(new CustomNotification('cancelled', 'Deposit Declined', $msg, $description));
     }
 
     public static function sendWithdrawalSuccessfulNotification($transaction)
     {
-        $description = 'Your withdrawal of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> was successful.';
-        $msg = 'Your withdrawal of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> was successful.<br><br>
+        $description = 'Your withdrawal of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> was successful.';
+        $msg = 'Your withdrawal of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> was successful.<br><br>
                 <b><u>Withdrawal details:</u></b><br>
-                Amount: <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b><br>
+                Amount: <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b><br>
                 Withdrawal method: <b>' . $transaction["method"] . '</b><br><br>
                 <b><u>Wallet details:</u></b><br>
-                Amount debited: <b>' . getCurrency() .' ' . number_format($transaction->amount) . '</b><br>
-                Wallet balance: <b>' . getCurrency() .' ' . number_format($transaction->user->wallet['balance']) . '</b><br>';
+                Amount debited: <b>' . getCurrency() .' ' . number_format($transaction->amount, 2) . '</b><br>
+                Wallet balance: <b>' . getCurrency() .' ' . number_format($transaction->user->wallet['balance'], 2) . '</b><br>';
         $transaction->user->notify(new CustomNotification('withdrawal', 'Withdrawal Successful', $msg, $description));
     }
 
     public static function sendDepositSuccessfulNotification($transaction)
     {
         $method = $transaction["method"] == 'deposit' ? 'deposit / bank transfer' : $transaction["method"];
-        $description = 'Your deposit of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> was successful.';
-        $msg = 'Your deposit of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> was successful.<br><br>
+        $description = 'Your deposit of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> was successful.';
+        $msg = 'Your deposit of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> was successful.<br><br>
                 <b><u>Deposit details:</u></b><br>
-                Amount: <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b><br>
+                Amount: <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b><br>
                 Deposit method: <b>' . $method . '</b><br><br>
                 <b><u>Wallet details:</u></b><br>
-                Amount credited: <b>' . getCurrency() .' ' . number_format((int)$transaction->amount, 2) . '</b><br>
+                Amount credited: <b>' . getCurrency() .' ' . number_format($transaction->amount, 2) . '</b><br>
                 Wallet balance: <b>' . getCurrency() .' ' . number_format($transaction->user->wallet['balance'], 2) . '</b><br>';
         $transaction->user->notify(new CustomNotification('deposit', 'Deposit Successful', $msg, $description));
     }
 
     public static function sendWithdrawalCancelledNotification($transaction)
     {
-        $description = 'Your queued withdrawal of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> has been declined.';
-        $msg = 'Your queued withdrawal of <b>' . getCurrency() .' ' . number_format((int)$transaction['amount']) . '</b> has been declined.<br>
+        $description = 'Your queued withdrawal of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> has been declined.';
+        $msg = 'Your queued withdrawal of <b>' . getCurrency() .' ' . number_format($transaction['amount'], 2) . '</b> has been declined.<br>
                 Your wallet has been refunded, contact administrator <a href="mailto:' . env('SUPPORT_EMAIL') . '">' . env('SUPPORT_EMAIL') . '</a> for further complaints.';
         $transaction->user->notify(new CustomNotification('cancelled', 'Withdrawal Declined', $msg, $description));
     }
 
     public static function sendInvestmentCancelledNotification($investment)
     {
-        $description = 'Your queued investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been cancelled.';
-        $msg = 'Your queued investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been cancelled.<br>
+        $description = 'Your queued investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been cancelled.';
+        $msg = 'Your queued investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been cancelled.<br>
                 Contact administrator <a href="mailto:' . env('SUPPORT_EMAIL') . '">' . env('SUPPORT_EMAIL') . '</a> for further complaints.';
         $investment->user->notify(new CustomNotification('cancelled', 'Investment Cancelled', $msg, $description));
     }
@@ -208,13 +208,13 @@ class NotificationController extends Controller
     public static function sendRolloverInvestmentCreatedNotification($investment)
     {
         $transaction = $investment->transactions()->where('type', 'investment')->first();
-        $description = 'Your rollover investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package was successful.';
-        $msg = 'Your rollover investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package was successful.<br><br>
+        $description = 'Your rollover investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package was successful.';
+        $msg = 'Your rollover investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package was successful.<br><br>
                 <b><u>Investment details:</u></b><br>
                 Investment package: <b>' . $investment->package["name"] . '</b><br>
-                Total amount invested: <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b><br>
-                CVR amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount) . '</b><br>
-                Expected returns: <b>' . getCurrency() .' ' . number_format($investment->total_return) . '</b><br>
+                Total amount invested: <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b><br>
+                CVR amount: <b>' . getCurrency() .' ' . number_format($investment->total_return - $investment->amount, 2) . '</b><br>
+                Expected returns: <b>' . getCurrency() .' ' . number_format($investment->total_return, 2) . '</b><br>
                 Investment duration: <b>' . $investment['return_date']->diff($investment['investment_date'])->m . ' month(s)</b><br>
                 Investment date: <b>' . $investment->investment_date->format('M d, Y \a\t h:i A') . '</b><br>
                 Return date: <b>' . $investment->return_date->format('M d, Y \a\t h:i A') . '</b><br>
@@ -228,8 +228,8 @@ class NotificationController extends Controller
 
     public static function sendInvestmentSettledNotification($investment)
     {
-        $description = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been settled.';
-        $msg = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been settled.<br><br>
+        $description = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been settled.';
+        $msg = 'Your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been settled.<br><br>
                 <b><u>Wallet details:</u></b><br>
                 Amount credited: <b>' . getCurrency() .' ' . number_format($investment->total_return, 2) . '</b><br>
                 Wallet balance: <b>' . getCurrency() .' ' . number_format($investment->user->wallet['balance'], 2) . '</b><br>
@@ -239,8 +239,8 @@ class NotificationController extends Controller
 
     public static function sendInvestmentMilestoneSettledNotification($investment, $amount)
     {
-        $description = 'A milestone from your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been paid to your wallet.';
-        $msg = 'A milestone from your investment of <b>' . getCurrency() .' ' . number_format($investment->amount) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been paid to your wallet.<br><br>
+        $description = 'A milestone from your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been paid to your wallet.';
+        $msg = 'A milestone from your investment of <b>' . getCurrency() .' ' . number_format($investment->amount, 2) . '</b> in our <b>' . $investment->package["name"] . '</b> package has been paid to your wallet.<br><br>
                 <b><u>Wallet details:</u></b><br>
                 Amount credited: <b>' . getCurrency() .' ' . number_format($amount, 2) . '</b><br>
                 Wallet balance: <b>' . getCurrency() .' ' . number_format($investment->user->wallet['balance'], 2) . '</b><br>
@@ -250,7 +250,7 @@ class NotificationController extends Controller
 
     public static function sendReferralTransactionNotification($transaction)
     {
-        $description = 'You have just received <b>$' . number_format($transaction->amount) . '</b> bonus for a referral.';
+        $description = 'You have just received <b>$' . number_format($transaction->amount, 2) . '</b> bonus for a referral.';
         $transaction->user->notify(new CustomNotification('referral', 'Referral Bonus', $description, $description));
     }
 
