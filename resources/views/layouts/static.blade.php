@@ -263,6 +263,9 @@
                         <a href="/terms">Terms and Conditions</a>
                     </li>
                     <li>
+                        <a href="/team">Our Team</a>
+                    </li>
+                    <li>
                         <a href="/privacy-policy">Privacy Policy</a>
                     </li>
                     <li>
