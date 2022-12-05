@@ -133,6 +133,11 @@ class StaticPageController extends Controller
         return view('static.terms');
     }
 
+    public function teams(): View
+    {
+        return view('static.team');
+    }
+
     public function tractor(): View
     {
         SEOMeta::setTitle('Agric Tractor & Agro- haulage - Quebec Food Processing | Quebec Foods');

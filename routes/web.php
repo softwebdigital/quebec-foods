@@ -36,6 +36,7 @@ Route::get('/terms', [App\Http\Controllers\StaticPageController::class, 'terms']
 Route::get('/tractor-investment', [App\Http\Controllers\StaticPageController::class, 'tractor'])->name('static.tractor');
 Route::get('/disclaimer', [App\Http\Controllers\StaticPageController::class, 'disclaimer'])->name('static.disclaimer');
 Route::get('/referal', [App\Http\Controllers\StaticPageController::class, 'referal'])->name('static.referal');
+Route::get('/team', [App\Http\Controllers\StaticPageController::class, 'teams'])->name('static.team');
 
 
 Route::post('/contact/send', [App\Http\Controllers\ContactUsController::class, 'sendMail'])->name('static.post.contact');
