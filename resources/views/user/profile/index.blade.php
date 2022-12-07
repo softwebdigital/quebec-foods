@@ -588,7 +588,7 @@
                                             <th>Account Type</th>
                                             <th class="min-w-125px">Account Name</th>
                                             <th>Account Number</th>
-                                            
+
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
@@ -2394,12 +2394,13 @@
                     verifyingDisplay.removeClass('text-danger');
                     verifyingDisplay.removeClass('text-success');
                     verifyingDisplay.addClass('text-info');
+                    const token = '{{ env('PAYSTACK_SECRET_KEY') }}';
                     $.ajax({
                         url: "https://api.paystack.co/bank/resolve",
                         data: { account_number: accountNumber.val(), bank_code: bankCode.val().trim() },
                         type: "GET",
                         beforeSend: function(xhr){
-                            xhr.setRequestHeader('Authorization', 'Bearer {{ env('PAYSTACK_SECRET_KEY') }}');
+                            xhr.setRequestHeader('Authorization', `Bearer ${token}`);
                             xhr.setRequestHeader('Content-Type', 'application/json');
                             xhr.setRequestHeader('Accept', 'application/json');
                         },
