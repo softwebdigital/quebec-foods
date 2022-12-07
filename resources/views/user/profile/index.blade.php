@@ -2387,6 +2387,7 @@
             }
 
             accountNumber.on('input', verifyAccountNumber);
+            const token = '{{ env('PAYSTACK_SECRET_KEY') }}';
             function verifyAccountNumber(){
                 if (bankList.val() && accountNumber.val().length === 10 && bankCode.val()){
                     verifyingDisplay.text('Verifying account number...');
@@ -2394,7 +2395,6 @@
                     verifyingDisplay.removeClass('text-danger');
                     verifyingDisplay.removeClass('text-success');
                     verifyingDisplay.addClass('text-info');
-                    const token = '{{ env('PAYSTACK_SECRET_KEY') }}';
                     $.ajax({
                         url: "https://api.paystack.co/bank/resolve",
                         data: { account_number: accountNumber.val(), bank_code: bankCode.val().trim() },
