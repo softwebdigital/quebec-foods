@@ -35,29 +35,29 @@
                 <p style="font-size: 14px;" class="text-padding text-primary font-bold">HEAD OF FARM ESTATE OPERATIONS</p>
             </div>
 
-            <style>
-                .text-holder {
-                    text-align: start;
-                }
-                .text-padding {
-                    padding-left: 20px;
-                }
-
-                @media (max-width: 1020px) {
-                    .text-holder {
-                        text-align: center;
-                    }
-                    .text-padding {
-                        padding-left: 0px;
-                    }
-                }
-            </style>
+            
         </div>
     </section>
 
 </section>
 
+<style>
+    .text-holder {
+        text-align: start;
+    }
+    .text-padding {
+        padding-left: 20px;
+    }
 
+    @media (max-width: 1020px) {
+        .text-holder {
+            text-align: center;
+        }
+        .text-padding {
+            padding-left: 0px;
+        }
+    }
+</style>
 @endsection
 
 @section('scripts')
