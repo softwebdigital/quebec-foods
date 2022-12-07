@@ -2387,7 +2387,6 @@
             }
 
             accountNumber.on('input', verifyAccountNumber);
-            const token = '{{ env('PAYSTACK_SECRET_KEY') }}';
             function verifyAccountNumber(){
                 if (bankList.val() && accountNumber.val().length === 10 && bankCode.val()){
                     verifyingDisplay.text('Verifying account number...');
@@ -2400,7 +2399,7 @@
                         data: { account_number: accountNumber.val(), bank_code: bankCode.val().trim() },
                         type: "GET",
                         beforeSend: function(xhr){
-                            xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+                            xhr.setRequestHeader('Authorization', 'Bearer {{ getenv('PAYSTACK_SECRET_KEY') }}');
                             xhr.setRequestHeader('Content-Type', 'application/json');
                             xhr.setRequestHeader('Accept', 'application/json');
                         },
