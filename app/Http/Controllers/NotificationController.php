@@ -44,27 +44,31 @@ class NotificationController extends Controller
     }
 
     // Welcome Email.
-    public static function sendWelcomeEmailNotification($user)
+    public static function sendWelcomeEmailNotification($user, $api = false)
     {
+        $title = 'Welcome to ' . env('APP_NAME');
         $msg = 'Welcome to ' . env('APP_NAME') . '.<br>
                 Your profile has been completed successfully and your account is active.<br>
                 You can proceed to invest in our awesome investments plans.';
-        $user->notify(new CustomNotificationByEmail('Welcome to ' . env('APP_NAME'), $msg, 'Login to Dashboard', route('login')));
+        if ($api)
+            $user->notify(new CustomNotificationByEmail($title, $msg));
+        else
+            $user->notify(new CustomNotificationByEmail($title, $msg, 'Login to Dashboard', route('login')));
     }
 
-    public static function sendMaintenancePaidNotitfication($item, $user)
+    public static function sendMaintenancePaidNotification($item, $user)
     {
         $msg = "Maintenance payment for the month of {$item['month']} {$item['year']} has been queued, click below to process this payment.<br>";
         $user->notify(new CustomNotificationByEmail('Maintenance Payment Queued', $msg, 'Process Payment', route('admin.maintenance.index')));
     }
 
-    public static function sendMaintenanceApprovedNotitfication($item, $user)
+    public static function sendMaintenanceApprovedNotification($item, $user)
     {
         $msg = "Maintenance payment for the month of {$item['month']} {$item['year']} has been approved.<br>";
         $user->notify(new CustomNotificationByEmail('Maintenance Payment Approved', $msg, 'Process Payment', route('admin.maintenance.index')));
     }
 
-    public static function sendMaintenanceDeclinedNotitfication($item, $user)
+    public static function sendMaintenanceDeclinedNotification($item, $user)
     {
         $msg = "Maintenance payment for the month of {$item['month']} {$item['year']} has been declined.<br>";
         $user->notify(new CustomNotificationByEmail('Maintenance Payment Declined', $msg, 'Process Payment', route('admin.maintenance.index')));

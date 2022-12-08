@@ -23,16 +23,16 @@ class MaintenanceController extends Controller
         $soft = Admin::where('email', env('SOFTWEB_EMAIL'))->first();
         $admin = Admin::where('email', env('ADMIN_EMAIL'))->first();
         if ($status == 'queued') {
-            if ($soft) \App\Http\Controllers\NotificationController::sendMaintenancePaidNotitfication($maintenance, $soft);
-            if ($admin) \App\Http\Controllers\NotificationController::sendMaintenancePaidNotitfication($maintenance, $admin);
+            if ($soft) \App\Http\Controllers\NotificationController::sendMaintenancePaidNotification($maintenance, $soft);
+            if ($admin) \App\Http\Controllers\NotificationController::sendMaintenancePaidNotification($maintenance, $admin);
         }
         if ($status == 'approved') {
-            if ($soft) \App\Http\Controllers\NotificationController::sendMaintenanceApprovedNotitfication($maintenance, $soft);
-            if ($admin) \App\Http\Controllers\NotificationController::sendMaintenanceApprovedNotitfication($maintenance, $admin);
+            if ($soft) \App\Http\Controllers\NotificationController::sendMaintenanceApprovedNotification($maintenance, $soft);
+            if ($admin) \App\Http\Controllers\NotificationController::sendMaintenanceApprovedNotification($maintenance, $admin);
         }
         if ($status == 'declined') {
-            if ($soft) \App\Http\Controllers\NotificationController::sendMaintenanceDeclinedNotitfication($maintenance, $soft);
-            if ($admin) \App\Http\Controllers\NotificationController::sendMaintenanceDeclinedNotitfication($maintenance, $admin);
+            if ($soft) \App\Http\Controllers\NotificationController::sendMaintenanceDeclinedNotification($maintenance, $soft);
+            if ($admin) \App\Http\Controllers\NotificationController::sendMaintenanceDeclinedNotification($maintenance, $admin);
         }
         return back()->with('success', "Payment {$status} successfully");
     }

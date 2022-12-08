@@ -12,6 +12,8 @@ class CustomNotificationByEmail extends Notification
 {
     use Queueable;
 
+    private string|null $title, $message, $buttonText, $url;
+
     /**
      * Create a new notification instance.
      *
@@ -19,7 +21,6 @@ class CustomNotificationByEmail extends Notification
      */
     public function __construct($title, $message, $buttonText = null, $url = null)
     {
-        //
         $this->title = $title;
         $this->message = $message;
         $this->buttonText = $buttonText;
@@ -32,7 +33,7 @@ class CustomNotificationByEmail extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function via($notifiable)
+    public function via(mixed $notifiable): array
     {
         return ['mail'];
     }
@@ -41,22 +42,22 @@ class CustomNotificationByEmail extends Notification
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
-    public function toMail($notifiable) : MailMessage
+    public function toMail(mixed $notifiable) : MailMessage
     {
-        if ($this->url){
+        if ($this->url) {
             return (new MailMessage)
                 ->subject($this->title)
                 ->greeting('skip default')
-                ->line('Hello ' .$notifiable->name.',')
+                ->line('Hello ' .$notifiable->first_name.',')
                 ->line(new HtmlString($this->message))
                 ->action($this->buttonText, $this->url);
-        }else{
+        } else {
             return (new MailMessage)
                 ->subject($this->title)
                 ->greeting('skip default')
-                ->line('Hello' .$notifiable->name.',')
+                ->line('Hello ' .$notifiable->first_name.',')
                 ->line(new HtmlString($this->message));
         }
 
@@ -68,7 +69,7 @@ class CustomNotificationByEmail extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toArray(mixed $notifiable): array
     {
         return [
             //
