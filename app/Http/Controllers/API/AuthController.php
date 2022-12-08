@@ -146,9 +146,9 @@ class AuthController extends Controller
         $request->validate(['token' => ['required']]);
         if ($user['email_verified_at'])
             return $this->failure(message: 'Email already verified!', status: 400);
-        if (!Hash::check($request->input('token'), $user['verification_token']))
+        if (!Hash::check($request->input('token'), $user['otp']))
             return $this->failure(message: 'Email not verified, token is invalid', status: 400);
-        if (now()->gt($user['verification_token_expiry']))
+        if (now()->gt($user['otp_expiry']))
             return $this->failure(message: 'Email not verified, token has expired', status: 400);
         $data['email_verified_at'] = now();
         $data['otp'] = null;
