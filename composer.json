@@ -36,7 +36,8 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/Currency.php"
+            "app/Helpers/Currency.php",
+            "app/Helpers/Pagination.php"
         ]
     },
     "autoload-dev": {
