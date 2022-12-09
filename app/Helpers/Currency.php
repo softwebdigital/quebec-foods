@@ -4,15 +4,12 @@ use App\Models\Setting;
 
     if (!function_exists('getCurrency')) {
         function getCurrency() {
-            $settings = Setting::first();
-            switch ($settings['base_currency']) {
-                case "NGN":
-                    return "₦";
-                case "USD":
-                    return "$";
-                default:
-                    return $settings['base_currency'];
-            }
+            $settings = Setting::query()->first();
+            return match ($settings['base_currency']) {
+                "NGN" => "₦",
+                "USD" => "$",
+                default => $settings['base_currency'],
+            };
         }
     }
 ?>
