@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\PackageController;
 use App\Http\Controllers\OnlinePaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -42,4 +43,9 @@ Route::prefix('auth')->group(function () {
 
     Route::post('/profile/update', [AuthController::class, 'profile']);
     Route::post('/profile/photo', [AuthController::class, 'photo'])->middleware('throttle:3,1');
+});
+
+Route::prefix('packages')->group(function () {
+    Route::get('/', [PackageController::class, 'index']);
+    Route::get('/{package}', [PackageController::class, 'show']);
 });

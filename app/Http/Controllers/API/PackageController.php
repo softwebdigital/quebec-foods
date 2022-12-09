@@ -1,71 +1,26 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
+use App\Http\Resources\PackageResource;
 use App\Models\Package;
-use App\Http\Requests\StorePackageRequest;
-use App\Http\Requests\UpdatePackageRequest;
-use App\Models\Setting;
-use App\Models\InternationalBank;
-use Illuminate\Support\Facades\Validator;
+use App\Repositories\PackageRepository;
+use Illuminate\Http\JsonResponse;
 
 class PackageController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    public function __construct(protected PackageRepository $packageRepository)
     {
-        $setting = Setting::all()->first();
-        $international = InternationalBank::all()->first();
-        $packages = Package::latest()->get();
-        return view('user.packages.index', compact('packages', 'setting', 'international'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Package  $package
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Package $package)
+    public function index(): JsonResponse
     {
-        return view('user.packages.show', compact('package'));
+        return $this->success(data: PackageResource::collection($this->packageRepository->getAll()));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Package  $package
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Package $package)
+    public function show(Package $package): JsonResponse
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdatePackageRequest  $request
-     * @param  \App\Models\Package  $package
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdatePackageRequest $request, Package $package)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Package  $package
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Package $package)
-    {
-        //
+        return $this->success(data: new PackageResource($package));
     }
 }
