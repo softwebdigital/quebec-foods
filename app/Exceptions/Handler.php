@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request, Throwable $e): JsonResponse|Response
+    public function render($request, Throwable $e): Response|JsonResponse|\Symfony\Component\HttpFoundation\Response
     {
         if ($request->expectsJson()) {
             if ($e instanceof NotFoundHttpException)
@@ -88,7 +88,7 @@ class Handler extends ExceptionHandler
         return parent::render($request, $e);
     }
 
-    protected function unauthenticated($request, AuthenticationException $exception): JsonResponse|RedirectResponse
+    protected function unauthenticated($request, AuthenticationException $exception): JsonResponse|\Symfony\Component\HttpFoundation\Response|RedirectResponse
     {
 
         if ($request->expectsJson()) {
