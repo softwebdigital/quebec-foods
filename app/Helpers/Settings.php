@@ -1,15 +1,10 @@
 <?php
 
-if (!function_exists('get_page')) {
-    function get_page(): int
-    {
-        return (int) (request()->input('page') ?? 1);
-    }
-}
+use App\Models\Setting;
 
-if (!function_exists('get_per_page')) {
-    function get_per_page(): int
+if (!function_exists('investment_enabled')) {
+    function investment_enabled(): bool
     {
-        return (int) (request()->input('per_page') ?? 50);
+        return Setting::query()->first()['invest'] == 1;
     }
 }
