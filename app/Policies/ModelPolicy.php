@@ -12,16 +12,6 @@ class ModelPolicy
     use HandlesAuthorization;
 
     /**
-     * Create a new policy instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Determine whether the user can view the model.
      *
      * @param User $user
@@ -32,7 +22,7 @@ class ModelPolicy
     {
         return $user['id'] === $model['user_id']
             ? Response::allow()
-            : abort(403);
+            : Response::deny('You don\'t own this resource!', 403);
     }
 
     /**
@@ -46,7 +36,7 @@ class ModelPolicy
     {
         return $user['id'] === $model['user_id']
             ? Response::allow()
-            : abort(403);
+            : Response::deny('You don\'t own this resource!', 403);
     }
 
     /**
@@ -60,6 +50,6 @@ class ModelPolicy
     {
         return $user['id'] === $model['user_id']
             ? Response::allow()
-            : abort(403);
+            : Response::deny('You don\'t own this resource!', 403);
     }
 }
