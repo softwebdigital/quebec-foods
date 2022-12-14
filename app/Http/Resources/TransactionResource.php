@@ -18,7 +18,7 @@ class TransactionResource extends JsonResource
     {
         $data =  parent::toArray($request);
         Arr::set($data, 'created_at', date('Y-m-d H:i:s', strtotime($this['created_at'])));
-        unset($data['user_id'], $data['investment_id'], $data['updated_at']);
+        unset($data['user_id'], $data['investment_id'], $data['updated_at'], $data['preferred_bank']);
         return $data;
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\InvestmentController;
 use App\Http\Controllers\API\PackageController;
+use App\Http\Controllers\API\TransactionController;
 use App\Http\Controllers\OnlinePaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -55,4 +56,9 @@ Route::prefix('investments')->group(function() {
     Route::get('/', [InvestmentController::class, 'index']);
     Route::post('/', [InvestmentController::class, 'store']);
     Route::get('/{investment}', [InvestmentController::class, 'show']);
+});
+
+Route::prefix('transactions')->group(function() {
+    Route::get('/', [TransactionController::class, 'index']);
+    Route::get('/{transaction}', [TransactionController::class, 'show']);
 });
