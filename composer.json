@@ -37,7 +37,8 @@
         },
         "files": [
             "app/Helpers/Currency.php",
-            "app/Helpers/Pagination.php"
+            "app/Helpers/Pagination.php",
+            "app/Helpers/Settings.php"
         ]
     },
     "autoload-dev": {
