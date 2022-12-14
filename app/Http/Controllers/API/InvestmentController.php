@@ -31,7 +31,7 @@ class InvestmentController extends Controller
         return $this->success(data: InvestmentResource::collection($this->investmentRepository->getForUser(type: $type, status: $status)));
     }
 
-    public function store(StoreInvestmentRequest $request)//: JsonResponse
+    public function store(StoreInvestmentRequest $request): JsonResponse
     {
         $data = $request->validated();
         // Check if investment is allowed
