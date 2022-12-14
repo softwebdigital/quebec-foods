@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\InvestmentController;
 use App\Http\Controllers\API\PackageController;
 use App\Http\Controllers\OnlinePaymentController;
 use Illuminate\Http\Request;
@@ -48,4 +49,10 @@ Route::prefix('auth')->group(function () {
 Route::prefix('packages')->group(function () {
     Route::get('/', [PackageController::class, 'index']);
     Route::get('/{package}', [PackageController::class, 'show']);
+});
+
+Route::prefix('investments')->group(function() {
+    Route::get('/', [InvestmentController::class, 'index']);
+    Route::post('/', [InvestmentController::class, 'store']);
+    Route::get('/{investment}', [InvestmentController::class, 'show']);
 });

@@ -1,201 +1,99 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use App\Models\Package;
-use App\Models\Setting;
-use Illuminate\Contracts\Support\Renderable;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use App\Models\InternationalBank;
-use App\Models\Investment;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\OnlinePaymentController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Requests\StoreInvestmentRequest;
-use App\Http\Requests\UpdateInvestmentRequest;
+use App\Http\Resources\InvestmentResource;
+use App\Repositories\InvestmentRepository;
+use App\Repositories\PackageRepository;
+use Illuminate\Http\JsonResponse;
+use App\Models\Investment;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\Gate;
 
 class InvestmentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index($type)
-    {
-        $investments = auth()->user()->investments()->latest()->whereHas('package', function($query) use ($type) {
-            $query->where('type', $type);
-        })->get();
-        return view('user.investments.index', compact('investments', 'type'));
+    public function __construct(
+        protected InvestmentRepository $investmentRepository,
+        protected PackageRepository $packageRepository
+    ) {
+        $this->middleware('auth:sanctum');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
+    public function index(): JsonResponse
     {
-        //
+        $status = request()->input('status');
+        $type = request()->input('type');
+        return $this->success(data: InvestmentResource::collection($this->investmentRepository->getForUser(type: $type, status: $status)));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param Request $request
-//     * @return RedirectResponse
-     */
-    public function store(Request $request)
+    public function store(StoreInvestmentRequest $request)//: JsonResponse
     {
-        // Validate request
-        $validator = Validator::make($request->all(), [
-            'package' => ['required', 'exists:packages,name'],
-            'slots' => ['required', 'numeric', 'min:1', 'integer'],
-            'payment' => ['required'],
-            'gateway' => ['required_if:payment,card'],
-            'currency' => ['required_if:payment,card', 'in:NGN,USD']
-        ]);
-        if ($validator->fails()) {
-            return back()->withErrors($validator)->withInput()->with('error', 'Invalid input data');
-        }
+        $data = $request->validated();
         // Check if investment is allowed
-        if (Setting::all()->first()['invest'] == 0){
-            return back()->with('error', 'Investment in packages is currently unavailable, check back later');
-        }
+        if (!investment_enabled())
+            return $this->failure('Investment in packages is currently unavailable, check back later.', status:400);
         // Find package and check if investment is enabled
-        $package = Package::all()->where('name', $request['package'])->first();
-        if (!($package && $package->canRunInvestment())){
-            return back()->with('error', 'Can\'t process investment, package not found, disabled or closed');
-        }
+        $package = $this->packageRepository->find($data['package']);
+        if (!($package && $package->canRunInvestment()))
+            return $this->failure('Can\'t process investment!', 'Package is either not found, disabled or closed.', 400);
         // Check if package is sold out.
-        if ($package->type == "farm" && $package->available_slots < $request->slots) {
-            return back()->with('error', "Can't process investment, not enough available slots ({$package->available_slots} left)");
-        }
+        if ($package['type'] == "farm" && $package['available_slots'] < $data['slots'])
+            return $this->failure('Can\'t process investment!', "Insufficient slots ({$package['available_slots']} left).", 400);
         // Process investment based on payment method
-        switch ($request['payment']){
-            case 'wallet':
-                if (!auth()->user()->hasSufficientBalanceForTransaction($request['slots'] * $package['price'])){
-                    return back()->withInput()->with('error', 'Insufficient wallet balance');
-                }
-                auth()->user()->wallet()->decrement('balance', $request['slots'] * $package['price']);
-                $payment = 'approved';
-                $msg = 'Investment created successfully';
-                break;
+        switch ($data['payment']) {
             case 'deposit':
                 $payment = 'pending';
                 $msg = 'Investment queued successfully';
                 break;
+            case 'wallet':
+                if (!$request->user()->hasSufficientBalanceForTransaction($data['slots'] * $package['price']))
+                    return $this->failure('Insufficient wallet balance!', status: 400);
+                $request->user()->wallet()->decrement('balance', $data['slots'] * $package['price']);
+                $payment = 'approved';
+                $msg = 'Investment created successfully!';
+                break;
             case 'card':
-                $data = ['type' => 'investment', 'package' => $package, 'slots' => $request['slots']];
-                return OnlinePaymentController::initializeOnlineTransaction($request['slots'] * $package['price'], $data, $request['gateway'], $request['currency']);
+                $data = ['type' => 'investment', 'package' => $package, 'slots' => $data['slots']];
+                return OnlinePaymentController::initializeOnlineTransaction($data['slots'] * $package['price'], $data, $request->input('gateway'), $request->input('currency'), true);
             default:
-                return back()->withInput()->with('error', 'Invalid payment method');
+                return $this->failure('Invalid payment method',  status: 400);
         }
-//        Create Investment
-        if ($package->type == 'farm') {
-            $returns = $request['slots'] * $package['price'] * (( 100 + $package['roi'] ) / 100 );
-        } else {
-            $returns = $package->getPlantTotalROI($request['slots'] * $package['price']);
-        }
-        if (Carbon::make($package['start_date'])->lt(now())) {
-            $startDate = now();
-        } else {
-            $startDate = $package['start_date'];
-        }
-        $investment = auth()->user()->investments()->create([
-            'package_id'=>$package['id'], 'slots' => $request['slots'],
-            'amount' => $request['slots'] * $package['price'],
-            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['slots'] * $package['price']),
-            'total_return' => $returns,
-            'investment_date' => now()->format('Y-m-d H:i:s'),
-            'rollover' => isset($request['rollover']) && $request['rollover'] == 'yes',
+        // Create Investment
+        if ($package['type'] == 'farm')
+            $returns = $data['slots'] * $package['price'] * ((100 + $package['roi']) / 100 );
+        else
+            $returns = $package->getPlantTotalROI($data['slots'] * $package['price']);
+
+        $startDate = Carbon::make($package['start_date'])->lt(now()) ? now() : $package['start_date'];
+        $investment = $this->investmentRepository->create([
+            'user_id' => $request->user()->id, 'package_id'=>$package['id'],
+            'slots' => $data['slots'], 'amount' => $data['slots'] * $package['price'],
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($data['slots'] * $package['price']),
+            'total_return' => $returns, 'investment_date' => now()->format('Y-m-d H:i:s'),
+            'rollover' => isset($data['rollover']) && $data['rollover'] == true,
             'start_date' => $startDate, 'payment' => $payment,
             'package_data' => json_encode($package)
         ]);
         if ($investment) {
-            TransactionController::storeInvestmentTransaction($investment, $request['payment']);
-            if ($investment['payment'] == 'approved'){
-                Admin\InvestmentController::processReferral(auth()->user(), $investment);
+            TransactionController::storeInvestmentTransaction($investment, $data['payment']);
+            if ($investment['payment'] == 'approved') {
+                \App\Http\Controllers\Admin\InvestmentController::processReferral($request->user(), $investment);
                 NotificationController::sendInvestmentCreatedNotification($investment);
-            }else{
-                NotificationController::sendInvestmentQueuedNotification($investment);
             }
-            return redirect()->route('investments', ['filter' => 'all', 'type' => $package['type']])->with('success', $msg);
+            else NotificationController::sendInvestmentQueuedNotification($investment);
+            return $this->success($msg, new InvestmentResource($this->investmentRepository->find($investment['id'])));
         }
-        return back()->withInput()->with('error', 'Error processing investment');
+        return $this->failure('Error processing investment!', status: 400);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param Investment $investment
-     * @return Renderable
-     */
-    public function show(Investment $investment)
+    public function show(Investment $investment): JsonResponse
     {
-        $packages = Package::where('status', 'open')->get();
-        return view('user.investments.show', compact('investment', 'packages'));
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param Investment $investment
-     * @return Response
-     */
-    public function edit(Investment $investment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UpdateInvestmentRequest $request
-     * @param Investment $investment
-     * @return Response
-     */
-    public function update(UpdateInvestmentRequest $request, Investment $investment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Investment $investment
-     * @return Response
-     */
-    public function destroy(Investment $investment)
-    {
-        //
-    }
-
-    public function invest($type)
-    {
-        $setting = Setting::all()->first();
-        $international = InternationalBank::all()->first();
-        $packages = Package::all()->where('status', 'open')->where('type', $type);
-        return view('user.investments.create', compact('packages', 'setting', 'type', 'international'));
-    }
-
-    public function showUserInvestment($type, Investment $investment, $filter = 'all')
-    {
-        $user = auth()->user();
-        $packages = Package::all();
-        return view('user.profile.showInvestment', compact('user', 'type', 'packages', 'investment', 'filter'));
-    }
-
-    public function updateRollover (Request $request, Investment $investment)
-    {
-        if (auth()->id() != $investment["user_id"]) {
-            return back()->with('error', 'Investment not found');
-        }
-        $data['rollover'] = isset($request['rollover']) && $request['rollover'] == 'yes';
-        if($investment->update($data)) {
-            return redirect()->route('investments.show', ['type' => $request->type, 'investment' => $investment['id']])->with('success', 'Rollover updated successfully');
-        }
-        return back()->with('error', 'Error updating rollover status');
+        Gate::authorize('view', $investment);
+        return $this->success(data: new InvestmentResource($investment));
     }
 }

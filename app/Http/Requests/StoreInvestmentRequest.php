@@ -11,9 +11,9 @@ class StoreInvestmentRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +21,15 @@ class StoreInvestmentRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
-            //
+            'package' => ['required', 'exists:packages,id'],
+            'slots' => ['required', 'numeric', 'min:1', 'integer'],
+            'payment' => ['required', 'in:card,wallet,deposit'],
+            'gateway' => ['required_if:payment,card'],
+            'currency' => ['required_if:payment,card', 'in:NGN,USD'],
+            'rollover' => ['sometimes', 'boolean']
         ];
     }
 }

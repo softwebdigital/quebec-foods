@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Arr;
 
-class PackageResource extends JsonResource
+class InvestmentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -17,9 +17,13 @@ class PackageResource extends JsonResource
     public function toArray($request): array
     {
         $data =  parent::toArray($request);
+        Arr::set($data, 'rollover', (bool) $this['rollover']);
+        Arr::set($data, 'investment_date', date('Y-m-d H:i:s', strtotime($this['investment_date'])));
         Arr::set($data, 'start_date', date('Y-m-d H:i:s', strtotime($this['start_date'])));
         Arr::set($data, 'created_at', date('Y-m-d H:i:s', strtotime($this['created_at'])));
-        unset($data['updated_at'], $data['category_id']);
+        Arr::set($data, 'package', new PackageResource($this['package']));
+        Arr::set($data, 'milestones', TransactionResource::collection($this->transactions()->where('type', 'payout')->get()));
+        unset($data['updated_at'], $data['category_id'], $data['user_id'], $data['package_data'], $data['package_id']);
         return $data;
     }
 }

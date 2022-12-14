@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Setting;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\OnlinePayment;
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Http;
 
 class OnlinePaymentController extends Controller
 {
-    public static function initializeOnlineTransaction($amount, $data, $gateway, $currency = 'USD'): RedirectResponse
+    public static function initializeOnlineTransaction($amount, $data, $gateway, $currency = 'USD', $api = false): JsonResponse|RedirectResponse
     {
         $data['channel'] = 'web';
         if ($gateway == 'flutterwave' || $currency == 'USD') {
@@ -32,6 +33,21 @@ class OnlinePaymentController extends Controller
                     'logo' => asset(env('LOGO'))
                 ]
             ];
+
+            if ($api) {
+                auth()->user()->payments()->create([
+                    'reference' => $paymentData['tx_ref'],
+                    'amount' => $amount,
+                    'amount_in_naira' => self::getAmountInNaira($amount),
+                    'type' => $data['type'],
+                    'gateway' => 'flutterwave',
+                    'meta' => json_encode($data)
+                ]);
+                return (new OnlinePaymentController)->success(
+                    'Payment initialized successfully',
+                    ['reference' => $paymentData['tx_ref'], 'amount' => $amount, 'currency' => $paymentData['currency']]
+                );
+            }
 
             try {
                 $response = json_decode(Http::withHeaders(['Authorization' => 'Bearer '.env('FLW_SECRET_KEY')])
@@ -72,6 +88,11 @@ class OnlinePaymentController extends Controller
                 'gateway' => 'paystack',
                 'meta' => json_encode($data)
             ]);
+            if ($api)
+                return (new OnlinePaymentController)->success(
+                    'Payment initialized successfully',
+                    ['reference' => $paymentData['reference'], 'amount' => $amount, 'currency' => $paymentData['currency']]
+                );
             \request()->merge($paymentData);
             try {
                 return paystack()->getAuthorizationUrl()->redirectNow();
@@ -227,7 +248,7 @@ class OnlinePaymentController extends Controller
         return $payment->update(['status' => 'success']);
     }
 
-    public static function getAmountInNaira($amount)
+    public static function getAmountInNaira($amount): float|int
     {
         $settings = Setting::first(['usd_to_ngn', 'rate_plus']);
         return $amount * ($settings['usd_to_ngn'] + $settings['rate_plus']);
