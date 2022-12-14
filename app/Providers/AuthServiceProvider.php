@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Investment;
+use App\Policies\InvestmentPolicy;
 use App\Policies\ModelPolicy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -16,6 +18,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
          Model::class => ModelPolicy::class,
+         Investment::class => InvestmentPolicy::class
     ];
 
     /**
