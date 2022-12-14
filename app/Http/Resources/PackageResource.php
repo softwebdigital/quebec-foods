@@ -17,6 +17,8 @@ class PackageResource extends JsonResource
     public function toArray($request): array
     {
         $data =  parent::toArray($request);
+        Arr::set($data, 'rollover', (bool) $this['rollover']);
+        Arr::set($data, 'image', asset($this['image']));
         Arr::set($data, 'start_date', date('Y-m-d H:i:s', strtotime($this['start_date'])));
         Arr::set($data, 'created_at', date('Y-m-d H:i:s', strtotime($this['created_at'])));
         unset($data['updated_at'], $data['category_id']);
