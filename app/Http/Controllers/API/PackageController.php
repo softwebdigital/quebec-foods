@@ -16,7 +16,9 @@ class PackageController extends Controller
 
     public function index(): JsonResponse
     {
-        return $this->success(data: PackageResource::collection($this->packageRepository->getAll()));
+        $status = request()->input('status');
+        $type = request()->input('type');
+        return $this->success(data: PackageResource::collection($this->packageRepository->getAll(type: $type, status: $status)));
     }
 
     public function show(Package $package): JsonResponse
