@@ -25,12 +25,20 @@ class BankRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required'],
+            'bank_name' => ['required'],
             'account_name' => ['required'],
             'account_number' => [
                 'required',
-                Rule::unique('banks', 'account_number')->where('user_id', auth()->id())->ignore(request()->route('bank'))
-            ]
+                Rule::unique('bank_accounts', 'account_number')->where('user_id', auth()->id())->ignore(request()->route('bank'))
+            ],
+            'added_information' => ['sometimes']
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'account_number.unique' => 'The account number already exist.'
         ];
     }
 }

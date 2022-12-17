@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\BankRequest;
 use App\Http\Resources\BankResource;
-use App\Models\Bank;
+use App\Models\BankAccounts;
 use App\Repositories\BankRepository;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class BankController extends Controller
 {
     public function __construct(protected BankRepository $bankRepository)
     {
-        $this->middleware(['auth:sanctum', 'user']);
+        $this->middleware('auth:sanctum');
     }
 
     public function index(): JsonResponse
@@ -27,17 +28,20 @@ class BankController extends Controller
     {
         $data = $request->validated();
         $data['user_id'] = auth()->id();
-        $bank = $this->bankRepository->create($data);
-        return $this->success(message: 'Bank added successfully!', data: new BankResource($bank));
+        if ($request->user()->bankAccounts()->count() >= 3)
+            return $this->failure('You can have a maximum of 3 account numbers', status: 400);
+        if ($bank = $this->bankRepository->create($data))
+            return $this->success('Bank account added successfully!', data: new BankResource($bank));
+        return $this->failure('Error adding bank!', status: 400);
     }
 
-    public function show(Bank $bank): JsonResponse
+    public function show(BankAccounts $bank): JsonResponse
     {
         Gate::authorize('view', $bank);
         return $this->success(data: new BankResource($bank));
     }
 
-    public function update(BankRequest $request, Bank $bank): JsonResponse
+    public function update(BankRequest $request, BankAccounts $bank): JsonResponse
     {
         Gate::authorize('update', $bank);
         $this->bankRepository->update($bank['id'], $request->validated());
@@ -45,7 +49,7 @@ class BankController extends Controller
         return $this->success(message: 'Bank updated successfully!', data: new BankResource($bank));
     }
 
-    public function delete(Bank $bank): JsonResponse
+    public function delete(BankAccounts $bank): JsonResponse
     {
         Gate::authorize('delete', $bank);
         $this->bankRepository->destroy($bank['id']);
