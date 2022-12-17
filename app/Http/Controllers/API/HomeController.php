@@ -39,6 +39,6 @@ class HomeController extends Controller
 
     public function currency(): JsonResponse
     {
-        return $this->success(data: Setting::query()->first()?->base_currency);
+        return $this->success(data: ['currency' => Setting::query()->first()?->base_currency, 'symbol' => getCurrency()]);
     }
 }
