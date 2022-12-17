@@ -49,4 +49,33 @@ class InvestmentRepository extends AbstractRepository
         });
         return $investment;
     }
+
+    public function getTotalInvestmentsAmount()
+    {
+        return request()->user()->investments()->where('payment', 'approved')->sum('amount');
+    }
+
+    public function getPendingInvestmentsAmount()
+    {
+        return request()->user()->investments()->where('status', 'pending')->sum('amount');
+    }
+
+    public function getActiveInvestmentsAmount()
+    {
+        return request()->user()->investments()->where('status', 'active')->sum('amount');
+    }
+
+    public function getActiveInvestments()
+    {
+        return request()->user()->investments()->where('status', 'active')->latest()->get()->take(3);
+    }
+
+    public function getChart(): array
+    {
+        return [
+            'active' => request()->user()->investments()->where('status', 'active')->count(),
+            'pending' => request()->user()->investments()->where('status', 'pending')->count(),
+            'total' => request()->user()->investments()->whereIn('status', ['pending', 'active'])->count()
+        ];
+    }
 }
