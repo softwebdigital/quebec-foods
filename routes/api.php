@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\BankController;
 use App\Http\Controllers\API\InvestmentController;
 use App\Http\Controllers\API\PackageController;
 use App\Http\Controllers\API\TransactionController;
+use App\Http\Controllers\API\HomeController;
 use App\Http\Controllers\OnlinePaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -47,9 +49,16 @@ Route::prefix('auth')->group(function () {
     Route::post('/profile/photo', [AuthController::class, 'photo'])->middleware('throttle:3,1');
 });
 
-Route::prefix('packages')->group(function () {
-    Route::get('/', [PackageController::class, 'index']);
-    Route::get('/{package}', [PackageController::class, 'show']);
+Route::get('/dashboard', [HomeController::class, 'index']);
+
+Route::prefix('banks')->group(function () {
+    Route::get('/', [BankController::class, 'index']);
+    Route::post('/', [BankController::class, 'store']);
+    Route::get('/{bank}/details', [BankController::class, 'show']);
+    Route::put('/{bank}', [BankController::class, 'update']);
+    Route::delete('/{bank}', [BankController::class, 'delete']);
+    Route::post('/verify', [BankController::class, 'verify'])->middleware('throttle:3,1');
+    Route::get('/list', [BankController::class, 'list']);
 });
 
 Route::prefix('investments')->group(function() {
@@ -58,7 +67,20 @@ Route::prefix('investments')->group(function() {
     Route::get('/{investment}', [InvestmentController::class, 'show']);
 });
 
+Route::prefix('packages')->group(function () {
+    Route::get('/', [PackageController::class, 'index']);
+    Route::get('/{package}', [PackageController::class, 'show']);
+});
+
 Route::prefix('transactions')->group(function() {
     Route::get('/', [TransactionController::class, 'index']);
     Route::get('/{transaction}', [TransactionController::class, 'show']);
+});
+
+Route::prefix('wallet')->group(function() {
+    Route::get('/', [TransactionController::class, 'wallet']);
+    Route::get('/history', [TransactionController::class, 'walletHistory']);
+    Route::post('/deposit', [TransactionController::class, 'deposit']);
+    Route::post('/withdraw', [TransactionController::class, 'withdraw']);
+    Route::post('/token', [TransactionController::class, 'sendWithdrawalToken']);
 });
