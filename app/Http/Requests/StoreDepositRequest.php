@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreDeposit extends FormRequest
+class StoreDepositRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class StoreDeposit extends FormRequest
     public function rules(): array
     {
         return [
-            'amount' => ['required', 'number'],
-            'payment' => ['required'],
+            'amount' => ['required', 'numeric'],
+            'payment' => ['required', 'in:card,deposit'],
             'gateway' => ['required_if:payment,card'],
             'currency' => ['required_if:payment,card', 'in:NGN,USD']
         ];

@@ -3,8 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreDepositRequest extends FormRequest
+class StoreWithdrawalRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,9 +26,8 @@ class StoreDepositRequest extends FormRequest
     {
         return [
             'amount' => ['required', 'numeric'],
-            'payment' => ['required', 'in:card,deposit'],
-            'gateway' => ['required_if:payment,card'],
-            'currency' => ['required_if:payment,card', 'in:NGN,USD']
+            'token' => ['required', 'numeric'],
+            'account' => ['required', Rule::exists('bank_accounts', 'id')->where('user_id', auth()->id())]
         ];
     }
 }
