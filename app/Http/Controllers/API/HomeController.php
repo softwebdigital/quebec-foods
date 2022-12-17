@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\InvestmentResource;
+use App\Models\Setting;
 use App\Repositories\InvestmentRepository;
 use App\Repositories\TransactionRepository;
 use Illuminate\Http\JsonResponse;
@@ -34,5 +35,10 @@ class HomeController extends Controller
                 'chart' => $this->transactionRepository->getChart()
             ]
         ]);
+    }
+
+    public function currency(): JsonResponse
+    {
+        return $this->success(data: Setting::query()->first()?->base_currency);
     }
 }

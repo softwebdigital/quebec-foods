@@ -50,6 +50,7 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::get('/dashboard', [HomeController::class, 'index']);
+Route::get('/currency', [HomeController::class, 'currency']);
 
 Route::prefix('banks')->group(function () {
     Route::get('/', [BankController::class, 'index']);
