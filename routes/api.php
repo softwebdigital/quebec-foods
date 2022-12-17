@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\BankController;
 use App\Http\Controllers\API\InvestmentController;
+use App\Http\Controllers\API\NotificationController;
 use App\Http\Controllers\API\PackageController;
 use App\Http\Controllers\API\TransactionController;
 use App\Http\Controllers\API\HomeController;
@@ -66,6 +67,15 @@ Route::prefix('investments')->group(function() {
     Route::get('/', [InvestmentController::class, 'index']);
     Route::post('/', [InvestmentController::class, 'store']);
     Route::get('/{investment}', [InvestmentController::class, 'show']);
+});
+
+Route::prefix('notifications')->group(function () {
+    Route::get('/', [NotificationController::class, 'index']);
+    Route::get('/read', [NotificationController::class, 'read']);
+    Route::get('/unread', [NotificationController::class, 'unread']);
+    Route::get('/{id}/details', [NotificationController::class, 'show']);
+    Route::post('/{id}/read', [NotificationController::class, 'markAsRead']);
+    Route::post('/read/all', [NotificationController::class, 'markAllAsRead']);
 });
 
 Route::prefix('packages')->group(function () {
