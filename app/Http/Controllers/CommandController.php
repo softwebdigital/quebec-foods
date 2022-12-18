@@ -88,7 +88,7 @@ class CommandController extends Controller
 
     public static function settlePayments()
     {
-        $payments = OnlinePayment::query()->where('status', 'pending')->get();
+        $payments = OnlinePayment::query()->where('status', 'pending')->whereDate('created_at', '<', now()->subMinutes(5))->get();
         foreach ($payments as $payment){
 //            if ($payment->canRetryVerification()){
                 $paymentDetails = Http::withHeaders([
