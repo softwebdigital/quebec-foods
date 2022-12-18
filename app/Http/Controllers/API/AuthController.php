@@ -34,6 +34,7 @@ class AuthController extends Controller
         $credentials['password'] = Hash::make($credentials['password']);
         $credentials['code'] = User::generateUserCode();
         $credentials['ref_code'] = User::getRefCode();
+        if (isset($credentials['ref'])) unset($credentials['ref']);
         $user = $this->userRepository->create($credentials);
         $user->wallet()->create(['balance' => 0]);
         if ($ref = $request->input('ref')) {
