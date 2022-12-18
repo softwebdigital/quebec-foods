@@ -229,7 +229,8 @@ class OnlinePaymentController extends Controller
 
     public static function getAmountInNaira($amount)
     {
-        $settings = Setting::first(['usd_to_ngn', 'rate_plus']);
+        $settings = Setting::query()->first(['usd_to_ngn', 'rate_plus', 'base_currency']);
+        if ($settings['base_currency'] != 'USD') return $amount;
         return $amount * ($settings['usd_to_ngn'] + $settings['rate_plus']);
     }
 
