@@ -58,13 +58,12 @@ class TransactionRepository extends AbstractRepository
         $data = [];
         for ($i = 6; $i >= 0; $i--) {
             $day = Carbon::now()->subDays($i);
-            $data[$day->format('D')] = round(
+            $data[$day->format('D')] = number_format((float)
                 request()->user()->transactions()
                     ->whereIn('type', ['payout', 'deposit'])
                     ->where('status', 'approved')
                     ->whereDate('created_at', $day->format('Y-m-d'))
-                    ->sum('amount'), 2
-            );
+                    ->sum('amount'), 2, '.', '');
         }
         return $data;
     }
