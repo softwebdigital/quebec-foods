@@ -18,7 +18,10 @@ class PackageController extends Controller
     {
         $status = request()->input('status');
         $type = request()->input('type');
-        return $this->success(data: PackageResource::collection($this->packageRepository->getAll(type: $type, status: $status)));
+        return $this->success(
+            data: PackageResource::collection($this->packageRepository->getAll(type: $type, status: $status)),
+            meta: $this->packageRepository->getMeta()
+        );
     }
 
     public function show(Package $package): JsonResponse

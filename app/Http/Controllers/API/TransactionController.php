@@ -27,7 +27,10 @@ class TransactionController extends Controller
     public function index(): JsonResponse
     {
         $type = request()->input('type');
-        return $this->success(data: TransactionResource::collection($this->transactionRepository->getForUser(type: $type)));
+        return $this->success(
+            data: TransactionResource::collection($this->transactionRepository->getForUser(type: $type)),
+            meta: $this->transactionRepository->getMeta(type: $type)
+        );
     }
 
     public function show(Transaction $transaction): JsonResponse

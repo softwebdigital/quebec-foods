@@ -39,6 +39,15 @@ class InvestmentRepository extends AbstractRepository
             ->get($columns);
     }
 
+    public function getMeta(User|null $user = null, string|null $type = null, string|null $status = null): array
+    {
+        return [
+            'page' => get_page(),
+            'per_page' => get_per_page(),
+            'total' => count($this->getForUser(user: $user, type: $type, status: $status))
+        ];
+    }
+
     protected function filterInvestment($investment, $type = null, $status = null)
     {
         if ($type) $investment = $investment->whereHas('package', function ($q) use ($type) {

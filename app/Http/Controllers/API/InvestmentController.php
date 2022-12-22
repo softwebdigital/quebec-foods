@@ -28,7 +28,10 @@ class InvestmentController extends Controller
     {
         $status = request()->input('status');
         $type = request()->input('type');
-        return $this->success(data: InvestmentResource::collection($this->investmentRepository->getForUser(type: $type, status: $status)));
+        return $this->success(
+            data: InvestmentResource::collection($this->investmentRepository->getForUser(type: $type, status: $status)),
+            meta: $this->investmentRepository->getMeta(type: $type, status: $status)
+        );
     }
 
     public function store(StoreInvestmentRequest $request): JsonResponse

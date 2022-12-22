@@ -30,6 +30,15 @@ class TransactionRepository extends AbstractRepository
             ->get($columns);
     }
 
+    public function getMeta(User|null $user = null, string|null $type = null): array
+    {
+        return [
+            'page' => get_page(),
+            'per_page' => get_per_page(),
+            'total' => count($this->getForUser(user: $user, type: $type))
+        ];
+    }
+
     public function getPendingTransactionsAmount()
     {
         return request()->user()->transactions()->where('status', 'pending')->sum('amount');
