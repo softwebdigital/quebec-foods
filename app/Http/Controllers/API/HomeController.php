@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\InvestmentResource;
+use App\Models\InternationalBank;
 use App\Models\Setting;
 use App\Repositories\InvestmentRepository;
 use App\Repositories\TransactionRepository;
@@ -44,6 +45,9 @@ class HomeController extends Controller
 
     public function bankAccount(): JsonResponse
     {
-        return $this->success(data: Setting::query()->first(['bank_name', 'account_name', 'account_number']));
+        return $this->success(data: [
+            'local' => Setting::query()->first(['bank_name', 'account_name', 'account_number']),
+            'international' => InternationalBank::query()->first(['bank_name', 'account_name', 'account_number'])
+        ]);
     }
 }
