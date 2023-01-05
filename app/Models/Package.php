@@ -98,6 +98,42 @@ class Package extends Model
         return $this->slots - $this->sold_slots;
     }
 
+    public function expectedReturns(): Attribute
+    {
+        return Attribute::get(fn() => $this->investments()->where('payment', 'approved')->sum('total_return'));
+    }
+
+    public function newDuration(): Attribute
+    {
+        $duration = 0;
+        if ($this['type'] == 'farm') {
+            $duration = $this['duration'];
+        }
+        else {
+            if ($this['payout_mode'] == 'monthly') {
+                $duration = 1;
+            } else if ($this['payout_mode'] == 'quarterly') {
+                $duration = 3;
+            } else if ($this['payout_mode'] == 'semi-annually') {
+                $duration = 6;
+            } else if ($this['payout_mode'] == 'annually') {
+                $duration = 12;
+            } else if ($this['payout_mode'] == 'biannually') {
+                $duration = 24;
+            } else if ($this['payout_mode'] == 'custom') {
+                $duration = $this['months'];
+            }
+        }
+        return Attribute::get(fn () => $duration);
+    }
+
+    public function newDurationMode(): Attribute
+    {
+        if ($this['type'] == 'farm') $mode = $this['duration_mode'];
+        else $mode = 'month';
+        return Attribute::get(fn () => $mode);
+    }
+
     public function getPlantTotalROI($amount)
     {
         $sum = 0;
