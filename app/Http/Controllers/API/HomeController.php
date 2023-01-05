@@ -47,7 +47,7 @@ class HomeController extends Controller
     {
         return $this->success(data: [
             'local' => Setting::query()->first(['bank_name', 'account_name', 'account_number']),
-            'international' => InternationalBank::query()->first(['bank_name', 'account_name', 'account_number'])
+            'international' => InternationalBank::query()->first(['bank_name', 'account_name', 'account_number', 'added_information'])
         ]);
     }
 }
