@@ -41,4 +41,9 @@ class HomeController extends Controller
     {
         return $this->success(data: ['currency' => Setting::query()->first()?->base_currency, 'symbol' => getCurrency()]);
     }
+
+    public function bankAccount(): JsonResponse
+    {
+        return $this->success(data: Setting::query()->first(['bank_name', 'account_name', 'account_number']));
+    }
 }
