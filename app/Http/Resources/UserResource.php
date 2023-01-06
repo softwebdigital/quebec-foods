@@ -17,6 +17,7 @@ class UserResource extends JsonResource
     public function toArray($request): array
     {
         $data = parent::toArray($request);
+        Arr::set($data, 'ref_code', (string) $this['ref_code']);
         Arr::set($data, 'email_verified', $this['email_verified_at'] != null);
         Arr::set($data, 'two_factor_enabled', (bool) $this['two_factor_enabled']);
         Arr::set($data, 'active', (bool) $this['active']);
