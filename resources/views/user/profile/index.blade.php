@@ -34,7 +34,7 @@
                     <div class="d-flex flex-center flex-column py-5">
                         <!--begin::Avatar-->
                         <div class="symbol symbol-100px symbol-circle mb-7">
-                            <img src="{{ $user['avatar'] ?? asset('assets/media/svg/avatars/admin.png') }}" alt="image" />
+                            <img src="{{ asset($user['avatar'] ?? 'assets/media/svg/avatars/admin.png') }}" alt="image" />
                         </div>
                         <!--end::Avatar-->
                         <!--begin::Name-->
@@ -77,6 +77,9 @@
                             <!--begin::Details item-->
                             <div class="fw-bolder mt-5">Country</div>
                             <div class="text-gray-600">{{ $user['country'] }}</div>
+                            <!--begin::Details item-->
+                            <div class="fw-bolder mt-5">Currency</div>
+                            <div class="text-gray-600">{{ $user['currency'] }}</div>
                             <!--begin::Details item-->
                             <div class="fw-bolder mt-5">Referral Code</div>
                             <div class="text-gray-600">{{ $user['ref_code'] }}</div>

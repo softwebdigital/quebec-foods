@@ -42,7 +42,7 @@ class AuthController extends Controller
             $referee?->referrals()->create(['referred_id' => $user['id']]);
         }
         $user->sendEmailVerificationNotificationAPI();
-        return self::returnDataWithToken(user: $user, message: 'Registration Successful');
+        return self::returnDataWithToken(user: $this->userRepository->find($user['id']), message: 'Registration Successful');
     }
 
     public function login(LoginRequest $request): JsonResponse
