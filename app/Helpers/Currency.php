@@ -3,9 +3,10 @@
 use App\Models\Setting;
 
     if (!function_exists('getCurrency')) {
-        function getCurrency() {
+        function getCurrency($user = null) {
+            $user = $user ?? auth()->user();
             $settings = Setting::query()->first();
-            return match (auth()->user()['currency'] ?? $settings['base_currency']) {
+            return match ($user['currency'] ?? $settings['base_currency']) {
                 "NGN" => "₦",
                 "USD" => "$",
                 default => auth()->user()['currency'] ?? $settings['base_currency'],
@@ -14,9 +15,10 @@ use App\Models\Setting;
     }
 
     if (!function_exists('getAmountEquivalent')) {
-        function getAmountEquivalent($amount) {
+        function getAmountEquivalent($amount, $user = null) {
+            $user = $user ?? auth()->user();
             $settings = Setting::query()->first();
-            $currency = auth()->user()['currency'] ?? $settings['base_currency'];
+            $currency = $user['currency'] ?? $settings['base_currency'];
             if ($currency == $settings['base_currency'])
                 return $amount;
             elseif ($currency == 'USD')

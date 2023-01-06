@@ -296,7 +296,7 @@ class TransactionController extends Controller
             }else{
                 $datum['name'] = ucwords($transaction->user['name']);
             }
-            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . getCurrency() .' '.number_format($transaction['amount'], 2).'</span>';
+            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . getCurrency($transaction->user) .' '.number_format($transaction['amount'], 2).'</span>';
             $datum['amount_in_naira'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;"> ₦ '.number_format($transaction['amount_in_naira'], 2).'</span>';
             $datum['description'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['description'].'</span>';
             $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$transaction['created_at']->format('M d, Y \a\t h:i A').'</span>';
