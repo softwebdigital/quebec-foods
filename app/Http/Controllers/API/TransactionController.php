@@ -62,7 +62,7 @@ class TransactionController extends Controller
         $transaction = $this->transactionRepository->create([
             'user_id' => auth()->id(), 'type' => 'deposit', 'amount' => $request['amount'],
             'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['amount']),
-            'method' => $request['payment'],
+            'method' => $request['payment'], 'channel' => 'mobile',
             'description' => 'Deposit', 'status' => 'pending'
         ]);
         if ($transaction) {
@@ -116,7 +116,7 @@ class TransactionController extends Controller
         $transaction = $this->transactionRepository->create([
             'user_id' => $user->id, 'type' => 'withdrawal', 'amount' => $data['amount'],
             'amount_in_naira' => OnlinePaymentController::getAmountInNaira($data['amount']),
-            'method' => 'wallet',
+            'method' => 'wallet', 'channel' => 'mobile',
             'preferred_bank' => json_encode($bank),
             'description' => 'Withdrawal', 'status' => 'pending'
         ]);

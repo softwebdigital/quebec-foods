@@ -35,6 +35,7 @@ class OnlinePaymentController extends Controller
             ];
 
             if ($api) {
+                $data['channel'] = 'mobile';
                 auth()->user()->payments()->create([
                     'reference' => $paymentData['tx_ref'],
                     'amount' => $amount,
@@ -73,6 +74,7 @@ class OnlinePaymentController extends Controller
                 return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
 
             // return back()->with('info', 'Card payment through paystack is currently disabled, try another payment gateway.');
+            if ($api) $data['channel'] = 'mobile';
             $paymentData = [
                 'amount' => $totalAmount * 100,
                 'reference' => paystack()->genTranxRef(),
