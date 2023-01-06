@@ -114,7 +114,7 @@ class TransactionController extends Controller
         }
         $transaction = auth()->user()->transactions()->create([
             'type' => 'deposit', 'amount' => $request['amount'],
-            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['amount']),
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['amount'], auth()->user()),
             'method' => $request['payment'],
             'description' => 'Deposit', 'status' => 'pending'
         ]);
@@ -148,7 +148,7 @@ class TransactionController extends Controller
             'investment_id' => $investment['id'],
             'user_id' => $investment->user['id'], 'type' => 'payout',
             'amount' => $amount, 'description' => "Payout",
-            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($amount),
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($amount, $investment->user),
             'method' => 'wallet', 'channel' => 'web',
             'status' => 'approved'
         ]);
@@ -207,7 +207,7 @@ class TransactionController extends Controller
         $bank = auth()->user()->bankAccounts()->where('id', $request['account'])->first();
         $transaction = auth()->user()->transactions()->create([
             'type' => 'withdrawal', 'amount' => $request['amount'],
-            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['amount']),
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['amount'], auth()->user()),
             'method' => 'wallet',
             'preferred_bank' => json_encode($bank),
             'description' => 'Withdrawal', 'status' => 'pending'

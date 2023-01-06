@@ -19,7 +19,7 @@ class OnlinePaymentController extends Controller
         $data['channel'] = 'web';
         if ($gateway == 'flutterwave' || $currency == 'USD') {
             $paymentData = [
-                'amount' => $currency == 'USD' ? $amount : self::getAmountInNaira($amount),
+                'amount' => $currency == 'USD' ? $amount : self::getAmountInNaira($amount, auth()->user()),
                 'tx_ref' => self::genTranxRef(),
                 'currency' => $currency,
                 'redirect_url' => route('payment.callback', 'flw'),
@@ -39,7 +39,7 @@ class OnlinePaymentController extends Controller
                 auth()->user()->payments()->create([
                     'reference' => $paymentData['tx_ref'],
                     'amount' => $amount,
-                    'amount_in_naira' => self::getAmountInNaira($amount),
+                    'amount_in_naira' => self::getAmountInNaira($amount, auth()->user()),
                     'type' => $data['type'],
                     'gateway' => 'flutterwave',
                     'meta' => json_encode($data)
@@ -57,7 +57,7 @@ class OnlinePaymentController extends Controller
                     auth()->user()->payments()->create([
                         'reference' => $paymentData['tx_ref'],
                         'amount' => $amount,
-                        'amount_in_naira' => self::getAmountInNaira($amount),
+                        'amount_in_naira' => self::getAmountInNaira($amount, auth()->user()),
                         'type' => $data['type'],
                         'gateway' => 'flutterwave',
                         'meta' => json_encode($data)
@@ -69,7 +69,7 @@ class OnlinePaymentController extends Controller
                 return back()->with('error', 'Could not start transaction, try again.');
             }
         } else {
-            $totalAmount = self::getAmountInNaira($amount);
+            $totalAmount = self::getAmountInNaira($amount, auth()->user());
             if ($totalAmount >= 10000000)
                 return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
 
@@ -250,10 +250,11 @@ class OnlinePaymentController extends Controller
         return $payment->update(['status' => 'success']);
     }
 
-    public static function getAmountInNaira($amount): float|int
+    public static function getAmountInNaira($amount, $user = null): float|int
     {
         $settings = Setting::query()->first(['usd_to_ngn', 'rate_plus', 'base_currency']);
-        if ($settings['base_currency'] != 'USD') return $amount;
+        $currency = $user ? ($user['currency'] ?? $settings['base_currency']) : $settings['base_currency'];
+        if ($currency != 'USD') return $amount;
         return $amount * ($settings['usd_to_ngn'] + $settings['rate_plus']);
     }
 

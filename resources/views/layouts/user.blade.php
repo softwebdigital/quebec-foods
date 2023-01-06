@@ -1355,7 +1355,10 @@
         });
 
         function getAmountInNaira(amount) {
-            return amount * {{ \App\Models\Setting::first()['usd_to_ngn'] + \App\Models\Setting::first()['rate_plus'] }}
+            const settings = {!! \App\Models\Setting::first() !!};
+            const currency = '{{ auth()->user()['currency'] ?? \App\Models\Setting::first()['base_currency'] }}';
+            if (currency !== 'USD') return amount;
+            return amount * (settings['usd_to_ngn'] + settings['rate_plus']);
         }
 
         function numberFormat(amount, decimal = ".", thousands = ",") {

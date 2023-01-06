@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\InvestmentResource;
 use App\Models\InternationalBank;
 use App\Models\Setting;
+use App\Models\User;
 use App\Repositories\InvestmentRepository;
 use App\Repositories\TransactionRepository;
 use Illuminate\Http\JsonResponse;
@@ -48,6 +49,19 @@ class HomeController extends Controller
         return $this->success(data: [
             'local' => Setting::query()->first(['bank_name', 'account_name', 'account_number']),
             'international' => InternationalBank::query()->first(['bank_name', 'account_name', 'account_number', 'added_information'])
+        ]);
+    }
+
+    public function countries(): JsonResponse
+    {
+        $countriesList = User::$countries;
+        $phoneCodes = array_column($countriesList, 'phonecode');
+        uasort($phoneCodes, fn($a, $b) => $a > $b ? 1 : -1);
+        $phoneCodes = array_values(array_unique(array_filter($phoneCodes, fn($item) => $item > 0)));
+        $countries = json_decode(file_get_contents(public_path('assets/data/countries.json')), TRUE);
+        return $this->success(data: [
+            'countries' => $countries,
+            'phone_codes' => $phoneCodes
         ]);
     }
 }

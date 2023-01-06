@@ -76,7 +76,7 @@ class InvestmentController extends Controller
         $investment = $this->investmentRepository->create([
             'user_id' => $request->user()->id, 'package_id'=>$package['id'],
             'slots' => $data['slots'], 'amount' => $data['slots'] * $package['price'],
-            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($data['slots'] * $package['price']),
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($data['slots'] * $package['price'], $request->user()),
             'total_return' => $returns, 'investment_date' => now()->format('Y-m-d H:i:s'),
             'rollover' => isset($data['rollover']) && $data['rollover'] == true,
             'start_date' => $startDate, 'payment' => $payment,

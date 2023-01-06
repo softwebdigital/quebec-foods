@@ -61,7 +61,7 @@ class TransactionController extends Controller
         }
         $transaction = $this->transactionRepository->create([
             'user_id' => auth()->id(), 'type' => 'deposit', 'amount' => $request['amount'],
-            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['amount']),
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['amount'], auth()->user()),
             'method' => $request['payment'], 'channel' => 'mobile',
             'description' => 'Deposit', 'status' => 'pending'
         ]);
@@ -115,7 +115,7 @@ class TransactionController extends Controller
         $bank = $user->bankAccounts()->where('id', $data['account'])->first();
         $transaction = $this->transactionRepository->create([
             'user_id' => $user->id, 'type' => 'withdrawal', 'amount' => $data['amount'],
-            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($data['amount']),
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($data['amount'], $user),
             'method' => 'wallet', 'channel' => 'mobile',
             'preferred_bank' => json_encode($bank),
             'description' => 'Withdrawal', 'status' => 'pending'

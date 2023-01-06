@@ -41,7 +41,7 @@ class TransactionController extends Controller
         $user->wallet()->increment('balance', $request['amount']);
         $transaction = $user->transactions()->create([
             'type' => 'deposit', 'amount' => $request['amount'],
-            'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira($request['amount']),
+            'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira($request['amount'], $user),
             'description' => 'Deposit by '.env('APP_NAME'),
             'method' => 'deposit' ,'status' => 'approved'
         ]);
@@ -78,7 +78,7 @@ class TransactionController extends Controller
         $user->wallet()->decrement('balance', $request['amount']);
         $transaction = $user->transactions()->create([
             'type' => 'withdrawal', 'amount' => $request['amount'], 'method' => 'wallet',
-            'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira($request['amount']),
+            'amount_in_naira' => \App\Http\Controllers\OnlinePaymentController::getAmountInNaira($request['amount'], $user),
             'description' => 'Withdrawal by '.env('APP_NAME'), 'status' => 'approved'
         ]);
         if ($transaction) {

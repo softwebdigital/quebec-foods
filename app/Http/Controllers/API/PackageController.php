@@ -12,6 +12,7 @@ class PackageController extends Controller
 {
     public function __construct(protected PackageRepository $packageRepository)
     {
+        $this->middleware('auth:sanctum');
     }
 
     public function index(): JsonResponse
