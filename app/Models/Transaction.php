@@ -11,6 +11,14 @@ class Transaction extends Model
 
     protected $guarded = [];
 
+    protected static function boot()
+    {
+        parent::boot();
+        static::creating(function ($transaction) {
+            $transaction['balance'] = auth()->user()->wallet()->first()?->balance;
+        });
+    }
+
     // Transaction relationship with Online payments.
     public function onlinePayment()
     {
