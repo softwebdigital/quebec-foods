@@ -3,13 +3,12 @@
 use App\Models\Setting;
 
     if (!function_exists('getCurrency')) {
-        function getCurrency($user = null) {
-            $user = $user ?? auth()->user();
+        function getCurrency() {
             $settings = Setting::query()->first();
-            return match ($user['currency'] ?? $settings['base_currency']) {
+            return match ($settings['base_currency']) {
                 "NGN" => "₦",
                 "USD" => "$",
-                default => auth()->user()['currency'] ?? $settings['base_currency'],
+                default => $settings['base_currency'],
             };
         }
     }

@@ -29,7 +29,7 @@ class RegisterRequest extends FormRequest
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'min:6'],
             'ref' => ['nullable'],
-            'currency' => ['required']
+//            'currency' => ['required']
         ];
     }
 }

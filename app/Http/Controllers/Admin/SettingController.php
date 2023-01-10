@@ -38,7 +38,8 @@ class SettingController extends Controller
         // Update settings
         if (Setting::all()->first()->update([
             'base_currency' => $request['base_currency'],
-             'rate_plus' => $request['rate_plus'],
+            'rate_plus' => $request['rate_plus'],
+            'ngn_rate_plus' => $request['ngn_rate_plus'],
             'show_cash' => $request['show_cash'] == 'yes',
             'invest' => $request['invest'] == 'yes',
             'rollover' => $request['rollover'] == 'yes',
@@ -105,7 +106,7 @@ class SettingController extends Controller
         $res = Http::withHeaders(['X-API-KEY' => env('GOLD_PRICE_API_KEY')])->get('http://goldpricez.com/api/rates/currency/ngn/measure/gram/metal/all');
         $res = json_decode(json_decode($res, true), true);
         if (isset($res['usd_to_ngn']))
-            return $settings->update(['usd_to_ngn' => $res['usd_to_ngn']]);
+            return $settings->update(['usd_to_ngn' => $res['usd_to_ngn'], 'ngn_to_usd' => $res['usd_to_ngn'] - 20]);
         return false;
     }
 }

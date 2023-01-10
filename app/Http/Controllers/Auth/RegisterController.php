@@ -55,7 +55,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'toc' => ['required'],
-            'currency' => ['required']
+//            'currency' => ['required']
         ], [
             'toc.required' => 'You must accept our terms and conditions to proceed'
         ]);
@@ -74,7 +74,7 @@ class RegisterController extends Controller
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
             'email' => $data['email'],
-            'currency' => $data['currency'],
+//            'currency' => $data['currency'],
             'password' => Hash::make($data['password']),
             'ref_code' => User::getRefCode()
         ]);

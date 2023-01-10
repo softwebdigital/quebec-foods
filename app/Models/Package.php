@@ -103,11 +103,6 @@ class Package extends Model
         return Attribute::get(fn() => $this->investments()->where('payment', 'approved')->sum('total_return'));
     }
 
-    public function price(): Attribute
-    {
-        return Attribute::get(fn() => getAmountEquivalent($this->attributes['price']));
-    }
-
     public function newDuration(): Attribute
     {
         $duration = 0;
