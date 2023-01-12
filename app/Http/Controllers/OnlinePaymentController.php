@@ -17,7 +17,7 @@ class OnlinePaymentController extends Controller
     public static function initializeOnlineTransaction($amount, $data, $gateway, $currency = 'USD', $api = false): JsonResponse|RedirectResponse
     {
         $data['channel'] = 'web';
-        if ($gateway == 'flutterwave' || $currency == 'USD') {
+        if ($gateway == 'flutterwave') {
             $paymentData = [
                 'amount' => $currency == 'USD' ? $amount : self::getAmountInNaira($amount, auth()->user()),
                 'tx_ref' => self::genTranxRef(),
@@ -71,15 +71,17 @@ class OnlinePaymentController extends Controller
         } else {
             $totalAmount = self::getAmountInNaira($amount, auth()->user());
             if ($totalAmount >= 10000000)
-                return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
+                return redirect()->route('dashboard')->with('error', "We can\'t process card payment of ₦10,000,000 and above");
 
             // return back()->with('info', 'Card payment through paystack is currently disabled, try another payment gateway.');
             if ($api) $data['channel'] = 'mobile';
+            if ($currency == 'USD') $price = $amount;
+            else $price = $totalAmount * 100;
             $paymentData = [
-                'amount' => $totalAmount * 100,
+                'amount' => $currency == 'USD' ? $amount : (self::getAmountInNaira($amount, auth()->user()) * 100),
                 'reference' => paystack()->genTranxRef(),
                 'email' => auth()->user()['email'],
-                'currency' => 'NGN',
+                'currency' => $currency,
                 'metadata' => json_encode($data),
             ];
             auth()->user()->payments()->create([
@@ -99,6 +101,7 @@ class OnlinePaymentController extends Controller
             try {
                 return paystack()->getAuthorizationUrl()->redirectNow();
             } catch (Exception $e) {
+                dd($e->getMessage());
                 return back()->with('error', 'The paystack token has expired. Please refresh the page and try again.');
             }
         }
