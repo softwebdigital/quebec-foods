@@ -40,7 +40,10 @@ class DocumentController extends Controller
     public function update(DocumentRequest $request, Document $document): JsonResponse
     {
         Gate::authorize('update', $document);
+        if ($document['status'] == 'approved')
+            return $this->failure('Can\'t update approved document!');
         $data = self::getDocumentData($request);
+        $data['status'] = 'pending';
         $old = null;
         if ($request->file('file')) $old = $document['photo'];
         $document->update($data);
