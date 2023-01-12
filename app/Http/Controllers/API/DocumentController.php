@@ -53,7 +53,10 @@ class DocumentController extends Controller
     public function delete(Document $document): JsonResponse
     {
         Gate::authorize('delete', $document);
-        $document->delete();
+        $old = $document['photo'];
+        if ($document->delete()) {
+            try { unlink($old); } catch (Exception $e) {}
+        }
         return $this->success('Document deleted successfully!');
     }
 
