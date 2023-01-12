@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Document;
 use App\Models\Investment;
 use App\Models\Transaction;
+use App\Policies\DocumentPolicy;
 use App\Policies\InvestmentPolicy;
 use App\Policies\ModelPolicy;
 use App\Policies\TransactionPolicy;
@@ -19,9 +21,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-         Model::class => ModelPolicy::class,
-         Investment::class => InvestmentPolicy::class,
-         Transaction::class => TransactionPolicy::class
+        Model::class => ModelPolicy::class,
+        Document::class => DocumentPolicy::class,
+        Investment::class => InvestmentPolicy::class,
+        Transaction::class => TransactionPolicy::class
     ];
 
     /**
