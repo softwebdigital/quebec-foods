@@ -186,6 +186,7 @@ class AuthController extends Controller
     public function photo(Request $request): JsonResponse
     {
         $user = $request->user();
+        $oldAvatar = $user['avatar'];
         $request->validate(['avatar' => 'required|max:2048|file|mimes:jpg,png,jpeg']);
         $destinationPath = 'assets/photos';
         HomeController::createDirectoryIfNotExists($destinationPath);
@@ -195,7 +196,7 @@ class AuthController extends Controller
         $avatar = $destinationPath ."/".$transferImage;
         $this->userRepository->update($user->id, ['avatar' => $avatar]);
         $user = $this->userRepository->find($user->id);
-        if ($oldAvatar = $user['avatar']) {
+        if ($oldAvatar) {
             try { unlink($oldAvatar); } catch (Exception $e) {}
         }
         return $this->success('Profile photo updated successfully!', new UserResource($user));
