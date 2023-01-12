@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\BankController;
+use App\Http\Controllers\API\DocumentController;
 use App\Http\Controllers\API\InvestmentController;
 use App\Http\Controllers\API\NotificationController;
 use App\Http\Controllers\API\PackageController;
@@ -46,11 +47,12 @@ Route::prefix('auth')->group(function () {
     Route::post('/email/verify', [AuthController::class, 'verifyEmail']);
     Route::post('/email/resend', [AuthController::class, 'resendEmailVerificationLink'])->middleware('throttle:3,1');
 
-    Route::post('/profile/update', [AuthController::class, 'profile']);
+    Route::put('/profile/update', [AuthController::class, 'profile']);
     Route::post('/profile/photo', [AuthController::class, 'photo'])->middleware('throttle:3,1');
 });
 
 Route::get('/dashboard', [HomeController::class, 'index']);
+Route::get('/referrals', [HomeController::class, 'referrals']);
 Route::get('/currency', [HomeController::class, 'currency']);
 Route::get('/account/details', [HomeController::class, 'bankAccount']);
 Route::get('/countries', [HomeController::class, 'countries']);
@@ -63,6 +65,14 @@ Route::prefix('banks')->group(function () {
     Route::delete('/{bank}', [BankController::class, 'delete']);
     Route::post('/verify', [BankController::class, 'verify'])->middleware('throttle:3,1');
     Route::get('/list', [BankController::class, 'list']);
+});
+
+Route::prefix('documents')->group(function() {
+    Route::get('/', [DocumentController::class, 'index']);
+    Route::post('/', [DocumentController::class, 'store']);
+    Route::get('/{document}', [DocumentController::class, 'show']);
+    Route::post('/{document}', [DocumentController::class, 'update']);
+    Route::delete('/{document}', [DocumentController::class, 'delete']);
 });
 
 Route::prefix('investments')->group(function() {
