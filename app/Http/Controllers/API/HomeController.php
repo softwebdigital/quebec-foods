@@ -4,7 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\InvestmentResource;
-use App\Http\Resources\UserResource;
+use App\Http\Resources\ReferralResource;
 use App\Models\InternationalBank;
 use App\Models\Setting;
 use App\Models\User;
@@ -42,7 +42,7 @@ class HomeController extends Controller
 
     public function referrals(): JsonResponse
     {
-        return $this->success(data: UserResource::collection(request()->user()->referrals()->latest()->get()));
+        return $this->success(data: ReferralResource::collection(request()->user()->referrals()->latest()->get()));
     }
 
     public function currency(): JsonResponse
