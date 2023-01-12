@@ -101,7 +101,6 @@ class OnlinePaymentController extends Controller
             try {
                 return paystack()->getAuthorizationUrl()->redirectNow();
             } catch (Exception $e) {
-                dd($e->getMessage());
                 return back()->with('error', 'The paystack token has expired. Please refresh the page and try again.');
             }
         }
