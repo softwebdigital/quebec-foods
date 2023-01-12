@@ -75,10 +75,9 @@ class OnlinePaymentController extends Controller
 
             // return back()->with('info', 'Card payment through paystack is currently disabled, try another payment gateway.');
             if ($api) $data['channel'] = 'mobile';
-            if ($currency == 'USD') $price = $amount;
-            else $price = $totalAmount * 100;
+
             $paymentData = [
-                'amount' => $currency == 'USD' ? $amount : (self::getAmountInNaira($amount, auth()->user()) * 100),
+                'amount' => ($currency == 'USD' ? $amount : self::getAmountInNaira($amount, auth()->user())) * 100,
                 'reference' => paystack()->genTranxRef(),
                 'email' => auth()->user()['email'],
                 'currency' => $currency,
