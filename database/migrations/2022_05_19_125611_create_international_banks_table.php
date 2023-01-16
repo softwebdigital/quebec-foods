@@ -18,7 +18,7 @@ class CreateInternationalBanksTable extends Migration
             $table->string('bank_name')->nullable();
             $table->string('account_name')->nullable();
             $table->string('account_number')->nullable();
-            $table->string('added_information')->nullable();
+            $table->longText('added_information')->nullable();
             $table->string('base_currency')->default('NGN');
             $table->boolean('show_cash')->default(true);
             $table->double('usd_to_ngn', 10, 2)->default(0);

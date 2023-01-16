@@ -203,7 +203,7 @@ class NotificationController extends Controller
                 </td>
                 </tr>
                 </table><br>
-                We are available for any further enquiries or assistance. You can email us at support@raregems.ng<br><br>
+                We are available for any further enquiries or assistance. You can email us at '. env('SUPPORT_EMAIL') .'<br><br>
                 Thank you for choosing us as your preferred partner in growing your wealth.<br><br>
                 ';
         $user->notify(new CustomNotification('investment', 'Investment Maturity - 30days Notice', $msg, $description));
