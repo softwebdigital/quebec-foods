@@ -140,7 +140,7 @@
                                 </tr>
                                 <tr>
                                     <td>Added Information: </td>
-                                    <td><span class="ms-2">{{ $international['added_information'] }}</span></td>
+                                    <td><span class="ms-2">{!! $international['added_information'] !!}</span></td>
                                 </tr>
                             </table>
                         </div>
