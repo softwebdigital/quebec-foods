@@ -229,7 +229,7 @@ class InvestmentController extends Controller
                 ]);
                 if ($transaction) {
                     $referee->wallet()->increment('balance', 50);
-                    $referral->update(['paid' => true]);
+                    $referral->update(['paid' => true, 'amount' => 50]);
                     try {
                         NotificationController::sendReferralTransactionNotification($transaction);
                     } catch (Exception $e) {

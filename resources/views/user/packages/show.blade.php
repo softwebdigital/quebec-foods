@@ -34,10 +34,10 @@
                 <!--begin::Summary-->
                 <!--begin::User Info-->
                 <div class="d-flex flex-center flex-column py-5">
-                    @if ($package['cover'])
+                    @if ($package['image'])
                         <!--begin::Avatar-->
                         <div class="symbol symbol-100px symbol-circle mb-7">
-                            <img src="assets/media/avatars/300-6.jpg" alt="image" />
+                            <img src="{{ asset($package['image']) }}" alt="image" />
                         </div>
                         <!--end::Avatar-->
                     @endif
@@ -96,7 +96,7 @@
         <div class="card mb-5 mb-xl-8">
             <!--begin::Card body-->
             <div class="card-body">
-                
+
                 <!--begin::Details toggle-->
                 <div class="d-flex flex-stack fs-4 py-3">
                     <div class="fw-bolder rotate collapsible" data-bs-toggle="collapse" href="#kt_user_view_details" role="button" aria-expanded="false" aria-controls="kt_user_view_details">Packages Details
@@ -120,16 +120,16 @@
                         <div class="fw-bolder mt-5">ROI</div>
                         <div class="text-gray-600">{{ $package['roi'] }}%</div>
                         <div class="fw-bolder mt-5">Price per slot</div>
-                        <div class="text-gray-600">{{ $package['price'] }}</div>
+                        <div class="text-gray-600">{{ getCurrency() . number_format($package['price'], 2) }} ({{ '₦' . \App\Http\Controllers\OnlinePaymentController::getAmountInNaira(number_format($package['price'], 2)) }})</div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
-                        <div class="fw-bolder mt-5">Start Date</div>
-                        <div class="text-gray-600">
-                            <a href="#" class="text-gray-600 text-hover-primary">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</a>
-                        </div>
+                        @if ($package['type'] != 'farm')
+                            <div class="fw-bolder mt-5">Offer End Date</div>
+                            <div class="text-gray-600">
+                                <a href="#" class="text-gray-600 text-hover-primary">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</a>
+                            </div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
-                        @if ($package['type'] == 'farm')
                             <div class="fw-bolder mt-5">Total Created Slots</div>
                             <div class="text-gray-600">{{ $package['slots'] }}</div>
 
@@ -138,9 +138,7 @@
 
                             <div class="fw-bolder mt-5">Duration Mode</div>
                             <div class="text-gray-600">{{ $package['duration_mode'] }}</div>
-                        @endif
 
-                        @if ($package['type'] != 'farm')
                             <div class="fw-bolder mt-5">Milestones</div>
                             <div class="text-gray-600">{{ $package['milestones'] }}</div>
 
