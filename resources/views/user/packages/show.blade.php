@@ -128,8 +128,6 @@
                             <div class="text-gray-600">
                                 <a href="#" class="text-gray-600 text-hover-primary">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</a>
                             </div>
-                        <!--begin::Details item-->
-                        <!--begin::Details item-->
                             <div class="fw-bolder mt-5">Total Created Slots</div>
                             <div class="text-gray-600">{{ $package['slots'] }}</div>
 
@@ -138,7 +136,9 @@
 
                             <div class="fw-bolder mt-5">Duration Mode</div>
                             <div class="text-gray-600">{{ $package['duration_mode'] }}</div>
+                        @endif
 
+                        @if ($package['type'] != 'farm')
                             <div class="fw-bolder mt-5">Milestones</div>
                             <div class="text-gray-600">{{ $package['milestones'] }}</div>
 
