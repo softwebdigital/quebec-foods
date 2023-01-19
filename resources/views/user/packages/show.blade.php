@@ -123,7 +123,7 @@
                         <div class="text-gray-600">{{ getCurrency() . number_format($package['price'], 2) }} ({{ '₦' . \App\Http\Controllers\OnlinePaymentController::getAmountInNaira(number_format($package['price'], 2)) }})</div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
-                        @if ($package['type'] != 'farm')
+                        @if ($package['type'] == 'farm')
                             <div class="fw-bolder mt-5">Offer End Date</div>
                             <div class="text-gray-600">
                                 <a href="#" class="text-gray-600 text-hover-primary">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</a>
