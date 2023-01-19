@@ -111,17 +111,17 @@ class Package extends Model
         }
         else {
             if ($this['payout_mode'] == 'monthly') {
-                $duration = 1;
+                $duration = 1 * $this['milestones'];
             } else if ($this['payout_mode'] == 'quarterly') {
-                $duration = 3;
+                $duration = 3 * $this['milestones'];
             } else if ($this['payout_mode'] == 'semi-annually') {
-                $duration = 6;
+                $duration = 6 * $this['milestones'];
             } else if ($this['payout_mode'] == 'annually') {
-                $duration = 12;
+                $duration = 12 * $this['milestones'];
             } else if ($this['payout_mode'] == 'biannually') {
-                $duration = 24;
+                $duration = 24 * $this['milestones'];
             } else if ($this['payout_mode'] == 'custom') {
-                $duration = $this['months'];
+                $duration = $this['months'] * $this['milestones'];
             }
         }
         return Attribute::get(fn () => $duration);
@@ -130,7 +130,23 @@ class Package extends Model
     public function newDurationMode(): Attribute
     {
         if ($this['type'] == 'farm') $mode = $this['duration_mode'];
-        else $mode = 'month';
+        else {
+            if ($this['payout_mode'] == 'monthly') {
+                $mode = $this['new_duration'] > 1 ? 'months' : 'month';
+            } else if ($this['payout_mode'] == 'quarterly') {
+                $mode = 'months';
+            } else if ($this['payout_mode'] == 'semi-annually') {
+                $mode = 'months';
+            } else if ($this['payout_mode'] == 'annually') {
+                $mode = 'year';
+            } else if ($this['payout_mode'] == 'biannually') {
+                $mode = 'years';
+            } else if ($this['payout_mode'] == 'custom') {
+                $mode = $this['months'] * $this['milestones'] > 1 ? 'months' : 'month';
+            } else {
+                $mode = 'month';
+            }
+        }
         return Attribute::get(fn () => $mode);
     }
 

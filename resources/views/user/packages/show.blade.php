@@ -152,7 +152,7 @@
                             <div class="text-gray-600">{{ $package['payout_mode'] }}</div>
 
                             <div class="fw-bolder mt-5">Investment Duration</div>
-                            <div class="text-gray-600">{{ $package['new_duration'] . ($package['new_duration'] > 1 ? ' months' : ' month') }}</div>
+                            <div class="text-gray-600">{{ $package['new_duration'] .' '. $package['new_duration_mode'] }}</div>
                         @endif
                         <!--begin::Details item-->
                         <!--begin::Details item-->
