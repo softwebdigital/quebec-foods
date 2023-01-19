@@ -155,7 +155,7 @@
                             <!--end::Indicator-->
                         </a>
                         @else
-                        <button type="button" disabled class="btn btn-primary w-100">
+                        <button type="button" disabled class="btn btn-primary w-100 mt-3">
                                 <!--begin::Indicator-->
                                 <span class="indicator-label">Closed</span>
                                 <!--end::Indicator-->
