@@ -117,9 +117,9 @@ class Package extends Model
             } else if ($this['payout_mode'] == 'semi-annually') {
                 $duration = 6 * $this['milestones'];
             } else if ($this['payout_mode'] == 'annually') {
-                $duration = 12 * $this['milestones'];
+                $duration = $this['milestones'];
             } else if ($this['payout_mode'] == 'biannually') {
-                $duration = 24 * $this['milestones'];
+                $duration = 2 * $this['milestones'];
             } else if ($this['payout_mode'] == 'custom') {
                 $duration = $this['months'] * $this['milestones'];
             }
@@ -138,7 +138,7 @@ class Package extends Model
             } else if ($this['payout_mode'] == 'semi-annually') {
                 $mode = 'months';
             } else if ($this['payout_mode'] == 'annually') {
-                $mode = 'year';
+                $mode = $this['new_duration'] > 1 ? 'years' : 'year';
             } else if ($this['payout_mode'] == 'biannually') {
                 $mode = 'years';
             } else if ($this['payout_mode'] == 'custom') {
