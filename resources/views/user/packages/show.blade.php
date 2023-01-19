@@ -126,7 +126,7 @@
                         <div class="fw-bolder mt-5">ROI</div>
                         <div class="text-gray-600">{{ $package['roi'] }}%</div>
                         <div class="fw-bolder mt-5">Price per slot</div>
-                        <div class="text-gray-600">{{ getCurrency() . number_format($package['price'], 2) }} ({{ '₦' . \App\Http\Controllers\OnlinePaymentController::getAmountInNaira(number_format($package['price'], 2)) }})</div>
+                        <div class="text-gray-600">{{ getCurrency() . number_format($package['price'], 2) }} ({{ '₦' . number_format(\App\Http\Controllers\OnlinePaymentController::getAmountInNaira($package['price']), 2) }})</div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
                         @if ($package['type'] == 'farm')
