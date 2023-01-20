@@ -187,23 +187,22 @@
                             <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Quebec Food Processing Industrial Park Ltd.</span>
                                 <h3
                                     class="max-w-[400px] text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5 self-start">
-                                    Why Invest in Agro-Food Processing Plants
+                                    Why Invest?
                                 </h3>
                             </div>
                             <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                                Agro-Food processing is a key contributor to South Asia countries and motivates labor
-                                movement from agriculture to manufacturing. This is to reduce the wastage level and fill
-                                the increasing demand for processed food. Nigeria needs adequate infrastructure,
-                                processing & storage facilities, and research/skill development to succeed in this
-                                sector.
+                                Food processing is a key contributor that strengthens the import-export system of countries and
+                                motivates labor movement from agriculture to manufacturing.
                             </p>
                             <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                                Based on this, the scheme is been introduced for Investors across board to take
-                                advantage of the huge opportunities available in the food processing supply chain in
-                                Nigeria, and to collaborate with us and invest their funds in their own little ways in
-                                our planned food production and food processing plants to be set-up in Quebec Agritech
-                                City, agro-processing industrial layout to reduce plant produce wastage and process what
-                                the six (6) geopolitical zones have to offer in the non-oil sector
+                                Nigeria's Food Market is projected <b> to grow by 8.68% </b> (2022-2027) resulting in a market volume of US$290.20bn in 2027.
+                            </p>
+                            <p>
+                                Nigeria is the <b>26th largest economy</b> in the world and the biggest in Africa
+                            </p>
+                            <p>
+                                The market has created opportunities for more investors to explore the agri-food value chain space in
+                                Nigeria.
                             </p>
                         </div>
                     </div>
@@ -222,15 +221,11 @@
                     <span class=" text-lg font-bold lg:text-[22px] lg:leading-h-4l">VENTURE OVERVIEW</span>
                     <h3 class="text-3xl font-bold lg:text-heading-3 lg:leading-h-3">The Agro-Food Processing Venture Scheme (AFPVS)</h3>
                     <p class="text-base text-white lg:text-lg md:text-[20px]">
-                        This investment is absolutely without risk on your part, because investors capital are
-                        collateralized with land backed asset security for 24months or Bank Guarantee (BG), until the
-                        plants
-                        are fully installed and commissioned for production to commence. This means you hold onto the
-                        land
-                        as your security for your invested capital pending when the plants are fully installed and
-                        commissioned for production and you start earning returns on your investment six (6) months
-                        after
-                        commissioning of the plant.
+                        The Processing Plant venture is purpose-driven to provide all classes of investors
+                        the opportunity to invest in the food processing industry through the setting up of
+                        processing plants and storage facilities as an alternative income on a medium to
+                        long-term basis with a core aim of addressing price hiking of processed food
+                        products and creating jobs for agrifood-related graduates globally.
                     </p>
                     <a href="{{ route('login') }}"
                         class="bg-white hidden  text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg lg:flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
@@ -325,19 +320,14 @@
 
                     <div class="w-full py-4 mt-5 lg:mt-2">
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                            The promoters are aware of the importance of building a solid business structure that can
-                            support the picture of the kind of world-class business we want to own and manage, prior to
-                            commencement of operations we are committed to only hiring the best hands that are
-                            qualified,
-                            hardworking, dedicated, customer-centered, and are ready to work to help us build a
-                            prosperous
-                            business that will benefit all our stakeholders. As a matter of fact, a profit-sharing
-                            arrangement will be made available to all our senior management staff and members, it will
-                            be
-                            based on their performances for a period of five(5) years or more, as agreed by the Advisory
-                            Board of the company “QUEBEC FOOD PROCESSING INDUSTRIAL PARKS LTD”.
+                            The promoters are cautious of the importance of building a solid business structure, and they are keen on
+                            engaging and investing in the best hands, qualified, hardworking, dedicated, and customer-centered, to
+                            ensure we build a prosperous business that will benefit all stakeholders, investors, and customers.
                         </p>
-
+                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                            We have a working profit-sharing mechanism for all senior management teams and staff members in the
+                            medium to long term. 
+                        </p>
                     </div>
                 </div>
             </div>

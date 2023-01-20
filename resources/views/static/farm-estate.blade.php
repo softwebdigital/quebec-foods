@@ -179,11 +179,24 @@
               LTD</span> -->
             <h3 class="max-w-[400px] text-primary font-bold text-lg lg:text-heading-4 lg:leading-h-5">Food Production Venture Scheme (FPVS)</h3>
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
-              The Food production Venture Scheme allows an investor to invest into the AGRO-FARM PRODUCE BUYBACK VENTURE SCHEME in the INTEGRATED MECHANIZED FARM ESTATES to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites.
+              The Farm Estate venture provides investors the opportunity to invest in investment-grade farmland in
+              Nigeria and some countries in Africa, Asia, Europe & North America while employing sustainable
+              Mechanized farming practices, impacting the lives of millions of devoted farmers for the cultivation of
+              arable farmland across nations with the expectation of enhancing food security annually by increasing
+              production and reducing post-harvest losses.
             </p>
 
             <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
-              By your Investment, you are eligible to earn for tenure of 4months - 60months depending on your choice of crop or livestock to invest in.
+              The soil of Nigeria and some other nations serve to feed not only everyone in that nation but millions of
+              people around the world through the import-export system.
+            </p>
+
+            <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
+              Moreso, Quebec Food aim is to contribute to nation-building through this platform by supporting the Federal
+              Government of Nigeria initiatives through the Central Bank of Nigeria (CBN) and Nirsal Plc of cultivating 4
+              million hectares of farmland by engaging 8 million Farmers across the country with the expectation of
+              producing about 12 million metric tons of Grain Product Equivalent (GPE) annually over the medium to
+              long term.
             </p>
             <a href="{{ route('login') }}"
               class="flex items-baseline justify-center w-full py-5 my-4 btn-primary md:text-lg md:py-5 lg:px-9 rounded-xl gap-x-10 lg:gap-x-6 lg:w-1/2">
@@ -214,17 +227,21 @@
                         <!-- <span class="py-2 px-4 rounded-3xl bg-primary text-white text-xs lg:text-sm self-start">Quebec Food Processing Industrial Park Ltd.</span> -->
                             <h3
                                 class="max-w-[400px] text-primary font-bold text-2xl lg:text-heading-4 lg:leading-h-5 self-start">
-                                Why Invest In Agro-Farm Produce Buyback Scheme
+                                Why Invest?
                             </h3>
                         </div>
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                          Investing in Agro-Farm Produce Production is a good strategic move. One inevitable fact is that, whether the overall economy is in recession or booming economy, people still have to eat. Because of this, Quebec Food management team & shareholders regards agriculture and farming investments as being recession-proof. 
+                          Investment in Agro-Farm Produce Production is a strategic move due to the increasing world
+                          population by the day.
                         </p>
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                          Furthermore, as the world's population increases, the needs to feed a growing population has become imperative and a serious subject matter to all nations and with a less available land, farming will play an increasingly important role in sustaining global societies and the interest in agricultural activities (Food production), as the investment will continuously grow alongside the world’s population.
+                            Agriculture and farming investments will continue to play a vital role in sustaining global societies
+                            because the need to feed a growing population has become imperative and a serious subject matter to
+                            all nations. 
                         </p>
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                          Based on this, the scheme is been introduced for Investors across board to take advantage of the huge opportunities available in the food production value chain in Nigeria and to collaborate with us by investing their funds in their own little ways in the food production site layout in Quebec Agritech City and Farm Estates, likewise to ensure regular supply of farm produce to sustain production for the Agro-food processing plants to be set-up in the agro-processing industrial layout of the Agritech Cities across Nigeria.
+                            One inevitable fact investors should know is that whether the overall economy of a nation is
+                            experiencing recession or a booming economy, the populace will feed themselves.
                         </p>
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
