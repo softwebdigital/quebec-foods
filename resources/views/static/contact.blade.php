@@ -8,9 +8,9 @@
           <h1 class="max-w-[513px] mx-auto text-3xl  md:text-heading-1 font-bold py-5  md:leading-h-1 text-primary">Become
             a Partner Today.</h1>
           <p class=" text-sm md:text-base text-[#192434]">
-            Quebec Foods is looking for partners who align with our values and are ready to contribute to our mission of
-            bringing investment-grade farmlands for Agricultural production from across the six (6) geo-political zones
-            for investment purpose to ensure food sufficiency across the country.
+            Quebec Foods is looking for strategic partners that align with our values and are willing to contribute to our
+            mission of bringing investment-grade farmlands and the setting up of processing Plants across Africa, Asia,
+            Europe & North America for investment purposes to ensure food sufficiency globally.
           </p>
         </div>
       </section>
@@ -145,9 +145,9 @@
               </div>
               <div class="text-black font-bold flex flex-col">
                 <h4 class="font-bold text-xl lg:text-[28px] lg:leading-10">Call Us</h4>
-                <a class="text-base lg:leading-8  font-medium " href="tel:+2347016358414">Phone 1: +234 701-635-8414</a>
-                <a class="text-base lg:leading-8  font-medium " href="tel:+2348146306036">Phone 2: +234 814-630-6036</a>
-                <a class="text-base lg:leading-8  font-medium " href="tel:+2349095448354">Phone 3: +234 909-544-8354</a>
+                <a class="text-base lg:leading-8  font-medium" href="tel:+2347016358414">Phone 1: +234 701-635-8414</a>
+                <a class="text-base lg:leading-8  font-medium" href="tel:+2348146306036">Phone 2: +234 816-329-2879</a>
+                <a class="text-base lg:leading-8  font-medium" href="tel:+2349095448354">Phone 3: +234 909-544-8354</a>
               </div>
             </div>
             <div class="flex flex-col lg:flex-row  justify-between gap-6">

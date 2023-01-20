@@ -54,9 +54,7 @@
             <div>
               <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Join the Agribusiness profit venture global digital platform
               </h3>
-              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
-                allowing you
-                to zoom in on the trends that matter and make more informed decisions.</p>
+              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple, and easy to use by all classes of investors participating in our regular online zoom investment and healthy dieting food webinars on the global opportunity in food and agribusiness for more informed decision-making.</p>
             </div>
           </div>
           <div
@@ -67,9 +65,7 @@
             <div>
               <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Get Cash Value Returns (CVR) for 3 -10 year(s)
               </h3>
-              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform is intuitive, simple and easy-to-use;
-                allowing you
-                to zoom in on the trends that matter and make more informed decisions.</p>
+              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform allows you to access data-driven insights and learn more about the agri-food supply chain global market demand, export values, and investment opportunities for decision-making on the cash value returns and tenure before investing in any commodity.</p>
             </div>
           </div>
           <div
@@ -80,7 +76,7 @@
             <div>
               <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Partner with Quebec Food Processing today
               </h3>
-              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our business model ensures we work with experienced farmers, and processors to promote scalability and profitability.</p>
+              <p class=" text-sm md:text-base text-[#5B6676] my-2">Our business model enables equity-investment participation for investors to own a stake in our processing plants' startup and expansion to promote scalability and profitability.</p>
             </div>
           </div>
         </div>
@@ -199,7 +195,11 @@
           <div class="">
             <h3 class="text-[#192434] text-4xl font-bold pb-4">Farm Estate</h3>
             <p class="text-[#5B6676] text-base leading-8 py-5 text-justify pr-5">
-            The Food production Venture Scheme allows an investor to invest into the AGRO-FARM PRODUCE BUYBACK VENTURE SCHEME in the INTEGRATED MECHANIZED FARM ESTATES to be set-up in the Food Production layout in Quebec Agritech City and Farm Estates project sites.
+            The Farm Estate venture provides investors the opportunity to invest in investment-grade farmland in
+Nigeria and some countries in Africa, Asia, Europe & North America while employing sustainable
+Mechanized farming practices, impacting the lives of millions of devoted farmers for the cultivation of
+arable farmland across nations with the expectation of enhancing food security annually by increasing
+production and reducing post-harvest losses.
             </p>
           </div>
           <div class="flex justify-between gap-3 lg:w-[80%]">
@@ -233,8 +233,10 @@
           <div>
             <h3 class="text-[#192434] text-4xl font-bold py-4">Processing Plant</h3>
             <p class="text-[#5B6676] text-base leading-8 py-5 text-justify pr-5">
-              Agro-Food processing is a key contributor to South Asia countries and motivates labor movement from
-              agriculture to manufacturing....
+            The Processing Plant venture is purpose-driven to provide all classes of investors the opportunity to invest in
+            the food processing industry through the setting up of processing plants and storage facilities as an
+            alternative income on a medium to long-term basis with a core aim of addressing price hiking of processed
+            food products and creating jobs for agrifood-related graduates globally.
             </p>
           </div>
           <div class="flex justify-between gap-3 lg:w-[80%]">
@@ -268,7 +270,9 @@
           <div>
             <h3 class="text-[#192434] text-4xl font-bold py-4">Tractors</h3>
             <p class="text-[#5B6676] text-base leading-8 py-5 text-justify pr-5">
-            This platform provide investors the opportunity to invest in the Agric mechanization space, thereby making tractors, machinery and trucks available to farmers, while you earn returns with the aim of increasing the numbers of tractors per hectare of farmland in Nigeria. 
+            This platform offers investors the opportunity of investing in the Agric mechanization space, thereby
+            availing tractors, machinery, and trucks for farmers' usage to increase the number of tractors per hectare of
+            farmland with the core aim of boosting agricultural yields.
             </p>
           </div>
           <div class="flex justify-between gap-3 lg:w-[80%]">

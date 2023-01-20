@@ -18,13 +18,14 @@
                             </p>
                             <ul class="list-disc lg:pl-10">
                                 <li class="font-normal text-sm lg:text-lg lg:leading-8 my-2">
-                                    Receive $50 for every person you refer who sponsor a Farm, Processing Plant Startup OR Tractor/Haulage Trucks.
+                                Receive $50 for every person you refer who sponsors a Farm, Processing Plant, OR Tractor/Haulage Truck.
                                 </li>
                                 <li class="font-normal text-sm lg:text-lg lg:leading-8 my-2">
-                               	    Only applies to QUEBEC FOOD AGRIBUSINESS PROFIT VENTURE PAID by sponsors.
+                                Only applies to QUEBEC FOOD AGRIBUSINESS PROFIT VENTURE PAID by sponsors.
                                 </li>
                                 <li class="font-normal text-sm lg:text-lg lg:leading-8 my-2">
-                                	The sponsor must use your referral code upon signing up. You can find or create your own unique referral code by signing into your <strong>QUEBEC FOOD VENTURE ACCOUNT</strong>  and visiting your profile page: 
+                                The sponsor must use your referral code upon signing up. You can find or create your own unique referral
+code by signing into your <b>QUEBEC FOOD VENTURE ACCOUNT</b> and visiting your profile page: 
                                     @guest
                                         <a href="{{ route('profile')}}" class="text-primary font-bold">Click here</a>
                                     @else
@@ -42,7 +43,6 @@
                             <p class="text-sm lg:text-lg lg:leading-8 my-2">
                                 Your <strong>$50</strong> will be applied to your Quebec Food Venture wallet account and you are at your liberty to withdraw from your wallet or you can alternatively choose to have the fund accumulate, pending when the amount can sponsor any venture of your choice, thereafter you will be paid at the end of the venture cycle together with your cash value return (CVR) payout.
                             </p>
-
                             <h3 class="font-bold text-center lg:text-[28px] lg:leading-[32px] lg:py-6">SIGN-UP TODAY <br> & <br> REFER SOMEONE TO START EARNING</h3> <br> 
                             <div class="text-sm lg:text-lg btn-primary text-center p-3 w-80" style="border-radius: 12px; margin: auto;">
                                 <a href="{{ route('dashboard') }}" style="border-radius: 12px;" class="text-sm lg:text-lg btn-primary text-center p-3 w-80">

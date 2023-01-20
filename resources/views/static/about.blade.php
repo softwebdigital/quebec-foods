@@ -7,10 +7,12 @@
           <div class="px-6 py-5 lg:pl-20 md:px-0 md:w-2/5">
             <h1 class="text-4xl lg:text-heading-1 lg:leading-h-1 text-[#192434] font-bold mb-5">About Us</h1>
             <p class="text-base lg:text-xl leading-5 lg:leading-8 text-gray-700 font-normal">
-              Q-BEC Foods is a registered trademark of Quebec Food Processing Industrial Parks Ltd an agro-food, fruits & Vegetables processing firm incorporated in 2020 under the Companies & Allied Matters 1990 of the Federal Republic of Nigeria with  RC: 1710593. 
+              Quebec Food Industrial Parks Ltd is a registered private company limited by shares under the Companies
+              and Allied Matters Act 2020 of the Federal Republic of Nigeria with RC: 1710593. 
             </p>
             <p style="padding-top: 20px" class="text-base lg:text-xl leading-5 lg:leading-8 text-gray-700 font-normal">
-              Quebec Food is envisioned to deal in all-round agricultural production, processing, marketing, distribution and agro-export ventures with the aim of providing angel investors and venture capitalists agribusiness venture investment opportunities to directly impact the lives of devoted farmers, enhance food security by increasing production, reduce post-harvest losses, raise income, ensure only healthy food products are produced and processed.
+            The company is established to grow, process, package, and export healthy food products, with experienced
+            directors and an outstanding management team to pilot its affairs and operations globally.
             </p>
           </div>
           <div class="">
@@ -24,10 +26,9 @@
         <div class="text-center bg-[url('/images/pattern-bg.png')] bg-cover px-10">
           <h2 class="text-4xl md:text-heading-3 font-bold py-5 md:py-10 md:leading-h-3 text-ink">Our Mission</h2>
           <p class="max-w-[978px] mx-auto text-base md:text-2xl text-[#192434]">
-            Our mission is to add mutual value to our partners and transformative capital to farming while setting-up
-            processing plants to open alternative stream of income all class of investors. By driving abundant and
-            creative capital to farmers, giving investors the opportunity to drive agriculture toward sustainability on a
-            massive scale.
+          Our mission is to add mutual value to our partners and transformative capital to Agriculture by converting
+          uncultivated farmlands into Farm Estates and setting up processing plants to open alternative income to all
+          classes of investors with the core aim of driving agriculture toward sustainability on a massive scale.
           </p>
         </div>
       </section>
@@ -36,7 +37,7 @@
           <div class="px-2 py-1 lg:py-0 md:px-0 lg:w-1/2">
                     <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-primary font-bold mb-5">Our Products</h2>
                     <p class="text-sm lg:text-lg text-gray-700 font-normal">
-                    We are committed to cultivating, producing processing, and packaging healthy food products such as; high quality cassava products, fruits, vegetables, and others for Nigeria and the global market.
+                      We are committed to producing, processing, packaging, and exporting healthy food products such as; highquality cassava products, fruits, vegetables, and others for local consumption and the global market.
                     </p>
                   </div>
         </section>
@@ -73,9 +74,9 @@
           <div class="px-6 py-5 lg:py-0 md:px-0 lg:w-1/2">
             <h2 class="text-4xl lg:text-heading-3 lg:leading-h-3 text-[#192434] font-bold mb-5">Our Processes</h2>
             <p class="text-sm lg:text-lg md:text-2xl text-gray-700 font-normal">
-              We enhance Farm produces production, minimize post-harvest losses, process and package, for Export while you
-              also are earning for your own future as an alternative medium of investment and an additional source of
-              income for living.
+            We enhance Farm produce production and minimize post-harvest losses by processing, packaging for local
+            consumption, and exporting while investors earn over medium to long term as an alternative medium of
+            investment.
             </p>
           </div>
           <div
@@ -206,73 +207,59 @@
             <div id="overview" class="tabcontent">
               <h3 class="text-[#192434] font-bold text-3xl lg:text-[40px] leading-[48px] lg:mb-5">Overview</h3>
               <p>
-                  The World Trade Organization ranks Nigeria as the largest food market
-                  in Africa, with significant investment in the local industry and a
-                  high level of imports. The food Production and beverage sector is
-                  estimated to contribute 22.5% of the manufacturing industry value,
-                  and 4.6% of the country's GDP.
+                  The World Trade Organisation ranks Nigeria as the largest foodstuff market in Africa, with significant
+                  investment in the local industry and a high level of imports. The food and beverage (F&B) sector comprise
+                  22.5% of the manufacturing industry, generating an estimated 1.5 million jobs and 4.6% of the country's
+                  GDP.
               </p>
               <p>
-                  In Nigeria, the food processing sector is dominated by small and
-                  medium enterprises, as well as multinational food companies.
-                  Quality standards are usually related to improving the safety of food 
-                  products suitable for consumption in accordance with specifications by food 
-                  regulatory bodies. These standards are essential elements for local and international 
-                  businesses which contribute to economic progress through industrial development and trade. 
+                In the food and beverage (F&B) sector, over 88% of Nigeria's top food and beverage companies have
+                headquarters in Lagos State, Ogun State, Osun State, and Oyo State, each housing one company. 60% of the
+                companies are in the food sub-sector, 28% are in beverages, with a few companies operating across both
+                sub-sectors
               </p>
               <p>
-                  Quebec Food Processing Industrial Parks Ltd plan 
-                  to set-up and manage agro-processing industrial 
-                  parks in all Q-bec Agritech City and Farm Estate 
-                  project sites across Nigeria, based on the 
-                  business model that geared towards creating 
-                  direct/indirect jobs for both local farmers 
-                  and agricultural graduates through setting up 
-                  of enormous processing plants, with a major aim of 
-                  reducing the unemployment rate in Nigeria, and 
-                  bringing-in new investment opportunities in 
-                  the agricultural sector, to gain the trust of 
-                  prospective investors.
+                There are over 50 manufacturing and distribution sub-sectors within the Food & Beverages sector. Among
+                the top 25 companies, the most common segment in the food sub-sector is grain products, with a few food
+                companies multi-segmented, producing a variety of foodstuffs.
               </p>
               <p>
-                  Quebec Food has its own unique investment offers 
-                  and opportunities for all class of investors 
-                  in the agri-food value chain sector that 
-                  provides the rare privilege of having a large 
-                  professional resource pool. This ensures the 
-                  running of the Unit with well-founded 
-                  management objectives and policy directives, 
-                  fostering an environment which encourages 
-                  sustained efficiency at all levels.
+                In the beverage sub-sector, few companies produce unspecified non-alcoholic drinks, with some producing
+                alcoholic drinks.
               </p>
               <p>
-                  Quebec Food is strategically positioned to take 
-                  part in the developments that are taking 
-                  place across the food chain in Nigeria 
-                  with the aim of becoming one of the leading 
-                  and most preferred agro producing and agro-food 
-                  processing company in the country that would 
-                  meet worldwide market demands and maintain a 
-                  profitable cash value return (CVR) for all its 
-                  investors.
+                Quality standards are usually related to improving the safety of food products suitable for consumption
+                following specifications by food regulatory bodies; these standards are necessary for international businesses
+                and contribute to economic progress through industrial development and trade.
+
               </p>
               <p>
-                  As Quebec Food is working hard to 
-                  ensure customers in the food, beverages, 
-                  confectioneries, paper, textiles, and 
-                  pharmaceuticals specific requirements is 
-                  achieved to enable their produced products 
-                  meets consumer’s needs in the Nigerian and 
-                  Export Market. 
+                Quebec Food Processing Industrial Parks Ltd's business model is geared towards engaging smallholder
+                farmers and job creation for agri-food related graduates through this sector by setting up processing plants
+                and Mechanized Farm Estate globally, focusing on Food, Fruits & vegetable crops, with a core aim of
+                addressing price hiking of farm produces and processed finished products globally.
               </p>
               <p>
-                  Above all Quebec Food promoters are determined to improve 
-                  on processed food and production in Nigeria through the use 
-                  Total Quality Management (TQM) technique and 
-                  the use of computerized systems to produce 
-                  high quality and high value products while 
-                  at the same time reduce the wastage of farm
-                  produce, production time and cost.
+                  Quebec Food has positioned itself to partake in the developments that are taking place across the food value
+                  chain with a core aim of becoming one of the most preferred agro-producing and agro-food processing firms
+                  that would meet worldwide market quality demand and maintain profitable cash value return (CVR) for all
+                  its investors.
+              </p>
+              <p>
+                  The unique investment opportunities in the company are available to all classes of investors; to ensure that
+                  each processing unit and Farm Estate are fully funded and properly managed to encourage sustainability and
+                  efficiency at all levels.
+              </p>
+              <p>
+                As a firm, we have a mechanism in place to ensure customers in the food, beverages, confectioneries, paper,
+                textiles, and pharmaceuticals specific requirements are achieved for their products to meet consumer’s needs
+                globally.
+              </p>
+              <p>
+                Above all promoter's determination is to improve food production and processed food products through the
+                use of the Total Quality Management (TQM) technique and the use of computerized systems to produce
+                high-quality and high-value products with the core aim of reducing the wastage of farm produce, production
+                time, and cost.
               </p>
             </div>
             <div id="infrastructure" class="tabcontent">
@@ -280,39 +267,54 @@
               <h4 class="lg:text-[28px]">Food Processing</h4>
               <img src="./assets/media/about-us-infastructure.jpeg" alt="bg" class="md:w-[55%]" style="margin: 30px 0px;">
               <p>
-                Q-bec Foods has taken on state of the art technology for processing of the cassava value chain, fruits, vegetables and spices being one of the agricultural sub-sectors in West and Central Africa that has great potential in terms of improving productivity, creating added value and developing regional trade. 
+                Quebec Foods has taken on the state-of-the-art technology for processing the cassava value chain, fruits,
+                vegetables, and spices being one of the agricultural sub-sectors in West and Central Africa that has great
+                potential in terms of improving productivity, creating added value, and developing regional trade.
               </p>
               <p>
-                The Plants design are on-going by Henan Jinrui Food Engineering Ltd and  Zhengzhou jinghua industry co., Ltd, for processing aseptic packing of various cassava food products; While Alfa Laval Sweden for processing & aseptic packing of various fruits and vegetables.
+                The Plants design is ongoing by <b>Zhengzhou jinghua industry co., Ltd,</b> for processing aseptic packing of
+                various cassava food products; While Alfa Laval Sweden is for processing & aseptic packing of various
+                fruits and vegetables.
               </p>
               <p>
-                All Q-bec Foods product will be packed directly into aseptic packs to ensure a long shelf life with complete preservatives or refrigeration where and when necessary. This is also to protect the bags against flex cracking and pin hole damage.
+                  All Quebec Foods products will be packed directly into aseptic packs to ensure a long shelf life with
+                  complete preservatives or refrigeration where and when necessary. This is also to protect the bags against
+                  flex cracking and pinhole damage.
               </p>
               <p>
-                All processing operations like extraction, refining, concentration, sterilization and aseptic packing are automatic and take place in sealed systems for total hygiene. 
+              All processing operations like extraction, refining, concentration, sterilization, and aseptic packaging are
+automatic and take place in sealed systems for total hygiene.
               </p>
 
-              <p>Computerized process controls is put in place to ensure continuous maintenance of parameters that are essential to the preservation of color, flavor and taste, to meet international standards.</p>
+              <p>Computerized process controls are put in place to ensure continuous maintenance of parameters that are
+essential to the preservation of color, flavor, and taste, to meet international standards.</p>
 
-              <h4 class="lg:text-[28px]">Food Production</h4>
+              <h4 class="lg:text-[28px]"><b>Food Production</b></h4>
               
               <p>
-                  Q-bec Foods has designed Integrated Mechanized Farm Estates model to create a sustainable linkage with the growers of agro-farm produces, by adopting innovative practices like contract mechanized farming, across the states and communities within and outside processing Units based on mutual trust and understanding. 
+                Quebec Foods has designed an Integrated Mechanized Farm Estates model to create a sustainable linkage
+                with smallholder farmers and growers of agro-farm produce by adopting innovative practices like contract
+                farming across the states and communities within and outside processing hubs based on mutual trust and
+                understanding.
               </p>
               <p>
-                  This ensures complete traceability of the farm produce, right from the growers Field during production and processing until in the storage facility; this is a highly desirable phenomenon in Nigerian food industry.
+                Our model ensures complete traceability of the farm produce from the farmer's and grower's fields during
+                production to the storage facility for processing; this is a highly desirable phenomenon in the food industry.
               </p>
             </div>
             <div id="products" class="tabcontent">
               <h3 class="text-[#192434] font-bold text-[40px] leading-[48px] lg:mb-5">Products</h3>
               <p>
-                Q-bec Foods has distinguished itself to bridge the gap in the processing of various cassava multiples of food products, including Garri (Fried Cassava Granules), Fufu (Cassava Dough), Lafun (Fermented Cassava Flour), Tapioca (Cassava Flakes), High Quality Cassava Starch (HQCS), High Quality Cassava flour (HQCF), animal feed, alcohol, starches for food, beverages, confectioneries, paper, textiles, adhesives and in pharmaceuticals;
+                Quebec Food Processing Industrial Parks Ltd has distinguished itself with a registered trademark <b>“Q-BEC
+                FOODS”</b> to bridge the gap in the processing of various cassava multiples of food products, including Garri
+                (Fried Cassava Granules), Fufu (Cassava Dough), Lafun (Fermented Cassava Flour), Tapioca (Cassava
+                Flakes), High-Quality Cassava Starch (HQCS), High-Quality Cassava flour (HQCF), animal feed, alcohol,
+                starches for food, beverages, confectioneries, paper, textiles, adhesives and in pharmaceuticals;
               </p>
               <p>
-                Q-bec Foods has also distinguished itself to bridge the gap in the processing of Fruits & Vegetables into Pulses, Pastes and Concentrates, and also making special products like Ginger Paste, Garlic Paste and other spices based products. We also offer variety blends of juice across the country and to the International markets.
-              </p>
-              <p>
-                Q-bec Foods have expertise to process fruits like Onion, Tomato, Mango, Cashew, Guava, Papaya, Tamarind, pawpaw etc. to the desired specifications of the customer requirement. 
+                Q-bec Foods is determined to bridge the gap in processing Fruits & Vegetables into Pulses, Pastes, and
+                Concentrates, and blend juice across countries and International markets to the desired specifications of the
+                customer's requirement. 
               </p>
             </div>
             <div id="quality-assurance" class="tabcontent">
@@ -334,10 +336,21 @@
               <br>
               <!-- <p class="pb-3">2.5.1</p> <br> -->
               <p class="pt-2 pb-4 font-bold">Anchor Investors & Private Partnership</p>
-              <p class="pt-2 pb-4">Q-bec Foods have initiated plans to welcome anchor Investors, angel investor’s and venture capitalists to invest in Q-bec Agritech City & Farm Estates Project sites across the selected zones in Nigeria. This is to ensure the vision laid out by its promoters of the on-going development plans for Q-bec Agritech City & Farm Estates project model is achieved.  </p>
+              <p class="pt-2 pb-4">Q-bec Foods have initiated plans to welcome Anchor Investors, angel investor, Equity – Investor and
+                venture capital investors to invest in Q-bec Agritech City & Farm Estates Project sites across the selected
+                zones in Nigeria. This is to ensure the vision laid out by its promoters of the ongoing development plans for
+                Q-bec Agritech City & Farm Estates project model is achieved across Africa, Asia, Europe and North
+                America.
+              </p>
               <!-- <p class="pb-3">2.5.2</p> <br> -->
               <p class="pt-2 pb-4 font-bold">Government Agriculture Intervention Programmes.</p>
-              <p class="pt-2 pb-4">Quebec Food promoters aim is to contribute to nation building through this platform (Integrated Mechanized Farm Estates) by supporting the Federal Government initiatives through the Central Bank of Nigeria (CBN) and Nirsal Plc, of cultivating 4 million hectares of farmland by engaging 8 million Farmers across the country with expectation of producing about 12 million metric tonnes of Grain Product Equivalent (GPE) annually over the medium to long term.</p>
+              <p class="pt-2 pb-4">
+                Our promoters aim to contribute to nation-building through Integrated Mechanized Farm Estates and
+                Processing Plant investment model by liaising with the Governments of countries of interest and supporting
+                their food security initiatives through the cultivation of a minimum of one million hectares of arable
+                farmland, engaging 2 million Farmers across such countries with the expectation of producing about 6
+                million metric tonnes of food Product Equivalent (FPE) annually over the medium to long term.
+              </p>
               <a href="https://quebecgroups.com/agrictech-city/" target="_blank"
                 class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
                 <span>

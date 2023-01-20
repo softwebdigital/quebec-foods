@@ -8,11 +8,18 @@
                 <div class="py-2 md:px-0 md:w-2/5 ">
                     <div class="w-full py-6 md:pr-10 lg:mt-10 ">
                         <h1 class="mb-3 text-3xl font-bold leading-tight text-ink md:leading-h-2 md:text-heading-2">
-                        Invest in our Agric Tractor & Agro- haulage Venture scheme
+                            Agric Tractor & Agro- haulage Venture
                         </h1>
+                        <h2 class="text-xl font-bold text-primary" style="font-size: 25px; padding-top: 50px;">Overview</h2>
                         <p class="inline-block py-1 text-sm text-ink md:text-[22px] md:leading-h-5 md:py-4">
-                            Open an account and start investing in our tractor venture scheme in <span
-                                class="font-bold text-primary">just 5 minutes.</span>
+                            Financing tractors for smallholder farmers has been a daunting challenge due to the rise in the exchange rate,
+                            to the hurdles of meeting financial institutions' requirements by smallholder farmers across Nigeria and
+                            Africa who have not been able to own tractors
+                        </p>
+                        <p class="inline-block py-1 text-sm text-ink md:text-[22px] md:leading-h-5 md:py-4">
+                            This platform offers investors the opportunity of investing in the Agric mechanization space, thereby
+                            availing tractors, machinery, and trucks for farmers' usage to increase the number of tractors per hectare of
+                            farmland with the core aim of boosting agricultural yields.
                         </p>
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
@@ -188,10 +195,21 @@
                             </h3>
                         </div>
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                        The growth of agricultural mechanization is low in sub-Saharan Africa and is estimated at 1.2% in Nigeria. The global agricultural tractors market was valued at USD 55.37 billion in 2018 and is expected to grow at a CAGR of 5.8% to USD77.74 billion by 2024. North America dominates the global agricultural tractors market, at 15.2% of the global market share in 2014, led by the USA and Canada.
+                            The agrifood value chain demand and supply are gradually affected at a large scale. Farmers now
+                            depend on options to ease crop cultivation, and it has increased the demand for agricultural tractors
+                            globally
                         </p>
                         <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                        Nigeria requires 1.5 million tractors to be considered “Mechanized” but has fewer than 5,000 functional tractors in circulation.  
+                            The global agricultural tractors market will exceed a value of US$ 118.37 Bn by the end of 2031  
+                        </p>
+                        <p>
+                            The popularity of self-driving tractors has increased in recent years owing to the boosting of
+                            agricultural yields due to the help of technological advancements in the agriculture industry.
+                        </p>
+                        <p>
+                            The untapped potential for <b>farm mechanization</b> in low- and middle-income <b>countries</b> has created
+                            investment opportunities for investors to explore the agricultural mechanization space in sub-Saharan
+                            Africa.
                         </p>
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
@@ -256,7 +274,10 @@
                 <div class="pt-16 max-w-[867px] mx-auto text-center">
                     <h4 class="py-6 text-4xl font-bold text-ink lg:leading-h-3 lg:text-heading-2">Ready to Start
                         Investing?</h4>
-                    <p class="md:text-[22px] md:leading-h-5 text-[#5B6676]">Register and create a new passive income stream with up to 12.5% cash value return (CVR) per annum for a period of 5years or 10years depending on your choice of contract tenure.</p>
+                    <p class="md:text-[22px] md:leading-h-5 text-[#5B6676]">
+                        Register and create a new passive income stream with up to 12.5% cash value return (CVR) annually over
+                        the medium to long term, depending on your choice of contract tenure.
+                    </p>
                 </div>
             </div>
             <div
