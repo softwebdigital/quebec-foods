@@ -260,7 +260,7 @@
                     </div>
                 </div>
                 <div class="">
-                    <img src="/static-assets/tractor-4.c63522e3.png" alt="">
+                    <img src="/static-assets/quebec-111.png" alt="">
                 </div>
             </div>
         </div>

@@ -16,7 +16,7 @@
             </p>
           </div>
           <div class="">
-            <img src="/static-assets/farmer.aa225f03.png" alt="">
+            <img src="/static-assets/quebec-103.png" alt="">
           </div>
         </div>
       </section>
