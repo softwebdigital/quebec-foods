@@ -89,7 +89,7 @@ class OnlinePaymentController extends Controller
             }else{
                 $datum['name'] = $payment->user['name'] ?? '---';
             }
-            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . getCurrency() .' '.number_format($payment['amount']).'</span>';
+            $datum['amount'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . getCurrency() .' '.number_format($payment['amount'], 2).'</span>';
             $datum['reference'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$payment['reference'].'</span>';
             $datum['date'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">'.$payment['created_at']->format('M d, Y \a\t h:i A').'</span>';
             $datum['payment type'] = '<span class="text-gray-600 fw-bolder d-block fs-6">'.$payment['type'].'</span>';
@@ -126,19 +126,21 @@ class OnlinePaymentController extends Controller
             $paymentDetails = Http::withHeaders([
                 'Authorization' => 'Bearer ' . env('FLW_SECRET_KEY')
             ])->get('https://api.flutterwave.com/v3/transactions/verify_by_reference?tx_ref=' . $payment['reference']);
-
         else
             $paymentDetails = Http::withHeaders([
                 'Authorization' => 'Bearer ' . env('PAYSTACK_SECRET_KEY')
             ])->get('https://api.paystack.co/transaction/verify/' . $payment['reference']);
+
         if ($payment['status'] == 'pending' && isset($paymentDetails['status'])) {
             $res = $paymentDetails['data'] ?? null;
             if (isset($res) && ($res['status'] == 'successful' || $res['status'] == 'success')) {
                 if ($payment['gateway'] == 'flutterwave')
-                \App\Http\Controllers\OnlinePaymentController::processTransaction($payment, json_decode($payment['meta'], true));
+                    \App\Http\Controllers\OnlinePaymentController::processTransaction($payment, json_decode($payment['meta'], true));
+                else
+                    \App\Http\Controllers\OnlinePaymentController::processTransaction($payment, $res['metadata']);
             }
         }
-        if ($payment['status'] != "success") {
+        if ($payment['status'] != "success" && $payment['status'] != "successful") {
             $payment->update(['status' => 'failed']);
         }
         return back()->with('success', 'Payment resolved successfully');

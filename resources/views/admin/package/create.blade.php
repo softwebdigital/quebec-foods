@@ -110,7 +110,7 @@
                                         console.error( error );
                                     } );
                             </script>
-                            
+
                             @error('description')
                             <span class="text-danger small" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -257,8 +257,16 @@
                                     <option @if(old('payout_mode') == 'semi-annually') selected @endif value="semi-annually">Semi Annually (Half a year)</option>
                                     <option @if(old('payout_mode') == 'annually') selected @endif value="annually">Annually</option>
                                     <option @if(old('payout_mode') == 'biannually') selected @endif value="biannually">Biannually</option>
+                                    <option @if(old('payout_mode') == 'custom') selected @endif value="custom">Custom</option>
                                 </select>
                                 @error('payout_mode')
+                                <span class="text-danger small" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+
+                                <input type="number" onkeyup="getVals();" step="none" placeholder="No. of Months" value="{{ old("months") }}" class="form-control form-control-solid mt-5" name="months" id="months" style="display: @error('months') block @else none @endif">
+                                @error('months')
                                 <span class="text-danger small" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -347,8 +355,9 @@
         const sT = document.getElementById('statement');
         const milestones = document.getElementById('milestones').value;
         const pM = document.getElementById('payoutMode').value;
+        const months = document.getElementById('months');
 
-        if (!(milestones && pM)) {
+        if (!(milestones && pM) || (pM === "custom" && !months.value.length)) {
             sT.style.display = 'none'
         } else {
             sT.style.display = 'block'
@@ -368,6 +377,14 @@
         }
         if (pM == "biannually") {
             yV.innerText = (milestones * 2) + " years"
+        }
+        if (pM == "custom") {
+            months.style.display = 'block';
+            if (months.value.length > 0) yV.innerText = (months.value + " month" + (months.value > 0 ? "s" : ''));
+            else sT.style.display = 'none';
+        }
+        else {
+            months.style.display = 'none';
         }
 
     }

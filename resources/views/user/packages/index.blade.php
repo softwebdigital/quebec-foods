@@ -192,9 +192,9 @@
                     <th class="text-muted text-nowrap">Name</th>
                     <th class="text-muted text-nowrap">ROI in %</th>
                     <th class="text-muted text-nowrap">Price per slot</th>
-                    <th class="text-muted text-nowrap">Start date</th>
+{{--                    <th class="text-muted text-nowrap">Start date</th>--}}
                     <th class="text-muted text-nowrap">Category</th>
-                    <th class="text-muted text-nowrap">Investments</th>
+{{--                    <th class="text-muted text-nowrap">Investments</th>--}}
                     <th class="text-muted text-nowrap">Status</th>
                     <th class="text-muted text-end rounded-end">Action</th>
                 </tr>
@@ -208,10 +208,10 @@
                         <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6 text-nowrap">{{ $key + 1 }}</span></td>
                         <td><a href="{{ route('packages.show', ['package' => $package['id']]) }}" class="fw-bolder d-block fs-6 text-nowrap">{{ $package['name'] }}</a></td>
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['roi'] }}%</span></td>
-                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ getCurrency() }} {{ number_format($package['price']) }}</span></td>
-                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</span></td>
+                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ getCurrency() }} {{ number_format($package['price'], 2) }}</span></td>
+{{--                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</span></td>--}}
                         <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ ucwords($package['type'])}}</span></td>
-                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-center">{{ $package['total_investments'] }}</span></td>
+{{--                        <td><span class="text-gray-600 fw-bolder d-block fs-6 text-center">{{ $package['total_investments'] }}</span></td>--}}
                         <td>
                             @if ($package['status'] == 'open')
                                 <span class="badge badge-pill badge-success">Open</span>

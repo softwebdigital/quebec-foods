@@ -19,7 +19,7 @@
     }
 </style>
     <!--begin::Sidebar-->
-    <div class="section-half flex-column flex-lg-row-auto mb-10" style="margin-right: 10px;"">
+    <div class="section-half flex-column flex-lg-row-auto mb-10" style="margin-right: 10px;">
         <!--begin::Card-->
         <div class="card mb-5 mb-xl-8">
             <!--begin::Card body-->
@@ -75,7 +75,7 @@
                     <!--end::Info-->
                 </div>
                 <!-- <div class="separator mb-md-10"></div> -->
-                
+
             </div>
             <!--end::Card body-->
         </div>
@@ -88,7 +88,7 @@
         <div class="card mb-5 mb-xl-8">
             <!--begin::Card body-->
             <div class="card-body">
-                
+
                 <!--begin::Details toggle-->
                 <div class="d-flex flex-stack fs-4 py-3">
                     <div class="fw-bolder rotate collapsible" data-bs-toggle="collapse" href="#kt_user_view_details" role="button" aria-expanded="false" aria-controls="kt_user_view_details">Packages Details

@@ -47,7 +47,7 @@
         <!--begin::Input group-->
         <div class="fv-row mb-7">
             <label class="required form-label fw-bolder text-dark fs-6">Email</label>
-            <input class="form-control form-control-lg form-control-solid" type="email" placeholder="" name="email" name="email" value="{{ old('email') }}" required autocomplete="email"/>
+            <input class="form-control form-control-lg form-control-solid" type="email" placeholder="" name="email" value="{{ old('email') }}" required autocomplete="email"/>
             @error('email')
                 <span class="text-danger small">
                     <span>{{ $message }}</span>
@@ -99,6 +99,21 @@
             </div>
             <!--end::Wrapper-->
         </div>
+        <!--end::Input group=-->
+        <!--begin::Input group-->
+{{--        <div class="fv-row mb-10">--}}
+{{--            <label class="required form-label fw-bolder text-dark fs-6">Currency</label>--}}
+{{--            <select class="form-control form-control-lg form-control-solid" name="currency" required>--}}
+{{--                <option value="">Select Currency</option>--}}
+{{--                <option value="USD" {{ old('currency') == 'USD' ? 'selected' : '' }}>USD ($)</option>--}}
+{{--                <option value="NGN" {{ old('currency') == 'NGN' ? 'selected' : '' }}>Naira (₦)</option>--}}
+{{--            </select>--}}
+{{--            @error('currency')--}}
+{{--            <span class="text-danger small">--}}
+{{--                    <span>{{ $message }}</span>--}}
+{{--                </span>--}}
+{{--            @enderror--}}
+{{--        </div>--}}
         <!--end::Input group=-->
         <div class="fv-row mb-5">
             <label class="form-label fw-bolder text-dark fs-6">Referral Code<span class="text-muted fw-bold">(Optional)</span></label>

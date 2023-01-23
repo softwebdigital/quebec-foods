@@ -627,14 +627,14 @@
                             <h6 class="mt-5">Select Gateway.</h6>
 {{--                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>--}}
                             <div class="d-flex justify-content-center">
-                                <!-- <div id="plantGatewayFlw" class="mr-10 active">
+                                <!-- <div id="plantGatewayFlw" class="mr-10">
                                     <img src="{{ asset('assets/photos/flutterwave.png') }}" class="img-fluid" width="150" alt="Secured-by-flutterwave" style="cursor: pointer">
                                 </div> -->
-                                <div id="plantGatewayPaystack" class="ml-10">
+                                <div id="plantGatewayPaystack" class="ml-10 active">
                                     <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
                                 </div>
                             </div>
-                            <input type="hidden" id="plantGatewayValue" name="gateway" value="flutterwave">
+                            <input type="hidden" id="plantGatewayValue" name="gateway" value="paystack">
                             <div id="plantGatewayError"></div>
                         </div>
                         <div id="plantBankDetails" style="display: none" class="alert bg-secondary">
@@ -1355,7 +1355,8 @@
         });
 
         function getAmountInNaira(amount) {
-            return amount * {{ \App\Models\Setting::first()['usd_to_ngn'] + \App\Models\Setting::first()['rate_plus'] }}
+            const settings = {!! \App\Models\Setting::first() !!};
+            return amount * (settings['usd_to_ngn'] + settings['rate_plus']);
         }
 
         function numberFormat(amount, decimal = ".", thousands = ",") {

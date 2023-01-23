@@ -2,6 +2,11 @@
 
 namespace App\Models;
 
+use App\Notifications\EmailVerificationNotification;
+use App\Notifications\PasswordResetNotification;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Illuminate\Support\Carbon;
 use Laravel\Sanctum\HasApiTokens;
@@ -39,7 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public static $countries = [
+    public static array $countries = [
         ['id' => 1,'code' => 'AF' ,'name' => "Afghanistan",'phonecode' => 93],
         ['id' => 2,'code' => 'AL' ,'name' => "Albania",'phonecode' => 355],
         ['id' => 3,'code' => 'DZ' ,'name' => "Algeria",'phonecode' => 213],
@@ -289,66 +294,64 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     // Users relationship with Investments.
-    public function investments()
+    public function investments(): HasMany
     {
         return $this->hasMany(Investment::class);
     }
     // Users relationships with wallets
-    public function wallet()
+    public function wallet(): HasOne
     {
         return $this->hasOne(Wallet::class);
     }
     // Users relationships with transactions
-    public function transactions()
+    public function transactions(): HasMany
     {
         return $this->hasMany(Transaction::class);
     }
     // Users relationships with Bank Accounts.
-    public function bankAccounts()
+    public function bankAccounts(): HasMany
     {
         return $this->hasMany(BankAccounts::class);
     }
     // Users relationships with Documents.
-    public function documents()
+    public function documents(): HasMany
     {
         return $this->hasMany(Document::class);
     }
 
-    public function referrals(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function referrals(): HasMany
     {
         return $this->hasMany(Referral::class, 'referee_id');
     }
 
-    public function payments(): \Illuminate\Database\Eloquent\Relations\HasMany
+    public function payments(): HasMany
     {
         return $this->hasMany(OnlinePayment::class);
     }
 
-    public function getNameAttribute()
+    public function getNameAttribute(): string
     {
-        return $this->first_name . ' ' .$this->last_name;
+        return $this->attributes['first_name'] . ' ' .$this->attributes['last_name'];
     }
 
-    public static function generateUserCode()
+    public static function generateUserCode(): string
     {
-        $str = "";
         do {
             $str = Str::random(10);
-        } while (parent::where('code', $str)->count() > 0);
+        } while (parent::query()->where('code', $str)->count() > 0);
         return $str;
     }
 
-    public function hasSufficientBalanceForTransaction($amount)
+    public function hasSufficientBalanceForTransaction($amount): bool
     {
-        return $this->wallet->balance >= $amount;
+        return $this->wallet()->first()->balance >= $amount;
     }
 
     public static function getRefCode(): int
     {
-        $code = '';
         do {
             $code = mt_rand(000000000, 999999999);
-        } while (User::where('ref_code', $code)->count() > 0);
+        } while (User::query()->where('ref_code', $code)->count() > 0);
         return abs($code);
     }
 
@@ -358,16 +361,24 @@ class User extends Authenticatable implements MustVerifyEmail
     public function generateTwoFactorCode()
     {
         $this->timestamps = false;
-        $this->two_factor_code = rand(100000, 999999);
-        $this->two_factor_expires_at = now()->addMinutes(10);
+        $this->attributes['two_factor_code'] = rand(100000, 999999);
+        $this->attributes['two_factor_expires_at'] = now()->addMinutes(10);
         $this->save();
     }
 
     public function generateWithdrawalToken()
     {
         $this->timestamps = false;
-        $this->withdrawal_otp = rand(100000, 999999);
-        $this->withdrawal_otp_expiry = now()->addMinutes(10);
+        $this->attributes['withdrawal_otp'] = rand(100000, 999999);
+        $this->attributes['withdrawal_otp_expiry'] = now()->addMinutes(10);
+        $this->save();
+    }
+
+    public function generatePasswordResetToken()
+    {
+        $this->timestamps = false;
+        $this->attributes['reset_otp'] = rand(100000, 999999);
+        $this->attributes['reset_otp_expiry'] = now()->addMinutes(10);
         $this->save();
     }
 
@@ -377,15 +388,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function resetTwoFactorCode()
     {
         $this->timestamps = false;
-        $this->two_factor_code = null;
-        $this->two_factor_expires_at = null;
+        $this->attributes['two_factor_code'] = null;
+        $this->attributes['two_factor_expires_at'] = null;
         $this->save();
     }
     public function resetWithdrawalToken()
     {
         $this->timestamps = false;
-        $this->withdrawal_otp = null;
-        $this->withdrawal_otp_expiry = null;
+        $this->attributes['withdrawal_otp'] = null;
+        $this->attributes['withdrawal_otp_expiry'] = null;
         $this->save();
     }
 
@@ -393,5 +404,23 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $newDate = date('Y-m-d H:i:s', strtotime(Carbon::parse($this['created_at']).' + '.$duration));
         return is_null($this['email_verified_at']) && Carbon::make($newDate)->lt(now());
+    }
+
+    public function sendEmailVerificationNotificationAPI()
+    {
+        $token = (string) mt_rand(100000, 999999);
+        $this['otp'] = Hash::make($token);
+        $this['otp_expiry'] = now()->addMinutes(10)->format('Y-m-d H:i:s');
+        $this->save();
+        $this->notify(new EmailVerificationNotification($token));
+    }
+
+    public function sendPasswordResetNotificationAPI()
+    {
+        $token = (string) mt_rand(100000, 999999);
+        $this['reset_otp'] = Hash::make($token);
+        $this['reset_otp_expiry'] = now()->addMinutes(10)->format('Y-m-d H:i:s');
+        $this->save();
+        $this->notify(new PasswordResetNotification($token));
     }
 }

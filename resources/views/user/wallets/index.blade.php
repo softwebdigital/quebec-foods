@@ -84,7 +84,8 @@
                         <div class="d-flex text-center flex-column text-white pt-8">
                             <span class="fw-bold fs-7">Your Balance</span>
                             <span class="fs-2x fw-bolder">{{ getCurrency() }}
-                            <span data-kt-countup="true" data-kt-countup-value="{{ number_format($data['wallet']) }}" class="fw-bolder fs-2x pt-1">{{ number_format($data['wallet']) }}</span>
+                                <span data-kt-countup="true" data-kt-countup-value="{{ number_format($data['wallet'], 2) }}" class="fw-bolder fs-2x pt-1">{{ number_format($data['wallet'], 2) }}</span>
+                            </span>
                         </div>
                         <!--end::Balance-->
                     </div>

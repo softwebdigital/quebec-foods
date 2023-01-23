@@ -43,7 +43,7 @@ class TransactionExport implements FromArray, WithHeadings
         return $transactions->map(function($transaction) {
             return [
                 'full_name' => ucwords($transaction->user['name']),
-                'amount' => getCurrency().number_format($transaction['amount']),
+                'amount' => getCurrency().number_format($transaction['amount'], 2),
                 'transaction_type' => ucfirst($transaction['type']),
                 'description' => $transaction['description'],
                 'channel' => ucfirst($transaction['channel']),

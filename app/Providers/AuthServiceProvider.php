@@ -2,6 +2,14 @@
 
 namespace App\Providers;
 
+use App\Models\Document;
+use App\Models\Investment;
+use App\Models\Transaction;
+use App\Policies\DocumentPolicy;
+use App\Policies\InvestmentPolicy;
+use App\Policies\ModelPolicy;
+use App\Policies\TransactionPolicy;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,7 +21,10 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Model::class => ModelPolicy::class,
+        Document::class => DocumentPolicy::class,
+        Investment::class => InvestmentPolicy::class,
+        Transaction::class => TransactionPolicy::class
     ];
 
     /**
@@ -21,7 +32,7 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerPolicies();
 

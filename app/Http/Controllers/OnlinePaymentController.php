@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Package;
 use App\Models\Setting;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\OnlinePayment;
@@ -13,12 +14,12 @@ use Illuminate\Support\Facades\Http;
 
 class OnlinePaymentController extends Controller
 {
-    public static function initializeOnlineTransaction($amount, $data, $gateway, $currency = 'USD'): RedirectResponse
+    public static function initializeOnlineTransaction($amount, $data, $gateway, $currency = 'USD', $api = false): JsonResponse|RedirectResponse
     {
         $data['channel'] = 'web';
-        if ($gateway == 'flutterwave' || $currency == 'USD') {
+        if ($gateway == 'flutterwave') {
             $paymentData = [
-                'amount' => $currency == 'USD' ? $amount : self::getAmountInNaira($amount),
+                'amount' => $currency == 'USD' ? $amount : self::getAmountInNaira($amount, auth()->user()),
                 'tx_ref' => self::genTranxRef(),
                 'currency' => $currency,
                 'redirect_url' => route('payment.callback', 'flw'),
@@ -33,6 +34,22 @@ class OnlinePaymentController extends Controller
                 ]
             ];
 
+            if ($api) {
+                $data['channel'] = 'mobile';
+                auth()->user()->payments()->create([
+                    'reference' => $paymentData['tx_ref'],
+                    'amount' => $amount,
+                    'amount_in_naira' => self::getAmountInNaira($amount, auth()->user()),
+                    'type' => $data['type'],
+                    'gateway' => 'flutterwave',
+                    'meta' => json_encode($data)
+                ]);
+                return (new OnlinePaymentController)->success(
+                    'Payment initialized successfully',
+                    ['reference' => $paymentData['tx_ref'], 'amount' => $amount, 'currency' => $paymentData['currency']]
+                );
+            }
+
             try {
                 $response = json_decode(Http::withHeaders(['Authorization' => 'Bearer '.env('FLW_SECRET_KEY')])
                     ->post('https://api.flutterwave.com/v3/payments', $paymentData), true);
@@ -40,7 +57,7 @@ class OnlinePaymentController extends Controller
                     auth()->user()->payments()->create([
                         'reference' => $paymentData['tx_ref'],
                         'amount' => $amount,
-                        'amount_in_naira' => self::getAmountInNaira($amount),
+                        'amount_in_naira' => self::getAmountInNaira($amount, auth()->user()),
                         'type' => $data['type'],
                         'gateway' => 'flutterwave',
                         'meta' => json_encode($data)
@@ -52,16 +69,18 @@ class OnlinePaymentController extends Controller
                 return back()->with('error', 'Could not start transaction, try again.');
             }
         } else {
-            $totalAmount = self::getAmountInNaira($amount);
+            $totalAmount = self::getAmountInNaira($amount, auth()->user());
             if ($totalAmount >= 10000000)
-                return redirect()->route('dashboard')->with('error', "We can\'t process card payment of {$currency}10,000,000 and above");
+                return redirect()->route('dashboard')->with('error', "We can\'t process card payment of ₦10,000,000 and above");
 
             // return back()->with('info', 'Card payment through paystack is currently disabled, try another payment gateway.');
+            if ($api) $data['channel'] = 'mobile';
+
             $paymentData = [
-                'amount' => $totalAmount * 100,
+                'amount' => ($currency == 'USD' ? $amount : self::getAmountInNaira($amount, auth()->user())) * 100,
                 'reference' => paystack()->genTranxRef(),
                 'email' => auth()->user()['email'],
-                'currency' => 'NGN',
+                'currency' => $currency,
                 'metadata' => json_encode($data),
             ];
             auth()->user()->payments()->create([
@@ -72,11 +91,16 @@ class OnlinePaymentController extends Controller
                 'gateway' => 'paystack',
                 'meta' => json_encode($data)
             ]);
+            if ($api)
+                return (new OnlinePaymentController)->success(
+                    'Payment initialized successfully',
+                    ['reference' => $paymentData['reference'], 'amount' => $amount, 'currency' => $paymentData['currency']]
+                );
             \request()->merge($paymentData);
             try {
                 return paystack()->getAuthorizationUrl()->redirectNow();
             } catch (Exception $e) {
-                return back()->with('error', 'The paystack token has expired. Please refresh the page and try again.');
+                return back()->with('error', 'Unable to start payment. Please refresh the page and try again.');
             }
         }
     }
@@ -227,9 +251,11 @@ class OnlinePaymentController extends Controller
         return $payment->update(['status' => 'success']);
     }
 
-    public static function getAmountInNaira($amount)
+    public static function getAmountInNaira($amount, $user = null): float|int
     {
-        $settings = Setting::first(['usd_to_ngn', 'rate_plus']);
+        $settings = Setting::query()->first(['usd_to_ngn', 'rate_plus', 'base_currency']);
+        $currency = $user ? ($user['currency'] ?? $settings['base_currency']) : $settings['base_currency'];
+        if ($currency != 'USD') return $amount;
         return $amount * ($settings['usd_to_ngn'] + $settings['rate_plus']);
     }
 

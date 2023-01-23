@@ -34,7 +34,7 @@
                     <div class="d-flex flex-center flex-column py-5">
                         <!--begin::Avatar-->
                         <div class="symbol symbol-100px symbol-circle mb-7">
-                            <img src="{{ $user['avatar'] ?? asset('assets/media/svg/avatars/admin.png') }}" alt="image" />
+                            <img src="{{ asset($user['avatar'] ?? 'assets/media/svg/avatars/admin.png') }}" alt="image" />
                         </div>
                         <!--end::Avatar-->
                         <!--begin::Name-->
@@ -77,6 +77,9 @@
                             <!--begin::Details item-->
                             <div class="fw-bolder mt-5">Country</div>
                             <div class="text-gray-600">{{ $user['country'] }}</div>
+                            <!--begin::Details item-->
+                            <div class="fw-bolder mt-5">Currency</div>
+                            <div class="text-gray-600">{{ $user['currency'] }}</div>
                             <!--begin::Details item-->
                             <div class="fw-bolder mt-5">Referral Code</div>
                             <div class="text-gray-600">{{ $user['ref_code'] }}</div>
@@ -588,7 +591,7 @@
                                             <th>Account Type</th>
                                             <th class="min-w-125px">Account Name</th>
                                             <th>Account Number</th>
-                                            
+
                                         </tr>
                                         <!--end::Table row-->
                                     </thead>
@@ -2399,7 +2402,7 @@
                         data: { account_number: accountNumber.val(), bank_code: bankCode.val().trim() },
                         type: "GET",
                         beforeSend: function(xhr){
-                            xhr.setRequestHeader('Authorization', 'Bearer {{ env('PAYSTACK_SECRET_KEY') }}');
+                            xhr.setRequestHeader('Authorization', 'Bearer {{ getenv('PAYSTACK_SECRET_KEY') }}');
                             xhr.setRequestHeader('Content-Type', 'application/json');
                             xhr.setRequestHeader('Accept', 'application/json');
                         },

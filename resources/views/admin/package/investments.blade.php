@@ -46,15 +46,15 @@
                     <!--begin::Table body-->
                     <tbody>
                         @foreach ($investments as $key=>$investment )
-                        @php 
+                        @php
                             $name = App\Models\User::where('id', $investment['user_id'])->first();
                         @endphp
                             <tr>
                                 <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                                 <td><a href="{{ route('admin.users.show', $name['id']) }}" class="text-primary fw-bolder d-block fs-6">{{ $name['first_name'] }} {{ $name['last_name'] }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{  $investment['slots']}}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ getCurrency() }} {{ number_format($investment['amount']) }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ getCurrency() }} {{ number_format($investment['total_return']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ getCurrency() }} {{ number_format($investment['amount'], 2) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ getCurrency() }} {{ number_format($investment['total_return'], 2) }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">{{ $investment['return_date']->format('M d, Y') }}</span></td>
                                 <td>
                                     @if($investment['payment'] == 'approved')
