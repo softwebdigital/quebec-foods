@@ -9,7 +9,7 @@
       </div>
 
       <div class="col-start-1 col-end-3 hero-image col-span md:col-start-4 md:col-end-13">
-        <img class="" src="/static-assets/home-hero-image.eab7261e.png" alt="">
+        <img class="" src="/static-assets/quebec-101.png" alt="">
       </div>
       <div
         class="absolute shadow-sm bg-white bg-opacity-60 backdrop-blur-lg md:max-w-[520px] md:h-[500px] -bottom-40 md:top-32 md:bottom-0 md:-left-3 inset-x-5 w-[80vw] flex justify-center items-center content-center">
@@ -304,7 +304,7 @@ production and reducing post-harvest losses.
         </div>
       </div>
       <div class="w-[55%] hidden lg:block">
-        <img class="shadow-2xl rounded-2xl" src="/static-assets/farm.ae91a01d.png" alt="Farm Estate">
+        <img class="rounded-2xl" src="/static-assets/quebec-102.png" alt="Farm Estate">
       </div>
     </div>
   </section>
@@ -355,55 +355,7 @@ production and reducing post-harvest losses.
           <h2 class="my-2 text-sm font-medium">TESTIMONIALS</h2>
           <span class="text-4xl font-medium">Hear what our users have to say</span>
         </div>
-        <style>
-          @media (max-width: 465px) {
-            
-          }
-          @media (min-width: 1164px) {
-            .dsk-view {
-              display: block;
-              /* display: none; */
-            }
-            .tab-view {
-              /* display: block; */
-              display: none;
-            }
-            .mob-view {
-              /* display: block; */
-              display: none;
-            }
-          }
-          @media (max-width: 1163px) {
-            .dsk-view {
-              /* display: block; */
-              display: none;
-            }
-            .tab-view {
-              display: block;
-              /* display: none; */
-            }
-            .mob-view {
-              /* display: block; */
-              display: none;
-            }
-          }
-          @media (max-width: 850px) {
-            .dsk-view {
-              /* display: block; */
-              display: none;
-            }
-            .tab-view {
-              /* display: block; */
-              display: none;
-            }
-            .mob-view {
-              display: block;
-              /* display: none; */
-            }
-          }
-        </style>
-        
-        
+
         <!-- desktop view -->
         <div id="animation-carousel" class="dsk-view relative" data-carousel="static">
             <!-- Carousel wrapper }} -->
@@ -746,27 +698,28 @@ production and reducing post-harvest losses.
                 </span>
             </button>
         </div>
-{{--<section class="splide section-container" aria-labelledby="carousel-heading">
-        
-      <div class="splide__track float-right">
-        <div class="splide__list">
-          <div class="splide__slide md:w-[507px] px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
-            <div class="flex gap-5 mb-3">
-              <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
-              <div>
-                <span class="block text-[#081131] font-medium text-base">HARRIET W.</span>
-                <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+  {{--<section class="splide section-container" aria-labelledby="carousel-heading">
+          
+        <div class="splide__track float-right">
+          <div class="splide__list">
+            <div class="splide__slide md:w-[507px] px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
+              <div class="flex gap-5 mb-3">
+                <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
+                <div>
+                  <span class="block text-[#081131] font-medium text-base">HARRIET W.</span>
+                  <span class="block text-sm text-[#828282] font-normal">(GERMANY)</span>
+                </div>
               </div>
+              <p class="text-sm text-[#243141] font-normal">
+              Quebec Food provides great details on each agribusiness profit venture investment, with the data presented in a clear format. I am sure of their growth and they will make a great impact in the cassava value chain space. I am eager to see more of their agri-food value chain investment opportunities as time goes on.
+              </p>
             </div>
-            <p class="text-sm text-[#243141] font-normal">
-            Quebec Food provides great details on each agribusiness profit venture investment, with the data presented in a clear format. I am sure of their growth and they will make a great impact in the cassava value chain space. I am eager to see more of their agri-food value chain investment opportunities as time goes on.
-            </p>
           </div>
         </div>
-      </div>
-    </section> --}}
+      </section> 
+  --}}
         
-        {{--<div class="flex flex-col md:flex-row lg:-ml-56">
+    {{--<div class="flex flex-col md:flex-row lg:-ml-56">
           <div class="px-6 w-[337px] bg-white text-ink m-4 py-8 rounded-3xl">
             <div class="flex gap-5 mb-3">
               <!-- <img class="rounded-full w-11 h-11" src="/static-assets/95UF6LXe-Lo.816b956b.png" alt="User"> -->
@@ -842,19 +795,57 @@ production and reducing post-harvest losses.
             Quebec Food Agribusiness profit venture investment scheme, has been an opportunity in most recent Agri-food value chain investment opportunity that you probably have not heard of, you can be a pioneer of hope for the grassroots farmers. Let us harness the power of many and together to empower our farmers and ensure their effort is seen across the globe through Quebec’ healthy and processed food products.
             </p>
           </div>
-        </div>--}}
+        </div>
+    --}}
       </div>
     </div>
   </section>
 
-  <style>
-    @media (min-width: 1024px){
-      .give-padding {
-          padding-top: 2rem;
-          padding-bottom: 2rem;
-      }
-    }
-  </style>
+<section class="bg-[#F3FFF9]" style="margin-top: 77px; padding-bottom: 90px;">
+      <div class="section-container">
+        <div class="flex flex-col lg:flex-row justify-between align-center">
+          <div class="lg:w-2/3 lg:px-10">
+            <h3 class="mt-6 pt-4 text-primary font-bold text-3xl lg:text-heading-5 lg:leading-h-5">Our Team</h3>
+          </div>
+          <div class="lg:w-1/3 lg:px-10 team-btn">
+            <a href="/team" class="flex items-baseline justify-center w-full py-5 my-4 btn-primary md:text-lg md:py-5 lg:px-9 rounded-xl gap-x-10 lg:gap-x-6 md:w-20">
+              <span>
+                View all Team
+              </span>
+              <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z" fill="#ffffff"></path>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div  class="text-holder grid grid-cols-1 team-col pb-5" style="max-width: 1200px; margin: auto;">
+            <div class="p-2 m-0">
+                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/quebec-105.png" alt="">
+                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. Onakpoma Martins L.E.</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold" style="text-transform: uppercase">Founder/President</p>
+            </div>
+
+            <div class="p-2 m-0">
+                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/quebec-106.png" alt="">
+                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. Abifarin Stephen</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold">Processing & Export Director</p>
+            </div>
+
+            <div class="p-2 m-0">
+                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/quebec-107.png" alt="">
+                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. Dimgba Uchenna</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold">Finance & Prcurement Director</p>
+            </div>
+            
+            <div class="p-2 m-0">
+                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/rectangle-685.png" alt="">
+                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. John Ogunmosu</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold">Technology Director</p>
+            </div>
+        </div>
+      </div>
+    </section>
 
   <!-- Mobile CTA -->
   <!-- <section class="mobile-cta-section">
@@ -913,4 +904,85 @@ production and reducing post-harvest losses.
       </div>
     </div>
   </section>
+
+  <!-- Custom Style -->
+  <style>
+    @media (min-width: 1024px) {
+      .team-col {
+          grid-template-columns: repeat(4,minmax(0,1fr));
+      }
+    }
+      
+    .text-holder {
+        text-align: start;
+    }
+    .text-padding {
+        padding-left: 20px;
+    }
+
+    @media (max-width: 1020px) {
+        .text-holder {
+            text-align: center;
+        }
+        .text-padding {
+            padding-left: 0px;
+        }
+    }
+
+    @media (min-width: 1024px){
+      .give-padding {
+          padding-top: 2rem;
+          padding-bottom: 2rem;
+      }
+    }
+
+    @media (max-width: 465px) {
+      
+    }
+    @media (min-width: 1164px) {
+      .dsk-view {
+        display: block;
+        /* display: none; */
+      }
+      .tab-view {
+        /* display: block; */
+        display: none;
+      }
+      .mob-view {
+        /* display: block; */
+        display: none;
+      }
+    }
+    @media (max-width: 1163px) {
+      .team-btn {
+        width:  40%;
+      }
+      .dsk-view {
+        /* display: block; */
+        display: none;
+      }
+      .tab-view {
+        display: block;
+        /* display: none; */
+      }
+      .mob-view {
+        /* display: block; */
+        display: none;
+      }
+    }
+    @media (max-width: 850px) {
+      .dsk-view {
+        /* display: block; */
+        display: none;
+      }
+      .tab-view {
+        /* display: block; */
+        display: none;
+      }
+      .mob-view {
+        display: block;
+        /* display: none; */
+      }
+    }
+</style>
 @endsection

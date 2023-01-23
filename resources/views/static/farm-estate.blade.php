@@ -31,7 +31,7 @@
           </div>
           <div class="md:w-1/2">
             <div class="bg-[url('/images/round-pattern.png')] bg-right-bottom bg-no-repeat lg:py-14 lg:px-10">
-              <img class="rounded-2xl drop-shadow-xl" src="/static-assets/farm-estate-hero-image.2b800cfc.png" alt="">
+              <img class="rounded-2xl drop-shadow-xl" src="/static-assets/quebec-108.png" alt="">
             </div>
           </div>
         </div>
@@ -170,7 +170,7 @@
       </script>
 
       <!-- Food Production Investment Scheme (FPIS) -->
-      <section style="background-image: url(/static-assets/farm-bg-section-2.bef3240a.png);" class="bg-[url('/static-assets/farm-bg-section-2.bef3240a.png')] bg-cover w-full h-full lg:py-28">
+      <section style="background-image: url(/static-assets/quebec-109.png);" class="bg-[url('/static-assets/quebec-109.png.png')] bg-cover w-full h-full lg:py-28">
         <div class="section-container ">
           <div
             class="bg-[#F3F7F5] rounded-2xl px-7 lg:px-20 py-12 max-w-[1000px] mx-auto text-center flex flex-col justify-center items-center gap-10">
@@ -279,7 +279,7 @@
                     </div>
                 </div>
                 <div class="">
-                    <img src="/static-assets/tractor-4.c63522e3.png" alt="">
+                    <img src="/static-assets/quebec-110.png" alt="">
                 </div>
             </div>
         </div>

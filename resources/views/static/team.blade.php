@@ -8,7 +8,7 @@
             style="font-size: 48px;" class="max-w-[513px] mx-auto text-xl  md:text-heading-1 font-bold py-5  md:leading-h-1 text-ink text-center lg:py-10">
             Our Team</h6>
         <div class="margin: auto">
-            <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/rectangle-682.png" alt="">
+            <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/quebec-105.png" alt="">
             <p style="font-size: 18px;" class="text-center pt-6 pb-1 font-bold">Mr. Onakpoma Martins L.E.</p>
             <p style="font-size: 14px;" class="text-center text-primary font-bold">FOUNDER/PRESIDENT</p>
         </div>
@@ -16,23 +16,23 @@
 
     <section class="bg-[#F3FFF9]" style="margin-top: 77px; padding-bottom: 90px;">
         <div  class="text-holder grid grid-cols-1 lg:grid-cols-3 pb-5" style="max-width: 1200px; margin: auto;">
+            
+            <div class="p-0 m-0">
+                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/quebec-106.png" alt="">
+                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. Abifarin Stephen</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold">Processing & Export Director</p>
+            </div>
+
+            <div class="p-0 m-0">
+                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/quebec-107.png" alt="">
+                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. Dimgba Uchenna</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold">Finance & Prcurement Director</p>
+            </div>
+            
             <div class="p-0 m-0">
                 <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/rectangle-685.png" alt="">
                 <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. John Ogunmosu</p>
-                <p style="font-size: 14px;" class="text-padding text-primary font-bold">TECHNOLOGY DIRECTOR</p>
-            </div>
-            
-
-            <div class="p-0 m-0">
-                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/rectangle-684.png" alt="">
-                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. Godson O. Onakpoma</p>
-                <p style="font-size: 14px;" class="text-padding text-primary font-bold">TRANSPORT & LOGISTICS DIRECTOR</p>
-            </div>
-
-            <div class="p-0 m-0">
-                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/rectangle-683.png" alt="">
-                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mrs. Ogbuabor Juliet Chinonyelum</p>
-                <p style="font-size: 14px;" class="text-padding text-primary font-bold">HEAD OF FARM ESTATE OPERATIONS</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold">Technology Director</p>
             </div>
 
             
