@@ -25,7 +25,10 @@ class PackageResource extends JsonResource
         Arr::set($data, 'duration', $this['new_duration'] ?? $package['new_duration']);
         Arr::set($data, 'duration_mode', $this['new_duration_mode'] ?? $package['new_duration_mode']);
         Arr::set($data, 'rollover', (bool) $this['rollover']);
-        Arr::set($data, 'image', asset($this['image']));
+        if (($this['type'] ?? $package['type']) == 'farm')
+            Arr::set($data, 'image', asset($this->category['image'] ?? $package->category['image']));
+        else
+            Arr::set($data, 'image', asset($this['image']));
         Arr::set($data, 'start_date', date('Y-m-d H:i:s', strtotime($this['start_date'])));
         Arr::set($data, 'created_at', date('Y-m-d H:i:s', strtotime($this['created_at'])));
         unset($data['updated_at'], $data['category_id'], $data['months']);
