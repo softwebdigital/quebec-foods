@@ -21,6 +21,7 @@ class PackageResource extends JsonResource
         $data =  parent::toArray($request);
         Arr::set($data, 'slots', $this['slots'] == -1 ? 'unlimited' : $this['slots']);
         Arr::set($data, 'expected_returns', $this['expected_returns'] ?? $package['expected_returns']);
+        Arr::set($data, 'total_investments', $this['total_investments'] ?? $package['total_investments']);
         Arr::set($data, 'duration', $this['new_duration'] ?? $package['new_duration']);
         Arr::set($data, 'duration_mode', $this['new_duration_mode'] ?? $package['new_duration_mode']);
         Arr::set($data, 'rollover', (bool) $this['rollover']);
