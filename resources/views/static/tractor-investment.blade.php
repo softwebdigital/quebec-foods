@@ -11,11 +11,11 @@
                             Agric Tractor & Agro- haulage Venture
                         </h1>
                         <h2 class="text-xl font-bold text-primary" style="font-size: 25px; padding-top: 50px;">Overview</h2>
-                        <p class="inline-block py-1 text-sm text-ink md:text-[22px] md:leading-h-5 md:py-4">
+                        <!-- <p class="inline-block py-1 text-sm text-ink md:text-[22px] md:leading-h-5 md:py-4">
                             Financing tractors for smallholder farmers has been a daunting challenge due to the rise in the exchange rate,
                             to the hurdles of meeting financial institutions' requirements by smallholder farmers across Nigeria and
                             Africa who have not been able to own tractors
-                        </p>
+                        </p> -->
                         <p class="inline-block py-1 text-sm text-ink md:text-[22px] md:leading-h-5 md:py-4">
                             This platform offers investors the opportunity of investing in the Agric mechanization space, thereby
                             availing tractors, machinery, and trucks for farmers' usage to increase the number of tractors per hectare of
@@ -194,23 +194,26 @@
                                 Why Invest in Agric Tractors & Agro-haulage Venture Scheme (ATAHVS)?
                             </h3>
                         </div>
-                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                            The agrifood value chain demand and supply are gradually affected at a large scale. Farmers now
-                            depend on options to ease crop cultivation, and it has increased the demand for agricultural tractors
-                            globally
-                        </p>
-                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                            The global agricultural tractors market will exceed a value of US$ 118.37 Bn by the end of 2031  
-                        </p>
-                        <p>
-                            The popularity of self-driving tractors has increased in recent years owing to the boosting of
-                            agricultural yields due to the help of technological advancements in the agriculture industry.
-                        </p>
-                        <p>
-                            The untapped potential for <b>farm mechanization</b> in low- and middle-income <b>countries</b> has created
-                            investment opportunities for investors to explore the agricultural mechanization space in sub-Saharan
-                            Africa.
-                        </p>
+                        <ul class="list-disc px-4 p-4">
+                            <li class="py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                                The agrifood value chain demand and supply are gradually affected at a large scale. Farmers now
+                                depend on options to ease crop cultivation, and it has increased the demand for agricultural tractors
+                                globally
+                            </li>
+                            <li class="py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                                The global agricultural tractors market will exceed a value of US$ 118.37 Bn by the end of 2031  
+                            </li>
+                            <li class="py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                                The popularity of self-driving tractors has increased in recent years owing to the boosting of
+                                agricultural yields due to the help of technological advancements in the agriculture industry.
+                            </li>
+                            <li class="py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                                The untapped potential for <b>farm mechanization</b> in low- and middle-income <b>countries</b> has created
+                                investment opportunities for investors to explore the agricultural mechanization space in sub-Saharan
+                                Africa.
+                            </li>
+                        </ul>
+                        
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
                             <a href="#"
@@ -249,13 +252,10 @@
                             across Nigeria and Africa at large not being able to own tractors. Owning one is out of
                             their league, yet they constitute 70% of farmers in Sub Saharan Africa.
                         </p>
-                        <p
+                        <!-- <p
                             class="inline-block py-1 text-base text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                            This platform provide investors the opportunity to invest in the Agric mechanization
-                            space, thereby making tractors, machinery and trucks available to farmers, while you
-                            earn returns with the aim of increasing the numbers of tractors per hectare of farmland
-                            in Nigeria.
-                        </p>
+                            This platform offers investors the opportunity of investing in the Agric mechanization space, thereby availing tractors, machinery, and trucks for farmers' usage to increase the number of tractors per hectare of farmland with the core aim of boosting agricultural yields.
+                        </p> -->
 
                     </div>
                 </div>

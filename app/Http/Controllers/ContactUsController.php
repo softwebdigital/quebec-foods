@@ -14,12 +14,14 @@ class ContactUsController extends Controller
         $info = [ 
             'name' => $request->first_name." ".$request->last_name,
             'email' => $request->email,
+            'subject' => $request->subject,
             'message' => $request->message
         ];
 
         $description = 'You have a contact us message';
         $msg =  'Name: <b>' . $info['name'] . '</b><br>
                  email: <b>' . $info['email'] . '</b><br>
+                 Subject: <b>' . $info['subject'] . '</b><br>
                  Message: <b>' . $info['message'] . '</b><br>';
         
         NotificationController::sendContactUsNotification($info);

@@ -211,7 +211,7 @@
                 <a href="https://www.google.com/maps/place/Boya+place/@9.0498425,7.4354707,15z/data=!4m5!3m4!1s0x0:0x63594dac8d4ae3ac!8m2!3d9.0499115!4d7.4354294"
                    target="_blank" class="mt-3 mb-3 flex text-base text-ink">
                     <img class="h-6" style="margin-right: 15px; margin-top: 6px;" src="/static-assets/Vector.png"
-                         alt="Message icon">Suite B15, Boya Place Ameh Ebute Street,Wuye- Abuja, Nigeria.
+                         alt="Message icon">Registered Mailing Address: Suite B15, Boya Place Ameh Ebute Street,Wuye- Abuja, Nigeria.
                 </a>
                 <div class="mt-6 lg:flex flex-col !-my-1 hidden gap-x-2">
                     <a class="text-primary" target="_blank" href="https://www.softwebdigital.com/"> <span
@@ -257,13 +257,12 @@
                         <a href="/about">About Us</a>
                     </li>
                     <li>
+                        <a href="/team">Our Team</a>
+                    <li>
                         <a href="/contact">Contact Us</a>
                     </li>
                     <li>
                         <a href="/terms">Terms and Conditions</a>
-                    </li>
-                    <li>
-                        <a href="/team">Our Team</a>
                     </li>
                     <li>
                         <a href="/privacy-policy">Privacy Policy</a>
@@ -294,7 +293,7 @@
                         <a href="tel:+2347016358414">Phone 1: (+234) 701-635-8414</a>
                     </li>
                     <li>
-                        <a href="tel:+2348146306036">Phone 2: (+234) 814-630-6036</a>
+                        <a href="tel:+2348146306036">Phone 2: (+234) 816-329-2879</a>
                     </li>
                     <li>
                         <a href="+2349095448354">Phone 3: (+234) 909-544-8354</a>
@@ -318,6 +317,10 @@
                     <a href="https://www.linkedin.com/in/quebec-food-processing-industrial-parks-ltd-a137ba244/"
                        target="_blank">
                         <i class="fa-brands fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UC1-fraTmSQ7DYaM5eh3fnSw"
+                       target="_blank">
+                        <i class="fa-brands fa-youtube"></i>
                     </a>
                 </div>
             </div>

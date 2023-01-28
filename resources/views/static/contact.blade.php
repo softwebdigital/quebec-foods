@@ -40,6 +40,21 @@
                     name="email" placeholder="Email Address" id="email">
                 </div>
                 <div class="col-span-2 ">
+                  <label for="subject" class="text-lg text-inkmy-1 lg:my-3 inline-block">Subject</label>
+                  <select name="subject" id="subject" class="rounded-xl border-0 text-base px-6 py-4 placeholder-[#8D97A4] block w-full">
+                    <option value="" class="text-muted">Select a Subject</option>
+                    <option value="Strategic Partnership">Strategic Partnership</option>
+                    <option value="Equity Participation">Equity Participation</option>
+                    <option value="International agricultural organization">International agricultural organization</option>
+                    <option value="Government Agency">Government Agency</option>
+                    <option value="Investment enquiring">Investment enquiring</option>
+                    <option value="Farmer or Processor">Farmer or Processor</option>
+                    <option value="Cooperative">Cooperative</option>
+                    <option value="Work with us">Work with us</option>
+                    <option value="Others">Others</option>
+                  </select>
+                </div>
+                <div class="col-span-2 ">
                   <label for="message" class="text-lg text-inkmy-1 lg:my-3 inline-block">Message</label>
                   <textarea
                     class="rounded-xl resize-none border-0 text-base px-6 py-4 h-[142px] placeholder-[#8D97A4] block w-full"
