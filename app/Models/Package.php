@@ -98,6 +98,58 @@ class Package extends Model
         return $this->slots - $this->sold_slots;
     }
 
+    public function expectedReturns(): Attribute
+    {
+        return Attribute::get(fn() => $this->investments()->where('payment', 'approved')->sum('total_return'));
+    }
+
+    public function newDuration(): Attribute
+    {
+        $duration = 0;
+        if ($this['type'] == 'farm') {
+            $duration = $this['duration'];
+        }
+        else {
+            if ($this['payout_mode'] == 'monthly') {
+                $duration = 1 * $this['milestones'];
+            } else if ($this['payout_mode'] == 'quarterly') {
+                $duration = 3 * $this['milestones'];
+            } else if ($this['payout_mode'] == 'semi-annually') {
+                $duration = 6 * $this['milestones'];
+            } else if ($this['payout_mode'] == 'annually') {
+                $duration = $this['milestones'];
+            } else if ($this['payout_mode'] == 'biannually') {
+                $duration = 2 * $this['milestones'];
+            } else if ($this['payout_mode'] == 'custom') {
+                $duration = $this['months'] * $this['milestones'];
+            }
+        }
+        return Attribute::get(fn () => $duration);
+    }
+
+    public function newDurationMode(): Attribute
+    {
+        if ($this['type'] == 'farm') $mode = $this['duration_mode'];
+        else {
+            if ($this['payout_mode'] == 'monthly') {
+                $mode = $this['new_duration'] > 1 ? 'months' : 'month';
+            } else if ($this['payout_mode'] == 'quarterly') {
+                $mode = 'months';
+            } else if ($this['payout_mode'] == 'semi-annually') {
+                $mode = 'months';
+            } else if ($this['payout_mode'] == 'annually') {
+                $mode = $this['new_duration'] > 1 ? 'years' : 'year';
+            } else if ($this['payout_mode'] == 'biannually') {
+                $mode = 'years';
+            } else if ($this['payout_mode'] == 'custom') {
+                $mode = $this['months'] * $this['milestones'] > 1 ? 'months' : 'month';
+            } else {
+                $mode = 'month';
+            }
+        }
+        return Attribute::get(fn () => $mode);
+    }
+
     public function getPlantTotalROI($amount)
     {
         $sum = 0;

@@ -54,6 +54,8 @@ class Investment extends Model
             $months = 12;
         } else if ($package['payout_mode'] == 'biannually') {
             $months = 24;
+        } else if ($package['payout_mode'] == 'custom') {
+            $months = $package['months'];
         }
         return $months * $milestone;
     }

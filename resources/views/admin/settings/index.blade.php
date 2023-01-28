@@ -344,10 +344,18 @@
                     </div>
                     <!--end::Input group-->
                     <!--begin::Input group-->
-                    <label class="required fs-5 fw-bold mb-2" for="rate_plus">Rate</label>
+                    <label class="required fs-5 fw-bold mb-2" for="rate_plus">Buy Rate</label>
                     <div class="input-group mb-5">
                         <span class="input-group-text">{{ $setting['usd_to_ngn'] }} ±</span>
                         <input type="number" id="rate_plus" step="any" name="rate_plus" value="{{ old('rate_plus') ?? $setting['rate_plus']}}" class="form-control form-control-solid" placeholder="0.00"/>
+                    </div>
+                    <!--end::Input group-->
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <label class="required fs-5 fw-bold mb-2" for="rate_plus">Sell Rate</label>
+                    <div class="input-group mb-5">
+                        <span class="input-group-text">{{ $setting['ngn_to_usd'] }} ±</span>
+                        <input type="number" id="ngn_rate_plus" step="any" name="ngn_rate_plus" value="{{ old('ngn_rate_plus') ?? $setting['ngn_rate_plus']}}" class="form-control form-control-solid" placeholder="0.00"/>
                     </div>
                     <!--end::Input group-->
                     <!--begin::Submit-->

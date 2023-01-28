@@ -5,7 +5,7 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "require": {
-        "php": "^7.3|^8.0",
+        "php": "^8.0",
         "ext-json": "*",
         "artesaos/seotools": "^1.0",
         "barryvdh/laravel-dompdf": "^1.0",
@@ -36,7 +36,9 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-            "app/Helpers/Currency.php"
+            "app/Helpers/Currency.php",
+            "app/Helpers/Pagination.php",
+            "app/Helpers/Settings.php"
         ]
     },
     "autoload-dev": {

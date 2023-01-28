@@ -34,10 +34,16 @@
                 <!--begin::Summary-->
                 <!--begin::User Info-->
                 <div class="d-flex flex-center flex-column py-5">
-                    @if ($package['cover'])
+                    @if ($package['type'] == 'farm')
                         <!--begin::Avatar-->
                         <div class="symbol symbol-100px symbol-circle mb-7">
-                            <img src="assets/media/avatars/300-6.jpg" alt="image" />
+                            <img src="{{ asset($package->category->image) }}" alt="image" />
+                        </div>
+                        <!--end::Avatar-->
+                    @else
+                        <!--begin::Avatar-->
+                        <div class="symbol symbol-100px symbol-circle mb-7">
+                            <img src="{{ asset($package['image']) }}" alt="image" />
                         </div>
                         <!--end::Avatar-->
                     @endif
@@ -96,7 +102,7 @@
         <div class="card mb-5 mb-xl-8">
             <!--begin::Card body-->
             <div class="card-body">
-                
+
                 <!--begin::Details toggle-->
                 <div class="d-flex flex-stack fs-4 py-3">
                     <div class="fw-bolder rotate collapsible" data-bs-toggle="collapse" href="#kt_user_view_details" role="button" aria-expanded="false" aria-controls="kt_user_view_details">Packages Details
@@ -120,24 +126,22 @@
                         <div class="fw-bolder mt-5">ROI</div>
                         <div class="text-gray-600">{{ $package['roi'] }}%</div>
                         <div class="fw-bolder mt-5">Price per slot</div>
-                        <div class="text-gray-600">{{ $package['price'] }}</div>
-                        <!--begin::Details item-->
-                        <!--begin::Details item-->
-                        <div class="fw-bolder mt-5">Start Date</div>
-                        <div class="text-gray-600">
-                            <a href="#" class="text-gray-600 text-hover-primary">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</a>
-                        </div>
+                        <div class="text-gray-600">{{ getCurrency() . number_format($package['price'], 2) }} ({{ '₦' . number_format(\App\Http\Controllers\OnlinePaymentController::getAmountInNaira($package['price']), 2) }})</div>
                         <!--begin::Details item-->
                         <!--begin::Details item-->
                         @if ($package['type'] == 'farm')
+                            <div class="fw-bolder mt-5">Offer End Date</div>
+                            <div class="text-gray-600">
+                                <a href="#" class="text-gray-600 text-hover-primary">{{ $package['start_date']->format('M d, Y \a\t h:i A') }}</a>
+                            </div>
                             <div class="fw-bolder mt-5">Total Created Slots</div>
                             <div class="text-gray-600">{{ $package['slots'] }}</div>
 
                             <div class="fw-bolder mt-5">Total Available Slots</div>
                             <div class="text-gray-600">{{ $package['available_slots'] }}</div>
 
-                            <div class="fw-bolder mt-5">Duration Mode</div>
-                            <div class="text-gray-600">{{ $package['duration_mode'] }}</div>
+                            <div class="fw-bolder mt-5">Investment Duration</div>
+                            <div class="text-gray-600">{{ $package['duration'] .' '. $package['duration_mode'].($package['duration'] > 1 ? 's' : '') }}</div>
                         @endif
 
                         @if ($package['type'] != 'farm')
@@ -146,6 +150,9 @@
 
                             <div class="fw-bolder mt-5">Payout Mode</div>
                             <div class="text-gray-600">{{ $package['payout_mode'] }}</div>
+
+                            <div class="fw-bolder mt-5">Investment Duration</div>
+                            <div class="text-gray-600">{{ $package['new_duration'] .' '. $package['new_duration_mode'] }}</div>
                         @endif
                         <!--begin::Details item-->
                         <!--begin::Details item-->
@@ -157,7 +164,7 @@
                             <!--end::Indicator-->
                         </a>
                         @else
-                        <button type="button" disabled class="btn btn-primary w-100">
+                        <button type="button" disabled class="btn btn-primary w-100 mt-3">
                                 <!--begin::Indicator-->
                                 <span class="indicator-label">Closed</span>
                                 <!--end::Indicator-->

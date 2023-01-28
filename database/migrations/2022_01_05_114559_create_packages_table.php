@@ -23,7 +23,7 @@ class CreatePackagesTable extends Migration
             $table->integer('duration')->nullable();
             $table->enum('duration_mode', ['day', 'month', 'year'])->default('day');
             $table->string('milestones')->default(1);
-            $table->enum('payout_mode', ['single', 'monthly', 'quarterly', 'semi-annually', 'biannually', 'annually' ])->default('single');
+            $table->enum('payout_mode', ['single', 'monthly', 'quarterly', 'semi-annually', 'biannually', 'annually', 'custom'])->default('single');
             $table->text('description');
             $table->text('image')->nullable();
             $table->enum('type', ['farm', 'plant']);

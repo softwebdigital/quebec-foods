@@ -48,10 +48,10 @@ class InvestmentExport implements FromArray, WithHeadings
                 'package_type' => ucfirst($investment->package['type']),
                 'package_start_date' => $investment->package['start_date']->format('M d, Y'),
                 'package_roi' => $investment->package['roi'].'%',
-                'price_per_slot' => getCurrency().number_format($investment->package['price']),
+                'price_per_slot' => getCurrency().number_format($investment->package['price'], 2),
                 'slots' => $investment['slots'],
-                'total_invested' => getCurrency().number_format($investment['amount']),
-                'returns' => getCurrency().number_format($investment['total_return']),
+                'total_invested' => getCurrency().number_format($investment['amount'], 2),
+                'returns' => getCurrency().number_format($investment['total_return'], 2),
                 'investment_date' => $investment['investment_date']->format('M d, Y'),
                 'payment' => ucfirst($investment['payment']),
                 'status' => ucfirst($investment['status'])

@@ -50,9 +50,9 @@
 {{--                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $item['month'] }}</span></td>--}}
 {{--                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $item['year'] }}</span></td>--}}
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ \Carbon\Carbon::make($item['created_at'])->format('h:ia') }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($item['active_investments']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($item['active_investments'], 2) }}</span></td>
                                 <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ $item['percentage'] }}</span></td>
-                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($item['amount']) }}</span></td>
+                                <td><span class="text-gray-600 fw-bolder d-block fs-6">{{ getCurrency() }} {{ number_format($item['amount'], 2) }}</span></td>
                                 <td>
                                     @if($item['status'] == 'approved')
                                         <span class="badge badge-pill badge-success">Approved</span>

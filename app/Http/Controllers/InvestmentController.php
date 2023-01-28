@@ -44,7 +44,7 @@ class InvestmentController extends Controller
      * Store a newly created resource in storage.
      *
      * @param Request $request
-     * @return RedirectResponse
+//     * @return RedirectResponse
      */
     public function store(Request $request)
     {
@@ -53,7 +53,7 @@ class InvestmentController extends Controller
             'package' => ['required', 'exists:packages,name'],
             'slots' => ['required', 'numeric', 'min:1', 'integer'],
             'payment' => ['required'],
-            'gateway' => ['required_if:payment,card', 'in:flutterwave,paystack'],
+            'gateway' => ['required_if:payment,card'],
             'currency' => ['required_if:payment,card', 'in:NGN,USD']
         ]);
         if ($validator->fails()) {
@@ -106,7 +106,7 @@ class InvestmentController extends Controller
         $investment = auth()->user()->investments()->create([
             'package_id'=>$package['id'], 'slots' => $request['slots'],
             'amount' => $request['slots'] * $package['price'],
-            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['slots'] * $package['price']),
+            'amount_in_naira' => OnlinePaymentController::getAmountInNaira($request['slots'] * $package['price'], auth()->user()),
             'total_return' => $returns,
             'investment_date' => now()->format('Y-m-d H:i:s'),
             'rollover' => isset($request['rollover']) && $request['rollover'] == 'yes',

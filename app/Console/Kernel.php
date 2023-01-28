@@ -32,9 +32,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('maturity:notify')
                     ->withoutOverlapping()
                     ->dailyAt('00:00');
-        $schedule->command('payments:settle')
-                    ->withoutOverlapping()
-                    ->everyMinute();
+//        $schedule->command('payments:settle')
+//                    ->withoutOverlapping()
+//                    ->everyMinute();
         $schedule->command('users:delete')
                     ->withoutOverlapping()
                     ->everyMinute();

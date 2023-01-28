@@ -115,7 +115,7 @@
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
-                                
+
                             <script>
                                 ClassicEditor
                                     .create( document.querySelector( '#editor' ) )
@@ -298,12 +298,22 @@
                                         </option>
                                         <option @if (old('payout_mode') == 'biannually' || $package['payout_mode'] == 'biannually') selected @endif value="biannually">
                                             Biannually (2 Years)</option>
+                                        <option @if(old('payout_mode') == 'custom' || $package['payout_mode'] == 'custom') selected @endif value="custom">Custom
+                                        </option>
                                     </select>
                                     @error('payout_mode')
                                         <span class="text-danger small" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
+
+                                    <input type="number" onkeyup="getVals();" step="none" placeholder="No. of Months" value="{{ old("months") ?? $package['months'] }}" class="form-control form-control-solid mt-5" name="months" id="months" style="display: @error('months') block @else none @endif">
+                                    @error('months')
+                                    <span class="text-danger small" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+
                                     <div class="small mt-4" id="statement">
                                         <strong>Investments will run for <span id="year-value" ></span> with <span id="milestones-value" ></span> payment milestone(s)</strong>
                                     </div>
@@ -416,8 +426,9 @@
         const sT = document.getElementById('statement');
         const milestones = document.getElementById('milestones').value;
         const pM = document.getElementById('payoutMode').value;
+        const months = document.getElementById('months');
 
-        if (!(milestones && pM)) {
+        if (!(milestones && pM) || (pM === "custom" && !months.value.length)) {
             sT.style.display = 'none'
         } else {
             sT.style.display = 'block'
@@ -437,6 +448,14 @@
         }
         if (pM == "biannually") {
             yV.innerText = (milestones * 2) + " years"
+        }
+        if (pM == "custom") {
+            months.style.display = 'block';
+            if (months.value.length > 0) yV.innerText = (months.value + " month" + (months.value > 0 ? "s" : ''));
+            else sT.style.display = 'none';
+        }
+        else {
+            months.style.display = 'none';
         }
 
     }
