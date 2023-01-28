@@ -162,7 +162,7 @@
                 <!--end::Table head-->
                 <!--begin::Table body-->
                 <tbody class="fw-bold text-gray-600">
-                    @foreach ($investments as $key=>$investment )
+                    @foreach ($investments as $key=>$investment)
                         <tr>
                             <td class="ps-4"><span class="text-dark fw-bolder d-block mb-1 fs-6">{{ $key + 1 }}</span></td>
                             <td><span class="text-gray-600 fw-bolder d-block fs-6 text-nowrap">{{ $investment['package']['name'] }}</span></td>

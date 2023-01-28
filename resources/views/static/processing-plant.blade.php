@@ -39,7 +39,7 @@
                 <div class="md:w-3/5">
                     <div
                         class="bg-[url('/images/plant-hero-bg.png')] bg-contain bg-right-bottom bg-no-repeat lg:py-7 lg:px-8">
-                        <img class="rounded-2xl drop-shadow-xl md:h-[450px]" src="/static-assets/quebec-104.png" alt="">
+                        <img class="rounded-2xl drop-shadow-xl md:h-[450px]" src="./assets/media/About-Us-Image.png" alt="">
                     </div>
                 </div>
             </div>
@@ -190,20 +190,30 @@
                                     Why Invest?
                                 </h3>
                             </div>
+
                             <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
                                 Food processing is a key contributor that strengthens the import-export system of countries and
                                 motivates labor movement from agriculture to manufacturing.
                             </p>
-                            <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                                Nigeria's Food Market is projected <b> to grow by 8.68% </b> (2022-2027) resulting in a market volume of US$290.20bn in 2027.
-                            </p>
-                            <p>
-                                Nigeria is the <b>26th largest economy</b> in the world and the biggest in Africa
-                            </p>
-                            <p>
-                                The market has created opportunities for more investors to explore the agri-food value chain space in
-                                Nigeria.
-                            </p>
+
+                            <ul  class="ml-4 list-disc px-4 p-4">
+                                <li>
+                                    <p class="py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                                        Nigeria's Food Market is projected <b> to grow by 8.68% </b> (2022-2027) resulting in a market volume of US$290.20bn in 2027.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                                        Nigeria is the <b>26th largest economy</b> in the world and the biggest in Africa.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p class="py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                                        The market has created opportunities for more investors to explore the agri-food value chain space in
+                                        Nigeria.
+                                    </p>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     <div class="">
@@ -228,7 +238,7 @@
                         products and creating jobs for agrifood-related graduates globally.
                     </p>
                     <a href="{{ route('login') }}"
-                        class="bg-white hidden  text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg lg:flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2">
+                        style="display: none;"class="bg-white text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg lg:flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-1/2 ">
                         <span>
                             Get Started
                         </span>
@@ -241,7 +251,7 @@
                 <div class="self-end w-full lg:w-2/5 lg:pb-20">
                     <img class="lg:block" src="/static-assets/plant-process-2.1602509f.svg" alt="25%">
                     <a href="{{ route('login') }}"
-                        class="bg-white  lg:hidden text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[60%] lg:w-1/2 ">
+                        class="bg-white text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg lg:flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] lg:w-full ">
                         <span>
                             Get Started
                         </span>

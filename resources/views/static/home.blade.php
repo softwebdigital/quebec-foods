@@ -63,7 +63,7 @@
               <img class="w-8 " src="/static-assets/Activity-primary.2b427def.svg" alt="Activity Icon">
             </div>
             <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Get Cash Value Returns (CVR) for 3 -10 year(s)
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Get Cash Value Returns (CVR) for 10 year(s)
               </h3>
               <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform allows you to access data-driven insights and learn more about the agri-food supply chain global market demand, export values, and investment opportunities for decision-making on the cash value returns and tenure before investing in any commodity.</p>
             </div>
@@ -823,10 +823,29 @@ production and reducing post-harvest losses.
             <div class="p-2 m-0">
                 <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/quebec-105.png" alt="">
                 <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. Onakpoma Martins L.E.</p>
-                <p style="font-size: 14px;" class="text-padding text-primary font-bold" style="text-transform: uppercase">Founder/President</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold" style="text-transform: uppercase">FOUNDER / PRESIDENT</p>
+            </div>
+
+            
+            <div class="p-2 m-0">
+                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/rectangle-683.png" alt="">
+                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mrs. Ogbuabor Juliet Chinonyelum</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold">HEAD OF FARM ESTATE OPERATIONS</p>
             </div>
 
             <div class="p-2 m-0">
+                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/rectangle-684.png" alt="">
+                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. Godson O. Onakpoma</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold">TRANSPORT & LOGISTICS DIRECTOR</p>
+            </div>
+
+            <div class="p-2 m-0">
+                <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/rectangle-685.png" alt="">
+                <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. John Ogunmosu</p>
+                <p style="font-size: 14px;" class="text-padding text-primary font-bold">TECHNOLOGY DIRECTOR</p>
+            </div>
+
+            <!-- <div class="p-2 m-0">
                 <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/quebec-106.png" alt="">
                 <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. Abifarin Stephen</p>
                 <p style="font-size: 14px;" class="text-padding text-primary font-bold">Processing & Export Director</p>
@@ -842,7 +861,7 @@ production and reducing post-harvest losses.
                 <img style="padding-top: 70px; margin: auto; width: 355px;" src="/static-assets/rectangle-685.png" alt="">
                 <p style="font-size: 18px;" class="text-padding pt-6 pb-1 font-bold">Mr. John Ogunmosu</p>
                 <p style="font-size: 14px;" class="text-padding text-primary font-bold">Technology Director</p>
-            </div>
+            </div> -->
         </div>
       </div>
     </section>

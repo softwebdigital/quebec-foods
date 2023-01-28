@@ -191,13 +191,13 @@
               people around the world through the import-export system.
             </p>
 
-            <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
+            <!-- <p class="text-[#414D5E] font-medium text-sm lg:text-[22px] lg:leading-8  text-justify md:text-center">
               Moreso, Quebec Food aim is to contribute to nation-building through this platform by supporting the Federal
               Government of Nigeria initiatives through the Central Bank of Nigeria (CBN) and Nirsal Plc of cultivating 4
               million hectares of farmland by engaging 8 million Farmers across the country with the expectation of
               producing about 12 million metric tons of Grain Product Equivalent (GPE) annually over the medium to
               long term.
-            </p>
+            </p> -->
             <a href="{{ route('login') }}"
               class="flex items-baseline justify-center w-full py-5 my-4 btn-primary md:text-lg md:py-5 lg:px-9 rounded-xl gap-x-10 lg:gap-x-6 lg:w-1/2">
               <span>
@@ -230,19 +230,30 @@
                                 Why Invest?
                             </h3>
                         </div>
-                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                          Investment in Agro-Farm Produce Production is a strategic move due to the increasing world
-                          population by the day.
-                        </p>
-                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                            Agriculture and farming investments will continue to play a vital role in sustaining global societies
-                            because the need to feed a growing population has become imperative and a serious subject matter to
-                            all nations. 
-                        </p>
-                        <p class="inline-block py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
-                            One inevitable fact investors should know is that whether the overall economy of a nation is
-                            experiencing recession or a booming economy, the populace will feed themselves.
-                        </p>
+                        <ul  class="list-disc px-4 p-4">
+                          <li class="">
+                            <p class="pl-3 py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                            Investment in Agro-Farm Produce Production is a strategic move due to the increasing world
+                              population by the day.
+                            </p>
+                          </li>
+                          <li class="">
+                              <p class="pl-3 py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                              Agriculture and farming investments will continue to play a vital role in sustaining global societies
+                                  because the need to feed a growing population has become imperative and a serious subject matter to
+                                  all nations. 
+                              </p>
+                          </li class="">
+                          <li>
+                              <p class="pl-3 py-1 text-sm text-ink md:text-[20px] md:leading-h-5 md:py-4">
+                              One inevitable fact investors should know is that whether the overall economy of a nation is
+                                  experiencing recession or a booming economy, the populace will feed themselves.
+                              </p>
+                          </li>
+                        </ul>
+                        
+                        
+                        
                         <div
                             class="flex flex-col items-center justify-center my-1 text-center lg:flex-row lg:iterms-baseline lg:gap-x-6 lg:my-5 lg:justify-start">
                             <a href="#"
@@ -279,7 +290,7 @@
                     </div>
                 </div>
                 <div class="">
-                    <img src="/static-assets/quebec-110.png" alt="">
+                    <img src="/static-assets/tractor-4.c63522e3.png" alt="">
                 </div>
             </div>
         </div>

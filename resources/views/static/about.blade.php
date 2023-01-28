@@ -7,8 +7,8 @@
           <div class="px-6 py-5 lg:pl-20 md:px-0 md:w-2/5">
             <h1 class="text-4xl lg:text-heading-1 lg:leading-h-1 text-[#192434] font-bold mb-5">About Us</h1>
             <p class="text-base lg:text-xl leading-5 lg:leading-8 text-gray-700 font-normal">
-              Quebec Food Industrial Parks Ltd is a registered private company limited by shares under the Companies
-              and Allied Matters Act 2020 of the Federal Republic of Nigeria with RC: 1710593. 
+              Quebec Food Processing Industrial Parks Ltd is a registered private company limited by shares under the Companies
+              and Allied Matters Act 2020 of the Federal Republic of Nigeria with RC: 1710593 and a registered trademark name: Q-BEC FOODS.
             </p>
             <p style="padding-top: 20px" class="text-base lg:text-xl leading-5 lg:leading-8 text-gray-700 font-normal">
             The company is established to grow, process, package, and export healthy food products, with experienced
@@ -16,7 +16,7 @@
             </p>
           </div>
           <div class="">
-            <img src="/static-assets/quebec-103.png" alt="">
+            <img src="/static-assets/farmer.aa225f03.png" alt="">
           </div>
         </div>
       </section>
