@@ -314,7 +314,7 @@
                        target="_blank">
                         <i class="fa-brands fa-whatsapp"></i>
                     </a>
-                    <a href="https://www.linkedin.com/in/quebec-food-processing-industrial-parks-ltd-a137ba244/"
+                    <a href="https://www.linkedin.com/company/quebec-food-processing-industrial-parks-ltd/"
                        target="_blank">
                         <i class="fa-brands fa-linkedin"></i>
                     </a>
