@@ -63,7 +63,7 @@
               <img class="w-8 " src="/static-assets/Activity-primary.2b427def.svg" alt="Activity Icon">
             </div>
             <div>
-              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Get Cash Value Returns (CVR) for 10 year(s)
+              <h3 class="text-primary text-2xl md:text-3xl max-w-[399px] font-bold my-2">Get Cash Value Returns (CVR) for up to 10 year(s)
               </h3>
               <p class=" text-sm md:text-base text-[#5B6676] my-2">Our platform allows you to access data-driven insights and learn more about the agri-food supply chain global market demand, export values, and investment opportunities for decision-making on the cash value returns and tenure before investing in any commodity.</p>
             </div>
