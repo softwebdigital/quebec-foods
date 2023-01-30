@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Http\Controllers\OnlinePaymentController;
 use App\Models\Package;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -20,6 +21,8 @@ class PackageResource extends JsonResource
         $package = Package::find($this['id']);
         $data =  parent::toArray($request);
         Arr::set($data, 'slots', $this['slots'] == -1 ? 'unlimited' : $this['slots']);
+        Arr::set($data, 'price', number_format($this['price'] ?? $package['price'], 2, '.', ''));
+        Arr::set($data, 'price_in_naira', number_format(OnlinePaymentController::getAmountInNaira($this['price'] ?? $package['price']), 2, '.', ''));
         Arr::set($data, 'expected_returns', $this['expected_returns'] ?? $package['expected_returns']);
         Arr::set($data, 'total_investments', $this['total_investments'] ?? $package['total_investments']);
         Arr::set($data, 'duration', $this['new_duration'] ?? $package['new_duration']);
