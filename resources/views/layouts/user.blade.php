@@ -630,11 +630,11 @@
                                 <div id="plantGatewayFlw" class="mr-10">
                                     <img src="{{ asset('assets/photos/flutterwave.png') }}" class="img-fluid" width="150" alt="Secured-by-flutterwave" style="cursor: pointer">
                                 </div>
-                                <div id="plantGatewayPaystack" class="ml-10 active">
+                                <div id="plantGatewayPaystack" class="ml-10">
                                     <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
                                 </div>
                             </div>
-                            <input type="hidden" id="plantGatewayValue" name="gateway" value="paystack">
+                            <input type="hidden" id="plantGatewayValue" name="gateway" value="">
                             <div id="plantGatewayError"></div>
                         </div>
                         <div id="plantBankDetails" style="display: none" class="alert bg-secondary">
@@ -852,11 +852,11 @@
                                 <div id="farmGatewayFlw" class="mr-10">
                                     <img src="{{ asset('assets/photos/flutterwave.png') }}" class="img-fluid" width="150" alt="Secured-by-flutterwave" style="cursor: pointer">
                                 </div>
-                                <div id="farmGatewayPaystack" class="ml-10 active">
+                                <div id="farmGatewayPaystack" class="ml-10">
                                     <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
                                 </div>
                             </div>
-                            <input type="hidden" id="farmGatewayValue" name="gateway" value="paystack">
+                            <input type="hidden" id="farmGatewayValue" name="gateway" value="">
                             <div id="farmGatewayError"></div>
                         </div>
                         <div id="farmBankDetails" style="display: none" class="alert bg-secondary">
