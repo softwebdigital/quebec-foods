@@ -19,7 +19,7 @@ class HomeController extends Controller
         protected TransactionRepository $transactionRepository
     )
     {
-        $this->middleware('auth:sanctum');
+        $this->middleware('auth:sanctum')->except('currency');
     }
 
     public function index(): JsonResponse
