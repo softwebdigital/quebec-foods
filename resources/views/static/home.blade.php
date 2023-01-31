@@ -807,7 +807,29 @@ production and reducing post-harvest losses.
           <div class="lg:w-2/3 lg:px-10">
             <h3 class="mt-6 pt-4 text-primary font-bold text-3xl lg:text-heading-5 lg:leading-h-5">Our Team</h3>
           </div>
-          <div class="lg:w-1/3 lg:px-10 team-btn">
+          <div class="flex justify-between gap-3 lg:w-[80%] team-botton">
+            <!-- <a href="http://localhost:8000/tractor-investment" class="flex items-baseline px-2 py-5 my-4 text-sm bg-white rounded-md text-primary md:text-base md:py-4 lg:px-4 gap-x-1 lg:gap-x-2">
+              <span>
+                Discover More
+              </span>
+              <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z" fill="#00A451"></path>
+              </svg>
+
+            </a> -->
+            
+            <a href="/investments/tractor" class="flex items-baseline justify-center w-1/2 px-3 py-5 my-4 text-sm rounded-md btn-primary md:text-base md:py-4 gap-x-3">
+              <span>
+                Invest Now
+              </span>
+              <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z" fill="#ffffff"></path>
+              </svg>
+            </a>
+            
+
+          </div>
+          <!-- <div class="lg:w-1/3 lg:px-10 team-btn">
             <a href="/team" class="flex items-baseline justify-center w-full py-5 my-4 btn-primary md:text-lg md:py-5 lg:px-9 rounded-xl gap-x-10 lg:gap-x-6 md:w-20">
               <span>
                 View all Team
@@ -816,7 +838,7 @@ production and reducing post-harvest losses.
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z" fill="#ffffff"></path>
               </svg>
             </a>
-          </div>
+          </div> -->
         </div>
 
         <div  class="text-holder grid grid-cols-1 team-col pb-5" style="max-width: 1200px; margin: auto;">
@@ -946,6 +968,7 @@ production and reducing post-harvest losses.
         .text-padding {
             padding-left: 0px;
         }
+        
     }
 
     @media (min-width: 1024px){
@@ -953,10 +976,16 @@ production and reducing post-harvest losses.
           padding-top: 2rem;
           padding-bottom: 2rem;
       }
+      .team-botton {
+          flex-direction: row-reverse;
+          padding-right: 10px;
+      }
     }
 
-    @media (max-width: 465px) {
-      
+    @media (min-width: 465px) {
+      .team-btn {
+        width:  150px;
+      }
     }
     @media (min-width: 1164px) {
       .dsk-view {
@@ -973,9 +1002,9 @@ production and reducing post-harvest losses.
       }
     }
     @media (max-width: 1163px) {
-      .team-btn {
+      /* .team-btn {
         width:  40%;
-      }
+      } */
       .dsk-view {
         /* display: block; */
         display: none;
