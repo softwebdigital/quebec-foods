@@ -627,9 +627,9 @@
                             <h6 class="mt-5">Select Gateway.</h6>
 {{--                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>--}}
                             <div class="d-flex justify-content-center">
-                                <!-- <div id="plantGatewayFlw" class="mr-10">
+                                <div id="plantGatewayFlw" class="mr-10">
                                     <img src="{{ asset('assets/photos/flutterwave.png') }}" class="img-fluid" width="150" alt="Secured-by-flutterwave" style="cursor: pointer">
-                                </div> -->
+                                </div>
                                 <div id="plantGatewayPaystack" class="ml-10 active">
                                     <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
                                 </div>
@@ -849,9 +849,9 @@
                             <h6 class="mt-5">Select Gateway.</h6>
 {{--                        <h6 class="mt-5 mb-4">Card payments are diabled for now, try another payment method.</h6>--}}
                             <div class="d-flex justify-content-center">
-                                <!-- <div id="farmGatewayFlw" class="mr-10">
+                                <div id="farmGatewayFlw" class="mr-10">
                                     <img src="{{ asset('assets/photos/flutterwave.png') }}" class="img-fluid" width="150" alt="Secured-by-flutterwave" style="cursor: pointer">
-                                </div> -->
+                                </div>
                                 <div id="farmGatewayPaystack" class="ml-10 active">
                                     <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
                                 </div>
