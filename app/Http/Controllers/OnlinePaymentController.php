@@ -45,8 +45,11 @@ class OnlinePaymentController extends Controller
                     'meta' => json_encode($data)
                 ]);
                 return (new OnlinePaymentController)->success(
-                    'Payment initialized successfully',
-                    ['reference' => $paymentData['tx_ref'], 'amount' => $amount, 'currency' => $paymentData['currency']]
+                    'Payment initialized successfully', [
+                        'reference' => $paymentData['tx_ref'],
+                        'amount' => number_format($amount, 2, '.', ''),
+                        'currency' => $paymentData['currency']
+                    ]
                 );
             }
 
@@ -93,8 +96,11 @@ class OnlinePaymentController extends Controller
             ]);
             if ($api)
                 return (new OnlinePaymentController)->success(
-                    'Payment initialized successfully',
-                    ['reference' => $paymentData['reference'], 'amount' => $amount, 'currency' => $paymentData['currency']]
+                    'Payment initialized successfully', [
+                        'reference' => $paymentData['reference'],
+                        'amount' => number_format($amount, 2, '.', ''),
+                        'currency' => $paymentData['currency']
+                    ]
                 );
             \request()->merge($paymentData);
             try {
