@@ -15,7 +15,7 @@ class Transaction extends Model
     {
         parent::boot();
         static::creating(function ($transaction) {
-            $transaction['balance'] = auth()->user()->wallet()->first()?->balance;
+            $transaction['balance'] = $transaction->user->wallet()->first()?->balance;
         });
     }
 
