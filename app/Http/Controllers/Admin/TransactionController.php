@@ -250,7 +250,7 @@ class TransactionController extends Controller
             $bank = json_decode($transaction['preferred_bank'], true);
             if($transaction['type'] == 'withdrawal' && $bank){
                 $bank_id = $bank['id'];
-                $bank_detail = BankAccounts::find($bank_id);
+                $bank_detail = BankAccounts::withTrashed()->find($bank_id);
                 $bank_name = $bank_detail['bank_name'];
                 $account_name = $bank_detail['account_name'];
                 $account_number = $bank_detail['account_number'];
