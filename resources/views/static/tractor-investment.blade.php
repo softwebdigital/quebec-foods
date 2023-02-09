@@ -294,6 +294,20 @@
                             <span class="font-bold text-[72px] leading-[96px] inline-block">12.5<span
                                     class="text-[#A9B1BC]">%</span></span>
                         </div>
+
+                        <div class="flex flex-col items-center justify-center text-center">
+                            <img class="lg:block" src="/static-assets/plant-process-2.1602509f.svg" alt="25%" style="width: 50%;">
+                            <a href="{{ route('login') }}"
+                                class="bg-primary text-white my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] w-full ">
+                                <span>
+                                    Get Started
+                                </span>
+                                <svg width="19" height="12" viewBox="0 0 19 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" class="fill-primary" clip-rule="evenodd" style="fill: #fcfffd;"
+                                        d="M10.099 0.114806L18.037 5.11581C18.256 5.25381 18.387 5.49281 18.387 5.75081C18.387 6.00781 18.256 6.24781 18.037 6.38481L10.099 11.3858C9.978 11.4628 9.839 11.5018 9.7 11.5018C9.575 11.5018 9.451 11.4698 9.338 11.4078C9.098 11.2758 8.95 11.0248 8.95 10.7518L8.949 6.5L0.75 6.50041C0.336 6.50041 0 6.16441 0 5.75041C0 5.33641 0.336 5.00041 0.75 5.00041L8.949 5L8.95 0.749806C8.95 0.475806 9.098 0.224806 9.338 0.0928057C9.577 -0.0381943 9.87 -0.0301943 10.099 0.114806ZM10.45 2.10881L10.4498 5.73522C10.4499 5.74027 10.45 5.74533 10.45 5.75041L10.449 5.765L10.45 9.39181L16.23 5.75081L10.45 2.10881Z" />
+                                </svg>
+                            </a>
+                        </div>
                         <!-- <div class="flex flex-col items-center justify-center text-center">
                             <span class="text-primary text-[22px] inline-block">from 25,000 €</span>
                             <span class="font-bold text-[72px] leading-[96px] inline-block">12.7<span
