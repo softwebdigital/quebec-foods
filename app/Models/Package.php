@@ -150,6 +150,24 @@ class Package extends Model
         return Attribute::get(fn () => $mode);
     }
 
+    public function milestoneDuration(): Attribute
+    {
+        if ($this['payout_mode'] == 'quarterly') {
+            $duration = '3 months';
+        } else if ($this['payout_mode'] == 'semi-annually') {
+            $duration = '6 months';
+        } else if ($this['payout_mode'] == 'annually') {
+            $duration = '1 year';
+        } else if ($this['payout_mode'] == 'biannually') {
+            $duration = '2 years';
+        } else if ($this['payout_mode'] == 'custom') {
+            $duration = $this['months'] > 1 ? $this['months'] . ' months' : $this['months'].' month';
+        } else {
+            $duration = '1 month';
+        }
+        return Attribute::get(fn () => $duration);
+    }
+
     public function getPlantTotalROI($amount)
     {
         $sum = 0;
