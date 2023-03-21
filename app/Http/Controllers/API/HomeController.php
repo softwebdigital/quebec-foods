@@ -19,7 +19,7 @@ class HomeController extends Controller
         protected TransactionRepository $transactionRepository
     )
     {
-        $this->middleware('auth:sanctum')->except('currency');
+        $this->middleware('auth:sanctum')->except('currency', 'appVersion');
     }
 
     public function index(): JsonResponse
@@ -68,6 +68,15 @@ class HomeController extends Controller
         return $this->success(data: [
             'countries' => $countries,
             'phone_codes' => $phoneCodes
+        ]);
+    }
+
+    public function appVersion(): JsonResponse
+    {
+        $settings = Setting::first();
+        return $this->success(data: [
+            'android' => $settings?->android_version,
+            'ios' => $settings?->ios_version
         ]);
     }
 }

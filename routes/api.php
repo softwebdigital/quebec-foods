@@ -29,6 +29,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/payment/webhook', [OnlinePaymentController::class, 'handlePaymentWebhook']);
 Route::post('/payment/flw/webhook', [OnlinePaymentController::class, 'handleFlwWebhook']);
+Route::get('/app/version', [HomeController::class, 'appVersion']);
 
 Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);

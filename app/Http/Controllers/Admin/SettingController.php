@@ -100,6 +100,14 @@ class SettingController extends Controller
         return back()->with('error', 'Error updating bank details');
     }
 
+    public function setMobileAppVersion(Request $request): RedirectResponse
+    {
+        $request->validate(['ios_version' => 'required', 'android_version' => 'required']);
+        $settings = Setting::first();
+        if ($settings) $settings->update($request->only(['ios_version', 'android_version']));
+        return back()->with('success', 'Mobile app version updated successfully!');
+    }
+
     public static function fetchRates(): ?bool
     {
         $settings = Setting::first();

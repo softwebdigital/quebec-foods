@@ -374,6 +374,61 @@
             </div>
             <!--end::Aside content-->
         </div>
+
+        <!--begin::Card-->
+        <div class="card ">
+            <div class="card-body p-9 mt-5">
+                <!--begin::Card title-->
+                <div class="card-title flex-column">
+                    <h4 class="mb-5">App Versions</h4>
+                </div>
+                <!--end::Card title-->
+                <!--begin:::Form-->
+                <form class="form mb-3" method="post" action="{{ route('admin.version.update') }}" id="update-version-form">
+                    @csrf
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-5 fv-row">
+                        <!--begin::Label-->
+                        <label class="required fs-5 fw-bold mb-2" for="android_version">Android</label>
+                        <!--end::Label-->
+                        <!--end::Input-->
+                        <input type="text" value="{{ old("android_version") ?? $setting['android_version'] }}" class="form-control form-control-solid" name="android_version" id="android_version">
+                        @error('android_version')
+                        <span class="text-danger small" role="alert">
+                             <strong>{{ $message }}</strong>
+                         </span>
+                        @enderror
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Input group-->
+                    <div class="d-flex flex-column mb-5 fv-row">
+                        <!--begin::Label-->
+                        <label class="required fs-5 fw-bold mb-2" for="ios_version">iOS</label>
+                        <!--end::Label-->
+                        <!--begin::Input-->
+                        <input type="text" value="{{ old("ios_version") ?? $setting['ios_version'] }}" class="form-control form-control-solid" name="ios_version" id="ios_version">
+                        <!--end::Input-->
+                        @error('ios_version')
+                        <span class="text-danger small" role="alert">
+                             <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <!--end::Input group-->
+                    <!--begin::Submit-->
+                    @can('Update Company Bank Details')
+                        <button type="button" onclick="confirmFormSubmit(event, 'update-version-form')" class="btn btn-primary">
+                            <!--begin::Indicator-->
+                            <span class="indicator-label">Update Version</span>
+                            <!--end::Indicator-->
+                        </button>
+                    @endcan
+                    <!--end::Submit-->
+                </form>
+                <!--end:::Form-->
+            </div>
+        </div>
+        <!--end::Card-->
         <!--end::Sticky aside-->
     </div>
     <!--end::Sidebar-->

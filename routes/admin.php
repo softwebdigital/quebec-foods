@@ -33,6 +33,8 @@ Route::group(['middleware' => ['auth:admin', 'active_admin']], function (){
     Route::post('/password/custom/update', [App\Http\Controllers\Admin\HomeController::class, 'changePassword'])->name('password.custom.update');
     Route::post('/setting/bank/update', [App\Http\Controllers\Admin\SettingController::class, 'updateBankDetails'])->name('bank.update')->middleware('permission:Update Company Bank Details');
     Route::post('/setting/internationalbank/update', [App\Http\Controllers\Admin\SettingController::class, 'updateInternationalBankDetails'])->name('internationalbank.update')->middleware('permission:Update Company Bank Details');
+    Route::post('/setting/version/update', [App\Http\Controllers\Admin\SettingController::class, 'setMobileAppVersion'])->name('version.update');
+
 
     Route::get('/admins', [App\Http\Controllers\Admin\AdminController::class, 'index'])->name('admins')->middleware('permission:View Admins');
     Route::get('/admins/create', [App\Http\Controllers\Admin\AdminController::class, 'create'])->name('admins.create')->middleware('permission:Create Admins');
