@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\HomeController;
 use App\Models\Setting;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -59,27 +60,27 @@ class UserController extends Controller
         return view('admin.user.referrals', ['user' => $user]);
     }
 
-    public function block(User $user): \Illuminate\Http\RedirectResponse
+    public function block(User $user): RedirectResponse
     {
 //        if user is blocked
-        if ($user['active'] == 0){
+        if ($user['status'] == 'inactive'){
             return back()->with('error', 'Can\'t block user, user already blocked');
         }
 //        block user
-        if ($user->update(['active' => 0])){
+        if ($user->update(['status' => 'inactive'])){
             return back()->with('success', 'User blocked successfully');
         }
         return back()->with('error', 'Error blocking user');
     }
 
-    public function unblock(User $user): \Illuminate\Http\RedirectResponse
+    public function unblock(User $user): RedirectResponse
     {
 //        if user is active
-        if ($user['active'] == 1){
+        if ($user['status'] == 'active'){
             return back()->with('error', 'Can\'t unblock user, user already active');
         }
 //        unblock user
-        if ($user->update(['active' => 1])){
+        if ($user->update(['status' => 'active'])){
             return back()->with('success', 'User unblocked successfully');
         }
         return back()->with('error', 'Error unblocking user');
@@ -100,7 +101,7 @@ class UserController extends Controller
     {
 //        Define all column names
         $columns = [
-            'created_at', 'first_name', 'email', 'phone', 'email_verified_at', 'created_at', 'active', 'created_at'
+            'created_at', 'first_name', 'email', 'phone', 'email_verified_at', 'created_at', 'status', 'created_at'
         ];
 //        Find data based on page
         switch ($type){
@@ -186,7 +187,7 @@ class UserController extends Controller
                 <a class="menu-link px-3" href="/admin/users/'.$user['id'].'/referrals"><span class="">Referrals</span></a>
             </div>';
             }
-            if ($user['active'] == 1){
+            if ($user['status'] == 'active'){
                 if (auth()->user()->can('Block Users')) {
                     $action .= '<div class="menu-item px-3">
                                     <a class="menu-link px-3" onclick="confirmFormSubmit(event, \'userBlock'.$user['id'].'\')" href="'.route('admin.users.block', $user['id']).'"><span class="">Block</span></a>
@@ -207,13 +208,19 @@ class UserController extends Controller
                                 </form>';
                 }
             }
+            if ($user['status'] == 'active')
+                $datum['status'] = '<span class="badge badge-pill badge-success">Active</span>';
+            elseif ($user['status'] == 'inactive')
+                $datum['status'] = '<span class="badge badge-pill badge-warning">Inactive</span>';
+            else
+                $datum['status'] = '<span class="badge badge-pill badge-danger">Deactivated</span>';
+
             $datum['sn'] = '<span class="text-dark fw-bolder ps-4 d-block mb-1 fs-6">' . $i . '</span>';
             $datum['name'] = '<a href="'.route('admin.users.show', $user['id']).'" class="text-primary-700 text-hover-primary fw-bolder d-block fs-6" style="white-space: nowrap;">'.ucwords($user['first_name']).' '.ucwords($user['last_name']).'</a>';
             $datum['email'] = '<span class="text-gray-600 fw-bolder d-block fs-6">' . $user['email'] . '</span>';
             $datum['phone'] = '<span class="text-gray-600 fw-bolder d-block fs-6">' . $user['phone'] ?? '---' . '</span>';
             $datum['joined'] = '<span class="text-gray-600 fw-bolder d-block fs-6" style="white-space: nowrap;">' . $user['created_at']->format('F d, Y') . '</span>';
             $datum['verification'] = $user['email_verified_at'] ? '<span class="badge badge-pill badge-success">Verified</span>' : '<span class="badge badge-pill badge-warning">Unverified</span>';
-            $datum['status'] = $user['active'] == 1 ? '<span class="badge badge-pill badge-success">Active</span>' : '<span class="badge badge-pill badge-danger">Blocked</span>';
             $datum['action'] = '<a href="javascript:void();" class="btn btn-sm btn-primary" data-kt-menu-trigger="click" style="white-space: nowrap" data-kt-menu-placement="bottom-end" style="white-space: nowrap;">Action
                                     <span class="svg-icon svg-icon-5 m-0">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

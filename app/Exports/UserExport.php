@@ -33,9 +33,9 @@ class UserExport implements FromArray, WithHeadings
                 $users = User::query()->latest();
         }
         if ($this->status == 'active') {
-            $users = $users->where('active', 1);
+            $users = $users->where('status', 'active');
         } else if ($this->status == 'blocked') {
-            $users = $users->where('active', 0);
+            $users = $users->where('status', '!=', 'active');
 
         }
         if (count($dates) > 1) {
@@ -59,7 +59,7 @@ class UserExport implements FromArray, WithHeadings
                 'next_of_kin_address' => $user['nk_address'] ?? 'Not set',
                 'date_joined' => $user->created_at->format('M d, Y'),
                 'email_verification' => $user['email_verified_at'] ? 'Verified' : 'Unverified',
-                'status' => $user['active'] == 1 ? 'Active' : 'Blocked'
+                'status' => strtoupper($user['status'])
             ];
         })->toArray();
     }
