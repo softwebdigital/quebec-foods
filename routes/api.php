@@ -31,6 +31,11 @@ Route::post('/payment/webhook', [OnlinePaymentController::class, 'handlePaymentW
 Route::post('/payment/flw/webhook', [OnlinePaymentController::class, 'handleFlwWebhook']);
 Route::get('/app/version', [HomeController::class, 'appVersion']);
 
+Route::prefix('account')->group(function () {
+    Route::post('/token', [AuthController::class, 'sendDeactivationToken'])->middleware('throttle:3,1');
+    Route::post('/deactivate', [AuthController::class, 'deactivate']);
+});
+
 Route::prefix('auth')->group(function () {
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/login', [AuthController::class, 'login']);

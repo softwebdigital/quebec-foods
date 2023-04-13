@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Image;
 use Carbon\Carbon;
 use App\Models\Package;
@@ -235,7 +237,7 @@ class HomeController extends Controller
     }
 
     // Update Password
-    public function updatePassword(Request $request): \Illuminate\Http\RedirectResponse
+    public function updatePassword(Request $request): RedirectResponse
     {
         // Validate request
         $validator = Validator::make($request->all(), [
@@ -254,6 +256,24 @@ class HomeController extends Controller
             return back()->with('success', 'Password changed successfully');
         }
         return back()->with('error', 'Error changing password');
+    }
+
+    public function sendDeactivationToken(Request $request): RedirectResponse
+    {
+        $user = $request->user();
+        $user->sendDeactivationToken();
+        return back()->with('success', 'Deactivation otp sent to '.$user['email']);
+    }
+
+    public function deactivate(Request $request): RedirectResponse
+    {
+        $request->validate(['otp' => 'required']);
+        $user = $request->user();
+        if (!$user->verifyOTP($request->input('otp')))
+            return back()->with('error', 'OTP is invalid');
+        $user->deactivate();
+        Auth::guard()->logout();
+        return redirect('/login')->with('success', 'Your account has been deactivated successfully');
     }
 
     private function getPackageInvestments($type, $limit = 5)

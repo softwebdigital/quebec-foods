@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FaqController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\OnlinePaymentController;
 use App\Http\Controllers\PackageController;
@@ -48,11 +49,16 @@ Route::get('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'in
 Route::post('/verify', [App\Http\Controllers\Auth\TwoFactorController::class, 'store'])->name('verify.store');
 
 Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']], function() {
-    Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
-    Route::get('/profile/identification', [App\Http\Controllers\HomeController::class, 'profile_id'])->name('profile.identification');
-    Route::post('/profile/update', [App\Http\Controllers\HomeController::class, 'updateProfile'])->name('profile.update');
-    Route::put('/2fa/update', [App\Http\Controllers\HomeController::class, 'update2fa'])->name('2fa.update');
-    Route::post('/password/custom/update', [App\Http\Controllers\HomeController::class, 'updatePassword'])->name('password.custom.update');
+    Route::prefix('account')->group(function () {
+        Route::post('/token', [HomeController::class, 'sendDeactivationToken'])->name('account.token');
+        Route::post('/deactivate', [HomeController::class, 'deactivate'])->name('account.deactivate');
+    });
+
+    Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
+    Route::get('/profile/identification', [HomeController::class, 'profile_id'])->name('profile.identification');
+    Route::post('/profile/update', [HomeController::class, 'updateProfile'])->name('profile.update');
+    Route::put('/2fa/update', [HomeController::class, 'update2fa'])->name('2fa.update');
+    Route::post('/password/custom/update', [HomeController::class, 'updatePassword'])->name('password.custom.update');
 
 
     Route::post('/banks', [App\Http\Controllers\BankAccountsController::class, 'store'])->name('bank.store');
@@ -62,13 +68,13 @@ Route::group(['middleware' => ['auth', 'active_user', 'verified', 'two_factor']]
     Route::post('/documents', [App\Http\Controllers\DocumentController::class, 'store'])->name('document.store');
 
     Route::group(['middleware' => ['profile_completed']], function () {
-        Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard');
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-        Route::get('/account/overview', [App\Http\Controllers\HomeController::class, 'accountOverview'])->name('account.overview');
-        Route::get('/overview/{type}/investments', [App\Http\Controllers\HomeController::class, 'showUserInvestments'])->where('type', 'farm|plant|tractor')->name('user.investments');
-        Route::get('/overview/transactions', [App\Http\Controllers\HomeController::class, 'showTransactions'])->name('user.transactions');
-        Route::get('/overview/wallet', [App\Http\Controllers\HomeController::class, 'showWallet'])->name('user.wallet');
-        Route::get('/overview/referrals', [App\Http\Controllers\HomeController::class, 'showReferrals'])->name('user.referrals');
+        Route::get('/account/overview', [HomeController::class, 'accountOverview'])->name('account.overview');
+        Route::get('/overview/{type}/investments', [HomeController::class, 'showUserInvestments'])->where('type', 'farm|plant|tractor')->name('user.investments');
+        Route::get('/overview/transactions', [HomeController::class, 'showTransactions'])->name('user.transactions');
+        Route::get('/overview/wallet', [HomeController::class, 'showWallet'])->name('user.wallet');
+        Route::get('/overview/referrals', [HomeController::class, 'showReferrals'])->name('user.referrals');
         Route::get('/overview/{type}/investments/{investment}/show', [App\Http\Controllers\InvestmentController::class, 'showUserInvestment'])->where('type', 'farm|plant|tractor')->name('user.investment.show');
         Route::post('/overview/invest/store', [App\Http\Controllers\InvestmentController::class, 'store'])->name('user.invest.store');
 

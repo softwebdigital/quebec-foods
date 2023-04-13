@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Notifications\DeactivationNotification;
 use App\Notifications\EmailVerificationNotification;
 use App\Notifications\PasswordResetNotification;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -392,6 +393,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->attributes['two_factor_expires_at'] = null;
         $this->save();
     }
+
     public function resetWithdrawalToken()
     {
         $this->timestamps = false;
@@ -400,10 +402,32 @@ class User extends Authenticatable implements MustVerifyEmail
         $this->save();
     }
 
+    public function deactivate()
+    {
+        $this->attributes['status'] = 'deactivated';
+        $this->attributes['otp'] = null;
+        $this->attributes['otp_expiry'] = null;
+        $this->save();
+    }
+
+    public function verifyOTP($otp): bool
+    {
+        return (Hash::check($otp, $this->attributes['otp']) && now()->lte($this->attributes['otp_expiry']));
+    }
+
     public function canBeDeleted($duration): bool
     {
         $newDate = date('Y-m-d H:i:s', strtotime(Carbon::parse($this['created_at']).' + '.$duration));
         return is_null($this['email_verified_at']) && Carbon::make($newDate)->lt(now());
+    }
+
+    public function sendDeactivationToken()
+    {
+        $token = (string) mt_rand(100000, 999999);
+        $this['otp'] = Hash::make($token);
+        $this['otp_expiry'] = now()->addMinutes(10)->format('Y-m-d H:i:s');
+        $this->save();
+        $this->notify(new DeactivationNotification($token));
     }
 
     public function sendEmailVerificationNotificationAPI()

@@ -51,6 +51,10 @@ class AuthController extends Controller
         if (!Auth::attempt($credentials))
             return $this->failure(message: 'Invalid login credentials', status: 404);
         $user = $this->userRepository->findByColumn('email', $credentials['email']);
+        if ($user['status'] == 'inactive')
+            return $this->failure('Your account is currently restricted, contact admin on '.env('SUPPORT_EMAIL'));
+        if ($user['status'] == 'deactivated')
+            return $this->failure('Your account is deactivated, contact admin on '.env('SUPPORT_EMAIL'));
         if ($user['two_factor_enabled']) {
             $user->generateTwoFactorCode();
             $user->notify(new TwoFactorCode(true));
@@ -97,6 +101,24 @@ class AuthController extends Controller
     public function me(Request $request): JsonResponse
     {
         return $this->success(data: new UserResource($request->user()));
+    }
+
+    public function sendDeactivationToken(Request $request): JsonResponse
+    {
+        $user = $request->user();
+        $user->sendDeactivationToken();
+        return $this->success(message: 'Deactivation otp sent to '.$user['email']);
+    }
+
+    public function deactivate(Request $request): JsonResponse
+    {
+        $request->validate(['otp' => 'required']);
+        $user = $request->user();
+        if (!$user->verifyOTP($request->input('otp')))
+            return $this->failure('OTP is invalid');
+        $user->deactivate();
+        $user->currentAccessToken()->delete();
+        return $this->success('Account deactivated successfully');
     }
 
     public function sendPasswordResetToken(Request $request): JsonResponse
