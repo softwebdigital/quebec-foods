@@ -166,4 +166,9 @@ class StaticPageController extends Controller
     {
         return view('static.referal');
     }
+
+    public function webinar(): View
+    {
+        return view('static.webinar');
+    }
 }

@@ -268,7 +268,6 @@
 
     <!-- Ready to Start Investing? -->
     <section class=" bg-[#F3FFF9] px-2">
-
         <div class="">
             <div class="px-4 mx-auto lg:px-0 max-w-screen-max">
                 <div class="pt-16 max-w-[867px] mx-auto text-center">
@@ -322,7 +321,6 @@
                 </div>
 
             </div>
-
         </div>
     </section>
 
