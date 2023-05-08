@@ -250,7 +250,7 @@
                 </div>
                 <div class="self-end w-full lg:w-2/5 lg:pb-20">
                     <img class="lg:block" src="/static-assets/plant-process-2.1602509f.svg" alt="25%">
-                    <a href="{{ route('login') }}"
+                    <a href="{{ route('investments', 'plant') }}"
                         class="bg-white text-primary my-4 py-5 md:text-lg md:py-5  lg:px-9 rounded-lg flex justify-center  items-baseline gap-x-10 lg:gap-x-6 w-[80%] w-full ">
                         <span>
                             Get Started

@@ -38,6 +38,7 @@ Route::get('/tractor-investment', [App\Http\Controllers\StaticPageController::cl
 Route::get('/disclaimer', [App\Http\Controllers\StaticPageController::class, 'disclaimer'])->name('static.disclaimer');
 Route::get('/referal', [App\Http\Controllers\StaticPageController::class, 'referal'])->name('static.referal');
 Route::get('/team', [App\Http\Controllers\StaticPageController::class, 'teams'])->name('static.team');
+Route::get('/webinar', [App\Http\Controllers\StaticPageController::class, 'webinar'])->name('static.webinar');
 
 
 Route::post('/contact/send', [App\Http\Controllers\ContactUsController::class, 'sendMail'])->name('static.post.contact');
