@@ -6,7 +6,7 @@
         <div class="text-center my-10 px-10">
           <span class="btn btn-primary !px-7 !text-sm !py-4 !rounded-full">Quebec Webinar</span>
           <h1 class="max-w-[1000px] mx-auto text-lg  md:text-heading-3 font-bold py-5  md:leading-h-3 text-[#192434]">Find Out How You Can Earn Alternative Income from “Food, Fruits & Vegetables Crops”</h1>
-          <p class=" text-sm md:text-base text-[#192434]">
+          <p class=" text-sm md:text-base text-[#192434]" style="font-size: 18px;">
             It is a known fact that the unexpected shock of COVID-19 highlighted the importance of Agriculture and has also been a dilemma for digital investors in recent times with different reports about some agritech firms defaulting on their obligations to investors, but the fact remains that agricultural investment is profitable and the cash value return on investment is achievable with the proper farm and fund management, backup with sustainable farming practice and asset-security instrument; giving serious attention to human risk management.
 
 Let's Help You Understand How to generate alternative income by investing in classified sustainable agricultural commodities, from production(farming) to processing and packaging for local and export markets, without having to soil your hands in the process and you earn cash value return in weeks, Months, Quarterly, biannually & Annually depending on your choice of crops.
@@ -104,7 +104,7 @@ Let's Help You Understand How to generate alternative income by investing in cla
             <div class="px-4 mx-auto lg:px-0 max-w-screen-max">
                 <div class="pt-16 max-w-[867px] mx-auto text-center">
                 <p class="text-md font-bold text-[#E5F0EB] mt-5 text-center">SIGN UP TO JOIN FREE LIVE WEBINAR</p>
-                    <h4 class="py-6 text-4xl font-bold text-ink lg:leading-h-3 lg:text-heading-2">When is the right time to <span class="text-primary">invest</span> in <span class="text-primary">Agri-food</span> value chain</h4>
+                    <h4 style="font-size: 50px;" class="py-6 text-4xl font-bold text-ink lg:leading-h-3 lg:text-heading-2">When is the right time to <span class="text-primary">invest</span> in <span class="text-primary">Agri-food</span> value chain</h4>
                     
                 </div>
             </div>
@@ -157,11 +157,19 @@ Let's Help You Understand How to generate alternative income by investing in cla
     <section class="section-container pb-10 pt-24 lg:mt-10">
         <div class="flex flex-col lg:flex-row items-center gap-6">
           <div class="">
-            <img class="" src="/static-assets/quebec-103.png" alt="">
+            <style>
+                @media (min-width: 1024px) { 
+                    .img-team
+                        { 
+                            margin-bottom: -90px; 
+                        }
+                }
+            </style>
+            <img class="img-team" src="/static-assets/quebec-103.png" alt="">
           </div>
           <div class="px-6 py-5 lg:pl-20 md:px-0 md:w-2/5">
             <p class="text-md text-[#192434] font-bold mb-5">QUEBEC TEAMS</p>
-            <h1 class="text-4xl lg:text-heading-1 lg:leading-h-1 text-[#192434] font-bold mb-5">We are well experienced!</h1>
+            <h1 style="font-size: 50px;" class="text-4xl lg:text-heading-1 lg:leading-h-1 text-[#192434] font-bold mb-5">We are well experienced!</h1>
             <p class="text-base lg:text-xl leading-5 lg:leading-8 text-gray-700 font-normal">
               Meet the Founder/President and its exceptional team of experts with over 12 years of experience in the agrifood value chain space from farming to processing as they share valuable insights and tips on the dynamics of making a profit with details into our Food, Fruits & Vegetables Crop Investment Packages, a premium offering by Quebec Food Processing Industrial Parks Limited.
             </p>
@@ -172,7 +180,7 @@ Let's Help You Understand How to generate alternative income by investing in cla
       <!-- Form Cand Location-->
       <section style="background: #192434;" class="md:mt-6 lg:overflow-hidden">
         <p class="text-md text-[#E5F0EB] mt-5 text-center" style="padding-top: 50px; color: #E5F0EB;">SIGN UP TO JOIN FREE LIVE WEBINAR</p>
-        <h1 class="text-center text-xl lg:text-heading-1 lg:leading-h-1 text-[#E5F0EB] font-bold mb-5" style="font-size: 48px; color: #E5F0EB; margin-button: 50px;">Secure a spot for free now!</h1>
+        <h1 class="text-center text-xl lg:text-heading-1 lg:leading-h-1 text-[#E5F0EB] font-bold mb-5" style="font-size: 48px; color: #E5F0EB; margin-button: 50px; line-height: 45px;">Secure a spot for free now!</h1>
             <div class="lg:px-5 mb-20 lg:pt-80 lg:pb-20 py-20 lg:mt-96 relative section-container ">
             <div class=" max-w-[620px] mx-auto" style="max-width: 520px;">
             <form action="{{ route('static.post.contact') }}" method="POST"

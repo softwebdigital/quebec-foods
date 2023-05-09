@@ -270,6 +270,9 @@
                     <li>
                         <a href="/disclaimer">Quebec Foods Disclaimer</a>
                     </li>
+                    <li>
+                        <a href="/webinar">Webinar</a>
+                    </li>
 
                     <!-- <li>
                         <a href="tel:+2347016358414">Phone 1: (+234) 701-635-8414</a>
