@@ -121,9 +121,9 @@
             <div class="border border-[#0EC95E] bg-[#02AE57] p-5 lg:px-10 lg:py-6 rounded-2xl text-white">
               <h4 class="py-3 text-2xl font-bold">South West Operational Office:</h4>
               <p class="text-gray-200  text-lg font-bold">
-                H26, Road 4/3, <br>
-                Ikota Shopping Complex, VGC, Lekki, <br>
-                Lagos State, Nigeria.
+                25, Road 3, <br>
+                Ocean Palms Estate, Ogidan <br>
+                Eti-Osa 101245, Lagos State.
               </p>
               <a href=""
                 class=" my-2 py-5 md:text-lg md:py-5  px-1 rounded-md flex justify-between items-baseline gap-x-2 w-full lg:w-2/3">
