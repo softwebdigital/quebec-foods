@@ -26,9 +26,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('investment:settle')
                     ->withoutOverlapping()
                     ->everyMinute();
-        $schedule->command('transaction:notify')
-                    ->withoutOverlapping()
-                    ->everyMinute();
+//        $schedule->command('transaction:notify')
+//                    ->withoutOverlapping()
+//                    ->everyMinute();
         $schedule->command('maturity:notify')
                     ->withoutOverlapping()
                     ->dailyAt('00:00');
