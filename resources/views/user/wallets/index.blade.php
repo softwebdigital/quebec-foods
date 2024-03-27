@@ -544,14 +544,14 @@
 
                             <h6 class="mt-5">Select Gateway.</h6>
                             <div class="d-flex justify-content-center">
-                                <div id="gatewayFlw" class="mr-10">
+                                <div id="gatewayFlw" class="mr-10 active">
                                     <img src="{{ asset('assets/photos/flutterwave.png') }}" class="img-fluid" width="150" alt="Secured-by-flutterwave" style="cursor: pointer">
                                 </div>
-                                <div id="gatewayPaystack" class="ml-10 active">
+                                <div id="gatewayPaystack" class="ml-10 d-none">
                                     <img src="{{ asset('assets/photos/paystack.png') }}" class="img-fluid mt-1" width="128" alt="Secured-by-paystack" style="cursor: pointer">
                                 </div>
                             </div>
-                            <input type="hidden" id="gateway" name="gateway" value="paystack">
+                            <input type="hidden" id="gateway" name="gateway" value="flutterwave">
                             <div id="gatewayError"></div>
                         </div>
                         <div id="bankDetailsForDepositForm" style="display: none" class="alert mx-3 bg-secondary">
@@ -596,7 +596,7 @@
                                 </tr>
                                 <tr>
                                     <td>Added Information: </td>
-                                    <td><span class="ms-2">{{ $international['added_information'] }}</span></td>
+                                    <td><span class="ms-2">{!! $international['added_information'] !!}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Amount: </td>
